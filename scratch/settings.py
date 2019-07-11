@@ -80,9 +80,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'HOST': 'db',
         'PORT': 5432,
-        'NAME': env('POSTGRES_DB', 'insitu'),
-        'USER': env('POSTGRES_USER', 'insitu'),
-        'PASSWORD': env('POSTGRES_PASSWORD', 'insitu'),
+        'NAME': env('POSTGRES_DB', 'scratch'),
+        'USER': env('POSTGRES_USER', 'scratch'),
+        'PASSWORD': env('POSTGRES_PASSWORD', 'scratch'),
     }
 }
 
