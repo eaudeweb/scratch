@@ -1,0 +1,7 @@
+version: '2'
+
+services:
+  web:
+    volumes:
+      - .:/var/local/scratch
+    entrypoint: ["/usr/bin/tail", "-f", "/dev/null"]

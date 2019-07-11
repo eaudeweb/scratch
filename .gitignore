@@ -105,3 +105,8 @@ venv.bak/
 
 #  PyCharm
 .idea/
+
+
+docker-compose.override.yml
+docker/app.env
+docker/db.env
