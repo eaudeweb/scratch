@@ -1,20 +1,11 @@
 from django.db import models
 
-# Create your models here.
 SOURCE_CHOICES = [
     ('FR', 'Freshman'),
     ('SO', 'Sophomore'),
     ('JR', 'Junior'),
     ('SR', 'Senior'),
 ]
-
-
-class Winner(models.Model):
-    vendor = models.CharField(null=True, max_length=255)
-    value = models.FloatField(null=True)
-    currency = models.CharField(null=True, max_length=3)
-    award_date = models.DateField()
-    notified = models.BooleanField(default=False)
 
 
 class Tender(models.Model):
@@ -31,16 +22,26 @@ class Tender(models.Model):
     hidden = models.BooleanField(default=False)
     source = models.CharField(max_length=10, choices=SOURCE_CHOICES)
     unspsc_codes = models.CharField(max_length=1024)
-    winner = models.ForeignKey(Winner, on_delete=models.CASCADE)
 
     def __str__(self):
-        return 'Tender notice:', self.title
+        return 'Tender list: {}'.format(self.title)
+
+
+class Winner(models.Model):
+    vendor = models.CharField(null=True, max_length=255)
+    value = models.FloatField(null=True)
+    currency = models.CharField(null=True, max_length=3)
+    award_date = models.DateField()
+    notified = models.BooleanField(default=False)
+    tender = models.ForeignKey(Tender, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return '{} WON BY {}'.format(self.tender.title, self.vendor)
 
 
 class TenderDocument(models.Model):
     name = models.CharField(null=True, max_length=255)
     download_url = models.CharField(max_length=255)
-
     tender = models.ForeignKey(Tender, on_delete=models.CASCADE)
 
 
