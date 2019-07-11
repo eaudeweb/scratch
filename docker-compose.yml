@@ -2,6 +2,33 @@ version: '2'
 
 services:
   web:
+    image: scratch
+    build: .
+    container_name: scratch.app
+    environment:
+      - DJANGO_MIGRATE=yes
+      - DJANGO_COLLECT_STATIC=no
+      - UWSGI_PORT=8000
+    env_file:
+      - docker/db.env
+      - docker/app.env
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+
+  db:
+    image: postgres:10-alpine
+    container_name: scratch.db
+    env_file:
+      - docker/db.env
     volumes:
-      - .:/var/local/scratch
-    entrypoint: ["/usr/bin/tail", "-f", "/dev/null"]
+      - data:/var/lib/postgresql/data
+
+volumes:
+  data:
+    driver: local
+  esdata:
+    driver: local
+  logging:
+    driver: local
