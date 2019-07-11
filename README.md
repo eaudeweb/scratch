@@ -12,13 +12,11 @@
 
         cd scratch/
         cp docker-compose.override.yml.example docker-compose.override.yml
-        cd docker/
-        cp app.env.example app.env
-        cp db.env.example db.env
+        cp docker/app.env.example docker/app.env
+        cp docker/db.env.example docker/db.env
         
  3. Create the stack and start it:
  
-        cd ..
         docker-compose up -d
         
 4. Verify if the containers were created:
@@ -29,22 +27,8 @@
         
         docker exec -it scratch.app sh
         
+6. Run server:
+
+        python manage.py runserver 0.0.0.0:8000
 
 
-## Useful commands:
-
-1. Go into database container:
-
-        docker exec -it scratch.db sh
-        
-2.  Stop the stack:
-
-        docker-compose stop
-        
-3. Stop and delete the stack:
-    
-        docker-compose down
-        
-4. See container log:
-
-        docker logs container_name
