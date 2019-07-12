@@ -59,6 +59,8 @@ class WinnerAdmin(admin.ModelAdmin):
 
 class WorkerLogAdmin(admin.ModelAdmin):
     list_display = ['update', 'source']
+    list_filter = ('update',)
+    search_fields = ['update']
 
 
 admin.site.register(Tender, TenderAdmin)
