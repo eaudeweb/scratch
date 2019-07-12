@@ -1,10 +1,8 @@
 from django.db import models
 
 SOURCE_CHOICES = [
-    ('FR', 'Freshman'),
-    ('SO', 'Sophomore'),
-    ('JR', 'Junior'),
-    ('SR', 'Senior'),
+    ('UNGM', 'UNGM'),
+    ('TED', 'TED'),
 ]
 
 
