@@ -1,0 +1,187 @@
+[
+    {
+        "id": "104943",
+        "id_ungm": "43230000",
+        "name": "43230000 - Software"
+    },
+    {
+        "id": "104945",
+        "id_ungm": "43232300",
+        "name": "43232300 - Data management and query software"
+    },
+    {
+        "id": "104970",
+        "id_ungm": "43232500",
+        "name": "43232500 - Educational or reference software"
+    },
+    {
+        "id": "105031",
+        "id_ungm": "43232502",
+        "name": "43232502 - Computer based training software"
+    },
+    {
+        "id": "117548",
+        "id_ungm": "43232501",
+        "name": "43232501 - Foreign language software"
+    },
+    {
+        "id": "104990",
+        "id_ungm": "43232400",
+        "name": "43232400 - Development software"
+    },
+    {
+        "id": "105002",
+        "id_ungm": "43232900",
+        "name": "43232900 - Networking software"
+    },
+    {
+        "id": "105005",
+        "id_ungm": "43233000",
+        "name": "43233000 - Operating environment software"
+    },
+    {
+        "id": "105034",
+        "id_ungm": "43232600",
+        "name": "43232600 - Industry specific software"
+    },
+    {
+        "id": "117498",
+        "id_ungm": "43231500",
+        "name": "43231500 - Business function specific software"
+    },
+    {
+        "id": "104953",
+        "id_ungm": "43231513",
+        "name": "43231513 - Office suite software"
+    },
+    {
+        "id": "114787",
+        "id_ungm": "43231503",
+        "name": "43231503 - Procurement software"
+    },
+    {
+        "id": "117499",
+        "id_ungm": "43231501",
+        "name": "43231501 - Helpdesk or call center software"
+    },
+    {
+        "id": "117503",
+        "id_ungm": "43231505",
+        "name": "43231505 - Human resources software"
+    },
+    {
+        "id": "117504",
+        "id_ungm": "43231506",
+        "name": "43231506 - Materials requirements planning logistics and supply chain software"
+    },
+    {
+        "id": "122190",
+        "id_ungm": "43231508",
+        "name": "43231508 - Inventory management software"
+    },
+    {
+        "id": "122209",
+        "id_ungm": "43231507",
+        "name": "43231507 - Project management software"
+    },
+    {
+        "id": "176797",
+        "id_ungm": "43231515",
+        "name": "43231515 - Mailing and shipping software"
+    },
+    {
+        "id": "117505",
+        "id_ungm": "43232000",
+        "name": "43232000 - Computer game or entertainment software"
+    },
+    {
+        "id": "117510",
+        "id_ungm": "43232100",
+        "name": "43232100 - Content authoring and editing software"
+    },
+    {
+        "id": "117521",
+        "id_ungm": "43232200",
+        "name": "43232200 - Content management software"
+    },
+    {
+        "id": "117562",
+        "id_ungm": "43232700",
+        "name": "43232700 - Network applications software"
+    },
+    {
+        "id": "117567",
+        "id_ungm": "43232800",
+        "name": "43232800 - Network management software"
+    },
+    {
+        "id": "117590",
+        "id_ungm": "43233200",
+        "name": "43233200 - Security and protection software"
+    },
+    {
+        "id": "117599",
+        "id_ungm": "43233400",
+        "name": "43233400 - Utility and device driver software"
+    },
+    {
+        "id": "128842",
+        "id_ungm": "43231600",
+        "name": "43231600 - Finance accounting and enterprise resource planning ERP software"
+    },
+    {
+        "id": "139187",
+        "id_ungm": "43233500",
+        "name": "43233500 - Information exchange software"
+    },
+    {
+        "id": "122250",
+        "id_ungm": "43233502",
+        "name": "43233502 - Video conferencing software"
+    },
+    {
+        "id": "136544",
+        "id_ungm": "43233501",
+        "name": "43233501 - Electronic mail software"
+    },
+    {
+        "id": "143031",
+        "id_ungm": "43233503",
+        "name": "43233503 - Network conferencing software"
+    },
+    {
+        "id": "143032",
+        "id_ungm": "43233504",
+        "name": "43233504 - Instant messaging software"
+    },
+    {
+        "id": "145118",
+        "id_ungm": "43233600",
+        "name": "43233600 - Electrical Equipment software"
+    },
+    {
+        "id": "150839",
+        "id_ungm": "43233700",
+        "name": "43233700 - System management software"
+    },
+    {
+        "id": "107373",
+        "id_ungm": "81110000",
+        "name": "81110000 - Computer services"
+    },
+    {
+        "id": "108816",
+        "id_ungm": "81111500",
+        "name": "81111500 - Software or hardware engineering"
+    },
+    {
+        "id": "112934",
+        "id_ungm": "81112200",
+        "name": "81112200 - Software maintenance and support"
+    },
+    {
+        "id": "174579",
+        "id_ungm": "81112500",
+        "name": "81112500 - Computer software licensing rental or leasing service"
+    }
+]
