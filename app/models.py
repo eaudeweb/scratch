@@ -12,7 +12,7 @@ class Tender(models.Model):
     title = models.CharField(null=True, max_length=255)
     organization = models.CharField(null=True, max_length=255)
     published = models.DateField()
-    deadline = models.DateField()
+    deadline = models.DateTimeField()
     description = models.TextField(null=True, max_length=5059)
     favourite = models.BooleanField(default=False)
     notified = models.BooleanField(default=False)
