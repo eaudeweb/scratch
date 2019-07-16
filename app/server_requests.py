@@ -33,7 +33,7 @@ PAYLOAD = {
     },
     'winners': {
         'PageIndex': 0,
-        'PageSize': 15,
+        'PageSize': 100,
         'Title': '',
         'Description': '',
         'Reference': '',
@@ -112,7 +112,8 @@ class UNGMrequester(Requester):
         return json.dumps(payload)
 
     def request(self, url):
-        for i in range(0, 3):
+        #Original
+        for i in range(0, 5):
             resp = self.post_request(url, url + '/Search', self.get_data(url))
             if resp:
                 return resp
