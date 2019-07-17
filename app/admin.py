@@ -3,7 +3,7 @@ from .models import Tender, TenderDocument, Winner, WorkerLog
 
 
 class TenderAdmin(admin.ModelAdmin):
-    list_display = ['title', 'notice_type', 'organization', 'published', 'deadline',
+    list_display = ['title', 'notice_type', 'organization', 'published',
                     'deadline', 'url', 'source', 'unspsc_codes']
     search_fields = ['title', 'notice_type', 'published', 'deadline', 'source',
                      'organization', 'unspsc_codes']
