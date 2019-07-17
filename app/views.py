@@ -1,3 +1,11 @@
 from django.shortcuts import render
+from django.conf.urls import url
 
-# Create your views here.
+from django.views.generic.list import ListView
+from .models import Tender
+
+
+class TendersListView(ListView):
+    model = Tender
+    context_object_name = 'tenders'
+    template_name = 'tenders_list.html'
