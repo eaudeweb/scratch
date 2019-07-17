@@ -1,6 +1,3 @@
-from django.shortcuts import render
-from django.conf.urls import url
-
 from django.views.generic.list import ListView
 from .models import Tender
 
