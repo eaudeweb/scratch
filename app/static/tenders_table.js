@@ -8,7 +8,6 @@ $(document).ready(function() {
     });
 })
 
-
 $(document).ready(function() {
     $('#tender_detail_table').DataTable(
         {
@@ -20,4 +19,3 @@ $(document).ready(function() {
         });
 
 })
-
