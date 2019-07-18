@@ -7,3 +7,15 @@
 .table {
     padding: 30px;
 }
+
+.link {
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+
+.table_detail {
+    padding: 45px;
+
+}

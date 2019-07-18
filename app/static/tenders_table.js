@@ -8,3 +8,16 @@ $(document).ready(function() {
     });
 })
 
+
+$(document).ready(function() {
+    $('#tender_detail_table').DataTable(
+        {
+            "searching": false,
+            "bPaginate": false,
+            "bLengthChange": false,
+            "bInfo" : false,
+            "ordering": false,
+        });
+
+})
+
