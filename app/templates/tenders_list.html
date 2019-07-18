@@ -2,36 +2,37 @@
 
 {% block content %}
 
-    <div class="row table" >
-       <h1 class="col-sm-12">
-          <span>Tenders</span>
-        </h1>
-    </div>
+  <div class="row table" >
+    <h1 class="col-sm-12">
+      <span>Tenders</span>
+    </h1>
+  </div>
 
-    <div class = "table" ><table id="tenders_table"  class="cell-border display compact">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Source</th>
-                <th>Organization</th>
-                <th>Deadline in</th>
-                <th>Published</th>
-                <th>Type of notice</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for tender in tenders %}
-                <tr>
-                    <td>{{ tender.title }}</td>
-                    <td>{{ tender.source }}</td>
-                    <td>{{ tender.organization }}</td>
-                    <td>{{ tender.deadline }}</td>
-                    <td>{{ tender.published }}</td>
-                    <td>{{ tender.notice_type }}</td>
-                 </tr>
-
-            {% endfor %}
-        </tbody>
-    </table></div>
+  <div class = "table" >
+    <table id="tenders_table"  class="cell-border display compact">
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th>Source</th>
+        <th>Organization</th>
+        <th>Deadline in</th>
+        <th>Published</th>
+        <th>Type of notice</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for tender in tenders %}
+        <tr>
+          <td>{{ tender.title }}</td>
+          <td>{{ tender.source }}</td>
+          <td>{{ tender.organization }}</td>
+          <td>{{ tender.deadline }}</td>
+          <td>{{ tender.published }}</td>
+          <td>{{ tender.notice_type }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
 
 {% endblock %}
