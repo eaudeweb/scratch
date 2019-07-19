@@ -5,7 +5,7 @@
   <div class = "table_detail" ><table id="tender_detail_table"  class="cell-border display compact">
     <thead>
     <th>Favourite</th>
-    <th><button type="button" action="{% url 'tender_detail_view' tender.id %}" onclick="myFunction(this)" class="favourite_button" id="fav_button" ></button></th>
+    <th><button type="button" action="{% url 'tender_favourite_view' tender.id %}" onclick="myFunction(this)" class="favourite_button" id="fav_button" ></button></th>
     </thead>
 
     <tbody>

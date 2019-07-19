@@ -11,6 +11,8 @@ from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.debug import sensitive_post_parameters
 from django.views.generic import FormView, RedirectView
+from django.views.generic import View
+from .models import Tender
 
 
 class TendersListView(LoginRequiredMixin, ListView):
@@ -26,6 +28,9 @@ class TenderDetailView(DetailView):
     template_name = 'detail_tender.html'
     context_object_name = 'tender'
 
+
+class TenderFavouriteView(View):
+
     def post(self, request, pk):
         current_tender = Tender.objects.filter(id=pk)
         state = request.POST['favourite']
@@ -36,6 +41,7 @@ class TenderDetailView(DetailView):
             current_tender.update(favourite=False)
 
         return HttpResponse("Success!")
+
 
 class ContractAwardsListVew(LoginRequiredMixin, ListView):
     model = Winner
