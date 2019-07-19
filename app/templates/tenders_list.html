@@ -8,7 +8,6 @@
     </h1>
   </div>
 
-<<<<<<< HEAD
   <div class = "table" >
     <table id="tenders_table"  class="cell-border display compact">
       <thead>
@@ -24,7 +23,7 @@
       <tbody>
       {% for tender in tenders %}
         <tr>
-          <td>{{ tender.title }}</td>
+          <td><a href="/app/tenders/{{ tender.id }}" class="link">{{ tender.title }}</a></td>
           <td>{{ tender.source }}</td>
           <td>{{ tender.organization }}</td>
           <td>{{ tender.deadline }}</td>
@@ -37,33 +36,3 @@
   </div>
 
 {% endblock %}
-=======
-    <div class = "table" ><table id="tenders_table"  class="cell-border display compact">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Source</th>
-                <th>Organization</th>
-                <th>Deadline in</th>
-                <th>Published</th>
-                <th>Type of notice</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for tender in tenders %}
-                <tr>
-                    <td><a href="/app/tenders/{{ tender.id }}" class="link">{{ tender.title }}</a></td>
-                    <td>{{ tender.source }}</td>
-                    <td>{{ tender.organization }}</td>
-                    <td>{{ tender.deadline }}</td>
-                    <td>{{ tender.published }}</td>
-                    <td>{{ tender.notice_type }}</td>
-                 </tr>
-
-            {% endfor %}
-        </tbody>
-    </table></div>
-
-{% endblock %}
-
->>>>>>> Add detail page for a tender and create TenderDetailView

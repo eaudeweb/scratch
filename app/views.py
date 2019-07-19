@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.detail import DetailView
@@ -25,6 +26,16 @@ class TenderDetailView(DetailView):
     template_name = 'detail_tender.html'
     context_object_name = 'tender'
 
+    def post(self, request, pk):
+        current_tender = Tender.objects.filter(id=pk)
+        state = request.POST['favourite']
+
+        if state == 'true':
+            current_tender.update(favourite=True)
+        else:
+            current_tender.update(favourite=False)
+
+        return HttpResponse("Success!")
 
 class ContractAwardsListVew(LoginRequiredMixin, ListView):
     model = Winner
