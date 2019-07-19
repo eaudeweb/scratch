@@ -14,6 +14,13 @@
 
             <input type="submit" class="btn btn-primary login-button" value="Login">
         </form>
+
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        {% endif %}
+
     </div>
 
 {% endblock %}
