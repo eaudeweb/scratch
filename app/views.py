@@ -12,7 +12,8 @@ from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.debug import sensitive_post_parameters
 from django.views.generic import FormView, RedirectView
 from django.views.generic import View
-from .models import Tender
+import json
+
 
 
 class TendersListView(LoginRequiredMixin, ListView):
@@ -30,6 +31,14 @@ class TenderDetailView(DetailView):
 
 
 class TenderFavouriteView(View):
+
+    def get (self, request, pk):
+        current_tender = Tender.objects.get(id=pk)
+        response_data = {'favourite': current_tender.favourite}
+        response_data = json.dumps(response_data)
+
+        return HttpResponse(response_data, content_type="application/json")
+
 
     def post(self, request, pk):
         current_tender = Tender.objects.filter(id=pk)
