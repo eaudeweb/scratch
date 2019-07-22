@@ -5,3 +5,8 @@ services:
     volumes:
       - .:/var/local/scratch
     entrypoint: ["/usr/bin/tail", "-f", "/dev/null"]
+
+  postfix:
+    image: eaudeweb/mailtrap
+    ports:
+      - 80:80

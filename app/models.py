@@ -1,4 +1,7 @@
+from django.core.mail import EmailMultiAlternatives
 from django.db import models
+from django.utils.html import strip_tags
+from django.contrib.postgres.fields import ArrayField
 
 SOURCE_CHOICES = [
     ('UNGM', 'UNGM'),
@@ -46,3 +49,41 @@ class TenderDocument(models.Model):
 class WorkerLog(models.Model):
     update = models.DateField()
     source = models.CharField(max_length=10, choices=SOURCE_CHOICES)
+
+
+class Email(models.Model):
+    date = models.DateTimeField(auto_now_add=True)
+    subject = models.CharField(max_length=255, blank=True, null=False)
+    from_email = models.CharField(max_length=255)
+    to = ArrayField(models.CharField(max_length=255))
+    cc = ArrayField(models.CharField(max_length=255, blank=True), null=True)
+    body = models.TextField(blank=True, null=True)
+
+    def send(self):
+        text_content = strip_tags(self.body)
+
+        email = EmailMultiAlternatives(
+            subject=self.subject,
+            from_email=self.from_email,
+            to=self.to,
+            cc=self.cc,
+            body=text_content
+        )
+
+        email.attach_alternative(self.body, "text/html")
+        email.send()
+
+    def __str__(self):
+        return "Email '%s' sent." % self.subject
+
+
+class Notification(models.Model):
+    email = models.EmailField(blank=True, null=True)
+
+    def __str__(self):
+        return str(self.email)
+
+
+def set_notified(tender_or_winner):
+    tender_or_winner.notified = True
+    tender_or_winner.save()

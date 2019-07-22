@@ -1,0 +1,23 @@
+{% extends 'mails/layout.html' %}
+
+{% block header %}New Tenders{% endblock %}
+
+{% block content %}
+  <ol class="tender-list">
+    {% for tender in tenders %}
+    <li>
+      <h2>
+        <a href="{{ tender.url }}">{{ tender.title }}</a>
+      </h2>
+      <p class="published clip">
+        Published: {{ tender.published }} &ndash; {{ tender.organization }}
+      </p>
+      <p class="deadline">
+        {% if tender.deadline %}
+        Deadline: {{ tender.deadline }}
+        {% endif %}
+      </p>
+    </li>
+    {% endfor %}
+  </ol>
+{% endblock %}
