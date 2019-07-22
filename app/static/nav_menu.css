@@ -14,7 +14,15 @@
     padding: 14px 16px;
 }
 
-.nav-menu2:hover {
+.nav-menu-logout {
+    float: right;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+}
+
+.nav-menu2:hover, .nav-menu-logout:hover {
     background-color: #111;
     color: white;
     text-decoration: none;

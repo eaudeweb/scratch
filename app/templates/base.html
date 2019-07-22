@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
+{% load tags %}
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -11,11 +12,23 @@
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
   <script src="{% static 'tenders_table.js'%}"></script>
   <link rel ="stylesheet" type="text/css" href="{% static 'tenders_table.css'%}"}>
+  <link rel ="stylesheet" type="text/css" href="{% static 'nav_menu.css'%}">
   <link rel ="stylesheet" type="text/css" href="{% static 'login.css'%}"}>
   <title>Scratch</title>
 </head>
 <body>
-{% block content %}
-{% endblock %}
+
+  {% url 'tenders_list_view' as tender_list %}
+  {% url 'contract_awards_list_view' as awards %}
+  {% url 'logout_view' as logout %}
+
+  <ul class="nav-menu1">
+    <li><a class="{% active request tender_list %} nav-menu2" href="{{ tender_list }}">Tenders</a></li>
+    <li><a class="{% active request awards %} nav-menu2" href="{{ awards }}">Contract Awards</a></li>
+    <li><a class="{% active request logout %} nav-menu-logout" href="{{ logout }}">Logout</a></li>
+  </ul>
+
+  {% block content %}
+  {% endblock %}
 </body>
 </html>
