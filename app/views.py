@@ -1,5 +1,5 @@
 from django.views.generic.list import ListView
-from .models import Tender
+from .models import Tender, Winner
 from django.utils.http import is_safe_url
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import REDIRECT_FIELD_NAME, login as auth_login, logout as auth_logout
@@ -15,6 +15,14 @@ class TendersListView(LoginRequiredMixin, ListView):
     model = Tender
     context_object_name = 'tenders'
     template_name = 'tenders_list.html'
+    login_url = '/app/login'
+    redirect_field_name = 'login_view'
+
+
+class ContractAwardsListVew(LoginRequiredMixin, ListView):
+    model = Winner
+    context_object_name = 'awardsss'
+    template_name = 'contract_awards_list.html'
     login_url = '/app/login'
     redirect_field_name = 'login_view'
 
