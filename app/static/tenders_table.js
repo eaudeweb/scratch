@@ -14,34 +14,6 @@ function getCookie(name) {
   return cookieValue;
 }
 
-$(window).add(function() {
-  let url = $('#fav_button').attr('action');
-  console.log($('#fav_button').attr('action'));
-  $.ajax({
-    type: "GET",
-    url: url,
-    data: {},
-    beforeSend: function (xhr) {
-      xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
-    },
-    success: function (response) {
-
-      if(response['favourite'] == true) {
-        $('#fav_button').addClass('favourite_pressed');
-        console.log($('#fav_button').hasClass('favourite_pressed'));
-      }
-      console.log(response['favourite'])
-    },
-    fail: function(xhr, textStatus, errorThrown) {
-      alert('request failed');
-      console.log(errorThrown);
-    },
-    dataType: 'json',
-  });
-
-
-});
-
 $(document).ready(function() {
   $('#tenders_table').DataTable(
     {
@@ -60,7 +32,7 @@ $(document).ready(function() {
       "ordering": false,
     });
 
-  $('#fav_button').click(function () {
+  $('button').click(function () {
     let value;
     if ( $(this).hasClass('favourite_pressed')) {
       value = 'true';
@@ -83,17 +55,17 @@ $(document).ready(function() {
 
   });
 
-
 })
 
 
 function myFunction(x) {
-  let button = document.getElementById("fav_button");
-
-  if (button.classList.contains('favourite_pressed'))
-    button.classList.remove('favourite_pressed')
-  else
-    button.classList.add("favourite_pressed");
+  if (x.classList.contains('favourite_pressed')) {
+    x.classList.remove('favourite_pressed');
+    x.classList.add('favourite_button');
+  }
+  else {
+    x.classList.add("favourite_pressed");
+  }
 }
 
 

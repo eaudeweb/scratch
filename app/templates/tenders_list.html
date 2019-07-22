@@ -28,7 +28,14 @@
           <td>{{ tender.organization }}</td>
           <td>{{ tender.deadline }}</td>
           <td>{{ tender.published }}</td>
-          <td>{{ tender.notice_type }}</td>
+          <td>
+            {{ tender.notice_type }}
+            {% if tender.favourite == False %}
+              <button type="button" action="{% url 'tender_favourite_view' tender.id %}" onclick="myFunction(this)" class="favourite_button"></button>
+            {% else %}
+               <button type="button" action="{% url 'tender_favourite_view' tender.id %}" onclick="myFunction(this)" class="favourite_pressed"></button>
+            {% endif %}
+          </td>
         </tr>
       {% endfor %}
       </tbody>
