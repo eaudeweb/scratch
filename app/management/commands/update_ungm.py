@@ -6,8 +6,9 @@ from app.server_requests import get_request_class
 from bs4 import BeautifulSoup
 from django.conf import settings
 from django.core.management.base import BaseCommand
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 from django.utils.timezone import make_aware
+import time
 
 json_unspsc_codes = os.path.join(settings.BASE_DIR, 'UNSPSC_codes_software.json')
 ENDPOINT_URI = 'https://www.ungm.org'
@@ -85,7 +86,10 @@ class Command(BaseCommand):
             if gmt:
                 hours = float(gmt)
                 tender['deadline'] -= timedelta(hours=hours)
-            # TODO convert time to local GMT
+                time_now = datetime.now()
+                time_utc = datetime.utcnow()
+                add_hours = round(float((time_utc - time_now).total_seconds())/3600)
+                tender['deadline'] += timedelta(hours=add_hours)
         except ValueError:
             pass
 
