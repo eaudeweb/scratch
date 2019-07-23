@@ -34,12 +34,7 @@ $(document).ready(function() {
 
   $('button').click(function () {
     let value;
-    if ( $(this).hasClass('favourite_pressed')) {
-      value = 'true';
-    }
-    else {
-      value = 'false';
-    }
+    value = toggleFavourite($(this));
     $.ajax({
       type: "POST",
       url: $(this).attr('action'),
@@ -58,15 +53,22 @@ $(document).ready(function() {
 })
 
 
-function myFunction(x) {
-  if (x.classList.contains('favourite_pressed')) {
-    x.classList.remove('favourite_pressed');
-    x.classList.add('favourite_button');
+function toggleFavourite(x) {
+  let value;
+  if (x.hasClass('favourite_pressed')) {
+    value = false;
+    x.removeClass('favourite_pressed');
+    x.addClass('favourite_button');
   }
   else {
-    x.classList.add("favourite_pressed");
+    x.addClass("favourite_pressed");
+    value = true;
   }
+
+  return value;
 }
+
+
 
 
 

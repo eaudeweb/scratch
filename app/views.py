@@ -32,14 +32,6 @@ class TenderDetailView(DetailView):
 
 class TenderFavouriteView(View):
 
-    def get (self, request, pk):
-        current_tender = Tender.objects.get(id=pk)
-        response_data = {'favourite': current_tender.favourite}
-        response_data = json.dumps(response_data)
-
-        return HttpResponse(response_data, content_type="application/json")
-
-
     def post(self, request, pk):
         current_tender = Tender.objects.filter(id=pk)
         state = request.POST['favourite']
@@ -95,5 +87,3 @@ class LogoutView(RedirectView):
     def get(self, request, *args, **kwargs):
         auth_logout(request)
         return super(LogoutView, self).get(request, *args, **kwargs)
-
-
