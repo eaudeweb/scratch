@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <div class = "table_detail" ><table id="tender_detail_table"  class="cell-border display compact">
+    <thead>
+    <th>Favourite</th>
+    <th>
+      {% if tender.favourite == False %}
+        <button type="button" action="{% url 'tender_favourite_view' tender.id %}" class="favourite_button"></button>
+      {% else %}
+        <button type="button" action="{% url 'tender_favourite_view' tender.id %}"  class="favourite_pressed"></button>
+      {% endif %}
+    </th>
+    </thead>
+
+    <tbody>
+    <tr>
+      <td>Type of notice</td>
+      <td> {{ tender.notice_type }}</td>
+    </tr>
+    <tr>
+      <td>Link to UNGM</td>
+      <td><a href="{{ tender.url }}">{{ tender.url }}</a></td>
+    </tr>
+    <tr>
+      <td>Title</td>
+      <td>{{ tender.title }}</td>
+    </tr>
+    <tr>
+      <td>Organization</td>
+      <td>{{ tender.organization }}</td>
+    </tr>
+    <tr>
+      <td>Published</td>
+      <td>{{ tender.published }}</td>
+    </tr>
+    <tr>
+      <td>Reference</td>
+      <td>{{ tender.reference }}</td>
+    </tr>
+    <td>Deadline</td>
+    <td>{{ tender.deadline }}</td>
+    </tr>
+    <tr>
+      <td>Days remaining</td>
+      <td><b> {{ days.days }}</b></td>
+    </tr>
+    <tr>
+      <td>Description</td>
+      <td>{{ tender.description }}</td>
+    </tr>
+    <tr>
+      <td>UNSPSCS codes</td>
+      <td>{{ tender.unspsc_codes }}</td>
+    </tr>
+    </tbody>
+  </table></div>
+
+{% endblock %}

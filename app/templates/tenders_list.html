@@ -23,12 +23,19 @@
       <tbody>
       {% for tender in tenders %}
         <tr>
-          <td>{{ tender.title }}</td>
+          <td><a href="/app/tenders/{{ tender.id }}" class="link">{{ tender.title }}</a></td>
           <td>{{ tender.source }}</td>
           <td>{{ tender.organization }}</td>
           <td>{{ tender.deadline }}</td>
           <td>{{ tender.published }}</td>
-          <td>{{ tender.notice_type }}</td>
+          <td>
+            {{ tender.notice_type }}
+            {% if tender.favourite == False %}
+              <button type="button" action="{% url 'tender_favourite_view' tender.id %}" class="favourite_button"></button>
+            {% else %}
+              <button type="button" action="{% url 'tender_favourite_view' tender.id %}" class="favourite_pressed"></button>
+            {% endif %}
+          </td>
         </tr>
       {% endfor %}
       </tbody>

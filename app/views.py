@@ -1,4 +1,7 @@
+from django.http import HttpResponse
 from django.views.generic.list import ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.detail import DetailView
 from .models import Tender, Winner
 from django.utils.http import is_safe_url
 from django.contrib.auth.forms import AuthenticationForm
@@ -8,7 +11,9 @@ from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.debug import sensitive_post_parameters
 from django.views.generic import FormView, RedirectView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import View
+import json
+
 
 
 class TendersListView(LoginRequiredMixin, ListView):
@@ -17,6 +22,26 @@ class TendersListView(LoginRequiredMixin, ListView):
     template_name = 'tenders_list.html'
     login_url = '/app/login'
     redirect_field_name = 'login_view'
+
+
+class TenderDetailView(DetailView):
+    model = Tender
+    template_name = 'detail_tender.html'
+    context_object_name = 'tender'
+
+
+class TenderFavouriteView(View):
+
+    def post(self, request, pk):
+        current_tender = Tender.objects.filter(id=pk)
+        state = request.POST['favourite']
+
+        if state == 'true':
+            current_tender.update(favourite=True)
+        else:
+            current_tender.update(favourite=False)
+
+        return HttpResponse("Success!")
 
 
 class ContractAwardsListVew(LoginRequiredMixin, ListView):

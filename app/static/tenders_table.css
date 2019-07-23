@@ -7,3 +7,52 @@
 .table {
     padding: 30px;
 }
+
+.link {
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.table_detail {
+    padding: 45px;
+
+}
+
+.favourite_button {
+    display: block;
+    border:none;
+    width: 26px;
+    height: 26px;
+    background: url('fav_unpressed.png') 50% 50% no-repeat;
+    background-size: 100%;
+}
+
+.favourite_button:hover {
+    background: url('fav_pressed.png') 50% 50% no-repeat;
+}
+
+
+.favourite_button:focus, :active {
+    outline: 0;
+    border: 0;
+}
+
+.favourite_pressed {
+    display: block;
+    border:none;
+    width: 26px;
+    height: 26px;
+    background: url('fav_pressed.png') 50% 50% no-repeat;
+    background-size: 100%;
+}
+
+.favourite_pressed:hover {
+    background: url('fav_unpressed.png') 50% 50% no-repeat;
+}
+
+.favourite_pressed:focus, :active {
+    outline: 0;
+    border: 0;
+}
+
