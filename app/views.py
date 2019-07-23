@@ -15,7 +15,6 @@ from django.views.generic import View
 from datetime import timezone, datetime
 
 
-
 class TendersListView(LoginRequiredMixin, ListView):
     model = Tender
     context_object_name = 'tenders'
@@ -24,10 +23,12 @@ class TendersListView(LoginRequiredMixin, ListView):
     redirect_field_name = 'login_view'
 
 
-class TenderDetailView(DetailView):
+class TenderDetailView(LoginRequiredMixin, DetailView):
     model = Tender
     template_name = 'detail_tender.html'
     context_object_name = 'tender'
+    login_url = '/app/login'
+    redirect_field_name = 'login_view'
 
     @staticmethod
     def deadline_in_string(tdelta):
