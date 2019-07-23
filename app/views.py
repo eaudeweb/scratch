@@ -12,7 +12,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.debug import sensitive_post_parameters
 from django.views.generic import FormView, RedirectView
 from django.views.generic import View
-import json
+from datetime import timezone, datetime
 
 
 
@@ -28,6 +28,38 @@ class TenderDetailView(DetailView):
     model = Tender
     template_name = 'detail_tender.html'
     context_object_name = 'tender'
+
+    @staticmethod
+    def deadline_in_string(tdelta):
+        d_val = tdelta.days
+
+        if d_val != 1:
+            d_string = 'days'
+        else:
+            d_string = 'day'
+
+        h_val, rest = divmod(tdelta.seconds, 3600)
+
+        if h_val != 1:
+            h_string = 'hours'
+        else:
+            h_string = 'hour'
+
+        m_val, rest = divmod(rest, 60)
+
+        if m_val != 1:
+            m_string = 'minutes'
+        else:
+            m_string = 'minute'
+
+        return '{} {} {} {} {} {}'.format(d_val, d_string, h_val, h_string, m_val, m_string)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        deadline = self.object.deadline
+        deadline -= datetime.now(timezone.utc)
+        context['deadline_in'] = self.deadline_in_string(deadline)
+        return context
 
 
 class TenderFavouriteView(View):
