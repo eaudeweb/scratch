@@ -115,9 +115,13 @@ class Command(BaseCommand):
                 tender_item.update(**item['tender'])
                 tender_item = Tender.objects.get(title=item['tender']['title'])
 
-                # TODO verify if the doocument exists in db
                 for doc in item['documents']:
-                    TenderDocument.objects.filter(tender=tender_item, name=doc['name']).update(**doc)
+                    try:
+                        tender_doc = TenderDocument.objects.filter(tender=tender_item, name=doc['name'])
+                        tender_doc.update(**doc)
+                    except TenderDocument.DoesNotExist:
+                        TenderDocument.objects.create(tender=new_tender_item, **doc)
+
             except Tender.DoesNotExist:
                 new_tender_item = Tender.objects.create(**item['tender'])
 
@@ -140,4 +144,3 @@ class Command(BaseCommand):
         self.update_ungm_tenders(parsed_tenders)
 
         return self.stdout.write(self.style.SUCCESS('Ungm tenders updated'))
-
