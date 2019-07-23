@@ -67,8 +67,3 @@ function toggleFavourite(x) {
 
   return value;
 }
-
-
-
-
-
