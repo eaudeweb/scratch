@@ -44,6 +44,7 @@ class TenderDocument(models.Model):
     name = models.CharField(null=True, max_length=255)
     download_url = models.CharField(max_length=255)
     tender = models.ForeignKey(Tender, on_delete=models.CASCADE)
+    # TODO see if we need unique_together
 
 
 class WorkerLog(models.Model):
