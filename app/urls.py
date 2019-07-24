@@ -1,7 +1,7 @@
 from django.urls import path
 
 from .views import LoginView, LogoutView, ContractAwardsListVew
-from .views import TendersListView, TenderDetailView, TenderFavouriteView
+from .views import TendersListView, TenderDetailView, TenderFavouriteView, TendersFiltersView
 
 
 urlpatterns = [
@@ -11,4 +11,5 @@ urlpatterns = [
     path('login/', LoginView.as_view(), name='login_view'),
     path('logout/', LogoutView.as_view(), name='logout_view'),
     path('awards/', ContractAwardsListVew.as_view(), name='contract_awards_list_view'),
+    path('filters/', TendersFiltersView.as_view(), name='tenders_filters_view'),
 ]

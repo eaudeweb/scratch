@@ -17,10 +17,10 @@ class TendersFilter(forms.Form):
                                            ('False', 'No'),
                                            ])
 
-    def __init__(self):
-        super(TendersFilter, self).__init__()
+    def __init__(self, *args, **kwargs):
+        super(TendersFilter, self).__init__(*args, **kwargs)
         organizations = Tender.objects.values_list('organization',
                                                    flat=True).distinct()
-        self.organization.choices = [('', 'All organizations')] + [
+        self.fields['organization'].choices = [('', 'All organizations')] + [
             (org, org) for org in organizations
         ]

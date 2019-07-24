@@ -13,6 +13,13 @@ from django.views.decorators.debug import sensitive_post_parameters
 from django.views.generic import FormView, RedirectView
 from django.views.generic import View
 from datetime import timezone, datetime
+from .forms import TendersFilter
+
+
+class TendersFiltersView(FormView):
+    template_name = 'tenders_filters.html'
+    form_class = TendersFilter
+    success_url = '/'
 
 
 class TendersListView(LoginRequiredMixin, ListView):
