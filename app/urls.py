@@ -3,6 +3,7 @@ from django.urls import path
 from .views import LoginView, LogoutView, ContractAwardsListVew
 from .views import TendersListView, TenderDetailView, TenderFavouriteView
 
+
 urlpatterns = [
     path('tenders/', TendersListView.as_view(), name='tenders_list_view'),
     path('tenders/<int:pk>/', TenderDetailView.as_view(), name='tender_detail_view'),
