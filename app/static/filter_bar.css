@@ -1,0 +1,35 @@
+
+.filter_menu {
+    padding-top: 20px;
+    padding-left: 130px;
+    padding-right: 130px;
+
+}
+.up_bar {
+    background: #333;
+    border-radius: 3px;
+    alignment: center;
+    padding-left: 5px;
+    height:30px;
+    font-weight: bold;
+    font-family: "Times New Roman";
+    font-size: large;
+    color: white;
+}
+
+.bottom_bar {
+    background: #f8f8f8;
+    border-radius: 3px;
+    border: 2px solid gainsboro;
+    padding-left: 5px;
+    padding-top: 15px;
+    /*padding-right: 5px;*/
+    height: 65px;
+    font-weight: bold;
+    font-family: "Times New Roman";
+
+}
+
+.col_center {
+    alignment: right;
+}

@@ -14,7 +14,7 @@
     </div>
   </div>
   <div class="row bottom_bar">
-    <div class="col-sm">
+    <div class="col-sm-2">
       {{ form.organization.label }}
       {{ form.organization }}
     </div>
@@ -26,13 +26,15 @@
       {{ form.source.label }}
       {{ form.source }}
     </div>
-    <div class ="col-sm">
+    <div class ="col-sm-4">
       {{ form.favourite.label }}
       {{ form.favourite }}
     </div>
-    <div class="com-sm">
-      <button type="button" onclick="alert('Hello world!')">Click Me!</button>
-
+    <div class="col-sm">
+      <button type="button" id="reset_filters">Reset filters</button>
+    </div>
+    <div class="col-sm col_center">
+      <button type="button" id="filter_button">Filter</button>
     </div>
   </div>
 </div>
