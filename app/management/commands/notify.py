@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand
 from django.template.loader import render_to_string
 from app.models import Tender, Notification, Email, set_notified
-from django.conf import settings
+from getenv import env
 
 
 class Command(BaseCommand):
@@ -31,7 +31,7 @@ def send_email(tenders, digest):
             'mails/new_tenders.html',
             {
                 'tenders': tenders,
-                'domain': settings.BASE_URL
+                'domain': env('BASE_URL')
             }
         )
 
@@ -47,7 +47,7 @@ def send_email(tenders, digest):
                 'mails/new_tenders.html',
                 {
                     'tenders': [tender],
-                    'domain': settings.BASE_URL
+                    'domain': env('BASE_URL')
                 }
             )
 
