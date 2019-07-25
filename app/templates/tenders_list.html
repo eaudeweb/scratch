@@ -8,6 +8,8 @@
     </h1>
   </div>
 
+  {% include 'tenders_filters.html' %}
+
   <div class = "table" >
     <table id="tenders_table"  class="cell-border display compact">
       <thead>
@@ -31,9 +33,9 @@
           <td>
             {{ tender.notice_type }}
             {% if tender.favourite == False %}
-              <button type="button" action="{% url 'tender_favourite_view' tender.id %}" class="favourite_button"></button>
+              <button type="button" action="{% url 'tender_favourite_view' tender.id %}" class="favourite_button" id="fav_button"></button>
             {% else %}
-              <button type="button" action="{% url 'tender_favourite_view' tender.id %}" class="favourite_pressed"></button>
+              <button type="button" action="{% url 'tender_favourite_view' tender.id %}" class="favourite_pressed" id="fav_button"></button>
             {% endif %}
           </td>
         </tr>

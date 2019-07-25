@@ -1,42 +1,41 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <link rel ="stylesheet" type="text/css" href="{% static 'filter_bar.css'%}"}>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
 
-{% block content %}
-
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">Filters</div>
-        <div class="panel-body form-inline filters">
-          <form role="form" id="filter" method="get">
-            <div class="form-group filters-style">
-              {{ form.source.label }}
-              {{ form.source}}
-            </div>
-
-            <div class="form-group filters-style">
-              {{ form.organization.label }}
-              {{ form.organization}}
-            </div>
-
-            <div class="form-group filters-style">
-              {{ form.status.label }}
-              {{ form.status}}
-            </div>
-
-            <div class="form-group filters-style">
-              {{ form.favourite.label }}
-              {{ form.favourite}}
-            </div>
-
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-1">
-                <button type="submit" class="btn btn-default">Filter</button>
-              </div>
-              {% if reset %}{% include 'filters/reset_filter.html' %}{% endif %}
-            </div>
-          </form>
-        </div>
-      </div>
+<body>
+<div class="filter_menu">
+  <div class="row up_bar">
+    <div class="col-sm">
+      <p>Filter</p>
     </div>
   </div>
-{% endblock %}
+  <div class="row bottom_bar">
+    <div class="col-sm">
+      {{ form.organization.label }}
+      {{ form.organization }}
+    </div>
+    <div class="col-sm">
+      {{ form.status.label }}
+      {{ form.status }}
+    </div>
+    <div class="col-sm">
+      {{ form.source.label }}
+      {{ form.source }}
+    </div>
+    <div class ="col-sm">
+      {{ form.favourite.label }}
+      {{ form.favourite }}
+    </div>
+    <div class="com-sm">
+      <button type="button" onclick="alert('Hello world!')">Click Me!</button>
+
+    </div>
+  </div>
+</div>
+</body>
+
+</html>

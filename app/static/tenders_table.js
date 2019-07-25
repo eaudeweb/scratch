@@ -18,8 +18,10 @@ $(document).ready(function() {
   $('#tenders_table').DataTable(
     {
       "order": [[ 3, "desc" ]],
-      "pageLength": 50,
+      "pageLength": 15,
       lengthChange: false,
+      "scrollY":  "625px",
+      "scrollCollapse": true,
 
     });
 
@@ -33,21 +35,23 @@ $(document).ready(function() {
     });
 
   $('button').click(function () {
-    let value;
-    value = toggleFavourite($(this));
-    $.ajax({
-      type: "POST",
-      url: $(this).attr('action'),
-      data: {favourite: value},
-      success: function () {
-        console.log('Success');
-      },
-      beforeSend: function (xhr) {
-        xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
-      },
-      dataType: 'json',
-    });
 
+    if ($(this).attr('id') == 'fav_button') {
+      let value;
+      value = toggleFavourite($(this));
+      $.ajax({
+        type: "POST",
+        url: $(this).attr('action'),
+        data: {favourite: value},
+        success: function () {
+          console.log('Success');
+        },
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
+        },
+        dataType: 'json',
+      });
+    }
   });
 
 })

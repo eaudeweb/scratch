@@ -16,18 +16,20 @@ from datetime import timezone, datetime
 from .forms import TendersFilter
 
 
-class TendersFiltersView(FormView):
-    template_name = 'tenders_filters.html'
-    form_class = TendersFilter
-    success_url = '/'
-
-
-class TendersListView(LoginRequiredMixin, ListView):
+class TendersFiltersView(LoginRequiredMixin, ListView):
     model = Tender
-    context_object_name = 'tenders'
     template_name = 'tenders_list.html'
+    context_object_name = 'tenders'
     login_url = '/app/login'
     redirect_field_name = 'login_view'
+
+
+class TendersListView(TendersFiltersView):
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = TendersFilter()
+        return context
 
 
 class TenderDetailView(LoginRequiredMixin, DetailView):
