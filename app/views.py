@@ -16,15 +16,30 @@ from datetime import timezone, datetime
 from .forms import TendersFilter
 
 
-class TendersFiltersView(LoginRequiredMixin, ListView):
+class TendersListView(LoginRequiredMixin, ListView):
     model = Tender
     template_name = 'tenders_list.html'
     context_object_name = 'tenders'
     login_url = '/app/login'
     redirect_field_name = 'login_view'
 
+    def get_queryset(self):
+        tenders = Tender.objects.all()
 
-class TendersListView(TendersFiltersView):
+        if self.request.GET.get('filter_button'):
+            organization = self.request.GET.get('organization')
+            if organization:
+                tenders = tenders.filter(organization=organization)
+
+            source = self.request.GET.get('source')
+            if source:
+                tenders = tenders.filter(source=source)
+
+            favourite = self.request.GET.get('favourite')
+            if favourite:
+                tenders = tenders.filter(favourite=favourite)
+
+        return tenders
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

@@ -13,31 +13,33 @@
       <p>Filter</p>
     </div>
   </div>
-  <div class="row bottom_bar">
-    <div class="col-sm-2">
-      {{ form.organization.label }}
-      {{ form.organization }}
+  <form method="GET">
+    {% csrf_token %}
+    <div class="row bottom_bar">
+      <div class="col-sm-2">
+        {{ form.organization.label }}
+        {{ form.organization }}
+      </div>
+      <div class="col-sm">
+        {{ form.status.label }}
+        {{ form.status }}
+      </div>
+      <div class="col-sm">
+        {{ form.source.label }}
+        {{ form.source }}
+      </div>
+      <div class ="col-sm-4">
+        {{ form.favourite.label }}
+        {{ form.favourite }}
+      </div>
+      <div class="col-sm">
+        <button type="button" id="reset_filters">Reset filters</button>
+      </div>
+      <div class="col-sm col_center">
+        <button type="submit" name="filter_button" value="filter">Filter</button>
+      </div>
     </div>
-    <div class="col-sm">
-      {{ form.status.label }}
-      {{ form.status }}
-    </div>
-    <div class="col-sm">
-      {{ form.source.label }}
-      {{ form.source }}
-    </div>
-    <div class ="col-sm-4">
-      {{ form.favourite.label }}
-      {{ form.favourite }}
-    </div>
-    <div class="col-sm">
-      <button type="button" id="reset_filters">Reset filters</button>
-    </div>
-    <div class="col-sm col_center">
-      <button type="button" id="filter_button">Filter</button>
-    </div>
-  </div>
+  </form>
 </div>
 </body>
-
 </html>
