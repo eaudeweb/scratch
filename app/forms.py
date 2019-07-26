@@ -24,3 +24,7 @@ class TendersFilter(forms.Form):
         self.fields['organization'].choices = [('', 'All organizations')] + [
             (org, org) for org in organizations
         ]
+        self.fields['organization'].required = False
+        self.fields['favourite'].required = False
+        self.fields['source'].required = False
+        self.fields['status'].required = False

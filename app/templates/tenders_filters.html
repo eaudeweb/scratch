@@ -3,7 +3,8 @@
 {% load static %}
 <head>
   <link rel ="stylesheet" type="text/css" href="{% static 'filter_bar.css'%}"}>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="{% static 'filter_menu.js'%}"></script>
 </head>
 
 <body>
@@ -13,16 +14,16 @@
       <p>Filter</p>
     </div>
   </div>
-  <form method="GET">
+  <form method="GET" id="form_id">
     {% csrf_token %}
-    <div class="row bottom_bar">
+    <div class="row bottom_bar ">
       <div class="col-sm-2">
         {{ form.organization.label }}
-        {{ form.organization }}
+        {{ form.organization}}
       </div>
       <div class="col-sm">
         {{ form.status.label }}
-        {{ form.status }}
+        {{ form.status}}
       </div>
       <div class="col-sm">
         {{ form.source.label }}
@@ -33,10 +34,12 @@
         {{ form.favourite }}
       </div>
       <div class="col-sm">
-        <button type="button" id="reset_filters">Reset filters</button>
+        {% if reset %}
+          <a href="{% url 'tenders_list_view' %}"><button type="button" name="reset_filters" value="reset" class="btn btn-dark filter_button">Reset filters</button></a>
+        {% endif %}
       </div>
-      <div class="col-sm col_center">
-        <button type="submit" name="filter_button" value="filter">Filter</button>
+      <div class="col-sm">
+        <button disabled type="submit" name="filter_button" value="filter" class="btn btn-dark filter_button">Filter</button>
       </div>
     </div>
   </form>
