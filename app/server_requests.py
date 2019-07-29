@@ -91,8 +91,8 @@ class Requester(object):
         except urllib3.HTTPError:
             return None
 
-    def request_tenders_list(self):
-        return self.request(TENDERS_ENDPOINT_URI)
+    def request_tenders_list(self, last_date, index):
+        return self.request(TENDERS_ENDPOINT_URI, last_date, index)
 
     def request_winners_list(self):
         return self.request(WINNERS_ENDPOINT_URI)
@@ -102,19 +102,21 @@ class UNGMrequester(Requester):
     TENDERS_ENDPOINT_URI = TENDERS_ENDPOINT_URI
     WINNERS_ENDPOINT_URI = WINNERS_ENDPOINT_URI
 
-    def get_data(self, url):
+    def get_data(self, url, last_date, index):
         category = 'tenders' if 'Notice' in url else 'winners'
         payload = PAYLOAD[category]
         if category == 'tenders':
             today = datetime.now().strftime('%d-%b-%Y')
             payload['DeadlineFrom'] = payload['PublishedTo'] = today
+            payload['PublishedFrom'] = last_date
+            payload['PageIndex'] = index
         payload['UNSPSCs'] = UNSPSC_CODES
         return json.dumps(payload)
 
-    def request(self, url):
+    def request(self, url, last_date, index):
         #Original
-        for i in range(0, 5):
-            resp = self.post_request(url, url + '/Search', self.get_data(url))
+        for i in range(0, 3):
+            resp = self.post_request(url, url + '/Search', self.get_data(url, last_date, index))
             if resp:
                 return resp
             sleep(randint(10, 15))
