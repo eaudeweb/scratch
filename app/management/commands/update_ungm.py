@@ -116,8 +116,7 @@ class Command(BaseCommand):
 
                 for doc in item['documents']:
                     try:
-                        tender_doc = TenderDocument.objects.filter(tender=tender_item, name=doc['name']).first()
-                        import pdb; pdb.set_trace()
+                        tender_doc = TenderDocument.objects.filter(tender=tender_item, name=doc['name'])
                         tender_doc.update(**doc)
                     except TenderDocument.DoesNotExist:
                         TenderDocument.objects.create(tender=new_tender_item, **doc)
