@@ -110,17 +110,17 @@ class Command(BaseCommand):
     def update_ungm_tenders(parsed_tenders):
         for item in parsed_tenders:
             try:
-                tender_item = Tender.objects.filter(title=item['tender']['title'])
-                tender_item.update(**item['tender'])
-                tender_item = Tender.objects.get(title=item['tender']['title'])
+                tender_item = Tender.objects.get(reference=item['tender']['reference'])
+                Tender.objects.filter(reference=item['tender']['reference']).update(**item['tender'])
 
                 for doc in item['documents']:
+                    tender_doc = TenderDocument.objects.filter(tender=tender_item, name=doc['name'])
+                    tender_doc.update(**doc)
                     try:
                         tender_doc = TenderDocument.objects.filter(tender=tender_item, name=doc['name'])
                         tender_doc.update(**doc)
                     except TenderDocument.DoesNotExist:
                         TenderDocument.objects.create(tender=new_tender_item, **doc)
-
             except Tender.DoesNotExist:
                 new_tender_item = Tender.objects.create(**item['tender'])
 
