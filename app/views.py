@@ -78,25 +78,13 @@ class TenderDetailView(LoginRequiredMixin, DetailView):
     @staticmethod
     def deadline_in_string(tdelta):
         d_val = tdelta.days
-
-        if d_val != 1:
-            d_string = "days"
-        else:
-            d_string = "day"
+        d_string = "days" if d_val != 1 else "day"
 
         h_val, rest = divmod(tdelta.seconds, 3600)
-
-        if h_val != 1:
-            h_string = "hours"
-        else:
-            h_string = "hour"
+        h_string = "hours" if h_val != 1 else "hour"
 
         m_val, rest = divmod(rest, 60)
-
-        if m_val != 1:
-            m_string = "minutes"
-        else:
-            m_string = "minute"
+        m_string = "minutes" if m_val != 1 else "minute"
 
         return "{} {} {} {} {} {}".format(
             d_val, d_string, h_val, h_string, m_val, m_string
@@ -125,7 +113,7 @@ class TenderFavouriteView(View):
 
 class ContractAwardsListVew(LoginRequiredMixin, ListView):
     model = Winner
-    context_object_name = "awardsss"
+    context_object_name = "awards"
     template_name = "contract_awards_list.html"
     login_url = "/app/login"
     redirect_field_name = "login_view"
