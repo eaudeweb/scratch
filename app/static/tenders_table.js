@@ -55,6 +55,7 @@ $(document).ready(function() {
     }
 
     if ($(this).attr('id') == 'remove_button') {
+      let url = $(this).attr('action');
       $.confirm({
         title: 'Are you sure you want to delete this tender?',
         content: $(this).attr('name').toString(),
@@ -66,16 +67,17 @@ $(document).ready(function() {
           YES: function () {
             $.ajax({
               type: "POST",
-              url: $(this).attr('action'),
-              data: { },
-              success: function () {
-                console.log('Success!');
+              url: url,
+              data: {},
+              success: function (result) {
+                console.log(result);
               },
               beforeSend: function (xhr) {
                 xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
               },
               dataType: 'json',
             });
+            window.location = '/app/tenders/';
           }
         }
       });

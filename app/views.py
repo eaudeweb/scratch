@@ -124,7 +124,10 @@ class TenderFavouriteView(View):
 
 
 class TenderDeleteView(View):
-    pass
+
+    def post(self, request, pk):
+        Tender.objects.filter(id=pk).delete()
+        return HttpResponse("Success!")
 
 
 class ContractAwardsListView(LoginRequiredMixin, ListView):
