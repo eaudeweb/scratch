@@ -126,8 +126,9 @@ class TenderFavouriteView(View):
 class TenderDeleteView(View):
 
     def post(self, request, pk):
+        success_url = '/app/tenders'
         Tender.objects.filter(id=pk).delete()
-        return HttpResponse("Success!")
+        return HttpResponse(success_url)
 
 
 class ContractAwardsListView(LoginRequiredMixin, ListView):

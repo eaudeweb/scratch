@@ -61,7 +61,6 @@ $(document).ready(function() {
         content: $(this).attr('name').toString(),
         type: 'dark',
         closeIcon: true,
-        closeIconClass: 'fa fa-close',
         theme: 'material',
         buttons: {
           YES: function () {
@@ -71,13 +70,13 @@ $(document).ready(function() {
               data: {},
               success: function (result) {
                 console.log(result);
+                window.location = result
               },
               beforeSend: function (xhr) {
                 xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
               },
-              dataType: 'json',
+              dataType: 'text',
             });
-            window.location = '/app/tenders/';
           }
         }
       });
