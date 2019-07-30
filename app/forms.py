@@ -4,35 +4,39 @@ from .models import Tender, Winner
 MAX = 220000
 STEP = 20000
 
-SOURCES = [('', 'All tenders'),
-          ('UNGM', 'UNGM'),
-          ('TED', 'TED'),
-          ]
-
-STATUS = [('', 'All tenders'),
-          ('open', 'OPEN'),
-          ('closed', 'CLOSED'),
-          ]
-
-FAVOURITES = [('', 'All tenders'),
-              ('True', 'Yes'),
-              ('False', 'No'),
-              ]
-
-ORGANIZATIONS_LIST = Tender.objects.values_list('organization',
-                                                flat=True).distinct()
-ORGANIZATIONS = [('', 'All organizations')] + [
-            (org, org) for org in ORGANIZATIONS_LIST
-            ]
-
-VENDORS_LIST = Winner.objects.values_list('vendor', flat=True).distinct()
-
-VENDORS = [('', 'All vendors')] + [
-    (vendor, vendor) for vendor in VENDORS_LIST
+SOURCES = [
+    ("", "All tenders"),
+    ("UNGM", "UNGM"),
+    ("TED", "TED")
 ]
 
+STATUS = [
+    ("", "All tenders"),
+    ("open", "OPEN"),
+    ("closed", "CLOSED")
+]
+
+FAVOURITES = [
+    ("", "All tenders"),
+    ("True", "Yes"),
+    ("False", "No")
+]
+
+ORGANIZATIONS_LIST = Tender.objects.values_list("organization", flat=True).distinct()
+ORGANIZATIONS = [("", "All organizations")] + [(org, org) for org in ORGANIZATIONS_LIST]
+
+VENDORS_LIST = Winner.objects.values_list("vendor", flat=True).distinct()
+VENDORS = [("", "All vendors")] + [(vendor, vendor) for vendor in VENDORS_LIST]
+
 r = range(0, MAX, STEP)
-VALUES = [('', 'All values')] +[(str(k), '%s - %s' % (format(r[counter], ',d'), format(r[counter+1], ',d'))) for k, counter in zip(r, range(len(r[:-1])))] + [('max', '>%s' % format(MAX - STEP, ',d'))]
+VALUES = (
+    [("", "All values")]
+    + [
+        (str(k), "%s - %s" % (format(r[cnt], ",d"), format(r[cnt + 1], ",d")))
+        for k, cnt in zip(r, range(len(r[:-1])))
+    ]
+    + [("max", ">%s" % format(MAX - STEP, ",d"))]
+)
 
 
 class TendersFilter(forms.Form):
