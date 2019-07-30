@@ -17,7 +17,8 @@ from django.views.decorators.debug import sensitive_post_parameters
 from django.views.generic import FormView, RedirectView
 from django.views.generic import View
 from datetime import timezone, datetime
-from .forms import TendersFilter
+from .forms import TendersFilter, AwardsFilter
+from .forms import MAX, STEP
 
 
 class TendersListView(LoginRequiredMixin, ListView):
@@ -29,6 +30,7 @@ class TendersListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         tenders = Tender.objects.all()
+        awards = Winner.objects.all()
 
         if self.request.GET.get("filter_button"):
             organization = self.request.GET.get("organization")
@@ -43,6 +45,14 @@ class TendersListView(LoginRequiredMixin, ListView):
             if favourite:
                 tenders = tenders.filter(favourite=favourite)
 
+            status = self.request.GET.get("status")
+            if status:
+                award_refs = [award.tender.reference for award in awards]
+                if status == 'open':
+                    tenders = tenders.exclude(reference__in=award_refs)
+                else:
+                    tenders = tenders.filter(reference__in=award_refs)
+
         return tenders
 
     def get_context_data(self, **kwargs):
@@ -51,12 +61,14 @@ class TendersListView(LoginRequiredMixin, ListView):
         if self.request.GET.get("filter_button"):
             organization = self.request.GET.get("organization")
             source = self.request.GET.get("source")
+            status = self.request.GET.get("status")
             favourite = self.request.GET.get("favourite")
-            reset = any([source, organization, favourite])
+            reset = any([source, organization, status, favourite])
             form = TendersFilter(
                 initial={
                     "organization": organization,
                     "source": source,
+                    "status": status,
                     "favourite": favourite,
                 }
             )
@@ -111,12 +123,62 @@ class TenderFavouriteView(View):
         return HttpResponse("Success!")
 
 
-class ContractAwardsListVew(LoginRequiredMixin, ListView):
+class ContractAwardsListView(LoginRequiredMixin, ListView):
     model = Winner
-    context_object_name = "awards"
+    context_object_name = "winners"
     template_name = "contract_awards_list.html"
     login_url = "/app/login"
     redirect_field_name = "login_view"
+
+    def get_queryset(self):
+        awards = Winner.objects.all()
+
+        if self.request.GET.get("filter_button"):
+            organization = self.request.GET.get("organization")
+            if organization:
+                awards = awards.filter(tender__organization=organization)
+
+            source = self.request.GET.get("source")
+            if source:
+                awards = awards.filter(tender__source=source)
+
+            vendor = self.request.GET.get("vendor")
+            if vendor:
+                awards = awards.filter(vendor=vendor)
+
+            value = self.request.GET.get("value")
+            if value:
+                if value == 'max':
+                    awards = awards.filter(value__gt=MAX-STEP)
+                else:
+                    value = float(value)
+                    awards = awards.filter(value__range=(value, value + STEP))
+
+        return awards
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        reset = False
+        if self.request.GET.get("filter_button"):
+            organization = self.request.GET.get("organization")
+            source = self.request.GET.get("source")
+            vendor = self.request.GET.get("vendor")
+            value = self.request.GET.get("value")
+            reset = any([source, organization, vendor, value])
+            form = AwardsFilter(
+                initial={
+                    "organization": organization,
+                    "source": source,
+                    "vendor": vendor,
+                    "value": value
+                }
+            )
+        else:
+            form = AwardsFilter()
+
+        context["form"] = form
+        context["reset"] = reset
+        return context
 
 
 class LoginView(FormView):
