@@ -12,7 +12,7 @@
       {% else %}
         <li><button type="button" action="{% url 'tender_favourite_view' tender.id %}"  class="favourite_pressed" id="fav_button"></button></li>
       {% endif %}
-      <li><button type="button" action="{% url 'tender_favourite_view' tender.id %}"  class="remove_button" id="remove_button"></button></li>
+      <li><button type="button" action="{% url 'tender_delete_view' tender.id %}"  class="remove_button" id="remove_button" name="{{ tender.title }}"></button></li>
     </ul>
     </th>
     </thead>

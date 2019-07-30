@@ -15,6 +15,7 @@ function getCookie(name) {
 }
 
 $(document).ready(function() {
+
   $('#tenders_table').DataTable(
     {
       "order": [[ 3, "desc" ]],
@@ -52,8 +53,34 @@ $(document).ready(function() {
         dataType: 'json',
       });
     }
-  });
 
+    if ($(this).attr('id') == 'remove_button') {
+      $.confirm({
+        title: 'Are you sure you want to delete this tender?',
+        content: $(this).attr('name').toString(),
+        type: 'dark',
+        closeIcon: true,
+        closeIconClass: 'fa fa-close',
+        theme: 'material',
+        buttons: {
+          YES: function () {
+            $.ajax({
+              type: "POST",
+              url: $(this).attr('action'),
+              data: { },
+              success: function () {
+                console.log('Success!');
+              },
+              beforeSend: function (xhr) {
+                xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
+              },
+              dataType: 'json',
+            });
+          }
+        }
+      });
+    }
+  });
 })
 
 

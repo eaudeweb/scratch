@@ -123,6 +123,10 @@ class TenderFavouriteView(View):
         return HttpResponse("Success!")
 
 
+class TenderDeleteView(View):
+    pass
+
+
 class ContractAwardsListView(LoginRequiredMixin, ListView):
     model = Winner
     context_object_name = "winners"
