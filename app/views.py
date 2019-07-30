@@ -30,6 +30,7 @@ class TendersListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         tenders = Tender.objects.all()
+        awards = Winner.objects.all()
 
         if self.request.GET.get("filter_button"):
             organization = self.request.GET.get("organization")
@@ -44,6 +45,14 @@ class TendersListView(LoginRequiredMixin, ListView):
             if favourite:
                 tenders = tenders.filter(favourite=favourite)
 
+            status = self.request.GET.get("status")
+            if status:
+                award_refs = [award.tender.reference for award in awards]
+                if status == 'open':
+                    tenders = tenders.exclude(reference__in=award_refs)
+                else:
+                    tenders = tenders.filter(reference__in=award_refs)
+
         return tenders
 
     def get_context_data(self, **kwargs):
@@ -52,12 +61,14 @@ class TendersListView(LoginRequiredMixin, ListView):
         if self.request.GET.get("filter_button"):
             organization = self.request.GET.get("organization")
             source = self.request.GET.get("source")
+            status = self.request.GET.get("status")
             favourite = self.request.GET.get("favourite")
-            reset = any([source, organization, favourite])
+            reset = any([source, organization, status, favourite])
             form = TendersFilter(
                 initial={
                     "organization": organization,
                     "source": source,
+                    "status": status,
                     "favourite": favourite,
                 }
             )
