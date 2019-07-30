@@ -58,3 +58,29 @@
     border: 0;
 }
 
+.remove_button {
+    display: block;
+    border:none;
+    width: 26px;
+    height: 26px;
+    background: url('remove_icon.png') 50% 50% no-repeat;
+    background-size: 100%;
+}
+
+
+.remove_button:focus, :active {
+    outline: 0;
+    border: 0;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+    padding-left: 3px;
+}
