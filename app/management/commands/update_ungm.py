@@ -33,6 +33,7 @@ class Command(BaseCommand):
     def parse_ungm_notice_list(html):
         soup = BeautifulSoup(html, 'html.parser')
         tenders = soup.find_all('div', 'tableRow dataRow')
+
         tenders_list = [
             {
                 'published': tender.contents[7].span.string or date.today(),
@@ -127,19 +128,39 @@ class Command(BaseCommand):
                 for doc in item['documents']:
                     TenderDocument.objects.create(tender=new_tender_item, **doc)
 
+    def add_arguments(self, parser):
+        parser.add_argument(
+            '--days_ago',
+            help='Get tenders published n days ago',
+            type=int,
+        )
+
     def handle(self, *args, **kwargs):
+
+        if kwargs['days_ago']:
+            days_ago = kwargs['days_ago']
+            last_date = (datetime.today() - timedelta(days=days_ago)).date()
+        elif not Tender.objects.all():
+            raise Exception(
+                "Command error: The database is empty, argument --days_ago is missing"
+            )
+        else:
+            last_date = Tender.objects.latest('published').published
+
         requester = get_request_class(public=True)
-        requested_html_tenders = requester.request_tenders_list()
-
-        if not requested_html_tenders:
-            return []
-
-        extracted_tenders = self.parse_ungm_notice_list(requested_html_tenders)
-        parsed_tenders = []
-        for tender in extracted_tenders:
-            text = requester.get_request(tender['url'])
-            parsed_tenders.append(self.parse_ungm_notice(text, tender['url']))
-
-        self.update_ungm_tenders(parsed_tenders)
+        last_date = last_date.strftime('%d-%b-%Y')
+        page_index = 0
+        while True:
+            requested_html_tenders = requester.request_tenders_list(last_date, page_index)
+            page_index += 1
+            extracted_tenders = self.parse_ungm_notice_list(requested_html_tenders)
+            if not len(extracted_tenders):
+                break
+            parsed_tenders = []
+            for tender in extracted_tenders:
+                text = requester.get_request(tender['url'])
+                parsed_tenders.append(self.parse_ungm_notice(text, tender['url']))
+            self.update_ungm_tenders(parsed_tenders)
 
         return self.stdout.write(self.style.SUCCESS('Ungm tenders updated'))
+
