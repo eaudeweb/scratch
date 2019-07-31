@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Tender, TenderDocument, Winner, WorkerLog, Notification
+from .models import Tender, TenderDocument, Winner, WorkerLog, Notification, UNSPSCCode
 
 
 class TenderAdmin(admin.ModelAdmin):
@@ -68,8 +68,14 @@ class NotificationAdmin(admin.ModelAdmin):
     search_fields = ['email']
 
 
+class UNSPSCCodeAdmin(admin.ModelAdmin):
+    list_display = ['id_ungm', 'name']
+    search_fields = ['id_ungm', 'name']
+
+
 admin.site.register(Tender, TenderAdmin)
 admin.site.register(TenderDocument, TenderDocumentAdmin)
 admin.site.register(Winner, WinnerAdmin)
 admin.site.register(WorkerLog, WorkerLogAdmin)
 admin.site.register(Notification, NotificationAdmin)
+admin.site.register(UNSPSCCode, UNSPSCCodeAdmin)
