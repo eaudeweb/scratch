@@ -15,7 +15,7 @@ function getCookie(name) {
 }
 
 $(document).ready(function() {
-
+  let doc = this
   $('#tenders_table').DataTable(
     {
       "order": [[ 3, "desc" ]],
@@ -37,7 +37,10 @@ $(document).ready(function() {
 
   $('button').click(function () {
 
-    if ($(this).attr('id') == 'fav_button') {
+    let button_id = $(this).attr('id');
+    let page = (button_id == 'remove_button_detail') ? 1 : 2;
+
+    if (button_id == 'fav_button') {
       let value;
       value = toggleFavourite($(this));
       $.ajax({
@@ -54,7 +57,7 @@ $(document).ready(function() {
       });
     }
 
-    if ($(this).attr('id') == 'remove_button') {
+    if (button_id == 'remove_button_list' || button_id == 'remove_button_detail') {
       let url = $(this).attr('action');
       $.confirm({
         title: 'Are you sure you want to delete this tender?',
@@ -69,8 +72,13 @@ $(document).ready(function() {
               url: url,
               data: {},
               success: function (result) {
-                console.log(result);
-                window.location = result
+                console.log(page)
+                if (page == 1) {
+                  window.location = result
+                }
+                else {
+                  location.reload();
+                }
               },
               beforeSend: function (xhr) {
                 xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));

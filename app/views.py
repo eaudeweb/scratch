@@ -59,6 +59,7 @@ class TendersListView(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         reset = False
         if self.request.GET.get("filter_button"):
+
             organization = self.request.GET.get("organization")
             source = self.request.GET.get("source")
             status = self.request.GET.get("status")
@@ -78,6 +79,14 @@ class TendersListView(LoginRequiredMixin, ListView):
         context["form"] = form
         context["reset"] = reset
         return context
+    #
+    # def render_to_response(self, context, **response_kwargs):
+    #     response = super(TendersListView, self).render_to_response(context, **response_kwargs)
+    #     if self.request.GET.get("filter_button"):
+    #         response.set_cookie('organization', self.request.GET.get("source"))
+    #         import pdb; pdb.set_trace()
+    #
+    #     return response
 
 
 class TenderDetailView(LoginRequiredMixin, DetailView):
