@@ -123,6 +123,14 @@ class TenderFavouriteView(View):
         return HttpResponse("Success!")
 
 
+class TenderDeleteView(View):
+
+    def post(self, request, pk):
+        success_url = '/app/tenders'
+        Tender.objects.filter(id=pk).delete()
+        return HttpResponse(success_url)
+
+
 class ContractAwardsListView(LoginRequiredMixin, ListView):
     model = Winner
     context_object_name = "winners"
