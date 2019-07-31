@@ -88,3 +88,8 @@ class Notification(models.Model):
 def set_notified(tender_or_winner):
     tender_or_winner.notified = True
     tender_or_winner.save()
+
+
+class UNSPSCCode(models.Model):
+    id_ungm = models.CharField(max_length=1024)
+    name = models.CharField(max_length=1024)
