@@ -91,5 +91,6 @@ def set_notified(tender_or_winner):
 
 
 class UNSPSCCode(models.Model):
+    id = models.CharField(max_length=1024, primary_key=True)
     id_ungm = models.CharField(max_length=1024)
     name = models.CharField(max_length=1024)

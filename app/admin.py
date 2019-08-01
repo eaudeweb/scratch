@@ -69,8 +69,8 @@ class NotificationAdmin(admin.ModelAdmin):
 
 
 class UNSPSCCodeAdmin(admin.ModelAdmin):
-    list_display = ['id_ungm', 'name']
-    search_fields = ['id_ungm', 'name']
+    list_display = ['id', 'id_ungm', 'name']
+    search_fields = ['id', 'id_ungm', 'name']
 
 
 admin.site.register(Tender, TenderAdmin)
