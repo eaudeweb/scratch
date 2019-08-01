@@ -22,12 +22,6 @@ FAVOURITES = [
     ("False", "No")
 ]
 
-ORGANIZATIONS_LIST = Tender.objects.values_list("organization", flat=True).distinct()
-ORGANIZATIONS = [("", "All organizations")] + [(org, org) for org in ORGANIZATIONS_LIST]
-
-VENDORS_LIST = Winner.objects.values_list("vendor", flat=True).distinct()
-VENDORS = [("", "All vendors")] + [(vendor, vendor) for vendor in VENDORS_LIST]
-
 r = range(0, MAX, STEP)
 VALUES = (
     [("", "All values")]
@@ -40,14 +34,30 @@ VALUES = (
 
 
 class TendersFilter(forms.Form):
-    organization = forms.ChoiceField(choices=ORGANIZATIONS, required=False)
+    organization = forms.ChoiceField(required=False)
     source = forms.ChoiceField(choices=SOURCES, required=False)
     status = forms.ChoiceField(choices=STATUS, required=False)
     favourite = forms.ChoiceField(choices=FAVOURITES, required=False)
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        organizations_list = Tender.objects.values_list('organization', flat=True).distinct()
+        self.fields['organization'].choices = [('', 'All organizations')] + [
+            (org, org) for org in organizations_list
+        ]
+
 
 class AwardsFilter(forms.Form):
     source = forms.ChoiceField(choices=SOURCES, required=False)
-    organization = forms.ChoiceField(choices=ORGANIZATIONS, required=False)
-    vendor = forms.ChoiceField(choices=VENDORS, required=False)
+    organization = forms.ChoiceField(required=False)
+    vendor = forms.ChoiceField(required=False)
     value = forms.ChoiceField(choices=VALUES, required=False)
+
+    def __init__(self):
+        super(AwardsFilter, self).__init__()
+        organizations_list = Tender.objects.values_list('organization', flat=True).distinct()
+        self.fields['organization'].choices = [('', 'All organizations')] + [
+            (org, org) for org in organizations_list
+        ]
+        vendors_list = Winner.objects.values_list("vendor", flat=True).distinct()
+        self.fields['vendor'].choices = [('', "All vendors")] + [(vendor, vendor) for vendor in vendors_list]

@@ -59,6 +59,7 @@ class TendersListView(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         reset = False
         if self.request.GET.get("filter_button"):
+
             organization = self.request.GET.get("organization")
             source = self.request.GET.get("source")
             status = self.request.GET.get("status")
@@ -178,7 +179,7 @@ class ContractAwardsListView(LoginRequiredMixin, ListView):
                     "organization": organization,
                     "source": source,
                     "vendor": vendor,
-                    "value": value
+                    "value": value,
                 }
             )
         else:
