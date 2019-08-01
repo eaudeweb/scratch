@@ -29,6 +29,8 @@ DEBUG = env('DEBUG', False)
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', env('ALLOWED_HOSTS')]
 
+BASE_URL = env('BASE_URL', 'localhost:8000')
+
 sentry_sdk.init(
     dsn=env('SENTRY_DSN'),
     integrations=[DjangoIntegration()]
@@ -126,6 +128,9 @@ FTP_URL = env('FTP_URL', 'ted.europa.eu')
 TED_DAYS_AGO = env('TED_DAYS_AGO', 3)
 instance_dir = os.path.abspath(os.path.dirname(__file__))
 FILES_DIR = os.path.join(instance_dir, 'files')
+
+# DEADLINE
+DEADLINE_NOTIFICATIONS = env('DEADLINE_NOTIFICATIONS', (1, 3, 7))
 
 
 # Internationalization
