@@ -1,0 +1,298 @@
+[
+{
+    "model": "app.unspsccode",
+    "pk": "104943",
+    "fields": {
+        "id_ungm": "43230000",
+        "name": "43230000 - Software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "104945",
+    "fields": {
+        "id_ungm": "43232300",
+        "name": "43232300 - Data management and query software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "104953",
+    "fields": {
+        "id_ungm": "43231513",
+        "name": "43231513 - Office suite software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "104970",
+    "fields": {
+        "id_ungm": "43232500",
+        "name": "43232500 - Educational or reference software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "104990",
+    "fields": {
+        "id_ungm": "43232400",
+        "name": "43232400 - Development software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "105002",
+    "fields": {
+        "id_ungm": "43232900",
+        "name": "43232900 - Networking software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "105005",
+    "fields": {
+        "id_ungm": "43233000",
+        "name": "43233000 - Operating environment software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "105031",
+    "fields": {
+        "id_ungm": "43232502",
+        "name": "43232502 - Computer based training software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "105034",
+    "fields": {
+        "id_ungm": "43232600",
+        "name": "43232600 - Industry specific software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "107373",
+    "fields": {
+        "id_ungm": "81110000",
+        "name": "81110000 - Computer services"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "108816",
+    "fields": {
+        "id_ungm": "81111500",
+        "name": "81111500 - Software or hardware engineering"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "112934",
+    "fields": {
+        "id_ungm": "81112200",
+        "name": "81112200 - Software maintenance and support"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "114787",
+    "fields": {
+        "id_ungm": "43231503",
+        "name": "43231503 - Procurement software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "117498",
+    "fields": {
+        "id_ungm": "43231500",
+        "name": "43231500 - Business function specific software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "117499",
+    "fields": {
+        "id_ungm": "43231501",
+        "name": "43231501 - Helpdesk or call center software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "117503",
+    "fields": {
+        "id_ungm": "43231505",
+        "name": "43231505 - Human resources software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "117504",
+    "fields": {
+        "id_ungm": "43231506",
+        "name": "43231506 - Materials requirements planning logistics and supply chain software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "117505",
+    "fields": {
+        "id_ungm": "43232000",
+        "name": "43232000 - Computer game or entertainment software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "117510",
+    "fields": {
+        "id_ungm": "43232100",
+        "name": "43232100 - Content authoring and editing software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "117521",
+    "fields": {
+        "id_ungm": "43232200",
+        "name": "43232200 - Content management software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "117548",
+    "fields": {
+        "id_ungm": "43232501",
+        "name": "43232501 - Foreign language software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "117562",
+    "fields": {
+        "id_ungm": "43232700",
+        "name": "43232700 - Network applications software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "117567",
+    "fields": {
+        "id_ungm": "43232800",
+        "name": "43232800 - Network management software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "117590",
+    "fields": {
+        "id_ungm": "43233200",
+        "name": "43233200 - Security and protection software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "117599",
+    "fields": {
+        "id_ungm": "43233400",
+        "name": "43233400 - Utility and device driver software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "122190",
+    "fields": {
+        "id_ungm": "43231508",
+        "name": "43231508 - Inventory management software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "122209",
+    "fields": {
+        "id_ungm": "43231507",
+        "name": "43231507 - Project management software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "122250",
+    "fields": {
+        "id_ungm": "43233502",
+        "name": "43233502 - Video conferencing software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "128842",
+    "fields": {
+        "id_ungm": "43231600",
+        "name": "43231600 - Finance accounting and enterprise resource planning ERP software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "136544",
+    "fields": {
+        "id_ungm": "43233501",
+        "name": "43233501 - Electronic mail software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "139187",
+    "fields": {
+        "id_ungm": "43233500",
+        "name": "43233500 - Information exchange software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "143031",
+    "fields": {
+        "id_ungm": "43233503",
+        "name": "43233503 - Network conferencing software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "143032",
+    "fields": {
+        "id_ungm": "43233504",
+        "name": "43233504 - Instant messaging software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "145118",
+    "fields": {
+        "id_ungm": "43233600",
+        "name": "43233600 - Electrical Equipment software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "150839",
+    "fields": {
+        "id_ungm": "43233700",
+        "name": "43233700 - System management software"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "174579",
+    "fields": {
+        "id_ungm": "81112500",
+        "name": "81112500 - Computer software licensing rental or leasing service"
+    }
+},
+{
+    "model": "app.unspsccode",
+    "pk": "176797",
+    "fields": {
+        "id_ungm": "43231515",
+        "name": "43231515 - Mailing and shipping software"
+    }
+}
+]

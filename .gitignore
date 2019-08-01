@@ -106,7 +106,7 @@ venv.bak/
 #  PyCharm
 .idea/
 scratch/static/
-
+app/management/commands/add_unspsc_codes.py
 
 docker-compose.override.yml
 docker/app.env

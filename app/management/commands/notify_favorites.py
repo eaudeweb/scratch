@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 from django.template.loader import render_to_string
-from app.models import Tender, TenderDocument, Notification
+from app.models import Tender, TenderDocument, Notification, UNSPSCCode
 from app.server_requests import get_request_class
 from django.conf import settings
 from bs4 import BeautifulSoup
@@ -12,7 +12,6 @@ import json
 import re
 import os
 
-json_unspsc_codes = os.path.join(settings.BASE_DIR, 'UNSPSC_codes_software.json')
 ENDPOINT_URI = 'https://www.ungm.org'
 
 
@@ -83,7 +82,8 @@ class Command(BaseCommand):
             if html_data is None:
                 continue
 
-            tender_fields = self.parse_tender(html_data, tender.url)
+            codes = UNSPSCCode.objects.all()
+            tender_fields = self.parse_tender(html_data, tender.url, codes)
             attr_changes = {}
             for attr, value in [(k, v) for (k, v) in tender_fields['tender'].items()
                                 if k != 'documents']:
@@ -111,18 +111,16 @@ class Command(BaseCommand):
 
         return changed_tenders
 
-    def parse_tender(self, html, url):
+    def parse_tender(self, html, url, codes):
 
         soup = BeautifulSoup(html, 'html.parser')
         documents = self.find_by_class(soup, "lnkShowDocument", "a")
         description = self.find_by_class(soup, "ungm-list-item ungm-background", "div")
         nodes = self.find_by_class(soup, "nodeName", "span")
         scraped_nodes = [parent.find_all("span")[0].text for parent in nodes[1:]]
-        with open(json_unspsc_codes, 'rb') as fp:
-            codes = json.load(fp)
         unspsc_codes = [
-            code['id'] for code in codes
-            if code['id_ungm'] in scraped_nodes
+            code.id for code in codes
+            if code.id_ungm in scraped_nodes
         ]
         notice_type = self.find_by_class(soup, "status-tag", "span", True)
         title = self.find_by_class(soup, "title", "span", True)
