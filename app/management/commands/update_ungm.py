@@ -1,7 +1,7 @@
 import json
 import os
 import re
-from app.models import Tender, TenderDocument
+from app.models import Tender, TenderDocument, UNSPSCCode
 from app.server_requests import get_request_class
 from bs4 import BeautifulSoup
 from django.conf import settings
@@ -9,7 +9,6 @@ from django.core.management.base import BaseCommand
 from datetime import date, datetime, timedelta
 from django.utils.timezone import make_aware
 
-json_unspsc_codes = os.path.join(settings.BASE_DIR, 'UNSPSC_codes_software.json')
 ENDPOINT_URI = 'https://www.ungm.org'
 
 
@@ -45,18 +44,16 @@ class Command(BaseCommand):
 
         return tenders_list
 
-    def parse_ungm_notice(self, html, url):
+    def parse_ungm_notice(self, html, url, codes):
         soup = BeautifulSoup(html, 'html.parser')
         documents = self.find_by_class(soup, "lnkShowDocument", "a")
         description = self.find_by_class(soup, "ungm-list-item ungm-background", "div")
         description = description[1].text.strip().lstrip('Description')
         nodes = self.find_by_class(soup, "nodeName", "span")
         scraped_nodes = [parent.find_all("span")[0].text for parent in nodes[1:]]
-        with open(json_unspsc_codes, 'rb') as fp:
-            codes = json.load(fp)
         unspsc_codes = [
-            code['id'] for code in codes
-            if code['id_ungm'] in scraped_nodes
+            code.id for code in codes
+            if code.id_ungm in scraped_nodes
         ]
         notice_type = self.find_by_class(soup, "status-tag", "span", True)
         title = self.find_by_class(soup, "title", "span", True)
@@ -147,6 +144,7 @@ class Command(BaseCommand):
         else:
             last_date = Tender.objects.latest('published').published
 
+        codes = UNSPSCCode.objects.all()
         requester = get_request_class(public=True)
         last_date = last_date.strftime('%d-%b-%Y')
         page_index = 0
@@ -159,8 +157,7 @@ class Command(BaseCommand):
             parsed_tenders = []
             for tender in extracted_tenders:
                 text = requester.get_request(tender['url'])
-                parsed_tenders.append(self.parse_ungm_notice(text, tender['url']))
+                parsed_tenders.append(self.parse_ungm_notice(text, tender['url'], codes))
             self.update_ungm_tenders(parsed_tenders)
 
         return self.stdout.write(self.style.SUCCESS('Ungm tenders updated'))
-
