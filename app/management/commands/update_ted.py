@@ -6,7 +6,6 @@ from datetime import date, datetime, timedelta
 from django.conf import settings
 from django.utils import timezone
 from .ted_data import *
-from getenv import env
 import tarfile
 import os
 
@@ -25,11 +24,11 @@ class TEDWorker:
         self.archives = archives
 
     def ftp_download(self):
-        ftp = FTP(env('FTP_URL'))
+        ftp = FTP(settings.FTP_URL)
         ftp.login(user='guest', passwd='guest')
 
         last_date = last_update('TED') or \
-            days_ago(env('TED_DAYS_AGO'))
+            days_ago(settings.TED_DAYS_AGO)
         last_month = last_date.strftime('%m')
         last_year = last_date.strftime('%Y')
 
