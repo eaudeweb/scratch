@@ -3,16 +3,12 @@ from ftplib import FTP
 from bs4 import BeautifulSoup, element
 from app.models import Tender, TenderDocument, Winner, WorkerLog, set_notified, last_update
 from datetime import date, datetime, timedelta
+from django.conf import settings
 from django.utils import timezone
 from .ted_data import *
+from getenv import env
 import tarfile
 import os
-
-
-FTP_URL = 'ted.europa.eu'
-TED_DAYS_AGO = 3
-instance_dir = os.path.abspath(os.path.dirname(__file__))
-FILES_DIR = os.path.join(instance_dir, 'files')
 
 
 class Command(BaseCommand):
@@ -29,11 +25,11 @@ class TEDWorker:
         self.archives = archives
 
     def ftp_download(self):
-        ftp = FTP(FTP_URL)
+        ftp = FTP(env('FTP_URL'))
         ftp.login(user='guest', passwd='guest')
 
         last_date = last_update('TED') or \
-            days_ago(TED_DAYS_AGO)
+            days_ago(env('TED_DAYS_AGO'))
         last_month = last_date.strftime('%m')
         last_year = last_date.strftime('%Y')
 
@@ -230,7 +226,7 @@ def save_document_to_models(tender, document):
 
 
 def get_archives_path():
-    return os.path.join(FILES_DIR, 'TED_archives')
+    return os.path.join(settings.FILES_DIR, 'TED_archives')
 
 
 def days_ago(days):
