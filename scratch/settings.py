@@ -121,6 +121,13 @@ EMAIL_HOST = env('EMAIL_HOST', 'localhost')
 EMAIL_PORT = env('EMAIL_PORT', 25)
 
 
+# FTP
+FTP_URL = env('FTP_URL', 'ted.europa.eu')
+TED_DAYS_AGO = env('TED_DAYS_AGO', 3)
+instance_dir = os.path.abspath(os.path.dirname(__file__))
+FILES_DIR = os.path.join(instance_dir, 'files')
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 

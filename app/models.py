@@ -85,6 +85,16 @@ class Notification(models.Model):
         return str(self.email)
 
 
+def last_update(source):
+    worker_log = (
+        WorkerLog.objects
+        .filter(source=source)
+        .order_by('-update')
+        .first()
+    )
+    return worker_log.update if worker_log else None
+
+
 def set_notified(tender_or_winner):
     tender_or_winner.notified = True
     tender_or_winner.save()
