@@ -53,8 +53,8 @@ class AwardsFilter(forms.Form):
     vendor = forms.ChoiceField(required=False)
     value = forms.ChoiceField(choices=VALUES, required=False)
 
-    def __init__(self):
-        super(AwardsFilter, self).__init__()
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         organizations_list = Tender.objects.values_list('organization', flat=True).distinct()
         self.fields['organization'].choices = [('', 'All organizations')] + [
             (org, org) for org in organizations_list
