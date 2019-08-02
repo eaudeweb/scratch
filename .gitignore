@@ -108,7 +108,9 @@ venv.bak/
 scratch/static/
 app/management/commands/add_unspsc_codes.py
 app/management/commands/add_cpv_codes.py
+app/management/commands/add_ted_countries.py
 cpv_codes.txt
+ted_countries.txt
 
 docker-compose.override.yml
 docker/app.env
