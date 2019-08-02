@@ -1,6645 +1,4747 @@
 [
 {
     "model": "app.cpvcode",
-    "pk": 1139,
-    "fields": {
-        "code": "30000000"
-    }
+    "pk": "30000000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1140,
-    "fields": {
-        "code": "30100000"
-    }
+    "pk": "30100000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1141,
-    "fields": {
-        "code": "30110000"
-    }
+    "pk": "30110000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1142,
-    "fields": {
-        "code": "30111000"
-    }
+    "pk": "30111000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1143,
-    "fields": {
-        "code": "30120000"
-    }
+    "pk": "30120000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1144,
-    "fields": {
-        "code": "30121000"
-    }
+    "pk": "30121000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1145,
-    "fields": {
-        "code": "30121100"
-    }
+    "pk": "30121100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1146,
-    "fields": {
-        "code": "30121200"
-    }
+    "pk": "30121200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1147,
-    "fields": {
-        "code": "30121300"
-    }
+    "pk": "30121300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1148,
-    "fields": {
-        "code": "30121400"
-    }
+    "pk": "30121400",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1149,
-    "fields": {
-        "code": "30121410"
-    }
+    "pk": "30121410",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1150,
-    "fields": {
-        "code": "30121420"
-    }
+    "pk": "30121420",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1151,
-    "fields": {
-        "code": "30121430"
-    }
+    "pk": "30121430",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1152,
-    "fields": {
-        "code": "30122000"
-    }
+    "pk": "30122000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1153,
-    "fields": {
-        "code": "30122100"
-    }
+    "pk": "30122100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1154,
-    "fields": {
-        "code": "30122200"
-    }
+    "pk": "30122200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1155,
-    "fields": {
-        "code": "30123000"
-    }
+    "pk": "30123000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1156,
-    "fields": {
-        "code": "30123100"
-    }
+    "pk": "30123100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1157,
-    "fields": {
-        "code": "30123200"
-    }
+    "pk": "30123200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1158,
-    "fields": {
-        "code": "30123300"
-    }
+    "pk": "30123300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1159,
-    "fields": {
-        "code": "30123400"
-    }
+    "pk": "30123400",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1160,
-    "fields": {
-        "code": "30123500"
-    }
+    "pk": "30123500",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1161,
-    "fields": {
-        "code": "30123600"
-    }
+    "pk": "30123600",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1162,
-    "fields": {
-        "code": "30123610"
-    }
+    "pk": "30123610",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1163,
-    "fields": {
-        "code": "30123620"
-    }
+    "pk": "30123620",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1164,
-    "fields": {
-        "code": "30123630"
-    }
+    "pk": "30123630",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1165,
-    "fields": {
-        "code": "30124000"
-    }
+    "pk": "30124000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1166,
-    "fields": {
-        "code": "30124100"
-    }
+    "pk": "30124100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1167,
-    "fields": {
-        "code": "30124110"
-    }
+    "pk": "30124110",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1168,
-    "fields": {
-        "code": "30124120"
-    }
+    "pk": "30124120",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1169,
-    "fields": {
-        "code": "30124130"
-    }
+    "pk": "30124130",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1170,
-    "fields": {
-        "code": "30124140"
-    }
+    "pk": "30124140",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1171,
-    "fields": {
-        "code": "30124150"
-    }
+    "pk": "30124150",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1172,
-    "fields": {
-        "code": "30124200"
-    }
+    "pk": "30124200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1173,
-    "fields": {
-        "code": "30124300"
-    }
+    "pk": "30124300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1174,
-    "fields": {
-        "code": "30124400"
-    }
+    "pk": "30124400",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1175,
-    "fields": {
-        "code": "30124500"
-    }
+    "pk": "30124500",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1176,
-    "fields": {
-        "code": "30124510"
-    }
+    "pk": "30124510",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1177,
-    "fields": {
-        "code": "30124520"
-    }
+    "pk": "30124520",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1178,
-    "fields": {
-        "code": "30124530"
-    }
+    "pk": "30124530",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1179,
-    "fields": {
-        "code": "30125000"
-    }
+    "pk": "30125000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1180,
-    "fields": {
-        "code": "30125100"
-    }
+    "pk": "30125100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1181,
-    "fields": {
-        "code": "30125110"
-    }
+    "pk": "30125110",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1182,
-    "fields": {
-        "code": "30125120"
-    }
+    "pk": "30125120",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1183,
-    "fields": {
-        "code": "30125130"
-    }
+    "pk": "30125130",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1184,
-    "fields": {
-        "code": "30130000"
-    }
+    "pk": "30130000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1185,
-    "fields": {
-        "code": "30131000"
-    }
+    "pk": "30131000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1186,
-    "fields": {
-        "code": "30131100"
-    }
+    "pk": "30131100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1187,
-    "fields": {
-        "code": "30131200"
-    }
+    "pk": "30131200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1188,
-    "fields": {
-        "code": "30131300"
-    }
+    "pk": "30131300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1189,
-    "fields": {
-        "code": "30131400"
-    }
+    "pk": "30131400",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1190,
-    "fields": {
-        "code": "30131500"
-    }
+    "pk": "30131500",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1191,
-    "fields": {
-        "code": "30131600"
-    }
+    "pk": "30131600",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1192,
-    "fields": {
-        "code": "30131700"
-    }
+    "pk": "30131700",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1193,
-    "fields": {
-        "code": "30131800"
-    }
+    "pk": "30131800",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1194,
-    "fields": {
-        "code": "30132000"
-    }
+    "pk": "30132000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1195,
-    "fields": {
-        "code": "30132100"
-    }
+    "pk": "30132100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1196,
-    "fields": {
-        "code": "30132200"
-    }
+    "pk": "30132200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1197,
-    "fields": {
-        "code": "30132300"
-    }
+    "pk": "30132300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1198,
-    "fields": {
-        "code": "30133000"
-    }
+    "pk": "30133000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1199,
-    "fields": {
-        "code": "30133100"
-    }
+    "pk": "30133100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1200,
-    "fields": {
-        "code": "30140000"
-    }
+    "pk": "30140000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1201,
-    "fields": {
-        "code": "30141000"
-    }
+    "pk": "30141000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1202,
-    "fields": {
-        "code": "30141100"
-    }
+    "pk": "30141100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1203,
-    "fields": {
-        "code": "30141200"
-    }
+    "pk": "30141200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1204,
-    "fields": {
-        "code": "30141300"
-    }
+    "pk": "30141300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1205,
-    "fields": {
-        "code": "30141400"
-    }
+    "pk": "30141400",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1206,
-    "fields": {
-        "code": "30142000"
-    }
+    "pk": "30142000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1207,
-    "fields": {
-        "code": "30142100"
-    }
+    "pk": "30142100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1208,
-    "fields": {
-        "code": "30142200"
-    }
+    "pk": "30142200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1209,
-    "fields": {
-        "code": "30144000"
-    }
+    "pk": "30144000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1210,
-    "fields": {
-        "code": "30144100"
-    }
+    "pk": "30144100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1211,
-    "fields": {
-        "code": "30144200"
-    }
+    "pk": "30144200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1212,
-    "fields": {
-        "code": "30144300"
-    }
+    "pk": "30144300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1213,
-    "fields": {
-        "code": "30144400"
-    }
+    "pk": "30144400",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1214,
-    "fields": {
-        "code": "30145000"
-    }
+    "pk": "30145000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1215,
-    "fields": {
-        "code": "30145100"
-    }
+    "pk": "30145100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1216,
-    "fields": {
-        "code": "30150000"
-    }
+    "pk": "30150000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1217,
-    "fields": {
-        "code": "30151000"
-    }
+    "pk": "30151000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1218,
-    "fields": {
-        "code": "30152000"
-    }
+    "pk": "30152000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1219,
-    "fields": {
-        "code": "30160000"
-    }
+    "pk": "30160000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1220,
-    "fields": {
-        "code": "30161000"
-    }
+    "pk": "30161000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1221,
-    "fields": {
-        "code": "30162000"
-    }
+    "pk": "30162000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1222,
-    "fields": {
-        "code": "30163000"
-    }
+    "pk": "30163000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1223,
-    "fields": {
-        "code": "30163100"
-    }
+    "pk": "30163100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1224,
-    "fields": {
-        "code": "30170000"
-    }
+    "pk": "30170000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1225,
-    "fields": {
-        "code": "30171000"
-    }
+    "pk": "30171000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1226,
-    "fields": {
-        "code": "30172000"
-    }
+    "pk": "30172000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1227,
-    "fields": {
-        "code": "30173000"
-    }
+    "pk": "30173000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1228,
-    "fields": {
-        "code": "30174000"
-    }
+    "pk": "30174000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1229,
-    "fields": {
-        "code": "30175000"
-    }
+    "pk": "30175000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1230,
-    "fields": {
-        "code": "30176000"
-    }
+    "pk": "30176000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1231,
-    "fields": {
-        "code": "30177000"
-    }
+    "pk": "30177000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1232,
-    "fields": {
-        "code": "30178000"
-    }
+    "pk": "30178000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1233,
-    "fields": {
-        "code": "30179000"
-    }
+    "pk": "30179000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1234,
-    "fields": {
-        "code": "30180000"
-    }
+    "pk": "30180000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1235,
-    "fields": {
-        "code": "30181000"
-    }
+    "pk": "30181000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1236,
-    "fields": {
-        "code": "30182000"
-    }
+    "pk": "30182000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1237,
-    "fields": {
-        "code": "30190000"
-    }
+    "pk": "30190000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1238,
-    "fields": {
-        "code": "30191000"
-    }
+    "pk": "30191000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1239,
-    "fields": {
-        "code": "30191100"
-    }
+    "pk": "30191100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1240,
-    "fields": {
-        "code": "30191110"
-    }
+    "pk": "30191110",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1241,
-    "fields": {
-        "code": "30191120"
-    }
+    "pk": "30191120",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1242,
-    "fields": {
-        "code": "30191130"
-    }
+    "pk": "30191130",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1243,
-    "fields": {
-        "code": "30191140"
-    }
+    "pk": "30191140",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1244,
-    "fields": {
-        "code": "30191200"
-    }
+    "pk": "30191200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1245,
-    "fields": {
-        "code": "30191400"
-    }
+    "pk": "30191400",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1246,
-    "fields": {
-        "code": "30192000"
-    }
+    "pk": "30192000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1247,
-    "fields": {
-        "code": "30192100"
-    }
+    "pk": "30192100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1248,
-    "fields": {
-        "code": "30192110"
-    }
+    "pk": "30192110",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1249,
-    "fields": {
-        "code": "30192111"
-    }
+    "pk": "30192111",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1250,
-    "fields": {
-        "code": "30192112"
-    }
+    "pk": "30192112",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1251,
-    "fields": {
-        "code": "30192113"
-    }
+    "pk": "30192113",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1252,
-    "fields": {
-        "code": "30192121"
-    }
+    "pk": "30192121",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1253,
-    "fields": {
-        "code": "30192122"
-    }
+    "pk": "30192122",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1254,
-    "fields": {
-        "code": "30192123"
-    }
+    "pk": "30192123",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1255,
-    "fields": {
-        "code": "30192124"
-    }
+    "pk": "30192124",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1256,
-    "fields": {
-        "code": "30192125"
-    }
+    "pk": "30192125",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1257,
-    "fields": {
-        "code": "30192126"
-    }
+    "pk": "30192126",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1258,
-    "fields": {
-        "code": "30192127"
-    }
+    "pk": "30192127",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1259,
-    "fields": {
-        "code": "30192130"
-    }
+    "pk": "30192130",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1260,
-    "fields": {
-        "code": "30192131"
-    }
+    "pk": "30192131",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1261,
-    "fields": {
-        "code": "30192132"
-    }
+    "pk": "30192132",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1262,
-    "fields": {
-        "code": "30192133"
-    }
+    "pk": "30192133",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1263,
-    "fields": {
-        "code": "30192134"
-    }
+    "pk": "30192134",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1264,
-    "fields": {
-        "code": "30192150"
-    }
+    "pk": "30192150",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1265,
-    "fields": {
-        "code": "30192151"
-    }
+    "pk": "30192151",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1266,
-    "fields": {
-        "code": "30192152"
-    }
+    "pk": "30192152",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1267,
-    "fields": {
-        "code": "30192153"
-    }
+    "pk": "30192153",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1268,
-    "fields": {
-        "code": "30192154"
-    }
+    "pk": "30192154",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1269,
-    "fields": {
-        "code": "30192155"
-    }
+    "pk": "30192155",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1270,
-    "fields": {
-        "code": "30192160"
-    }
+    "pk": "30192160",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1271,
-    "fields": {
-        "code": "30192170"
-    }
+    "pk": "30192170",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1272,
-    "fields": {
-        "code": "30192200"
-    }
+    "pk": "30192200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1273,
-    "fields": {
-        "code": "30192300"
-    }
+    "pk": "30192300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1274,
-    "fields": {
-        "code": "30192310"
-    }
+    "pk": "30192310",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1275,
-    "fields": {
-        "code": "30192320"
-    }
+    "pk": "30192320",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1276,
-    "fields": {
-        "code": "30192330"
-    }
+    "pk": "30192330",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1277,
-    "fields": {
-        "code": "30192340"
-    }
+    "pk": "30192340",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1278,
-    "fields": {
-        "code": "30192350"
-    }
+    "pk": "30192350",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1279,
-    "fields": {
-        "code": "30192400"
-    }
+    "pk": "30192400",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1280,
-    "fields": {
-        "code": "30192500"
-    }
+    "pk": "30192500",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1281,
-    "fields": {
-        "code": "30192600"
-    }
+    "pk": "30192600",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1282,
-    "fields": {
-        "code": "30192700"
-    }
+    "pk": "30192700",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1283,
-    "fields": {
-        "code": "30192800"
-    }
+    "pk": "30192800",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1284,
-    "fields": {
-        "code": "30192900"
-    }
+    "pk": "30192900",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1285,
-    "fields": {
-        "code": "30192910"
-    }
+    "pk": "30192910",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1286,
-    "fields": {
-        "code": "30192920"
-    }
+    "pk": "30192920",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1287,
-    "fields": {
-        "code": "30192930"
-    }
+    "pk": "30192930",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1288,
-    "fields": {
-        "code": "30192940"
-    }
+    "pk": "30192940",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1289,
-    "fields": {
-        "code": "30192950"
-    }
+    "pk": "30192950",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1290,
-    "fields": {
-        "code": "30193000"
-    }
+    "pk": "30193000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1291,
-    "fields": {
-        "code": "30193100"
-    }
+    "pk": "30193100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1292,
-    "fields": {
-        "code": "30193200"
-    }
+    "pk": "30193200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1293,
-    "fields": {
-        "code": "30193300"
-    }
+    "pk": "30193300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1294,
-    "fields": {
-        "code": "30193400"
-    }
+    "pk": "30193400",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1295,
-    "fields": {
-        "code": "30193500"
-    }
+    "pk": "30193500",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1296,
-    "fields": {
-        "code": "30193600"
-    }
+    "pk": "30193600",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1297,
-    "fields": {
-        "code": "30193700"
-    }
+    "pk": "30193700",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1298,
-    "fields": {
-        "code": "30193800"
-    }
+    "pk": "30193800",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1299,
-    "fields": {
-        "code": "30193900"
-    }
+    "pk": "30193900",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1300,
-    "fields": {
-        "code": "30194000"
-    }
+    "pk": "30194000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1301,
-    "fields": {
-        "code": "30194100"
-    }
+    "pk": "30194100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1302,
-    "fields": {
-        "code": "30194200"
-    }
+    "pk": "30194200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1303,
-    "fields": {
-        "code": "30194210"
-    }
+    "pk": "30194210",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1304,
-    "fields": {
-        "code": "30194220"
-    }
+    "pk": "30194220",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1305,
-    "fields": {
-        "code": "30194300"
-    }
+    "pk": "30194300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1306,
-    "fields": {
-        "code": "30194310"
-    }
+    "pk": "30194310",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1307,
-    "fields": {
-        "code": "30194320"
-    }
+    "pk": "30194320",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1308,
-    "fields": {
-        "code": "30194400"
-    }
+    "pk": "30194400",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1309,
-    "fields": {
-        "code": "30194500"
-    }
+    "pk": "30194500",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1310,
-    "fields": {
-        "code": "30194600"
-    }
+    "pk": "30194600",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1311,
-    "fields": {
-        "code": "30194700"
-    }
+    "pk": "30194700",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1312,
-    "fields": {
-        "code": "30194800"
-    }
+    "pk": "30194800",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1313,
-    "fields": {
-        "code": "30194810"
-    }
+    "pk": "30194810",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1314,
-    "fields": {
-        "code": "30194820"
-    }
+    "pk": "30194820",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1315,
-    "fields": {
-        "code": "30194900"
-    }
+    "pk": "30194900",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1316,
-    "fields": {
-        "code": "30195000"
-    }
+    "pk": "30195000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1317,
-    "fields": {
-        "code": "30195100"
-    }
+    "pk": "30195100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1318,
-    "fields": {
-        "code": "30195200"
-    }
+    "pk": "30195200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1319,
-    "fields": {
-        "code": "30195300"
-    }
+    "pk": "30195300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1320,
-    "fields": {
-        "code": "30195400"
-    }
+    "pk": "30195400",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1321,
-    "fields": {
-        "code": "30195500"
-    }
+    "pk": "30195500",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1322,
-    "fields": {
-        "code": "30195600"
-    }
+    "pk": "30195600",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1323,
-    "fields": {
-        "code": "30195700"
-    }
+    "pk": "30195700",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1324,
-    "fields": {
-        "code": "30195800"
-    }
+    "pk": "30195800",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1325,
-    "fields": {
-        "code": "30195900"
-    }
+    "pk": "30195900",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1326,
-    "fields": {
-        "code": "30195910"
-    }
+    "pk": "30195910",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1327,
-    "fields": {
-        "code": "30195911"
-    }
+    "pk": "30195911",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1328,
-    "fields": {
-        "code": "30195912"
-    }
+    "pk": "30195912",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1329,
-    "fields": {
-        "code": "30195913"
-    }
+    "pk": "30195913",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1330,
-    "fields": {
-        "code": "30195920"
-    }
+    "pk": "30195920",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1331,
-    "fields": {
-        "code": "30195921"
-    }
+    "pk": "30195921",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1332,
-    "fields": {
-        "code": "30196000"
-    }
+    "pk": "30196000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1333,
-    "fields": {
-        "code": "30196100"
-    }
+    "pk": "30196100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1334,
-    "fields": {
-        "code": "30196200"
-    }
+    "pk": "30196200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1335,
-    "fields": {
-        "code": "30196300"
-    }
+    "pk": "30196300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1336,
-    "fields": {
-        "code": "30197000"
-    }
+    "pk": "30197000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1337,
-    "fields": {
-        "code": "30197100"
-    }
+    "pk": "30197100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1338,
-    "fields": {
-        "code": "30197110"
-    }
+    "pk": "30197110",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1339,
-    "fields": {
-        "code": "30197120"
-    }
+    "pk": "30197120",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1340,
-    "fields": {
-        "code": "30197130"
-    }
+    "pk": "30197130",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1341,
-    "fields": {
-        "code": "30197200"
-    }
+    "pk": "30197200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1342,
-    "fields": {
-        "code": "30197210"
-    }
+    "pk": "30197210",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1343,
-    "fields": {
-        "code": "30197220"
-    }
+    "pk": "30197220",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1344,
-    "fields": {
-        "code": "30197221"
-    }
+    "pk": "30197221",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1345,
-    "fields": {
-        "code": "30197300"
-    }
+    "pk": "30197300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1346,
-    "fields": {
-        "code": "30197310"
-    }
+    "pk": "30197310",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1347,
-    "fields": {
-        "code": "30197320"
-    }
+    "pk": "30197320",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1348,
-    "fields": {
-        "code": "30197321"
-    }
+    "pk": "30197321",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1349,
-    "fields": {
-        "code": "30197330"
-    }
+    "pk": "30197330",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1350,
-    "fields": {
-        "code": "30197400"
-    }
+    "pk": "30197400",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1351,
-    "fields": {
-        "code": "30197500"
-    }
+    "pk": "30197500",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1352,
-    "fields": {
-        "code": "30197510"
-    }
+    "pk": "30197510",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1353,
-    "fields": {
-        "code": "30197600"
-    }
+    "pk": "30197600",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1354,
-    "fields": {
-        "code": "30197610"
-    }
+    "pk": "30197610",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1355,
-    "fields": {
-        "code": "30197620"
-    }
+    "pk": "30197620",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1356,
-    "fields": {
-        "code": "30197621"
-    }
+    "pk": "30197621",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1357,
-    "fields": {
-        "code": "30197630"
-    }
+    "pk": "30197630",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1358,
-    "fields": {
-        "code": "30197640"
-    }
+    "pk": "30197640",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1359,
-    "fields": {
-        "code": "30197641"
-    }
+    "pk": "30197641",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1360,
-    "fields": {
-        "code": "30197642"
-    }
+    "pk": "30197642",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1361,
-    "fields": {
-        "code": "30197643"
-    }
+    "pk": "30197643",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1362,
-    "fields": {
-        "code": "30197644"
-    }
+    "pk": "30197644",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1363,
-    "fields": {
-        "code": "30197645"
-    }
+    "pk": "30197645",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1364,
-    "fields": {
-        "code": "30198000"
-    }
+    "pk": "30198000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1365,
-    "fields": {
-        "code": "30198100"
-    }
+    "pk": "30198100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1366,
-    "fields": {
-        "code": "30199000"
-    }
+    "pk": "30199000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1367,
-    "fields": {
-        "code": "30199100"
-    }
+    "pk": "30199100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1368,
-    "fields": {
-        "code": "30199110"
-    }
+    "pk": "30199110",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1369,
-    "fields": {
-        "code": "30199120"
-    }
+    "pk": "30199120",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1370,
-    "fields": {
-        "code": "30199130"
-    }
+    "pk": "30199130",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1371,
-    "fields": {
-        "code": "30199140"
-    }
+    "pk": "30199140",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1372,
-    "fields": {
-        "code": "30199200"
-    }
+    "pk": "30199200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1373,
-    "fields": {
-        "code": "30199210"
-    }
+    "pk": "30199210",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1374,
-    "fields": {
-        "code": "30199220"
-    }
+    "pk": "30199220",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1375,
-    "fields": {
-        "code": "30199230"
-    }
+    "pk": "30199230",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1376,
-    "fields": {
-        "code": "30199240"
-    }
+    "pk": "30199240",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1377,
-    "fields": {
-        "code": "30199300"
-    }
+    "pk": "30199300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1378,
-    "fields": {
-        "code": "30199310"
-    }
+    "pk": "30199310",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1379,
-    "fields": {
-        "code": "30199320"
-    }
+    "pk": "30199320",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1380,
-    "fields": {
-        "code": "30199330"
-    }
+    "pk": "30199330",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1381,
-    "fields": {
-        "code": "30199340"
-    }
+    "pk": "30199340",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1382,
-    "fields": {
-        "code": "30199400"
-    }
+    "pk": "30199400",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1383,
-    "fields": {
-        "code": "30199410"
-    }
+    "pk": "30199410",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1384,
-    "fields": {
-        "code": "30199500"
-    }
+    "pk": "30199500",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1385,
-    "fields": {
-        "code": "30199600"
-    }
+    "pk": "30199600",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1386,
-    "fields": {
-        "code": "30199700"
-    }
+    "pk": "30199700",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1387,
-    "fields": {
-        "code": "30199710"
-    }
+    "pk": "30199710",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1388,
-    "fields": {
-        "code": "30199711"
-    }
+    "pk": "30199711",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1389,
-    "fields": {
-        "code": "30199712"
-    }
+    "pk": "30199712",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1390,
-    "fields": {
-        "code": "30199713"
-    }
+    "pk": "30199713",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1391,
-    "fields": {
-        "code": "30199720"
-    }
+    "pk": "30199720",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1392,
-    "fields": {
-        "code": "30199730"
-    }
+    "pk": "30199730",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1393,
-    "fields": {
-        "code": "30199731"
-    }
+    "pk": "30199731",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1394,
-    "fields": {
-        "code": "30199740"
-    }
+    "pk": "30199740",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1395,
-    "fields": {
-        "code": "30199750"
-    }
+    "pk": "30199750",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1396,
-    "fields": {
-        "code": "30199760"
-    }
+    "pk": "30199760",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1397,
-    "fields": {
-        "code": "30199761"
-    }
+    "pk": "30199761",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1398,
-    "fields": {
-        "code": "30199762"
-    }
+    "pk": "30199762",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1399,
-    "fields": {
-        "code": "30199763"
-    }
+    "pk": "30199763",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1400,
-    "fields": {
-        "code": "30199770"
-    }
+    "pk": "30199770",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1401,
-    "fields": {
-        "code": "30199780"
-    }
+    "pk": "30199780",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1402,
-    "fields": {
-        "code": "30199790"
-    }
+    "pk": "30199790",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1403,
-    "fields": {
-        "code": "30199791"
-    }
+    "pk": "30199791",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1404,
-    "fields": {
-        "code": "30199792"
-    }
+    "pk": "30199792",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1405,
-    "fields": {
-        "code": "30199793"
-    }
+    "pk": "30199793",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1406,
-    "fields": {
-        "code": "30200000"
-    }
+    "pk": "30200000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1407,
-    "fields": {
-        "code": "30210000"
-    }
+    "pk": "30210000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1408,
-    "fields": {
-        "code": "30211000"
-    }
+    "pk": "30211000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1409,
-    "fields": {
-        "code": "30211100"
-    }
+    "pk": "30211100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1410,
-    "fields": {
-        "code": "30211200"
-    }
+    "pk": "30211200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1411,
-    "fields": {
-        "code": "30211300"
-    }
+    "pk": "30211300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1412,
-    "fields": {
-        "code": "30211400"
-    }
+    "pk": "30211400",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1413,
-    "fields": {
-        "code": "30211500"
-    }
+    "pk": "30211500",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1414,
-    "fields": {
-        "code": "30212000"
-    }
+    "pk": "30212000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1415,
-    "fields": {
-        "code": "30212100"
-    }
+    "pk": "30212100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1416,
-    "fields": {
-        "code": "30213000"
-    }
+    "pk": "30213000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1417,
-    "fields": {
-        "code": "30213100"
-    }
+    "pk": "30213100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1418,
-    "fields": {
-        "code": "30213200"
-    }
+    "pk": "30213200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1419,
-    "fields": {
-        "code": "30213300"
-    }
+    "pk": "30213300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1420,
-    "fields": {
-        "code": "30213400"
-    }
+    "pk": "30213400",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1421,
-    "fields": {
-        "code": "30213500"
-    }
+    "pk": "30213500",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1422,
-    "fields": {
-        "code": "30214000"
-    }
+    "pk": "30214000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1423,
-    "fields": {
-        "code": "30215000"
-    }
+    "pk": "30215000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1424,
-    "fields": {
-        "code": "30215100"
-    }
+    "pk": "30215100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1425,
-    "fields": {
-        "code": "30216000"
-    }
+    "pk": "30216000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1426,
-    "fields": {
-        "code": "30216100"
-    }
+    "pk": "30216100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1427,
-    "fields": {
-        "code": "30216110"
-    }
+    "pk": "30216110",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1428,
-    "fields": {
-        "code": "30216120"
-    }
+    "pk": "30216120",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1429,
-    "fields": {
-        "code": "30216130"
-    }
+    "pk": "30216130",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1430,
-    "fields": {
-        "code": "30216200"
-    }
+    "pk": "30216200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1431,
-    "fields": {
-        "code": "30216300"
-    }
+    "pk": "30216300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1432,
-    "fields": {
-        "code": "30220000"
-    }
+    "pk": "30220000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1433,
-    "fields": {
-        "code": "30221000"
-    }
+    "pk": "30221000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1434,
-    "fields": {
-        "code": "30230000"
-    }
+    "pk": "30230000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1435,
-    "fields": {
-        "code": "30231000"
-    }
+    "pk": "30231000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1436,
-    "fields": {
-        "code": "30231100"
-    }
+    "pk": "30231100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1437,
-    "fields": {
-        "code": "30231200"
-    }
+    "pk": "30231200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1438,
-    "fields": {
-        "code": "30231300"
-    }
+    "pk": "30231300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1439,
-    "fields": {
-        "code": "30231310"
-    }
+    "pk": "30231310",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1440,
-    "fields": {
-        "code": "30231320"
-    }
+    "pk": "30231320",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1441,
-    "fields": {
-        "code": "30232000"
-    }
+    "pk": "30232000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1442,
-    "fields": {
-        "code": "30232100"
-    }
+    "pk": "30232100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1443,
-    "fields": {
-        "code": "30232110"
-    }
+    "pk": "30232110",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1444,
-    "fields": {
-        "code": "30232120"
-    }
+    "pk": "30232120",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1445,
-    "fields": {
-        "code": "30232130"
-    }
+    "pk": "30232130",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1446,
-    "fields": {
-        "code": "30232140"
-    }
+    "pk": "30232140",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1447,
-    "fields": {
-        "code": "30232150"
-    }
+    "pk": "30232150",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1448,
-    "fields": {
-        "code": "30232600"
-    }
+    "pk": "30232600",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1449,
-    "fields": {
-        "code": "30232700"
-    }
+    "pk": "30232700",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1450,
-    "fields": {
-        "code": "30233000"
-    }
+    "pk": "30233000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1451,
-    "fields": {
-        "code": "30233100"
-    }
+    "pk": "30233100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1452,
-    "fields": {
-        "code": "30233110"
-    }
+    "pk": "30233110",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1453,
-    "fields": {
-        "code": "30233120"
-    }
+    "pk": "30233120",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1454,
-    "fields": {
-        "code": "30233130"
-    }
+    "pk": "30233130",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1455,
-    "fields": {
-        "code": "30233131"
-    }
+    "pk": "30233131",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1456,
-    "fields": {
-        "code": "30233132"
-    }
+    "pk": "30233132",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1457,
-    "fields": {
-        "code": "30233140"
-    }
+    "pk": "30233140",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1458,
-    "fields": {
-        "code": "30233141"
-    }
+    "pk": "30233141",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1459,
-    "fields": {
-        "code": "30233150"
-    }
+    "pk": "30233150",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1460,
-    "fields": {
-        "code": "30233151"
-    }
+    "pk": "30233151",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1461,
-    "fields": {
-        "code": "30233152"
-    }
+    "pk": "30233152",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1462,
-    "fields": {
-        "code": "30233153"
-    }
+    "pk": "30233153",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1463,
-    "fields": {
-        "code": "30233160"
-    }
+    "pk": "30233160",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1464,
-    "fields": {
-        "code": "30233161"
-    }
+    "pk": "30233161",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1465,
-    "fields": {
-        "code": "30233170"
-    }
+    "pk": "30233170",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1466,
-    "fields": {
-        "code": "30233180"
-    }
+    "pk": "30233180",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1467,
-    "fields": {
-        "code": "30233190"
-    }
+    "pk": "30233190",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1468,
-    "fields": {
-        "code": "30233300"
-    }
+    "pk": "30233300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1469,
-    "fields": {
-        "code": "30233310"
-    }
+    "pk": "30233310",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1470,
-    "fields": {
-        "code": "30233320"
-    }
+    "pk": "30233320",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1471,
-    "fields": {
-        "code": "30234000"
-    }
+    "pk": "30234000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1472,
-    "fields": {
-        "code": "30234100"
-    }
+    "pk": "30234100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1473,
-    "fields": {
-        "code": "30234200"
-    }
+    "pk": "30234200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1474,
-    "fields": {
-        "code": "30234300"
-    }
+    "pk": "30234300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1475,
-    "fields": {
-        "code": "30234400"
-    }
+    "pk": "30234400",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1476,
-    "fields": {
-        "code": "30234500"
-    }
+    "pk": "30234500",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1477,
-    "fields": {
-        "code": "30234600"
-    }
+    "pk": "30234600",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1478,
-    "fields": {
-        "code": "30234700"
-    }
+    "pk": "30234700",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1479,
-    "fields": {
-        "code": "30236000"
-    }
+    "pk": "30236000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1480,
-    "fields": {
-        "code": "30236100"
-    }
+    "pk": "30236100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1481,
-    "fields": {
-        "code": "30236110"
-    }
+    "pk": "30236110",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1482,
-    "fields": {
-        "code": "30236111"
-    }
+    "pk": "30236111",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1483,
-    "fields": {
-        "code": "30236112"
-    }
+    "pk": "30236112",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1484,
-    "fields": {
-        "code": "30236113"
-    }
+    "pk": "30236113",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1485,
-    "fields": {
-        "code": "30236114"
-    }
+    "pk": "30236114",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1486,
-    "fields": {
-        "code": "30236115"
-    }
+    "pk": "30236115",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1487,
-    "fields": {
-        "code": "30236120"
-    }
+    "pk": "30236120",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1488,
-    "fields": {
-        "code": "30236121"
-    }
+    "pk": "30236121",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1489,
-    "fields": {
-        "code": "30236122"
-    }
+    "pk": "30236122",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1490,
-    "fields": {
-        "code": "30236123"
-    }
+    "pk": "30236123",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1491,
-    "fields": {
-        "code": "30236200"
-    }
+    "pk": "30236200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1492,
-    "fields": {
-        "code": "30237000"
-    }
+    "pk": "30237000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1493,
-    "fields": {
-        "code": "30237100"
-    }
+    "pk": "30237100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1494,
-    "fields": {
-        "code": "30237110"
-    }
+    "pk": "30237110",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1495,
-    "fields": {
-        "code": "30237120"
-    }
+    "pk": "30237120",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1496,
-    "fields": {
-        "code": "30237121"
-    }
+    "pk": "30237121",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1497,
-    "fields": {
-        "code": "30237130"
-    }
+    "pk": "30237130",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1498,
-    "fields": {
-        "code": "30237131"
-    }
+    "pk": "30237131",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1499,
-    "fields": {
-        "code": "30237132"
-    }
+    "pk": "30237132",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1500,
-    "fields": {
-        "code": "30237133"
-    }
+    "pk": "30237133",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1501,
-    "fields": {
-        "code": "30237134"
-    }
+    "pk": "30237134",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1502,
-    "fields": {
-        "code": "30237135"
-    }
+    "pk": "30237135",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1503,
-    "fields": {
-        "code": "30237136"
-    }
+    "pk": "30237136",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1504,
-    "fields": {
-        "code": "30237140"
-    }
+    "pk": "30237140",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1505,
-    "fields": {
-        "code": "30237200"
-    }
+    "pk": "30237200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1506,
-    "fields": {
-        "code": "30237210"
-    }
+    "pk": "30237210",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1507,
-    "fields": {
-        "code": "30237220"
-    }
+    "pk": "30237220",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1508,
-    "fields": {
-        "code": "30237230"
-    }
+    "pk": "30237230",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1509,
-    "fields": {
-        "code": "30237240"
-    }
+    "pk": "30237240",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1510,
-    "fields": {
-        "code": "30237250"
-    }
+    "pk": "30237250",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1511,
-    "fields": {
-        "code": "30237251"
-    }
+    "pk": "30237251",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1512,
-    "fields": {
-        "code": "30237252"
-    }
+    "pk": "30237252",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1513,
-    "fields": {
-        "code": "30237253"
-    }
+    "pk": "30237253",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1514,
-    "fields": {
-        "code": "30237260"
-    }
+    "pk": "30237260",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1515,
-    "fields": {
-        "code": "30237270"
-    }
+    "pk": "30237270",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1516,
-    "fields": {
-        "code": "30237280"
-    }
+    "pk": "30237280",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1517,
-    "fields": {
-        "code": "30237290"
-    }
+    "pk": "30237290",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1518,
-    "fields": {
-        "code": "30237295"
-    }
+    "pk": "30237295",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1519,
-    "fields": {
-        "code": "30237300"
-    }
+    "pk": "30237300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1520,
-    "fields": {
-        "code": "30237310"
-    }
+    "pk": "30237310",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1521,
-    "fields": {
-        "code": "30237320"
-    }
+    "pk": "30237320",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1522,
-    "fields": {
-        "code": "30237330"
-    }
+    "pk": "30237330",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1523,
-    "fields": {
-        "code": "30237340"
-    }
+    "pk": "30237340",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1524,
-    "fields": {
-        "code": "30237350"
-    }
+    "pk": "30237350",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1525,
-    "fields": {
-        "code": "30237360"
-    }
+    "pk": "30237360",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1526,
-    "fields": {
-        "code": "30237370"
-    }
+    "pk": "30237370",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1527,
-    "fields": {
-        "code": "30237380"
-    }
+    "pk": "30237380",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1528,
-    "fields": {
-        "code": "30237400"
-    }
+    "pk": "30237400",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1529,
-    "fields": {
-        "code": "30237410"
-    }
+    "pk": "30237410",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1530,
-    "fields": {
-        "code": "30237420"
-    }
+    "pk": "30237420",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1531,
-    "fields": {
-        "code": "30237430"
-    }
+    "pk": "30237430",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1532,
-    "fields": {
-        "code": "30237440"
-    }
+    "pk": "30237440",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1533,
-    "fields": {
-        "code": "30237450"
-    }
+    "pk": "30237450",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1534,
-    "fields": {
-        "code": "30237460"
-    }
+    "pk": "30237460",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1535,
-    "fields": {
-        "code": "30237461"
-    }
+    "pk": "30237461",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1536,
-    "fields": {
-        "code": "30237470"
-    }
+    "pk": "30237470",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1537,
-    "fields": {
-        "code": "30237475"
-    }
+    "pk": "30237475",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1538,
-    "fields": {
-        "code": "30237480"
-    }
+    "pk": "30237480",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1539,
-    "fields": {
-        "code": "30238000"
-    }
+    "pk": "30238000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1540,
-    "fields": {
-        "code": "48000000"
-    }
+    "pk": "48000000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1541,
-    "fields": {
-        "code": "48100000"
-    }
+    "pk": "48100000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1542,
-    "fields": {
-        "code": "48110000"
-    }
+    "pk": "48110000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1543,
-    "fields": {
-        "code": "48120000"
-    }
+    "pk": "48120000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1544,
-    "fields": {
-        "code": "48121000"
-    }
+    "pk": "48121000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1545,
-    "fields": {
-        "code": "48130000"
-    }
+    "pk": "48130000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1546,
-    "fields": {
-        "code": "48131000"
-    }
+    "pk": "48131000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1547,
-    "fields": {
-        "code": "48132000"
-    }
+    "pk": "48132000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1548,
-    "fields": {
-        "code": "48140000"
-    }
+    "pk": "48140000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1549,
-    "fields": {
-        "code": "48150000"
-    }
+    "pk": "48150000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1550,
-    "fields": {
-        "code": "48151000"
-    }
+    "pk": "48151000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1551,
-    "fields": {
-        "code": "48160000"
-    }
+    "pk": "48160000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1552,
-    "fields": {
-        "code": "48161000"
-    }
+    "pk": "48161000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1553,
-    "fields": {
-        "code": "48170000"
-    }
+    "pk": "48170000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1554,
-    "fields": {
-        "code": "48180000"
-    }
+    "pk": "48180000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1555,
-    "fields": {
-        "code": "48190000"
-    }
+    "pk": "48190000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1556,
-    "fields": {
-        "code": "48200000"
-    }
+    "pk": "48200000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1557,
-    "fields": {
-        "code": "48210000"
-    }
+    "pk": "48210000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1558,
-    "fields": {
-        "code": "48211000"
-    }
+    "pk": "48211000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1559,
-    "fields": {
-        "code": "48212000"
-    }
+    "pk": "48212000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1560,
-    "fields": {
-        "code": "48213000"
-    }
+    "pk": "48213000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1561,
-    "fields": {
-        "code": "48214000"
-    }
+    "pk": "48214000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1562,
-    "fields": {
-        "code": "48215000"
-    }
+    "pk": "48215000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1563,
-    "fields": {
-        "code": "48216000"
-    }
+    "pk": "48216000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1564,
-    "fields": {
-        "code": "48217000"
-    }
+    "pk": "48217000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1565,
-    "fields": {
-        "code": "48217100"
-    }
+    "pk": "48217100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1566,
-    "fields": {
-        "code": "48217200"
-    }
+    "pk": "48217200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1567,
-    "fields": {
-        "code": "48217300"
-    }
+    "pk": "48217300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1568,
-    "fields": {
-        "code": "48218000"
-    }
+    "pk": "48218000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1569,
-    "fields": {
-        "code": "48219000"
-    }
+    "pk": "48219000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1570,
-    "fields": {
-        "code": "48219100"
-    }
+    "pk": "48219100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1571,
-    "fields": {
-        "code": "48219200"
-    }
+    "pk": "48219200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1572,
-    "fields": {
-        "code": "48219300"
-    }
+    "pk": "48219300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1573,
-    "fields": {
-        "code": "48219400"
-    }
+    "pk": "48219400",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1574,
-    "fields": {
-        "code": "48219500"
-    }
+    "pk": "48219500",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1575,
-    "fields": {
-        "code": "48219600"
-    }
+    "pk": "48219600",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1576,
-    "fields": {
-        "code": "48219700"
-    }
+    "pk": "48219700",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1577,
-    "fields": {
-        "code": "48219800"
-    }
+    "pk": "48219800",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1578,
-    "fields": {
-        "code": "48220000"
-    }
+    "pk": "48220000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1579,
-    "fields": {
-        "code": "48221000"
-    }
+    "pk": "48221000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1580,
-    "fields": {
-        "code": "48222000"
-    }
+    "pk": "48222000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1581,
-    "fields": {
-        "code": "48223000"
-    }
+    "pk": "48223000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1582,
-    "fields": {
-        "code": "48224000"
-    }
+    "pk": "48224000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1583,
-    "fields": {
-        "code": "48300000"
-    }
+    "pk": "48300000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1584,
-    "fields": {
-        "code": "48310000"
-    }
+    "pk": "48310000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1585,
-    "fields": {
-        "code": "48311000"
-    }
+    "pk": "48311000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1586,
-    "fields": {
-        "code": "48311100"
-    }
+    "pk": "48311100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1587,
-    "fields": {
-        "code": "48312000"
-    }
+    "pk": "48312000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1588,
-    "fields": {
-        "code": "48313000"
-    }
+    "pk": "48313000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1589,
-    "fields": {
-        "code": "48313100"
-    }
+    "pk": "48313100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1590,
-    "fields": {
-        "code": "48314000"
-    }
+    "pk": "48314000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1591,
-    "fields": {
-        "code": "48315000"
-    }
+    "pk": "48315000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1592,
-    "fields": {
-        "code": "48316000"
-    }
+    "pk": "48316000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1593,
-    "fields": {
-        "code": "48317000"
-    }
+    "pk": "48317000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1594,
-    "fields": {
-        "code": "48318000"
-    }
+    "pk": "48318000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1595,
-    "fields": {
-        "code": "48319000"
-    }
+    "pk": "48319000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1596,
-    "fields": {
-        "code": "48320000"
-    }
+    "pk": "48320000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1597,
-    "fields": {
-        "code": "48321000"
-    }
+    "pk": "48321000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1598,
-    "fields": {
-        "code": "48321100"
-    }
+    "pk": "48321100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1599,
-    "fields": {
-        "code": "48322000"
-    }
+    "pk": "48322000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1600,
-    "fields": {
-        "code": "48323000"
-    }
+    "pk": "48323000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1601,
-    "fields": {
-        "code": "48324000"
-    }
+    "pk": "48324000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1602,
-    "fields": {
-        "code": "48325000"
-    }
+    "pk": "48325000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1603,
-    "fields": {
-        "code": "48326000"
-    }
+    "pk": "48326000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1604,
-    "fields": {
-        "code": "48326100"
-    }
+    "pk": "48326100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1605,
-    "fields": {
-        "code": "48327000"
-    }
+    "pk": "48327000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1606,
-    "fields": {
-        "code": "48328000"
-    }
+    "pk": "48328000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1607,
-    "fields": {
-        "code": "48329000"
-    }
+    "pk": "48329000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1608,
-    "fields": {
-        "code": "48330000"
-    }
+    "pk": "48330000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1609,
-    "fields": {
-        "code": "48331000"
-    }
+    "pk": "48331000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1610,
-    "fields": {
-        "code": "48332000"
-    }
+    "pk": "48332000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1611,
-    "fields": {
-        "code": "48333000"
-    }
+    "pk": "48333000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1612,
-    "fields": {
-        "code": "48400000"
-    }
+    "pk": "48400000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1613,
-    "fields": {
-        "code": "48410000"
-    }
+    "pk": "48410000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1614,
-    "fields": {
-        "code": "48411000"
-    }
+    "pk": "48411000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1615,
-    "fields": {
-        "code": "48412000"
-    }
+    "pk": "48412000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1616,
-    "fields": {
-        "code": "48420000"
-    }
+    "pk": "48420000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1617,
-    "fields": {
-        "code": "48421000"
-    }
+    "pk": "48421000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1618,
-    "fields": {
-        "code": "48422000"
-    }
+    "pk": "48422000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1619,
-    "fields": {
-        "code": "48430000"
-    }
+    "pk": "48430000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1620,
-    "fields": {
-        "code": "48440000"
-    }
+    "pk": "48440000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1621,
-    "fields": {
-        "code": "48441000"
-    }
+    "pk": "48441000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1622,
-    "fields": {
-        "code": "48442000"
-    }
+    "pk": "48442000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1623,
-    "fields": {
-        "code": "48443000"
-    }
+    "pk": "48443000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1624,
-    "fields": {
-        "code": "48444000"
-    }
+    "pk": "48444000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1625,
-    "fields": {
-        "code": "48444100"
-    }
+    "pk": "48444100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1626,
-    "fields": {
-        "code": "48445000"
-    }
+    "pk": "48445000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1627,
-    "fields": {
-        "code": "48450000"
-    }
+    "pk": "48450000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1628,
-    "fields": {
-        "code": "48451000"
-    }
+    "pk": "48451000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1629,
-    "fields": {
-        "code": "48460000"
-    }
+    "pk": "48460000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1630,
-    "fields": {
-        "code": "48461000"
-    }
+    "pk": "48461000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1631,
-    "fields": {
-        "code": "48462000"
-    }
+    "pk": "48462000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1632,
-    "fields": {
-        "code": "48463000"
-    }
+    "pk": "48463000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1633,
-    "fields": {
-        "code": "48470000"
-    }
+    "pk": "48470000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1634,
-    "fields": {
-        "code": "48480000"
-    }
+    "pk": "48480000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1635,
-    "fields": {
-        "code": "48481000"
-    }
+    "pk": "48481000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1636,
-    "fields": {
-        "code": "48482000"
-    }
+    "pk": "48482000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1637,
-    "fields": {
-        "code": "48490000"
-    }
+    "pk": "48490000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1638,
-    "fields": {
-        "code": "48500000"
-    }
+    "pk": "48500000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1639,
-    "fields": {
-        "code": "48510000"
-    }
+    "pk": "48510000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1640,
-    "fields": {
-        "code": "48511000"
-    }
+    "pk": "48511000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1641,
-    "fields": {
-        "code": "48512000"
-    }
+    "pk": "48512000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1642,
-    "fields": {
-        "code": "48513000"
-    }
+    "pk": "48513000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1643,
-    "fields": {
-        "code": "48514000"
-    }
+    "pk": "48514000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1644,
-    "fields": {
-        "code": "48515000"
-    }
+    "pk": "48515000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1645,
-    "fields": {
-        "code": "48516000"
-    }
+    "pk": "48516000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1646,
-    "fields": {
-        "code": "48517000"
-    }
+    "pk": "48517000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1647,
-    "fields": {
-        "code": "48518000"
-    }
+    "pk": "48518000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1648,
-    "fields": {
-        "code": "48519000"
-    }
+    "pk": "48519000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1649,
-    "fields": {
-        "code": "48520000"
-    }
+    "pk": "48520000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1650,
-    "fields": {
-        "code": "48521000"
-    }
+    "pk": "48521000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1651,
-    "fields": {
-        "code": "48522000"
-    }
+    "pk": "48522000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1652,
-    "fields": {
-        "code": "48600000"
-    }
+    "pk": "48600000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1653,
-    "fields": {
-        "code": "48610000"
-    }
+    "pk": "48610000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1654,
-    "fields": {
-        "code": "48611000"
-    }
+    "pk": "48611000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1655,
-    "fields": {
-        "code": "48612000"
-    }
+    "pk": "48612000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1656,
-    "fields": {
-        "code": "48613000"
-    }
+    "pk": "48613000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1657,
-    "fields": {
-        "code": "48614000"
-    }
+    "pk": "48614000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1658,
-    "fields": {
-        "code": "48620000"
-    }
+    "pk": "48620000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1659,
-    "fields": {
-        "code": "48621000"
-    }
+    "pk": "48621000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1660,
-    "fields": {
-        "code": "48622000"
-    }
+    "pk": "48622000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1661,
-    "fields": {
-        "code": "48623000"
-    }
+    "pk": "48623000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1662,
-    "fields": {
-        "code": "48624000"
-    }
+    "pk": "48624000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1663,
-    "fields": {
-        "code": "48625000"
-    }
+    "pk": "48625000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1664,
-    "fields": {
-        "code": "48626000"
-    }
+    "pk": "48626000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1665,
-    "fields": {
-        "code": "48627000"
-    }
+    "pk": "48627000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1666,
-    "fields": {
-        "code": "48628000"
-    }
+    "pk": "48628000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1667,
-    "fields": {
-        "code": "48700000"
-    }
+    "pk": "48700000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1668,
-    "fields": {
-        "code": "48710000"
-    }
+    "pk": "48710000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1669,
-    "fields": {
-        "code": "48720000"
-    }
+    "pk": "48720000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1670,
-    "fields": {
-        "code": "48730000"
-    }
+    "pk": "48730000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1671,
-    "fields": {
-        "code": "48731000"
-    }
+    "pk": "48731000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1672,
-    "fields": {
-        "code": "48732000"
-    }
+    "pk": "48732000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1673,
-    "fields": {
-        "code": "48740000"
-    }
+    "pk": "48740000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1674,
-    "fields": {
-        "code": "48750000"
-    }
+    "pk": "48750000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1675,
-    "fields": {
-        "code": "48760000"
-    }
+    "pk": "48760000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1676,
-    "fields": {
-        "code": "48761000"
-    }
+    "pk": "48761000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1677,
-    "fields": {
-        "code": "48770000"
-    }
+    "pk": "48770000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1678,
-    "fields": {
-        "code": "48771000"
-    }
+    "pk": "48771000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1679,
-    "fields": {
-        "code": "48772000"
-    }
+    "pk": "48772000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1680,
-    "fields": {
-        "code": "48773000"
-    }
+    "pk": "48773000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1681,
-    "fields": {
-        "code": "48773100"
-    }
+    "pk": "48773100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1682,
-    "fields": {
-        "code": "48780000"
-    }
+    "pk": "48780000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1683,
-    "fields": {
-        "code": "48781000"
-    }
+    "pk": "48781000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1684,
-    "fields": {
-        "code": "48782000"
-    }
+    "pk": "48782000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1685,
-    "fields": {
-        "code": "48783000"
-    }
+    "pk": "48783000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1686,
-    "fields": {
-        "code": "48790000"
-    }
+    "pk": "48790000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1687,
-    "fields": {
-        "code": "48800000"
-    }
+    "pk": "48800000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1688,
-    "fields": {
-        "code": "48810000"
-    }
+    "pk": "48810000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1689,
-    "fields": {
-        "code": "48811000"
-    }
+    "pk": "48811000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1690,
-    "fields": {
-        "code": "48812000"
-    }
+    "pk": "48812000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1691,
-    "fields": {
-        "code": "48813000"
-    }
+    "pk": "48813000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1692,
-    "fields": {
-        "code": "48813100"
-    }
+    "pk": "48813100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1693,
-    "fields": {
-        "code": "48813200"
-    }
+    "pk": "48813200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1694,
-    "fields": {
-        "code": "48814000"
-    }
+    "pk": "48814000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1695,
-    "fields": {
-        "code": "48814100"
-    }
+    "pk": "48814100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1696,
-    "fields": {
-        "code": "48814200"
-    }
+    "pk": "48814200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1697,
-    "fields": {
-        "code": "48814300"
-    }
+    "pk": "48814300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1698,
-    "fields": {
-        "code": "48814400"
-    }
+    "pk": "48814400",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1699,
-    "fields": {
-        "code": "48814500"
-    }
+    "pk": "48814500",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1700,
-    "fields": {
-        "code": "48820000"
-    }
+    "pk": "48820000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1701,
-    "fields": {
-        "code": "48821000"
-    }
+    "pk": "48821000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1702,
-    "fields": {
-        "code": "48822000"
-    }
+    "pk": "48822000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1703,
-    "fields": {
-        "code": "48823000"
-    }
+    "pk": "48823000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1704,
-    "fields": {
-        "code": "48824000"
-    }
+    "pk": "48824000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1705,
-    "fields": {
-        "code": "48825000"
-    }
+    "pk": "48825000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1706,
-    "fields": {
-        "code": "48900000"
-    }
+    "pk": "48900000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1707,
-    "fields": {
-        "code": "48910000"
-    }
+    "pk": "48910000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1708,
-    "fields": {
-        "code": "48911000"
-    }
+    "pk": "48911000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1709,
-    "fields": {
-        "code": "48912000"
-    }
+    "pk": "48912000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1710,
-    "fields": {
-        "code": "48913000"
-    }
+    "pk": "48913000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1711,
-    "fields": {
-        "code": "48920000"
-    }
+    "pk": "48920000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1712,
-    "fields": {
-        "code": "48921000"
-    }
+    "pk": "48921000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1713,
-    "fields": {
-        "code": "48930000"
-    }
+    "pk": "48930000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1714,
-    "fields": {
-        "code": "48931000"
-    }
+    "pk": "48931000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1715,
-    "fields": {
-        "code": "48932000"
-    }
+    "pk": "48932000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1716,
-    "fields": {
-        "code": "48940000"
-    }
+    "pk": "48940000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1717,
-    "fields": {
-        "code": "48941000"
-    }
+    "pk": "48941000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1718,
-    "fields": {
-        "code": "48942000"
-    }
+    "pk": "48942000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1719,
-    "fields": {
-        "code": "48950000"
-    }
+    "pk": "48950000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1720,
-    "fields": {
-        "code": "48951000"
-    }
+    "pk": "48951000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1721,
-    "fields": {
-        "code": "48952000"
-    }
+    "pk": "48952000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1722,
-    "fields": {
-        "code": "48960000"
-    }
+    "pk": "48960000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1723,
-    "fields": {
-        "code": "48961000"
-    }
+    "pk": "48961000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1724,
-    "fields": {
-        "code": "48962000"
-    }
+    "pk": "48962000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1725,
-    "fields": {
-        "code": "48970000"
-    }
+    "pk": "48970000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1726,
-    "fields": {
-        "code": "48971000"
-    }
+    "pk": "48971000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1727,
-    "fields": {
-        "code": "48972000"
-    }
+    "pk": "48972000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1728,
-    "fields": {
-        "code": "48980000"
-    }
+    "pk": "48980000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1729,
-    "fields": {
-        "code": "48981000"
-    }
+    "pk": "48981000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1730,
-    "fields": {
-        "code": "48982000"
-    }
+    "pk": "48982000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1731,
-    "fields": {
-        "code": "48983000"
-    }
+    "pk": "48983000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1732,
-    "fields": {
-        "code": "48984000"
-    }
+    "pk": "48984000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1733,
-    "fields": {
-        "code": "48985000"
-    }
+    "pk": "48985000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1734,
-    "fields": {
-        "code": "48986000"
-    }
+    "pk": "48986000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1735,
-    "fields": {
-        "code": "48987000"
-    }
+    "pk": "48987000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1736,
-    "fields": {
-        "code": "48990000"
-    }
+    "pk": "48990000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1737,
-    "fields": {
-        "code": "48991000"
-    }
+    "pk": "48991000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1738,
-    "fields": {
-        "code": "72000000"
-    }
+    "pk": "72000000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1739,
-    "fields": {
-        "code": "72100000"
-    }
+    "pk": "72100000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1740,
-    "fields": {
-        "code": "72110000"
-    }
+    "pk": "72110000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1741,
-    "fields": {
-        "code": "72120000"
-    }
+    "pk": "72120000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1742,
-    "fields": {
-        "code": "72130000"
-    }
+    "pk": "72130000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1743,
-    "fields": {
-        "code": "72140000"
-    }
+    "pk": "72140000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1744,
-    "fields": {
-        "code": "72150000"
-    }
+    "pk": "72150000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1745,
-    "fields": {
-        "code": "72200000"
-    }
+    "pk": "72200000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1746,
-    "fields": {
-        "code": "72210000"
-    }
+    "pk": "72210000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1747,
-    "fields": {
-        "code": "72211000"
-    }
+    "pk": "72211000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1748,
-    "fields": {
-        "code": "72212000"
-    }
+    "pk": "72212000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1749,
-    "fields": {
-        "code": "72212100"
-    }
+    "pk": "72212100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1750,
-    "fields": {
-        "code": "72212110"
-    }
+    "pk": "72212110",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1751,
-    "fields": {
-        "code": "72212120"
-    }
+    "pk": "72212120",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1752,
-    "fields": {
-        "code": "72212121"
-    }
+    "pk": "72212121",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1753,
-    "fields": {
-        "code": "72212130"
-    }
+    "pk": "72212130",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1754,
-    "fields": {
-        "code": "72212131"
-    }
+    "pk": "72212131",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1755,
-    "fields": {
-        "code": "72212132"
-    }
+    "pk": "72212132",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1756,
-    "fields": {
-        "code": "72212140"
-    }
+    "pk": "72212140",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1757,
-    "fields": {
-        "code": "72212150"
-    }
+    "pk": "72212150",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1758,
-    "fields": {
-        "code": "72212160"
-    }
+    "pk": "72212160",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1759,
-    "fields": {
-        "code": "72212170"
-    }
+    "pk": "72212170",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1760,
-    "fields": {
-        "code": "72212180"
-    }
+    "pk": "72212180",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1761,
-    "fields": {
-        "code": "72212190"
-    }
+    "pk": "72212190",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1762,
-    "fields": {
-        "code": "72212200"
-    }
+    "pk": "72212200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1763,
-    "fields": {
-        "code": "72212210"
-    }
+    "pk": "72212210",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1764,
-    "fields": {
-        "code": "72212211"
-    }
+    "pk": "72212211",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1765,
-    "fields": {
-        "code": "72212212"
-    }
+    "pk": "72212212",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1766,
-    "fields": {
-        "code": "72212213"
-    }
+    "pk": "72212213",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1767,
-    "fields": {
-        "code": "72212214"
-    }
+    "pk": "72212214",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1768,
-    "fields": {
-        "code": "72212215"
-    }
+    "pk": "72212215",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1769,
-    "fields": {
-        "code": "72212216"
-    }
+    "pk": "72212216",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1770,
-    "fields": {
-        "code": "72212217"
-    }
+    "pk": "72212217",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1771,
-    "fields": {
-        "code": "72212218"
-    }
+    "pk": "72212218",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1772,
-    "fields": {
-        "code": "72212219"
-    }
+    "pk": "72212219",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1773,
-    "fields": {
-        "code": "72212220"
-    }
+    "pk": "72212220",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1774,
-    "fields": {
-        "code": "72212221"
-    }
+    "pk": "72212221",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1775,
-    "fields": {
-        "code": "72212222"
-    }
+    "pk": "72212222",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1776,
-    "fields": {
-        "code": "72212223"
-    }
+    "pk": "72212223",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1777,
-    "fields": {
-        "code": "72212224"
-    }
+    "pk": "72212224",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1778,
-    "fields": {
-        "code": "72212300"
-    }
+    "pk": "72212300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1779,
-    "fields": {
-        "code": "72212310"
-    }
+    "pk": "72212310",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1780,
-    "fields": {
-        "code": "72212311"
-    }
+    "pk": "72212311",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1781,
-    "fields": {
-        "code": "72212312"
-    }
+    "pk": "72212312",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1782,
-    "fields": {
-        "code": "72212313"
-    }
+    "pk": "72212313",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1783,
-    "fields": {
-        "code": "72212314"
-    }
+    "pk": "72212314",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1784,
-    "fields": {
-        "code": "72212315"
-    }
+    "pk": "72212315",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1785,
-    "fields": {
-        "code": "72212316"
-    }
+    "pk": "72212316",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1786,
-    "fields": {
-        "code": "72212317"
-    }
+    "pk": "72212317",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1787,
-    "fields": {
-        "code": "72212318"
-    }
+    "pk": "72212318",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1788,
-    "fields": {
-        "code": "72212320"
-    }
+    "pk": "72212320",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1789,
-    "fields": {
-        "code": "72212321"
-    }
+    "pk": "72212321",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1790,
-    "fields": {
-        "code": "72212322"
-    }
+    "pk": "72212322",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1791,
-    "fields": {
-        "code": "72212323"
-    }
+    "pk": "72212323",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1792,
-    "fields": {
-        "code": "72212324"
-    }
+    "pk": "72212324",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1793,
-    "fields": {
-        "code": "72212325"
-    }
+    "pk": "72212325",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1794,
-    "fields": {
-        "code": "72212326"
-    }
+    "pk": "72212326",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1795,
-    "fields": {
-        "code": "72212327"
-    }
+    "pk": "72212327",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1796,
-    "fields": {
-        "code": "72212328"
-    }
+    "pk": "72212328",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1797,
-    "fields": {
-        "code": "72212330"
-    }
+    "pk": "72212330",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1798,
-    "fields": {
-        "code": "72212331"
-    }
+    "pk": "72212331",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1799,
-    "fields": {
-        "code": "72212332"
-    }
+    "pk": "72212332",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1800,
-    "fields": {
-        "code": "72212333"
-    }
+    "pk": "72212333",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1801,
-    "fields": {
-        "code": "72212400"
-    }
+    "pk": "72212400",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1802,
-    "fields": {
-        "code": "72212410"
-    }
+    "pk": "72212410",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1803,
-    "fields": {
-        "code": "72212411"
-    }
+    "pk": "72212411",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1804,
-    "fields": {
-        "code": "72212412"
-    }
+    "pk": "72212412",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1805,
-    "fields": {
-        "code": "72212420"
-    }
+    "pk": "72212420",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1806,
-    "fields": {
-        "code": "72212421"
-    }
+    "pk": "72212421",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1807,
-    "fields": {
-        "code": "72212422"
-    }
+    "pk": "72212422",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1808,
-    "fields": {
-        "code": "72212430"
-    }
+    "pk": "72212430",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1809,
-    "fields": {
-        "code": "72212440"
-    }
+    "pk": "72212440",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1810,
-    "fields": {
-        "code": "72212441"
-    }
+    "pk": "72212441",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1811,
-    "fields": {
-        "code": "72212442"
-    }
+    "pk": "72212442",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1812,
-    "fields": {
-        "code": "72212443"
-    }
+    "pk": "72212443",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1813,
-    "fields": {
-        "code": "72212445"
-    }
+    "pk": "72212445",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1814,
-    "fields": {
-        "code": "72212450"
-    }
+    "pk": "72212450",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1815,
-    "fields": {
-        "code": "72212451"
-    }
+    "pk": "72212451",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1816,
-    "fields": {
-        "code": "72212460"
-    }
+    "pk": "72212460",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1817,
-    "fields": {
-        "code": "72212461"
-    }
+    "pk": "72212461",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1818,
-    "fields": {
-        "code": "72212462"
-    }
+    "pk": "72212462",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1819,
-    "fields": {
-        "code": "72212463"
-    }
+    "pk": "72212463",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1820,
-    "fields": {
-        "code": "72212470"
-    }
+    "pk": "72212470",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1821,
-    "fields": {
-        "code": "72212480"
-    }
+    "pk": "72212480",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1822,
-    "fields": {
-        "code": "72212481"
-    }
+    "pk": "72212481",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1823,
-    "fields": {
-        "code": "72212482"
-    }
+    "pk": "72212482",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1824,
-    "fields": {
-        "code": "72212490"
-    }
+    "pk": "72212490",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1825,
-    "fields": {
-        "code": "72212500"
-    }
+    "pk": "72212500",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1826,
-    "fields": {
-        "code": "72212510"
-    }
+    "pk": "72212510",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1827,
-    "fields": {
-        "code": "72212511"
-    }
+    "pk": "72212511",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1828,
-    "fields": {
-        "code": "72212512"
-    }
+    "pk": "72212512",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1829,
-    "fields": {
-        "code": "72212513"
-    }
+    "pk": "72212513",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1830,
-    "fields": {
-        "code": "72212514"
-    }
+    "pk": "72212514",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1831,
-    "fields": {
-        "code": "72212515"
-    }
+    "pk": "72212515",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1832,
-    "fields": {
-        "code": "72212516"
-    }
+    "pk": "72212516",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1833,
-    "fields": {
-        "code": "72212517"
-    }
+    "pk": "72212517",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1834,
-    "fields": {
-        "code": "72212518"
-    }
+    "pk": "72212518",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1835,
-    "fields": {
-        "code": "72212519"
-    }
+    "pk": "72212519",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1836,
-    "fields": {
-        "code": "72212520"
-    }
+    "pk": "72212520",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1837,
-    "fields": {
-        "code": "72212521"
-    }
+    "pk": "72212521",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1838,
-    "fields": {
-        "code": "72212522"
-    }
+    "pk": "72212522",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1839,
-    "fields": {
-        "code": "72212600"
-    }
+    "pk": "72212600",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1840,
-    "fields": {
-        "code": "72212610"
-    }
+    "pk": "72212610",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1841,
-    "fields": {
-        "code": "72212620"
-    }
+    "pk": "72212620",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1842,
-    "fields": {
-        "code": "72212630"
-    }
+    "pk": "72212630",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1843,
-    "fields": {
-        "code": "72212640"
-    }
+    "pk": "72212640",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1844,
-    "fields": {
-        "code": "72212650"
-    }
+    "pk": "72212650",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1845,
-    "fields": {
-        "code": "72212660"
-    }
+    "pk": "72212660",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1846,
-    "fields": {
-        "code": "72212670"
-    }
+    "pk": "72212670",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1847,
-    "fields": {
-        "code": "72212700"
-    }
+    "pk": "72212700",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1848,
-    "fields": {
-        "code": "72212710"
-    }
+    "pk": "72212710",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1849,
-    "fields": {
-        "code": "72212720"
-    }
+    "pk": "72212720",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1850,
-    "fields": {
-        "code": "72212730"
-    }
+    "pk": "72212730",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1851,
-    "fields": {
-        "code": "72212731"
-    }
+    "pk": "72212731",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1852,
-    "fields": {
-        "code": "72212732"
-    }
+    "pk": "72212732",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1853,
-    "fields": {
-        "code": "72212740"
-    }
+    "pk": "72212740",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1854,
-    "fields": {
-        "code": "72212750"
-    }
+    "pk": "72212750",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1855,
-    "fields": {
-        "code": "72212760"
-    }
+    "pk": "72212760",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1856,
-    "fields": {
-        "code": "72212761"
-    }
+    "pk": "72212761",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1857,
-    "fields": {
-        "code": "72212770"
-    }
+    "pk": "72212770",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1858,
-    "fields": {
-        "code": "72212771"
-    }
+    "pk": "72212771",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1859,
-    "fields": {
-        "code": "72212772"
-    }
+    "pk": "72212772",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1860,
-    "fields": {
-        "code": "72212780"
-    }
+    "pk": "72212780",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1861,
-    "fields": {
-        "code": "72212781"
-    }
+    "pk": "72212781",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1862,
-    "fields": {
-        "code": "72212782"
-    }
+    "pk": "72212782",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1863,
-    "fields": {
-        "code": "72212783"
-    }
+    "pk": "72212783",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1864,
-    "fields": {
-        "code": "72212790"
-    }
+    "pk": "72212790",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1865,
-    "fields": {
-        "code": "72212900"
-    }
+    "pk": "72212900",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1866,
-    "fields": {
-        "code": "72212910"
-    }
+    "pk": "72212910",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1867,
-    "fields": {
-        "code": "72212911"
-    }
+    "pk": "72212911",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1868,
-    "fields": {
-        "code": "72212920"
-    }
+    "pk": "72212920",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1869,
-    "fields": {
-        "code": "72212930"
-    }
+    "pk": "72212930",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1870,
-    "fields": {
-        "code": "72212931"
-    }
+    "pk": "72212931",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1871,
-    "fields": {
-        "code": "72212932"
-    }
+    "pk": "72212932",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1872,
-    "fields": {
-        "code": "72212940"
-    }
+    "pk": "72212940",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1873,
-    "fields": {
-        "code": "72212941"
-    }
+    "pk": "72212941",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1874,
-    "fields": {
-        "code": "72212942"
-    }
+    "pk": "72212942",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1875,
-    "fields": {
-        "code": "72212960"
-    }
+    "pk": "72212960",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1876,
-    "fields": {
-        "code": "72212970"
-    }
+    "pk": "72212970",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1877,
-    "fields": {
-        "code": "72212971"
-    }
+    "pk": "72212971",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1878,
-    "fields": {
-        "code": "72212972"
-    }
+    "pk": "72212972",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1879,
-    "fields": {
-        "code": "72212980"
-    }
+    "pk": "72212980",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1880,
-    "fields": {
-        "code": "72212981"
-    }
+    "pk": "72212981",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1881,
-    "fields": {
-        "code": "72212982"
-    }
+    "pk": "72212982",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1882,
-    "fields": {
-        "code": "72212983"
-    }
+    "pk": "72212983",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1883,
-    "fields": {
-        "code": "72212984"
-    }
+    "pk": "72212984",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1884,
-    "fields": {
-        "code": "72212985"
-    }
+    "pk": "72212985",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1885,
-    "fields": {
-        "code": "72212990"
-    }
+    "pk": "72212990",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1886,
-    "fields": {
-        "code": "72212991"
-    }
+    "pk": "72212991",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1887,
-    "fields": {
-        "code": "72220000"
-    }
+    "pk": "72220000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1888,
-    "fields": {
-        "code": "72221000"
-    }
+    "pk": "72221000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1889,
-    "fields": {
-        "code": "72222000"
-    }
+    "pk": "72222000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1890,
-    "fields": {
-        "code": "72222100"
-    }
+    "pk": "72222100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1891,
-    "fields": {
-        "code": "72222200"
-    }
+    "pk": "72222200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1892,
-    "fields": {
-        "code": "72222300"
-    }
+    "pk": "72222300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1893,
-    "fields": {
-        "code": "72223000"
-    }
+    "pk": "72223000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1894,
-    "fields": {
-        "code": "72224000"
-    }
+    "pk": "72224000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1895,
-    "fields": {
-        "code": "72224100"
-    }
+    "pk": "72224100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1896,
-    "fields": {
-        "code": "72224200"
-    }
+    "pk": "72224200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1897,
-    "fields": {
-        "code": "72225000"
-    }
+    "pk": "72225000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1898,
-    "fields": {
-        "code": "72226000"
-    }
+    "pk": "72226000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1899,
-    "fields": {
-        "code": "72227000"
-    }
+    "pk": "72227000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1900,
-    "fields": {
-        "code": "72228000"
-    }
+    "pk": "72228000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1901,
-    "fields": {
-        "code": "72230000"
-    }
+    "pk": "72230000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1902,
-    "fields": {
-        "code": "72231000"
-    }
+    "pk": "72231000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1903,
-    "fields": {
-        "code": "72232000"
-    }
+    "pk": "72232000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1904,
-    "fields": {
-        "code": "72240000"
-    }
+    "pk": "72240000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1905,
-    "fields": {
-        "code": "72241000"
-    }
+    "pk": "72241000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1906,
-    "fields": {
-        "code": "72242000"
-    }
+    "pk": "72242000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1907,
-    "fields": {
-        "code": "72243000"
-    }
+    "pk": "72243000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1908,
-    "fields": {
-        "code": "72244000"
-    }
+    "pk": "72244000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1909,
-    "fields": {
-        "code": "72245000"
-    }
+    "pk": "72245000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1910,
-    "fields": {
-        "code": "72246000"
-    }
+    "pk": "72246000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1911,
-    "fields": {
-        "code": "72250000"
-    }
+    "pk": "72250000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1912,
-    "fields": {
-        "code": "72251000"
-    }
+    "pk": "72251000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1913,
-    "fields": {
-        "code": "72252000"
-    }
+    "pk": "72252000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1914,
-    "fields": {
-        "code": "72253000"
-    }
+    "pk": "72253000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1915,
-    "fields": {
-        "code": "72253100"
-    }
+    "pk": "72253100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1916,
-    "fields": {
-        "code": "72253200"
-    }
+    "pk": "72253200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1917,
-    "fields": {
-        "code": "72254000"
-    }
+    "pk": "72254000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1918,
-    "fields": {
-        "code": "72254100"
-    }
+    "pk": "72254100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1919,
-    "fields": {
-        "code": "72260000"
-    }
+    "pk": "72260000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1920,
-    "fields": {
-        "code": "72261000"
-    }
+    "pk": "72261000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1921,
-    "fields": {
-        "code": "72262000"
-    }
+    "pk": "72262000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1922,
-    "fields": {
-        "code": "72263000"
-    }
+    "pk": "72263000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1923,
-    "fields": {
-        "code": "72264000"
-    }
+    "pk": "72264000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1924,
-    "fields": {
-        "code": "72265000"
-    }
+    "pk": "72265000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1925,
-    "fields": {
-        "code": "72266000"
-    }
+    "pk": "72266000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1926,
-    "fields": {
-        "code": "72267000"
-    }
+    "pk": "72267000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1927,
-    "fields": {
-        "code": "72267100"
-    }
+    "pk": "72267100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1928,
-    "fields": {
-        "code": "72267200"
-    }
+    "pk": "72267200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1929,
-    "fields": {
-        "code": "72268000"
-    }
+    "pk": "72268000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1930,
-    "fields": {
-        "code": "72300000"
-    }
+    "pk": "72300000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1931,
-    "fields": {
-        "code": "72310000"
-    }
+    "pk": "72310000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1932,
-    "fields": {
-        "code": "72311000"
-    }
+    "pk": "72311000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1933,
-    "fields": {
-        "code": "72311100"
-    }
+    "pk": "72311100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1934,
-    "fields": {
-        "code": "72311200"
-    }
+    "pk": "72311200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1935,
-    "fields": {
-        "code": "72311300"
-    }
+    "pk": "72311300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1936,
-    "fields": {
-        "code": "72312000"
-    }
+    "pk": "72312000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1937,
-    "fields": {
-        "code": "72312100"
-    }
+    "pk": "72312100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1938,
-    "fields": {
-        "code": "72312200"
-    }
+    "pk": "72312200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1939,
-    "fields": {
-        "code": "72313000"
-    }
+    "pk": "72313000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1940,
-    "fields": {
-        "code": "72314000"
-    }
+    "pk": "72314000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1941,
-    "fields": {
-        "code": "72315000"
-    }
+    "pk": "72315000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1942,
-    "fields": {
-        "code": "72315100"
-    }
+    "pk": "72315100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1943,
-    "fields": {
-        "code": "72315200"
-    }
+    "pk": "72315200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1944,
-    "fields": {
-        "code": "72316000"
-    }
+    "pk": "72316000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1945,
-    "fields": {
-        "code": "72317000"
-    }
+    "pk": "72317000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1946,
-    "fields": {
-        "code": "72318000"
-    }
+    "pk": "72318000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1947,
-    "fields": {
-        "code": "72319000"
-    }
+    "pk": "72319000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1948,
-    "fields": {
-        "code": "72320000"
-    }
+    "pk": "72320000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1949,
-    "fields": {
-        "code": "72321000"
-    }
+    "pk": "72321000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1950,
-    "fields": {
-        "code": "72322000"
-    }
+    "pk": "72322000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1951,
-    "fields": {
-        "code": "72330000"
-    }
+    "pk": "72330000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1952,
-    "fields": {
-        "code": "72400000"
-    }
+    "pk": "72400000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1953,
-    "fields": {
-        "code": "72410000"
-    }
+    "pk": "72410000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1954,
-    "fields": {
-        "code": "72411000"
-    }
+    "pk": "72411000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1955,
-    "fields": {
-        "code": "72412000"
-    }
+    "pk": "72412000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1956,
-    "fields": {
-        "code": "72413000"
-    }
+    "pk": "72413000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1957,
-    "fields": {
-        "code": "72414000"
-    }
+    "pk": "72414000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1958,
-    "fields": {
-        "code": "72415000"
-    }
+    "pk": "72415000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1959,
-    "fields": {
-        "code": "72416000"
-    }
+    "pk": "72416000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1960,
-    "fields": {
-        "code": "72417000"
-    }
+    "pk": "72417000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1961,
-    "fields": {
-        "code": "72420000"
-    }
+    "pk": "72420000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1962,
-    "fields": {
-        "code": "72421000"
-    }
+    "pk": "72421000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1963,
-    "fields": {
-        "code": "72422000"
-    }
+    "pk": "72422000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1964,
-    "fields": {
-        "code": "72500000"
-    }
+    "pk": "72500000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1965,
-    "fields": {
-        "code": "72510000"
-    }
+    "pk": "72510000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1966,
-    "fields": {
-        "code": "72511000"
-    }
+    "pk": "72511000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1967,
-    "fields": {
-        "code": "72512000"
-    }
+    "pk": "72512000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1968,
-    "fields": {
-        "code": "72513000"
-    }
+    "pk": "72513000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1969,
-    "fields": {
-        "code": "72514000"
-    }
+    "pk": "72514000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1970,
-    "fields": {
-        "code": "72514100"
-    }
+    "pk": "72514100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1971,
-    "fields": {
-        "code": "72514200"
-    }
+    "pk": "72514200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1972,
-    "fields": {
-        "code": "72514300"
-    }
+    "pk": "72514300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1973,
-    "fields": {
-        "code": "72540000"
-    }
+    "pk": "72540000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1974,
-    "fields": {
-        "code": "72541000"
-    }
+    "pk": "72541000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1975,
-    "fields": {
-        "code": "72541100"
-    }
+    "pk": "72541100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1976,
-    "fields": {
-        "code": "72590000"
-    }
+    "pk": "72590000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1977,
-    "fields": {
-        "code": "72591000"
-    }
+    "pk": "72591000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1978,
-    "fields": {
-        "code": "72600000"
-    }
+    "pk": "72600000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1979,
-    "fields": {
-        "code": "72610000"
-    }
+    "pk": "72610000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1980,
-    "fields": {
-        "code": "72611000"
-    }
+    "pk": "72611000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1981,
-    "fields": {
-        "code": "72700000"
-    }
+    "pk": "72700000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1982,
-    "fields": {
-        "code": "72710000"
-    }
+    "pk": "72710000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1983,
-    "fields": {
-        "code": "72720000"
-    }
+    "pk": "72720000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1984,
-    "fields": {
-        "code": "72800000"
-    }
+    "pk": "72800000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1985,
-    "fields": {
-        "code": "72810000"
-    }
+    "pk": "72810000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1986,
-    "fields": {
-        "code": "72820000"
-    }
+    "pk": "72820000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1987,
-    "fields": {
-        "code": "72900000"
-    }
+    "pk": "72900000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1988,
-    "fields": {
-        "code": "72910000"
-    }
+    "pk": "72910000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1989,
-    "fields": {
-        "code": "72920000"
-    }
+    "pk": "72920000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1990,
-    "fields": {
-        "code": "90710000"
-    }
+    "pk": "73200000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1991,
-    "fields": {
-        "code": "90711000"
-    }
+    "pk": "79419000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1992,
-    "fields": {
-        "code": "90711100"
-    }
+    "pk": "90710000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1993,
-    "fields": {
-        "code": "90711200"
-    }
+    "pk": "90711000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1994,
-    "fields": {
-        "code": "90711300"
-    }
+    "pk": "90711100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1995,
-    "fields": {
-        "code": "90711400"
-    }
+    "pk": "90711200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1996,
-    "fields": {
-        "code": "90711500"
-    }
+    "pk": "90711300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1997,
-    "fields": {
-        "code": "90712000"
-    }
+    "pk": "90711400",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1998,
-    "fields": {
-        "code": "90712100"
-    }
+    "pk": "90711500",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 1999,
-    "fields": {
-        "code": "90712200"
-    }
+    "pk": "90712000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2000,
-    "fields": {
-        "code": "90712300"
-    }
+    "pk": "90712100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2001,
-    "fields": {
-        "code": "90712400"
-    }
+    "pk": "90712200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2002,
-    "fields": {
-        "code": "90712500"
-    }
+    "pk": "90712300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2003,
-    "fields": {
-        "code": "90713000"
-    }
+    "pk": "90712400",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2004,
-    "fields": {
-        "code": "90713100"
-    }
+    "pk": "90712500",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2005,
-    "fields": {
-        "code": "90714000"
-    }
+    "pk": "90713000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2006,
-    "fields": {
-        "code": "90714100"
-    }
+    "pk": "90713100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2007,
-    "fields": {
-        "code": "90714200"
-    }
+    "pk": "90714000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2008,
-    "fields": {
-        "code": "90714300"
-    }
+    "pk": "90714100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2009,
-    "fields": {
-        "code": "90714400"
-    }
+    "pk": "90714200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2010,
-    "fields": {
-        "code": "90714500"
-    }
+    "pk": "90714300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2011,
-    "fields": {
-        "code": "90714600"
-    }
+    "pk": "90714400",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2012,
-    "fields": {
-        "code": "90715000"
-    }
+    "pk": "90714500",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2013,
-    "fields": {
-        "code": "90715100"
-    }
+    "pk": "90714600",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2014,
-    "fields": {
-        "code": "90715110"
-    }
+    "pk": "90715000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2015,
-    "fields": {
-        "code": "90715120"
-    }
+    "pk": "90715100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2016,
-    "fields": {
-        "code": "90715200"
-    }
+    "pk": "90715110",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2017,
-    "fields": {
-        "code": "90715210"
-    }
+    "pk": "90715120",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2018,
-    "fields": {
-        "code": "90715220"
-    }
+    "pk": "90715200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2019,
-    "fields": {
-        "code": "90715230"
-    }
+    "pk": "90715210",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2020,
-    "fields": {
-        "code": "90715240"
-    }
+    "pk": "90715220",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2021,
-    "fields": {
-        "code": "90715250"
-    }
+    "pk": "90715230",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2022,
-    "fields": {
-        "code": "90715260"
-    }
+    "pk": "90715240",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2023,
-    "fields": {
-        "code": "90715270"
-    }
+    "pk": "90715250",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2024,
-    "fields": {
-        "code": "90715280"
-    }
+    "pk": "90715260",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2025,
-    "fields": {
-        "code": "90720000"
-    }
+    "pk": "90715270",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2026,
-    "fields": {
-        "code": "90721000"
-    }
+    "pk": "90715280",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2027,
-    "fields": {
-        "code": "90721100"
-    }
+    "pk": "90720000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2028,
-    "fields": {
-        "code": "90721200"
-    }
+    "pk": "90721000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2029,
-    "fields": {
-        "code": "90721300"
-    }
+    "pk": "90721100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2030,
-    "fields": {
-        "code": "90721400"
-    }
+    "pk": "90721200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2031,
-    "fields": {
-        "code": "90721500"
-    }
+    "pk": "90721300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2032,
-    "fields": {
-        "code": "90721600"
-    }
+    "pk": "90721400",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2033,
-    "fields": {
-        "code": "90721700"
-    }
+    "pk": "90721500",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2034,
-    "fields": {
-        "code": "90721800"
-    }
+    "pk": "90721600",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2035,
-    "fields": {
-        "code": "90722000"
-    }
+    "pk": "90721700",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2036,
-    "fields": {
-        "code": "90722100"
-    }
+    "pk": "90721800",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2037,
-    "fields": {
-        "code": "90722200"
-    }
+    "pk": "90722000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2038,
-    "fields": {
-        "code": "90722300"
-    }
+    "pk": "90722100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2039,
-    "fields": {
-        "code": "90730000"
-    }
+    "pk": "90722200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2040,
-    "fields": {
-        "code": "90731000"
-    }
+    "pk": "90722300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2041,
-    "fields": {
-        "code": "90731100"
-    }
+    "pk": "90730000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2042,
-    "fields": {
-        "code": "90731200"
-    }
+    "pk": "90731000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2043,
-    "fields": {
-        "code": "90731210"
-    }
+    "pk": "90731100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2044,
-    "fields": {
-        "code": "90731300"
-    }
+    "pk": "90731200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2045,
-    "fields": {
-        "code": "90731400"
-    }
+    "pk": "90731210",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2046,
-    "fields": {
-        "code": "90731500"
-    }
+    "pk": "90731300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2047,
-    "fields": {
-        "code": "90731600"
-    }
+    "pk": "90731400",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2048,
-    "fields": {
-        "code": "90731700"
-    }
+    "pk": "90731500",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2049,
-    "fields": {
-        "code": "90731800"
-    }
+    "pk": "90731600",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2050,
-    "fields": {
-        "code": "90731900"
-    }
+    "pk": "90731700",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2051,
-    "fields": {
-        "code": "90732000"
-    }
+    "pk": "90731800",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2052,
-    "fields": {
-        "code": "90732100"
-    }
+    "pk": "90731900",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2053,
-    "fields": {
-        "code": "90732200"
-    }
+    "pk": "90732000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2054,
-    "fields": {
-        "code": "90732300"
-    }
+    "pk": "90732100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2055,
-    "fields": {
-        "code": "90732400"
-    }
+    "pk": "90732200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2056,
-    "fields": {
-        "code": "90732500"
-    }
+    "pk": "90732300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2057,
-    "fields": {
-        "code": "90732600"
-    }
+    "pk": "90732400",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2058,
-    "fields": {
-        "code": "90732700"
-    }
+    "pk": "90732500",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2059,
-    "fields": {
-        "code": "90732800"
-    }
+    "pk": "90732600",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2060,
-    "fields": {
-        "code": "90732900"
-    }
+    "pk": "90732700",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2061,
-    "fields": {
-        "code": "90732910"
-    }
+    "pk": "90732800",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2062,
-    "fields": {
-        "code": "90732920"
-    }
+    "pk": "90732900",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2063,
-    "fields": {
-        "code": "90733000"
-    }
+    "pk": "90732910",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2064,
-    "fields": {
-        "code": "90733100"
-    }
+    "pk": "90732920",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2065,
-    "fields": {
-        "code": "90733200"
-    }
+    "pk": "90733000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2066,
-    "fields": {
-        "code": "90733300"
-    }
+    "pk": "90733100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2067,
-    "fields": {
-        "code": "90733400"
-    }
+    "pk": "90733200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2068,
-    "fields": {
-        "code": "90733500"
-    }
+    "pk": "90733300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2069,
-    "fields": {
-        "code": "90733600"
-    }
+    "pk": "90733400",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2070,
-    "fields": {
-        "code": "90733700"
-    }
+    "pk": "90733500",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2071,
-    "fields": {
-        "code": "90733800"
-    }
+    "pk": "90733600",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2072,
-    "fields": {
-        "code": "90733900"
-    }
+    "pk": "90733700",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2073,
-    "fields": {
-        "code": "90740000"
-    }
+    "pk": "90733800",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2074,
-    "fields": {
-        "code": "90741000"
-    }
+    "pk": "90733900",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2075,
-    "fields": {
-        "code": "90741100"
-    }
+    "pk": "90740000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2076,
-    "fields": {
-        "code": "90741200"
-    }
+    "pk": "90741000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2077,
-    "fields": {
-        "code": "90741300"
-    }
+    "pk": "90741100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2078,
-    "fields": {
-        "code": "90742000"
-    }
+    "pk": "90741200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2079,
-    "fields": {
-        "code": "90742100"
-    }
+    "pk": "90741300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2080,
-    "fields": {
-        "code": "90742200"
-    }
+    "pk": "90742000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2081,
-    "fields": {
-        "code": "90742300"
-    }
+    "pk": "90742100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2082,
-    "fields": {
-        "code": "90742400"
-    }
+    "pk": "90742200",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2083,
-    "fields": {
-        "code": "90743000"
-    }
+    "pk": "90742300",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2084,
-    "fields": {
-        "code": "90743100"
-    }
+    "pk": "90742400",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2085,
-    "fields": {
-        "code": "90743200"
-    }
+    "pk": "90743000",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2086,
-    "fields": {
-        "code": "73200000"
-    }
+    "pk": "90743100",
+    "fields": {}
 },
 {
     "model": "app.cpvcode",
-    "pk": 2087,
-    "fields": {
-        "code": "79419000"
-    }
+    "pk": "90743200",
+    "fields": {}
 }
 ]
