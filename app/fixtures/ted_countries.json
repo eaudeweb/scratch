@@ -1,0 +1,142 @@
+[
+{
+    "model": "app.tedcountry",
+    "pk": "AT",
+    "fields": {}
+},
+{
+    "model": "app.tedcountry",
+    "pk": "BE",
+    "fields": {}
+},
+{
+    "model": "app.tedcountry",
+    "pk": "BG",
+    "fields": {}
+},
+{
+    "model": "app.tedcountry",
+    "pk": "CY",
+    "fields": {}
+},
+{
+    "model": "app.tedcountry",
+    "pk": "CZ",
+    "fields": {}
+},
+{
+    "model": "app.tedcountry",
+    "pk": "DE",
+    "fields": {}
+},
+{
+    "model": "app.tedcountry",
+    "pk": "DK",
+    "fields": {}
+},
+{
+    "model": "app.tedcountry",
+    "pk": "EE",
+    "fields": {}
+},
+{
+    "model": "app.tedcountry",
+    "pk": "ES",
+    "fields": {}
+},
+{
+    "model": "app.tedcountry",
+    "pk": "FI",
+    "fields": {}
+},
+{
+    "model": "app.tedcountry",
+    "pk": "FR",
+    "fields": {}
+},
+{
+    "model": "app.tedcountry",
+    "pk": "GR",
+    "fields": {}
+},
+{
+    "model": "app.tedcountry",
+    "pk": "HR",
+    "fields": {}
+},
+{
+    "model": "app.tedcountry",
+    "pk": "HU",
+    "fields": {}
+},
+{
+    "model": "app.tedcountry",
+    "pk": "IE",
+    "fields": {}
+},
+{
+    "model": "app.tedcountry",
+    "pk": "IT",
+    "fields": {}
+},
+{
+    "model": "app.tedcountry",
+    "pk": "LT",
+    "fields": {}
+},
+{
+    "model": "app.tedcountry",
+    "pk": "LU",
+    "fields": {}
+},
+{
+    "model": "app.tedcountry",
+    "pk": "LV",
+    "fields": {}
+},
+{
+    "model": "app.tedcountry",
+    "pk": "MT",
+    "fields": {}
+},
+{
+    "model": "app.tedcountry",
+    "pk": "NL",
+    "fields": {}
+},
+{
+    "model": "app.tedcountry",
+    "pk": "PL",
+    "fields": {}
+},
+{
+    "model": "app.tedcountry",
+    "pk": "PT",
+    "fields": {}
+},
+{
+    "model": "app.tedcountry",
+    "pk": "RO",
+    "fields": {}
+},
+{
+    "model": "app.tedcountry",
+    "pk": "SE",
+    "fields": {}
+},
+{
+    "model": "app.tedcountry",
+    "pk": "SI",
+    "fields": {}
+},
+{
+    "model": "app.tedcountry",
+    "pk": "SK",
+    "fields": {}
+},
+{
+    "model": "app.tedcountry",
+    "pk": "UK",
+    "fields": {}
+}
+]
