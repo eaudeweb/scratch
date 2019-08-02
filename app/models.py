@@ -108,3 +108,7 @@ class UNSPSCCode(models.Model):
 
 class CPVCode(models.Model):
     code = models.CharField(max_length=1024, primary_key=True)
+
+
+class TedCountry(models.Model):
+    name = models.CharField(max_length=1024, primary_key=True)
