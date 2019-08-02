@@ -1,0 +1,6645 @@
+[
+{
+    "model": "app.cpvcode",
+    "pk": 1139,
+    "fields": {
+        "code": "30000000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1140,
+    "fields": {
+        "code": "30100000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1141,
+    "fields": {
+        "code": "30110000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1142,
+    "fields": {
+        "code": "30111000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1143,
+    "fields": {
+        "code": "30120000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1144,
+    "fields": {
+        "code": "30121000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1145,
+    "fields": {
+        "code": "30121100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1146,
+    "fields": {
+        "code": "30121200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1147,
+    "fields": {
+        "code": "30121300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1148,
+    "fields": {
+        "code": "30121400"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1149,
+    "fields": {
+        "code": "30121410"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1150,
+    "fields": {
+        "code": "30121420"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1151,
+    "fields": {
+        "code": "30121430"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1152,
+    "fields": {
+        "code": "30122000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1153,
+    "fields": {
+        "code": "30122100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1154,
+    "fields": {
+        "code": "30122200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1155,
+    "fields": {
+        "code": "30123000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1156,
+    "fields": {
+        "code": "30123100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1157,
+    "fields": {
+        "code": "30123200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1158,
+    "fields": {
+        "code": "30123300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1159,
+    "fields": {
+        "code": "30123400"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1160,
+    "fields": {
+        "code": "30123500"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1161,
+    "fields": {
+        "code": "30123600"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1162,
+    "fields": {
+        "code": "30123610"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1163,
+    "fields": {
+        "code": "30123620"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1164,
+    "fields": {
+        "code": "30123630"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1165,
+    "fields": {
+        "code": "30124000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1166,
+    "fields": {
+        "code": "30124100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1167,
+    "fields": {
+        "code": "30124110"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1168,
+    "fields": {
+        "code": "30124120"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1169,
+    "fields": {
+        "code": "30124130"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1170,
+    "fields": {
+        "code": "30124140"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1171,
+    "fields": {
+        "code": "30124150"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1172,
+    "fields": {
+        "code": "30124200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1173,
+    "fields": {
+        "code": "30124300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1174,
+    "fields": {
+        "code": "30124400"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1175,
+    "fields": {
+        "code": "30124500"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1176,
+    "fields": {
+        "code": "30124510"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1177,
+    "fields": {
+        "code": "30124520"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1178,
+    "fields": {
+        "code": "30124530"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1179,
+    "fields": {
+        "code": "30125000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1180,
+    "fields": {
+        "code": "30125100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1181,
+    "fields": {
+        "code": "30125110"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1182,
+    "fields": {
+        "code": "30125120"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1183,
+    "fields": {
+        "code": "30125130"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1184,
+    "fields": {
+        "code": "30130000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1185,
+    "fields": {
+        "code": "30131000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1186,
+    "fields": {
+        "code": "30131100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1187,
+    "fields": {
+        "code": "30131200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1188,
+    "fields": {
+        "code": "30131300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1189,
+    "fields": {
+        "code": "30131400"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1190,
+    "fields": {
+        "code": "30131500"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1191,
+    "fields": {
+        "code": "30131600"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1192,
+    "fields": {
+        "code": "30131700"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1193,
+    "fields": {
+        "code": "30131800"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1194,
+    "fields": {
+        "code": "30132000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1195,
+    "fields": {
+        "code": "30132100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1196,
+    "fields": {
+        "code": "30132200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1197,
+    "fields": {
+        "code": "30132300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1198,
+    "fields": {
+        "code": "30133000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1199,
+    "fields": {
+        "code": "30133100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1200,
+    "fields": {
+        "code": "30140000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1201,
+    "fields": {
+        "code": "30141000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1202,
+    "fields": {
+        "code": "30141100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1203,
+    "fields": {
+        "code": "30141200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1204,
+    "fields": {
+        "code": "30141300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1205,
+    "fields": {
+        "code": "30141400"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1206,
+    "fields": {
+        "code": "30142000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1207,
+    "fields": {
+        "code": "30142100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1208,
+    "fields": {
+        "code": "30142200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1209,
+    "fields": {
+        "code": "30144000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1210,
+    "fields": {
+        "code": "30144100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1211,
+    "fields": {
+        "code": "30144200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1212,
+    "fields": {
+        "code": "30144300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1213,
+    "fields": {
+        "code": "30144400"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1214,
+    "fields": {
+        "code": "30145000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1215,
+    "fields": {
+        "code": "30145100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1216,
+    "fields": {
+        "code": "30150000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1217,
+    "fields": {
+        "code": "30151000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1218,
+    "fields": {
+        "code": "30152000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1219,
+    "fields": {
+        "code": "30160000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1220,
+    "fields": {
+        "code": "30161000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1221,
+    "fields": {
+        "code": "30162000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1222,
+    "fields": {
+        "code": "30163000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1223,
+    "fields": {
+        "code": "30163100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1224,
+    "fields": {
+        "code": "30170000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1225,
+    "fields": {
+        "code": "30171000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1226,
+    "fields": {
+        "code": "30172000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1227,
+    "fields": {
+        "code": "30173000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1228,
+    "fields": {
+        "code": "30174000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1229,
+    "fields": {
+        "code": "30175000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1230,
+    "fields": {
+        "code": "30176000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1231,
+    "fields": {
+        "code": "30177000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1232,
+    "fields": {
+        "code": "30178000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1233,
+    "fields": {
+        "code": "30179000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1234,
+    "fields": {
+        "code": "30180000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1235,
+    "fields": {
+        "code": "30181000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1236,
+    "fields": {
+        "code": "30182000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1237,
+    "fields": {
+        "code": "30190000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1238,
+    "fields": {
+        "code": "30191000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1239,
+    "fields": {
+        "code": "30191100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1240,
+    "fields": {
+        "code": "30191110"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1241,
+    "fields": {
+        "code": "30191120"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1242,
+    "fields": {
+        "code": "30191130"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1243,
+    "fields": {
+        "code": "30191140"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1244,
+    "fields": {
+        "code": "30191200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1245,
+    "fields": {
+        "code": "30191400"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1246,
+    "fields": {
+        "code": "30192000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1247,
+    "fields": {
+        "code": "30192100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1248,
+    "fields": {
+        "code": "30192110"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1249,
+    "fields": {
+        "code": "30192111"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1250,
+    "fields": {
+        "code": "30192112"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1251,
+    "fields": {
+        "code": "30192113"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1252,
+    "fields": {
+        "code": "30192121"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1253,
+    "fields": {
+        "code": "30192122"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1254,
+    "fields": {
+        "code": "30192123"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1255,
+    "fields": {
+        "code": "30192124"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1256,
+    "fields": {
+        "code": "30192125"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1257,
+    "fields": {
+        "code": "30192126"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1258,
+    "fields": {
+        "code": "30192127"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1259,
+    "fields": {
+        "code": "30192130"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1260,
+    "fields": {
+        "code": "30192131"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1261,
+    "fields": {
+        "code": "30192132"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1262,
+    "fields": {
+        "code": "30192133"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1263,
+    "fields": {
+        "code": "30192134"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1264,
+    "fields": {
+        "code": "30192150"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1265,
+    "fields": {
+        "code": "30192151"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1266,
+    "fields": {
+        "code": "30192152"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1267,
+    "fields": {
+        "code": "30192153"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1268,
+    "fields": {
+        "code": "30192154"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1269,
+    "fields": {
+        "code": "30192155"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1270,
+    "fields": {
+        "code": "30192160"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1271,
+    "fields": {
+        "code": "30192170"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1272,
+    "fields": {
+        "code": "30192200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1273,
+    "fields": {
+        "code": "30192300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1274,
+    "fields": {
+        "code": "30192310"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1275,
+    "fields": {
+        "code": "30192320"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1276,
+    "fields": {
+        "code": "30192330"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1277,
+    "fields": {
+        "code": "30192340"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1278,
+    "fields": {
+        "code": "30192350"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1279,
+    "fields": {
+        "code": "30192400"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1280,
+    "fields": {
+        "code": "30192500"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1281,
+    "fields": {
+        "code": "30192600"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1282,
+    "fields": {
+        "code": "30192700"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1283,
+    "fields": {
+        "code": "30192800"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1284,
+    "fields": {
+        "code": "30192900"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1285,
+    "fields": {
+        "code": "30192910"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1286,
+    "fields": {
+        "code": "30192920"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1287,
+    "fields": {
+        "code": "30192930"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1288,
+    "fields": {
+        "code": "30192940"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1289,
+    "fields": {
+        "code": "30192950"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1290,
+    "fields": {
+        "code": "30193000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1291,
+    "fields": {
+        "code": "30193100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1292,
+    "fields": {
+        "code": "30193200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1293,
+    "fields": {
+        "code": "30193300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1294,
+    "fields": {
+        "code": "30193400"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1295,
+    "fields": {
+        "code": "30193500"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1296,
+    "fields": {
+        "code": "30193600"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1297,
+    "fields": {
+        "code": "30193700"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1298,
+    "fields": {
+        "code": "30193800"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1299,
+    "fields": {
+        "code": "30193900"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1300,
+    "fields": {
+        "code": "30194000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1301,
+    "fields": {
+        "code": "30194100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1302,
+    "fields": {
+        "code": "30194200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1303,
+    "fields": {
+        "code": "30194210"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1304,
+    "fields": {
+        "code": "30194220"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1305,
+    "fields": {
+        "code": "30194300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1306,
+    "fields": {
+        "code": "30194310"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1307,
+    "fields": {
+        "code": "30194320"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1308,
+    "fields": {
+        "code": "30194400"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1309,
+    "fields": {
+        "code": "30194500"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1310,
+    "fields": {
+        "code": "30194600"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1311,
+    "fields": {
+        "code": "30194700"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1312,
+    "fields": {
+        "code": "30194800"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1313,
+    "fields": {
+        "code": "30194810"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1314,
+    "fields": {
+        "code": "30194820"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1315,
+    "fields": {
+        "code": "30194900"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1316,
+    "fields": {
+        "code": "30195000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1317,
+    "fields": {
+        "code": "30195100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1318,
+    "fields": {
+        "code": "30195200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1319,
+    "fields": {
+        "code": "30195300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1320,
+    "fields": {
+        "code": "30195400"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1321,
+    "fields": {
+        "code": "30195500"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1322,
+    "fields": {
+        "code": "30195600"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1323,
+    "fields": {
+        "code": "30195700"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1324,
+    "fields": {
+        "code": "30195800"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1325,
+    "fields": {
+        "code": "30195900"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1326,
+    "fields": {
+        "code": "30195910"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1327,
+    "fields": {
+        "code": "30195911"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1328,
+    "fields": {
+        "code": "30195912"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1329,
+    "fields": {
+        "code": "30195913"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1330,
+    "fields": {
+        "code": "30195920"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1331,
+    "fields": {
+        "code": "30195921"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1332,
+    "fields": {
+        "code": "30196000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1333,
+    "fields": {
+        "code": "30196100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1334,
+    "fields": {
+        "code": "30196200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1335,
+    "fields": {
+        "code": "30196300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1336,
+    "fields": {
+        "code": "30197000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1337,
+    "fields": {
+        "code": "30197100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1338,
+    "fields": {
+        "code": "30197110"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1339,
+    "fields": {
+        "code": "30197120"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1340,
+    "fields": {
+        "code": "30197130"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1341,
+    "fields": {
+        "code": "30197200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1342,
+    "fields": {
+        "code": "30197210"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1343,
+    "fields": {
+        "code": "30197220"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1344,
+    "fields": {
+        "code": "30197221"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1345,
+    "fields": {
+        "code": "30197300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1346,
+    "fields": {
+        "code": "30197310"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1347,
+    "fields": {
+        "code": "30197320"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1348,
+    "fields": {
+        "code": "30197321"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1349,
+    "fields": {
+        "code": "30197330"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1350,
+    "fields": {
+        "code": "30197400"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1351,
+    "fields": {
+        "code": "30197500"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1352,
+    "fields": {
+        "code": "30197510"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1353,
+    "fields": {
+        "code": "30197600"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1354,
+    "fields": {
+        "code": "30197610"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1355,
+    "fields": {
+        "code": "30197620"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1356,
+    "fields": {
+        "code": "30197621"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1357,
+    "fields": {
+        "code": "30197630"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1358,
+    "fields": {
+        "code": "30197640"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1359,
+    "fields": {
+        "code": "30197641"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1360,
+    "fields": {
+        "code": "30197642"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1361,
+    "fields": {
+        "code": "30197643"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1362,
+    "fields": {
+        "code": "30197644"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1363,
+    "fields": {
+        "code": "30197645"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1364,
+    "fields": {
+        "code": "30198000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1365,
+    "fields": {
+        "code": "30198100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1366,
+    "fields": {
+        "code": "30199000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1367,
+    "fields": {
+        "code": "30199100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1368,
+    "fields": {
+        "code": "30199110"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1369,
+    "fields": {
+        "code": "30199120"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1370,
+    "fields": {
+        "code": "30199130"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1371,
+    "fields": {
+        "code": "30199140"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1372,
+    "fields": {
+        "code": "30199200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1373,
+    "fields": {
+        "code": "30199210"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1374,
+    "fields": {
+        "code": "30199220"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1375,
+    "fields": {
+        "code": "30199230"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1376,
+    "fields": {
+        "code": "30199240"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1377,
+    "fields": {
+        "code": "30199300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1378,
+    "fields": {
+        "code": "30199310"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1379,
+    "fields": {
+        "code": "30199320"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1380,
+    "fields": {
+        "code": "30199330"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1381,
+    "fields": {
+        "code": "30199340"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1382,
+    "fields": {
+        "code": "30199400"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1383,
+    "fields": {
+        "code": "30199410"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1384,
+    "fields": {
+        "code": "30199500"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1385,
+    "fields": {
+        "code": "30199600"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1386,
+    "fields": {
+        "code": "30199700"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1387,
+    "fields": {
+        "code": "30199710"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1388,
+    "fields": {
+        "code": "30199711"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1389,
+    "fields": {
+        "code": "30199712"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1390,
+    "fields": {
+        "code": "30199713"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1391,
+    "fields": {
+        "code": "30199720"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1392,
+    "fields": {
+        "code": "30199730"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1393,
+    "fields": {
+        "code": "30199731"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1394,
+    "fields": {
+        "code": "30199740"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1395,
+    "fields": {
+        "code": "30199750"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1396,
+    "fields": {
+        "code": "30199760"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1397,
+    "fields": {
+        "code": "30199761"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1398,
+    "fields": {
+        "code": "30199762"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1399,
+    "fields": {
+        "code": "30199763"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1400,
+    "fields": {
+        "code": "30199770"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1401,
+    "fields": {
+        "code": "30199780"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1402,
+    "fields": {
+        "code": "30199790"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1403,
+    "fields": {
+        "code": "30199791"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1404,
+    "fields": {
+        "code": "30199792"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1405,
+    "fields": {
+        "code": "30199793"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1406,
+    "fields": {
+        "code": "30200000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1407,
+    "fields": {
+        "code": "30210000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1408,
+    "fields": {
+        "code": "30211000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1409,
+    "fields": {
+        "code": "30211100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1410,
+    "fields": {
+        "code": "30211200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1411,
+    "fields": {
+        "code": "30211300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1412,
+    "fields": {
+        "code": "30211400"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1413,
+    "fields": {
+        "code": "30211500"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1414,
+    "fields": {
+        "code": "30212000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1415,
+    "fields": {
+        "code": "30212100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1416,
+    "fields": {
+        "code": "30213000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1417,
+    "fields": {
+        "code": "30213100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1418,
+    "fields": {
+        "code": "30213200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1419,
+    "fields": {
+        "code": "30213300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1420,
+    "fields": {
+        "code": "30213400"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1421,
+    "fields": {
+        "code": "30213500"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1422,
+    "fields": {
+        "code": "30214000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1423,
+    "fields": {
+        "code": "30215000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1424,
+    "fields": {
+        "code": "30215100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1425,
+    "fields": {
+        "code": "30216000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1426,
+    "fields": {
+        "code": "30216100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1427,
+    "fields": {
+        "code": "30216110"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1428,
+    "fields": {
+        "code": "30216120"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1429,
+    "fields": {
+        "code": "30216130"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1430,
+    "fields": {
+        "code": "30216200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1431,
+    "fields": {
+        "code": "30216300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1432,
+    "fields": {
+        "code": "30220000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1433,
+    "fields": {
+        "code": "30221000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1434,
+    "fields": {
+        "code": "30230000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1435,
+    "fields": {
+        "code": "30231000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1436,
+    "fields": {
+        "code": "30231100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1437,
+    "fields": {
+        "code": "30231200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1438,
+    "fields": {
+        "code": "30231300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1439,
+    "fields": {
+        "code": "30231310"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1440,
+    "fields": {
+        "code": "30231320"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1441,
+    "fields": {
+        "code": "30232000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1442,
+    "fields": {
+        "code": "30232100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1443,
+    "fields": {
+        "code": "30232110"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1444,
+    "fields": {
+        "code": "30232120"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1445,
+    "fields": {
+        "code": "30232130"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1446,
+    "fields": {
+        "code": "30232140"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1447,
+    "fields": {
+        "code": "30232150"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1448,
+    "fields": {
+        "code": "30232600"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1449,
+    "fields": {
+        "code": "30232700"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1450,
+    "fields": {
+        "code": "30233000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1451,
+    "fields": {
+        "code": "30233100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1452,
+    "fields": {
+        "code": "30233110"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1453,
+    "fields": {
+        "code": "30233120"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1454,
+    "fields": {
+        "code": "30233130"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1455,
+    "fields": {
+        "code": "30233131"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1456,
+    "fields": {
+        "code": "30233132"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1457,
+    "fields": {
+        "code": "30233140"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1458,
+    "fields": {
+        "code": "30233141"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1459,
+    "fields": {
+        "code": "30233150"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1460,
+    "fields": {
+        "code": "30233151"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1461,
+    "fields": {
+        "code": "30233152"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1462,
+    "fields": {
+        "code": "30233153"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1463,
+    "fields": {
+        "code": "30233160"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1464,
+    "fields": {
+        "code": "30233161"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1465,
+    "fields": {
+        "code": "30233170"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1466,
+    "fields": {
+        "code": "30233180"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1467,
+    "fields": {
+        "code": "30233190"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1468,
+    "fields": {
+        "code": "30233300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1469,
+    "fields": {
+        "code": "30233310"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1470,
+    "fields": {
+        "code": "30233320"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1471,
+    "fields": {
+        "code": "30234000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1472,
+    "fields": {
+        "code": "30234100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1473,
+    "fields": {
+        "code": "30234200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1474,
+    "fields": {
+        "code": "30234300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1475,
+    "fields": {
+        "code": "30234400"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1476,
+    "fields": {
+        "code": "30234500"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1477,
+    "fields": {
+        "code": "30234600"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1478,
+    "fields": {
+        "code": "30234700"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1479,
+    "fields": {
+        "code": "30236000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1480,
+    "fields": {
+        "code": "30236100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1481,
+    "fields": {
+        "code": "30236110"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1482,
+    "fields": {
+        "code": "30236111"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1483,
+    "fields": {
+        "code": "30236112"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1484,
+    "fields": {
+        "code": "30236113"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1485,
+    "fields": {
+        "code": "30236114"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1486,
+    "fields": {
+        "code": "30236115"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1487,
+    "fields": {
+        "code": "30236120"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1488,
+    "fields": {
+        "code": "30236121"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1489,
+    "fields": {
+        "code": "30236122"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1490,
+    "fields": {
+        "code": "30236123"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1491,
+    "fields": {
+        "code": "30236200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1492,
+    "fields": {
+        "code": "30237000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1493,
+    "fields": {
+        "code": "30237100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1494,
+    "fields": {
+        "code": "30237110"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1495,
+    "fields": {
+        "code": "30237120"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1496,
+    "fields": {
+        "code": "30237121"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1497,
+    "fields": {
+        "code": "30237130"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1498,
+    "fields": {
+        "code": "30237131"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1499,
+    "fields": {
+        "code": "30237132"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1500,
+    "fields": {
+        "code": "30237133"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1501,
+    "fields": {
+        "code": "30237134"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1502,
+    "fields": {
+        "code": "30237135"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1503,
+    "fields": {
+        "code": "30237136"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1504,
+    "fields": {
+        "code": "30237140"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1505,
+    "fields": {
+        "code": "30237200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1506,
+    "fields": {
+        "code": "30237210"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1507,
+    "fields": {
+        "code": "30237220"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1508,
+    "fields": {
+        "code": "30237230"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1509,
+    "fields": {
+        "code": "30237240"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1510,
+    "fields": {
+        "code": "30237250"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1511,
+    "fields": {
+        "code": "30237251"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1512,
+    "fields": {
+        "code": "30237252"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1513,
+    "fields": {
+        "code": "30237253"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1514,
+    "fields": {
+        "code": "30237260"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1515,
+    "fields": {
+        "code": "30237270"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1516,
+    "fields": {
+        "code": "30237280"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1517,
+    "fields": {
+        "code": "30237290"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1518,
+    "fields": {
+        "code": "30237295"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1519,
+    "fields": {
+        "code": "30237300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1520,
+    "fields": {
+        "code": "30237310"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1521,
+    "fields": {
+        "code": "30237320"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1522,
+    "fields": {
+        "code": "30237330"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1523,
+    "fields": {
+        "code": "30237340"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1524,
+    "fields": {
+        "code": "30237350"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1525,
+    "fields": {
+        "code": "30237360"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1526,
+    "fields": {
+        "code": "30237370"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1527,
+    "fields": {
+        "code": "30237380"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1528,
+    "fields": {
+        "code": "30237400"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1529,
+    "fields": {
+        "code": "30237410"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1530,
+    "fields": {
+        "code": "30237420"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1531,
+    "fields": {
+        "code": "30237430"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1532,
+    "fields": {
+        "code": "30237440"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1533,
+    "fields": {
+        "code": "30237450"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1534,
+    "fields": {
+        "code": "30237460"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1535,
+    "fields": {
+        "code": "30237461"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1536,
+    "fields": {
+        "code": "30237470"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1537,
+    "fields": {
+        "code": "30237475"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1538,
+    "fields": {
+        "code": "30237480"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1539,
+    "fields": {
+        "code": "30238000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1540,
+    "fields": {
+        "code": "48000000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1541,
+    "fields": {
+        "code": "48100000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1542,
+    "fields": {
+        "code": "48110000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1543,
+    "fields": {
+        "code": "48120000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1544,
+    "fields": {
+        "code": "48121000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1545,
+    "fields": {
+        "code": "48130000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1546,
+    "fields": {
+        "code": "48131000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1547,
+    "fields": {
+        "code": "48132000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1548,
+    "fields": {
+        "code": "48140000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1549,
+    "fields": {
+        "code": "48150000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1550,
+    "fields": {
+        "code": "48151000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1551,
+    "fields": {
+        "code": "48160000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1552,
+    "fields": {
+        "code": "48161000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1553,
+    "fields": {
+        "code": "48170000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1554,
+    "fields": {
+        "code": "48180000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1555,
+    "fields": {
+        "code": "48190000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1556,
+    "fields": {
+        "code": "48200000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1557,
+    "fields": {
+        "code": "48210000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1558,
+    "fields": {
+        "code": "48211000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1559,
+    "fields": {
+        "code": "48212000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1560,
+    "fields": {
+        "code": "48213000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1561,
+    "fields": {
+        "code": "48214000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1562,
+    "fields": {
+        "code": "48215000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1563,
+    "fields": {
+        "code": "48216000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1564,
+    "fields": {
+        "code": "48217000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1565,
+    "fields": {
+        "code": "48217100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1566,
+    "fields": {
+        "code": "48217200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1567,
+    "fields": {
+        "code": "48217300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1568,
+    "fields": {
+        "code": "48218000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1569,
+    "fields": {
+        "code": "48219000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1570,
+    "fields": {
+        "code": "48219100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1571,
+    "fields": {
+        "code": "48219200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1572,
+    "fields": {
+        "code": "48219300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1573,
+    "fields": {
+        "code": "48219400"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1574,
+    "fields": {
+        "code": "48219500"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1575,
+    "fields": {
+        "code": "48219600"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1576,
+    "fields": {
+        "code": "48219700"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1577,
+    "fields": {
+        "code": "48219800"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1578,
+    "fields": {
+        "code": "48220000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1579,
+    "fields": {
+        "code": "48221000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1580,
+    "fields": {
+        "code": "48222000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1581,
+    "fields": {
+        "code": "48223000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1582,
+    "fields": {
+        "code": "48224000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1583,
+    "fields": {
+        "code": "48300000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1584,
+    "fields": {
+        "code": "48310000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1585,
+    "fields": {
+        "code": "48311000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1586,
+    "fields": {
+        "code": "48311100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1587,
+    "fields": {
+        "code": "48312000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1588,
+    "fields": {
+        "code": "48313000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1589,
+    "fields": {
+        "code": "48313100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1590,
+    "fields": {
+        "code": "48314000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1591,
+    "fields": {
+        "code": "48315000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1592,
+    "fields": {
+        "code": "48316000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1593,
+    "fields": {
+        "code": "48317000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1594,
+    "fields": {
+        "code": "48318000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1595,
+    "fields": {
+        "code": "48319000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1596,
+    "fields": {
+        "code": "48320000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1597,
+    "fields": {
+        "code": "48321000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1598,
+    "fields": {
+        "code": "48321100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1599,
+    "fields": {
+        "code": "48322000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1600,
+    "fields": {
+        "code": "48323000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1601,
+    "fields": {
+        "code": "48324000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1602,
+    "fields": {
+        "code": "48325000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1603,
+    "fields": {
+        "code": "48326000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1604,
+    "fields": {
+        "code": "48326100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1605,
+    "fields": {
+        "code": "48327000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1606,
+    "fields": {
+        "code": "48328000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1607,
+    "fields": {
+        "code": "48329000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1608,
+    "fields": {
+        "code": "48330000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1609,
+    "fields": {
+        "code": "48331000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1610,
+    "fields": {
+        "code": "48332000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1611,
+    "fields": {
+        "code": "48333000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1612,
+    "fields": {
+        "code": "48400000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1613,
+    "fields": {
+        "code": "48410000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1614,
+    "fields": {
+        "code": "48411000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1615,
+    "fields": {
+        "code": "48412000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1616,
+    "fields": {
+        "code": "48420000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1617,
+    "fields": {
+        "code": "48421000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1618,
+    "fields": {
+        "code": "48422000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1619,
+    "fields": {
+        "code": "48430000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1620,
+    "fields": {
+        "code": "48440000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1621,
+    "fields": {
+        "code": "48441000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1622,
+    "fields": {
+        "code": "48442000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1623,
+    "fields": {
+        "code": "48443000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1624,
+    "fields": {
+        "code": "48444000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1625,
+    "fields": {
+        "code": "48444100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1626,
+    "fields": {
+        "code": "48445000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1627,
+    "fields": {
+        "code": "48450000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1628,
+    "fields": {
+        "code": "48451000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1629,
+    "fields": {
+        "code": "48460000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1630,
+    "fields": {
+        "code": "48461000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1631,
+    "fields": {
+        "code": "48462000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1632,
+    "fields": {
+        "code": "48463000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1633,
+    "fields": {
+        "code": "48470000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1634,
+    "fields": {
+        "code": "48480000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1635,
+    "fields": {
+        "code": "48481000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1636,
+    "fields": {
+        "code": "48482000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1637,
+    "fields": {
+        "code": "48490000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1638,
+    "fields": {
+        "code": "48500000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1639,
+    "fields": {
+        "code": "48510000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1640,
+    "fields": {
+        "code": "48511000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1641,
+    "fields": {
+        "code": "48512000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1642,
+    "fields": {
+        "code": "48513000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1643,
+    "fields": {
+        "code": "48514000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1644,
+    "fields": {
+        "code": "48515000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1645,
+    "fields": {
+        "code": "48516000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1646,
+    "fields": {
+        "code": "48517000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1647,
+    "fields": {
+        "code": "48518000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1648,
+    "fields": {
+        "code": "48519000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1649,
+    "fields": {
+        "code": "48520000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1650,
+    "fields": {
+        "code": "48521000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1651,
+    "fields": {
+        "code": "48522000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1652,
+    "fields": {
+        "code": "48600000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1653,
+    "fields": {
+        "code": "48610000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1654,
+    "fields": {
+        "code": "48611000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1655,
+    "fields": {
+        "code": "48612000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1656,
+    "fields": {
+        "code": "48613000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1657,
+    "fields": {
+        "code": "48614000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1658,
+    "fields": {
+        "code": "48620000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1659,
+    "fields": {
+        "code": "48621000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1660,
+    "fields": {
+        "code": "48622000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1661,
+    "fields": {
+        "code": "48623000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1662,
+    "fields": {
+        "code": "48624000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1663,
+    "fields": {
+        "code": "48625000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1664,
+    "fields": {
+        "code": "48626000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1665,
+    "fields": {
+        "code": "48627000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1666,
+    "fields": {
+        "code": "48628000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1667,
+    "fields": {
+        "code": "48700000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1668,
+    "fields": {
+        "code": "48710000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1669,
+    "fields": {
+        "code": "48720000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1670,
+    "fields": {
+        "code": "48730000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1671,
+    "fields": {
+        "code": "48731000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1672,
+    "fields": {
+        "code": "48732000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1673,
+    "fields": {
+        "code": "48740000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1674,
+    "fields": {
+        "code": "48750000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1675,
+    "fields": {
+        "code": "48760000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1676,
+    "fields": {
+        "code": "48761000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1677,
+    "fields": {
+        "code": "48770000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1678,
+    "fields": {
+        "code": "48771000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1679,
+    "fields": {
+        "code": "48772000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1680,
+    "fields": {
+        "code": "48773000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1681,
+    "fields": {
+        "code": "48773100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1682,
+    "fields": {
+        "code": "48780000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1683,
+    "fields": {
+        "code": "48781000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1684,
+    "fields": {
+        "code": "48782000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1685,
+    "fields": {
+        "code": "48783000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1686,
+    "fields": {
+        "code": "48790000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1687,
+    "fields": {
+        "code": "48800000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1688,
+    "fields": {
+        "code": "48810000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1689,
+    "fields": {
+        "code": "48811000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1690,
+    "fields": {
+        "code": "48812000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1691,
+    "fields": {
+        "code": "48813000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1692,
+    "fields": {
+        "code": "48813100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1693,
+    "fields": {
+        "code": "48813200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1694,
+    "fields": {
+        "code": "48814000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1695,
+    "fields": {
+        "code": "48814100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1696,
+    "fields": {
+        "code": "48814200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1697,
+    "fields": {
+        "code": "48814300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1698,
+    "fields": {
+        "code": "48814400"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1699,
+    "fields": {
+        "code": "48814500"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1700,
+    "fields": {
+        "code": "48820000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1701,
+    "fields": {
+        "code": "48821000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1702,
+    "fields": {
+        "code": "48822000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1703,
+    "fields": {
+        "code": "48823000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1704,
+    "fields": {
+        "code": "48824000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1705,
+    "fields": {
+        "code": "48825000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1706,
+    "fields": {
+        "code": "48900000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1707,
+    "fields": {
+        "code": "48910000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1708,
+    "fields": {
+        "code": "48911000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1709,
+    "fields": {
+        "code": "48912000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1710,
+    "fields": {
+        "code": "48913000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1711,
+    "fields": {
+        "code": "48920000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1712,
+    "fields": {
+        "code": "48921000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1713,
+    "fields": {
+        "code": "48930000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1714,
+    "fields": {
+        "code": "48931000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1715,
+    "fields": {
+        "code": "48932000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1716,
+    "fields": {
+        "code": "48940000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1717,
+    "fields": {
+        "code": "48941000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1718,
+    "fields": {
+        "code": "48942000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1719,
+    "fields": {
+        "code": "48950000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1720,
+    "fields": {
+        "code": "48951000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1721,
+    "fields": {
+        "code": "48952000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1722,
+    "fields": {
+        "code": "48960000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1723,
+    "fields": {
+        "code": "48961000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1724,
+    "fields": {
+        "code": "48962000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1725,
+    "fields": {
+        "code": "48970000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1726,
+    "fields": {
+        "code": "48971000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1727,
+    "fields": {
+        "code": "48972000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1728,
+    "fields": {
+        "code": "48980000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1729,
+    "fields": {
+        "code": "48981000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1730,
+    "fields": {
+        "code": "48982000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1731,
+    "fields": {
+        "code": "48983000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1732,
+    "fields": {
+        "code": "48984000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1733,
+    "fields": {
+        "code": "48985000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1734,
+    "fields": {
+        "code": "48986000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1735,
+    "fields": {
+        "code": "48987000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1736,
+    "fields": {
+        "code": "48990000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1737,
+    "fields": {
+        "code": "48991000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1738,
+    "fields": {
+        "code": "72000000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1739,
+    "fields": {
+        "code": "72100000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1740,
+    "fields": {
+        "code": "72110000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1741,
+    "fields": {
+        "code": "72120000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1742,
+    "fields": {
+        "code": "72130000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1743,
+    "fields": {
+        "code": "72140000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1744,
+    "fields": {
+        "code": "72150000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1745,
+    "fields": {
+        "code": "72200000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1746,
+    "fields": {
+        "code": "72210000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1747,
+    "fields": {
+        "code": "72211000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1748,
+    "fields": {
+        "code": "72212000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1749,
+    "fields": {
+        "code": "72212100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1750,
+    "fields": {
+        "code": "72212110"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1751,
+    "fields": {
+        "code": "72212120"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1752,
+    "fields": {
+        "code": "72212121"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1753,
+    "fields": {
+        "code": "72212130"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1754,
+    "fields": {
+        "code": "72212131"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1755,
+    "fields": {
+        "code": "72212132"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1756,
+    "fields": {
+        "code": "72212140"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1757,
+    "fields": {
+        "code": "72212150"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1758,
+    "fields": {
+        "code": "72212160"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1759,
+    "fields": {
+        "code": "72212170"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1760,
+    "fields": {
+        "code": "72212180"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1761,
+    "fields": {
+        "code": "72212190"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1762,
+    "fields": {
+        "code": "72212200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1763,
+    "fields": {
+        "code": "72212210"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1764,
+    "fields": {
+        "code": "72212211"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1765,
+    "fields": {
+        "code": "72212212"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1766,
+    "fields": {
+        "code": "72212213"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1767,
+    "fields": {
+        "code": "72212214"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1768,
+    "fields": {
+        "code": "72212215"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1769,
+    "fields": {
+        "code": "72212216"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1770,
+    "fields": {
+        "code": "72212217"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1771,
+    "fields": {
+        "code": "72212218"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1772,
+    "fields": {
+        "code": "72212219"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1773,
+    "fields": {
+        "code": "72212220"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1774,
+    "fields": {
+        "code": "72212221"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1775,
+    "fields": {
+        "code": "72212222"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1776,
+    "fields": {
+        "code": "72212223"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1777,
+    "fields": {
+        "code": "72212224"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1778,
+    "fields": {
+        "code": "72212300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1779,
+    "fields": {
+        "code": "72212310"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1780,
+    "fields": {
+        "code": "72212311"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1781,
+    "fields": {
+        "code": "72212312"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1782,
+    "fields": {
+        "code": "72212313"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1783,
+    "fields": {
+        "code": "72212314"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1784,
+    "fields": {
+        "code": "72212315"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1785,
+    "fields": {
+        "code": "72212316"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1786,
+    "fields": {
+        "code": "72212317"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1787,
+    "fields": {
+        "code": "72212318"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1788,
+    "fields": {
+        "code": "72212320"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1789,
+    "fields": {
+        "code": "72212321"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1790,
+    "fields": {
+        "code": "72212322"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1791,
+    "fields": {
+        "code": "72212323"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1792,
+    "fields": {
+        "code": "72212324"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1793,
+    "fields": {
+        "code": "72212325"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1794,
+    "fields": {
+        "code": "72212326"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1795,
+    "fields": {
+        "code": "72212327"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1796,
+    "fields": {
+        "code": "72212328"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1797,
+    "fields": {
+        "code": "72212330"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1798,
+    "fields": {
+        "code": "72212331"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1799,
+    "fields": {
+        "code": "72212332"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1800,
+    "fields": {
+        "code": "72212333"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1801,
+    "fields": {
+        "code": "72212400"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1802,
+    "fields": {
+        "code": "72212410"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1803,
+    "fields": {
+        "code": "72212411"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1804,
+    "fields": {
+        "code": "72212412"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1805,
+    "fields": {
+        "code": "72212420"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1806,
+    "fields": {
+        "code": "72212421"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1807,
+    "fields": {
+        "code": "72212422"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1808,
+    "fields": {
+        "code": "72212430"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1809,
+    "fields": {
+        "code": "72212440"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1810,
+    "fields": {
+        "code": "72212441"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1811,
+    "fields": {
+        "code": "72212442"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1812,
+    "fields": {
+        "code": "72212443"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1813,
+    "fields": {
+        "code": "72212445"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1814,
+    "fields": {
+        "code": "72212450"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1815,
+    "fields": {
+        "code": "72212451"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1816,
+    "fields": {
+        "code": "72212460"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1817,
+    "fields": {
+        "code": "72212461"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1818,
+    "fields": {
+        "code": "72212462"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1819,
+    "fields": {
+        "code": "72212463"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1820,
+    "fields": {
+        "code": "72212470"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1821,
+    "fields": {
+        "code": "72212480"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1822,
+    "fields": {
+        "code": "72212481"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1823,
+    "fields": {
+        "code": "72212482"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1824,
+    "fields": {
+        "code": "72212490"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1825,
+    "fields": {
+        "code": "72212500"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1826,
+    "fields": {
+        "code": "72212510"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1827,
+    "fields": {
+        "code": "72212511"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1828,
+    "fields": {
+        "code": "72212512"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1829,
+    "fields": {
+        "code": "72212513"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1830,
+    "fields": {
+        "code": "72212514"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1831,
+    "fields": {
+        "code": "72212515"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1832,
+    "fields": {
+        "code": "72212516"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1833,
+    "fields": {
+        "code": "72212517"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1834,
+    "fields": {
+        "code": "72212518"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1835,
+    "fields": {
+        "code": "72212519"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1836,
+    "fields": {
+        "code": "72212520"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1837,
+    "fields": {
+        "code": "72212521"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1838,
+    "fields": {
+        "code": "72212522"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1839,
+    "fields": {
+        "code": "72212600"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1840,
+    "fields": {
+        "code": "72212610"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1841,
+    "fields": {
+        "code": "72212620"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1842,
+    "fields": {
+        "code": "72212630"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1843,
+    "fields": {
+        "code": "72212640"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1844,
+    "fields": {
+        "code": "72212650"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1845,
+    "fields": {
+        "code": "72212660"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1846,
+    "fields": {
+        "code": "72212670"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1847,
+    "fields": {
+        "code": "72212700"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1848,
+    "fields": {
+        "code": "72212710"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1849,
+    "fields": {
+        "code": "72212720"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1850,
+    "fields": {
+        "code": "72212730"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1851,
+    "fields": {
+        "code": "72212731"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1852,
+    "fields": {
+        "code": "72212732"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1853,
+    "fields": {
+        "code": "72212740"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1854,
+    "fields": {
+        "code": "72212750"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1855,
+    "fields": {
+        "code": "72212760"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1856,
+    "fields": {
+        "code": "72212761"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1857,
+    "fields": {
+        "code": "72212770"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1858,
+    "fields": {
+        "code": "72212771"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1859,
+    "fields": {
+        "code": "72212772"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1860,
+    "fields": {
+        "code": "72212780"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1861,
+    "fields": {
+        "code": "72212781"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1862,
+    "fields": {
+        "code": "72212782"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1863,
+    "fields": {
+        "code": "72212783"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1864,
+    "fields": {
+        "code": "72212790"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1865,
+    "fields": {
+        "code": "72212900"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1866,
+    "fields": {
+        "code": "72212910"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1867,
+    "fields": {
+        "code": "72212911"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1868,
+    "fields": {
+        "code": "72212920"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1869,
+    "fields": {
+        "code": "72212930"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1870,
+    "fields": {
+        "code": "72212931"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1871,
+    "fields": {
+        "code": "72212932"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1872,
+    "fields": {
+        "code": "72212940"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1873,
+    "fields": {
+        "code": "72212941"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1874,
+    "fields": {
+        "code": "72212942"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1875,
+    "fields": {
+        "code": "72212960"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1876,
+    "fields": {
+        "code": "72212970"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1877,
+    "fields": {
+        "code": "72212971"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1878,
+    "fields": {
+        "code": "72212972"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1879,
+    "fields": {
+        "code": "72212980"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1880,
+    "fields": {
+        "code": "72212981"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1881,
+    "fields": {
+        "code": "72212982"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1882,
+    "fields": {
+        "code": "72212983"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1883,
+    "fields": {
+        "code": "72212984"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1884,
+    "fields": {
+        "code": "72212985"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1885,
+    "fields": {
+        "code": "72212990"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1886,
+    "fields": {
+        "code": "72212991"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1887,
+    "fields": {
+        "code": "72220000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1888,
+    "fields": {
+        "code": "72221000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1889,
+    "fields": {
+        "code": "72222000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1890,
+    "fields": {
+        "code": "72222100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1891,
+    "fields": {
+        "code": "72222200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1892,
+    "fields": {
+        "code": "72222300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1893,
+    "fields": {
+        "code": "72223000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1894,
+    "fields": {
+        "code": "72224000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1895,
+    "fields": {
+        "code": "72224100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1896,
+    "fields": {
+        "code": "72224200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1897,
+    "fields": {
+        "code": "72225000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1898,
+    "fields": {
+        "code": "72226000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1899,
+    "fields": {
+        "code": "72227000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1900,
+    "fields": {
+        "code": "72228000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1901,
+    "fields": {
+        "code": "72230000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1902,
+    "fields": {
+        "code": "72231000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1903,
+    "fields": {
+        "code": "72232000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1904,
+    "fields": {
+        "code": "72240000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1905,
+    "fields": {
+        "code": "72241000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1906,
+    "fields": {
+        "code": "72242000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1907,
+    "fields": {
+        "code": "72243000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1908,
+    "fields": {
+        "code": "72244000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1909,
+    "fields": {
+        "code": "72245000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1910,
+    "fields": {
+        "code": "72246000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1911,
+    "fields": {
+        "code": "72250000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1912,
+    "fields": {
+        "code": "72251000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1913,
+    "fields": {
+        "code": "72252000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1914,
+    "fields": {
+        "code": "72253000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1915,
+    "fields": {
+        "code": "72253100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1916,
+    "fields": {
+        "code": "72253200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1917,
+    "fields": {
+        "code": "72254000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1918,
+    "fields": {
+        "code": "72254100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1919,
+    "fields": {
+        "code": "72260000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1920,
+    "fields": {
+        "code": "72261000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1921,
+    "fields": {
+        "code": "72262000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1922,
+    "fields": {
+        "code": "72263000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1923,
+    "fields": {
+        "code": "72264000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1924,
+    "fields": {
+        "code": "72265000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1925,
+    "fields": {
+        "code": "72266000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1926,
+    "fields": {
+        "code": "72267000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1927,
+    "fields": {
+        "code": "72267100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1928,
+    "fields": {
+        "code": "72267200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1929,
+    "fields": {
+        "code": "72268000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1930,
+    "fields": {
+        "code": "72300000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1931,
+    "fields": {
+        "code": "72310000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1932,
+    "fields": {
+        "code": "72311000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1933,
+    "fields": {
+        "code": "72311100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1934,
+    "fields": {
+        "code": "72311200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1935,
+    "fields": {
+        "code": "72311300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1936,
+    "fields": {
+        "code": "72312000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1937,
+    "fields": {
+        "code": "72312100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1938,
+    "fields": {
+        "code": "72312200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1939,
+    "fields": {
+        "code": "72313000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1940,
+    "fields": {
+        "code": "72314000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1941,
+    "fields": {
+        "code": "72315000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1942,
+    "fields": {
+        "code": "72315100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1943,
+    "fields": {
+        "code": "72315200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1944,
+    "fields": {
+        "code": "72316000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1945,
+    "fields": {
+        "code": "72317000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1946,
+    "fields": {
+        "code": "72318000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1947,
+    "fields": {
+        "code": "72319000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1948,
+    "fields": {
+        "code": "72320000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1949,
+    "fields": {
+        "code": "72321000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1950,
+    "fields": {
+        "code": "72322000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1951,
+    "fields": {
+        "code": "72330000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1952,
+    "fields": {
+        "code": "72400000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1953,
+    "fields": {
+        "code": "72410000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1954,
+    "fields": {
+        "code": "72411000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1955,
+    "fields": {
+        "code": "72412000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1956,
+    "fields": {
+        "code": "72413000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1957,
+    "fields": {
+        "code": "72414000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1958,
+    "fields": {
+        "code": "72415000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1959,
+    "fields": {
+        "code": "72416000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1960,
+    "fields": {
+        "code": "72417000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1961,
+    "fields": {
+        "code": "72420000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1962,
+    "fields": {
+        "code": "72421000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1963,
+    "fields": {
+        "code": "72422000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1964,
+    "fields": {
+        "code": "72500000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1965,
+    "fields": {
+        "code": "72510000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1966,
+    "fields": {
+        "code": "72511000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1967,
+    "fields": {
+        "code": "72512000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1968,
+    "fields": {
+        "code": "72513000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1969,
+    "fields": {
+        "code": "72514000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1970,
+    "fields": {
+        "code": "72514100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1971,
+    "fields": {
+        "code": "72514200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1972,
+    "fields": {
+        "code": "72514300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1973,
+    "fields": {
+        "code": "72540000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1974,
+    "fields": {
+        "code": "72541000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1975,
+    "fields": {
+        "code": "72541100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1976,
+    "fields": {
+        "code": "72590000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1977,
+    "fields": {
+        "code": "72591000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1978,
+    "fields": {
+        "code": "72600000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1979,
+    "fields": {
+        "code": "72610000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1980,
+    "fields": {
+        "code": "72611000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1981,
+    "fields": {
+        "code": "72700000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1982,
+    "fields": {
+        "code": "72710000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1983,
+    "fields": {
+        "code": "72720000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1984,
+    "fields": {
+        "code": "72800000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1985,
+    "fields": {
+        "code": "72810000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1986,
+    "fields": {
+        "code": "72820000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1987,
+    "fields": {
+        "code": "72900000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1988,
+    "fields": {
+        "code": "72910000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1989,
+    "fields": {
+        "code": "72920000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1990,
+    "fields": {
+        "code": "90710000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1991,
+    "fields": {
+        "code": "90711000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1992,
+    "fields": {
+        "code": "90711100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1993,
+    "fields": {
+        "code": "90711200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1994,
+    "fields": {
+        "code": "90711300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1995,
+    "fields": {
+        "code": "90711400"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1996,
+    "fields": {
+        "code": "90711500"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1997,
+    "fields": {
+        "code": "90712000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1998,
+    "fields": {
+        "code": "90712100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 1999,
+    "fields": {
+        "code": "90712200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2000,
+    "fields": {
+        "code": "90712300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2001,
+    "fields": {
+        "code": "90712400"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2002,
+    "fields": {
+        "code": "90712500"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2003,
+    "fields": {
+        "code": "90713000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2004,
+    "fields": {
+        "code": "90713100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2005,
+    "fields": {
+        "code": "90714000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2006,
+    "fields": {
+        "code": "90714100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2007,
+    "fields": {
+        "code": "90714200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2008,
+    "fields": {
+        "code": "90714300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2009,
+    "fields": {
+        "code": "90714400"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2010,
+    "fields": {
+        "code": "90714500"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2011,
+    "fields": {
+        "code": "90714600"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2012,
+    "fields": {
+        "code": "90715000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2013,
+    "fields": {
+        "code": "90715100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2014,
+    "fields": {
+        "code": "90715110"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2015,
+    "fields": {
+        "code": "90715120"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2016,
+    "fields": {
+        "code": "90715200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2017,
+    "fields": {
+        "code": "90715210"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2018,
+    "fields": {
+        "code": "90715220"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2019,
+    "fields": {
+        "code": "90715230"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2020,
+    "fields": {
+        "code": "90715240"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2021,
+    "fields": {
+        "code": "90715250"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2022,
+    "fields": {
+        "code": "90715260"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2023,
+    "fields": {
+        "code": "90715270"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2024,
+    "fields": {
+        "code": "90715280"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2025,
+    "fields": {
+        "code": "90720000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2026,
+    "fields": {
+        "code": "90721000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2027,
+    "fields": {
+        "code": "90721100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2028,
+    "fields": {
+        "code": "90721200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2029,
+    "fields": {
+        "code": "90721300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2030,
+    "fields": {
+        "code": "90721400"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2031,
+    "fields": {
+        "code": "90721500"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2032,
+    "fields": {
+        "code": "90721600"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2033,
+    "fields": {
+        "code": "90721700"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2034,
+    "fields": {
+        "code": "90721800"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2035,
+    "fields": {
+        "code": "90722000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2036,
+    "fields": {
+        "code": "90722100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2037,
+    "fields": {
+        "code": "90722200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2038,
+    "fields": {
+        "code": "90722300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2039,
+    "fields": {
+        "code": "90730000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2040,
+    "fields": {
+        "code": "90731000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2041,
+    "fields": {
+        "code": "90731100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2042,
+    "fields": {
+        "code": "90731200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2043,
+    "fields": {
+        "code": "90731210"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2044,
+    "fields": {
+        "code": "90731300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2045,
+    "fields": {
+        "code": "90731400"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2046,
+    "fields": {
+        "code": "90731500"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2047,
+    "fields": {
+        "code": "90731600"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2048,
+    "fields": {
+        "code": "90731700"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2049,
+    "fields": {
+        "code": "90731800"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2050,
+    "fields": {
+        "code": "90731900"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2051,
+    "fields": {
+        "code": "90732000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2052,
+    "fields": {
+        "code": "90732100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2053,
+    "fields": {
+        "code": "90732200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2054,
+    "fields": {
+        "code": "90732300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2055,
+    "fields": {
+        "code": "90732400"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2056,
+    "fields": {
+        "code": "90732500"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2057,
+    "fields": {
+        "code": "90732600"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2058,
+    "fields": {
+        "code": "90732700"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2059,
+    "fields": {
+        "code": "90732800"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2060,
+    "fields": {
+        "code": "90732900"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2061,
+    "fields": {
+        "code": "90732910"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2062,
+    "fields": {
+        "code": "90732920"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2063,
+    "fields": {
+        "code": "90733000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2064,
+    "fields": {
+        "code": "90733100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2065,
+    "fields": {
+        "code": "90733200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2066,
+    "fields": {
+        "code": "90733300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2067,
+    "fields": {
+        "code": "90733400"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2068,
+    "fields": {
+        "code": "90733500"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2069,
+    "fields": {
+        "code": "90733600"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2070,
+    "fields": {
+        "code": "90733700"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2071,
+    "fields": {
+        "code": "90733800"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2072,
+    "fields": {
+        "code": "90733900"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2073,
+    "fields": {
+        "code": "90740000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2074,
+    "fields": {
+        "code": "90741000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2075,
+    "fields": {
+        "code": "90741100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2076,
+    "fields": {
+        "code": "90741200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2077,
+    "fields": {
+        "code": "90741300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2078,
+    "fields": {
+        "code": "90742000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2079,
+    "fields": {
+        "code": "90742100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2080,
+    "fields": {
+        "code": "90742200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2081,
+    "fields": {
+        "code": "90742300"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2082,
+    "fields": {
+        "code": "90742400"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2083,
+    "fields": {
+        "code": "90743000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2084,
+    "fields": {
+        "code": "90743100"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2085,
+    "fields": {
+        "code": "90743200"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2086,
+    "fields": {
+        "code": "73200000"
+    }
+},
+{
+    "model": "app.cpvcode",
+    "pk": 2087,
+    "fields": {
+        "code": "79419000"
+    }
+}
+]
