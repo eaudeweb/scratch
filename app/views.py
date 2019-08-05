@@ -106,8 +106,9 @@ class TenderDetailView(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         deadline = self.object.deadline
-        deadline -= datetime.now(timezone.utc)
-        context["deadline_in"] = self.deadline_in_string(deadline)
+        if deadline:
+            deadline -= datetime.now(timezone.utc)
+            context["deadline_in"] = self.deadline_in_string(deadline)
         return context
 
 

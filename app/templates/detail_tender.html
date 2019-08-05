@@ -36,19 +36,27 @@
     </tr>
     <tr>
       <td>Published</td>
-      <td>{{ tender.published }}</td>
+      {% if tender.published %}
+        <td>{{ tender.published }}</td>
+      {% else %}
+        <td>Not specified</td>
+      {% endif %}
     </tr>
     <tr>
       <td>Reference</td>
       <td>{{ tender.reference }}</td>
     </tr>
     <td>Deadline</td>
-    <td>{{ tender.deadline }}</td>
-    </tr>
-    <tr>
-      <td>Days remaining</td>
-      <td><b> {{ deadline_in }} </b></td>
-    </tr>
+    {% if tender.deadline %}
+      <td>{{ tender.deadline }}</td>
+      </tr>
+      <tr>
+        <td>Days remaining</td>
+        <td><b> {{ deadline_in }} </b></td>
+      </tr>
+    {% else %}
+      <td>Not specified</td>
+    {% endif %}
     <tr>
       <td>Description</td>
       <td>{{ tender.description }}</td>

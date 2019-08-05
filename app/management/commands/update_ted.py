@@ -1,13 +1,15 @@
 from django.core.management.base import BaseCommand
 from ftplib import FTP
 from bs4 import BeautifulSoup, element
-from app.models import Tender, TenderDocument, Winner, WorkerLog, set_notified, last_update
+from app.models import Tender, TenderDocument, Winner, WorkerLog, CPVCode, TedCountry, set_notified, last_update
 from datetime import date, datetime, timedelta
 from django.conf import settings
 from django.utils import timezone
-from .ted_data import *
 import tarfile
 import os
+
+CPV_CODES = [x.code for x in CPVCode.objects.all()]
+TED_COUNTRIES = [x.name for x in TedCountry.objects.all()]
 
 
 class Command(BaseCommand):
@@ -151,9 +153,9 @@ class TEDParser(object):
 
                 accept_notice = (
                     cpv_codes & set(CPV_CODES) and
-                    doc_type in TED_DOC_TYPES and
+                    doc_type in settings.TED_DOC_TYPES and
                     country in TED_COUNTRIES and
-                    auth_type == TED_AUTH_TYPE
+                    auth_type == settings.TED_AUTH_TYPE
                 )
 
                 if not accept_notice:
@@ -177,7 +179,8 @@ def save_tender(tender):
 
     documents = tender.pop('documents', [])
     tender_entry = Tender(**tender)
-    tender_entry.deadline = timezone.utc.localize(tender_entry.deadline)
+    if tender_entry.deadline:
+        tender_entry.deadline = timezone.utc.localize(tender_entry.deadline)
     tender_entry.save()
     for document in documents:
         save_document_to_models(tender_entry, document)

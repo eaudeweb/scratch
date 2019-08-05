@@ -14,8 +14,8 @@ class Tender(models.Model):
     notice_type = models.CharField(null=True, max_length=255)
     title = models.CharField(null=True, max_length=255)
     organization = models.CharField(null=True, max_length=255)
-    published = models.DateField()
-    deadline = models.DateTimeField()
+    published = models.DateField(null=True)
+    deadline = models.DateTimeField(null=True)
     description = models.TextField(null=True, max_length=5059)
     favourite = models.BooleanField(default=False)
     notified = models.BooleanField(default=False)
@@ -44,7 +44,9 @@ class TenderDocument(models.Model):
     name = models.CharField(null=True, max_length=255)
     download_url = models.CharField(max_length=255)
     tender = models.ForeignKey(Tender, on_delete=models.CASCADE)
-    # TODO see if we need unique_together
+
+    class Meta:
+        unique_together = ('name', 'tender',)
 
 
 class WorkerLog(models.Model):

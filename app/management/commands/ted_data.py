@@ -1,7 +1,0 @@
-TED_COUNTRIES = []
-
-TED_DOC_TYPES = []
-
-TED_AUTH_TYPE = ''
-
-CPV_CODES = []
