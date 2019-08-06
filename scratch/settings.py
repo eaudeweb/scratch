@@ -133,6 +133,10 @@ FILES_DIR = os.path.join(instance_dir, 'files')
 # DEADLINE
 DEADLINE_NOTIFICATIONS = env('DEADLINE_NOTIFICATIONS', (1, 3, 7))
 
+# TED
+TED_DOC_TYPES = env('TED_DOC_TYPES', [])
+TED_AUTH_TYPE = env('TED_AUTH_TYPE', '')
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/

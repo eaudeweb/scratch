@@ -65,9 +65,8 @@ class Command(BaseCommand):
             'title': self.to_unicode(title.string),
             'organization': self.to_unicode(organization.string),
             'reference': self.to_unicode(reference.string.strip()),
-            # TODO: Find a better way to store published and deadline date
-            'published': datetime.datetime.now(tz=timezone.utc),
-            'deadline': datetime.datetime.now(tz=timezone.utc),
+            'published': None,
+            'deadline': None,
             'description': self.to_unicode(str(description[0].get_text())),
         }
         award_date = self.find_by_label(soup, CSS_AWARD_DATE)

@@ -10,11 +10,17 @@
         <a href="{{ tender.url }}">{{ tender.title }}</a>
       </h2>
       <p class="published clip">
-        Published: {{ tender.published }} &ndash; {{ tender.organization }}
+        {% if tender.published %}
+          Published: {{ tender.published }} &ndash; {{ tender.organization }}
+        {% else %}
+          Published: Not specified &ndash; {{ tender.organization }}
+        {% endif %}
       </p>
       <p class="deadline">
         {% if tender.deadline %}
-        Deadline: {{ tender.deadline }}
+            Deadline: {{ tender.deadline }}
+        {% else %}
+            Deadline: Not specified
         {% endif %}
       </p>
     </li>
