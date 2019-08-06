@@ -66,10 +66,18 @@ class TEDWorker:
         ftp.quit()
 
     def parse_notices(self):
+        folders = []
         for archive_path in self.archives:
             folder_name = extract_data(archive_path, self.path)
+            folders.append(folder_name)
             p = TEDParser(self.path, [folder_name])
             p.parse_notices()
+
+        for archive_path in self.archives:
+            os.remove(archive_path)
+
+        for folder in folders:
+            os.rmdir(os.path.join(self.path, folder))
 
 
 class TEDParser(object):
