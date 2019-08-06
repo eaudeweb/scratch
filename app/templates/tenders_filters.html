@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
+
 <head>
+  {% load widget_tweaks %}
   <link rel ="stylesheet" type="text/css" href="{% static 'filter_bar.css'%}"}>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="{% static 'filter_menu.js'%}"></script>
+  <script src="{% static 'filter_menu.js'%}"></script>
 </head>
 
 <body>
@@ -17,28 +19,28 @@
   <form method="GET" id="form_id">
     {% csrf_token %}
     <div class="row bottom_bar ">
-      <div class="col-sm-2">
+      <div class="form-group col-sm">
         {{ form.organization.label }}
-        {{ form.organization}}
+        {% render_field form.organization class+="form-control form-control-sm" %}
       </div>
-      <div class="col-sm">
+      <div class="form-group col-sm">
         {{ form.status.label }}
-        {{ form.status}}
+        {% render_field form.status class+="form-control form-control-sm" %}
       </div>
-      <div class="col-sm">
+      <div class="form-group col-sm">
         {{ form.source.label }}
-        {{ form.source }}
+        {% render_field form.source class+="form-control form-control-sm" %}
       </div>
-      <div class ="col-sm-4">
+      <div class ="form-group col-sm">
         {{ form.favourite.label }}
-        {{ form.favourite }}
+        {% render_field form.favourite class+="form-control form-control-sm" %}
       </div>
-      <div class="col-sm">
+      <div class="col-sm-3 div_button">
         {% if reset %}
           <a href="{% url 'tenders_list_view' %}"><button type="button" name="reset_filters" value="reset" class="btn btn-dark filter_button">Reset filters</button></a>
         {% endif %}
       </div>
-      <div class="col-sm">
+      <div class="col-sm div_button">
         <button disabled type="submit" name="filter_button" value="filter" class="btn btn-dark filter_button">Filter</button>
       </div>
     </div>
