@@ -5,7 +5,7 @@ from app.models import Tender, TenderDocument, UNSPSCCode
 from app.server_requests import get_request_class
 from bs4 import BeautifulSoup
 from django.conf import settings
-from django.core.management.base import BaseCommand
+from django.core.management.base import BaseCommand, CommandError
 from datetime import date, datetime, timedelta
 from django.utils.timezone import make_aware
 
@@ -144,8 +144,8 @@ class Command(BaseCommand):
             days_ago = kwargs['days_ago']
             last_date = (datetime.today() - timedelta(days=days_ago)).date()
         elif not Tender.objects.all():
-            raise Exception(
-                "Command error: The database is empty, argument --days_ago is missing"
+            raise CommandError(
+                "The database is empty, argument --days_ago is missing"
             )
         else:
             last_date = Tender.objects.latest('published').published
