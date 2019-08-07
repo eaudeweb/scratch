@@ -1,4 +1,6 @@
 from django.test import TestCase
+from django.urls import reverse
+
 from app.models import Tender, TenderDocument
 from django.contrib.auth.models import User
 
@@ -31,13 +33,15 @@ class TendersListViewTests(TestCase):
         self.assertEqual(logged_in, True)
 
     def test_list_view_empty_db(self):
-        response = self.client.get('/app/tenders/')
+        url = reverse('tenders_list_view')
+        response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertQuerysetEqual(response.context['tenders'], [])
 
     def test_list_view_two_tenders(self):
         create_tenders()
-        response = self.client.get('/app/tenders/')
+        url = reverse('tenders_list_view')
+        response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertQuerysetEqual(
             list(response.context['tenders']),

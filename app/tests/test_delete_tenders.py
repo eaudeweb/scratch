@@ -1,4 +1,6 @@
 from django.test import TestCase
+from django.urls import reverse
+
 from app.models import Tender
 from django.contrib.auth.models import User
 
@@ -28,7 +30,7 @@ class TendersFavouriteTests(TestCase):
 
     def test_delete_tender(self):
         new_delete_tender = create_tender(True)
-        url = get_url(new_delete_tender.id)
+        url = reverse('tender_delete_view', kwargs={'pk': new_delete_tender.id})
         response = self.client.post(url, {})
         self.assertEqual(response.status_code, 200)
         tender_deleted = Tender.objects.filter(reference='RFC/TEST/1237')
