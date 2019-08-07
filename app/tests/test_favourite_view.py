@@ -14,8 +14,8 @@ def create_tender(status):
     )
 
 
-def get_url(id):
-    return '/app/tenders/favourite/' + str(id) + '/'
+def get_url(tender_id):
+    return '/app/tenders/favourite/' + str(tender_id) + '/'
 
 
 class TendersFavouriteTests(TestCase):
@@ -26,6 +26,7 @@ class TendersFavouriteTests(TestCase):
         logged_in = self.client.login(username='test_user', password='12345')
         self.assertEqual(logged_in, True)
 
+    def test_add_to_favourites(self):
         new_tender = create_tender(False)
         url = get_url(new_tender.id)
         response = self.client.post(url, {'favourite': 'true'})
