@@ -25,7 +25,7 @@ class Tender(models.Model):
     unspsc_codes = models.CharField(max_length=1024)
 
     def __str__(self):
-        return 'Tender list: {}'.format(self.title)
+        return '{}'.format(self.title)
 
 
 class Winner(models.Model):
