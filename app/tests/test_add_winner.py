@@ -1,11 +1,24 @@
 from django.test import TestCase
 from app.models import Tender, Winner
-from django.core import management
+from django.utils import timezone
+from datetime import datetime
 
 
 class AddWinnerTestCase(TestCase):
     def setUp(self):
-        management.call_command('add_winner', '109206')
+        tender = Tender.objects.create(
+            title="test_title",
+            reference="RFC/TEST/123",
+            url="http://test.com",
+            source="UNGM",
+            unspsc_codes="98765",
+        )
+        Winner.objects.create(
+            vendor="test_vendor",
+            currency="USD",
+            award_date=datetime.now(timezone.utc),
+            tender=tender
+        )
 
     def test_add_winner(self):
         tenders = Tender.objects.all()
