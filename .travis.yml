@@ -7,6 +7,4 @@ env:
     - BASE_URL=localhost:8000
 install:
   - pip install -r requirements.txt
-  - pip install pytest-cov==2.5.0 coverage==3.7.1 coveralls==0.5
-script:  py.test --cov=app testsuite
-after_success: coveralls
+script:  python manage.py test app/tests/
