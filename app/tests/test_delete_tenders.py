@@ -2,17 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 from app.models import Tender
 from django.contrib.auth.models import User
-
-
-def create_tender(status):
-    return Tender.objects.create(
-        title='Tender3',
-        reference='RFC/TEST/1237',
-        url='http://test.com',
-        source='UNGM',
-        unspsc_codes='98765',
-        favourite=True,
-    )
+from app.factories import TenderFactory
 
 
 class TendersFavouriteTests(TestCase):
@@ -24,9 +14,9 @@ class TendersFavouriteTests(TestCase):
         self.assertEqual(logged_in, True)
 
     def test_delete_tender(self):
-        new_delete_tender = create_tender(True)
-        url = reverse('tender_delete_view', kwargs={'pk': new_delete_tender.id})
+        new_tender = TenderFactory()
+        url = reverse('tender_delete_view', kwargs={'pk': new_tender.id})
         response = self.client.post(url, {})
         self.assertEqual(response.status_code, 200)
-        tender_deleted = Tender.objects.filter(reference='RFC/TEST/1237')
+        tender_deleted = Tender.objects.filter(reference=new_tender.reference)
         self.assertQuerysetEqual(tender_deleted, [])
