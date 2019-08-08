@@ -23,6 +23,6 @@ install:
   - pip install pytest-cov
 script:
   - python manage.py test app/tests/ --settings=scratch.test_settings
-  - pytest --cov=app/tests/
+  - pytest --cov=scratch/app/
 after_success:
   - coveralls
