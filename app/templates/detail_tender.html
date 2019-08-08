@@ -8,11 +8,11 @@
     <th>
       <ul>
         {% if tender.favourite == False %}
-          <li><button type="button" action="{% url 'tender_favourite_view' tender.id %}" class="favourite_button" id="fav_button"></button></li>
+          <li class="li_buttons"><button type="button" action="{% url 'tender_favourite_view' tender.id %}" class="favourite_button" id="fav_button"></button></li>
         {% else %}
-          <li><button type="button" action="{% url 'tender_favourite_view' tender.id %}"  class="favourite_pressed" id="fav_button"></button></li>
+          <li class="li_buttons"><button type="button" action="{% url 'tender_favourite_view' tender.id %}"  class="favourite_pressed" id="fav_button"></button></li>
         {% endif %}
-        <li><button type="button" action="{% url 'tender_delete_view' tender.id %}"  class="remove_button" id="remove_button_detail" name="{{ tender.title }}"></button></li>
+        <li class="li_buttons"><button type="button" action="{% url 'tender_delete_view' tender.id %}"  class="remove_button" id="remove_button_detail" name="{{ tender.title }}"></button></li>
       </ul>
     </th>
     </thead>

@@ -1,5 +1,5 @@
 import factory
-from .models import Tender, Winner, Notification
+from .models import Tender, Winner, Notification, TenderDocument
 from datetime import datetime
 from django.utils import timezone
 
@@ -12,9 +12,18 @@ class TenderFactory(factory.DjangoModelFactory):
     organization = 'UNOPS'
     source = 'UNGM'
     unspsc_codes = '98765'
-    url = "http://test.com"
+    url = factory.sequence(lambda n: "http://test.com/%s" % n)
     published = datetime.now(timezone.utc)
     deadline = datetime.now(timezone.utc)
+
+
+class TenderDocumentFactory(factory.DjangoModelFactory):
+    class Meta:
+        model = TenderDocument
+
+    name = factory.sequence(lambda n: 'Doc_%s' % n)
+    download_url = factory.sequence(lambda n: "http://test.org/%s" % n)
+    tender = factory.SubFactory(TenderFactory)
 
 
 class WinnerFactory(factory.DjangoModelFactory):

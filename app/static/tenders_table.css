@@ -85,7 +85,7 @@ ul {
     overflow: hidden;
 }
 
-li {
+.li_buttons {
     float: left;
     padding-left: 3px;
 }
