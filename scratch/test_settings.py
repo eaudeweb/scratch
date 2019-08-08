@@ -4,7 +4,7 @@ from .settings import *
 if 'TRAVIS' in os.environ:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.contrib.gis.db.backends.postgis',
+            'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'travis_ci_test',
             'USER': 'postgres',
             'PASSWORD': '',
