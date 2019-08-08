@@ -2,9 +2,23 @@ file: .travis.yml
 language: python
 python:
   - "3.6"
+sudo: true
+addons:
+  postgresql: "10"
+  apt:
+    packages:
+      - postgresql-10-postgis-2.4
+      - postgresql-10-postgis-2.4-scripts
+      - postgresql-client-10
 env:
   global:
     - BASE_URL=localhost:8000
+    - PGPORT=5433
+services:
+  - postgresql
 install:
   - pip install -r requirements.txt
-script:  python manage.py test app/tests/
+before_install:
+  - sudo -u postgres psql -c "CREATE USER testuser WITH PASSWORD 'password'"
+  - sudo -u postgres psql -c "ALTER ROLE testuser SUPERUSER"
+script:  python manage.py test app/tests/ --settings=scratch.test_settings
