@@ -1,6 +1,5 @@
 from django.test import TestCase
 from django.urls import reverse
-
 from app.models import Tender
 from django.contrib.auth.models import User
 
@@ -14,10 +13,6 @@ def create_tender(status):
         unspsc_codes='98765',
         favourite=True,
     )
-
-
-def get_url(tender_id):
-    return '/app/tenders/delete/' + str(tender_id) + '/'
 
 
 class TendersFavouriteTests(TestCase):
