@@ -20,8 +20,8 @@ class SendMailTest(TestCase):
             title="test_title2", url="https://www.ungm.org/Public/Notice/94920"
         )
 
-        self.notified_user1 = NotificationFactory(email="test01@test.test")
-        self.notified_user2 = NotificationFactory(email="test02@test.test")
+        self.notified_user1 = NotificationFactory()
+        self.notified_user2 = NotificationFactory()
 
     def test_mailing(self):
         subject = "New tenders available"

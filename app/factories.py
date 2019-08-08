@@ -29,3 +29,5 @@ class WinnerFactory(factory.DjangoModelFactory):
 class NotificationFactory(factory.DjangoModelFactory):
     class Meta:
         model = Notification
+
+    email = factory.sequence(lambda n: "test%s@test.test" % n)
