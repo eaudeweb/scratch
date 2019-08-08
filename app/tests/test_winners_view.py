@@ -1,8 +1,6 @@
 from django.test import TestCase
-from app.models import Tender, Winner
 from django.contrib.auth.models import User
-from django.utils import timezone
-from datetime import datetime
+from app.factories import TenderFactory, WinnerFactory
 
 
 class WinnersViewTest(TestCase):
@@ -11,19 +9,8 @@ class WinnersViewTest(TestCase):
         user.set_password("12345")
         user.save()
 
-        tender = Tender.objects.create(
-            title="test_title",
-            reference="RFC/TEST/123",
-            url="http://test.com",
-            source="UNGM",
-            unspsc_codes="98765",
-        )
-        Winner.objects.create(
-            vendor="test_vendor",
-            currency="USD",
-            award_date=datetime.now(timezone.utc),
-            tender=tender
-        )
+        self.tender = TenderFactory(title="test_title")
+        self.winner = WinnerFactory(vendor="test_vendor", tender=self.tender)
 
     def test_awards_page(self):
         response = self.client.get("/app/awards/")
@@ -39,6 +26,6 @@ class WinnersViewTest(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(winners), 1)
-        self.assertEqual(winners[0].tender.title, "test_title")
-        self.assertEqual(winners[0].vendor, "test_vendor")
-        self.assertEqual(winners[0].currency, "USD")
+        self.assertEqual(winners[0].tender.title, self.winner.tender.title)
+        self.assertEqual(winners[0].vendor, self.winner.vendor)
+        self.assertEqual(winners[0].currency, self.winner.currency)
