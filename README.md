@@ -1,4 +1,4 @@
-# Scratch
+# Scratch ![alt text](https://travis-ci.com/eaudeweb/scratch.svg?branch=master)
 
 ### Python Django Scratch 
 
