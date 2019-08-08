@@ -18,4 +18,11 @@ before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
 install:
   - pip install -r requirements.txt
-script:  python manage.py test app/tests/ --settings=scratch.test_settings
+  - pip install -r requirements-dev.txt
+  - pip install pytest
+  - pip install pytest-cov
+script:
+  - python manage.py test app/tests/ --settings=scratch.test_settings
+  - pytest --cov=app/
+after_success:
+  - coveralls
