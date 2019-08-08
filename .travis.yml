@@ -2,7 +2,6 @@ file: .travis.yml
 language: python
 python:
   - "3.6"
-sudo: true
 addons:
   postgresql: "10"
   apt:
@@ -18,7 +17,6 @@ services:
   - postgresql
 install:
   - pip install -r requirements.txt
-before_install:
-  - sudo -u postgres psql -c "CREATE USER testuser WITH PASSWORD 'password'"
-  - sudo -u postgres psql -c "ALTER ROLE testuser SUPERUSER"
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
 script:  python manage.py test app/tests/ --settings=scratch.test_settings
