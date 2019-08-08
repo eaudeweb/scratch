@@ -11,7 +11,7 @@ addons:
 env:
   global:
     - BASE_URL=localhost:8000
-    - PGPORT=5433
+    - PGPORT=5432
 services:
   - postgresql
 before_script:
