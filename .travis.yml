@@ -19,9 +19,8 @@ before_script:
 install:
   - pip install -r requirements.txt
   - pip install -r requirements-dev.txt
-  - pip install pytest
-  - pip install pytest-covgit
 script:
   - python manage.py test app/tests/ --settings=scratch.test_settings
 after_success:
   - coveralls
+  - coverage report
