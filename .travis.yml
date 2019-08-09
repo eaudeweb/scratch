@@ -20,7 +20,6 @@ install:
   - pip install -r requirements.txt
   - pip install -r requirements-dev.txt
 script:
-  - coverage run --source='.' ./manage.py test app/tests --settings=scratch.settings
-  - python coverage html
+  - python manage.py test app/tests/ --settings=scratch.test_settings
 after_success:
   - coveralls
