@@ -1,26 +1,30 @@
 {% extends 'base.html' %}
 
+{% block title %}
+  <title>Scratch - Login</title>
+{% endblock %}
+
 {% block content %}
 
-    <div class="login-page">
-        <h1>Login</h1>
-        <br>
+  <div class="login-page">
+    <h1>Login</h1>
+    <br>
 
-        <form method="post">
-            {% csrf_token %}
+    <form method="post">
+      {% csrf_token %}
 
-            <p><input type="text" name="username" maxlength="150" required="" id="id_username" placeholder="Username"></p>
-            <p><input type="password" name="password" maxlength="128" required="" id="id_password" placeholder="Password"></p>
+      <p><input type="text" name="username" maxlength="150" required="" id="id_username" placeholder="Username"></p>
+      <p><input type="password" name="password" maxlength="128" required="" id="id_password" placeholder="Password"></p>
 
-            <input type="submit" class="btn btn-primary login-button" value="Login">
-        </form>
+      <input type="submit" class="btn btn-primary login-button" value="Login">
+    </form>
 
-        {% if form.non_field_errors %}
-            {% for error in form.non_field_errors %}
-                <p>{{ error }}</p>
-            {% endfor %}
-        {% endif %}
+    {% if form.non_field_errors %}
+      {% for error in form.non_field_errors %}
+        <p>{{ error }}</p>
+      {% endfor %}
+    {% endif %}
 
-    </div>
+  </div>
 
 {% endblock %}

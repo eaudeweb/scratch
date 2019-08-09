@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block title %}
+  <title>Scratch - Tenders</title>
+{% endblock %}
+
 {% block content %}
 
   <div class="row table" >
@@ -25,7 +29,7 @@
       <tbody>
       {% for tender in tenders %}
         <tr>
-          <td><a href="/app/tenders/{{ tender.id }}" class="link">{{ tender.title }}</a></td>
+          <td><a href="{% url 'tender_detail_view' tender.id %}" class="link">{{ tender.title }}</a></td>
           <td>{{ tender.source }}</td>
           <td>{{ tender.organization }}</td>
           {% if tender.deadline %}
