@@ -19,6 +19,6 @@ before_script:
 install:
   - pip install -r requirements-dev.txt
 script:
-  - coverage run --source='.' ./manage.py test app/tests --settings=scratch.settings
+  - coverage run --source='.' ./manage.py test app/tests --settings=scratch.test_settings
 after_success:
   - coveralls
