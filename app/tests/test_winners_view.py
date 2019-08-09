@@ -1,5 +1,7 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
+from django.urls import reverse
+
 from app.factories import TenderFactory, WinnerFactory
 
 
@@ -13,7 +15,7 @@ class WinnersViewTest(TestCase):
         self.winner = WinnerFactory(vendor="test_vendor", tender=self.tender)
 
     def test_awards_page(self):
-        response = self.client.get("/app/awards/")
+        response = self.client.get(reverse('contract_awards_list_view'))
 
         if "login" in response.url:
             login_status = self.client.login(
@@ -21,7 +23,7 @@ class WinnersViewTest(TestCase):
             )
             self.assertEqual(login_status, True)
 
-        response = self.client.get("/app/awards/")
+        response = self.client.get(reverse('contract_awards_list_view'))
         winners = response.context["winners"]
 
         self.assertEqual(response.status_code, 200)
