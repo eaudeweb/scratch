@@ -6,7 +6,6 @@
   {% load widget_tweaks %}
   <link rel ="stylesheet" type="text/css" href="{% static 'filter_bar.css'%}"}>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <script src="{% static 'filter_menu.js'%}"></script>
 </head>
 
 <body>
@@ -40,7 +39,7 @@
         {% endif %}
       </div>
       <div class="col-sm div_button">
-        <button disabled type="submit" name="filter_button" value="filter" class="btn btn-dark filter_button">Filter</button>
+        <button type="submit" name="filter_button" value="filter" class="btn btn-dark filter_button">Filter</button>
       </div>
     </div>
   </form>
