@@ -1,4 +1,4 @@
-# Scratch ![alt text](https://travis-ci.com/eaudeweb/scratch.svg?branch=master)
+# Scratch ![alt text](https://travis-ci.com/eaudeweb/scratch.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/github/eaudeweb/scratch/badge.svg?branch=master)](https://coveralls.io/github/eaudeweb/scratch?branch=master)
 
 ### Python Django Scratch 
 
