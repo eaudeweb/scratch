@@ -17,6 +17,8 @@ services:
       - 8000:8000
     depends_on:
       - db
+    volumes:
+      - static:/var/local/scratch/static
 
   db:
     image: postgres:10-alpine
@@ -31,7 +33,5 @@ services:
 volumes:
   data:
     driver: local
-  esdata:
-    driver: local
-  logging:
+  static:
     driver: local
