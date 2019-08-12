@@ -1,10 +1,7 @@
-import json
-import os
 import re
 from app.models import Tender, TenderDocument, UNSPSCCode, WorkerLog
 from app.server_requests import get_request_class
 from bs4 import BeautifulSoup
-from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 from datetime import date, datetime, timedelta
 from django.utils.timezone import make_aware
