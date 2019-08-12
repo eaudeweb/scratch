@@ -163,3 +163,7 @@ STATICFILES_DIRS = [
 FIXTURE_DIRS = (
    '/app/fixtures/',
 )
+
+EMAIL_USE_TLS = False
+EMAIL_HOST_USER = 'example@example.com'
+EMAIL_HOST_PASSWORD = 'password'
