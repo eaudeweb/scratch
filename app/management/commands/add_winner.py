@@ -45,8 +45,8 @@ class Command(BaseCommand):
                 html_data = request_cls.get_request(url)
 
                 try:
-                    tender_fields, winner_fields = self.parse_winner(html_data)
-                    self.save_winner(tender_fields, winner_fields)
+                    winner_fields = self.parse_winner(html_data)
+                    self.save_winner(tender.reference, winner_fields)
                 except TypeError:
                     logger.error("Contract does not exist!")
 
@@ -88,7 +88,6 @@ class Command(BaseCommand):
         """
 
         soup = BeautifulSoup(html, "html.parser")
-        description = soup.find_all("div", CSS_DESCRIPTION)
         vendor_list = []
         for vendors_div in soup.find_all(id=CSS_VENDOR_LIST):
             vendors = vendors_div.descendants
@@ -98,18 +97,6 @@ class Command(BaseCommand):
                 ]:
                     vendor_list.append(vendor.text.strip())
         vendor_list = ", ".join(vendor_list)
-        title = self.find_by_label(soup, CSS_TITLE)
-        organization = self.find_by_label(soup, CSS_ORGANIZATION)
-        reference = self.find_by_label(soup, CSS_REFERENCE)
-        tender_fields = {
-            "source": "UNGM",
-            "title": self.to_unicode(title.string),
-            "organization": self.to_unicode(organization.string),
-            "reference": self.to_unicode(reference.string.strip()),
-            "published": None,
-            "deadline": None,
-            "description": self.to_unicode(str(description[0].get_text())),
-        }
         award_date = self.find_by_label(soup, CSS_AWARD_DATE)
         value = self.find_by_label(soup, CSS_VALUE)
         winner_fields = {
@@ -121,11 +108,10 @@ class Command(BaseCommand):
         if winner_fields["value"]:
             winner_fields["currency"] = "USD"
 
-        return tender_fields, winner_fields
+        return winner_fields
 
     @staticmethod
-    def save_winner(tender_fields, winner_fields):
-        reference = tender_fields["reference"]
+    def save_winner(reference, winner_fields):
         tender = Tender.objects.filter(reference=reference)
         tender_entry = tender[0]
 
