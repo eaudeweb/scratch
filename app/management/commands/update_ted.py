@@ -205,15 +205,7 @@ def save_tender(tender, codes):
 
 def save_winner(tender_fields, winner_fields, codes):
     reference = tender_fields['reference']
-    tender = Tender.objects.filter(reference=reference).first()
-    if not tender:
-        tender_entry = Tender(**tender_fields)
-        tender_entry.deadline = timezone.utc.localize(tender_entry.deadline)
-        tender_entry.cpv_codes = ', '.join(codes)
-        set_notified(tender_entry)
-        tender_entry.save()
-    else:
-        tender_entry = tender
+    tender_entry = Tender.objects.filter(reference=reference).first()
 
     winner_entry = Winner(tender=tender_entry, **winner_fields)
     winner_entry.save()
