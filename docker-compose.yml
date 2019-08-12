@@ -9,6 +9,7 @@ services:
       - DJANGO_MIGRATE=yes
       - DJANGO_COLLECT_STATIC=no
       - UWSGI_PORT=8000
+      - TZ=Europe/Bucharest
     env_file:
       - docker/db.env
       - docker/app.env
@@ -20,6 +21,8 @@ services:
   db:
     image: postgres:10-alpine
     container_name: scratch.db
+    environment:
+      - TZ=Europe/Bucharest
     env_file:
       - docker/db.env
     volumes:
