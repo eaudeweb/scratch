@@ -49,7 +49,7 @@ class TEDWorker:
                     ftp.retrbinary('RETR %s' % archive_name,
                                    lambda data: f.write(data))
                 self.archives.append(file_path)
-            add_worker_log('TED', last_date)
+            add_worker_log('TED')
 
             last_date += timedelta(1)
 
@@ -135,17 +135,18 @@ class TEDParser(object):
         return tender, winner
 
     def parse_notices(self):
-        self._filter_notices()
+        codes = self._filter_notices()
         for xml_file in self.xml_files:
             with open(xml_file, 'r') as f:
                 tender, winner = self._parse_notice(f.read())
                 if winner:
-                    save_winner(tender, winner)
+                    save_winner(tender, winner, codes[xml_file])
                 else:
-                    save_tender(tender)
+                    save_tender(tender, codes[xml_file])
             os.remove(xml_file)
 
     def _filter_notices(self):
+        codes = dict()
         for xml_file in self.xml_files[:]:
             with open(xml_file, 'r') as f:
 
@@ -169,9 +170,13 @@ class TEDParser(object):
                 if not accept_notice:
                     self.xml_files.remove(xml_file)
                     os.remove(xml_file)
+                else:
+                    codes[xml_file] = cpv_codes
+
+        return codes
 
 
-def save_tender(tender):
+def save_tender(tender, codes):
     old_tender = Tender.objects.filter(reference=tender['reference']).first()
     if old_tender:
         for attr, value in [(k, v) for (k, v) in tender.items()
@@ -189,6 +194,7 @@ def save_tender(tender):
     tender_entry = Tender(**tender)
     if tender_entry.deadline:
         tender_entry.deadline = timezone.utc.localize(tender_entry.deadline)
+    tender_entry.cpv_codes = ', '.join(codes)
     tender_entry.save()
     for document in documents:
         save_document_to_models(tender_entry, document)
@@ -197,12 +203,13 @@ def save_tender(tender):
     return tender_entry
 
 
-def save_winner(tender_fields, winner_fields):
+def save_winner(tender_fields, winner_fields, codes):
     reference = tender_fields['reference']
     tender = Tender.objects.filter(reference=reference).first()
     if not tender:
         tender_entry = Tender(**tender_fields)
         tender_entry.deadline = timezone.utc.localize(tender_entry.deadline)
+        tender_entry.cpv_codes = ', '.join(codes)
         set_notified(tender_entry)
         tender_entry.save()
     else:
@@ -251,8 +258,8 @@ def get_archive_name(last_date, archives):
     return None
 
 
-def add_worker_log(source, new_date=None):
-    log = WorkerLog(source=source, update=new_date or date.today())
+def add_worker_log(source):
+    log = WorkerLog(source=source, update=date.today())
     log.save()
 
 

@@ -22,7 +22,8 @@ class Tender(models.Model):
     url = models.CharField(max_length=255)
     hidden = models.BooleanField(default=False)
     source = models.CharField(max_length=10, choices=SOURCE_CHOICES)
-    unspsc_codes = models.CharField(max_length=1024)
+    unspsc_codes = models.CharField(max_length=1024, null=True, blank=True)
+    cpv_codes = models.CharField(max_length=1024, null=True, blank=True)
 
     def __str__(self):
         return '{}'.format(self.title)
