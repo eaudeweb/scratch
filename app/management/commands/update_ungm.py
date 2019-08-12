@@ -1,7 +1,7 @@
 import json
 import os
 import re
-from app.models import Tender, TenderDocument, UNSPSCCode
+from app.models import Tender, TenderDocument, UNSPSCCode, WorkerLog
 from app.server_requests import get_request_class
 from bs4 import BeautifulSoup
 from django.conf import settings
@@ -166,4 +166,5 @@ class Command(BaseCommand):
                 parsed_tenders.append(self.parse_ungm_notice(text, tender['url'], codes))
             self.update_ungm_tenders(parsed_tenders)
 
+        WorkerLog.objects.create(update=date.today(), source='UNGM')
         return self.stdout.write(self.style.SUCCESS('Ungm tenders updated'))
