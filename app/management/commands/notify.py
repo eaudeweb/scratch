@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand
 from django.template.loader import render_to_string
 from app.models import Tender, Notification, Email, set_notified
+from django.conf import settings
 from getenv import env
 
 
@@ -58,7 +59,7 @@ def send_email(tenders, digest):
 
 
 def build_email(subject, recipients, cc, body):
-    sender = 'Eau de Web <Tenders Bot>'
+    sender = settings.EMAIL_HOST_USER
 
     return Email(
         subject=subject,
