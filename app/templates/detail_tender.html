@@ -23,7 +23,7 @@
       <td> {{ tender.notice_type }}</td>
     </tr>
     <tr>
-      <td>Link to UNGM</td>
+      <td>Link to tender</td>
       <td><a href="{{ tender.url }}">{{ tender.url }}</a></td>
     </tr>
     <tr>
@@ -62,8 +62,13 @@
       <td>{{ tender.description }}</td>
     </tr>
     <tr>
-      <td>UNSPSCS codes</td>
-      <td>{{ tender.unspsc_codes }}</td>
+        {% if tender.source == 'UNGM' %}
+          <td>UNSPSCS codes</td>
+          <td>{{ tender.unspsc_codes }}</td>
+        {% else %}
+          <td>CPV codes</td>
+          <td>{{ tender.cpv_codes }}</td>
+        {% endif %}
     </tr>
     </tbody>
   </table></div>
