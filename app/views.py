@@ -25,7 +25,7 @@ class TendersListView(LoginRequiredMixin, ListView):
     model = Tender
     template_name = "tenders_list.html"
     context_object_name = "tenders"
-    login_url = "/app/login"
+    login_url = '/login'
     redirect_field_name = "login_view"
 
     def get_queryset(self):
@@ -85,7 +85,7 @@ class TenderDetailView(LoginRequiredMixin, DetailView):
     model = Tender
     template_name = "detail_tender.html"
     context_object_name = "tender"
-    login_url = "/app/login"
+    login_url = "/login"
     redirect_field_name = "login_view"
 
     @staticmethod
@@ -128,7 +128,7 @@ class TenderFavouriteView(View):
 class TenderDeleteView(View):
 
     def post(self, request, pk):
-        success_url = '/app/tenders'
+        success_url = '/tenders'
         Tender.objects.filter(id=pk).delete()
         return HttpResponse(success_url)
 
@@ -137,7 +137,7 @@ class ContractAwardsListView(LoginRequiredMixin, ListView):
     model = Winner
     context_object_name = "winners"
     template_name = "contract_awards_list.html"
-    login_url = "/app/login"
+    login_url = "/login"
     redirect_field_name = "login_view"
 
     def get_queryset(self):
@@ -192,7 +192,7 @@ class ContractAwardsListView(LoginRequiredMixin, ListView):
 
 
 class LoginView(FormView):
-    success_url = "/app/tenders"
+    success_url = "/tenders"
     form_class = AuthenticationForm
     redirect_field_name = REDIRECT_FIELD_NAME
     template_name = "login.html"
@@ -223,7 +223,7 @@ class LoginView(FormView):
 
 
 class LogoutView(RedirectView):
-    url = "/app/login"
+    url = '/login'
 
     def get(self, request, *args, **kwargs):
         auth_logout(request)
