@@ -145,14 +145,13 @@ class TenderArchiveView(TendersListView):
         for tender in tenders:
             if current_time > tender.deadline:
                 archive.append(tender)
-
         return archive
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['reset_url'] = '/archive'
-
         return context
+
 
 class ContractAwardsListView(LoginRequiredMixin, ListView):
     model = Winner
