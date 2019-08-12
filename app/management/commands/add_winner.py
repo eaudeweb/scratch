@@ -112,13 +112,12 @@ class Command(BaseCommand):
 
     @staticmethod
     def save_winner(reference, winner_fields):
-        tender = Tender.objects.filter(reference=reference)
-        tender_entry = tender[0]
+        tender_entry = Tender.objects.filter(reference=reference).first()
 
-        winner_entry = Winner(tender=tender_entry, **winner_fields)
-        winner_entry.save()
+        winner = Winner(tender=tender_entry, **winner_fields)
+        winner.save()
 
-        return tender_entry
+        return winner
 
     @staticmethod
     def to_unicode(string):
