@@ -38,8 +38,8 @@
   <li><a class="{% active request homepage %} nav-menu2" href="{{ homepage }}">Home</a></li>
   <li><a class="{% active request tender_list %} nav-menu2" href="{{ tender_list }}">Tenders</a></li>
   <li><a class="{% active request awards %} nav-menu2" href="{{ awards }}">Contract Awards</a></li>
-  <li><a class="{% active request overview %} nav-menu2" href="{{ overview }}">Overview</a></li>
   <li><a class="{% active request archives %} nav-menu2" href="{{ archives }}"> Archive </a></li>
+  <li><a class="{% active request overview %} nav-menu2" href="{{ overview }}">Overview</a></li>
   {% if user.is_authenticated %}
     <li><a class="{% active request logout %} nav-menu-logout" href="{{ logout }}">Logout</a></li>
   {% else %}

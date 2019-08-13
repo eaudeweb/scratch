@@ -6,6 +6,7 @@
   <div class="home-page">
     <p class="logoText">SCRATCH</p>
 
+    {% if user.is_authenticated %}
     <div class="row home-page">
       <div class="card col-sm-2">
         <div class="container-card">
@@ -78,7 +79,7 @@
         </div>
       </div>
     </div>
-
+    {% endif %}
   </div>
 
 {% endblock %}

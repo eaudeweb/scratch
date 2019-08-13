@@ -188,6 +188,8 @@ class TenderDeleteView(View):
 class TenderArchiveView(TendersListView):
     template_name = "tenders_archive.html"
     context_object_name = "archive"
+    login_url = "/login"
+    redirect_field_name = "login_view"
 
     def get_queryset(self):
         tenders = super().get_queryset()

@@ -7,6 +7,7 @@ from .views import (
     TenderFavouriteView,
     HomepageView,
     OverviewPageView,
+    TenderArchiveView
 )
 
 
