@@ -66,13 +66,13 @@
       <td>{{ tender.description }}</td>
     </tr>
     <tr>
-        {% if tender.source == 'UNGM' %}
-          <td>UNSPSCS codes</td>
-          <td>{{ tender.unspsc_codes }}</td>
-        {% else %}
-          <td>CPV codes</td>
-          <td>{{ tender.cpv_codes }}</td>
-        {% endif %}
+      {% if tender.source == 'UNGM' %}
+        <td>UNSPSCS codes</td>
+        <td>{{ tender.unspsc_codes }}</td>
+      {% else %}
+        <td>CPV codes</td>
+        <td>{{ tender.cpv_codes }}</td>
+      {% endif %}
     </tr>
     </tbody>
   </table></div>

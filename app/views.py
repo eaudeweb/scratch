@@ -78,6 +78,7 @@ class TendersListView(LoginRequiredMixin, ListView):
 
         context["form"] = form
         context["reset"] = reset
+        context["reset_url"] = '/tenders'
         return context
 
 
@@ -131,6 +132,25 @@ class TenderDeleteView(View):
         success_url = '/tenders'
         Tender.objects.filter(id=pk).delete()
         return HttpResponse(success_url)
+
+
+class TenderArchiveView(TendersListView):
+    template_name = "tenders_archive.html"
+    context_object_name = "archive"
+
+    def get_queryset(self):
+        tenders = super().get_queryset()
+        current_time = datetime.now(timezone.utc)
+        archive = []
+        for tender in tenders:
+            if current_time > tender.deadline:
+                archive.append(tender)
+        return archive
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['reset_url'] = '/archive'
+        return context
 
 
 class ContractAwardsListView(LoginRequiredMixin, ListView):
