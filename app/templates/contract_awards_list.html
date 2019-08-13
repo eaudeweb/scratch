@@ -30,7 +30,7 @@
       <tbody>
       {% for winner in winners %}
         <tr>
-          <td><a href="/tenders/{{ winner.tender.id }}" class="link">{{ winner.tender.title }}</a></td>
+          <td><a href="{% url 'tender_detail_view' winner.tender.id %}" class="link">{{ winner.tender.title }}</a></td>
           <td>{{ winner.tender.source }}</td>
           <td>{{ winner.tender.organization }}</td>
           <td>{{ winner.award_date }}</td>
