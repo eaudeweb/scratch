@@ -15,12 +15,19 @@ function getCookie(name) {
 }
 
 $(document).ready(function() {
+  $.fn.dataTable.moment( 'DD MMM YYYY');
+  $.fn.dataTable.moment( 'DD MMM YYYY, HH:mm');
   let doc = this
   $('#tenders_table').DataTable(
     {
+      "columnDefs": [
+        { "width": "55%", "targets": 0 },
+        { "width": "10%", "targets": 3 },
+        { "width": "8%", "targets": 4 },
+      ],
       "order": [[ 3, "desc" ]],
       "pageLength": 15,
-      lengthChange: false,
+      "lengthChange": false,
       "scrollY":  "625px",
       "scrollCollapse": true,
 
