@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block title %}
+  <title>Scratch - Homepage</title>
+{% endblock %}
+{% block content %}
+  <div class="home-page">
+    <p class="logoText">SCRATCH</p>
+
+    <div class="row home-page">
+      <div class="card col-sm-2">
+        <div class="container-card">
+          <h5><b>UNGM Tenders</b></h5>
+          <br>
+          <p>{{ ungm_tenders }}</p>
+        </div>
+
+      </div>
+
+      <div class="card col-sm-2">
+        <div class="container-card">
+          <h5><b>UNGM Published Today</b></h5>
+          <p>{{ ungm_published_today }}</p>
+        </div>
+      </div>
+
+      <div class="card col-sm-2">
+        <div class="container-card">
+          <h5><b>UNGM Deadline Today</b></h5>
+          <p>{{ ungm_deadline_today }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row home-page">
+      <div class="card col-sm-2">
+        <div class="container-card">
+          <h5><b>TED Tenders</b></h5>
+          <br>
+          <p>{{ ted_tenders }}</p>
+        </div>
+      </div>
+
+      <div class="card col-sm-2">
+        <div class="container-card">
+          <h5><b>TED Published Today</b></h5>
+          <p>{{ ted_published_today }}</p>
+        </div>
+      </div>
+
+      <div class="card col-sm-2">
+        <div class="container-card">
+          <h5><b>TED Deadline Today</b></h5>
+          <p>{{ ted_deadline_today }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row home-page">
+      <div class="card col-sm-2">
+        <div class="container-card">
+          <h5><b>Winners</b></h5>
+          <br>
+          <p>{{ winners }}</p>
+        </div>
+      </div>
+
+      <div class="card col-sm-2">
+        <div class="container-card">
+          <h5><b>Favorite Tenders</b></h5>
+          <p>{{ favorite_tenders }}</p>
+        </div>
+      </div>
+
+      <div class="card col-sm-2">
+        <div class="container-card">
+          <h5><b>Expired Tenders</b></h5>
+          <p>{{ expired_tenders }}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+{% endblock %}
