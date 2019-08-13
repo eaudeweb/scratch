@@ -89,8 +89,3 @@ ul {
     float: left;
     padding-left: 3px;
 }
-
-.truncate {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
