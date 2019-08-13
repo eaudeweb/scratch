@@ -35,7 +35,7 @@
       </div>
       <div class="col-sm-3 div_button">
         {% if reset %}
-          <a href="{% url 'tenders_list_view' %}"><button type="button" name="reset_filters" value="reset" class="btn btn-dark filter_button">Reset filters</button></a>
+          <a href="{{ reset_url }}"><button type="button" name="reset_filters" value="reset" class="btn btn-dark filter_button">Reset filters</button></a>
         {% endif %}
       </div>
       <div class="col-sm div_button">
