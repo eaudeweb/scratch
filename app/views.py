@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.detail import DetailView
-from .models import Tender, Winner
+from .models import Tender, Winner, Notification, WorkerLog, CPVCode, UNSPSCCode
 from django.utils.http import is_safe_url
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import (
@@ -10,22 +10,74 @@ from django.contrib.auth import (
     login as auth_login,
     logout as auth_logout,
 )
+from django.conf import settings
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.debug import sensitive_post_parameters
-from django.views.generic import FormView, RedirectView
+from django.views.generic import FormView, RedirectView, TemplateView
 from django.views.generic import View
-from datetime import timezone, datetime
+from datetime import timezone, datetime, date, timedelta
 from .forms import TendersFilter, AwardsFilter
 from .forms import MAX, STEP
+
+
+class HomepageView(TemplateView):
+    template_name = "homepage.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        today = date.today()
+        tomorrow = today + timedelta(days=1)
+
+        context["ungm_tenders"] = Tender.objects.filter(source="UNGM").count()
+        context["ted_tenders"] = Tender.objects.filter(source="TED").count()
+        context["favorite_tenders"] = Tender.objects.filter(
+            favourite=True
+        ).count()
+        context["winners"] = Winner.objects.all().count()
+        context["expired_tenders"] = Tender.objects.filter(
+            deadline__lt=datetime.now(timezone.utc)
+        ).count()
+        context["ungm_published_today"] = Tender.objects.filter(
+            published__exact=today, source="UNGM"
+        ).count()
+        context["ted_published_today"] = Tender.objects.filter(
+            published__exact=today, source="TED"
+        ).count()
+        context["ungm_deadline_today"] = Tender.objects.filter(
+            deadline__gte=today, deadline__lt=tomorrow, source="UNGM"
+        ).count()
+        context["ted_deadline_today"] = Tender.objects.filter(
+            deadline__gte=today, deadline__lt=tomorrow, source="TED"
+        ).count()
+
+        return context
+
+
+class OverviewPageView(LoginRequiredMixin, TemplateView):
+    template_name = "overview.html"
+    login_url = "/login"
+    redirect_field_name = "login_view"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context["deadline_notifications"] = settings.DEADLINE_NOTIFICATIONS
+        context["emails"] = Notification.objects.all()
+        context["worker_logs"] = WorkerLog.objects.order_by('-update').distinct('update')
+        context["unspscs_codes"] = UNSPSCCode.objects.all()
+        context["cpv_codes"] = CPVCode.objects.all()
+
+        return context
 
 
 class TendersListView(LoginRequiredMixin, ListView):
     model = Tender
     template_name = "tenders_list.html"
     context_object_name = "tenders"
-    login_url = '/login'
+    login_url = "/login"
     redirect_field_name = "login_view"
 
     def get_queryset(self):
@@ -48,7 +100,7 @@ class TendersListView(LoginRequiredMixin, ListView):
             status = self.request.GET.get("status")
             if status:
                 award_refs = [award.tender.reference for award in awards]
-                if status == 'open':
+                if status == "open":
                     tenders = tenders.exclude(reference__in=award_refs)
                 else:
                     tenders = tenders.filter(reference__in=award_refs)
@@ -127,9 +179,8 @@ class TenderFavouriteView(View):
 
 
 class TenderDeleteView(View):
-
     def post(self, request, pk):
-        success_url = '/tenders'
+        success_url = "/tenders"
         Tender.objects.filter(id=pk).delete()
         return HttpResponse(success_url)
 
@@ -137,6 +188,8 @@ class TenderDeleteView(View):
 class TenderArchiveView(TendersListView):
     template_name = "tenders_archive.html"
     context_object_name = "archive"
+    login_url = "/login"
+    redirect_field_name = "login_view"
 
     def get_queryset(self):
         tenders = super().get_queryset()
@@ -178,8 +231,8 @@ class ContractAwardsListView(LoginRequiredMixin, ListView):
 
             value = self.request.GET.get("value")
             if value:
-                if value == 'max':
-                    awards = awards.filter(value__gt=MAX-STEP)
+                if value == "max":
+                    awards = awards.filter(value__gt=MAX - STEP)
                 else:
                     value = float(value)
                     awards = awards.filter(value__range=(value, value + STEP))
@@ -243,7 +296,7 @@ class LoginView(FormView):
 
 
 class LogoutView(RedirectView):
-    url = '/login'
+    url = "/login"
 
     def get(self, request, *args, **kwargs):
         auth_logout(request)

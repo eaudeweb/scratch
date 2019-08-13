@@ -1,0 +1,15 @@
+.overview-page {
+  width: 80%;
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.overview-page-list {
+  margin-left: 50px;
+  list-style-type: disc;
+}
+
+h3 {
+  margin-top: 25px;
+}

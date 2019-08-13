@@ -54,6 +54,9 @@ class WorkerLog(models.Model):
     update = models.DateField()
     source = models.CharField(max_length=10, choices=SOURCE_CHOICES)
 
+    def __str__(self):
+        return '{}'.format(self.update)
+
 
 class Email(models.Model):
     date = models.DateTimeField(auto_now_add=True)
@@ -108,9 +111,15 @@ class UNSPSCCode(models.Model):
     id_ungm = models.CharField(max_length=1024)
     name = models.CharField(max_length=1024)
 
+    def __str__(self):
+        return '{}'.format(self.id)
+
 
 class CPVCode(models.Model):
     code = models.CharField(max_length=1024, primary_key=True)
+
+    def __str__(self):
+        return '{}'.format(self.code)
 
 
 class TedCountry(models.Model):

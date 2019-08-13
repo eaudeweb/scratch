@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Scratch - Overview</title>
+{% endblock %}
+
+{% block content %}
+    <div class="overview-page">
+        <h3><b>Deadline Notifications</b></h3>
+        <ul>
+            {% for day in deadline_notifications %}
+                <li class="overview-page-list">{{ day }} days</li>
+            {% endfor %}
+        </ul>
+
+        <h3><b>Notification emails</b></h3>
+        <ul>
+            {% for email in emails %}
+                <li class="overview-page-list">{{ email }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3><b>Last scraping sessions</b></h3>
+        <ul>
+            {% for log in worker_logs %}
+                <li class="overview-page-list">{{ log }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3><b>UNSPSCS Codes</b></h3>
+        <select class="js-example-basic-single" name="state">
+            {% for code in unspscs_codes %}
+                <option>{{ code }}</option>
+            {% endfor %}
+        </select>
+
+        <h3><b>CPV Codes</b></h3>
+        <select class="js-example-basic-single" name="state">
+            {% for code in cpv_codes %}
+                <option>{{ code }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
+    </script>
+
+{% endblock %}
