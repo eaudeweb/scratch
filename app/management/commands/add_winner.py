@@ -30,15 +30,21 @@ CSS_VENDOR_LIST = "contractAwardVendorsContainer"
 class Command(BaseCommand):
     def handle(self, *args, **options):
         expired_tenders = Tender.objects.filter(
-            deadline__lt=datetime.datetime.now(timezone.utc)
+            deadline__lt=datetime.datetime.now(timezone.utc),
+            source='UNGM'
         )
+
         for tender in expired_tenders:
             winner = Winner.objects.filter(
                 tender__reference=tender.reference
             ).first()
 
             if not winner:
-                contract_id = self.get_contract_id(tender.reference)
+                try:
+                    contract_id = self.get_contract_id(tender.reference)
+                except TypeError:
+                    logger.warning(f"No winner was found for the corresponding tender reference ({ tender.reference })")
+                    return
 
                 request_cls = get_request_class(public=True)
                 url = '/'.join((WINNERS_ENDPOINT_URI, contract_id))
