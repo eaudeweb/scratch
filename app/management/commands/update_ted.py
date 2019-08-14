@@ -30,7 +30,7 @@ class TEDWorker:
         ftp.login(user='guest', passwd='guest')
 
         last_date = last_update('TED') or \
-            days_ago(settings.TED_DAYS_AGO)
+                    days_ago(settings.TED_DAYS_AGO)
         last_month = last_date.strftime('%m')
         last_year = last_date.strftime('%Y')
 
@@ -62,7 +62,6 @@ class TEDWorker:
                 last_month = last_date.strftime('%m')
                 ftp.cwd('../{}'.format(last_month))
                 archives = ftp.nlst()
-
         ftp.quit()
 
     def parse_notices(self):
@@ -114,15 +113,32 @@ class TEDParser(object):
                 deadline = datetime.strptime(deadline.text, '%Y%m%d')
         tender['deadline'] = deadline
 
-        section = soup.find('contract', {'lg': 'EN'})
-        desc = section.find('short_contract_description') if section else None
-        tender['description'] = ''.join([str(e) for e in desc.contents]) \
-            if desc else ''
+        section = soup.find('form_section').find_all(lg='EN')[0]
+        descriptions = section.findAll('short_descr')[:2]
+
+        title = 'Title:\n\t' + section.find('title').get_text() + '\n\n'
 
         try:
-            tender['description'] = tender['description'].decode('utf-8')
+            estimated_total = 'Estimated total: ' + section.find('val_estimated_total').get_text() + ' ' + str(
+                section.find('val_estimated_total')['currency']) + '\n\n'
         except AttributeError:
+            estimated_total = ''
+
+        try:
+            lots = 'Tenders may be submitted for maximum number of lots: ' + section.find('lot_max_number').get_text() + '\n\n'
+        except AttributeError:
+            lots = ''
+
+        procurement_desc = ''
+        short_desc = 'Short Description:' + '\n\t' + str(descriptions[0].get_text()) + '\n\n'
+
+        try:
+            procurement_desc = descriptions[1]
+            procurement_desc = 'Description of the procurement:' + '\n\t' + str(descriptions[1].get_text())
+        except IndexError:
             pass
+
+        tender['description'] = title + estimated_total + lots + short_desc + procurement_desc
 
         url = soup.find('uri_doc')
         tender['url'] = url.text.replace(url.get('lg'), 'EN')
@@ -153,7 +169,7 @@ class TEDParser(object):
                 soup = BeautifulSoup(f.read(), 'html.parser')
 
                 cpv_elements = soup.find_all('cpv_code') \
-                    or soup.find_all('original_cpv')
+                               or soup.find_all('original_cpv')
                 cpv_codes = set([c.get('code') for c in cpv_elements])
 
                 doc_type = soup.find('td_document_type').text
@@ -161,10 +177,10 @@ class TEDParser(object):
                 auth_type = soup.find('aa_authority_type').text
 
                 accept_notice = (
-                    cpv_codes & set(CPV_CODES) and
-                    doc_type in settings.TED_DOC_TYPES and
-                    country in TED_COUNTRIES and
-                    auth_type == settings.TED_AUTH_TYPE
+                        cpv_codes & set(CPV_CODES) and
+                        doc_type in settings.TED_DOC_TYPES and
+                        country in TED_COUNTRIES and
+                        auth_type == settings.TED_AUTH_TYPE
                 )
 
                 if not accept_notice:
@@ -219,7 +235,7 @@ def update_winner(winner, soup):
         fields = {c.name: int(c.text) for c in award_date.contents}
         winner['award_date'] = date(**fields)
     vendor = soup.find('economic_operator_name_address') or \
-        soup.find('contact_data_without_responsible_name_chp')
+             soup.find('contact_data_without_responsible_name_chp')
     if vendor:
         winner['vendor'] = vendor.officialname.text \
             if vendor.officialname else None
