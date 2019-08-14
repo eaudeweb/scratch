@@ -63,7 +63,7 @@
     {% endif %}
     <tr>
       <td>Description</td>
-      <td>{{ tender.description }}</td>
+      <td>{{ tender.description | linebreaks }}</td>
     </tr>
     <tr>
       {% if tender.source == 'UNGM' %}
