@@ -13,10 +13,10 @@ if 'TRAVIS' in os.environ:
         },
 }
 
-# ELASTICSEARCH_DSL = {
-#     'default': {
-#         'hosts': env('ELASTICSEARCH_TEST_HOST'),
-#         'http_auth': env('ELASTICSEARCH_TEST_AUTH'),
-#     },
-# }
+ELASTICSEARCH_DSL = {
+    'default': {
+        'hosts': env('ELASTICSEARCH_TEST_HOST'),
+        'http_auth': env('ELASTICSEARCH_TEST_AUTH'),
+    },
+}
 
