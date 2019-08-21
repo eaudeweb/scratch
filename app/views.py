@@ -197,7 +197,7 @@ class TenderArchiveView(TendersListView):
         current_time = datetime.now(timezone.utc)
         archive = []
         for tender in tenders:
-            if current_time > tender.deadline:
+            if tender.deadline and current_time > tender.deadline:
                 archive.append(tender)
         return archive
 
