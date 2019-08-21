@@ -33,12 +33,12 @@
           <td>{{ tender.source }}</td>
           <td>{{ tender.organization }}</td>
           {% if tender.deadline %}
-            <td>{{ tender.deadline | date:'d-M-Y H:i'}}</td>
+            <td>{{ tender.deadline | date:'d M Y, H:i'}}</td>
           {% else %}
             <td>Not specified</td>
           {% endif %}
           {% if tender.published %}
-            <td>{{ tender.published | date:'d-M-Y' }}</td>
+            <td>{{ tender.published | date:'d M Y' }}</td>
           {% else %}
             <td>Not specified</td>
           {% endif %}
