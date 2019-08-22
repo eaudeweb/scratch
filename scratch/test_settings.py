@@ -1,5 +1,7 @@
 import os
 from .settings import *
+from getenv import env
+
 
 if 'TRAVIS' in os.environ:
     DATABASES = {
