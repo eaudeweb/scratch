@@ -1,5 +1,14 @@
 from django_elasticsearch_dsl import  DocType, Index, fields
+from elasticsearch_dsl import analyzer
+
 from .models import Tender, Winner, UNSPSCCode, CPVCode
+
+html_strip = analyzer(
+    'html_strip',
+    tokenizer="standard",
+    filter=["standard", "lowercase", "stop", "snowball"],
+    char_filter=["html_strip"]
+)
 
 tender = Index('tenders')
 tender.settings(
@@ -15,13 +24,13 @@ winner.settings(
 
 
 @tender.doc_type
-class TenderDocument(DocType):
+class TenderDoc(DocType):
+
     class Meta:
         model = Tender
         fields = [
             'title',
             'reference',
-            'description',
             'unspsc_codes',
             'cpv_codes',
             'organization',

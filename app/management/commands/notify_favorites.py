@@ -76,6 +76,7 @@ class Command(BaseCommand):
 
     def scrap_favorites(self, request_cls):
         favorites = self.get_favorite_tenders()
+        #import pdb;pdb.set_trace()
         changed_tenders = []
         for tender in favorites:
             html_data = request_cls.get_request(tender.url)
@@ -183,5 +184,7 @@ class Command(BaseCommand):
 
     @staticmethod
     def update_tender(tender, attribute, value):
+        import pdb; pdb.set_trace()
         setattr(tender, attribute, value)
+
         tender.save()
