@@ -10,15 +10,29 @@ addons:
       - postgresql-client-10
 env:
   global:
+    - DEBUG=True
     - BASE_URL=localhost:8000
     - PGPORT=5432
+    - ES_VERSION=6.6.1
+    - ES_DOWNLOAD_URL=https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ES_VERSION}.tar.gz
+    - ELASTICSEARCH_HOST=127.0.0.1
+    - ELASTICSEARCH_AUTH=elastic:changeme
 services:
   - postgresql
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
+  - sudo sysctl -w vm.max_map_count=262144
+  - sudo service elasticsearch start
+  - mkdir logging
+  - chmod -R 777 logging
 install:
+  - wget ${ES_DOWNLOAD_URL}
+  - tar -xzf elasticsearch-${ES_VERSION}.tar.gz
+  - ./elasticsearch-${ES_VERSION}/bin/elasticsearch &
   - pip install -r requirements-dev.txt
 script:
+  - wget -q --waitretry=1 --retry-connrefused -T 10 -O - http://127.0.0.1:9200
+  - ./manage.py check
   - coverage run --source='.' ./manage.py test app/tests --settings=scratch.test_settings
 after_success:
   - coveralls

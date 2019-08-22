@@ -13,12 +13,11 @@ if 'TRAVIS' in os.environ:
             'HOST': 'localhost',
             'PORT': os.getenv('PGPORT'),
         },
-}
+    }
 
-ELASTICSEARCH_DSL = {
-    'default': {
-        'hosts': env('ELASTICSEARCH_TEST_HOST'),
-        'http_auth': env('ELASTICSEARCH_TEST_AUTH'),
-    },
-}
-
+    ELASTICSEARCH_DSL = {
+        'default': {
+            'hosts': env('ELASTICSEARCH_TEST_HOST'),
+            'http_auth': env('ELASTICSEARCH_TEST_AUTH'),
+        },
+    }
