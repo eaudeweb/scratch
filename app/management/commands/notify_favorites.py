@@ -184,7 +184,5 @@ class Command(BaseCommand):
 
     @staticmethod
     def update_tender(tender, attribute, value):
-        import pdb; pdb.set_trace()
         setattr(tender, attribute, value)
-
         tender.save()
