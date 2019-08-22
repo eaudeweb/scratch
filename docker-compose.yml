@@ -43,7 +43,7 @@ services:
     volumes:
       - esdata:/usr/share/elasticsearch/data
     ports:
-      - 9200:9205
+      - 9200:9200
 
 volumes:
   data:
