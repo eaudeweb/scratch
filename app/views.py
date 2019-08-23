@@ -98,6 +98,10 @@ class TendersListView(LoginRequiredMixin, ListView):
             if favourite:
                 tenders = tenders.filter(favourite=favourite)
 
+            notice_type = self.request.GET.get("type")
+            if notice_type:
+                tenders = tenders.filter(notice_type=notice_type)
+
             status = self.request.GET.get("status")
             if status:
                 award_refs = [award.tender.reference for award in awards]
@@ -117,7 +121,8 @@ class TendersListView(LoginRequiredMixin, ListView):
             source = self.request.GET.get("source")
             status = self.request.GET.get("status")
             favourite = self.request.GET.get("favourite")
-            reset = any([source, organization, status, favourite])
+            notice_type = self.request.GET.get("type")
+            reset = any([source, organization, status, favourite, notice_type])
             form = TendersFilter(
                 initial={
                     "organization": organization,

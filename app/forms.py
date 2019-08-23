@@ -38,12 +38,17 @@ class TendersFilter(forms.Form):
     source = forms.ChoiceField(choices=SOURCES, required=False)
     status = forms.ChoiceField(choices=STATUS, required=False)
     favourite = forms.ChoiceField(choices=FAVOURITES, required=False)
+    type = forms.ChoiceField(required=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         organizations_list = Tender.objects.values_list('organization', flat=True).distinct()
         self.fields['organization'].choices = [('', 'All organizations')] + [
             (org, org) for org in organizations_list
+        ]
+        types_list = Tender.objects.values_list('notice_type', flat=True).distinct()
+        self.fields['type'].choices = [('', 'All notice types')] + [
+            (tp, tp) for tp in types_list
         ]
 
 
