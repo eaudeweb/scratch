@@ -3,7 +3,7 @@ from django.shortcuts import redirect
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.detail import DetailView
-from .models import Tender, Winner, Notification, WorkerLog, CPVCode, UNSPSCCode
+from .models import Tender, TenderDocument, Winner, Notification, WorkerLog, CPVCode, UNSPSCCode
 from django.utils.http import is_safe_url
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import (
@@ -163,6 +163,7 @@ class TenderDetailView(LoginRequiredMixin, DetailView):
         if deadline:
             deadline -= datetime.now(timezone.utc)
             context["deadline_in"] = self.deadline_in_string(deadline)
+        context["documents_set"] = TenderDocument.objects.filter(tender=self.object)
         return context
 
 
