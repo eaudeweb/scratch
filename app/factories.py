@@ -11,6 +11,7 @@ class TenderFactory(factory.DjangoModelFactory):
     reference = factory.sequence(lambda n: "RFC/TEST/%s" % n)
     organization = 'UNOPS'
     source = 'UNGM'
+    description = 'test'
     unspsc_codes = '98765'
     url = factory.sequence(lambda n: "http://test.com/%s" % n)
     published = datetime.now(timezone.utc)

@@ -16,7 +16,7 @@ class Tender(models.Model):
     organization = models.CharField(null=True, max_length=255)
     published = models.DateField(null=True)
     deadline = models.DateTimeField(null=True)
-    description = models.TextField(null=True, max_length=5059)
+    description = models.TextField(null=True, blank=True, max_length=5059)
     favourite = models.BooleanField(default=False)
     notified = models.BooleanField(default=False)
     url = models.CharField(max_length=255)
