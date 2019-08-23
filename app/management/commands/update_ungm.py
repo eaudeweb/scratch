@@ -45,20 +45,21 @@ class Command(BaseCommand):
 
         return tenders_list
 
-    def parse_ungm_notice(self, html, url, codes):
+    @staticmethod
+    def parse_ungm_notice(html, url, codes):
         soup = BeautifulSoup(html, 'html.parser')
-        documents = self.find_by_class(soup, "lnkShowDocument", "a")
-        description = self.find_by_class(soup, "ungm-list-item ungm-background", "div")
+        documents = Command.find_by_class(soup, "lnkShowDocument", "a")
+        description = Command.find_by_class(soup, "ungm-list-item ungm-background", "div")
         description = description[1].text.strip().lstrip('Description')
-        nodes = self.find_by_class(soup, "nodeName", "span")
+        nodes = Command.find_by_class(soup, "nodeName", "span")
         scraped_nodes = [parent.find_all("span")[0].text for parent in nodes[1:]]
         unspsc_codes = [
             code.id for code in codes
             if code.id_ungm in scraped_nodes
         ]
-        notice_type = self.find_by_class(soup, "status-tag", "span", True)
-        title = self.find_by_class(soup, "title", "span", True)
-        organization = self.find_by_class(soup, "highlighted", "span", True)
+        notice_type = Command.find_by_class(soup, "status-tag", "span", True)
+        title = Command.find_by_class(soup, "title", "span", True)
+        organization = Command.find_by_class(soup, "highlighted", "span", True)
 
         reference = soup.find('span', text=re.compile('Reference:')).next_sibling.next_sibling.text
         published = soup.find('span', text=re.compile('Published on:')).next_sibling.next_sibling.text
@@ -105,7 +106,8 @@ class Command(BaseCommand):
 
         return tender_item
 
-    def update_ungm_tenders(self, parsed_tenders):
+    @staticmethod
+    def update_ungm_tenders(parsed_tenders):
         for item in parsed_tenders:
             try:
                 tender_item = Tender.objects.get(reference=item['tender']['reference'])
@@ -122,17 +124,18 @@ class Command(BaseCommand):
                                 setattr(tender_doc, k, v)
 
                         tender_doc.save()
-                        self.download_document(tender_doc)
 
                     except TenderDocument.DoesNotExist:
-                        new_doc = TenderDocument.objects.create(tender=tender_item, **doc)
-                        self.download_document(new_doc)
+                        tender_doc = TenderDocument.objects.create(tender=tender_item, **doc)
+                    finally:
+                        Command.download_document(tender_doc)
+
             except Tender.DoesNotExist:
                 new_tender_item = Tender.objects.create(**item['tender'])
 
                 for doc in item['documents']:
                     new_doc = TenderDocument.objects.create(tender=new_tender_item, **doc)
-                    self.download_document(new_doc)
+                    Command.download_document(new_doc)
 
     def add_arguments(self, parser):
         parser.add_argument(
@@ -160,14 +163,14 @@ class Command(BaseCommand):
         while True:
             requested_html_tenders = requester.request_tenders_list(last_date, page_index)
             page_index += 1
-            extracted_tenders = self.parse_ungm_notice_list(requested_html_tenders)
+            extracted_tenders = Command.parse_ungm_notice_list(requested_html_tenders)
             if not len(extracted_tenders):
                 break
             parsed_tenders = []
             for tender in extracted_tenders:
                 text = requester.get_request(tender['url'])
-                parsed_tenders.append(self.parse_ungm_notice(text, tender['url'], codes))
-            self.update_ungm_tenders(parsed_tenders)
+                parsed_tenders.append(Command.parse_ungm_notice(text, tender['url'], codes))
+            Command.update_ungm_tenders(parsed_tenders)
 
         WorkerLog.objects.create(update=date.today(), source='UNGM')
         return self.stdout.write(self.style.SUCCESS('Ungm tenders updated'))
@@ -176,8 +179,9 @@ class Command(BaseCommand):
     def download_document(tender_doc):
         with TemporaryFile() as content:
             response = requests.get(tender_doc.download_url, stream=True)
-            for chunk in response.iter_content(chunk_size=4096):
-                content.write(chunk)
-            content.seek(0)
-            tender_doc.document.save(tender_doc.name, File(content), save=True)
-
+            if response.status_code == 200:
+                # for chunk in response.iter_content(chunk_size=4096):
+                #     content.write(chunk)
+                # content.seek(0)
+                content.write(response.content)
+                tender_doc.document.save(tender_doc.name, File(content), save=True)
