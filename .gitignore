@@ -111,7 +111,7 @@ app/management/commands/add_cpv_codes.py
 app/management/commands/add_ted_countries.py
 cpv_codes.txt
 ted_countries.txt
-scratch/app/static/documents
+app/media
 
 docker-compose.override.yml
 docker/app.env

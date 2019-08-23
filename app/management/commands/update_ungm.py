@@ -1,10 +1,14 @@
 import re
+import requests
+
 from app.models import Tender, TenderDocument, UNSPSCCode, WorkerLog
 from app.server_requests import get_request_class
 from bs4 import BeautifulSoup
-from django.core.management.base import BaseCommand, CommandError
 from datetime import date, datetime, timedelta
+from django.core.files import File
+from django.core.management.base import BaseCommand, CommandError
 from django.utils.timezone import make_aware
+from tempfile import TemporaryFile
 
 ENDPOINT_URI = 'https://www.ungm.org'
 
@@ -101,8 +105,7 @@ class Command(BaseCommand):
 
         return tender_item
 
-    @staticmethod
-    def update_ungm_tenders(parsed_tenders):
+    def update_ungm_tenders(self, parsed_tenders):
         for item in parsed_tenders:
             try:
                 tender_item = Tender.objects.get(reference=item['tender']['reference'])
@@ -119,14 +122,17 @@ class Command(BaseCommand):
                                 setattr(tender_doc, k, v)
 
                         tender_doc.save()
+                        self.download_document(tender_doc)
 
                     except TenderDocument.DoesNotExist:
-                        TenderDocument.objects.create(tender=tender_item, **doc)
+                        new_doc = TenderDocument.objects.create(tender=tender_item, **doc)
+                        self.download_document(new_doc)
             except Tender.DoesNotExist:
                 new_tender_item = Tender.objects.create(**item['tender'])
 
                 for doc in item['documents']:
-                    TenderDocument.objects.create(tender=new_tender_item, **doc)
+                    new_doc = TenderDocument.objects.create(tender=new_tender_item, **doc)
+                    self.download_document(new_doc)
 
     def add_arguments(self, parser):
         parser.add_argument(
@@ -165,3 +171,13 @@ class Command(BaseCommand):
 
         WorkerLog.objects.create(update=date.today(), source='UNGM')
         return self.stdout.write(self.style.SUCCESS('Ungm tenders updated'))
+
+    @staticmethod
+    def download_document(tender_doc):
+        with TemporaryFile() as content:
+            response = requests.get(tender_doc.download_url, stream=True)
+            for chunk in response.iter_content(chunk_size=4096):
+                content.write(chunk)
+            content.seek(0)
+            tender_doc.document.save(tender_doc.name, File(content), save=True)
+

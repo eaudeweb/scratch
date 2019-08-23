@@ -13,7 +13,7 @@ class TenderAdmin(admin.ModelAdmin):
 
 
 class TenderDocumentAdmin(admin.ModelAdmin):
-    list_display = ['name', 'download_url', 'get_tender_title']
+    list_display = ['name', 'download_url', 'get_tender_title', 'document']
     search_fields = ['name']
     list_filter = ('tender__title',)
 
