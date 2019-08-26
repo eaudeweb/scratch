@@ -66,3 +66,7 @@ class AwardsFilter(forms.Form):
         ]
         vendors_list = Winner.objects.values_list("vendor", flat=True).distinct()
         self.fields['vendor'].choices = [('', "All vendors")] + [(vendor, vendor) for vendor in vendors_list]
+
+
+class SearchForm(forms.Form):
+    terms = forms.CharField(max_length=255)

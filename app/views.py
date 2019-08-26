@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.detail import DetailView
@@ -20,11 +20,19 @@ from django.views.generic import FormView, RedirectView, TemplateView
 from django.views.generic import View
 from datetime import timezone, datetime, date, timedelta
 from .forms import TendersFilter, AwardsFilter
-from .forms import MAX, STEP
+from .forms import MAX, STEP, SearchForm
+from app.documents import TenderDoc
+from elasticsearch_dsl import Q
 
 
 class HomepageView(TemplateView):
     template_name = "homepage.html"
+
+    def post(self, request):
+        form = SearchForm(request.POST)
+
+        if form.is_valid() and request.user.is_authenticated:
+            return redirect('search_results', pk=form.cleaned_data['terms'].replace(' ', '+'))
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -268,6 +276,58 @@ class ContractAwardsListView(LoginRequiredMixin, ListView):
 
         context["form"] = form
         context["reset"] = reset
+        return context
+
+
+class SearchView(TendersListView):
+
+    def get_queryset(self):
+        pk = self.kwargs['pk'].replace('+', ' ')
+
+        result = TenderDoc.search().query(
+            Q(
+                "multi_match",
+                query=pk,
+                fields=[
+                    'title',
+                    'organization',
+                    'source',
+                    'reference',
+                    'unspsc_codes',
+                    'cpv_codes'
+                ]
+            )
+        )
+
+        tenders = result.to_queryset()
+        awards = Winner.objects.all()
+
+        if self.request.GET.get("filter_button"):
+            organization = self.request.GET.get("organization")
+            if organization:
+                tenders = tenders.filter(organization=organization)
+
+            source = self.request.GET.get("source")
+            if source:
+                tenders = tenders.filter(source=source)
+
+            favourite = self.request.GET.get("favourite")
+            if favourite:
+                tenders = tenders.filter(favourite=favourite)
+
+            status = self.request.GET.get("status")
+            if status:
+                award_refs = [award.tender.reference for award in awards]
+                if status == "open":
+                    tenders = tenders.exclude(reference__in=award_refs)
+                else:
+                    tenders = tenders.filter(reference__in=award_refs)
+
+        return tenders
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["reset_url"] = '/search/' + self.kwargs['pk']
         return context
 
 

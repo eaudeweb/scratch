@@ -36,3 +36,11 @@
   font-family: "Verdana", Serif;
   font-size: 90px;
 }
+
+.src-bar {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 300px;
+  margin-bottom: 40px;
+}
