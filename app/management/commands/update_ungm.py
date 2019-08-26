@@ -91,13 +91,13 @@ class Command(BaseCommand):
         time_utc = datetime.utcnow()
         add_hours = round(float((time_utc - time_now).total_seconds()) / 3600)
         tender['deadline'] += timedelta(hours=add_hours)
-
+        # import pdb; pdb.set_trace()
         tender_item = {
             'tender': tender,
             'documents': [
                 {
                     'name': document.text.strip(),
-                    'download_url': ENDPOINT_URI + documents[0]['href']
+                    'download_url': ENDPOINT_URI + document['href']
                 }
                 for document in documents
             ],
@@ -135,6 +135,7 @@ class Command(BaseCommand):
 
                 for doc in item['documents']:
                     new_doc = TenderDocument.objects.create(tender=new_tender_item, **doc)
+                    # import pdb; pdb.set_trace()
                     Command.download_document(new_doc)
 
     def add_arguments(self, parser):
@@ -180,8 +181,7 @@ class Command(BaseCommand):
         with TemporaryFile() as content:
             response = requests.get(tender_doc.download_url, stream=True)
             if response.status_code == 200:
-                # for chunk in response.iter_content(chunk_size=4096):
-                #     content.write(chunk)
-                # content.seek(0)
-                content.write(response.content)
+                for chunk in response.iter_content(chunk_size=4096):
+                    content.write(chunk)
+                content.seek(0)
                 tender_doc.document.save(tender_doc.name, File(content), save=True)
