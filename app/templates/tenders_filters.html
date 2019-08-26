@@ -33,7 +33,11 @@
         {{ form.favourite.label }}
         {% render_field form.favourite class+="form-control form-control-sm" %}
       </div>
-      <div class="col-sm-3 div_button">
+      <div class ="form-group col-sm">
+        {{ form.type.label }}
+        {% render_field form.type class+="form-control form-control-sm" %}
+      </div>
+      <div class="col-sm-2 div_button">
         {% if reset %}
           <a href="{{ reset_url }}"><button type="button" name="reset_filters" value="reset" class="btn btn-dark filter_button">Reset filters</button></a>
         {% endif %}

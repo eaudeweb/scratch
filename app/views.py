@@ -3,7 +3,7 @@ from django.shortcuts import redirect
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.detail import DetailView
-from .models import Tender, Winner, Notification, WorkerLog, CPVCode, UNSPSCCode
+from .models import Tender, TenderDocument, Winner, Notification, WorkerLog, CPVCode, UNSPSCCode
 from django.utils.http import is_safe_url
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import (
@@ -98,6 +98,10 @@ class TendersListView(LoginRequiredMixin, ListView):
             if favourite:
                 tenders = tenders.filter(favourite=favourite)
 
+            notice_type = self.request.GET.get("type")
+            if notice_type:
+                tenders = tenders.filter(notice_type=notice_type)
+
             status = self.request.GET.get("status")
             if status:
                 award_refs = [award.tender.reference for award in awards]
@@ -117,7 +121,8 @@ class TendersListView(LoginRequiredMixin, ListView):
             source = self.request.GET.get("source")
             status = self.request.GET.get("status")
             favourite = self.request.GET.get("favourite")
-            reset = any([source, organization, status, favourite])
+            notice_type = self.request.GET.get("type")
+            reset = any([source, organization, status, favourite, notice_type])
             form = TendersFilter(
                 initial={
                     "organization": organization,
@@ -163,6 +168,7 @@ class TenderDetailView(LoginRequiredMixin, DetailView):
         if deadline:
             deadline -= datetime.now(timezone.utc)
             context["deadline_in"] = self.deadline_in_string(deadline)
+        context["documents_set"] = TenderDocument.objects.filter(tender=self.object)
         return context
 
 

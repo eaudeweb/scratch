@@ -2,15 +2,13 @@ from django.core.management.base import BaseCommand
 from django.template.loader import render_to_string
 from app.models import Tender, TenderDocument, Notification, UNSPSCCode
 from app.server_requests import get_request_class
-from django.conf import settings
 from bs4 import BeautifulSoup
 from datetime import date, datetime, timedelta
 from django.utils.timezone import make_aware
 from .notify import build_email
 from getenv import env
-import json
 import re
-import os
+
 
 ENDPOINT_URI = 'https://www.ungm.org'
 
@@ -37,10 +35,10 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         digest = options['digest']
         request_cls = get_request_class(public=True)
-        changed_tenders = self.scrap_favorites(request_cls)
+        changed_tenders = Command.scrap_favorites(request_cls)
 
         if changed_tenders:
-            self.send_update_email(changed_tenders, digest)
+            Command.send_update_email(changed_tenders, digest)
 
     @staticmethod
     def send_update_email(tenders, digest):
@@ -74,8 +72,9 @@ class Command(BaseCommand):
                 email = build_email(subject, recipients, None, html_content)
                 email.send()
 
-    def scrap_favorites(self, request_cls):
-        favorites = self.get_favorite_tenders()
+    @staticmethod
+    def scrap_favorites(request_cls):
+        favorites = Command.get_favorite_tenders()
         changed_tenders = []
         for tender in favorites:
             html_data = request_cls.get_request(tender.url)
@@ -83,7 +82,7 @@ class Command(BaseCommand):
                 continue
 
             codes = UNSPSCCode.objects.all()
-            tender_fields = self.parse_tender(html_data, tender.url, codes)
+            tender_fields = Command.parse_tender(html_data, tender.url, codes)
             attr_changes = {}
             for attr, value in [(k, v) for (k, v) in tender_fields['tender'].items()
                                 if k != 'documents']:
@@ -92,7 +91,7 @@ class Command(BaseCommand):
                 if str(value) != str(old_value):
 
                     attr_changes.update({attr: (old_value, value)})
-                    self.update_tender(tender, attr, value)
+                    Command.update_tender(tender, attr, value)
 
             received_docs = tender_fields['documents']
             saved_docs = [
@@ -104,27 +103,28 @@ class Command(BaseCommand):
             for document in received_docs:
                 if document not in saved_docs:
                     new_docs.append(document)
-                    self.save_document_to_models(tender, document)
+                    Command.save_document_to_models(tender, document)
 
             if attr_changes or new_docs:
                 changed_tenders.append((tender, attr_changes, new_docs))
 
         return changed_tenders
 
-    def parse_tender(self, html, url, codes):
+    @staticmethod
+    def parse_tender(html, url, codes):
 
         soup = BeautifulSoup(html, 'html.parser')
-        documents = self.find_by_class(soup, "lnkShowDocument", "a")
-        description = self.find_by_class(soup, "ungm-list-item ungm-background", "div")
-        nodes = self.find_by_class(soup, "nodeName", "span")
+        documents = Command.find_by_class(soup, "lnkShowDocument", "a")
+        description = Command.find_by_class(soup, "ungm-list-item ungm-background", "div")
+        nodes = Command.find_by_class(soup, "nodeName", "span")
         scraped_nodes = [parent.find_all("span")[0].text for parent in nodes[1:]]
         unspsc_codes = [
             code.id for code in codes
             if code.id_ungm in scraped_nodes
         ]
-        notice_type = self.find_by_class(soup, "status-tag", "span", True)
-        title = self.find_by_class(soup, "title", "span", True)
-        organization = self.find_by_class(soup, "highlighted", "span", True)
+        notice_type = Command.find_by_class(soup, "status-tag", "span", True)
+        title = Command.find_by_class(soup, "title", "span", True)
+        organization = Command.find_by_class(soup, "highlighted", "span", True)
 
         reference = soup.find('span', text=re.compile('Reference:')).next_sibling.next_sibling.text
         published = soup.find('span', text=re.compile('Published on:')).next_sibling.next_sibling.text

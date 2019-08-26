@@ -45,6 +45,7 @@ class TenderDocument(models.Model):
     name = models.CharField(null=True, max_length=255)
     download_url = models.CharField(max_length=255)
     tender = models.ForeignKey(Tender, on_delete=models.CASCADE)
+    document = models.FileField(upload_to='documents', max_length=300)
 
     class Meta:
         unique_together = ('name', 'tender',)

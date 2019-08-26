@@ -89,3 +89,7 @@ ul {
     float: left;
     padding-left: 3px;
 }
+
+.description {
+  vertical-align: top;
+}

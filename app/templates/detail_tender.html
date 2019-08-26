@@ -6,75 +6,85 @@
 
 {% block content %}
 
-  <div class = "table_detail" ><table id="tender_detail_table"  class="cell-border display compact">
-    <thead>
-    <th>Favourite</th>
-    <th>
-      <ul>
-        {% if tender.favourite == False %}
-          <li class="li_buttons"><button type="button" action="{% url 'tender_favourite_view' tender.id %}" class="favourite_button" id="fav_button"></button></li>
-        {% else %}
-          <li class="li_buttons"><button type="button" action="{% url 'tender_favourite_view' tender.id %}"  class="favourite_pressed" id="fav_button"></button></li>
-        {% endif %}
-        <li class="li_buttons"><button type="button" action="{% url 'tender_delete_view' tender.id %}"  class="remove_button" id="remove_button_detail" name="{{ tender.title }}"></button></li>
-      </ul>
-    </th>
-    </thead>
+  <div class = "table_detail" >
+    <table id="tender_detail_table"  class="cell-border display compact">
+      <thead>
+      <th>Favourite</th>
+      <th>
+        <ul>
+          {% if tender.favourite == False %}
+            <li class="li_buttons"><button type="button" action="{% url 'tender_favourite_view' tender.id %}" class="favourite_button" id="fav_button"></button></li>
+          {% else %}
+            <li class="li_buttons"><button type="button" action="{% url 'tender_favourite_view' tender.id %}"  class="favourite_pressed" id="fav_button"></button></li>
+          {% endif %}
+          <li class="li_buttons"><button type="button" action="{% url 'tender_delete_view' tender.id %}"  class="remove_button" id="remove_button_detail" name="{{ tender.title }}"></button></li>
+        </ul>
+      </th>
+      </thead>
 
-    <tbody>
-    <tr>
-      <td>Type of notice</td>
-      <td> {{ tender.notice_type }}</td>
-    </tr>
-    <tr>
-      <td>Link to tender</td>
-      <td><a href="{{ tender.url }}">{{ tender.url }}</a></td>
-    </tr>
-    <tr>
-      <td>Title</td>
-      <td>{{ tender.title }}</td>
-    </tr>
-    <tr>
-      <td>Organization</td>
-      <td>{{ tender.organization }}</td>
-    </tr>
-    <tr>
-      <td>Published</td>
-      {% if tender.published %}
-        <td>{{ tender.published }}</td>
+      <tbody>
+      <tr>
+        <td>Type of notice</td>
+        <td> {{ tender.notice_type }}</td>
+      </tr>
+      <tr>
+        <td>Link to tender</td>
+        <td><a href="{{ tender.url }}">{{ tender.url }}</a></td>
+      </tr>
+      <tr>
+        <td>Title</td>
+        <td>{{ tender.title }}</td>
+      </tr>
+      <tr>
+        <td>Organization</td>
+        <td>{{ tender.organization }}</td>
+      </tr>
+      <tr>
+        <td>Published</td>
+        {% if tender.published %}
+          <td>{{ tender.published }}</td>
+        {% else %}
+          <td>Not specified</td>
+        {% endif %}
+      </tr>
+      <tr>
+        <td>Reference</td>
+        <td>{{ tender.reference }}</td>
+      </tr>
+      <td>Deadline</td>
+      {% if tender.deadline %}
+        <td>{{ tender.deadline }}</td>
+        </tr>
+        <tr>
+          <td>Days remaining</td>
+          <td><b> {{ deadline_in }} </b></td>
+        </tr>
       {% else %}
         <td>Not specified</td>
       {% endif %}
-    </tr>
-    <tr>
-      <td>Reference</td>
-      <td>{{ tender.reference }}</td>
-    </tr>
-    <td>Deadline</td>
-    {% if tender.deadline %}
-      <td>{{ tender.deadline }}</td>
+      <tr>
+        <td>Description</td>
+        <td>{{ tender.description | linebreaks }}</td>
       </tr>
       <tr>
-        <td>Days remaining</td>
-        <td><b> {{ deadline_in }} </b></td>
+        {% if tender.source == 'UNGM' %}
+          <td>UNSPSCS codes</td>
+          <td>{{ tender.unspsc_codes }}</td>
+        {% else %}
+          <td>CPV codes</td>
+          <td>{{ tender.cpv_codes }}</td>
+        {% endif %}
       </tr>
-    {% else %}
-      <td>Not specified</td>
-    {% endif %}
-    <tr>
-      <td>Description</td>
-      <td>{{ tender.description | linebreaks }}</td>
-    </tr>
-    <tr>
-      {% if tender.source == 'UNGM' %}
-        <td>UNSPSCS codes</td>
-        <td>{{ tender.unspsc_codes }}</td>
-      {% else %}
-        <td>CPV codes</td>
-        <td>{{ tender.cpv_codes }}</td>
-      {% endif %}
-    </tr>
-    </tbody>
-  </table></div>
+      <tr>
+        <td class="description">Documents</td>
+        <td>
+          {% for doc in documents_set %}
+            <p><a href="{{ doc.document.url }}">{{ doc.name }}</a></p>
+          {% endfor %}
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 
 {% endblock %}
