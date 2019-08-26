@@ -91,7 +91,6 @@ class Command(BaseCommand):
         time_utc = datetime.utcnow()
         add_hours = round(float((time_utc - time_now).total_seconds()) / 3600)
         tender['deadline'] += timedelta(hours=add_hours)
-        # import pdb; pdb.set_trace()
         tender_item = {
             'tender': tender,
             'documents': [
@@ -135,7 +134,6 @@ class Command(BaseCommand):
 
                 for doc in item['documents']:
                     new_doc = TenderDocument.objects.create(tender=new_tender_item, **doc)
-                    # import pdb; pdb.set_trace()
                     Command.download_document(new_doc)
 
     def add_arguments(self, parser):
