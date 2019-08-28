@@ -82,6 +82,18 @@ services:
       - static:/var/local/scratch/static:ro
     ports:
       - 8000:80
+  smtp:
+    image: eeacms/postfix
+    container_name: scratch.smtp
+    restart: always
+    hostname: helpdesk.eaudeweb.ro
+    environment:
+    - MTP_HOST=${MTP_HOST}
+    - MTP_RELAY=${MTP_RELAY}
+    - MTP_PORT=${MTP_PORT}
+    - MTP_USER=${MTP_USER}
+    - MTP_PASS=${MTP_PASS}
+    - MTP_DESTINATION=${MTP_DESTINATION}
 
 volumes:
   data:

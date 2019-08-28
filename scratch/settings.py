@@ -128,7 +128,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # EMAIL
 EMAIL_BACKEND = env('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')
-EMAIL_HOST = env('EMAIL_HOST', 'localhost')
+EMAIL_HOST = env('EMAIL_HOST', 'smtp')
 EMAIL_PORT = env('EMAIL_PORT', 25)
 
 
