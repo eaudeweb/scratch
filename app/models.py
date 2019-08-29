@@ -38,11 +38,17 @@ class Tender(models.Model):
 
     @cached_property
     def marked_keyword_title(self):
+        if not keywords:
+            return self.title
+
         regex = r'(' + r'|'.join(keywords) + r')'
         return re.sub(regex, r'<mark>\1</mark>', self.title, flags=re.IGNORECASE)
 
     @cached_property
     def marked_keyword_description(self):
+        if not keywords:
+            return self.description
+
         regex = r'(' + r'|'.join(keywords) + r')'
         return re.sub(regex, r'<mark>\1</mark>', self.description, flags=re.IGNORECASE)
 
