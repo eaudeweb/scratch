@@ -18,6 +18,19 @@ services:
     volumes:
       - static:/var/local/scratch/static
 
+  cron:
+    image: scratch
+    build: .
+    container_name: scratch.cron
+    environment:
+      - TZ=Europe/Bucharest
+    env_file:
+      - docker/db.env
+      - docker/app.env
+    depends_on:
+      - db
+    entrypoint: ["./docker-entrypoint.cron.sh"]
+
   db:
     image: postgres:10-alpine
     container_name: scratch.db
@@ -82,6 +95,7 @@ services:
       - static:/var/local/scratch/static:ro
     ports:
       - 8000:80
+
   smtp:
     image: eeacms/postfix
     container_name: scratch.smtp
