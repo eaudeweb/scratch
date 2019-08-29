@@ -57,7 +57,11 @@
         </tr>
         <tr>
           <td>Days remaining</td>
+          {% if deadline_in %}
           <td><b> {{ deadline_in }} </b></td>
+          {% else %}
+          <td><b style="color: red">Deadline passed</b></td>
+          {% endif %}
         </tr>
       {% else %}
         <td>Not specified</td>
