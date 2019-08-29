@@ -1,12 +1,19 @@
 from django.core.mail import EmailMultiAlternatives
 from django.db import models
 from django.utils.html import strip_tags
+from django.utils.functional import cached_property
 from django.contrib.postgres.fields import ArrayField
+from django.conf import settings
+
+import re
 
 SOURCE_CHOICES = [
     ('UNGM', 'UNGM'),
     ('TED', 'TED'),
 ]
+
+fields = [r'title', r'description']
+keywords = re.findall(r'[^,;\s]+', settings.TENDER_KEYWORDS)
 
 
 class Tender(models.Model):
@@ -18,6 +25,7 @@ class Tender(models.Model):
     deadline = models.DateTimeField(null=True)
     description = models.TextField(null=True, blank=True, max_length=5059)
     favourite = models.BooleanField(default=False)
+    has_keywords = models.BooleanField(default=False)
     notified = models.BooleanField(default=False)
     url = models.CharField(max_length=255)
     hidden = models.BooleanField(default=False)
@@ -27,6 +35,24 @@ class Tender(models.Model):
 
     def __str__(self):
         return '{}'.format(self.title)
+
+    @cached_property
+    def marked_keyword_title(self):
+        regex = r'(' + r'|'.join(keywords) + r')'
+        return re.sub(regex, r'<mark>\1</mark>', self.title, flags=re.IGNORECASE)
+
+    @cached_property
+    def marked_keyword_description(self):
+        regex = r'(' + r'|'.join(keywords) + r')'
+        return re.sub(regex, r'<mark>\1</mark>', self.description, flags=re.IGNORECASE)
+
+    @staticmethod
+    def check_contains(value):
+        return any(keyword.lower() in str(value).lower() for keyword in keywords)
+
+    def save(self, *args, **kwargs):
+        self.has_keywords = any(self.check_contains(getattr(self, field)) for field in fields)
+        super().save(*args, **kwargs)
 
 
 class Winner(models.Model):
@@ -95,9 +121,9 @@ class Notification(models.Model):
 def last_update(source):
     worker_log = (
         WorkerLog.objects
-        .filter(source=source)
-        .order_by('-update')
-        .first()
+            .filter(source=source)
+            .order_by('-update')
+            .first()
     )
     return worker_log.update if worker_log else None
 
