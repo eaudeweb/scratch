@@ -22,7 +22,8 @@ from datetime import timezone, datetime, date, timedelta
 from .forms import TendersFilter, AwardsFilter
 from .forms import MAX, STEP, SearchForm
 from app.documents import TenderDoc
-from elasticsearch_dsl import Q
+from django.contrib.auth.models import User
+from elasticsearch_dsl import Q as elasticQ
 from django.db.models import Q
 
 
@@ -119,6 +120,13 @@ class TendersListView(LoginRequiredMixin, ListView):
                 else:
                     tenders = tenders.filter(Q(reference__in=award_refs) | Q(deadline__lt=date.today()))
 
+            seen = self.request.GET.get("seen")
+            if seen:
+                if seen == "seen":
+                    tenders = tenders.exclude(seen_by=None)
+                else:
+                    tenders = tenders.filter(seen_by=None)
+
         return tenders
 
     def get_context_data(self, **kwargs):
@@ -131,13 +139,16 @@ class TendersListView(LoginRequiredMixin, ListView):
             status = self.request.GET.get("status")
             favourite = self.request.GET.get("favourite")
             notice_type = self.request.GET.get("type")
-            reset = any([source, organization, status, favourite, notice_type])
+            seen = self.request.GET.get("seen")
+            reset = any([source, organization, status, favourite, notice_type, seen])
             form = TendersFilter(
                 initial={
                     "organization": organization,
                     "source": source,
                     "status": status,
                     "favourite": favourite,
+                    "notice_type": notice_type,
+                    "seen": seen
                 }
             )
         else:
@@ -191,6 +202,20 @@ class TenderFavouriteView(View):
         else:
             current_tender.update(favourite=False)
 
+        return HttpResponse("Success!")
+
+
+class TenderSeenByView(View):
+    def post(self, request, pk):
+        current_tender = Tender.objects.filter(id=pk)
+        state = request.POST["seen"]
+
+        if state == "true" and request.user.is_authenticated:
+            user = User.objects.get(username=request.user.username)
+            current_tender.update(seen_by=user)
+        else:
+            current_tender.update(seen_by=None)
+        import pdb; pdb.set_trace()
         return HttpResponse("Success!")
 
 
@@ -286,7 +311,7 @@ class SearchView(TendersListView):
         pk = self.kwargs['pk'].replace('+', ' ')
 
         result = TenderDoc.search().query(
-            Q(
+            elasticQ(
                 "multi_match",
                 query=pk,
                 fields=[
