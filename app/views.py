@@ -23,6 +23,7 @@ from .forms import TendersFilter, AwardsFilter
 from .forms import MAX, STEP, SearchForm
 from app.documents import TenderDoc
 from elasticsearch_dsl import Q
+from django.db.models import Q
 
 
 class HomepageView(TemplateView):
@@ -114,9 +115,9 @@ class TendersListView(LoginRequiredMixin, ListView):
             if status:
                 award_refs = [award.tender.reference for award in awards]
                 if status == "open":
-                    tenders = tenders.exclude(reference__in=award_refs)
+                    tenders = tenders.exclude(Q(reference__in=award_refs) | Q(deadline__lt=date.today()))
                 else:
-                    tenders = tenders.filter(reference__in=award_refs)
+                    tenders = tenders.filter(Q(reference__in=award_refs) | Q(deadline__lt=date.today()))
 
         return tenders
 
@@ -173,7 +174,7 @@ class TenderDetailView(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         deadline = self.object.deadline
-        if deadline:
+        if deadline and deadline >= datetime.now(timezone.utc):
             deadline -= datetime.now(timezone.utc)
             context["deadline_in"] = self.deadline_in_string(deadline)
         context["documents_set"] = TenderDocument.objects.filter(tender=self.object)
