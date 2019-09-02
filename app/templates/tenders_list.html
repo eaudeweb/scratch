@@ -29,6 +29,7 @@
       <tbody>
       {% for tender in tenders %}
         <tr>
+          <p id="usr_seen_by" hidden>{{ user.username }}</p>
           <td><a href="{% url 'tender_detail_view' tender.id %}" class="link">{{ tender.title }}</a></td>
           <td>{{ tender.source }}</td>
           <td>{{ tender.organization }}</td>
@@ -50,6 +51,13 @@
               {% else %}
                 <li class="li_buttons"><button type="button" action="{% url 'tender_favourite_view' tender.id %}"  class="favourite_pressed" id="fav_button"></button></li>
               {% endif %}
+
+              {% if tender.seen_by %}
+                <li class="li_buttons"><button type="button" action="{% url 'tender_seen_view' tender.id %}" class="seen_pressed" id="seen_button"></button></li>
+              {% else %}
+                <li class="li_buttons"><button type="button" action="{% url 'tender_seen_view' tender.id %}"  class="seen_button" id="seen_button"></button></li>
+              {% endif %}
+              <span id="seen_usr" hidden></span>
               <li class="li_buttons"><button type="button" action="{% url 'tender_delete_view' tender.id %}"  class="remove_button" id="remove_button_list" name="{{ tender.title }}"></button></li>
             </ul>
           </td>

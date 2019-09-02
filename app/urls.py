@@ -9,6 +9,7 @@ from .views import (
     OverviewPageView,
     TenderArchiveView,
     SearchView,
+    TenderSeenByView
 )
 
 
@@ -17,6 +18,7 @@ urlpatterns = [
     path("tenders/", TendersListView.as_view(), name="tenders_list_view"),
     path("tenders/<int:pk>/", TenderDetailView.as_view(), name="tender_detail_view"),
     path("tenders/favourite/<int:pk>/", TenderFavouriteView.as_view(), name="tender_favourite_view"),
+    path("tenders/seen/<int:pk>/", TenderSeenByView.as_view(), name="tender_seen_view"),
     path("tenders/delete/<int:pk>/", TenderDeleteView.as_view(), name="tender_delete_view"),
     path("overview/", OverviewPageView.as_view(), name="overview_view"),
     path("login/", LoginView.as_view(), name="login_view"),

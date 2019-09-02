@@ -1,28 +1,40 @@
+
+
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}
-  <title>Scratch - Tender {{ tender.id }}</title>
+<title>Scratch - Tender {{ tender.id }}</title>
 {% endblock %}
-
 {% block content %}
-
-  <div class = "table_detail" >
-    <table id="tender_detail_table"  class="cell-border display compact">
-      <thead>
+<p id="usr_seen_by" hidden>{{ user.username }}</p>
+<div class = "table_detail" >
+  <table id="tender_detail_table"  class="cell-border display compact">
+    <thead>
       <th>Favourite</th>
       <th>
         <ul>
-          {% if tender.favourite == False %}
-            <li class="li_buttons"><button type="button" action="{% url 'tender_favourite_view' tender.id %}" class="favourite_button" id="fav_button"></button></li>
-          {% else %}
-            <li class="li_buttons"><button type="button" action="{% url 'tender_favourite_view' tender.id %}"  class="favourite_pressed" id="fav_button"></button></li>
+          <li class="li_buttons">
+            {% if tender.favourite == False %}
+            <button type="button" action="{% url 'tender_favourite_view' tender.id %}" class="favourite_button" id="fav_button"></button>
+            {% else %}
+            <button type="button" action="{% url 'tender_favourite_view' tender.id %}"  class="favourite_pressed" id="fav_button"></button>
+          </li>
           {% endif %}
+          </li>
+          <li class="li_buttons">
+            {% if tender.seen_by %}
+            <button type="button" action="{% url 'tender_seen_view' tender.id %}" class="seen_pressed" id="seen_button"></button>
+          <li class="li_buttons"><span id="seen_usr">{{ tender.seen_by }}</span></li>
+          {% else %}
+          <button type="button" action="{% url 'tender_seen_view' tender.id %}"  class="seen_button" id="seen_button"></button></li>
+          <li class="li_buttons"><span id="seen_usr"></span></li>
+          {% endif %}
+          </li>
           <li class="li_buttons"><button type="button" action="{% url 'tender_delete_view' tender.id %}"  class="remove_button" id="remove_button_detail" name="{{ tender.title }}"></button></li>
         </ul>
       </th>
-      </thead>
-
-      <tbody>
+    </thead>
+    <tbody>
       <tr>
         <td>Type of notice</td>
         <td> {{ tender.notice_type }}</td>
@@ -42,9 +54,9 @@
       <tr>
         <td>Published</td>
         {% if tender.published %}
-          <td>{{ tender.published }}</td>
+        <td>{{ tender.published }}</td>
         {% else %}
-          <td>Not specified</td>
+        <td>Not specified</td>
         {% endif %}
       </tr>
       <tr>
@@ -53,18 +65,18 @@
       </tr>
       <td>Deadline</td>
       {% if tender.deadline %}
-        <td>{{ tender.deadline }}</td>
-        </tr>
-        <tr>
-          <td>Days remaining</td>
-          {% if deadline_in %}
-          <td><b> {{ deadline_in }} </b></td>
-          {% else %}
-          <td><b style="color: red">Deadline passed</b></td>
-          {% endif %}
-        </tr>
+      <td>{{ tender.deadline }}</td>
+      </tr>
+      <tr>
+        <td>Days remaining</td>
+        {% if deadline_in %}
+        <td><b> {{ deadline_in }} </b></td>
+        {% else %}
+        <td><b style="color: red">Deadline passed</b></td>
+        {% endif %}
+      </tr>
       {% else %}
-        <td>Not specified</td>
+      <td>Not specified</td>
       {% endif %}
       <tr>
         <td>Description</td>
@@ -72,23 +84,22 @@
       </tr>
       <tr>
         {% if tender.source == 'UNGM' %}
-          <td>UNSPSCS codes</td>
-          <td>{{ tender.unspsc_codes }}</td>
+        <td>UNSPSCS codes</td>
+        <td>{{ tender.unspsc_codes }}</td>
         {% else %}
-          <td>CPV codes</td>
-          <td>{{ tender.cpv_codes }}</td>
+        <td>CPV codes</td>
+        <td>{{ tender.cpv_codes }}</td>
         {% endif %}
       </tr>
       <tr>
         <td class="description">Documents</td>
         <td>
           {% for doc in documents_set %}
-            <p><a href="{{ doc.document.url }}">{{ doc.name }}</a></p>
+          <p><a href="{{ doc.document.url }}">{{ doc.name }}</a></p>
           {% endfor %}
         </td>
       </tr>
-      </tbody>
-    </table>
-  </div>
-
+    </tbody>
+  </table>
+</div>
 {% endblock %}
