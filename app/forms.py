@@ -4,13 +4,29 @@ from .models import Tender, Winner
 MAX = 220000
 STEP = 20000
 
-SOURCES = [("", "All tenders"), ("UNGM", "UNGM"), ("TED", "TED")]
+SOURCES = [
+    ("", "All tenders"),
+    ("UNGM", "UNGM"),
+    ("TED", "TED")
+]
 
-STATUS = [("", "All tenders"), ("open", "OPEN"), ("closed", "CLOSED")]
+STATUS = [
+    ("", "All tenders"),
+    ("open", "OPEN"),
+    ("closed", "CLOSED")
+]
 
-FAVOURITES = [("", "All tenders"), ("True", "Yes"), ("False", "No")]
+FAVOURITES = [
+    ("", "All tenders"),
+    ("True", "Yes"),
+    ("False", "No")
+]
 
-SEEN = [("", "All tenders"), ("seen", "Yes"), ("unseen", "No")]
+SEEN = [
+    ("", "All tenders"),
+    ("seen", "Yes"),
+    ("unseen", "No")
+]
 
 r = range(0, MAX, STEP)
 VALUES = (
