@@ -31,6 +31,30 @@
 
         python manage.py runserver 0.0.0.0:8000
         
+## Running with NGINX
+        
+If you want to use NGINX to serve the project you need to do the following:
+
+- `comment` the `docker-compose.yml` `web` service the ports
+``` 
+    web:
+      ...
+      ports:
+        - 8000:8000
+```
+- `uncomment` the `docker-compose.nginx.yml` `nginx` service ports
+```
+    nginx:
+      ...
+#     ports:
+#       - 8000:80
+```
+- run using the following command
+```
+docker-compose -f docker-compose.yml -f docker-compose.nginx.yml up
+
+```
+        
 ## Errors
 
 - Bootstrap checks failed: When starting the Elasticsearch container, this error may ocurr. The following command should fix it.
