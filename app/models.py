@@ -3,9 +3,11 @@ from django.db import models
 from django.utils.html import strip_tags
 from django.utils.functional import cached_property
 from django.contrib.postgres.fields import ArrayField
+from django.contrib.auth.models import User
 from django.conf import settings
 
 import re
+
 
 SOURCE_CHOICES = [
     ('UNGM', 'UNGM'),
@@ -32,6 +34,7 @@ class Tender(models.Model):
     source = models.CharField(max_length=10, choices=SOURCE_CHOICES)
     unspsc_codes = models.CharField(max_length=1024, null=True, blank=True)
     cpv_codes = models.CharField(max_length=1024, null=True, blank=True)
+    seen_by = models.ForeignKey(User, on_delete=models.CASCADE, default=None, null=True, blank=True)
 
     def __str__(self):
         return '{}'.format(self.title)
@@ -129,9 +132,9 @@ class Notification(models.Model):
 def last_update(source):
     worker_log = (
         WorkerLog.objects
-            .filter(source=source)
-            .order_by('-update')
-            .first()
+        .filter(source=source)
+        .order_by('-update')
+        .first()
     )
     return worker_log.update if worker_log else None
 

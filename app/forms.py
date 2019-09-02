@@ -22,6 +22,12 @@ FAVOURITES = [
     ("False", "No")
 ]
 
+SEEN = [
+    ("", "All tenders"),
+    ("seen", "Yes"),
+    ("unseen", "No")
+]
+
 r = range(0, MAX, STEP)
 VALUES = (
     [("", "All values")]
@@ -39,6 +45,7 @@ class TendersFilter(forms.Form):
     status = forms.ChoiceField(choices=STATUS, required=False)
     favourite = forms.ChoiceField(choices=FAVOURITES, required=False)
     type = forms.ChoiceField(required=False)
+    seen = forms.ChoiceField(choices=SEEN, required=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

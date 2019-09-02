@@ -1,93 +1,130 @@
 .dataTables_filter input {
-    width: 300px;
-    border-radius: 20px;
-    border: 2px solid #D3D3D3;
+  width: 300px;
+  border-radius: 20px;
+  border: 2px solid #D3D3D3;
 }
 .dataTables_filter input:focus, :active  {
-    outline: 0;
-    -moz-user-select: none;
-    user-select: none;
+  outline: 0;
+  -moz-user-select: none;
+  user-select: none;
 }
 
 .table {
-    padding-top: 35px;
-    padding-left: 30px;
-    padding-right: 30px;
+  padding-top: 35px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .link {
-    color: black;
-    background-color: transparent;
-    text-decoration: none;
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
 }
 
 .table_detail {
-    padding: 45px;
+  padding: 45px;
 
 }
 
 .favourite_button {
-    display: block;
-    border:none;
-    width: 26px;
-    height: 26px;
-    background: url('fav_unpressed.png') 50% 50% no-repeat;
-    background-size: 100%;
+  display: block;
+  border:none;
+  width: 26px;
+  height: 26px;
+  background: url('fav_unpressed.png') 50% 50% no-repeat;
+  background-size: 100%;
 }
 
 .favourite_button:hover {
-    background: url('fav_pressed.png') 50% 50% no-repeat;
+  background: url('fav_pressed.png') 50% 50% no-repeat;
 }
 
 
 .favourite_button:focus, :active {
-    outline: 0;
-    border: 0;
+  outline: 0;
+  border: 0;
 }
 
 .favourite_pressed {
-    display: block;
-    border:none;
-    width: 26px;
-    height: 26px;
-    background: url('fav_pressed.png') 50% 50% no-repeat;
-    background-size: 100%;
+  display: block;
+  border:none;
+  width: 26px;
+  height: 26px;
+  background: url('fav_pressed.png') 50% 50% no-repeat;
+  background-size: 100%;
 }
 
 .favourite_pressed:hover {
-    background: url('fav_unpressed.png') 50% 50% no-repeat;
+  background: url('fav_unpressed.png') 50% 50% no-repeat;
 }
 
 .favourite_pressed:focus, :active {
-    outline: 0;
-    border: 0;
+  outline: 0;
+  border: 0;
+}
+
+.seen_button {
+  display: block;
+  border:none;
+  width: 24px;
+  height: 24px;
+  background: url('unseen.png') 50% 50% no-repeat;
+  background-size: 100%;
+}
+
+.seen_button:hover {
+  background: url('seen.png') 50% 50% no-repeat;
+}
+
+
+.seen_button:focus, :active {
+  outline: 0;
+  border: 0;
+}
+
+.seen_pressed {
+  display: block;
+  border:none;
+  width: 24px;
+  height: 24px;
+  background: url('seen.png') 50% 50% no-repeat;
+  background-size: 100%;
+}
+
+.seen_pressed:hover {
+  background: url('unseen.png') 50% 50% no-repeat;
+}
+
+.seen_pressed:focus, :active {
+  outline: 0;
+  border: 0;
 }
 
 .remove_button {
-    display: block;
-    border:none;
-    width: 26px;
-    height: 26px;
-    background: url('remove_icon.png') 50% 50% no-repeat;
-    background-size: 100%;
+  display: block;
+  border:none;
+  width: 26px;
+  height: 26px;
+  background: url('remove_icon.png') 50% 50% no-repeat;
+  background-size: 100%;
 }
 
 
 .remove_button:focus, :active {
-    outline: 0;
-    border: 0;
+  outline: 0;
+  border: 0;
 }
 
 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 .li_buttons {
-    float: left;
-    padding-left: 3px;
+  float: left;
+  padding-left: 3px;
 }
 
 .description {

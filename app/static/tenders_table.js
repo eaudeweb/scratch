@@ -64,6 +64,23 @@ $(document).ready(function() {
       });
     }
 
+    if (button_id == 'seen_button') {
+      let value;
+      value = toggleSeen($(this));
+      $.ajax({
+        type: "POST",
+        url: $(this).attr('action'),
+        data: {seen: value},
+        success: function () {
+          console.log('Success');
+        },
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
+        },
+        dataType: 'json',
+      });
+    }
+
     if (button_id == 'remove_button_list' || button_id == 'remove_button_detail') {
       let url = $(this).attr('action');
       $.confirm({
@@ -109,6 +126,25 @@ function toggleFavourite(x) {
   }
   else {
     x.addClass("favourite_pressed");
+    value = true;
+  }
+
+  return value;
+}
+
+function toggleSeen(x) {
+  let value;
+  let usr = document.getElementById("seen_usr")
+
+  if (x.hasClass('seen_pressed')) {
+    value = false;
+    usr.textContent = '';
+    x.removeClass('seen_pressed');
+    x.addClass('seen_button');
+  }
+  else {
+    x.addClass("seen_pressed");
+    usr.textContent = document.getElementById("usr_seen_by").textContent;
     value = true;
   }
 

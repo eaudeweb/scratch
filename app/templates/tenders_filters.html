@@ -37,6 +37,10 @@
         {{ form.type.label }}
         {% render_field form.type class+="form-control form-control-sm" %}
       </div>
+      <div class ="form-group col-sm">
+        {{ form.seen.label }}
+        {% render_field form.seen class+="form-control form-control-sm" %}
+      </div>
       <div class="col-sm-2 div_button">
         {% if reset %}
           <a href="{{ reset_url }}"><button type="button" name="reset_filters" value="reset" class="btn btn-dark filter_button">Reset filters</button></a>
