@@ -2,11 +2,15 @@ version: '2'
 
 services:
   web:
+    image: scratch
+    build: .
     volumes:
       - .:/var/local/scratch
     entrypoint: ["/usr/bin/tail", "-f", "/dev/null"]
-    ports:
-      - 8080:8000
+
+  cron:
+    image: scratch
+    build: .
 
   postfix:
     image: eaudeweb/mailtrap
