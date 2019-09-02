@@ -1,6 +1,6 @@
 (function (factory) {
   if (typeof define === "function" && define.amd) {
-    define(["jquery", "app/static/datatable_moment", "datatables.net"], factory);
+    define(["jquery", "app/static/js/datatable_moment", "datatables.net"], factory);
   } else {
     factory(jQuery, moment);
   }
