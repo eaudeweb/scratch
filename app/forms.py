@@ -4,29 +4,13 @@ from .models import Tender, Winner
 MAX = 220000
 STEP = 20000
 
-SOURCES = [
-    ("", "All tenders"),
-    ("UNGM", "UNGM"),
-    ("TED", "TED")
-]
+SOURCES = [("", "All tenders"), ("UNGM", "UNGM"), ("TED", "TED")]
 
-STATUS = [
-    ("", "All tenders"),
-    ("open", "OPEN"),
-    ("closed", "CLOSED")
-]
+STATUS = [("", "All tenders"), ("open", "OPEN"), ("closed", "CLOSED")]
 
-FAVOURITES = [
-    ("", "All tenders"),
-    ("True", "Yes"),
-    ("False", "No")
-]
+FAVOURITES = [("", "All tenders"), ("True", "Yes"), ("False", "No")]
 
-SEEN = [
-    ("", "All tenders"),
-    ("seen", "Yes"),
-    ("unseen", "No")
-]
+SEEN = [("", "All tenders"), ("seen", "Yes"), ("unseen", "No")]
 
 r = range(0, MAX, STEP)
 VALUES = (
@@ -49,12 +33,18 @@ class TendersFilter(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        organizations_list = Tender.objects.values_list('organization', flat=True).distinct()
-        self.fields['organization'].choices = [('', 'All organizations')] + [
+        organizations_list = (
+            Tender.objects.order_by("organization")
+            .values_list("organization", flat=True)
+            .distinct()
+        )
+        self.fields["organization"].choices = [("", "All organizations")] + [
             (org, org) for org in organizations_list
         ]
-        types_list = Tender.objects.values_list('notice_type', flat=True).distinct()
-        self.fields['type'].choices = [('', 'All notice types')] + [
+        types_list = Tender.objects.values_list(
+            "notice_type", flat=True
+        ).distinct()
+        self.fields["type"].choices = [("", "All notice types")] + [
             (tp, tp) for tp in types_list
         ]
 
@@ -67,12 +57,20 @@ class AwardsFilter(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        organizations_list = Tender.objects.values_list('organization', flat=True).distinct()
-        self.fields['organization'].choices = [('', 'All organizations')] + [
+        organizations_list = (
+            Tender.objects.order_by("organization")
+            .values_list("organization", flat=True)
+            .distinct()
+        )
+        self.fields["organization"].choices = [("", "All organizations")] + [
             (org, org) for org in organizations_list
         ]
-        vendors_list = Winner.objects.values_list("vendor", flat=True).distinct()
-        self.fields['vendor'].choices = [('', "All vendors")] + [(vendor, vendor) for vendor in vendors_list]
+        vendors_list = Winner.objects.values_list(
+            "vendor", flat=True
+        ).distinct()
+        self.fields["vendor"].choices = [("", "All vendors")] + [
+            (vendor, vendor) for vendor in vendors_list
+        ]
 
 
 class SearchForm(forms.Form):
