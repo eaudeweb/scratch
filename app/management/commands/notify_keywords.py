@@ -4,8 +4,8 @@ from app.models import Tender
 
 class Command(BaseNotifyCommand):
     def notification_type(self):
-        return 'Favorite'
+        return 'Keyword'
 
     def get_tenders(self):
-        tenders = Tender.objects.filter(favourite=True)
+        tenders = Tender.objects.filter(has_keywords=True)
         return tenders

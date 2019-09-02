@@ -30,7 +30,7 @@
       {% for tender in tenders %}
         <tr>
           <p id="usr_seen_by" hidden>{{ user.username }}</p>
-          <td><a href="{% url 'tender_detail_view' tender.id %}" class="link">{{ tender.title }}</a></td>
+          <td><a href="{% url 'tender_detail_view' tender.id %}" class="link">{{ tender.marked_keyword_title|safe }}</a></td>
           <td>{{ tender.source }}</td>
           <td>{{ tender.organization }}</td>
           {% if tender.deadline %}

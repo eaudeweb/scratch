@@ -5,7 +5,7 @@ from .models import (Tender, TenderDocument, Winner, WorkerLog, Notification,
 
 class TenderAdmin(admin.ModelAdmin):
     list_display = ['id', 'title', 'notice_type', 'organization', 'published',
-                    'deadline', 'url', 'source', 'unspsc_codes', 'favourite']
+                    'deadline', 'url', 'source', 'unspsc_codes', 'favourite', 'has_keywords']
     search_fields = ['title', 'notice_type', 'published', 'deadline', 'source',
                      'organization', 'unspsc_codes']
     list_filter = ('organization', 'notice_type', 'deadline', 'source',
