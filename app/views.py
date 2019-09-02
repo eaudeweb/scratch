@@ -215,7 +215,7 @@ class TenderSeenByView(View):
             current_tender.update(seen_by=user)
         else:
             current_tender.update(seen_by=None)
-        import pdb; pdb.set_trace()
+
         return HttpResponse("Success!")
 
 
