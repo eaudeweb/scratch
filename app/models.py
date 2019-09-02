@@ -38,19 +38,21 @@ class Tender(models.Model):
 
     @cached_property
     def marked_keyword_title(self):
+        title = self.title or ''
         if not keywords:
-            return self.title
+            return title
 
         regex = r'(' + r'|'.join(keywords) + r')'
-        return re.sub(regex, r'<mark>\1</mark>', self.title, flags=re.IGNORECASE)
+        return re.sub(regex, r'<mark>\1</mark>', title, flags=re.IGNORECASE)
 
     @cached_property
     def marked_keyword_description(self):
+        description = self.description or ''
         if not keywords:
-            return self.description
+            return description
 
         regex = r'(' + r'|'.join(keywords) + r')'
-        return re.sub(regex, r'<mark>\1</mark>', self.description, flags=re.IGNORECASE)
+        return re.sub(regex, r'<mark>\1</mark>', description, flags=re.IGNORECASE)
 
     @staticmethod
     def check_contains(value):
