@@ -15,8 +15,6 @@ SOURCE_CHOICES = [
 ]
 
 fields = [r'title', r'description']
-keywords = re.findall(r'[^,;\s]+', settings.TENDER_KEYWORDS)
-
 
 class Tender(models.Model):
     reference = models.CharField(unique=True, max_length=255)
@@ -41,6 +39,7 @@ class Tender(models.Model):
 
     @cached_property
     def marked_keyword_title(self):
+        keywords = Tender.get_keywords_setting()
         title = self.title or ''
         if not keywords:
             return title
@@ -50,6 +49,7 @@ class Tender(models.Model):
 
     @cached_property
     def marked_keyword_description(self):
+        keywords = Tender.get_keywords_setting()
         description = self.description or ''
         if not keywords:
             return description
@@ -59,7 +59,12 @@ class Tender(models.Model):
 
     @staticmethod
     def check_contains(value):
+        keywords = Tender.get_keywords_setting()
         return any(keyword.lower() in str(value).lower() for keyword in keywords)
+
+    @staticmethod
+    def get_keywords_setting():
+        return re.findall(r'[^,;\s]+', settings.TENDER_KEYWORDS)
 
     def save(self, *args, **kwargs):
         self.has_keywords = any(self.check_contains(getattr(self, field)) for field in fields)

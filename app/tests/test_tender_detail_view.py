@@ -1,4 +1,4 @@
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from django.urls import reverse
 from django.contrib.auth.models import User
 from app.factories import TenderFactory
@@ -33,3 +33,15 @@ class TendersDetailViewTests(TestCase):
         self.assertContains(response, new_tender.reference)
         self.assertContains(response, 'Tender_1 <mark>python</mark>')
         self.assertContains(response, 'Tender_1 <mark>drupal</mark>')
+
+    @override_settings(TENDER_KEYWORDS='')
+    def test_detail_view_one_tender_has_keywords_with_no_keywords_set(self):
+        new_tender = TenderFactory(title='Tender_2 python', description='Tender_2 drupal')
+        url = reverse('tender_detail_view', kwargs={'pk': new_tender.id})
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, new_tender.title)
+        self.assertContains(response, new_tender.reference)
+        print(response.content)
+        self.assertContains(response, 'Tender_1 python')
+        self.assertContains(response, 'Tender_1 drupal')
