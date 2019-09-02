@@ -31,12 +31,12 @@
   border:none;
   width: 26px;
   height: 26px;
-  background: url('fav_unpressed.png') 50% 50% no-repeat;
+  background: url('../images/fav_unpressed.png') 50% 50% no-repeat;
   background-size: 100%;
 }
 
 .favourite_button:hover {
-  background: url('fav_pressed.png') 50% 50% no-repeat;
+  background: url('../images/fav_pressed.png') 50% 50% no-repeat;
 }
 
 
@@ -50,12 +50,12 @@
   border:none;
   width: 26px;
   height: 26px;
-  background: url('fav_pressed.png') 50% 50% no-repeat;
+  background: url('../images/fav_pressed.png') 50% 50% no-repeat;
   background-size: 100%;
 }
 
 .favourite_pressed:hover {
-  background: url('fav_unpressed.png') 50% 50% no-repeat;
+  background: url('../images/fav_unpressed.png') 50% 50% no-repeat;
 }
 
 .favourite_pressed:focus, :active {
@@ -68,12 +68,12 @@
   border:none;
   width: 24px;
   height: 24px;
-  background: url('unseen.png') 50% 50% no-repeat;
+  background: url('../images/unseen.png') 50% 50% no-repeat;
   background-size: 100%;
 }
 
 .seen_button:hover {
-  background: url('seen.png') 50% 50% no-repeat;
+  background: url('../images/seen.png') 50% 50% no-repeat;
 }
 
 
@@ -87,12 +87,12 @@
   border:none;
   width: 24px;
   height: 24px;
-  background: url('seen.png') 50% 50% no-repeat;
+  background: url('../images/seen.png') 50% 50% no-repeat;
   background-size: 100%;
 }
 
 .seen_pressed:hover {
-  background: url('unseen.png') 50% 50% no-repeat;
+  background: url('../images/unseen.png') 50% 50% no-repeat;
 }
 
 .seen_pressed:focus, :active {
@@ -105,7 +105,7 @@
   border:none;
   width: 26px;
   height: 26px;
-  background: url('remove_icon.png') 50% 50% no-repeat;
+  background: url('../images/remove_icon.png') 50% 50% no-repeat;
   background-size: 100%;
 }
 
