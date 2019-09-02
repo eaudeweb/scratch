@@ -5,7 +5,7 @@ from app.factories import TenderFactory, TenderDocumentFactory
 
 class AddTenderTestCase(TestCase):
     def setUp(self):
-        self.tender_1 = TenderFactory(title='Tender_1')
+        self.tender_1 = TenderFactory(title='Tender_1 python')
         self.tender_2 = TenderFactory(title='Tender_2', source='TED')
         self.doc_1 = TenderDocumentFactory(tender=self.tender_2)
         self.doc_2 = TenderDocumentFactory(tender=self.tender_2)
@@ -15,6 +15,12 @@ class AddTenderTestCase(TestCase):
         t2 = Tender.objects.get(url=self.tender_2.url)
         self.assertEqual(t1.url, self.tender_1.url)
         self.assertEqual(t2.reference, self.tender_2.reference)
+
+    def test_add_tenders_with_keywords(self):
+        t1 = Tender.objects.get(reference=self.tender_1.reference)
+        t2 = Tender.objects.get(reference=self.tender_2.reference)
+        self.assertEqual(t1.has_keywords, True)
+        self.assertEqual(t2.has_keywords, False)
 
     def test_remove_tenders(self):
         Tender.objects.get(reference=self.tender_1.reference).delete()

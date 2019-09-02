@@ -23,3 +23,13 @@ class TendersDetailViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, new_tender.title)
         self.assertContains(response, new_tender.reference)
+
+    def test_detail_view_one_tender_has_keywords(self):
+        new_tender = TenderFactory(title='Tender_1 python', description='Tender_1 drupal')
+        url = reverse('tender_detail_view', kwargs={'pk': new_tender.id})
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, new_tender.title)
+        self.assertContains(response, new_tender.reference)
+        self.assertContains(response, 'Tender_1 <mark>python</mark>')
+        self.assertContains(response, 'Tender_1 <mark>drupal</mark>')

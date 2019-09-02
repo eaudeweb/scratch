@@ -22,6 +22,12 @@ FAVOURITES = [
     ("False", "No")
 ]
 
+KEYWORDS = [
+    ("", "All tenders"),
+    ("True", "Yes"),
+    ("False", "No")
+]
+
 SEEN = [
     ("", "All tenders"),
     ("seen", "Yes"),
@@ -44,6 +50,7 @@ class TendersFilter(forms.Form):
     source = forms.ChoiceField(choices=SOURCES, required=False)
     status = forms.ChoiceField(choices=STATUS, required=False)
     favourite = forms.ChoiceField(choices=FAVOURITES, required=False)
+    keyword = forms.ChoiceField(choices=KEYWORDS, required=False)
     type = forms.ChoiceField(required=False)
     seen = forms.ChoiceField(choices=SEEN, required=False)
 

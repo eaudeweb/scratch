@@ -7,5 +7,5 @@ class Command(BaseNotifyCommand):
         return 'Keyword'
 
     def get_tenders(self):
-        tenders = Tender.objects.filter(has_keywords=True, source='UNGM')
+        tenders = Tender.objects.filter(has_keywords=True)
         return tenders

@@ -7,5 +7,5 @@ class Command(BaseNotifyCommand):
         return 'Favorite'
 
     def get_tenders(self):
-        tenders = Tender.objects.filter(favourite=True, source='UNGM')
+        tenders = Tender.objects.filter(favourite=True)
         return tenders
