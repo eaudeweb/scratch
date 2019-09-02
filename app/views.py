@@ -47,6 +47,9 @@ class HomepageView(TemplateView):
         context["favorite_tenders"] = Tender.objects.filter(
             favourite=True
         ).count()
+        context["keyword_tenders"] = Tender.objects.filter(
+            has_keywords=True
+        ).count()
         context["winners"] = Winner.objects.all().count()
         context["expired_tenders"] = Tender.objects.filter(
             deadline__lt=datetime.now(timezone.utc)
@@ -108,6 +111,10 @@ class TendersListView(LoginRequiredMixin, ListView):
             if favourite:
                 tenders = tenders.filter(favourite=favourite)
 
+            keyword = self.request.GET.get("keyword")
+            if keyword:
+                tenders = tenders.filter(has_keywords=keyword)
+
             notice_type = self.request.GET.get("type")
             if notice_type:
                 tenders = tenders.filter(notice_type=notice_type)
@@ -138,15 +145,17 @@ class TendersListView(LoginRequiredMixin, ListView):
             source = self.request.GET.get("source")
             status = self.request.GET.get("status")
             favourite = self.request.GET.get("favourite")
+            keyword = self.request.GET.get("keyword")
             notice_type = self.request.GET.get("type")
             seen = self.request.GET.get("seen")
-            reset = any([source, organization, status, favourite, notice_type, seen])
+            reset = any([source, organization, status, favourite, keyword, notice_type, seen])
             form = TendersFilter(
                 initial={
                     "organization": organization,
                     "source": source,
                     "status": status,
                     "favourite": favourite,
+                    "keyword": keyword,
                     "notice_type": notice_type,
                     "seen": seen
                 }
@@ -340,6 +349,10 @@ class SearchView(TendersListView):
             favourite = self.request.GET.get("favourite")
             if favourite:
                 tenders = tenders.filter(favourite=favourite)
+
+            keyword = self.request.GET.get("keyword")
+            if keyword:
+                tenders = tenders.filter(keyword=keyword)
 
             status = self.request.GET.get("status")
             if status:
