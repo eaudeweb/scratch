@@ -42,6 +42,5 @@ class TendersDetailViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, new_tender.title)
         self.assertContains(response, new_tender.reference)
-        print(response.content)
-        self.assertContains(response, 'Tender_1 python')
-        self.assertContains(response, 'Tender_1 drupal')
+        self.assertContains(response, 'Tender_2 python')
+        self.assertContains(response, 'Tender_2 drupal')
