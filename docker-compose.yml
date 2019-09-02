@@ -56,45 +56,45 @@ services:
     ports:
       - 9200:9200
 
-  nginx:
-    image: nginx:latest
-    container_name: scratch.nginx
-    environment:
-      NGINX_CONF: |-
-        upstream web {
-          server web:8000 fail_timeout=1s;
-        }
-        server {
-          listen 80;
-          access_log /var/log/nginx/access.log main;
-
-          location /static {
-            sendfile on;
-            tcp_nopush on;
-            gzip on;
-            gzip_types text/plain text/css text/xml application/xml text/javascript application/javascript application/x-javascript image/x-icon;
-            expires 1d;
-            alias /var/local/scratch/static;
-            add_header 'Access-Control-Allow-Origin' "*" always;
-          }
-          location / {
-            proxy_pass http://web;
-            proxy_set_header Host $$host;
-            proxy_set_header X-Forwarded-For $$proxy_add_x_forwarded_for;
-            proxy_set_header X-Real-IP $$remote_addr;
-            gzip on;
-            gzip_types text/plain text/css text/xml application/xml text/javascript application/javascript application/x-javascript image/x-icon;
-            expires 1h;
-          }
-        }
-    command: /bin/sh -c 'echo "$$NGINX_CONF" > /etc/nginx/conf.d/default.conf && exec nginx -g "daemon off;"'
-    restart: "always"
-    depends_on:
-      - web
-    volumes:
-      - static:/var/local/scratch/static:ro
-    ports:
-      - 8000:80
+#  nginx:
+#    image: nginx:latest
+#    container_name: scratch.nginx
+#    environment:
+#      NGINX_CONF: |-
+#        upstream web {
+#          server web:8000 fail_timeout=1s;
+#        }
+#        server {
+#          listen 80;
+#          access_log /var/log/nginx/access.log main;
+#
+#          location /static {
+#            sendfile on;
+#            tcp_nopush on;
+#            gzip on;
+#            gzip_types text/plain text/css text/xml application/xml text/javascript application/javascript application/x-javascript image/x-icon;
+#            expires 1d;
+#            alias /var/local/scratch/static;
+#            add_header 'Access-Control-Allow-Origin' "*" always;
+#          }
+#          location / {
+#            proxy_pass http://web;
+#            proxy_set_header Host $$host;
+#            proxy_set_header X-Forwarded-For $$proxy_add_x_forwarded_for;
+#            proxy_set_header X-Real-IP $$remote_addr;
+#            gzip on;
+#            gzip_types text/plain text/css text/xml application/xml text/javascript application/javascript application/x-javascript image/x-icon;
+#            expires 1h;
+#          }
+#        }
+#    command: /bin/sh -c 'echo "$$NGINX_CONF" > /etc/nginx/conf.d/default.conf && exec nginx -g "daemon off;"'
+#    restart: "always"
+#    depends_on:
+#      - web
+#    volumes:
+#      - static:/var/local/scratch/static:ro
+#    ports:
+#      - 8000:80
 
   smtp:
     image: eeacms/postfix

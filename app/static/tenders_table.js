@@ -25,12 +25,9 @@ $(document).ready(function() {
         { "width": "10%", "targets": 3 },
         { "width": "8%", "targets": 4 },
       ],
-      "order": [[ 3, "desc" ]],
-      "pageLength": 15,
+      "order": [[ 3, "asc" ]],
+      "pageLength": 10,
       "lengthChange": false,
-      "scrollY":  "625px",
-      "scrollCollapse": true,
-
     });
 
   $('#tender_detail_table').DataTable(
@@ -115,7 +112,6 @@ $(document).ready(function() {
     }
   });
 })
-
 
 function toggleFavourite(x) {
   let value;
