@@ -25,7 +25,6 @@ from app.documents import TenderDoc
 from django.contrib.auth.models import User
 from elasticsearch_dsl import Q as elasticQ
 from django.db.models import Q
-from django_auth_ldap.backend import LDAPBackend
 
 
 class HomepageView(TemplateView):
@@ -374,10 +373,12 @@ class LoginView(FormView):
     @method_decorator(never_cache)
     def dispatch(self, request, *args, **kwargs):
         request.session.set_test_cookie()
+
         return super(LoginView, self).dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
         auth_login(self.request, form.get_user())
+
         if self.request.session.test_cookie_worked():
             self.request.session.delete_test_cookie()
 
