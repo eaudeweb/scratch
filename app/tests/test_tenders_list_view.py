@@ -31,3 +31,15 @@ class TendersListViewTests(TestCase):
         )
         self.assertEqual(response.context['tenders'][0].reference, tender_1.reference)
         self.assertEqual(response.context['tenders'][1].source, tender_2.source)
+
+    def test_list_view_has_keywords(self):
+        tender = TenderFactory(title='Tender1 python')
+        url = reverse('tenders_list_view')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertQuerysetEqual(
+            list(response.context['tenders']),
+            ['<Tender: Tender1 python>']
+        )
+        self.assertEqual(response.context['tenders'][0].reference, tender.reference)
+        self.assertContains(response, 'Tender1 <mark>python</mark>')

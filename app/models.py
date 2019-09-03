@@ -1,14 +1,20 @@
 from django.core.mail import EmailMultiAlternatives
 from django.db import models
 from django.utils.html import strip_tags
+from django.utils.functional import cached_property
 from django.contrib.postgres.fields import ArrayField
 from django.contrib.auth.models import User
+from django.conf import settings
+
+import re
+
 
 SOURCE_CHOICES = [
     ('UNGM', 'UNGM'),
     ('TED', 'TED'),
 ]
 
+fields = [r'title', r'description']
 
 class Tender(models.Model):
     reference = models.CharField(unique=True, max_length=255)
@@ -19,6 +25,7 @@ class Tender(models.Model):
     deadline = models.DateTimeField(null=True)
     description = models.TextField(null=True, blank=True, max_length=5059)
     favourite = models.BooleanField(default=False)
+    has_keywords = models.BooleanField(default=False)
     notified = models.BooleanField(default=False)
     url = models.CharField(max_length=255)
     hidden = models.BooleanField(default=False)
@@ -29,6 +36,39 @@ class Tender(models.Model):
 
     def __str__(self):
         return '{}'.format(self.title)
+
+    @cached_property
+    def marked_keyword_title(self):
+        keywords = Tender.get_keywords_setting()
+        title = self.title or ''
+        if not keywords:
+            return title
+
+        regex = r'(' + r'|'.join(keywords) + r')'
+        return re.sub(regex, r'<mark>\1</mark>', title, flags=re.IGNORECASE)
+
+    @cached_property
+    def marked_keyword_description(self):
+        keywords = Tender.get_keywords_setting()
+        description = self.description or ''
+        if not keywords:
+            return description
+
+        regex = r'(' + r'|'.join(keywords) + r')'
+        return re.sub(regex, r'<mark>\1</mark>', description, flags=re.IGNORECASE)
+
+    @staticmethod
+    def check_contains(value):
+        keywords = Tender.get_keywords_setting()
+        return any(keyword.lower() in str(value).lower() for keyword in keywords)
+
+    @staticmethod
+    def get_keywords_setting():
+        return re.findall(r'[^,;\s]+', settings.TENDER_KEYWORDS)
+
+    def save(self, *args, **kwargs):
+        self.has_keywords = any(self.check_contains(getattr(self, field)) for field in fields)
+        super().save(*args, **kwargs)
 
 
 class Winner(models.Model):

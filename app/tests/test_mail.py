@@ -17,7 +17,11 @@ class SendMailTest(TestCase):
         )
 
         self.tender2 = TenderFactory(
-            title="test_title2", url="https://www.ungm.org/Public/Notice/94920"
+            title="test_title2 python", url="https://www.ungm.org/Public/Notice/94920"
+        )
+
+        self.tender3 = TenderFactory(
+            title="test_title3", url="https://www.ungm.org/Public/Notice/92850"
         )
 
         self.notified_user1 = NotificationFactory()
@@ -31,7 +35,7 @@ class SendMailTest(TestCase):
         html_content = render_to_string(
             "mails/new_tenders.html",
             {
-                "tenders": [self.tender1, self.tender2],
+                "tenders": [self.tender1, self.tender2, self.tender3],
                 "domain": settings.BASE_URL,
             },
         )
@@ -46,9 +50,11 @@ class SendMailTest(TestCase):
 
         self.assertEqual(self.tender1.title in body, True)
         self.assertEqual(self.tender2.title in body, True)
+        self.assertEqual(self.tender3.title in body, True)
 
         self.assertEqual(self.tender1.organization in alt_body, True)
         self.assertEqual(self.tender2.organization in alt_body, True)
+        self.assertEqual(self.tender3.organization in alt_body, True)
 
     def test_mailing_favorites(self):
         management.call_command("notify_favorites")
@@ -60,8 +66,8 @@ class SendMailTest(TestCase):
         management.call_command("notify_favorites")
         self.assertEqual(len(mail.outbox), 2)
 
-        self.tender2.organization = "CHANGE2"
-        self.tender2.save()
+        self.tender3.organization = "CHANGE2"
+        self.tender3.save()
 
         management.call_command("notify_favorites")
         self.assertEqual(len(mail.outbox), 2)
@@ -69,4 +75,25 @@ class SendMailTest(TestCase):
         message = mail.outbox[0].alternatives[0][0]
         self.assertEqual("Favorite tender(s) update" in message, True)
         self.assertEqual(self.tender1.organization in message, False)
+        self.assertEqual(self.tender3.organization in message, False)
+
+    def test_mailing_keywords(self):
+        management.call_command("notify_keywords")
+        self.assertEqual(len(mail.outbox), 1)
+
+        self.tender2.organization = "CHANGE1"
+        self.tender2.save()
+
+        management.call_command("notify_keywords")
+        self.assertEqual(len(mail.outbox), 2)
+
+        self.tender3.organization = "CHANGE2"
+        self.tender3.save()
+
+        management.call_command("notify_keywords")
+        self.assertEqual(len(mail.outbox), 2)
+
+        message = mail.outbox[0].alternatives[0][0]
+        self.assertEqual("Keyword tender(s) update" in message, True)
         self.assertEqual(self.tender2.organization in message, False)
+        self.assertEqual(self.tender3.organization in message, False)

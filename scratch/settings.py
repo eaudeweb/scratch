@@ -185,6 +185,7 @@ EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', '')
 
 DELETE_EXPIRED_DAYS = env('DELETE_EXPIRED_DAYS', 5)
 
+# LDAP
 LDAP_HOST = env('LDAP_HOST', '')
 LDAP_PORT = str(env('LDAP_PORT', ''))
 LDAP_AUTH_USER_DN = env('LDAP_AUTH_USER_DN', '')
@@ -215,3 +216,6 @@ LOGGING = {
     "handlers": {"console": {"class": "logging.StreamHandler"}},
     "loggers": {"django_auth_ldap": {"level": "DEBUG", "handlers": ["console"]}},
 }
+
+TENDER_KEYWORDS = env('TENDER_KEYWORDS', 'python, drupal')
+
