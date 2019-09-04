@@ -156,13 +156,13 @@ class TendersListView(LoginRequiredMixin, ListView):
                     "status": status,
                     "favourite": favourite,
                     "keyword": keyword,
-                    "notice_type": notice_type,
+                    "type": notice_type,
                     "seen": seen
                 }
             )
         else:
             form = TendersFilter()
-
+        #import pdb; pdb.set_trace()
         context["form"] = form
         context["reset"] = reset
         context["reset_url"] = '/tenders'
