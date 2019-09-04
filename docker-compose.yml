@@ -2,7 +2,7 @@ version: '2'
 
 services:
   web:
-    image: eaudeweb/scratch
+    image: eaudeweb/scratch:latest
     container_name: scratch.app
     environment:
       - DJANGO_MIGRATE=yes
@@ -20,7 +20,7 @@ services:
       - 8000:8000
 
   cron:
-    image: eaudeweb/scratch
+    image: eaudeweb/scratch:latest
     container_name: scratch.cron
     environment:
       - TZ=Europe/Bucharest
@@ -61,13 +61,8 @@ services:
     container_name: scratch.smtp
     restart: always
     hostname: helpdesk.eaudeweb.ro
-    environment:
-    - MTP_HOST=${MTP_HOST}
-    - MTP_RELAY=${MTP_RELAY}
-    - MTP_PORT=${MTP_PORT}
-    - MTP_USER=${MTP_USER}
-    - MTP_PASS=${MTP_PASS}
-    - MTP_DESTINATION=${MTP_DESTINATION}
+    env_file:
+      - docker/app.env
 
 volumes:
   data:

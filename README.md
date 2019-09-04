@@ -35,24 +35,22 @@
         
 If you want to use NGINX to serve the project you need to do the following:
 
-- `comment` the `docker-compose.yml` `web` service the ports
+Comment the web service the ports in docker-compose.yml
 ``` 
     web:
       ...
       ports:
         - 8000:8000
 ```
-- `uncomment` the `docker-compose.nginx.yml` `nginx` service ports
-```
-    nginx:
-      ...
-#     ports:
-#       - 8000:80
-```
-- run using the following command
-```
-docker-compose -f docker-compose.yml -f docker-compose.nginx.yml up
 
+Create docker-compose.override.yml from  docker-compose.override.yml.nginx.example
+```   
+    cp docker-compose.override.yml.nginx.example docker-compose.override.yml
+```
+
+Create the stack and start it:
+```
+    docker-compose up
 ```
         
 ## Errors

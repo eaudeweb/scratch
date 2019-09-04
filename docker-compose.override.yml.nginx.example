@@ -38,8 +38,8 @@ services:
       - web
     volumes:
       - static:/var/local/scratch/static:ro
-#    ports:
-#      - 8000:80
+    ports:
+      - 8000:80
 
 
 volumes:
