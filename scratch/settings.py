@@ -14,6 +14,8 @@ import os
 import sentry_sdk
 from getenv import env
 from sentry_sdk.integrations.django import DjangoIntegration
+import ldap
+from django_auth_ldap.config import LDAPSearch
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -183,4 +185,37 @@ EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', '')
 
 DELETE_EXPIRED_DAYS = env('DELETE_EXPIRED_DAYS', 5)
 
+# LDAP
+LDAP_HOST = env('LDAP_HOST', '')
+LDAP_PORT = str(env('LDAP_PORT', ''))
+LDAP_AUTH_USER_DN = env('LDAP_AUTH_USER_DN', '')
+
+ldap.set_option(ldap.OPT_X_TLS_REQUIRE_CERT, ldap.OPT_X_TLS_NEVER)
+AUTH_LDAP_SERVER_URI = "ldap://" + ":".join((LDAP_HOST, LDAP_PORT))
+AUTH_LDAP_ALWAYS_UPDATE_USER = True
+AUTH_LDAP_USER_SEARCH = LDAPSearch(
+    LDAP_AUTH_USER_DN, ldap.SCOPE_SUBTREE, "(uid=%(user)s)"
+)
+AUTH_LDAP_USER_ATTR_MAP = {
+    "first_name": "gecos",
+    "email": "mail",
+}
+
+AUTH_LDAP_LOGIN_ATTEMPT_LIMIT = 100
+AUTH_LDAP_RESET_TIME = 15 * 60
+AUTH_LDAP_USERNAME_REGEX = r"^zz_.*$"
+
+AUTHENTICATION_BACKENDS = (
+   'django_auth_ldap.backend.LDAPBackend',
+   'django.contrib.auth.backends.ModelBackend',
+)
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {"console": {"class": "logging.StreamHandler"}},
+    "loggers": {"django_auth_ldap": {"level": "DEBUG", "handlers": ["console"]}},
+}
+
 TENDER_KEYWORDS = env('TENDER_KEYWORDS', 'python, drupal')
+
