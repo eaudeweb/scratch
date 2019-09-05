@@ -19,12 +19,14 @@ from django.views.decorators.debug import sensitive_post_parameters
 from django.views.generic import FormView, RedirectView, TemplateView
 from django.views.generic import View
 from datetime import timezone, datetime, date, timedelta
+from django.core.management import call_command
 from .forms import TendersFilter, AwardsFilter
 from .forms import MAX, STEP, SearchForm
 from app.documents import TenderDoc
 from django.contrib.auth.models import User
 from elasticsearch_dsl import Q as elasticQ
 from django.db.models import Q
+from django_q.tasks import async_task, result
 
 
 class HomepageView(TemplateView):
@@ -156,7 +158,7 @@ class TendersListView(LoginRequiredMixin, ListView):
                     "status": status,
                     "favourite": favourite,
                     "keyword": keyword,
-                    "notice_type": notice_type,
+                    "type": notice_type,
                     "seen": seen
                 }
             )
@@ -368,6 +370,34 @@ class SearchView(TendersListView):
         context = super().get_context_data(**kwargs)
         context["reset_url"] = '/search/' + self.kwargs['pk']
         return context
+
+
+class ManagementView(LoginRequiredMixin, TemplateView):
+    template_name = "management.html"
+    login_url = "/login"
+    redirect_field_name = "login_view"
+
+    def post(self, request):
+
+        if request.user.is_authenticated and request.user.is_superuser:
+            if 'update_ungm' in self.request.POST:
+                async_task(call_command, 'update_ungm', days_ago=3)
+            elif 'update_ted' in self.request.POST:
+                async_task(call_command, 'update_ted', days_ago=5)
+            elif 'add_winner' in self.request.POST:
+                async_task(call_command, 'add_winner')
+            elif 'notify' in self.request.POST:
+                async_task(call_command, 'notify', digest=False)
+            elif 'notify_favorites' in self.request.POST:
+                async_task(call_command, 'notify_favorites', digest=False)
+            elif 'notify_keywords' in self.request.POST:
+                async_task(call_command, 'notify_keywords', digest=False)
+            elif 'deadline_notifications' in self.request.POST:
+                async_task(call_command, 'deadline_notifications')
+            elif 'remove_unnecessary_newlines' in self.request.POST:
+                async_task(call_command, 'remove_unnecessary_newlines')
+
+            return redirect('management_view')
 
 
 class LoginView(FormView):

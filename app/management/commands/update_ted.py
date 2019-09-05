@@ -22,22 +22,35 @@ TED_COUNTRIES = [x.name for x in TedCountry.objects.all()]
 
 
 class Command(BaseCommand):
+    def add_arguments(self, parser):
+        parser.add_argument(
+            '--days_ago',
+            help='Get tenders published n days ago',
+            type=int,
+        )
+
     def handle(self, *args, **options):
-        w = TEDWorker()
+        try:
+            last_ted_update = days_ago(int(options['days_ago']))
+        except TypeError:
+            last_ted_update = None
+
+        w = TEDWorker(last_ted_update)
         w.ftp_download()
         w.parse_notices()
 
 
 class TEDWorker:
-    def __init__(self, archives=[]):
+    def __init__(self, last_ted_update, archives=[]):
         self.path = get_archives_path()
         self.archives = archives
+        self.last_ted_update = last_ted_update
 
     def ftp_download(self):
         ftp = FTP(settings.FTP_URL)
         ftp.login(user="guest", passwd="guest")
 
-        last_date = last_update("TED") or days_ago(settings.TED_DAYS_AGO)
+        last_date = self.last_ted_update or last_update("TED")
         last_month = last_date.strftime("%m")
         last_year = last_date.strftime("%Y")
 
@@ -48,6 +61,7 @@ class TEDWorker:
 
         while last_date < today:
             archive_name = get_archive_name(last_date, archives)
+            print('archive name', archive_name)
             if archive_name:
                 if not os.path.exists(self.path):
                     os.makedirs(self.path)
@@ -127,7 +141,10 @@ class TEDParser(object):
         section = soup.find("form_section").find_all(lg="EN")[0]
         descriptions = section.findAll("short_descr")[:2]
 
-        title = "Title:\n\t" + section.find("title").get_text() + "\n\n"
+        try:
+            title = "Title:\n\t" + section.find("title").get_text() + "\n\n"
+        except AttributeError:
+            title = ''
 
         try:
             estimated_total = (
@@ -150,12 +167,16 @@ class TEDParser(object):
             lots = ""
 
         procurement_desc = ""
-        short_desc = (
-            "Short Description:"
-            + "\n\t"
-            + str(descriptions[0].get_text())
-            + "\n\n"
-        )
+
+        try:
+            short_desc = (
+                    "Short Description:"
+                    + "\n\t"
+                    + str(descriptions[0].get_text())
+                    + "\n\n"
+            )
+        except (AttributeError, IndexError):
+            short_desc = ""
 
         try:
             procurement_desc = descriptions[1]
@@ -290,7 +311,10 @@ def get_archives_path():
 
 
 def days_ago(days):
-    return date.today() - timedelta(days=days)
+    if days:
+        return date.today() - timedelta(days=days)
+
+    return None
 
 
 def get_archive_name(last_date, archives):

@@ -19,6 +19,23 @@ services:
     ports:
       - 8000:8000
 
+  async:
+    image: eeacms/bdr.registry.notifications:latest
+    container_name: not.async
+    depends_on:
+      - web
+      - db
+      - redis
+      - postfix
+    env_file:
+      - docker/app.env
+      - docker/redis.env
+    environment:
+      TZ: Europe/Bucharest
+    volumes:
+      - ./:/var/local/scratch/
+    command: ['qcluster']
+
   cron:
     image: eaudeweb/scratch:latest
     container_name: scratch.cron
@@ -55,6 +72,10 @@ services:
       - esdata:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
+
+  redis:
+      image: redis:alpine
+      container_name: not.redis
 
   smtp:
     image: eeacms/postfix

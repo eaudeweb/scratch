@@ -44,7 +44,7 @@ class Command(BaseCommand):
                     contract_id = self.get_contract_id(tender.reference)
                 except TypeError:
                     logger.warning(f"No winner was found for the corresponding tender reference ({ tender.reference })")
-                    return
+                    continue
 
                 request_cls = get_request_class(public=True)
                 url = '/'.join((WINNERS_ENDPOINT_URI, contract_id))

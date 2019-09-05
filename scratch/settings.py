@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'widget_tweaks',
     'django_elasticsearch_dsl',
+    'django_q',
+
     'app'
 ]
 
@@ -128,11 +130,18 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+# REDIS
+Q_CLUSTER = {
+    'redis': {
+        'host': env('REDIS_HOST', 'redis'),
+        'port': int(env('REDIS_PORT', 6379)),
+    }
+}
+
 # EMAIL
 EMAIL_BACKEND = env('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')
 EMAIL_HOST = env('EMAIL_HOST', 'smtp')
 EMAIL_PORT = env('EMAIL_PORT', 25)
-
 
 # FTP
 FTP_URL = env('FTP_URL', 'ted.europa.eu')
