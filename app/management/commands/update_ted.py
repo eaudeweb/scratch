@@ -127,7 +127,10 @@ class TEDParser(object):
         section = soup.find("form_section").find_all(lg="EN")[0]
         descriptions = section.findAll("short_descr")[:2]
 
-        title = "Title:\n\t" + section.find("title").get_text() + "\n\n"
+        try:
+            title = "Title:\n\t" + section.find("title").get_text() + "\n\n"
+        except AttributeError:
+            title = ""
 
         try:
             estimated_total = (
@@ -150,12 +153,16 @@ class TEDParser(object):
             lots = ""
 
         procurement_desc = ""
-        short_desc = (
-            "Short Description:"
-            + "\n\t"
-            + str(descriptions[0].get_text())
-            + "\n\n"
-        )
+
+        try:
+            short_desc = (
+                "Short Description:"
+                + "\n\t"
+                + str(descriptions[0].get_text())
+                + "\n\n"
+            )
+        except (AttributeError, IndexError):
+            short_desc = ""
 
         try:
             procurement_desc = descriptions[1]

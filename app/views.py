@@ -156,7 +156,7 @@ class TendersListView(LoginRequiredMixin, ListView):
                     "status": status,
                     "favourite": favourite,
                     "keyword": keyword,
-                    "notice_type": notice_type,
+                    "type": notice_type,
                     "seen": seen
                 }
             )
