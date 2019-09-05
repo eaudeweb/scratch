@@ -22,7 +22,9 @@
   vertical-align: middle;
   margin-top: auto;
   margin-bottom: auto;
+  color: black;
 }
+.container-card:focus { outline: 0; }
 
 .home-page {
   display: block;
