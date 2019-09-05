@@ -183,7 +183,7 @@ class TEDParser(object):
         tender["source"] = "TED"
 
         winner = {}
-        if tender["notice_type"] == "Contract award":
+        if tender["notice_type"] == "Contract award notice":
             update_winner(winner, soup)
 
         return tender, winner
