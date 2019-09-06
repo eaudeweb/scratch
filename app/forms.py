@@ -53,6 +53,10 @@ class TendersFilter(forms.Form):
     keyword = forms.ChoiceField(choices=KEYWORDS, required=False)
     type = forms.ChoiceField(required=False)
     seen = forms.ChoiceField(choices=SEEN, required=False)
+    ungm_published_today = forms.BooleanField(required=False)
+    ungm_deadline_today = forms.BooleanField(required=False)
+    ted_published_today = forms.BooleanField(required=False)
+    ted_deadline_today = forms.BooleanField(required=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

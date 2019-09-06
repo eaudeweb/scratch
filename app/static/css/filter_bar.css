@@ -39,3 +39,9 @@
     padding-top: 15px;
     padding-left: 10px;
 }
+
+.quiet {
+  font-size: 11px;
+  font-weight: normal;
+  color: #999999;
+}
