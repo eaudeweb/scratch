@@ -158,6 +158,10 @@ class TendersListView(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         reset = False
+        ungm_published_today = False
+        ungm_deadline_today = False
+        ted_published_today = False
+        ted_deadline_today = False
 
         if self.request.GET.get("filter_button"):
 
@@ -183,9 +187,19 @@ class TendersListView(LoginRequiredMixin, ListView):
         else:
             form = TendersFilter()
 
+        ungm_published_today |= (self.request.GET.get("ungm_published_today") == 'True')
+        ungm_deadline_today |= (self.request.GET.get("ungm_deadline_today") == 'True')
+        ted_published_today |= (self.request.GET.get("ted_published_today") == 'True')
+        ted_deadline_today |= (self.request.GET.get("ted_deadline_today") == 'True')
+
         context["form"] = form
         context["reset"] = reset
         context["reset_url"] = '/tenders'
+        context["ungm_published_today"] = ungm_published_today
+        context["ungm_deadline_today"] = ungm_deadline_today
+        context["ted_published_today"] = ted_published_today
+        context["ted_deadline_today"] = ted_deadline_today
+
         return context
 
 
