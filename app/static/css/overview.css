@@ -3,6 +3,7 @@
   margin-top: 25px;
   margin-left: auto;
   margin-right: auto;
+  padding-top: 10px;
 }
 
 .overview-page-list {
@@ -12,4 +13,18 @@
 
 h3 {
   margin-top: 25px;
+}
+
+.table_container {
+  padding-top: 5px;
+  width: 35% !important;
+}
+
+.thead-dark {
+  background: #333333;
+  color: white;
+}
+
+table.dataTable tbody th, table.dataTable tbody td {
+  padding: 8px 18px;
 }

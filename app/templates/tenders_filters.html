@@ -33,7 +33,7 @@
         {{ form.favourite.label }}
         {% render_field form.favourite class+="form-control form-control-sm" %}
       </div>
-        <div class ="form-group col-sm">
+      <div class ="form-group col-sm">
         {{ form.keyword.label }}
         {% render_field form.keyword class+="form-control form-control-sm" %}
       </div>
@@ -55,6 +55,35 @@
       </div>
     </div>
   </form>
+
+  {% if ungm_published_today %}
+    <ul>
+      <li class="date_filter">UNGM tenders published today</li>
+      <li class="quiet">Remove filter by pressing <span style="color: red">RESET FILTERS</span></li>
+    </ul>
+  {% endif %}
+
+  {% if ungm_deadline_today %}
+    <ul>
+      <li class="date_filter">UNGM tenders deadline today</li>
+      <li class="quiet">Remove filter by pressing <span style="color: red">RESET FILTERS</span></li>
+    </ul>
+
+  {% endif %}
+
+  {% if ted_published_today %}
+    <ul>
+      <li class="date_filter">TED tenders published today</li>
+      <li class="quiet">Remove filter by pressing <span style="color: red">RESET FILTERS</span></li>
+    </ul>
+  {% endif %}
+
+  {% if ted_deadline_today %}
+    <ul>
+      <li class="date_filter">TED tenders deadline today</li>
+      <li class="quiet">Remove filter by pressing <span style="color: red">RESET FILTERS</span></li>
+    </ul>
+  {% endif %}
 </div>
 </body>
 </html>

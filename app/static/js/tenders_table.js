@@ -24,6 +24,7 @@ $(document).ready(function() {
         { "width": "55%", "targets": 0 },
         { "width": "10%", "targets": 3 },
         { "width": "8%", "targets": 4 },
+        { "width": "8%", "targets": 5 },
       ],
       "order": [[ 3, "asc" ]],
       "pageLength": 10,

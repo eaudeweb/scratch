@@ -7,93 +7,94 @@
     <p class="logoText">SCRATCH</p>
 
     {% if user.is_authenticated %}
-    <form method="post" class="form-group">
-      {% csrf_token %}
-      <input type="text" class="form-control src-bar" name="terms" required="" id="terms" maxlength="400" placeholder="Search..." autofocus>
-    </form>
 
-    <div class="row home-page">
-      <div class="card col-sm-2">
-        <div class="container-card">
-          <h5><b>UNGM Tenders</b></h5>
-          <br>
-          <p>{{ ungm_tenders }}</p>
+      <form method="post" class="form-group">
+        {% csrf_token %}
+        <input type="text" class="form-control src-bar" name="terms" required="" id="terms" maxlength="400" placeholder="Search..." autofocus>
+      </form>
+
+      <div class="row home-page">
+        <div class="card col-sm-2">
+          <a href="{% url 'tenders_list_view' %}?source=UNGM&filter_button=filter" class="container-card">
+            <h5><b>UNGM Tenders</b></h5>
+            <br>
+            <p>{{ ungm_tenders }}</p>
+          </a>
         </div>
 
-      </div>
-
-      <div class="card col-sm-2">
-        <div class="container-card">
-          <h5><b>UNGM Published Today</b></h5>
-          <p>{{ ungm_published_today }}</p>
+        <div class="card col-sm-2">
+          <a href="{% url 'tenders_list_view' %}?source=UNGM&filter_button=filter&ungm_published_today=True" class="container-card">
+            <h5><b>UNGM Published Today</b></h5>
+            <p>{{ ungm_published_today }}</p>
+          </a>
         </div>
-      </div>
 
-      <div class="card col-sm-2">
-        <div class="container-card">
-          <h5><b>UNGM Deadline Today</b></h5>
-          <p>{{ ungm_deadline_today }}</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="row home-page">
-      <div class="card col-sm-2">
-        <div class="container-card">
-          <h5><b>TED Tenders</b></h5>
-          <br>
-          <p>{{ ted_tenders }}</p>
+        <div class="card col-sm-2">
+          <a href="{% url 'tenders_list_view' %}?source=UNGM&filter_button=filter&ungm_deadline_today=True" class="container-card">
+            <h5><b>UNGM Deadline Today</b></h5>
+            <p>{{ ungm_deadline_today }}</p>
+          </a>
         </div>
       </div>
 
-      <div class="card col-sm-2">
-        <div class="container-card">
-          <h5><b>TED Published Today</b></h5>
-          <p>{{ ted_published_today }}</p>
+      <div class="row home-page">
+        <div class="card col-sm-2">
+          <a href="{% url 'tenders_list_view' %}?source=TED&filter_button=filter" class="container-card">
+            <h5><b>TED Tenders</b></h5>
+            <br>
+            <p>{{ ted_tenders }}</p>
+          </a>
+        </div>
+
+        <div class="card col-sm-2">
+          <a href="{% url 'tenders_list_view' %}?source=TED&filter_button=filter&ted_published_today=True" class="container-card">
+            <h5><b>TED Published Today</b></h5>
+            <p>{{ ted_published_today }}</p>
+          </a>
+        </div>
+
+        <div class="card col-sm-2">
+          <a href="{% url 'tenders_list_view' %}?source=TED&filter_button=filter&ted_deadline_today=True" class="container-card">
+            <h5><b>TED Deadline Today</b></h5>
+            <p>{{ ted_deadline_today }}</p>
+          </a>
         </div>
       </div>
 
-      <div class="card col-sm-2">
-        <div class="container-card">
-          <h5><b>TED Deadline Today</b></h5>
-          <p>{{ ted_deadline_today }}</p>
+      <div class="row home-page">
+        <div class="card col-sm-2">
+          <a href="{% url 'contract_awards_list_view' %}" class="container-card">
+            <h5><b>Winners</b></h5>
+            <br>
+            <p>{{ winners }}</p>
+          </a>
         </div>
-      </div>
-    </div>
 
-    <div class="row home-page">
-      <div class="card col-sm-2">
-        <div class="container-card">
-          <h5><b>Winners</b></h5>
-          <br>
-          <p>{{ winners }}</p>
+        <div class="card col-sm-2">
+          <a href="{% url 'tenders_list_view' %}?favourite=True&filter_button=filter" class="container-card">
+            <h5><b>Favorite Tenders</b></h5>
+            <p>{{ favorite_tenders }}</p>
+          </a>
+        </div>
+
+        <div class="card col-sm-2">
+          <a  href="{% url 'tenders_archive_list' %}" class="container-card">
+            <h5><b>Expired Tenders</b></h5>
+            <p>{{ expired_tenders }}</p>
+          </a>
         </div>
       </div>
 
-      <div class="card col-sm-2">
-        <div class="container-card">
-          <h5><b>Favorite Tenders</b></h5>
-          <p>{{ favorite_tenders }}</p>
+      <div class="row home-page">
+        <div class="card col-sm-2">
+          <a href="{% url 'tenders_list_view' %}?keyword=True&filter_button=filter" class="container-card">
+            <h5><b>Keyword Tenders</b></h5>
+            <p>{{ keyword_tenders }}</p>
+          </a>
         </div>
       </div>
-
-      <div class="card col-sm-2">
-        <div class="container-card">
-          <h5><b>Expired Tenders</b></h5>
-          <p>{{ expired_tenders }}</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="row home-page">
-      <div class="card col-sm-2">
-        <div class="container-card">
-          <h5><b>Keyword Tenders</b></h5>
-          <p>{{ keyword_tenders }}</p>
-        </div>
-      </div>
-    </div>
     {% endif %}
+
   </div>
 
 {% endblock %}
