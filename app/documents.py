@@ -36,7 +36,6 @@ class TenderDoc(DocType):
             'organization',
             'source',
             'notified',
-            'description'
         ]
 
 

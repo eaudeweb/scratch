@@ -208,8 +208,8 @@ AUTH_LDAP_RESET_TIME = 15 * 60
 AUTH_LDAP_USERNAME_REGEX = r"^zz_.*$"
 
 AUTHENTICATION_BACKENDS = (
-    'django_auth_ldap.backend.LDAPBackend',
     'django.contrib.auth.backends.ModelBackend',
+    'django_auth_ldap.backend.LDAPBackend',
 )
 
 LOGGING = {
@@ -220,4 +220,3 @@ LOGGING = {
 }
 
 TENDER_KEYWORDS = env('TENDER_KEYWORDS', 'python, drupal')
-
