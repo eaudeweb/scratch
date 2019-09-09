@@ -64,8 +64,7 @@ Create the stack and start it:
 -   **add_winner:** Adds Contract Awards for expired UNGM tenders
 -   **deadline_notifications:** Sends e-mails with tenders that have deadline in DEADLINE_NOTIFICATIONS days
 -   **delete_expired_tenders:** Deletes tenders from archive with deadline passed since DELETE_EXPIRED_DAYS ago
--   **notify:** Sends an e-mail for every new tender(digest=false) or an e-mail with all new tenders(digest=true);
-    digest default value is false
+-   **notify:** Sends an e-mail for every new tender(default) or an e-mail with all new tenders(digest parameter specified);
 -   **notify_favourites:** Sends e-mails for favourites tenders, according to digest parameter described previously
 -   **notify_keywords:** Sends e-mails for tenders with keywords, according to digest parameter described previously
 -   **remove_unnecessary_newlines:** Removes newlines from Winner vendor field
