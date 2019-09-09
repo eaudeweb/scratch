@@ -59,4 +59,12 @@ Create the stack and start it:
         
         sudo sysctl -w vm.max_map_count=262144
 
+##Management Commands
+
+-   add_winner: Adds in the database Contract Awards for expired UNGM tenders
+-   deadline_notifications: Sends e-mails with tenders with deadline in DEADLINE_NOTIFICATIONS days
+-   delete_expired_tenders: Deletes tenders from archive with deadline passed since DELETE_EXPIRED_DAYS ago
+-   notify: Sends an e-mail for every new tender(digest=) or an e-mail with all new tenders(digest=)
+-   notify_favourites: Sends an e-mail for 
+
   
