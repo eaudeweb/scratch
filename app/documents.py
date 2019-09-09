@@ -35,7 +35,8 @@ class TenderDoc(DocType):
             'cpv_codes',
             'organization',
             'source',
-            'notified'
+            'notified',
+            'description'
         ]
 
 
