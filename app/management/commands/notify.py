@@ -3,9 +3,26 @@ from django.template.loader import render_to_string
 from app.models import Tender, Notification, Email, set_notified
 from django.conf import settings
 from getenv import env
+from app.management.commands.base.params import BaseParamsUI
 
 
-class Command(BaseCommand):
+class Command(BaseCommand, BaseParamsUI):
+    help = 'Notifies all users about new available tenders'
+
+    @staticmethod
+    def get_parameters():
+        return [
+            {
+                'name': 'digest',
+                'display': 'Digest',
+                'type': 'checkbox',
+            },
+            {
+                'name': 'days_ago',
+                'display': 'Days ago',
+                'type': 'text',
+            },
+        ]
 
     def add_arguments(self, parser):
         parser.add_argument(

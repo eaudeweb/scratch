@@ -7,13 +7,25 @@ from bs4 import BeautifulSoup
 from datetime import date, datetime, timedelta
 from django.core.files import File
 from django.core.management.base import BaseCommand, CommandError
+from app.management.commands.base.params import BaseParamsUI
 from django.utils.timezone import make_aware
 from tempfile import TemporaryFile
 
 ENDPOINT_URI = 'https://www.ungm.org'
 
 
-class Command(BaseCommand):
+class Command(BaseCommand, BaseParamsUI):
+    help = 'Gets all UNGM tenders from the past n days'
+
+    @staticmethod
+    def get_parameters():
+        return [
+            {
+                'name': 'days_ago',
+                'display': 'Days ago',
+                'type': 'text',
+            },
+        ]
 
     @staticmethod
     def find_by_label(soup, label):
@@ -172,7 +184,8 @@ class Command(BaseCommand):
             Command.update_ungm_tenders(parsed_tenders)
 
         WorkerLog.objects.create(update=date.today(), source='UNGM')
-        return self.stdout.write(self.style.SUCCESS('Ungm tenders updated'))
+        #return self.stdout.write(self.style.SUCCESS('Ungm tenders updated'))
+        return "Ungm tenders updated"
 
     @staticmethod
     def download_document(tender_doc):

@@ -24,57 +24,29 @@
                     <th scope="col">Name</th>
                     <th scope="col">Description</th>
                     <th scope="col">Run command</th>
+                    <th scope="col">Parameters</th>
                 </tr>
                 </thead>
                 <tbody>
 
+                {% for command in commands %}
                 <tr>
-                    <th scope="row">Update UNGM</th>
-                    <td>Gets all UNGM tenders from the past day</td>
-                    <td><button type="submit" name="update_ungm" class="btn btn-primary">Run</button></td>
+                    <th scope="row">{{ command.name }}</th>
+                    <td>{{ command.help }}</td>
+                    <td><button type="submit" name="{{ command.name }}" class="btn btn-primary">Run</button></td>
+                    <td>
+                        {% for param in command.params %}
+                            <span>{{ param.display }}</span>:
+                            {% if param.type == "checkbox" %}
+                                <input type="{{ param.type }}" name="{{ command.name }}__{{ param.name }}">
+                            {% else %}
+                                <input type="{{ param.type }}" name="{{ command.name }}__{{ param.name }}" class="mgn-display">
+                            {% endif %}
+                            &emsp;
+                        {% endfor %}
+                    </td>
                 </tr>
-
-                <tr>
-                    <th scope="row">Update TED</th>
-                    <td>Gets all TED tenders from the past day</td>
-                    <td><button type="submit" name="update_ted" class="btn btn-primary">Run</button></td>
-                </tr>
-
-                <tr>
-                    <th scope="row">Add winner</th>
-                    <td>Gets all awards from the past day</td>
-                    <td><button type="submit" name="add_winner" class="btn btn-primary">Run</button></td>
-                </tr>
-
-                <tr>
-                    <th scope="row">Notify</th>
-                    <td>Notifies all users about new available tenders</td>
-                    <td><button type="submit" name="notify" class="btn btn-primary">Run</button></td>
-                </tr>
-
-                <tr>
-                    <th scope="row">Notify favorites</th>
-                    <td>Notifies all users about favorite tenders updates</td>
-                    <td><button type="submit" name="notify_favorites" class="btn btn-primary">Run</button></td>
-                </tr>
-
-                <tr>
-                    <th scope="row">Notify keywords</th>
-                    <td>Notifies all users about tenders which contain one or more keywords</td>
-                    <td><button type="submit" name="notify_keywords" class="btn btn-primary">Run</button></td>
-                </tr>
-
-                <tr>
-                    <th scope="row">Deadline notifications</th>
-                    <td>Send deadline notifications to all users if there are tenders with 1, 3 or 7 days left</td>
-                    <td><button type="submit" name="deadline_notifications" class="btn btn-primary">Run</button></td>
-                </tr>
-
-                <tr>
-                    <th scope="row">Remove newlines</th>
-                    <td>Removes unnecessary newlines from award vendors name</td>
-                    <td><button type="submit" name="remove_unnecessary_newlines" class="btn btn-primary">Run</button></td>
-                </tr>
+                {% endfor %}
 
                 </tbody>
             </table>

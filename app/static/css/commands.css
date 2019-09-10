@@ -1,6 +1,9 @@
 .mgn-table {
-    width: 70%;
+    width: 90%;
     margin-left: auto !important;
     margin-right: auto !important;
+}
 
+.mgn-display {
+    width: 50px;
 }

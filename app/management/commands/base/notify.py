@@ -14,7 +14,17 @@ from app.server_requests import get_request_class
 ENDPOINT_URI = 'https://www.ungm.org'
 
 
-class BaseNotifyCommand(BaseCommand):
+class BaseNotifyCommand(BaseCommand, ):
+    @staticmethod
+    def get_parameters():
+        return [
+            {
+                'name': 'digest',
+                'display': 'Digest',
+                'type': 'checkbox',
+            },
+        ]
+
     @property
     def notification_type(self):
         raise NotImplementedError('subclasses of BaseNotifyCommand must provide a notification_type member')

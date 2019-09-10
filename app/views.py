@@ -377,25 +377,60 @@ class ManagementView(LoginRequiredMixin, TemplateView):
     login_url = "/login"
     redirect_field_name = "login_view"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        from django.core.management import get_commands, load_command_class
+
+        available_commands = get_commands()
+        module_commands = [cmd for cmd in available_commands.keys() if available_commands[cmd] == 'app']
+
+        commands = []
+
+        for command_name in module_commands:
+            base_class = load_command_class('app', command_name)
+
+            commands.append(
+                {
+                    'name': command_name,
+                    'help': base_class.help or '',
+                    'params': base_class.get_parameters(),
+                }
+            )
+
+        context["commands"] = commands
+        return context
+
     def post(self, request):
 
+        query = self.request.POST.dict()
+
+        def sanitize(field):
+            return bool(field) and (field == 'on' or int(field))
+
+        command_name = ''
+        temp_parameters = []
+
+        for entry in query:
+            if 'csrfmiddlewaretoken' in entry:
+                continue
+
+            try:
+                _, param = entry.split('__')
+                temp_parameters.append(
+                    {
+                        'command': entry,
+                        'parameter': param,
+                        'value': sanitize(query[entry]),
+                    }
+                )
+            except ValueError:
+                command_name = entry
+
+        parsed_parameters = [x for x in temp_parameters if command_name in x['command']]
+        parameters = {x['parameter']: x['value'] for x in parsed_parameters if x['value'] is not False}
+
         if request.user.is_authenticated and request.user.is_superuser:
-            if 'update_ungm' in self.request.POST:
-                async_task(call_command, 'update_ungm', days_ago=3)
-            elif 'update_ted' in self.request.POST:
-                async_task(call_command, 'update_ted', days_ago=5)
-            elif 'add_winner' in self.request.POST:
-                async_task(call_command, 'add_winner')
-            elif 'notify' in self.request.POST:
-                async_task(call_command, 'notify', digest=False)
-            elif 'notify_favorites' in self.request.POST:
-                async_task(call_command, 'notify_favorites', digest=False)
-            elif 'notify_keywords' in self.request.POST:
-                async_task(call_command, 'notify_keywords', digest=False)
-            elif 'deadline_notifications' in self.request.POST:
-                async_task(call_command, 'deadline_notifications')
-            elif 'remove_unnecessary_newlines' in self.request.POST:
-                async_task(call_command, 'remove_unnecessary_newlines')
+            async_task(call_command, command_name, **parameters)
 
             return redirect('management_view')
 

@@ -1,4 +1,5 @@
 from django.core.management.base import BaseCommand
+from app.management.commands.base.params import BaseParamsUI
 from ftplib import FTP
 from bs4 import BeautifulSoup, element
 from app.models import (
@@ -21,7 +22,19 @@ CPV_CODES = [x.code for x in CPVCode.objects.all()]
 TED_COUNTRIES = [x.name for x in TedCountry.objects.all()]
 
 
-class Command(BaseCommand):
+class Command(BaseCommand, BaseParamsUI):
+    help = 'Gets all TED tenders from the past n days'
+
+    @staticmethod
+    def get_parameters():
+        return [
+            {
+                'name': 'days_ago',
+                'display': 'Days ago',
+                'type': 'text',
+            },
+        ]
+
     def add_arguments(self, parser):
         parser.add_argument(
             '--days_ago',

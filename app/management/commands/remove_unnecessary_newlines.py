@@ -1,8 +1,11 @@
 from django.core.management.base import BaseCommand, CommandError
+from app.management.commands.base.params import BaseParamsUI
 from app.models import Winner
 
 
-class Command(BaseCommand):
+class Command(BaseCommand, BaseParamsUI):
+    help = 'Removes unnecessary newlines from award vendors name'
+
     def handle(self, *args, **options):
         winners = Winner.objects.all()
 
