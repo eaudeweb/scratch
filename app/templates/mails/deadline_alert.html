@@ -14,13 +14,16 @@
     <p>Deadline: Not specified</p>
   {% endif %}
   <hr>
-    <h3>Description</h3>
-    <p class="description">{{ tender.description|safe }}</p>
-    <p class="published clip">
-      {% if tender.published %}
-          Published: {{ tender.published }} &ndash; {{ tender.organization }}
-      {% else %}
-          Published: Not specified &ndash; {{ tender.organization }}
-      {% endif %}
-    </p>
-  {% endblock %}
+  <h3>Description</h3>
+  <p class="description">{{ tender.description|safe }}</p>
+  <p class="published clip">
+    {% if tender.published %}
+      Published: {{ tender.published }}
+    {% else %}
+      Published: Not specified
+    {% endif %}
+  </p>
+  <p class="published title_clip">
+    {{ tender.organization }}
+  </p>
+{% endblock %}

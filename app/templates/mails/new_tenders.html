@@ -11,10 +11,13 @@
       </h2>
       <p class="published clip">
         {% if tender.published %}
-          Published: {{ tender.published }} &ndash; {{ tender.organization }}
+          Published: {{ tender.published }}
         {% else %}
-          Published: Not specified &ndash; {{ tender.organization }}
+          Published: Not specified
         {% endif %}
+      </p>
+      <p class="published title_clip">
+        {{ tender.organization }}
       </p>
       <p class="deadline">
         {% if tender.deadline %}

@@ -9,7 +9,7 @@ class TenderAdmin(admin.ModelAdmin):
     search_fields = ['title', 'notice_type', 'published', 'deadline', 'source',
                      'organization', 'unspsc_codes']
     list_filter = ('organization', 'notice_type', 'deadline', 'source',
-                   'unspsc_codes')
+                   'unspsc_codes', 'notified')
 
 
 class TenderDocumentAdmin(admin.ModelAdmin):
