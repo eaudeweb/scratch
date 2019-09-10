@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
- <head>
+<head>
   <meta charset="utf-8"/>
   <title>Scraper notifications</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -38,6 +38,7 @@
     .content { margin-bottom: 1em; border: 1px solid #ccc; padding: 16px; background: #fff; }
     .deadline { color: #cb0000; }
     .published { font-style: italic; color: gray; }
+    .top {margin-top: 10px}
     a { color: #296bcc; text-decoration: none; }
     a:hover { text-decoration: underline; }
     .cta {
@@ -56,24 +57,24 @@
       overflow: hidden;
     }
     .title_clip {
-      white-space:initial;
-      word-wrap:break-word
+      white-space: initial;
+      word-wrap: break-word
     }
     .muted { color: gray; }
   </style>
 </head>
 <body>
 
-  <h1 class="header">
-    <small>Scraper notifications</small>
-    {% block header %}{% endblock %}
-  </h1>
+<h1 class="header">
+  <small>Scraper notifications</small>
+  {% block header %}{% endblock %}
+</h1>
 
-  <div class="content">
-    {% block content %}{% endblock %}
-  </div>
+<div class="content">
+  {% block content %}{% endblock %}
+</div>
 
-  <a href="{{ domain }}{% url 'tenders_list_view' %}" class="cta">To Scrapper</a>
+<a href="{{ domain }}{% url 'tenders_list_view' %}" class="cta">To Scrapper</a>
 
 </body>
 </html>
