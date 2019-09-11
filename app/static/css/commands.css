@@ -1,9 +1,13 @@
 .mgn-table {
-    width: 90%;
-    margin-left: auto !important;
-    margin-right: auto !important;
+  width: 90%;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 .mgn-display {
-    width: 50px;
+  width: 85px;
+}
+
+.table > tbody > tr > td {
+  vertical-align: middle;
 }

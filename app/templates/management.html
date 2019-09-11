@@ -1,61 +1,52 @@
+
+
 {% extends 'base.html' %}
-
 {% block title %}
-    <title>Scratch - Management</title>
+<title>Scratch - Management</title>
 {% endblock %}
-
 {% block content %}
-
-    <div style="text-align: center">
-        <div class="row table" style="text-align: center">
-            <h1 class="col-sm-12">
-                <span>Commands</span>
-            </h1>
-        </div>
-        <br>
-
-        <form method="POST" class="mgn-table">
-            {% csrf_token %}
-
-
-            <table class="table table-striped mgn-table">
-                <thead>
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Run command</th>
-                    <th scope="col">Parameters</th>
-                </tr>
-                </thead>
-                <tbody>
-
-                {% for command in commands %}
-                <tr>
-                    <th scope="row">{{ command.name }}</th>
-                    <td>{{ command.help }}</td>
-                    <td><button type="submit" name="{{ command.name }}" class="btn btn-primary">Run</button></td>
-                    <td>
-                        {% for param in command.params %}
-                            <span>{{ param.display }}</span>:
-                            {% if param.type == "checkbox" %}
-                                <input type="{{ param.type }}" name="{{ command.name }}__{{ param.name }}">
-                            {% else %}
-                                <input type="{{ param.type }}" name="{{ command.name }}__{{ param.name }}" class="mgn-display">
-                            {% endif %}
-                            &emsp;
-                        {% endfor %}
-                    </td>
-                </tr>
-                {% endfor %}
-
-                </tbody>
-            </table>
-
-
-        </form>
-    </div>
-
-
-
-
+<div style="text-align: center">
+  <div class="row table" style="text-align: center">
+    <h1 class="col-sm-12">
+      <span>Commands</span>
+    </h1>
+  </div>
+  <br>
+  <form method="POST" class="mgn-table">
+    {% csrf_token %}
+    <table class="table table-striped mgn-table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Run command</th>
+          <th scope="col">Parameters</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for command in commands %}
+        <tr>
+          <th scope="row" style="vertical-align: middle">{{ command.name }}</th>
+          <td>{{ command.help }}</td>
+          <td><button type="submit" name="{{ command.name }}" class="btn btn-primary">Run</button></td>
+          <td>
+            <ul class="list-group">
+              {% for param in command.params %}
+              <li class="list-group-item">
+                {% if param.type == "checkbox" %}
+                <span>{{ param.display }}</span>
+                <input type="{{ param.type }}" name="{{ command.name }}__{{ param.name }}">
+                {% else %}
+                <input type="{{ param.type }}" name="{{ command.name }}__{{ param.name }}" class="mgn-display" placeholder="{{ param.display }}">
+                {% endif %}
+              </li>
+              {% endfor %}
+            </ul>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </form>
+</div>
 {% endblock %}

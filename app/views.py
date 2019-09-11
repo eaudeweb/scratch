@@ -4,6 +4,7 @@ from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.detail import DetailView
 from .models import Tender, TenderDocument, Winner, Notification, WorkerLog, CPVCode, UNSPSCCode
+from django.core.management import get_commands, load_command_class
 from django.utils.http import is_safe_url
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import (
@@ -379,7 +380,6 @@ class ManagementView(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        from django.core.management import get_commands, load_command_class
 
         available_commands = get_commands()
         module_commands = [cmd for cmd in available_commands.keys() if available_commands[cmd] == 'app']
