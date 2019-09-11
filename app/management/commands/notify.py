@@ -18,7 +18,7 @@ class Command(BaseCommand):
         digest = options['digest']
         tenders = Tender.objects.filter(notified=False)
         awards = Winner.objects.filter(notified=False)
-        if (len(tenders) > 0) | (len(awards) > 0):
+        if (len(tenders) > 0) or (len(awards) > 0):
             send_email(tenders, awards, digest)
 
 
