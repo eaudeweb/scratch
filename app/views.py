@@ -3,7 +3,7 @@ from django.shortcuts import redirect, render
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.detail import DetailView
-from .models import Tender, TenderDocument, Winner, Notification, WorkerLog, CPVCode, UNSPSCCode
+from .models import Tender, TenderDocument, Winner, Notification, WorkerLog, CPVCode, UNSPSCCode, Task
 from django.core.management import get_commands, load_command_class
 from django.utils.http import is_safe_url
 from django.contrib.auth.forms import AuthenticationForm
@@ -28,6 +28,7 @@ from django.contrib.auth.models import User
 from elasticsearch_dsl import Q as elasticQ
 from django.db.models import Q
 from django_q.tasks import async_task, result
+from django_q.models import Success, Failure
 
 
 class HomepageView(TemplateView):
@@ -381,6 +382,18 @@ class ManagementView(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
+        def update_fields(task, class_obj):
+            try:
+                obj = class_obj.objects.get(id=task.id)
+                task.stopped = obj.stopped
+                task.status = 'success' if obj.success else 'error'
+                task.output = obj.result
+
+                task.save()
+                return True
+            except class_obj.DoesNotExist:
+                return False
+
         available_commands = get_commands()
         module_commands = [cmd for cmd in available_commands.keys() if available_commands[cmd] == 'app']
 
@@ -397,7 +410,15 @@ class ManagementView(LoginRequiredMixin, TemplateView):
                 }
             )
 
+        tasks = Task.objects.all().order_by('-started')
+
+        for task in tasks:
+            if task.status == 'processing' and not update_fields(task, Success):
+                update_fields(task, Failure)
+
         context["commands"] = commands
+        context['tasks'] = tasks
+
         return context
 
     def post(self, request):
@@ -428,9 +449,19 @@ class ManagementView(LoginRequiredMixin, TemplateView):
 
         parsed_parameters = [x for x in temp_parameters if command_name in x['command']]
         parameters = {x['parameter']: x['value'] for x in parsed_parameters if x['value'] is not False}
+        formatted_parameters = ', '.join([': '.join((str(k), str(v))) for k, v in parameters.items()])
 
         if request.user.is_authenticated and request.user.is_superuser:
-            async_task(call_command, command_name, **parameters)
+            id = async_task(call_command, command_name, **parameters)
+
+            t = Task(
+                id=id,
+                args=command_name,
+                kwargs=formatted_parameters,
+                started=datetime.now(),
+            )
+
+            t.save()
 
             return redirect('management_view')
 

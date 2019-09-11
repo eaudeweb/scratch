@@ -11,3 +11,13 @@
 .table > tbody > tr > td {
   vertical-align: middle;
 }
+
+.log-table {
+  width: 80%;
+  margin-bottom: 50px;
+}
+
+.icon-log {
+  width: 32px;
+  height: 32px;
+}
