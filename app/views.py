@@ -363,7 +363,8 @@ class SearchView(TendersListView):
                     'source',
                     'reference',
                     'unspsc_codes',
-                    'cpv_codes'
+                    'cpv_codes',
+                    'description',
                 ]
             )
         )

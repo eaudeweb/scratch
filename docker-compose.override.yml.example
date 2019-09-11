@@ -12,8 +12,9 @@ services:
     image: scratch
     build: .
 
-  postfix:
+  smtp:
     image: eaudeweb/mailtrap
+    container_name: scratch.smtp
     ports:
       - 80:80
 

@@ -86,6 +86,7 @@ class BaseNotifyCommand(BaseCommand):
         soup = BeautifulSoup(html, 'html.parser')
         documents = BaseNotifyCommand.find_by_class(soup, "lnkShowDocument", "a")
         description = BaseNotifyCommand.find_by_class(soup, "ungm-list-item ungm-background", "div")
+        description = description[1].text.strip().lstrip('Description')
         nodes = BaseNotifyCommand.find_by_class(soup, "nodeName", "span")
         scraped_nodes = [parent.find_all("span")[0].text for parent in nodes[1:]]
         unspsc_codes = [
