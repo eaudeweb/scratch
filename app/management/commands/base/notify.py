@@ -9,12 +9,13 @@ from getenv import env
 
 from app.management.commands.notify import build_email
 from app.models import Notification, TenderDocument, UNSPSCCode
+from app.management.commands.base.params import BaseParamsUI
 from app.server_requests import get_request_class
 
 ENDPOINT_URI = 'https://www.ungm.org'
 
 
-class BaseNotifyCommand(BaseCommand, ):
+class BaseNotifyCommand(BaseCommand, BaseParamsUI):
     @staticmethod
     def get_parameters():
         return [

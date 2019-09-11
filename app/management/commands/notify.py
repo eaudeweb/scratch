@@ -17,11 +17,6 @@ class Command(BaseCommand, BaseParamsUI):
                 'display': 'Digest',
                 'type': 'checkbox',
             },
-            {
-                'name': 'days_ago',
-                'display': 'Days ago',
-                'type': 'text',
-            },
         ]
 
     def add_arguments(self, parser):
