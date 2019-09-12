@@ -14,20 +14,34 @@ function getCookie(name) {
   return cookieValue;
 }
 
+$.urlParam = function (doc, name) {
+    const results = new RegExp('[\?&]' + name + '=([^&#]*)')
+                      .exec(doc.location.search);
+    return (results !== null) ? decodeURIComponent(results[1]) : '';
+}
+
 $(document).ready(function() {
   $.fn.dataTable.moment( 'DD MMM YYYY');
   $.fn.dataTable.moment( 'DD MMM YYYY, HH:mm');
-  let doc = this
+
+  let doc = this;
+
+  const searchTerm = $.urlParam(doc, 'terms');
+
   $('#tenders_table').DataTable(
     {
       "columnDefs": [
         { "width": "55%", "targets": 0 },
         { "width": "10%", "targets": 3 },
         { "width": "8%", "targets": 4 },
+        { "width": "8%", "targets": 5 },
       ],
       "order": [[ 3, "asc" ]],
       "pageLength": 10,
       "lengthChange": false,
+      "search": {
+        "search": searchTerm
+      }
     });
 
   $('#tender_detail_table').DataTable(

@@ -33,7 +33,7 @@
           <td><a href="{% url 'tender_detail_view' winner.tender.id %}" class="link">{{ winner.tender.title }}</a></td>
           <td>{{ winner.tender.source }}</td>
           <td>{{ winner.tender.organization }}</td>
-          <td>{{ winner.award_date }}</td>
+          <td>{{ winner.award_date | date:'d M Y' }}</td>
           <td>{{ winner.vendor }}</td>
           <td>{{ winner.value }}</td>
           <td>{{ winner.currency }}</td>

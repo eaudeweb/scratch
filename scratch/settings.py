@@ -227,4 +227,3 @@ LOGGING = {
 }
 
 TENDER_KEYWORDS = env('TENDER_KEYWORDS', 'python, drupal')
-

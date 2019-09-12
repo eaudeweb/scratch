@@ -71,7 +71,7 @@ def send_email(tenders, digest):
 
 
 def build_email(subject, recipients, cc, body):
-    sender = settings.EMAIL_HOST_USER
+    sender = settings.EMAIL_SENDER
 
     return Email(
         subject=subject,

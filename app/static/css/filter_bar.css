@@ -39,3 +39,18 @@
     padding-top: 15px;
     padding-left: 10px;
 }
+
+.date_filter {
+    margin-top: 13px;
+    padding-left: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    color: #447e9b;
+}
+
+.quiet {
+    padding-left: 12px;
+    font-size: 14px;
+    font-weight: normal;
+    color: #666666;
+}
