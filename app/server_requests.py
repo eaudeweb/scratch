@@ -54,7 +54,6 @@ PAYLOAD = {
 }
 
 
-
 HEADERS = {
     'Accept': '*/*',
     'Accept-Encoding': 'gzip, deflate',
@@ -66,7 +65,8 @@ HEADERS = {
     'X-Requested-With': 'XMLHttpRequest',
 }
 
-UNSPSC_CODES = [104943,104945,104970]
+UNSPSC_CODES = [104943, 104945, 104970]
+
 
 def get_request_class(public=True):
     return UNGMrequester()
@@ -114,7 +114,7 @@ class UNGMrequester(Requester):
         return json.dumps(payload)
 
     def request(self, url, last_date, index):
-        #Original
+        # Original
         for i in range(0, 3):
             resp = self.post_request(url, url + '/Search', self.get_data(url, last_date, index))
             if resp:
