@@ -1,29 +1,58 @@
 {% extends 'mails/layout.html' %}
 
-{% block header %}New Tenders{% endblock %}
+{% block header %}{{ title }}{% endblock %}
 
 {% block content %}
   <ol class="tender-list">
-    {% for tender in tenders %}
-    <li>
-      <h2>
-        <a href="{{ tender.url }}">{{ tender.title }}</a>
-      </h2>
-      <p class="published clip">
-        {% if tender.published %}
-          Published: {{ tender.published }} &ndash; {{ tender.organization }}
-        {% else %}
-          Published: Not specified &ndash; {{ tender.organization }}
-        {% endif %}
-      </p>
-      <p class="deadline">
-        {% if tender.deadline %}
-            Deadline: {{ tender.deadline }}
-        {% else %}
-            Deadline: Not specified
-        {% endif %}
-      </p>
-    </li>
-    {% endfor %}
+    {% if tenders %}
+      <li>
+        <h2>Tenders</h2>
+      </li>
+      {% for tender in tenders %}
+        <li>
+          <h2>
+            <a href="{{ tender.url }}">{{ tender.title }}</a>
+          </h2>
+          <p class="published clip">
+            {% if tender.published %}
+              Published: {{ tender.published }}
+            {% else %}
+              Published: Not specified
+            {% endif %}
+          </p>
+          <p class="published title_clip">
+            {{ tender.organization }}
+          </p>
+          <p class="deadline">
+            {% if tender.deadline %}
+              Deadline: {{ tender.deadline }}
+            {% else %}
+              Deadline: Not specified
+            {% endif %}
+          </p>
+        </li>
+      {% endfor %}
+    {% endif %}
+    {% if awards %}
+      <li><h2>Contract Awards</h2></li>
+      {% for award in awards %}
+        <li>
+          <h2>
+            <a href="{{ award.tender.url }}">{{ award.tender.title }}</a>
+          </h2>
+          <p class="published clip">
+            {% if award.award_date %}
+              Award Date: {{ award.award_date }}
+            {% else %}
+              Published: Not specified
+            {% endif %}
+          </p>
+          <p class="published title_clip">
+            Vendor: {{ award.vendor }}
+          </p>
+        </li>
+      {% endfor %}
+    {% endif %}
   </ol>
 {% endblock %}
+

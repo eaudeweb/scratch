@@ -5,25 +5,28 @@
 {% block content %}
   <ol class="tender-list">
     {% for tender in tenders %}
-    <li>
-      <h2>
-        <a href="{{ tender.url }}">{{ tender.title }}</a>
-      </h2>
-      <p class="published clip">
-        {% if tender.published %}
-          Published: {{ tender.published }} &ndash; {{ tender.organization }}
-        {% else %}
-          Published: Not specified &ndash; {{ tender.organization }}
-        {% endif %}
-      </p>
-      <p class="deadline">
-        {% if tender.deadline %}
+      <li>
+        <h2>
+          <a href="{{ tender.url }}">{{ tender.title }}</a>
+        </h2>
+        <p class="published clip">
+          {% if tender.published %}
+            Published: {{ tender.published }}
+          {% else %}
+            Published: Not specified
+          {% endif %}
+        </p>
+        <p class="published title_clip">
+          {{ tender.organization }}
+        </p>
+        <p class="deadline">
+          {% if tender.deadline %}
             Deadline: {{ tender.deadline }}
-        {% else %}
+          {% else %}
             Deadline: Not specified
-        {% endif %}
-      </p>
-    </li>
+          {% endif %}
+        </p>
+      </li>
     {% endfor %}
   </ol>
 {% endblock %}
