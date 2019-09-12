@@ -185,12 +185,13 @@ STATICFILES_DIRS = [
     os.path.join(os.path.join(BASE_DIR, "app"), 'static')
 ]
 FIXTURE_DIRS = (
-   '/app/fixtures/',
+    '/app/fixtures/',
 )
 
 EMAIL_USE_TLS = env('EMAIL_USE_TLS', False)
 EMAIL_HOST_USER = env('EMAIL_HOST_USER', '')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', '')
+EMAIL_SENDER = env('EMAIL_SENDER', '')
 
 DELETE_EXPIRED_DAYS = env('DELETE_EXPIRED_DAYS', 5)
 
@@ -215,8 +216,8 @@ AUTH_LDAP_RESET_TIME = 15 * 60
 AUTH_LDAP_USERNAME_REGEX = r"^zz_.*$"
 
 AUTHENTICATION_BACKENDS = (
-   'django_auth_ldap.backend.LDAPBackend',
-   'django.contrib.auth.backends.ModelBackend',
+    'django_auth_ldap.backend.LDAPBackend',
+    'django.contrib.auth.backends.ModelBackend',
 )
 
 LOGGING = {

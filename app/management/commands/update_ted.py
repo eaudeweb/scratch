@@ -74,7 +74,6 @@ class TEDWorker:
 
         while last_date < today:
             archive_name = get_archive_name(last_date, archives)
-            print('archive name', archive_name)
             if archive_name:
                 if not os.path.exists(self.path):
                     os.makedirs(self.path)
@@ -151,77 +150,82 @@ class TEDParser(object):
                 deadline = datetime.strptime(deadline.text, "%Y%m%d")
         tender["deadline"] = deadline
 
-        section = soup.find("form_section").find_all(lg="EN")[0]
-        descriptions = section.findAll("short_descr")[:2]
+        sections = soup.find("form_section").find_all(lg="EN")
+        if sections:
+            section = sections[0]
+            descriptions = section.findAll("short_descr")[:2]
 
-        try:
-            title = "Title:\n\t" + section.find("title").get_text() + "\n\n"
-        except AttributeError:
-            title = ''
+            try:
+                title = "Title:\n\t" + section.find("title").get_text() + "\n\n"
+            except AttributeError:
+                title = ""
 
-        try:
-            estimated_total = (
-                "Estimated total: "
-                + section.find("val_estimated_total").get_text()
-                + " "
-                + str(section.find("val_estimated_total")["currency"])
-                + "\n\n"
-            )
-        except AttributeError:
-            estimated_total = ""
-
-        try:
-            lots = (
-                "Tenders may be submitted for maximum number of lots: "
-                + section.find("lot_max_number").get_text()
-                + "\n\n"
-            )
-        except AttributeError:
-            lots = ""
-
-        procurement_desc = ""
-
-        try:
-            short_desc = (
-                    "Short Description:"
-                    + "\n\t"
-                    + str(descriptions[0].get_text())
+            try:
+                estimated_total = (
+                    "Estimated total: "
+                    + section.find("val_estimated_total").get_text()
+                    + " "
+                    + str(section.find("val_estimated_total")["currency"])
                     + "\n\n"
-            )
-        except (AttributeError, IndexError):
-            short_desc = ""
+                )
+            except AttributeError:
+                estimated_total = ""
 
-        try:
-            procurement_desc = descriptions[1]
-            procurement_desc = (
-                "Description of the procurement:"
-                + "\n\t"
-                + str(descriptions[1].get_text())
-            )
-        except IndexError:
-            pass
+            try:
+                lots = (
+                    "Tenders may be submitted for maximum number of lots: "
+                    + section.find("lot_max_number").get_text()
+                    + "\n\n"
+                )
+            except AttributeError:
+                lots = ""
 
-        tender["description"] = (
-            title + estimated_total + lots + short_desc + procurement_desc
-        )
+            procurement_desc = ""
+
+            try:
+                short_desc = (
+                        "Short Description:"
+                        + "\n\t"
+                        + str(descriptions[0].get_text())
+                        + "\n\n"
+                )
+            except (AttributeError, IndexError):
+                short_desc = ""
+
+            try:
+                procurement_desc = descriptions[1]
+                procurement_desc = (
+                    "Description of the procurement:"
+                    + "\n\t"
+                    + str(descriptions[1].get_text())
+                )
+            except IndexError:
+                pass
+
+            tender["description"] = (
+                title + estimated_total + lots + short_desc + procurement_desc
+            )
+        else:
+            tender["description"] = ""
 
         url = soup.find("uri_doc")
         tender["url"] = url.text.replace(url.get("lg"), "EN")
         tender["source"] = "TED"
 
-        winner = {}
-        if tender["notice_type"] == "Contract award":
-            update_winner(winner, soup)
+        winners = []
+        if tender["notice_type"] == "Contract award notice":
+            update_winners(winners, soup)
 
-        return tender, winner
+        return tender, winners
 
     def parse_notices(self):
         codes = self._filter_notices()
         for xml_file in self.xml_files:
             with open(xml_file, "r") as f:
-                tender, winner = self._parse_notice(f.read())
-                if winner:
-                    save_winner(tender, winner, codes[xml_file])
+                tender, winners = self._parse_notice(f.read())
+                if winners:
+                    for winner in winners:
+                        save_winner(tender, winner)
                 else:
                     save_tender(tender, codes[xml_file])
             os.remove(xml_file)
@@ -265,13 +269,13 @@ def save_tender(tender, codes):
             (k, v) for (k, v) in tender.items() if k != "documents"
         ]:
 
-            if attr == "deadline":
+            if attr == "deadline" and value:
                 value = timezone.utc.localize(value)
 
             setattr(old_tender, attr, value)
 
         old_tender.save()
-        return old_tender
+        return
 
     documents = tender.pop("documents", [])
     tender_entry = Tender(**tender)
@@ -283,35 +287,53 @@ def save_tender(tender, codes):
         save_document_to_models(tender_entry, document)
     tender["documents"] = documents
 
-    return tender_entry
+    return
 
 
-def save_winner(tender_fields, winner_fields, codes):
+def save_winner(tender_fields, winner_fields):
     reference = tender_fields["reference"]
     tender_entry = Tender.objects.filter(reference=reference).first()
 
-    winner_entry = Winner(tender=tender_entry, **winner_fields)
-    winner_entry.save()
+    if tender_entry:
+        Winner.objects.get_or_create(tender=tender_entry, **winner_fields)
 
-    return tender_entry
+    return
 
 
-def update_winner(winner, soup):
-    award_date = soup.find("contract_award_date")
-    if award_date:
-        fields = {c.name: int(c.text) for c in award_date.contents}
-        winner["award_date"] = date(**fields)
-    vendor = soup.find("economic_operator_name_address") or soup.find(
-        "contact_data_without_responsible_name_chp"
-    )
-    if vendor:
-        winner["vendor"] = (
-            vendor.officialname.text if vendor.officialname else None
-        )
-    value = soup.find("value_cost")
-    if value:
-        winner["value"] = value.get("fmtval")
-        winner["currency"] = value.parent.get("currency")
+def update_winners(winners, soup):
+    sections = soup.find("form_section").find_all(lg="EN")
+    if sections:
+        section = sections[0]
+        awarded_contracts = section.find_all("awarded_contract")
+        for awarded_contract in awarded_contracts:
+
+            try:
+                date_conclusion_contract = awarded_contract.find('date_conclusion_contract').text
+                award_date = datetime.strptime(date_conclusion_contract, "%Y-%m-%d")
+            except (TypeError, ValueError):
+                award_date = date.today()
+
+            try:
+                val_total = awarded_contract.find('val_total')
+                contract_value = float(val_total.text)
+                currency_currency = val_total.get("currency")
+            except (TypeError, ValueError):
+                contract_value = 0
+                currency_currency = "N/A"
+
+            contractors = awarded_contract.find_all("contractor")
+            for contractor in contractors:
+                winner = {}
+
+                officialname = contractor.find('officialname')
+                if officialname:
+                    winner["vendor"] = officialname.text
+
+                winner["award_date"] = award_date
+                winner["value"] = contract_value
+                winner["currency"] = currency_currency
+
+                winners.append(winner)
 
 
 def save_document_to_models(tender, document):
