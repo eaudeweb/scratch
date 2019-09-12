@@ -3,7 +3,8 @@ from django.shortcuts import redirect
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.detail import DetailView
-from .models import Tender, TenderDocument, Winner, Notification, WorkerLog, CPVCode, UNSPSCCode
+from .models import Tender, TenderDocument, Winner, Notification, WorkerLog, CPVCode, UNSPSCCode, Task
+from django.core.management import get_commands, load_command_class
 from django.utils.http import is_safe_url
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import (
@@ -19,12 +20,16 @@ from django.views.decorators.debug import sensitive_post_parameters
 from django.views.generic import FormView, RedirectView, TemplateView
 from django.views.generic import View
 from datetime import timezone, datetime, date, timedelta
+from django.core.management import call_command
 from .forms import TendersFilter, AwardsFilter
 from .forms import MAX, STEP, SearchForm
 from app.documents import TenderDoc
 from django.contrib.auth.models import User
 from elasticsearch_dsl import Q as elasticQ
 from django.db.models import Q
+from django_q.tasks import async_task, result
+from django_q.models import Success, Failure
+from django.urls import reverse
 
 
 class HomepageView(TemplateView):
@@ -401,6 +406,108 @@ class SearchView(TendersListView):
         context = super().get_context_data(**kwargs)
         context["reset_url"] = '/search/' + self.kwargs['pk']
         return context
+
+
+class ManagementView(LoginRequiredMixin, TemplateView):
+    template_name = "management.html"
+    login_url = "/login"
+    redirect_field_name = "login_view"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        def update_fields(task, class_obj):
+            try:
+                obj = class_obj.objects.get(id=task.id)
+                task.stopped = obj.stopped
+                task.status = 'success' if obj.success else 'error'
+                task.output = obj.result
+
+                task.save()
+                return True
+            except class_obj.DoesNotExist:
+                return False
+
+        available_commands = get_commands()
+        module_commands = [cmd for cmd in available_commands.keys() if available_commands[cmd] == 'app']
+
+        commands = []
+
+        for command_name in module_commands:
+            base_class = load_command_class('app', command_name)
+
+            commands.append(
+                {
+                    'name': command_name,
+                    'help': base_class.help or '',
+                    'params': base_class.get_parameters(),
+                }
+            )
+
+        tasks = Task.objects.all().order_by('-started')
+
+        for task in tasks:
+            if task.status == 'processing' and not update_fields(task, Success):
+                update_fields(task, Failure)
+
+        context["commands"] = commands
+        context['tasks'] = tasks
+
+        return context
+
+    def post(self, request):
+
+        query = self.request.POST.dict()
+
+        def sanitize(field):
+            return bool(field) and (field == 'on' or int(field))
+
+        command_name = ''
+        temp_parameters = []
+
+        for entry in query:
+            if 'csrfmiddlewaretoken' in entry:
+                continue
+
+            try:
+                _, param = entry.split('__')
+                temp_parameters.append(
+                    {
+                        'command': entry,
+                        'parameter': param,
+                        'value': sanitize(query[entry]),
+                    }
+                )
+            except ValueError:
+                command_name = entry
+
+        parsed_parameters = [x for x in temp_parameters if command_name in x['command']]
+        parameters = {x['parameter']: x['value'] for x in parsed_parameters if x['value'] is not False}
+        formatted_parameters = ', '.join([': '.join((str(k), str(v))) for k, v in parameters.items()])
+
+        if request.user.is_authenticated and request.user.is_superuser:
+            id = async_task(call_command, command_name, **parameters)
+
+            t = Task(
+                id=id,
+                args=command_name,
+                kwargs=formatted_parameters,
+                started=datetime.now(),
+            )
+
+            t.save()
+
+            return redirect('management_view')
+
+
+class ManagementDeleteView(LoginRequiredMixin, View):
+    login_url = "/login"
+    redirect_field_name = "login_view"
+
+    def get(self, request, pk):
+        task = Task.objects.get(id=pk)
+        task.delete()
+        return redirect(reverse('management_view') + '#logs')
 
 
 class LoginView(FormView):

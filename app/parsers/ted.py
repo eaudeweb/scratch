@@ -14,8 +14,9 @@ from app.models import WorkerLog, Tender, Winner, CPVCode, TedCountry
 class TEDWorker:
     archives = []
 
-    def __init__(self):
+    def __init__(self, last_ted_update):
         self.path = get_archives_path()
+        self.last_ted_update = last_ted_update
 
     def ftp_download_tender_archive(self, tenders):
         ftp = self.ftp_login()
@@ -33,7 +34,7 @@ class TEDWorker:
     def ftp_download_latest_archives(self):
         ftp = self.ftp_login()
 
-        last_date = self.last_update("TED") or self.days_ago(settings.TED_DAYS_AGO)
+        last_date = self.last_ted_update or self.last_update("TED")
         last_month = last_date.strftime("%m")
         last_year = last_date.strftime("%Y")
 
@@ -101,10 +102,6 @@ class TEDWorker:
         return ftp
 
     @staticmethod
-    def days_ago(days):
-        return date.today() - timedelta(days=days)
-
-    @staticmethod
     def get_archive_name(last_date, archives):
         starting_name = last_date.strftime("%Y%m%d")
         for archive_name in archives:
@@ -121,9 +118,9 @@ class TEDWorker:
     def last_update(source):
         worker_log = (
             WorkerLog.objects
-            .filter(source=source)
-            .order_by('-update')
-            .first()
+                .filter(source=source)
+                .order_by('-update')
+                .first()
         )
         return worker_log.update if worker_log else None
 
@@ -154,7 +151,7 @@ class TEDParser(object):
         ]
         tender["title"] = "{0}-{1}: {2}".format(*parts)
         tender["organization"] = (
-            soup.find("aa_name", {"lg": "EN"}) or soup.find("aa_name")
+                soup.find("aa_name", {"lg": "EN"}) or soup.find("aa_name")
         ).text
         published_str = soup.find("date_pub").text
         tender["published"] = datetime.strptime(published_str, "%Y%m%d").date()
@@ -179,20 +176,20 @@ class TEDParser(object):
 
             try:
                 estimated_total = (
-                    "Estimated total: "
-                    + section.find("val_estimated_total").get_text()
-                    + " "
-                    + str(section.find("val_estimated_total")["currency"])
-                    + "\n\n"
+                        "Estimated total: "
+                        + section.find("val_estimated_total").get_text()
+                        + " "
+                        + str(section.find("val_estimated_total")["currency"])
+                        + "\n\n"
                 )
             except AttributeError:
                 estimated_total = ""
 
             try:
                 lots = (
-                    "Tenders may be submitted for maximum number of lots: "
-                    + section.find("lot_max_number").get_text()
-                    + "\n\n"
+                        "Tenders may be submitted for maximum number of lots: "
+                        + section.find("lot_max_number").get_text()
+                        + "\n\n"
                 )
             except AttributeError:
                 lots = ""
@@ -201,10 +198,10 @@ class TEDParser(object):
 
             try:
                 short_desc = (
-                    "Short Description:"
-                    + "\n\t"
-                    + str(descriptions[0].get_text())
-                    + "\n\n"
+                        "Short Description:"
+                        + "\n\t"
+                        + str(descriptions[0].get_text())
+                        + "\n\n"
                 )
             except (AttributeError, IndexError):
                 short_desc = ""
@@ -212,15 +209,15 @@ class TEDParser(object):
             try:
                 procurement_desc = descriptions[1]
                 procurement_desc = (
-                    "Description of the procurement:"
-                    + "\n\t"
-                    + str(descriptions[1].get_text())
+                        "Description of the procurement:"
+                        + "\n\t"
+                        + str(descriptions[1].get_text())
                 )
             except IndexError:
                 pass
 
             tender["description"] = (
-                title + estimated_total + lots + short_desc + procurement_desc
+                    title + estimated_total + lots + short_desc + procurement_desc
             )
         else:
             tender["description"] = ""
@@ -275,10 +272,10 @@ class TEDParser(object):
                     auth_type = soup.find("aa_authority_type").text
 
                     accept_notice = (
-                        cpv_codes & set(self.CPV_CODES)
-                        and doc_type in settings.TED_DOC_TYPES
-                        and country in self.TED_COUNTRIES
-                        and auth_type == settings.TED_AUTH_TYPE
+                            cpv_codes & set(self.CPV_CODES)
+                            and doc_type in settings.TED_DOC_TYPES
+                            and country in self.TED_COUNTRIES
+                            and auth_type == settings.TED_AUTH_TYPE
                     )
 
                     if not accept_notice:

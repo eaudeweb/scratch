@@ -9,6 +9,7 @@ from random import randint
 from app.models import Tender, Winner
 from app.server_requests import PAYLOAD
 import logging
+from app.management.commands.base.params import BaseParamsUI
 
 logger = logging.getLogger(__name__)
 WINNERS_ENDPOINT_URI = "https://www.ungm.org/Public/ContractAward"
@@ -22,7 +23,9 @@ CSS_VALUE = "ContractValue"
 CSS_VENDOR_LIST = "contractAwardVendorsContainer"
 
 
-class Command(BaseCommand):
+class Command(BaseCommand, BaseParamsUI):
+    help = "Gets all awards from the past day"
+
     def handle(self, *args, **options):
         expired_tenders = Tender.objects.filter(
             deadline__lt=datetime.datetime.now(timezone.utc),

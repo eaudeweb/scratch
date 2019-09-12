@@ -5,9 +5,11 @@ from django.template.loader import render_to_string
 from django.conf import settings
 from .notify import build_email
 from django.utils import timezone
+from app.management.commands.base.params import BaseParamsUI
 
 
-class Command(BaseCommand):
+class Command(BaseCommand, BaseParamsUI):
+    help = 'Send deadline notifications to all users if there are tenders with 1, 3 or 7 days left'
 
     def handle(self, *args, **options):
         tenders = Tender.objects.filter(favourite=True, winner=None)

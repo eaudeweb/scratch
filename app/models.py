@@ -168,3 +168,16 @@ class CPVCode(models.Model):
 
 class TedCountry(models.Model):
     name = models.CharField(max_length=1024, primary_key=True)
+
+
+class Task(models.Model):
+    id = models.CharField(max_length=32, primary_key=True)
+    args = models.CharField(max_length=255, null=True, blank=True)
+    kwargs = models.CharField(max_length=255, null=True, blank=True)
+    started = models.DateTimeField(null=True, blank=True, default=None)
+    stopped = models.DateTimeField(null=True, blank=True, default=None)
+    status = models.CharField(max_length=255, null=True, blank=True, default="processing")
+    output = models.TextField(max_length=5055, null=True, blank=True)
+
+    def __str__(self):
+        return 'task_{}'.format(self.args)

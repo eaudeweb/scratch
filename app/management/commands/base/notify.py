@@ -6,11 +6,22 @@ from app.management.commands.notify import build_email
 from app.models import Notification, SOURCE_CHOICES
 from app.parsers.ted import TEDWorker
 from app.parsers.ungm import UNGMWorker
+from app.management.commands.base.params import BaseParamsUI
 
 ENDPOINT_URI = 'https://www.ungm.org'
 
 
-class BaseNotifyCommand(BaseCommand):
+class BaseNotifyCommand(BaseCommand, BaseParamsUI):
+    @staticmethod
+    def get_parameters():
+        return [
+            {
+                'name': 'digest',
+                'display': 'Digest',
+                'type': 'checkbox',
+            },
+        ]
+
     @property
     def notification_type(self):
         raise NotImplementedError('subclasses of BaseNotifyCommand must provide a notification_type member')
