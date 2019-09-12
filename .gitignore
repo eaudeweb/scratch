@@ -116,3 +116,4 @@ app/media
 docker-compose.override.yml
 docker/app.env
 docker/db.env
+docker/redis.env
