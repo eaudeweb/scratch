@@ -32,34 +32,34 @@ class SendMailTest(TestCase):
         self.notified_user1 = NotificationFactory()
         self.notified_user2 = NotificationFactory()
 
-    # def test_mailing(self):
-    #     subject = "New tenders available"
-    #     notifications = Notification.objects.all()
-    #     recipients = [notification.email for notification in notifications]
-    #
-    #     html_content = render_to_string(
-    #         "mails/new_tenders.html",
-    #         {
-    #             "tenders": [self.tender1, self.tender2, self.tender3],
-    #             "domain": settings.BASE_URL,
-    #         },
-    #     )
-    #
-    #     email = build_email(subject, recipients, None, html_content)
-    #     email.send()
-    #
-    #     self.assertEqual(len(mail.outbox), 1)
-    #
-    #     body = mail.outbox[0].body
-    #     alt_body = mail.outbox[0].alternatives[0][0]
-    #
-    #     self.assertEqual(self.tender1.title in body, True)
-    #     self.assertEqual(self.tender2.title in body, True)
-    #     self.assertEqual(self.tender3.title in body, True)
-    #
-    #     self.assertEqual(self.tender1.organization in alt_body, True)
-    #     self.assertEqual(self.tender2.organization in alt_body, True)
-    #     self.assertEqual(self.tender3.organization in alt_body, True)
+    def test_mailing(self):
+        subject = "New tenders available"
+        notifications = Notification.objects.all()
+        recipients = [notification.email for notification in notifications]
+
+        html_content = render_to_string(
+            "mails/new_tenders.html",
+            {
+                "tenders": [self.tender1, self.tender2, self.tender3],
+                "domain": settings.BASE_URL,
+            },
+        )
+
+        email = build_email(subject, recipients, None, html_content)
+        email.send()
+
+        self.assertEqual(len(mail.outbox), 1)
+
+        body = mail.outbox[0].body
+        alt_body = mail.outbox[0].alternatives[0][0]
+
+        self.assertEqual(self.tender1.title in body, True)
+        self.assertEqual(self.tender2.title in body, True)
+        self.assertEqual(self.tender3.title in body, True)
+
+        self.assertEqual(self.tender1.organization in alt_body, True)
+        self.assertEqual(self.tender2.organization in alt_body, True)
+        self.assertEqual(self.tender3.organization in alt_body, True)
 
     def test_mailing_favorites(self):
         original_tender1_organization = self.tender1.organization
@@ -88,23 +88,23 @@ class SendMailTest(TestCase):
         self.assertEqual(self.tender1.organization in message, True)
         self.assertEqual(self.tender3.organization in message, False)
 
-    # def test_mailing_keywords(self):
-    #     management.call_command("notify_keywords")
-    #     self.assertEqual(len(mail.outbox), 1)
-    #
-    #     self.tender2.organization = "CHANGE1"
-    #     self.tender2.save()
-    #
-    #     management.call_command("notify_keywords")
-    #     self.assertEqual(len(mail.outbox), 2)
-    #
-    #     self.tender3.organization = "CHANGE2"
-    #     self.tender3.save()
-    #
-    #     management.call_command("notify_keywords")
-    #     self.assertEqual(len(mail.outbox), 2)
-    #
-    #     message = mail.outbox[0].alternatives[0][0]
-    #     self.assertEqual("Keyword tender(s) update" in message, True)
-    #     self.assertEqual(self.tender2.organization in message, False)
-    #     self.assertEqual(self.tender3.organization in message, False)
+    def test_mailing_keywords(self):
+        management.call_command("notify_keywords")
+        self.assertEqual(len(mail.outbox), 1)
+
+        self.tender2.organization = "CHANGE1"
+        self.tender2.save()
+
+        management.call_command("notify_keywords")
+        self.assertEqual(len(mail.outbox), 2)
+
+        self.tender3.organization = "CHANGE2"
+        self.tender3.save()
+
+        management.call_command("notify_keywords")
+        self.assertEqual(len(mail.outbox), 2)
+
+        message = mail.outbox[0].alternatives[0][0]
+        self.assertEqual("Keyword tender(s) update" in message, True)
+        self.assertEqual(self.tender2.organization in message, False)
+        self.assertEqual(self.tender3.organization in message, False)
