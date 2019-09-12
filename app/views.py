@@ -29,6 +29,7 @@ from elasticsearch_dsl import Q as elasticQ
 from django.db.models import Q
 from django_q.tasks import async_task, result
 from django_q.models import Success, Failure
+from django.urls import reverse
 
 
 class HomepageView(TemplateView):
@@ -464,6 +465,16 @@ class ManagementView(LoginRequiredMixin, TemplateView):
             t.save()
 
             return redirect('management_view')
+
+
+class ManagementDeleteView(LoginRequiredMixin, View):
+    login_url = "/login"
+    redirect_field_name = "login_view"
+
+    def get(self, request, pk):
+        task = Task.objects.get(id=pk)
+        task.delete()
+        return redirect(reverse('management_view') + '#logs')
 
 
 class LoginView(FormView):

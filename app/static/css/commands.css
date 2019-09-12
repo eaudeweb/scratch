@@ -21,3 +21,12 @@
   width: 32px;
   height: 32px;
 }
+
+.see-more {
+  color: dodgerblue;
+}
+
+.see-more:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
