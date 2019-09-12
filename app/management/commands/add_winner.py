@@ -6,13 +6,8 @@ import json
 import datetime
 from time import sleep
 from random import randint
-from urllib.parse import urlencode
-from app.models import Tender, Winner, set_notified
-from app.server_requests import (
-    TENDERS_ENDPOINT_URI,
-    SEARCH_UNSPSCS_URI,
-    PAYLOAD,
-)
+from app.models import Tender, Winner
+from app.server_requests import PAYLOAD
 import logging
 
 logger = logging.getLogger(__name__)

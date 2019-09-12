@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.detail import DetailView
@@ -98,8 +98,6 @@ class TendersListView(LoginRequiredMixin, ListView):
         tenders = Tender.objects.all()
         awards = Winner.objects.all()
         today = date.today()
-        deadline_today = False
-        published_today = False
 
         if self.request.GET.get("filter_button"):
             organization = self.request.GET.get("organization")

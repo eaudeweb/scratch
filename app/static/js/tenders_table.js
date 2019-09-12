@@ -18,7 +18,7 @@ $.urlParam = function (doc, name) {
     const results = new RegExp('[\?&]' + name + '=([^&#]*)')
                       .exec(doc.location.search);
     return (results !== null) ? decodeURIComponent(results[1]) : '';
-}
+};
 
 $(document).ready(function() {
   $.fn.dataTable.moment( 'DD MMM YYYY');
@@ -107,7 +107,7 @@ $(document).ready(function() {
               url: url,
               data: {},
               success: function (result) {
-                console.log(page)
+                console.log(page);
                 if (page == 1) {
                   window.location = result
                 }
@@ -125,7 +125,7 @@ $(document).ready(function() {
       });
     }
   });
-})
+});
 
 function toggleFavourite(x) {
   let value;
@@ -144,7 +144,7 @@ function toggleFavourite(x) {
 
 function toggleSeen(x) {
   let value;
-  let usr = document.getElementById("seen_usr")
+  let usr = document.getElementById("seen_usr");
 
   if (x.hasClass('seen_pressed')) {
     value = false;

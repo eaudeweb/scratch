@@ -1,4 +1,4 @@
-from django_elasticsearch_dsl import  DocType, Index, fields
+from django_elasticsearch_dsl import DocType, Index, fields
 from elasticsearch_dsl import analyzer
 
 from .models import Tender, Winner

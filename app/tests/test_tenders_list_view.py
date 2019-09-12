@@ -1,8 +1,7 @@
 from django.test import TestCase
 from django.urls import reverse
-from app.models import Tender, TenderDocument
 from django.contrib.auth.models import User
-from app.factories import TenderFactory, TenderDocumentFactory
+from app.factories import TenderFactory
 
 
 class TendersListViewTests(TestCase):

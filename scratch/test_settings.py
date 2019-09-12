@@ -1,4 +1,3 @@
-import os
 from .settings import *
 from getenv import env
 
