@@ -133,10 +133,13 @@ EMAIL_BACKEND = env('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBacken
 EMAIL_HOST = env('EMAIL_HOST', 'smtp')
 EMAIL_PORT = env('EMAIL_PORT', 25)
 
+# UNGM
+UNGM_ENDPOINT_URI = env('UNGM_ENDPOINT_URI', 'https://www.ungm.org')
 
-
-# FTP
-FTP_URL = env('FTP_URL', 'ted.europa.eu')
+# TED
+TED_FTP_URL = env('TED_FTP_URL', 'ted.europa.eu')
+TED_FTP_USER = env('TED_FTP_USER', 'guest')
+TED_FTP_PASSWORD = env('TED_FTP_PASSWORD', 'guest')
 TED_DAYS_AGO = env('TED_DAYS_AGO', 3)
 instance_dir = os.path.abspath(os.path.dirname(__file__))
 FILES_DIR = os.path.join(instance_dir, 'files')

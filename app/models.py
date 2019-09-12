@@ -16,6 +16,7 @@ SOURCE_CHOICES = [
 
 fields = [r'title', r'description']
 
+
 class Tender(models.Model):
     reference = models.CharField(unique=True, max_length=255)
     notice_type = models.CharField(null=True, max_length=255)

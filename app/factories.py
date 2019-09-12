@@ -1,5 +1,5 @@
 import factory
-from .models import Tender, Winner, Notification, TenderDocument
+from .models import Tender, Winner, Notification, TenderDocument, CPVCode, TedCountry
 from datetime import datetime
 from django.utils import timezone
 
@@ -41,3 +41,13 @@ class NotificationFactory(factory.DjangoModelFactory):
         model = Notification
 
     email = factory.sequence(lambda n: "test%s@test.test" % n)
+
+
+class CPVCodeFactory(factory.DjangoModelFactory):
+    class Meta:
+        model = CPVCode
+
+
+class TedCountryFactory(factory.DjangoModelFactory):
+    class Meta:
+        model = TedCountry

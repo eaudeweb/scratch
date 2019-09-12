@@ -15,6 +15,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'scratch.settings')
 
 _application = get_wsgi_application()
 
+
 def application(environ, start_response):
     script_name = environ.get('HTTP_X_SCRIPT_NAME', '')
     if script_name:
