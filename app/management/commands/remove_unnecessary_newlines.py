@@ -1,4 +1,4 @@
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from app.management.commands.base.params import BaseParamsUI
 from app.models import Winner
 
@@ -13,4 +13,4 @@ class Command(BaseCommand, BaseParamsUI):
             winner.vendor = winner.vendor.strip()
             winner.save()
 
-        self.stdout.write(self.style.SUCCESS('Removed unnecessary new lines'))
+        return 'Removed unnecessary new lines'
