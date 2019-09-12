@@ -22,7 +22,7 @@
       }
 
       // Null and empty values are acceptable
-      if ( d === '' || d === null ) {
+      if ( d === '' || d === null || d === 'Not specified') {
         return 'moment-'+format;
       }
 
