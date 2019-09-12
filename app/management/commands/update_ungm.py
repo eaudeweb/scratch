@@ -35,6 +35,7 @@ class Command(BaseCommand, BaseParamsUI):
         w = UNGMWorker()
         w.parse_latest_notices(last_date)
 
+        self.stdout.write(self.style.SUCCESS('UNGM tenders updated'))
         return 'UNGM tenders updated'
 
     def add_arguments(self, parser):

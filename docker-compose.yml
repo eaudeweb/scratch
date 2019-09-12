@@ -32,8 +32,6 @@ services:
       - docker/redis.env
     environment:
       TZ: Europe/Bucharest
-    volumes:
-      - ./:/var/local/scratch/
     command: ['qcluster']
 
   cron:

@@ -40,4 +40,5 @@ class Command(BaseCommand, BaseParamsUI):
         w.ftp_download_latest_archives()
         w.parse_notices()
 
+        self.stdout.write(self.style.SUCCESS('TED tenders updated'))
         return "TED tenders updated"
