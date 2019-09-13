@@ -434,15 +434,18 @@ class ManagementView(LoginRequiredMixin, TemplateView):
         commands = []
 
         for command_name in module_commands:
-            base_class = load_command_class('app', command_name)
+            try:
+                base_class = load_command_class('app', command_name)
 
-            commands.append(
-                {
-                    'name': command_name,
-                    'help': base_class.help or '',
-                    'params': base_class.get_parameters(),
-                }
-            )
+                commands.append(
+                    {
+                        'name': command_name,
+                        'help': base_class.help or '',
+                        'params': base_class.get_parameters(),
+                    }
+                )
+            except (ModuleNotFoundError, AttributeError):
+                continue
 
         tasks = Task.objects.all().order_by('-started')
 
