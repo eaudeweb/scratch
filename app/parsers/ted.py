@@ -1,3 +1,4 @@
+import logging
 import tarfile
 import os
 
@@ -9,6 +10,9 @@ from ftplib import FTP
 from django.utils.timezone import make_aware
 
 from app.models import WorkerLog, Tender, Winner, CPVCode, TedCountry
+
+logger = logging.getLogger(__name__)
+logging.basicConfig(format='%(levelname)s: %(message)s')
 
 
 class TEDWorker:
@@ -58,6 +62,7 @@ class TEDWorker:
                 last_month = last_date.strftime("%m")
                 ftp.cwd("../{}".format(last_month))
                 archives = ftp.nlst()
+
         ftp.quit()
 
     def download_archive(self, ftp, archive_date, archives):
@@ -80,6 +85,10 @@ class TEDWorker:
             folders.append(folder_name)
             p = TEDParser(self.path, [folder_name])
             changed_tenders = p.parse_notices(tenders)
+
+            folder_date = folder_name[:8]
+            formatted_date = datetime.strptime(folder_date, '%Y%m%d').strftime('%d/%m/%Y')
+            logging.warning(f'Date {formatted_date} parsed successfully')
 
         for archive_path in self.archives:
             os.remove(archive_path)
