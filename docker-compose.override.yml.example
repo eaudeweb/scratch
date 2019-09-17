@@ -8,6 +8,12 @@ services:
       - .:/var/local/scratch
     entrypoint: ["/usr/bin/tail", "-f", "/dev/null"]
 
+   async:
+    image: scratch
+    build: .
+    depends:
+      - postfix
+
   cron:
     image: scratch
     build: .

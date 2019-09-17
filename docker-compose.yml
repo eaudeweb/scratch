@@ -20,18 +20,17 @@ services:
       - 8000:8000
 
   async:
-    image: eeacms/bdr.registry.notifications:latest
-    container_name: not.async
-    depends_on:
-      - web
-      - db
-      - redis
-      - postfix
+    image: eaudeweb/scratch:latest
+    container_name: scratch.async
     env_file:
       - docker/app.env
       - docker/redis.env
     environment:
-      TZ: Europe/Bucharest
+      - TZ=Europe/Bucharest
+    depends_on:
+      - web
+      - db
+      - redis
     command: ['qcluster']
 
   cron:
@@ -73,7 +72,7 @@ services:
 
   redis:
       image: redis:alpine
-      container_name: not.redis
+      container_name: scratch.redis
 
   smtp:
     image: eeacms/postfix
