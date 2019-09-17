@@ -63,6 +63,14 @@
         <td>Reference</td>
         <td>{{ tender.reference }}</td>
       </tr>
+      {% if winners %}
+        <tr>
+          <td>Winner(s)</td>
+          <td>
+            <span>{{ winners }}</span>
+          </td>
+        </tr>
+      {% endif %}
       <td>Deadline</td>
       {% if tender.deadline %}
       <td>{{ tender.deadline }}</td>

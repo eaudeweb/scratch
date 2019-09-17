@@ -230,11 +230,13 @@ class TenderDetailView(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        winners = Winner.objects.filter(tender=self.object)
         deadline = self.object.deadline
         if deadline and deadline >= datetime.now(timezone.utc):
             deadline -= datetime.now(timezone.utc)
             context["deadline_in"] = self.deadline_in_string(deadline)
         context["documents_set"] = TenderDocument.objects.filter(tender=self.object)
+        context["winners"] = ', '.join([winner.vendor for winner in winners])
         return context
 
 
