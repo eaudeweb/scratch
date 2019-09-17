@@ -11,7 +11,8 @@ from .views import (
     SearchView,
     TenderSeenByView,
     ManagementView,
-    ManagementDeleteView
+    ManagementDeleteView,
+    ContractAwardDetailView
 )
 
 
@@ -26,6 +27,7 @@ urlpatterns = [
     path("login/", LoginView.as_view(), name="login_view"),
     path("logout/", LogoutView.as_view(), name="logout_view"),
     path("awards/", ContractAwardsListView.as_view(), name="contract_awards_list_view"),
+    path("awards/<int:pk>/", ContractAwardDetailView.as_view(), name="contract_awards_detail_view"),
     path('archive/', TenderArchiveView.as_view(), name='tenders_archive_list'),
     path('search/<str:pk>', SearchView.as_view(), name='search_results'),
     path('management/', ManagementView.as_view(), name='management_view'),
