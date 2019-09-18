@@ -12,6 +12,10 @@ from app.server_requests import get_request_class
 from scratch import settings
 
 
+def get_ungm_parser_class():
+    return UNGMWorker()
+
+
 class UNGMWorker:
     requester = get_request_class(public=True)
 
