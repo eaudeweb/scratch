@@ -41,3 +41,4 @@ class UngmParserTestCase(TestCase):
 
         self.assertEqual(tender['tender']['published'], '')
         self.assertEqual(tender['tender']['deadline'], expected_deadline)
+
