@@ -85,7 +85,7 @@ class OverviewPageView(LoginRequiredMixin, TemplateView):
 
         context["deadline_notifications"] = settings.DEADLINE_NOTIFICATIONS
         context["emails"] = Notification.objects.all()
-        context["worker_logs"] = WorkerLog.objects.order_by('-update').distinct('update')
+        context["worker_logs"] = WorkerLog.objects.order_by('-update')
         context["unspscs_codes"] = UNSPSCCode.objects.all()
         context["cpv_codes"] = CPVCode.objects.all()
 
