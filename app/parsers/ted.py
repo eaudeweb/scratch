@@ -1,11 +1,12 @@
 import logging
 import tarfile
 import os
+import time
 
 from bs4 import BeautifulSoup, element
 from datetime import date, datetime, timedelta
 from django.conf import settings
-from ftplib import FTP
+from ftplib import error_perm, FTP
 
 from django.utils.timezone import make_aware
 
@@ -65,6 +66,19 @@ class TEDWorker:
 
         ftp.quit()
 
+    def ftp_download_daily_archives(self):
+        last_month = self.last_ted_update.strftime("%m")
+        last_year = self.last_ted_update.strftime("%Y")
+
+        ftp = self.ftp_login()
+        ftp.cwd(f"daily-packages/{last_year}/{last_month}")
+
+        archives = ftp.nlst()
+
+        self.download_archive(ftp, self.last_ted_update, archives)
+
+        ftp.quit()
+
     def download_archive(self, ftp, archive_date, archives):
         archive_name = self.get_archive_name(archive_date, archives)
         if archive_name:
@@ -77,14 +91,14 @@ class TEDWorker:
                 )
             self.archives.append(file_path)
 
-    def parse_notices(self, tenders=[]):
+    def parse_notices(self, tenders=[], set_notified=False):
         changed_tenders = []
         folders = []
         for archive_path in self.archives:
             folder_name = self.extract_data(archive_path, self.path)
             folders.append(folder_name)
             p = TEDParser(self.path, [folder_name])
-            changed_tenders = p.parse_notices(tenders)
+            changed_tenders = p.parse_notices(tenders, set_notified)
 
             folder_date = folder_name[:8]
             formatted_date = datetime.strptime(folder_date, '%Y%m%d').strftime('%d/%m/%Y')
@@ -147,7 +161,7 @@ class TEDParser(object):
         ]
         self.folders = [os.path.join(path, folder) for folder in folder_names]
 
-    def _parse_notice(self, content, tenders, xml_file, codes):
+    def _parse_notice(self, content, tenders, xml_file, codes, set_notified):
         soup = BeautifulSoup(content, "html.parser")
 
         if not tenders or self.file_in_tender_list(xml_file, tenders):
@@ -267,6 +281,8 @@ class TEDParser(object):
         if tender["notice_type"] == "Contract award notice":
             self.update_winners(winners, soup)
 
+        tender["notified"] = set_notified
+
         return tender, winners
 
     @staticmethod
@@ -274,7 +290,7 @@ class TEDParser(object):
         tender_references = list(map(lambda t: t.reference, tenders))
         return os.path.basename(xml_file).replace('_', '-').replace('.xml', '') in tender_references
 
-    def parse_notices(self, tenders):
+    def parse_notices(self, tenders, set_notified):
         changed_tenders = []
         codes = {}
 
@@ -285,7 +301,7 @@ class TEDParser(object):
         for xml_file in self.xml_files[:]:
             with open(xml_file, "r") as f:
                 try:
-                    tender, winners = self._parse_notice(f.read(), tenders, xml_file, codes)
+                    tender, winners = self._parse_notice(f.read(), tenders, xml_file, codes, set_notified)
                 except StopIteration:
                     continue
 
@@ -366,3 +382,27 @@ class TEDParser(object):
 
 def get_archives_path():
     return os.path.join(settings.FILES_DIR, "TED_archives")
+
+
+def process_daily_archive(given_date):
+    w = TEDWorker(given_date)
+
+    message = ""
+
+    while True:
+        try:
+            w.ftp_download_daily_archives()
+            w.parse_notices([], True)
+            message = f"Updated {given_date} TED tenders"
+            break
+        except error_perm as err:
+            if err.args[0][:3] == '530':
+                time.sleep(30)
+                continue
+            else:
+                raise
+        except Exception as e:
+            message = str(e)
+            break
+
+    return message
