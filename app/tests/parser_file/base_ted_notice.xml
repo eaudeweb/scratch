@@ -1,0 +1,1953 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TED_EXPORT xmlns="http://publications.europa.eu/resource/schema/ted/R2.0.8/publication" xmlns:n2016="http://publications.europa.eu/resource/schema/ted/2016/nuts" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://publications.europa.eu/resource/schema/ted/R2.0.8/publication TED_EXPORT.xsd" DOC_ID="437484-2019" EDITION="2019180">
+   <TECHNICAL_SECTION>
+      <RECEPTION_ID>19-448051-001</RECEPTION_ID>
+      <DELETION_DATE>20191025</DELETION_DATE>
+      <FORM_LG_LIST>DA DE EN ES FI FR EL IT NL PT SV CS ET HU LT LV MT PL SK SL GA BG RO HR</FORM_LG_LIST>
+      <COMMENTS>From Convertor</COMMENTS>
+   </TECHNICAL_SECTION>
+   <LINKS_SECTION>
+      <XML_SCHEMA_DEFINITION_LINK xlink:type="simple" xlink:href="http://ted.europa.eu" xlink:title="TED WEBSITE" />
+      <OFFICIAL_FORMS_LINK xlink:type="simple" xlink:href="http://ted.europa.eu" />
+      <FORMS_LABELS_LINK xlink:type="simple" xlink:href="http://ted.europa.eu" />
+      <ORIGINAL_CPV_LINK xlink:type="simple " xlink:href="http://ted.europa.eu" />
+      <ORIGINAL_NUTS_LINK xlink:type="simple" xlink:href="http://ted.europa.eu" />
+   </LINKS_SECTION>
+   <CODED_DATA_SECTION>
+      <REF_OJS>
+         <COLL_OJ>S</COLL_OJ>
+         <NO_OJ>180</NO_OJ>
+         <DATE_PUB>20190918</DATE_PUB>
+      </REF_OJS>
+      <NOTICE_DATA>
+         <NO_DOC_OJS>2019/S 180-437484</NO_DOC_OJS>
+         <URI_LIST>
+            <URI_DOC LG="DA">http://ted.europa.eu/udl?uri=TED:NOTICE:437484-2019:TEXT:DA:HTML</URI_DOC>
+            <URI_DOC LG="DE">http://ted.europa.eu/udl?uri=TED:NOTICE:437484-2019:TEXT:DE:HTML</URI_DOC>
+            <URI_DOC LG="EN">http://ted.europa.eu/udl?uri=TED:NOTICE:437484-2019:TEXT:EN:HTML</URI_DOC>
+            <URI_DOC LG="ES">http://ted.europa.eu/udl?uri=TED:NOTICE:437484-2019:TEXT:ES:HTML</URI_DOC>
+            <URI_DOC LG="FI">http://ted.europa.eu/udl?uri=TED:NOTICE:437484-2019:TEXT:FI:HTML</URI_DOC>
+            <URI_DOC LG="FR">http://ted.europa.eu/udl?uri=TED:NOTICE:437484-2019:TEXT:FR:HTML</URI_DOC>
+            <URI_DOC LG="EL">http://ted.europa.eu/udl?uri=TED:NOTICE:437484-2019:TEXT:EL:HTML</URI_DOC>
+            <URI_DOC LG="IT">http://ted.europa.eu/udl?uri=TED:NOTICE:437484-2019:TEXT:IT:HTML</URI_DOC>
+            <URI_DOC LG="NL">http://ted.europa.eu/udl?uri=TED:NOTICE:437484-2019:TEXT:NL:HTML</URI_DOC>
+            <URI_DOC LG="PT">http://ted.europa.eu/udl?uri=TED:NOTICE:437484-2019:TEXT:PT:HTML</URI_DOC>
+            <URI_DOC LG="SV">http://ted.europa.eu/udl?uri=TED:NOTICE:437484-2019:TEXT:SV:HTML</URI_DOC>
+            <URI_DOC LG="CS">http://ted.europa.eu/udl?uri=TED:NOTICE:437484-2019:TEXT:CS:HTML</URI_DOC>
+            <URI_DOC LG="ET">http://ted.europa.eu/udl?uri=TED:NOTICE:437484-2019:TEXT:ET:HTML</URI_DOC>
+            <URI_DOC LG="HU">http://ted.europa.eu/udl?uri=TED:NOTICE:437484-2019:TEXT:HU:HTML</URI_DOC>
+            <URI_DOC LG="LT">http://ted.europa.eu/udl?uri=TED:NOTICE:437484-2019:TEXT:LT:HTML</URI_DOC>
+            <URI_DOC LG="LV">http://ted.europa.eu/udl?uri=TED:NOTICE:437484-2019:TEXT:LV:HTML</URI_DOC>
+            <URI_DOC LG="MT">http://ted.europa.eu/udl?uri=TED:NOTICE:437484-2019:TEXT:MT:HTML</URI_DOC>
+            <URI_DOC LG="PL">http://ted.europa.eu/udl?uri=TED:NOTICE:437484-2019:TEXT:PL:HTML</URI_DOC>
+            <URI_DOC LG="SK">http://ted.europa.eu/udl?uri=TED:NOTICE:437484-2019:TEXT:SK:HTML</URI_DOC>
+            <URI_DOC LG="SL">http://ted.europa.eu/udl?uri=TED:NOTICE:437484-2019:TEXT:SL:HTML</URI_DOC>
+            <URI_DOC LG="GA">http://ted.europa.eu/udl?uri=TED:NOTICE:437484-2019:TEXT:GA:HTML</URI_DOC>
+            <URI_DOC LG="BG">http://ted.europa.eu/udl?uri=TED:NOTICE:437484-2019:TEXT:BG:HTML</URI_DOC>
+            <URI_DOC LG="RO">http://ted.europa.eu/udl?uri=TED:NOTICE:437484-2019:TEXT:RO:HTML</URI_DOC>
+            <URI_DOC LG="HR">http://ted.europa.eu/udl?uri=TED:NOTICE:437484-2019:TEXT:HR:HTML</URI_DOC>
+         </URI_LIST>
+         <LG_ORIG>EN</LG_ORIG>
+         <ISO_COUNTRY VALUE="MK" />
+         <IA_URL_GENERAL />
+         <ORIGINAL_CPV CODE="45231300">Construction work for water and sewage pipelines</ORIGINAL_CPV>
+         <ORIGINAL_CPV CODE="45232400">Sewer construction work</ORIGINAL_CPV>
+         <ORIGINAL_CPV CODE="45232423">Sewage pumping stations construction work</ORIGINAL_CPV>
+         <REF_NOTICE>
+            <NO_DOC_OJS>2019/S 107-260332</NO_DOC_OJS>
+         </REF_NOTICE>
+      </NOTICE_DATA>
+      <CODIF_DATA>
+         <DS_DATE_DISPATCH>20190916</DS_DATE_DISPATCH>
+         <DT_DATE_FOR_SUBMISSION>20191025 12:00</DT_DATE_FOR_SUBMISSION>
+         <AA_AUTHORITY_TYPE CODE="5">European Institution/Agency or International Organisation</AA_AUTHORITY_TYPE>
+         <TD_DOCUMENT_TYPE CODE="2">Additional information</TD_DOCUMENT_TYPE>
+         <NC_CONTRACT_NATURE CODE="1">Works</NC_CONTRACT_NATURE>
+         <PR_PROC CODE="1">Open procedure</PR_PROC>
+         <RP_REGULATION CODE="1">External aid and European Development Fund</RP_REGULATION>
+         <TY_TYPE_BID CODE="2">Submission for one lot only</TY_TYPE_BID>
+         <AC_AWARD_CRIT CODE="1">Lowest price</AC_AWARD_CRIT>
+         <HEADING>AP1EA</HEADING>
+      </CODIF_DATA>
+   </CODED_DATA_SECTION>
+   <TRANSLATION_SECTION>
+      <ML_TITLES>
+         <ML_TI_DOC LG="DA">
+            <TI_CY>Nordmakedonien</TI_CY>
+            <TI_TOWN>Skopje</TI_TOWN>
+            <TI_TEXT>
+               <P>Ipa - Renovering og udvidelse af kloaknettet i Kichevo kommune</P>
+            </TI_TEXT>
+         </ML_TI_DOC>
+         <ML_TI_DOC LG="DE">
+            <TI_CY>Nordmazedonien</TI_CY>
+            <TI_TOWN>Skopje</TI_TOWN>
+            <TI_TEXT>
+               <P>IPA - Sanierung und Ausbau des Abwassernetzes in der Gemeinde Kichevo</P>
+            </TI_TEXT>
+         </ML_TI_DOC>
+         <ML_TI_DOC LG="EN">
+            <TI_CY>North Macedonia</TI_CY>
+            <TI_TOWN>Skopje</TI_TOWN>
+            <TI_TEXT>
+               <P>IPA - Rehabilitation and Extension of Sewerage Network in the Municipality of Kichevo</P>
+            </TI_TEXT>
+         </ML_TI_DOC>
+         <ML_TI_DOC LG="ES">
+            <TI_CY>Macedonia del Norte</TI_CY>
+            <TI_TOWN>Skopie</TI_TOWN>
+            <TI_TEXT>
+               <P>IPA - Rehabilitación y ampliación de la red de alcantarillado en el municipio de Kichevo</P>
+            </TI_TEXT>
+         </ML_TI_DOC>
+         <ML_TI_DOC LG="FI">
+            <TI_CY>Pohjois-Makedonia</TI_CY>
+            <TI_TOWN>Skopje</TI_TOWN>
+            <TI_TEXT>
+               <P>IPA - Viemäriverkoston kunnostaminen ja laajentaminen Kičevon kunnassa</P>
+            </TI_TEXT>
+         </ML_TI_DOC>
+         <ML_TI_DOC LG="FR">
+            <TI_CY>Macédoine du Nord</TI_CY>
+            <TI_TOWN>Skopje</TI_TOWN>
+            <TI_TEXT>
+               <P>IAP - Remise en état et extension du réseau d'égouts de la municipalité de Kitchevo</P>
+            </TI_TEXT>
+         </ML_TI_DOC>
+         <ML_TI_DOC LG="EL">
+            <TI_CY>Βόρεια Μακεδονία</TI_CY>
+            <TI_TOWN>Σκόπια</TI_TOWN>
+            <TI_TEXT>
+               <P>IPA - Αποκατάσταση και επέκταση του δικτύου αποχέτευσης στον δήμο Kichevo</P>
+            </TI_TEXT>
+         </ML_TI_DOC>
+         <ML_TI_DOC LG="IT">
+            <TI_CY>Macedonia del Nord</TI_CY>
+            <TI_TOWN>Skopje</TI_TOWN>
+            <TI_TEXT>
+               <P>IPA - Riattamento ed estensione della rete fognaria nel comune di Kichevo</P>
+            </TI_TEXT>
+         </ML_TI_DOC>
+         <ML_TI_DOC LG="NL">
+            <TI_CY>Noord-Macedonië</TI_CY>
+            <TI_TOWN>Skopje</TI_TOWN>
+            <TI_TEXT>
+               <P>IPA - Rehabilitatie en uitbreiding van het rioleringsnetwerk in de gemeente Kichevo</P>
+            </TI_TEXT>
+         </ML_TI_DOC>
+         <ML_TI_DOC LG="PT">
+            <TI_CY>Macedónia do Norte</TI_CY>
+            <TI_TOWN>Skopje</TI_TOWN>
+            <TI_TEXT>
+               <P>IPA - Reabilitação e extensão da rede de esgotos no município de Kichevo</P>
+            </TI_TEXT>
+         </ML_TI_DOC>
+         <ML_TI_DOC LG="SV">
+            <TI_CY>Nordmakedonien</TI_CY>
+            <TI_TOWN>Skopje</TI_TOWN>
+            <TI_TEXT>
+               <P>IPA - Rehabilitering och utbyggnad av avloppsnät i Kičevo kommun</P>
+            </TI_TEXT>
+         </ML_TI_DOC>
+         <ML_TI_DOC LG="CS">
+            <TI_CY>Severní Makedonie</TI_CY>
+            <TI_TOWN>Skopje</TI_TOWN>
+            <TI_TEXT>
+               <P>NPP - Obnovení a rozšíření kanalizační sítě ve městě Kičevo</P>
+            </TI_TEXT>
+         </ML_TI_DOC>
+         <ML_TI_DOC LG="ET">
+            <TI_CY>Põhja-Makedoonia</TI_CY>
+            <TI_TOWN>Skopje</TI_TOWN>
+            <TI_TEXT>
+               <P>IPA - Kichevo omavalitsuses kanalisatsioonivõrgu ümberehitamine ja laiendamine</P>
+            </TI_TEXT>
+         </ML_TI_DOC>
+         <ML_TI_DOC LG="HU">
+            <TI_CY>Észak-Macedónia</TI_CY>
+            <TI_TOWN>Szkopje</TI_TOWN>
+            <TI_TEXT>
+               <P>IPA - Kichevo település szennyvízhálózatának felújítása és bővítése</P>
+            </TI_TEXT>
+         </ML_TI_DOC>
+         <ML_TI_DOC LG="LT">
+            <TI_CY>Šiaurės Makedonija</TI_CY>
+            <TI_TOWN>Skopjė</TI_TOWN>
+            <TI_TEXT>
+               <P>PNPP - Kanalizacijos tinklo atnaujinimas ir išplėtimas Kičevo savivaldybėje</P>
+            </TI_TEXT>
+         </ML_TI_DOC>
+         <ML_TI_DOC LG="LV">
+            <TI_CY>Ziemeļmaķedonija</TI_CY>
+            <TI_TOWN>Skopje</TI_TOWN>
+            <TI_TEXT>
+               <P>IPA - Kanalizācijas tīkla atjaunošana un paplašināšana Kičevas pašvaldības teritorijā</P>
+            </TI_TEXT>
+         </ML_TI_DOC>
+         <ML_TI_DOC LG="MT">
+            <TI_CY>Il-Maċedonja ta' Fuq</TI_CY>
+            <TI_TOWN>Skopje</TI_TOWN>
+            <TI_TEXT>
+               <P>SGħQD - Ir-Riabilitazzjoni u l-Estensjoni tan-Netwerk tad-Drenaġġ fil-Muniċipalità ta' Kichevo</P>
+            </TI_TEXT>
+         </ML_TI_DOC>
+         <ML_TI_DOC LG="PL">
+            <TI_CY>Macedonia Północna</TI_CY>
+            <TI_TOWN>Skopje</TI_TOWN>
+            <TI_TEXT>
+               <P>IPA - Remont i rozbudowa sieci kanalizacyjnej w gminie Kiczewo</P>
+            </TI_TEXT>
+         </ML_TI_DOC>
+         <ML_TI_DOC LG="SK">
+            <TI_CY>Severné Macedónsko</TI_CY>
+            <TI_TOWN>Skopje</TI_TOWN>
+            <TI_TEXT>
+               <P>IPA - Obnova a rozšírenie kanalizačnej siete v meste Kičevo</P>
+            </TI_TEXT>
+         </ML_TI_DOC>
+         <ML_TI_DOC LG="SL">
+            <TI_CY>Severna Makedonija</TI_CY>
+            <TI_TOWN>Skopje</TI_TOWN>
+            <TI_TEXT>
+               <P>IPA - Sanacija in razširitev kanalizacijskega omrežja v občini Kičevo</P>
+            </TI_TEXT>
+         </ML_TI_DOC>
+         <ML_TI_DOC LG="GA">
+            <TI_CY>an Mhacadóin Thuaidh</TI_CY>
+            <TI_TOWN>Scóipé</TI_TOWN>
+            <TI_TEXT>
+               <P>IPA - Líonra séarachais a athshlánú agus a shíneadh i mbardas Kichevo</P>
+            </TI_TEXT>
+         </ML_TI_DOC>
+         <ML_TI_DOC LG="BG">
+            <TI_CY>Северна Македония</TI_CY>
+            <TI_TOWN>Скопие</TI_TOWN>
+            <TI_TEXT>
+               <P>ИПП - Реконструкция и разширение на канализационната мрежа в община Кичево</P>
+            </TI_TEXT>
+         </ML_TI_DOC>
+         <ML_TI_DOC LG="RO">
+            <TI_CY>Macedonia de Nord</TI_CY>
+            <TI_TOWN>Skopje</TI_TOWN>
+            <TI_TEXT>
+               <P>IPA - Reabilitarea și extinderea rețelei de canalizare din municipiul Kichevo</P>
+            </TI_TEXT>
+         </ML_TI_DOC>
+         <ML_TI_DOC LG="HR">
+            <TI_CY>Sjeverna Makedonija</TI_CY>
+            <TI_TOWN>Skopje</TI_TOWN>
+            <TI_TEXT>
+               <P>IPA - Obnova i proširenje kanalizacijske mreže u općini Kičevo</P>
+            </TI_TEXT>
+         </ML_TI_DOC>
+      </ML_TITLES>
+      <ML_AA_NAMES>
+         <AA_NAME LG="DA">Ministry of Finance, Central Financing and Contracting Department (CFCD)</AA_NAME>
+         <AA_NAME LG="DE">Ministry of Finance, Central Financing and Contracting Department (CFCD)</AA_NAME>
+         <AA_NAME LG="EN">Ministry of Finance, Central Financing and Contracting Department (CFCD)</AA_NAME>
+         <AA_NAME LG="ES">Ministry of Finance, Central Financing and Contracting Department (CFCD)</AA_NAME>
+         <AA_NAME LG="FI">Ministry of Finance, Central Financing and Contracting Department (CFCD)</AA_NAME>
+         <AA_NAME LG="FR">Ministry of Finance, Central Financing and Contracting Department (CFCD)</AA_NAME>
+         <AA_NAME LG="EL">Ministry of Finance, Central Financing and Contracting Department (CFCD)</AA_NAME>
+         <AA_NAME LG="IT">Ministry of Finance, Central Financing and Contracting Department (CFCD)</AA_NAME>
+         <AA_NAME LG="NL">Ministry of Finance, Central Financing and Contracting Department (CFCD)</AA_NAME>
+         <AA_NAME LG="PT">Ministry of Finance, Central Financing and Contracting Department (CFCD)</AA_NAME>
+         <AA_NAME LG="SV">Ministry of Finance, Central Financing and Contracting Department (CFCD)</AA_NAME>
+         <AA_NAME LG="CS">Ministry of Finance, Central Financing and Contracting Department (CFCD)</AA_NAME>
+         <AA_NAME LG="ET">Ministry of Finance, Central Financing and Contracting Department (CFCD)</AA_NAME>
+         <AA_NAME LG="HU">Ministry of Finance, Central Financing and Contracting Department (CFCD)</AA_NAME>
+         <AA_NAME LG="LT">Ministry of Finance, Central Financing and Contracting Department (CFCD)</AA_NAME>
+         <AA_NAME LG="LV">Ministry of Finance, Central Financing and Contracting Department (CFCD)</AA_NAME>
+         <AA_NAME LG="MT">Ministry of Finance, Central Financing and Contracting Department (CFCD)</AA_NAME>
+         <AA_NAME LG="PL">Ministry of Finance, Central Financing and Contracting Department (CFCD)</AA_NAME>
+         <AA_NAME LG="SK">Ministry of Finance, Central Financing and Contracting Department (CFCD)</AA_NAME>
+         <AA_NAME LG="SL">Ministry of Finance, Central Financing and Contracting Department (CFCD)</AA_NAME>
+         <AA_NAME LG="GA">Ministry of Finance, Central Financing and Contracting Department (CFCD)</AA_NAME>
+         <AA_NAME LG="BG">Ministry of Finance, Central Financing and Contracting Department (CFCD)</AA_NAME>
+         <AA_NAME LG="RO">Ministry of Finance, Central Financing and Contracting Department (CFCD)</AA_NAME>
+         <AA_NAME LG="HR">Ministry of Finance, Central Financing and Contracting Department (CFCD)</AA_NAME>
+      </ML_AA_NAMES>
+   </TRANSLATION_SECTION>
+   <FORM_SECTION>
+      <OTH_NOT CATEGORY="TRANSLATION" LG="DA" VERSION="R2.0.8.S04.E01">
+         <FD_OTH_NOT>
+            <TI_DOC>
+               <P>MK-Skopje: Ipa - Renovering og udvidelse af kloaknettet i Kichevo kommune</P>
+            </TI_DOC>
+            <STI_DOC>
+               <P>Berigtigelse nr. 2 til udbudsbekendtgørelsen</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Udbudsreference: EuropeAid/139225/IH/WKS/MK</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Sted: Europa (ikke-EU) — Republikken Nordmakedonien</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>
+                  <FT TYPE="REFOJ">(Supplement til Den Europæiske Unions Tidende, 5.6.2019, 2019/S 107-260332)</FT>
+               </P>
+            </STI_DOC>
+            <CONTENTS>
+               <P>
+                  <ADDRESS_NOT_STRUCT>
+                     <ORGANISATION>Ministry of Finance, Central Financing and Contracting Department (CFCD)</ORGANISATION>
+                     <BLK_BTX>, Dame Gruev 12, 1000</BLK_BTX>
+                     <TOWN>Skopje</TOWN>
+                     <BLK_BTX>, REPUBLIKKEN NORDMAKEDONIEN</BLK_BTX>
+                  </ADDRESS_NOT_STRUCT>
+               </P>
+               <CORREC>
+                  <FOR_READ>
+                     <FOR>
+                        <INT_FOR>I stedet for:</INT_FOR>
+                        <OLD QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Sidste frist for afgivelse af bud</P>
+                           <P>24.9.2019 (12:00), lokal tid hos:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIKKEN NORDMAKEDONIEN</P>
+                           <P>Den ordregivende myndigheds åbningstider er: Mandag til fredag, 8:30-16:30, lokal tid</P>
+                           <P>Tilbud, der modtages af den ordregivende myndighed efter denne frist, vil ikke blive taget i betragtning.</P>
+                           <P>[...]</P>
+                           <P>20. Åbning af buddene</P>
+                           <P>1.10.2019 (10:00), lokal tid hos:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIKKEN NORDMAKEDONIEN</P>
+                           <P>En bemyndiget repræsentant for hver tilbudsgiver må være til stede ved åbningen af bud. Virksomhederne, der ønsker at deltage, anmodes om at give besked herom ved at sende en e-mail til cfcd@finance.gov.mk, senest 48 timer i forvejen med navnet på den bemyndigede repræsentant, der forventes at deltage i åbningssessionen.</P>
+                           <P>[...]</P>
+                        </OLD>
+                     </FOR>
+                     <READ>
+                        <INT_READ>Læses:</INT_READ>
+                        <NEW QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Sidste frist for afgivelse af bud</P>
+                           <P>25.10.2019 (12:00), lokal tid hos:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIKKEN NORDMAKEDONIEN</P>
+                           <P>Den ordregivende myndigheds åbningstider er: Mandag til fredag, 8:30-16:30, lokal tid</P>
+                           <P>Tilbud, der modtages af den ordregivende myndighed efter denne frist, vil ikke blive taget i betragtning.</P>
+                           <P>[...]</P>
+                           <P>20. Åbning af buddene</P>
+                           <P>1.11.2019 (10:00), lokal tid hos:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIKKEN NORDMAKEDONIEN</P>
+                           <P>En bemyndiget repræsentant for hver tilbudsgiver må være til stede ved åbningen af bud. Virksomhederne, der ønsker at deltage, anmodes om at give besked herom ved at sende en e-mail til cfcd@finance.gov.mk, senest 48 timer i forvejen med navnet på den bemyndigede repræsentant, der forventes at deltage i åbningssessionen.</P>
+                           <P>[...]</P>
+                        </NEW>
+                     </READ>
+                  </FOR_READ>
+               </CORREC>
+               <P>Alle andre bestemmelser og betingelser i udbudsbekendtgørelsen forbliver uændrede. Ovenstående ændringer og/eller berigtigelser vil være at betragte som en integreret del af udbudsbekendtgørelsen.</P>
+            </CONTENTS>
+         </FD_OTH_NOT>
+      </OTH_NOT>
+      <OTH_NOT CATEGORY="TRANSLATION" LG="DE" VERSION="R2.0.8.S04.E01">
+         <FD_OTH_NOT>
+            <TI_DOC>
+               <P>MK-Skopje: IPA - Sanierung und Ausbau des Abwassernetzes in der Gemeinde Kichevo</P>
+            </TI_DOC>
+            <STI_DOC>
+               <P>Berichtigung Nr. 2 zu einer Auftragsbekanntmachung</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Referenznummer der Veröffentlichung: EuropeAid/139225/IH/WKS/MK</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Standort: Europa (nicht EU)/Republik Nord-Mazedonien</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>
+                  <FT TYPE="REFOJ">(Supplement zum Amtsblatt der Europäischen Union, 5.6.2019, 2019/S 107-260332)</FT>
+               </P>
+            </STI_DOC>
+            <CONTENTS>
+               <P>
+                  <ADDRESS_NOT_STRUCT>
+                     <ORGANISATION>Ministry of Finance, Central Financing and Contracting Department (CFCD)</ORGANISATION>
+                     <BLK_BTX>Dame Gruev 12, 1000</BLK_BTX>
+                     <TOWN>Skopje</TOWN>
+                     <BLK_BTX>, REPUBLIK NORDMAZEDONIEN</BLK_BTX>
+                  </ADDRESS_NOT_STRUCT>
+               </P>
+               <CORREC>
+                  <FOR_READ>
+                     <FOR>
+                        <INT_FOR>Anstatt:</INT_FOR>
+                        <OLD QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Schlusstermin für den Eingang der Angebote</P>
+                           <P>24.9.2019, 12.00 Uhr, Ortszeit, bei folgender Stelle:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIK NORDMAZEDONIEN</P>
+                           <P>Öffnungszeiten des öffentlichen Auftraggebers: Montags bis freitags von 8:30 bis 16:30 Uhr (Ortszeit)</P>
+                           <P>Nach dieser Frist an den öffentlichen Auftraggeber übermittelte Angebote werden nicht berücksichtigt.</P>
+                           <P>[...]</P>
+                           <P>20. Öffnung der Angebote</P>
+                           <P>1.10.2019, 10:00 Uhr, Ortszeit, bei folgender Stelle:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIK NORDMAZEDONIEN</P>
+                           <P>1 bevollmächtigter Vertreter je Bieter darf bei der Öffnung der Angebote anwesend sein. An der Teilnahme interessierte Unternehmen müssen Ihre Absicht bis spätestens 48 Stunden vor Öffnung der Angebote per E-Mail an die Adresse cfcd@finance.gov.mk kundtun und dabei den Namen des bevollmächtigten Vertreters angeben.</P>
+                           <P>[...]</P>
+                        </OLD>
+                     </FOR>
+                     <READ>
+                        <INT_READ>muss es heißen:</INT_READ>
+                        <NEW QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Schlusstermin für den Eingang der Angebote</P>
+                           <P>25.10.2019, 12:00 Uhr, Ortszeit, bei folgender Stelle:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIK NORDMAZEDONIEN</P>
+                           <P>Öffnungszeiten des öffentlichen Auftraggebers: Montags bis freitags von 8:30 bis 16:30 Uhr (Ortszeit)</P>
+                           <P>Nach dieser Frist an den öffentlichen Auftraggeber übermittelte Angebote werden nicht berücksichtigt.</P>
+                           <P>[...]</P>
+                           <P>20. Öffnung der Angebote</P>
+                           <P>1.11.2019, 10:00 Uhr, Ortszeit, bei folgender Stelle:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIK NORDMAZEDONIEN</P>
+                           <P>1 bevollmächtigter Vertreter je Bieter darf bei der Öffnung der Angebote anwesend sein. An der Teilnahme interessierte Unternehmen müssen Ihre Absicht bis spätestens 48 Stunden vor Öffnung der Angebote per E-Mail an die Adresse cfcd@finance.gov.mk kundtun und dabei den Namen des bevollmächtigten Vertreters angeben.</P>
+                           <P>[...]</P>
+                        </NEW>
+                     </READ>
+                  </FOR_READ>
+               </CORREC>
+               <P>Alle anderen Daten und Bedingungen der Auftragsbekanntmachung bleiben unverändert. Die oben genannten Änderungen und/oder Berichtigungen der Auftragsbekanntmachung sind integraler Bestandteil derselben.</P>
+            </CONTENTS>
+         </FD_OTH_NOT>
+      </OTH_NOT>
+      <OTH_NOT CATEGORY="ORIGINAL" LG="EN" VERSION="R2.0.8.S04.E01">
+         <FD_OTH_NOT>
+            <TI_DOC>
+               <P>MK-Skopje: IPA - Rehabilitation and Extension of Sewerage Network in the Municipality of Kichevo</P>
+            </TI_DOC>
+            <STI_DOC>
+               <P>Corrigendum No 2 to the Contract Notice</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Publication reference: EuropeAid/139225/IH/WKS/MK</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Location: Europe (non-EU)/Republic of North Macedonia</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>
+                  <FT TYPE="REFOJ">(Supplement to the Official Journal of the European Union, 5.6.2019, 2019/S 107-260332)</FT>
+               </P>
+            </STI_DOC>
+            <CONTENTS>
+               <P>
+                  <ADDRESS_NOT_STRUCT>
+                     <ORGANISATION>Ministry of Finance, Central Financing and Contracting Department (CFCD)</ORGANISATION>
+                     <BLK_BTX>, Dame Gruev 12, 1000</BLK_BTX>
+                     <TOWN>Skopje</TOWN>
+                     <BLK_BTX>, The Republic of North MACEDONIA</BLK_BTX>
+                  </ADDRESS_NOT_STRUCT>
+               </P>
+               <CORREC>
+                  <FOR_READ>
+                     <FOR>
+                        <INT_FOR>Instead of:</INT_FOR>
+                        <OLD QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Deadline for submission of tenders</P>
+                           <P>24.9.2019, 12.00 local time at:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje</P>
+                           <P>The contracting authority’s opening hours are: Monday to Friday, 8.30 to 16.30 hour’s, local time.</P>
+                           <P>Any tender submitted to the contracting authority after this deadline will not be considered.</P>
+                           <P>[...]</P>
+                           <P>20. Tender opening session</P>
+                           <P>1.10.2019, 10.00 local time at:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje</P>
+                           <P>An authorised representative of each tenderer may attend the opening of the tenders. The companies wishing to attend are requested to notify their intention by sending an email to cfcd@finance.gov.mk, at least 48 hours in advance, with the name of the authorised representative expected to attend the opening session.</P>
+                           <P>[...]</P>
+                        </OLD>
+                     </FOR>
+                     <READ>
+                        <INT_READ>Read:</INT_READ>
+                        <NEW QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Deadline for submission of tenders</P>
+                           <P>25.10.2019, 12:00 local time at:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje</P>
+                           <P>The contracting authority’s opening hours are: Monday to Friday, 8.30 to 16.30 hour’s, local time.</P>
+                           <P>Any tender submitted to the contracting authority after this deadline will not be considered.</P>
+                           <P>[...]</P>
+                           <P>20. Tender opening session</P>
+                           <P>1.11.2019, 10.00 local time at:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje</P>
+                           <P>An authorised representative of each tenderer may attend the opening of the tenders. The companies wishing to attend are requested to notify their intention by sending an email to cfcd@finance.gov.mk, at least 48 hours in advance, with the name of the authorised representative expected to attend the opening session.</P>
+                           <P>[...]</P>
+                        </NEW>
+                     </READ>
+                  </FOR_READ>
+               </CORREC>
+               <P>All other terms and conditions of the contract notice remain unchanged. The above alterations and/or corrections to the contract notice are integral part of the contract notice.</P>
+            </CONTENTS>
+         </FD_OTH_NOT>
+      </OTH_NOT>
+      <OTH_NOT CATEGORY="TRANSLATION" LG="ES" VERSION="R2.0.8.S04.E01">
+         <FD_OTH_NOT>
+            <TI_DOC>
+               <P>MK-Skopie: IPA - Rehabilitación y ampliación de la red de alcantarillado en el municipio de Kichevo</P>
+            </TI_DOC>
+            <STI_DOC>
+               <P>Rectificativo n.º 2 al anuncio de licitación</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Referencia de publicación: EuropeAid/139225/IH/WKS/MK</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Lugar: Europa (fuera de la UE), República de Macedonia del Norte</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>
+                  <FT TYPE="REFOJ">(Suplemento al Diario Oficial de la Unión Europea, 5.6.2019, 2019/S 107-260332)</FT>
+               </P>
+            </STI_DOC>
+            <CONTENTS>
+               <P>
+                  <ADDRESS_NOT_STRUCT>
+                     <ORGANISATION>Ministry of Finance, Central Financing and Contracting Department (CFCD)</ORGANISATION>
+                     <BLK_BTX>, Dame Gruev 12, 1000</BLK_BTX>
+                     <TOWN>Skopje</TOWN>
+                     <BLK_BTX>, REPÚBLICA DE MACEDONIA DEL NORTE</BLK_BTX>
+                  </ADDRESS_NOT_STRUCT>
+               </P>
+               <CORREC>
+                  <FOR_READ>
+                     <FOR>
+                        <INT_FOR>En lugar de:</INT_FOR>
+                        <OLD QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Fecha límite de presentación de ofertas</P>
+                           <P>24.9.2019 a las 12:00 hora local, en:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPÚBLICA DE MACEDONIA DEL NORTE</P>
+                           <P>El horario de apertura del órgano de contratación es: Lunes a viernes, de 8:30 a 16:30 horas (hora local).</P>
+                           <P>No se tomará en consideración ninguna oferta recibida por el órgano de contratación luego de esta fecha límite.</P>
+                           <P>[...]</P>
+                           <P>20. Sesión de apertura de las ofertas</P>
+                           <P>1.10.2019 a las 10:00 hora local, en:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPÚBLICA DE MACEDONIA DEL NORTE</P>
+                           <P>Podrá asistir a la apertura de las ofertas 1 representante autorizado por cada licitador. Las empresas que deseen asistir deberán comunicar su intención enviando un correo electrónico a cfcd@finance.gov.mk con al menos 48 horas de antelación, indicando el nombre del representante autorizado que se espera que asista a la sesión de apertura.</P>
+                           <P>[...]</P>
+                        </OLD>
+                     </FOR>
+                     <READ>
+                        <INT_READ>Léase:</INT_READ>
+                        <NEW QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Fecha límite de presentación de ofertas</P>
+                           <P>25.10.2019 a las 12:00 hora local, en:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPÚBLICA DE MACEDONIA DEL NORTE</P>
+                           <P>El horario de apertura del órgano de contratación es: Lunes a viernes, de 8:30 a 16:30 horas (hora local).</P>
+                           <P>No se tomará en consideración ninguna oferta recibida por el órgano de contratación luego de esta fecha límite.</P>
+                           <P>[...]</P>
+                           <P>20. Sesión de apertura de las ofertas</P>
+                           <P>1.11.2019 a las 10:00 hora local, en:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPÚBLICA DE MACEDONIA DEL NORTE</P>
+                           <P>Podrá asistir a la apertura de las ofertas 1 representante autorizado por cada licitador. Las empresas que deseen asistir deberán comunicar su intención enviando un correo electrónico a cfcd@finance.gov.mk con al menos 48 horas de antelación, indicando el nombre del representante autorizado que se espera que asista a la sesión de apertura.</P>
+                           <P>[...]</P>
+                        </NEW>
+                     </READ>
+                  </FOR_READ>
+               </CORREC>
+               <P>El resto de términos y condiciones del presente anuncio de licitación permanecen sin cambios. Las presentes modificaciones o correcciones del anuncio de licitación de servicios forman parte integral del mismo.</P>
+            </CONTENTS>
+         </FD_OTH_NOT>
+      </OTH_NOT>
+      <OTH_NOT CATEGORY="TRANSLATION" LG="FI" VERSION="R2.0.8.S04.E01">
+         <FD_OTH_NOT>
+            <TI_DOC>
+               <P>MK-Skopje: IPA - Viemäriverkoston kunnostaminen ja laajentaminen Kičevon kunnassa</P>
+            </TI_DOC>
+            <STI_DOC>
+               <P>Hankintailmoitusta koskeva oikaisuilmoitus nro 2</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Ilmoituksen viite: EuropeAid/139225/IH/WKS/MK</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Sijainti: Eurooppa (EU:n ulkopuolinen alue) / Pohjois-Makedonian tasavalta</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>
+                  <FT TYPE="REFOJ">(Euroopan unionin virallisen lehden täydennysosa, 5.6.2019, 2019/S 107-260332)</FT>
+               </P>
+            </STI_DOC>
+            <CONTENTS>
+               <P>
+                  <ADDRESS_NOT_STRUCT>
+                     <ORGANISATION>Ministry of Finance, Central Financing and Contracting Department (CFCD)</ORGANISATION>
+                     <BLK_BTX>, Dame Gruev 12, 1000</BLK_BTX>
+                     <TOWN>Skopje</TOWN>
+                     <BLK_BTX>, POHJOIS-MAKEDONIAN TASAVALTA</BLK_BTX>
+                  </ADDRESS_NOT_STRUCT>
+               </P>
+               <CORREC>
+                  <FOR_READ>
+                     <FOR>
+                        <INT_FOR>Oikaistava tieto:</INT_FOR>
+                        <OLD QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Tarjousten jättämisen määräaika</P>
+                           <P>24.9.2019 klo 12:00 paikallista aikaa osoitteessa:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, POHJOIS-MAKEDONIAN TASAVALTA</P>
+                           <P>Hankintaviranomaisen aukioloajat ovat seuraavat: maanantaista perjantaihin klo 8:30–16:30 paikallista aikaa.</P>
+                           <P>Hakemuksia, jotka hankintaviranomainen vastaanottaa tämän määräajan jälkeen, ei oteta huomioon.</P>
+                           <P>[...]</P>
+                           <P>20. Tarjousten avaustilaisuus</P>
+                           <P>1.10.2019 klo 10:00 paikallista aikaa osoitteessa:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, POHJOIS-MAKEDONIAN TASAVALTA</P>
+                           <P>Tarjousten avaustilaisuuteen voi osallistua 1 valtuutettu edustaja kultakin tarjoajalta. Yhtiöiden, jotka haluavat osallistua avaustilaisuuteen, tulisi ilmoittaa aikeestaan lähettämällä sähköpostia osoitteeseen cfcd@finance.gov.mk ainakin 48 tuntia aiemmin mainiten samalla avaustilaisuuteen osallistuvan valtuutetun edustajansa nimen.</P>
+                           <P>[...]</P>
+                        </OLD>
+                     </FOR>
+                     <READ>
+                        <INT_READ>Oikaisu:</INT_READ>
+                        <NEW QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Tarjousten jättämisen määräaika</P>
+                           <P>25.10.2019 klo 12:00 paikallista aikaa osoitteessa:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, POHJOIS-MAKEDONIAN TASAVALTA</P>
+                           <P>Hankintaviranomaisen aukioloajat ovat seuraavat: maanantaista perjantaihin klo 8:30–16:30 paikallista aikaa.</P>
+                           <P>Hakemuksia, jotka hankintaviranomainen vastaanottaa tämän määräajan jälkeen, ei oteta huomioon.</P>
+                           <P>[...]</P>
+                           <P>20. Tarjousten avaustilaisuus</P>
+                           <P>1.11.2019 klo 10:00 paikallista aikaa osoitteessa:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, POHJOIS-MAKEDONIAN TASAVALTA</P>
+                           <P>Tarjousten avaustilaisuuteen voi osallistua 1 valtuutettu edustaja kultakin tarjoajalta. Yhtiöiden, jotka haluavat osallistua avaustilaisuuteen, tulisi ilmoittaa aikeestaan lähettämällä sähköpostia osoitteeseen cfcd@finance.gov.mk ainakin 48 tuntia aiemmin mainiten samalla avaustilaisuuteen osallistuvan valtuutetun edustajansa nimen.</P>
+                           <P>[...]</P>
+                        </NEW>
+                     </READ>
+                  </FOR_READ>
+               </CORREC>
+               <P>Kaikki muut hankintailmoituksen kohdat ja ehdot pysyvät muuttumattomina. Hankintailmoitukseen edellä tehdyt muutokset ja/tai korjaukset ovat olennainen osa hankintailmoitusta.</P>
+            </CONTENTS>
+         </FD_OTH_NOT>
+      </OTH_NOT>
+      <OTH_NOT CATEGORY="TRANSLATION" LG="FR" VERSION="R2.0.8.S04.E01">
+         <FD_OTH_NOT>
+            <TI_DOC>
+               <P>MK-Skopje: IAP - Remise en état et extension du réseau d'égouts de la municipalité de Kitchevo</P>
+            </TI_DOC>
+            <STI_DOC>
+               <P>Rectificatif n° 2 à l'avis de marché</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Référence de la publication: EuropeAid/139225/IH/WKS/MK</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Lieu d'exécution : Europe (non UE)/République de Macédoine du Nord</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>
+                  <FT TYPE="REFOJ">(Supplément au Journal officiel de l'Union européenne, 5.6.2019, 2019/S 107-260332)</FT>
+               </P>
+            </STI_DOC>
+            <CONTENTS>
+               <P>
+                  <ADDRESS_NOT_STRUCT>
+                     <ORGANISATION>Ministry of Finance, Central Financing and Contracting Department (CFCD)</ORGANISATION>
+                     <BLK_BTX>, «Dame Gruev» 12, 1000</BLK_BTX>
+                     <TOWN>Skopje</TOWN>
+                     <BLK_BTX>, LA RÉPUBLIQUE DE MACÉDOINE DU NORD</BLK_BTX>
+                  </ADDRESS_NOT_STRUCT>
+               </P>
+               <CORREC>
+                  <FOR_READ>
+                     <FOR>
+                        <INT_FOR>Au lieu de:</INT_FOR>
+                        <OLD QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Date limite de présentation des offres</P>
+                           <P>Le 24.9.2019, à 12:00 (heure locale) à l'adresse suivante:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, LA RÉPUBLIQUE DE MACÉDOINE DU NORD.</P>
+                           <P>Heures d'ouverture du pouvoir adjudicateur : Du lundi au vendredi de 8:30 à 16:30, heure locale</P>
+                           <P>Toute candidature reçue par le pouvoir adjudicateur après cette date limite sera rejetée.</P>
+                           <P>[...]</P>
+                           <P>20. Séance d'ouverture des offres</P>
+                           <P>Le 1.10.2019, à 10:00 (heure locale) à l'adresse suivante:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, LA RÉPUBLIQUE DE MACÉDOINE DU NORD.</P>
+                           <P>Un représentant autorisé de chaque soumissionnaire pourra assister à l'ouverture des offres. Les compagnies souhaitant y assister sont priées de faire part de leur intention en envoyant un email à cfcd@finance.gov.mk au moins 48 heures à l’avance, avec le nom du représentant autorisé qui devrait assister à la séance d’ouverture.</P>
+                           <P>[...]</P>
+                        </OLD>
+                     </FOR>
+                     <READ>
+                        <INT_READ>Lire:</INT_READ>
+                        <NEW QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Date limite de présentation des offres</P>
+                           <P>Le 25.10.2019, à 12:00 (heure locale) à l'adresse suivante:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, LA RÉPUBLIQUE DE MACÉDOINE DU NORD.</P>
+                           <P>Heures d'ouverture du pouvoir adjudicateur : Du lundi au vendredi de 8:30 à 16:30, heure locale</P>
+                           <P>Toute candidature reçue par le pouvoir adjudicateur après cette date limite sera rejetée.</P>
+                           <P>[...]</P>
+                           <P>20. Séance d'ouverture des offres</P>
+                           <P>Le 1.11.2019, à 10:00 (heure locale) à l'adresse suivante:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, LA RÉPUBLIQUE DE MACÉDOINE DU NORD.</P>
+                           <P>Un représentant autorisé de chaque soumissionnaire pourra assister à l'ouverture des offres. Les compagnies souhaitant y assister sont priées de faire part de leur intention en envoyant un email à cfcd@finance.gov.mk au moins 48 heures à l’avance, avec le nom du représentant autorisé qui devrait assister à la séance d’ouverture.</P>
+                           <P>[...]</P>
+                        </NEW>
+                     </READ>
+                  </FOR_READ>
+               </CORREC>
+               <P>Toutes les autres conditions générales de l'avis de marché demeurent inchangées. Les modifications et/ou corrections ci-dessus font intégralement partie de l'avis de marché.</P>
+            </CONTENTS>
+         </FD_OTH_NOT>
+      </OTH_NOT>
+      <OTH_NOT CATEGORY="TRANSLATION" LG="EL" VERSION="R2.0.8.S04.E01">
+         <FD_OTH_NOT>
+            <TI_DOC>
+               <P>MK-Σκόπια: IPA - Αποκατάσταση και επέκταση του δικτύου αποχέτευσης στον δήμο Kichevo</P>
+            </TI_DOC>
+            <STI_DOC>
+               <P>Διορθωτικό αριθ. 2 στην προκήρυξη σύμβασης</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Αριθ. αναφοράς της δημοσίευσης: EuropeAid/139225/IH/WKS/MK</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Τόπος: Ευρώπη (εκτός ΕΕ)/Δημοκρατία της Βόρειας Μακεδονίας</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>
+                  <FT TYPE="REFOJ">(Συμπλήρωμα στην Επίσημη Εφημερίδα της Ευρωπαϊκής Ένωσης, 5.6.2019, 2019/S 107-260332)</FT>
+               </P>
+            </STI_DOC>
+            <CONTENTS>
+               <P>
+                  <ADDRESS_NOT_STRUCT>
+                     <ORGANISATION>Ministry of Finance, Central Financing and Contracting Department (CFCD)</ORGANISATION>
+                     <BLK_BTX>, Dame Gruev 12, 1000</BLK_BTX>
+                     <TOWN>Skopje</TOWN>
+                     <BLK_BTX>, ΔΗΜΟΚΡΑΤΙΑ ΤΗΣ ΒΟΡΕΙΑΣ ΜΑΚΕΔΟΝΙΑΣ</BLK_BTX>
+                  </ADDRESS_NOT_STRUCT>
+               </P>
+               <CORREC>
+                  <FOR_READ>
+                     <FOR>
+                        <INT_FOR>Αντί:</INT_FOR>
+                        <OLD QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Προθεσμία υποβολής των προσφορών</P>
+                           <P>24.9.2019, 12:00, τοπική ώρα, στη διεύθυνση:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, ΔΗΜΟΚΡΑΤΙΑ ΤΗΣ ΒΟΡΕΙΑΣ ΜΑΚΕΔΟΝΙΑΣ</P>
+                           <P>Οι ώρες λειτουργίας της αναθέτουσας αρχής είναι: Δευτέρα έως Παρασκευή, 8:30 έως 16:30 τοπική ώρα.</P>
+                           <P>Δεν θα ληφθούν υπόψη προσφορές που θα περιέλθουν εκπρόθεσμα στην αναθέτουσα αρχή.</P>
+                           <P>[...]</P>
+                           <P>20. Συνεδρίαση για την αποσφράγιση των προσφορών</P>
+                           <P>1.10.2019, 10:00, τοπική ώρα, στη διεύθυνση:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, ΔΗΜΟΚΡΑΤΙΑ ΤΗΣ ΒΟΡΕΙΑΣ ΜΑΚΕΔΟΝΙΑΣ</P>
+                           <P>Ένας εξουσιοδοτημένος εκπρόσωπος από κάθε υποψήφιο δύναται να παραστεί στην αποσφράγιση των προσφορών. Οι εταιρείες που επιθυμούν να παρευρεθούν, καλούνται να κοινοποιήσουν την πρόθεσή τους στέλνοντας ένα μήνυμα ηλεκτρονικού ταχυδρομείου στη διεύθυνση cfcd@finance.gov.mk τουλάχιστον 48 ώρες νωρίτερα, με το όνομα του εξουσιοδοτημένου εκπροσώπου που αναμένεται να παρευρεθεί στην συνεδρίαση αποσφράγισης.</P>
+                           <P>[...]</P>
+                        </OLD>
+                     </FOR>
+                     <READ>
+                        <INT_READ>Διάβαζε:</INT_READ>
+                        <NEW QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Προθεσμία υποβολής των προσφορών</P>
+                           <P>25.10.2019, 12:00, τοπική ώρα, στη διεύθυνση:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, ΔΗΜΟΚΡΑΤΙΑ ΤΗΣ ΒΟΡΕΙΑΣ ΜΑΚΕΔΟΝΙΑΣ</P>
+                           <P>Οι ώρες λειτουργίας της αναθέτουσας αρχής είναι: Δευτέρα έως Παρασκευή, 8:30 έως 16:30 τοπική ώρα.</P>
+                           <P>Δεν θα ληφθούν υπόψη προσφορές που θα περιέλθουν εκπρόθεσμα στην αναθέτουσα αρχή.</P>
+                           <P>[...]</P>
+                           <P>20. Συνεδρίαση για την αποσφράγιση των προσφορών</P>
+                           <P>1.11.2019, 10:00, τοπική ώρα, στη διεύθυνση:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, ΔΗΜΟΚΡΑΤΙΑ ΤΗΣ ΒΟΡΕΙΑΣ ΜΑΚΕΔΟΝΙΑΣ</P>
+                           <P>Ένας εξουσιοδοτημένος εκπρόσωπος από κάθε υποψήφιο δύναται να παραστεί στην αποσφράγιση των προσφορών. Οι εταιρείες που επιθυμούν να παρευρεθούν, καλούνται να κοινοποιήσουν την πρόθεσή τους στέλνοντας ένα μήνυμα ηλεκτρονικού ταχυδρομείου στη διεύθυνση cfcd@finance.gov.mk τουλάχιστον 48 ώρες νωρίτερα, με το όνομα του εξουσιοδοτημένου εκπροσώπου που αναμένεται να παρευρεθεί στην συνεδρίαση αποσφράγισης.</P>
+                           <P>[...]</P>
+                        </NEW>
+                     </READ>
+                  </FOR_READ>
+               </CORREC>
+               <P>Όλοι οι λοιποί όροι και προϋποθέσεις της προκήρυξης σύμβασης παραμένουν αμετάβλητοι. Οι ανωτέρω τροποποιήσεις ή/και διορθώσεις στην προκήρυξη σύμβασης αποτελούν αναπόσπαστο τμήμα της προκήρυξης σύμβασης.</P>
+            </CONTENTS>
+         </FD_OTH_NOT>
+      </OTH_NOT>
+      <OTH_NOT CATEGORY="TRANSLATION" LG="IT" VERSION="R2.0.8.S04.E01">
+         <FD_OTH_NOT>
+            <TI_DOC>
+               <P>MK-Skopje: IPA - Riattamento ed estensione della rete fognaria nel comune di Kichevo</P>
+            </TI_DOC>
+            <STI_DOC>
+               <P>Rettifica n. 2 all'avviso relativo ad un appalto</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Riferimento della pubblicazione: EuropeAid/139225/IH/WKS/MK</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Ubicazione: Europa (non UE)/Repubblica di Macedonia del Nord</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>
+                  <FT TYPE="REFOJ">(Supplemento alla Gazzetta ufficiale dell'Unione europea, 5.6.2019, 2019/S 107-260332)</FT>
+               </P>
+            </STI_DOC>
+            <CONTENTS>
+               <P>
+                  <ADDRESS_NOT_STRUCT>
+                     <ORGANISATION>Ministry of Finance, Central Financing and Contracting Department (CFCD)</ORGANISATION>
+                     <BLK_BTX>, Dame Gruev 12, 1000</BLK_BTX>
+                     <TOWN>Skopje</TOWN>
+                     <BLK_BTX>, REPUBBLICA DI MACEDONIA DEL NORD</BLK_BTX>
+                  </ADDRESS_NOT_STRUCT>
+               </P>
+               <CORREC>
+                  <FOR_READ>
+                     <FOR>
+                        <INT_FOR>anziché:</INT_FOR>
+                        <OLD QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Termine ultimo per la presentazione delle offerte</P>
+                           <P>24.9.2019, alle 12:00 ora locale presso:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBBLICA DI MACEDONIA DEL NORD</P>
+                           <P>Gli orari di apertura dell'amministrazione aggiudicatrice sono i seguenti: da lunedì a venerdì, dalle 8:30 alle 16:30, ora locale.</P>
+                           <P>Le offerte presentate all'ente appaltante dopo tale termine non verranno prese in considerazione.</P>
+                           <P>[...]</P>
+                           <P>20. Sessione di apertura delle offerte</P>
+                           <P>1.10.2019, alle 10:00 ora locale presso:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBBLICA DI MACEDONIA DEL NORD</P>
+                           <P>Potrà assistere all'apertura delle offerte un rappresentante autorizzato di ogni offerente. Le società che desiderano essere presenti dovranno notificarlo inviando un'e-mail all'indirizzo cfcd@finance.gov.mk con almeno 48 ore di anticipo, indicando il nome del rappresentante autorizzato che parteciperà alla sessione di apertura.</P>
+                           <P>[...]</P>
+                        </OLD>
+                     </FOR>
+                     <READ>
+                        <INT_READ>leggi:</INT_READ>
+                        <NEW QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Termine ultimo per la presentazione delle offerte</P>
+                           <P>25.10.2019, alle 12:00 ora locale presso:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBBLICA DI MACEDONIA DEL NORD</P>
+                           <P>Gli orari di apertura dell'amministrazione aggiudicatrice sono i seguenti: da lunedì a venerdì, dalle 8:30 alle 16:30, ora locale.</P>
+                           <P>Le offerte presentate all'ente appaltante dopo tale termine non verranno prese in considerazione.</P>
+                           <P>[...]</P>
+                           <P>20. Sessione di apertura delle offerte</P>
+                           <P>1.11.2019, alle 10:00 ora locale presso:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBBLICA DI MACEDONIA DEL NORD</P>
+                           <P>Potrà assistere all'apertura delle offerte un rappresentante autorizzato di ogni offerente. Le società che desiderano essere presenti dovranno notificarlo inviando un'e-mail all'indirizzo cfcd@finance.gov.mk con almeno 48 ore di anticipo, indicando il nome del rappresentante autorizzato che parteciperà alla sessione di apertura.</P>
+                           <P>[...]</P>
+                        </NEW>
+                     </READ>
+                  </FOR_READ>
+               </CORREC>
+               <P>Tutti gli altri termini e condizioni del bando di gara d'appalto restano invariati. Le modifiche e/o correzioni di cui sopra al bando di gara d'appalto costituiscono parte integrante del bando di gara d'appalto.</P>
+            </CONTENTS>
+         </FD_OTH_NOT>
+      </OTH_NOT>
+      <OTH_NOT CATEGORY="TRANSLATION" LG="NL" VERSION="R2.0.8.S04.E01">
+         <FD_OTH_NOT>
+            <TI_DOC>
+               <P>MK-Skopje: IPA - Rehabilitatie en uitbreiding van het rioleringsnetwerk in de gemeente Kichevo</P>
+            </TI_DOC>
+            <STI_DOC>
+               <P>Rectificatie nr. 2 van de aankondiging van opdracht</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Referentie van de bekendmaking: EuropeAid/139225/IH/WKS/MK</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Locatie: Europa (niet-EU)/Republiek Noord-Macedonië</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>
+                  <FT TYPE="REFOJ">(Supplement op het Publicatieblad van de Europese Unie, 5.6.2019, 2019/S 107-260332)</FT>
+               </P>
+            </STI_DOC>
+            <CONTENTS>
+               <P>
+                  <ADDRESS_NOT_STRUCT>
+                     <ORGANISATION>Ministry of Finance, Central Financing and Contracting Department (CFCD)</ORGANISATION>
+                     <BLK_BTX>, Dame Gruev 12, 1000</BLK_BTX>
+                     <TOWN>Skopje</TOWN>
+                     <BLK_BTX>, REPUBLIEK NOORD-MACEDONIË</BLK_BTX>
+                  </ADDRESS_NOT_STRUCT>
+               </P>
+               <CORREC>
+                  <FOR_READ>
+                     <FOR>
+                        <INT_FOR>In plaats van:</INT_FOR>
+                        <OLD QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Uiterste datum voor indiening van de inschrijvingen:</P>
+                           <P>24.9.2019 om 12:00 uur plaatselijke tijd, op het volgende adres:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIEK NOORD-MACEDONIË</P>
+                           <P>De openingstijden van de aanbestedende dienst zijn: Maandag tot en met vrijdag van 8:30 tot 16:30 uur, plaatselijke tijd.</P>
+                           <P>Aanvragen die na deze uiterste datum door de aanbestedende dienst worden ontvangen, worden niet in behandeling genomen.</P>
+                           <P>[...]</P>
+                           <P>20. Opening van de inschrijvingen:</P>
+                           <P>1.10.2019 om 10:00 uur plaatselijke tijd, op het volgende adres:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIEK NOORD-MACEDONIË</P>
+                           <P>Van elke inschrijver mag een gevolmachtigde vertegenwoordiger de opening van de inschrijvingen bijwonen. Bedrijven die wensen deel te nemen, worden verzocht hun intentie kenbaar te maken door minstens 48 uur van tevoren een e-mail te sturen naar cfcd@finance.gov.mk met vermelding van de naam van de gemachtigde vertegenwoordiger die naar verwachting de openingssessie zal bijwonen.</P>
+                           <P>[...]</P>
+                        </OLD>
+                     </FOR>
+                     <READ>
+                        <INT_READ>Te lezen:</INT_READ>
+                        <NEW QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Uiterste datum voor indiening van de inschrijvingen:</P>
+                           <P>25.10.2019 om 12:00 uur plaatselijke tijd, op het volgende adres:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIEK NOORD-MACEDONIË</P>
+                           <P>De openingstijden van de aanbestedende dienst zijn: Maandag tot en met vrijdag van 8:30 tot 16:30 uur, plaatselijke tijd.</P>
+                           <P>Aanvragen die na deze uiterste datum door de aanbestedende dienst worden ontvangen, worden niet in behandeling genomen.</P>
+                           <P>[...]</P>
+                           <P>20. Opening van de inschrijvingen:</P>
+                           <P>1.11.2019 om 10:00 uur plaatselijke tijd, op het volgende adres:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIEK NOORD-MACEDONIË</P>
+                           <P>Van elke inschrijver mag een gevolmachtigde vertegenwoordiger de opening van de inschrijvingen bijwonen. Bedrijven die wensen deel te nemen, worden verzocht hun intentie kenbaar te maken door minstens 48 uur van tevoren een e-mail te sturen naar cfcd@finance.gov.mk met vermelding van de naam van de gemachtigde vertegenwoordiger die naar verwachting de openingssessie zal bijwonen.</P>
+                           <P>[...]</P>
+                        </NEW>
+                     </READ>
+                  </FOR_READ>
+               </CORREC>
+               <P>Alle andere voorwaarden en bepalingen van de aankondiging van opdracht blijven ongewijzigd. De hierboven vermelde wijzigingen en/of correcties aan de aankondiging van opdracht maken integraal deel uit van de aankondiging van opdracht.</P>
+            </CONTENTS>
+         </FD_OTH_NOT>
+      </OTH_NOT>
+      <OTH_NOT CATEGORY="TRANSLATION" LG="PT" VERSION="R2.0.8.S04.E01">
+         <FD_OTH_NOT>
+            <TI_DOC>
+               <P>MK-Skopje: IPA - Reabilitação e extensão da rede de esgotos no município de Kichevo</P>
+            </TI_DOC>
+            <STI_DOC>
+               <P>Retificativo n.º 2 ao anúncio de concurso</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Referência da publicação: EuropeAid/139225/IH/WKS/MK</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Localização: Europa (não UE)/República da Macedónia do Norte</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>
+                  <FT TYPE="REFOJ">(Suplemento do Jornal Oficial da União Europeia, 5.6.2019, 2019/S 107-260332)</FT>
+               </P>
+            </STI_DOC>
+            <CONTENTS>
+               <P>
+                  <ADDRESS_NOT_STRUCT>
+                     <ORGANISATION>Ministry of Finance, Central Financing and Contracting Department (CFCD)</ORGANISATION>
+                     <BLK_BTX>, Dame Gruev 12, 1000</BLK_BTX>
+                     <TOWN>Skopje</TOWN>
+                     <BLK_BTX>, REPÚBLICA DA MACEDÓNIA DO NORTE</BLK_BTX>
+                  </ADDRESS_NOT_STRUCT>
+               </P>
+               <CORREC>
+                  <FOR_READ>
+                     <FOR>
+                        <INT_FOR>Em vez de:</INT_FOR>
+                        <OLD QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Data-limite de apresentação das propostas</P>
+                           <P>24.9.2019, 12:00 hora local, no endereço seguinte:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPÚBLICA DA MACEDÓNIA DO NORTE</P>
+                           <P>Horário de funcionamento da entidade adjudicante: de segunda a sexta-feira, das 8:30 às 16:30, hora local.</P>
+                           <P>As propostas apresentadas à entidade adjudicante após esta data-limite não serão tomadas em consideração.</P>
+                           <P>[...]</P>
+                           <P>20. Sessão de abertura das propostas</P>
+                           <P>1.10.2019, 10:00 hora local, no endereço seguinte:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPÚBLICA DA MACEDÓNIA DO NORTE</P>
+                           <P>Poderá assistir à abertura das propostas um representante autorizado de cada proponente. As empresas que desejam participar deverão indicá-lo enviando uma mensagem de correio eletrónico para cfcd@finance.gov.mk com, pelo menos, 48 horas de antecedência, com o nome do representante autorizado que irá assistir à sessão de abertura.</P>
+                           <P>[...]</P>
+                        </OLD>
+                     </FOR>
+                     <READ>
+                        <INT_READ>Ler:</INT_READ>
+                        <NEW QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Data-limite de apresentação das propostas</P>
+                           <P>25.10.2019, 12:00 hora local, no endereço seguinte:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPÚBLICA DA MACEDÓNIA DO NORTE</P>
+                           <P>Horário de funcionamento da entidade adjudicante: de segunda a sexta-feira, das 8:30 às 16:30, hora local.</P>
+                           <P>As propostas apresentadas à entidade adjudicante após esta data-limite não serão tomadas em consideração.</P>
+                           <P>[...]</P>
+                           <P>20. Sessão de abertura das propostas</P>
+                           <P>1.11.2019, 10:00 hora local, no endereço seguinte:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPÚBLICA DA MACEDÓNIA DO NORTE</P>
+                           <P>Poderá assistir à abertura das propostas um representante autorizado de cada proponente. As empresas que desejam participar deverão indicá-lo enviando uma mensagem de correio eletrónico para cfcd@finance.gov.mk com, pelo menos, 48 horas de antecedência, com o nome do representante autorizado que irá assistir à sessão de abertura.</P>
+                           <P>[...]</P>
+                        </NEW>
+                     </READ>
+                  </FOR_READ>
+               </CORREC>
+               <P>Todos os restantes termos e condições do anúncio de concurso permanecem inalterados. As modificações e/ou correções supramencionadas ao anúncio de concurso são parte integrante do mesmo.</P>
+            </CONTENTS>
+         </FD_OTH_NOT>
+      </OTH_NOT>
+      <OTH_NOT CATEGORY="TRANSLATION" LG="SV" VERSION="R2.0.8.S04.E01">
+         <FD_OTH_NOT>
+            <TI_DOC>
+               <P>MK-Skopje: IPA - Rehabilitering och utbyggnad av avloppsnät i Kičevo kommun</P>
+            </TI_DOC>
+            <STI_DOC>
+               <P>Rättelse nr 2 av meddelandet om upphandling</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Publikationsreferens: EuropeAid/139225/IH/WKS/MK</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Plats: Europa (länder utanför EU)/Republiken Nordmakedonien</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>
+                  <FT TYPE="REFOJ">(Tillägg till Europeiska unionens officiella tidning, 5.6.2019, 2019/S 107-260332)</FT>
+               </P>
+            </STI_DOC>
+            <CONTENTS>
+               <P>
+                  <ADDRESS_NOT_STRUCT>
+                     <ORGANISATION>Ministry of Finance, Central Financing and Contracting Department (CFCD)</ORGANISATION>
+                     <BLK_BTX>, Dame Gruev 12, 1000</BLK_BTX>
+                     <TOWN>Skopje</TOWN>
+                     <BLK_BTX>, REPUBLIKEN NORDMAKEDONIEN</BLK_BTX>
+                  </ADDRESS_NOT_STRUCT>
+               </P>
+               <CORREC>
+                  <FOR_READ>
+                     <FOR>
+                        <INT_FOR>I stället för:</INT_FOR>
+                        <OLD QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Sista datum för inlämning av anbud</P>
+                           <P>Den 24.9.2019, kl. 12:00, lokal tid till:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIKEN NORDMAKEDONIEN</P>
+                           <P>Den upphandlande myndigheten har följande öppettider: Måndag till fredag, 8:30–16:30 lokal tid.</P>
+                           <P>Ansökningar som inkommer till den upphandlande myndigheten efter denna tidsfrist kommer inte att beaktas.</P>
+                           <P>[...]</P>
+                           <P>20. Möte för öppnande av anbud</P>
+                           <P>Den 1.10.2019, kl. 10:00, lokal tid till:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIKEN NORDMAKEDONIEN</P>
+                           <P>Ett befullmäktigat ombud för varje anbudsgivare får närvara vid anbudsöppningen. Företag som önskar delta ombeds anmäla sin avsikt genom att skicka ett e-postmeddelande till cfcd@finance.gov.mk, minst 48 timmar i förväg. Ange namnet på det befullmäktigade ombudet som förväntas närvara vid mötet för öppnandet.</P>
+                           <P>[...]</P>
+                        </OLD>
+                     </FOR>
+                     <READ>
+                        <INT_READ>Skall det stå:</INT_READ>
+                        <NEW QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Sista datum för inlämning av anbud</P>
+                           <P>Den 25.10.2019, kl. 12:00, lokal tid till:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIKEN NORDMAKEDONIEN</P>
+                           <P>Den upphandlande myndigheten har följande öppettider: Måndag till fredag, 8:30–16:30 lokal tid.</P>
+                           <P>Ansökningar som inkommer till den upphandlande myndigheten efter denna tidsfrist kommer inte att beaktas.</P>
+                           <P>[...]</P>
+                           <P>20. Möte för öppnande av anbud</P>
+                           <P>Den 1.11.2019, kl. 10:00, lokal tid till:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIKEN NORDMAKEDONIEN</P>
+                           <P>Ett befullmäktigat ombud för varje anbudsgivare får närvara vid anbudsöppningen. Företag som önskar delta ombeds anmäla sin avsikt genom att skicka ett e-postmeddelande till cfcd@finance.gov.mk, minst 48 timmar i förväg. Ange namnet på det befullmäktigade ombudet som förväntas närvara vid mötet för öppnandet.</P>
+                           <P>[...]</P>
+                        </NEW>
+                     </READ>
+                  </FOR_READ>
+               </CORREC>
+               <P>Alla andra villkor och bestämmelser i meddelandet om upphandling förblir oförändrade. Ovannämnda ändringar och/eller rättelser av meddelandet om upphandling utgör en integrerad del av meddelandet om upphandling.</P>
+            </CONTENTS>
+         </FD_OTH_NOT>
+      </OTH_NOT>
+      <OTH_NOT CATEGORY="TRANSLATION" LG="CS" VERSION="R2.0.8.S04.E01">
+         <FD_OTH_NOT>
+            <TI_DOC>
+               <P>MK-Skopje: NPP - Obnovení a rozšíření kanalizační sítě ve městě Kičevo</P>
+            </TI_DOC>
+            <STI_DOC>
+               <P>Oprava č. 2 k oznámení o zakázce</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Referenční číslo: EuropeAid/139225/IH/WKS/MK</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Lokalita: Evropa (mimo EU) / Republika Severní Makedonie</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>
+                  <FT TYPE="REFOJ">(Dodatek k Úřednímu věstníku Evropské unie, 5.6.2019, 2019/S 107-260332)</FT>
+               </P>
+            </STI_DOC>
+            <CONTENTS>
+               <P>
+                  <ADDRESS_NOT_STRUCT>
+                     <ORGANISATION>Ministry of Finance, Central Financing and Contracting Department (CFCD)</ORGANISATION>
+                     <BLK_BTX>, Dame Gruev 12, 1000</BLK_BTX>
+                     <TOWN>Skopje</TOWN>
+                     <BLK_BTX>, REPUBLIKA SEVERNÍ MAKEDONIE</BLK_BTX>
+                  </ADDRESS_NOT_STRUCT>
+               </P>
+               <CORREC>
+                  <FOR_READ>
+                     <FOR>
+                        <INT_FOR>Namísto:</INT_FOR>
+                        <OLD QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Lhůta pro podání nabídek</P>
+                           <P>24.9.2019, 12:00 místního času na adrese:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIKA SEVERNÍ MAKEDONIE</P>
+                           <P>Úřední hodiny veřejného zadavatele: pondělí až pátek, 8:30 až 16:30, místní čas</P>
+                           <P>Jakákoli nabídka odevzdaná veřejnému zadavateli po této konečné lhůtě nebude brána v úvahu.</P>
+                           <P>[...]</P>
+                           <P>20. Otevírání nabídek</P>
+                           <P>1.10.2019, 10:00 místního času na adrese:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIKA SEVERNÍ MAKEDONIE</P>
+                           <P>Otevírání nabídek se může účastnit oprávněný zástupce každého uchazeče. Společnosti, které se chtějí zúčastnit, žádáme, aby svůj záměr oznámily zasláním e-mailu na adresu cfcd@finance.gov.mk alespoň 48 hodin předem, včetně jména oprávněného zástupce, který se zúčastní otevírání nabídek.</P>
+                           <P>[...]</P>
+                        </OLD>
+                     </FOR>
+                     <READ>
+                        <INT_READ>Čtěte:</INT_READ>
+                        <NEW QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Lhůta pro podání nabídek</P>
+                           <P>25.10.2019, 12:00 místního času na adrese:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIKA SEVERNÍ MAKEDONIE</P>
+                           <P>Úřední hodiny veřejného zadavatele: pondělí až pátek, 8:30 až 16:30, místní čas</P>
+                           <P>Jakákoli nabídka odevzdaná veřejnému zadavateli po této konečné lhůtě nebude brána v úvahu.</P>
+                           <P>[...]</P>
+                           <P>20. Otevírání nabídek</P>
+                           <P>1.11.2019, 10:00 místního času na adrese:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIKA SEVERNÍ MAKEDONIE</P>
+                           <P>Otevírání nabídek se může účastnit oprávněný zástupce každého uchazeče. Společnosti, které se chtějí zúčastnit, žádáme, aby svůj záměr oznámily zasláním e-mailu na adresu cfcd@finance.gov.mk alespoň 48 hodin předem, včetně jména oprávněného zástupce, který se zúčastní otevírání nabídek.</P>
+                           <P>[...]</P>
+                        </NEW>
+                     </READ>
+                  </FOR_READ>
+               </CORREC>
+               <P>Další smluvní podmínky oznámení o zakázce zůstávají beze změn. Výše uvedené úpravy a/nebo opravy oznámení o zakázce jsou nedílnou součástí oznámení o zakázce.</P>
+            </CONTENTS>
+         </FD_OTH_NOT>
+      </OTH_NOT>
+      <OTH_NOT CATEGORY="TRANSLATION" LG="ET" VERSION="R2.0.8.S04.E01">
+         <FD_OTH_NOT>
+            <TI_DOC>
+               <P>MK-Skopje: IPA - Kichevo omavalitsuses kanalisatsioonivõrgu ümberehitamine ja laiendamine</P>
+            </TI_DOC>
+            <STI_DOC>
+               <P>Hanketeate parandus nr 2</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Avaldamise viide: EuropeAid/139225/IH/WKS/MK</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Asukoht: Euroopa (ELi mittekuuluv) / Põhja-Makedoonia Vabariik</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>
+                  <FT TYPE="REFOJ">(Euroopa Liidu Teataja täiendus, 5.6.2019, 2019/S 107-260332)</FT>
+               </P>
+            </STI_DOC>
+            <CONTENTS>
+               <P>
+                  <ADDRESS_NOT_STRUCT>
+                     <ORGANISATION>Ministry of Finance, Central Financing and Contracting Department (CFCD)</ORGANISATION>
+                     <BLK_BTX>, Dame Gruev 12, 1000</BLK_BTX>
+                     <TOWN>Skopje</TOWN>
+                     <BLK_BTX>, PÕHJA-MAKEDOONIA VABARIIK</BLK_BTX>
+                  </ADDRESS_NOT_STRUCT>
+               </P>
+               <CORREC>
+                  <FOR_READ>
+                     <FOR>
+                        <INT_FOR>Enne:</INT_FOR>
+                        <OLD QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Pakkumuste esitamise tähtaeg</P>
+                           <P>24.9.2019 kell 12:00 kohaliku aja järgi järgmisel aadressil:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, PÕHJA-MAKEDOONIA VABARIIK</P>
+                           <P>Avaliku sektori hankija tööaeg on: esmaspäevast reedeni 8:30–16:30 kohaliku aja järgi</P>
+                           <P>Pärast nimetatud tähtaega avaliku sektori hankijale laekunud taotlused ei kuulu läbivaatamisele.</P>
+                           <P>[...]</P>
+                           <P>20. Pakkumuste avamine</P>
+                           <P>1.10.2019 kell 10:00 kohaliku aja järgi järgmisel aadressil:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, PÕHJA-MAKEDOONIA VABARIIK</P>
+                           <P>Pakkumuste avamisel võib osaleda iga pakkuja üks volitatud esindaja. Osaleda soovivad ettevõtted peavad oma kavatsusest teada andma e-posti teel (aadressil cfcd@finance.gov.mk) hiljemalt 48 tundi enne avamist, teatades avamisistungil eeldatavasti osaleva volitatud esindaja nime.</P>
+                           <P>[...]</P>
+                        </OLD>
+                     </FOR>
+                     <READ>
+                        <INT_READ>Uus versioon:</INT_READ>
+                        <NEW QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Pakkumuste esitamise tähtaeg</P>
+                           <P>25.10.2019 kell 12:00 kohaliku aja järgi järgmisel aadressil:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, PÕHJA-MAKEDOONIA VABARIIK</P>
+                           <P>Avaliku sektori hankija tööaeg on: esmaspäevast reedeni 8:30–16:30 kohaliku aja järgi</P>
+                           <P>Pärast nimetatud tähtaega avaliku sektori hankijale laekunud taotlused ei kuulu läbivaatamisele.</P>
+                           <P>[...]</P>
+                           <P>20. Pakkumuste avamine</P>
+                           <P>1.11.2019 kell 10:00 kohaliku aja järgi järgmisel aadressil:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, PÕHJA-MAKEDOONIA VABARIIK</P>
+                           <P>Pakkumuste avamisel võib osaleda iga pakkuja üks volitatud esindaja. Osaleda soovivad ettevõtted peavad oma kavatsusest teada andma e-posti teel (aadressil cfcd@finance.gov.mk) hiljemalt 48 tundi enne avamist, teatades avamisistungil eeldatavasti osaleva volitatud esindaja nime.</P>
+                           <P>[...]</P>
+                        </NEW>
+                     </READ>
+                  </FOR_READ>
+               </CORREC>
+               <P>Kõik muud hanketeate tingimused jäävad muutmata. Hanketeate ülalnimetatud muudatused ja/või parandused on hanketeate lahutamatu osa.</P>
+            </CONTENTS>
+         </FD_OTH_NOT>
+      </OTH_NOT>
+      <OTH_NOT CATEGORY="TRANSLATION" LG="HU" VERSION="R2.0.8.S04.E01">
+         <FD_OTH_NOT>
+            <TI_DOC>
+               <P>MK-Szkopje: IPA - Kichevo település szennyvízhálózatának felújítása és bővítése</P>
+            </TI_DOC>
+            <STI_DOC>
+               <P>Az ajánlati felhívás 2. sz. helyesbítése</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>A közzététel hivatkozási száma: EuropeAid/139225/IH/WKS/MK</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Helyszín: Európa (nem EU-ország) / Észak-macedón Köztársaság</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>
+                  <FT TYPE="REFOJ">(Kiegészítés az Európai Unió Hivatalos Lapjához, 5.6.2019, 2019/S 107-260332)</FT>
+               </P>
+            </STI_DOC>
+            <CONTENTS>
+               <P>
+                  <ADDRESS_NOT_STRUCT>
+                     <ORGANISATION>Ministry of Finance, Central Financing and Contracting Department (CFCD)</ORGANISATION>
+                     <BLK_BTX>, Dame Gruev 12, 1000</BLK_BTX>
+                     <TOWN>Skopje</TOWN>
+                     <BLK_BTX>, ÉSZAK-MACEDÓN KÖZTÁRSASÁG</BLK_BTX>
+                  </ADDRESS_NOT_STRUCT>
+               </P>
+               <CORREC>
+                  <FOR_READ>
+                     <FOR>
+                        <INT_FOR>A következő helyett:</INT_FOR>
+                        <OLD QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. A pályázatok beérkezési határideje</P>
+                           <P>24.9.2019 (12:00), helyi idő szerint az alábbi címre:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, ÉSZAK-MACEDÓN KÖZTÁRSASÁG</P>
+                           <P>Az ajánlatkérő ügyfélfogadási ideje: hétfőtől péntekig 8:30 és 16:30 között, helyi idő szerint</P>
+                           <P>A fenti határidő után beérkezett pályázatokat az ajánlatkérő figyelmen kívül hagyja.</P>
+                           <P>[...]</P>
+                           <P>20. Tenderbontás</P>
+                           <P>1.10.2019 (10:00), helyi idő szerint az alábbi címre:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, ÉSZAK-MACEDÓN KÖZTÁRSASÁG</P>
+                           <P>A pályázatbontáson ajánlattevőnként 1 felhatalmazott képviselő lehet jelen. Kérjük a részt venni szándékozó vállalatokat, hogy a pályázatbontás előtt legalább 48 órával küldjenek értesítést szándékukról a cfcd@finance.gov.mk email-címre a felhatalmazott képviselőjük nevével együtt.</P>
+                           <P>[...]</P>
+                        </OLD>
+                     </FOR>
+                     <READ>
+                        <INT_READ>Helyesen:</INT_READ>
+                        <NEW QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. A pályázatok beérkezési határideje</P>
+                           <P>25.10.2019 (12:00), helyi idő szerint az alábbi címre:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, ÉSZAK-MACEDÓN KÖZTÁRSASÁG</P>
+                           <P>Az ajánlatkérő ügyfélfogadási ideje: hétfőtől péntekig 8:30 és 16:30 között, helyi idő szerint</P>
+                           <P>A fenti határidő után beérkezett pályázatokat az ajánlatkérő figyelmen kívül hagyja.</P>
+                           <P>[...]</P>
+                           <P>20. Tenderbontás</P>
+                           <P>1.11.2019 (10:00), helyi idő szerint az alábbi címre:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, ÉSZAK-MACEDÓN KÖZTÁRSASÁG</P>
+                           <P>A pályázatbontáson ajánlattevőnként 1 felhatalmazott képviselő lehet jelen. Kérjük a részt venni szándékozó vállalatokat, hogy a pályázatbontás előtt legalább 48 órával küldjenek értesítést szándékukról a cfcd@finance.gov.mk email-címre a felhatalmazott képviselőjük nevével együtt.</P>
+                           <P>[...]</P>
+                        </NEW>
+                     </READ>
+                  </FOR_READ>
+               </CORREC>
+               <P>Az ajánlati felhívás többi feltétele változatlan marad. Az ajánlati felhívás fenti módosításai és/vagy javításai annak szerves részét képezik.</P>
+            </CONTENTS>
+         </FD_OTH_NOT>
+      </OTH_NOT>
+      <OTH_NOT CATEGORY="TRANSLATION" LG="LT" VERSION="R2.0.8.S04.E01">
+         <FD_OTH_NOT>
+            <TI_DOC>
+               <P>MK-Skopjė: PNPP - Kanalizacijos tinklo atnaujinimas ir išplėtimas Kičevo savivaldybėje</P>
+            </TI_DOC>
+            <STI_DOC>
+               <P>Skelbimo apie pirkimą klaidų ištaisymas Nr. 2</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Nuoroda į publikaciją: EuropeAid/139225/IH/WKS/MK</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Vieta: Europa (ne ES) / Šiaurės Makedonijos Respublika</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>
+                  <FT TYPE="REFOJ">(Europos Bendrijos Oficialiojo Leidinio priedas, 5.6.2019, 2019/S 107-260332)</FT>
+               </P>
+            </STI_DOC>
+            <CONTENTS>
+               <P>
+                  <ADDRESS_NOT_STRUCT>
+                     <ORGANISATION>Ministry of Finance, Central Financing and Contracting Department (CFCD)</ORGANISATION>
+                     <BLK_BTX>, Dame Gruev 12, 1000</BLK_BTX>
+                     <TOWN>Skopje</TOWN>
+                     <BLK_BTX>, ŠIAURĖS MAKEDONIJOS RESPUBLIKA</BLK_BTX>
+                  </ADDRESS_NOT_STRUCT>
+               </P>
+               <CORREC>
+                  <FOR_READ>
+                     <FOR>
+                        <INT_FOR>Vietoj:</INT_FOR>
+                        <OLD QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Pasiūlymų pateikimo terminas</P>
+                           <P>24.9.2019 (12:00) vietos laiku adresu:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, ŠIAURĖS MAKEDONIJOS RESPUBLIKA</P>
+                           <P>Perkančiosios organizacijos darbo laikas: pirmadieniais–penktadieniais nuo 8:30 iki 16:30 vietos laiku.</P>
+                           <P>Pasiūlymai, perkančiosios organizacijos gauti pasibaigus šiam terminui, nebus svarstomi.</P>
+                           <P>[...]</P>
+                           <P>20. Vokų su pasiūlymais atplėšimo procedūra</P>
+                           <P>1.10.2019 (10:00) vietos laiku adresu:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, ŠIAURĖS MAKEDONIJOS RESPUBLIKA</P>
+                           <P>Vokų su pasiūlymais atplėšimo procedūroje gali dalyvauti įgaliotas kiekvieno konkurso dalyvio atstovas. Įmonės, pageidaujančios dalyvauti procedūroje, turi bent prieš 48 valandas pranešti apie savo ketinimą atsiųsdamos el. laišką adresu: cfcd@finance.gov.mk, nurodant įgaliotojo atstovo vardą, pavardę, kuris dalyvaus vokų atplėšimo procedūroje.</P>
+                           <P>[...]</P>
+                        </OLD>
+                     </FOR>
+                     <READ>
+                        <INT_READ>Turi būti:</INT_READ>
+                        <NEW QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Pasiūlymų pateikimo terminas</P>
+                           <P>25.10.2019 (12:00) vietos laiku adresu:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, ŠIAURĖS MAKEDONIJOS RESPUBLIKA</P>
+                           <P>Perkančiosios organizacijos darbo laikas: pirmadieniais–penktadieniais nuo 8:30 iki 16:30 vietos laiku.</P>
+                           <P>Pasiūlymai, perkančiosios organizacijos gauti pasibaigus šiam terminui, nebus svarstomi.</P>
+                           <P>[...]</P>
+                           <P>20. Vokų su pasiūlymais atplėšimo procedūra</P>
+                           <P>1.11.2019 (10:00) vietos laiku adresu:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, ŠIAURĖS MAKEDONIJOS RESPUBLIKA</P>
+                           <P>Vokų su pasiūlymais atplėšimo procedūroje gali dalyvauti įgaliotas kiekvieno konkurso dalyvio atstovas. Įmonės, pageidaujančios dalyvauti procedūroje, turi bent prieš 48 valandas pranešti apie savo ketinimą atsiųsdamos el. laišką adresu: cfcd@finance.gov.mk, nurodant įgaliotojo atstovo vardą, pavardę, kuris dalyvaus vokų atplėšimo procedūroje.</P>
+                           <P>[...]</P>
+                        </NEW>
+                     </READ>
+                  </FOR_READ>
+               </CORREC>
+               <P>Visos kitos skelbimo apie pirkimą nuostatos ir sąlygos lieka nepakeistos. Pirmiau išvardyti skelbimo apie pirkimą pakeitimai ir (arba) pataisymai yra neatskiriama skelbimo apie pirkimą dalis.</P>
+            </CONTENTS>
+         </FD_OTH_NOT>
+      </OTH_NOT>
+      <OTH_NOT CATEGORY="TRANSLATION" LG="LV" VERSION="R2.0.8.S04.E01">
+         <FD_OTH_NOT>
+            <TI_DOC>
+               <P>MK-Skopje: IPA - Kanalizācijas tīkla atjaunošana un paplašināšana Kičevas pašvaldības teritorijā</P>
+            </TI_DOC>
+            <STI_DOC>
+               <P>Paziņojuma par līgumu labojums Nr. 2</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Atsauce uz publikāciju: EuropeAid/139225/IH/WKS/MK</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Vieta: Eiropa (ārpus ES), Ziemeļmaķedonijas Republika</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>
+                  <FT TYPE="REFOJ">(Eiropas Savienības Oficiālā Vēstneša pielikums, 5.6.2019, 2019/S 107-260332)</FT>
+               </P>
+            </STI_DOC>
+            <CONTENTS>
+               <P>
+                  <ADDRESS_NOT_STRUCT>
+                     <ORGANISATION>Ministry of Finance, Central Financing and Contracting Department (CFCD)</ORGANISATION>
+                     <BLK_BTX>, Dame Gruev 12, 1000</BLK_BTX>
+                     <TOWN>Skopje</TOWN>
+                     <BLK_BTX>, ZIEMEĻMAĶEDONIJAS REPUBLIKA</BLK_BTX>
+                  </ADDRESS_NOT_STRUCT>
+               </P>
+               <CORREC>
+                  <FOR_READ>
+                     <FOR>
+                        <INT_FOR>Šī teksta vietā:</INT_FOR>
+                        <OLD QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Piedāvājumu iesniegšanas termiņš</P>
+                           <P>24.9.2019 (12:00) pēc vietējā laika šādā adresē:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, ZIEMEĻMAĶEDONIJAS REPUBLIKA</P>
+                           <P>Līgumslēdzējas iestādes darbalaiks: no pirmdienas līdz piektdienai plkst. 8:30–16:30 pēc vietējā laika.</P>
+                           <P>Neviens piedāvājums, ko līgumslēdzēja iestāde saņems pēc minētā termiņa, netiks izskatīts.</P>
+                           <P>[...]</P>
+                           <P>20. Piedāvājumu atvēršanas sanāksme</P>
+                           <P>1.10.2019 (10:00) pēc vietējā laika šādā adresē:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, ZIEMEĻMAĶEDONIJAS REPUBLIKA</P>
+                           <P>Piedāvājumu atvēršanā var piedalīties 1 katra pretendenta pilnvarots pārstāvis. Uzņēmumiem, kas vēlas piedalīties, par to ir jāpaziņo vismaz 48 stundas iepriekš, nosūtot e-pasta ziņojumu uz cfcd@finance.gov.mk un norādot tajā tās personas vārdu un uzvārdu, kas piedalīsies piedāvājumu atvēršanas sanāksmē.</P>
+                           <P>[...]</P>
+                        </OLD>
+                     </FOR>
+                     <READ>
+                        <INT_READ>Jābūt:</INT_READ>
+                        <NEW QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Piedāvājumu iesniegšanas termiņš</P>
+                           <P>25.10.2019 (12:00) pēc vietējā laika šādā adresē:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, ZIEMEĻMAĶEDONIJAS REPUBLIKA</P>
+                           <P>Līgumslēdzējas iestādes darbalaiks: no pirmdienas līdz piektdienai plkst. 8:30–16:30 pēc vietējā laika.</P>
+                           <P>Neviens piedāvājums, ko līgumslēdzēja iestāde saņems pēc minētā termiņa, netiks izskatīts.</P>
+                           <P>[...]</P>
+                           <P>20. Piedāvājumu atvēršanas sanāksme</P>
+                           <P>1.11.2019 (10:00) pēc vietējā laika šādā adresē:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, ZIEMEĻMAĶEDONIJAS REPUBLIKA</P>
+                           <P>Piedāvājumu atvēršanā var piedalīties 1 katra pretendenta pilnvarots pārstāvis. Uzņēmumiem, kas vēlas piedalīties, par to ir jāpaziņo vismaz 48 stundas iepriekš, nosūtot e-pasta ziņojumu uz cfcd@finance.gov.mk un norādot tajā tās personas vārdu un uzvārdu, kas piedalīsies piedāvājumu atvēršanas sanāksmē.</P>
+                           <P>[...]</P>
+                        </NEW>
+                     </READ>
+                  </FOR_READ>
+               </CORREC>
+               <P>Visi pārējie paziņojuma par līgumu noteikumi un nosacījumi paliek nemainīgi. Iepriekš minētās izmaiņas un/vai labojumi paziņojumā par līgumu ir neatņemama paziņojuma par līgumu daļa.</P>
+            </CONTENTS>
+         </FD_OTH_NOT>
+      </OTH_NOT>
+      <OTH_NOT CATEGORY="TRANSLATION" LG="MT" VERSION="R2.0.8.S04.E01">
+         <FD_OTH_NOT>
+            <TI_DOC>
+               <P>MK-Skopje: SGħQD - Ir-Riabilitazzjoni u l-Estensjoni tan-Netwerk tad-Drenaġġ fil-Muniċipalità ta' Kichevo</P>
+            </TI_DOC>
+            <STI_DOC>
+               <P>Tiswija Nru 2 għall-Avviż dwar Kuntratt</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Ir-referenza tal-pubblikazzjoni: EuropeAid/139225/IH/WKS/MK</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Il-post: l-Ewropa (mhux fl-UE)/ ir-Repubblika tal-Maċedonja ta' Fuq</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>
+                  <FT TYPE="REFOJ">(Supplement tal-Gurnal Ufficjali ta’ l-Unjoni Ewropea’, 5.6.2019, 2019/S 107-260332)</FT>
+               </P>
+            </STI_DOC>
+            <CONTENTS>
+               <P>
+                  <ADDRESS_NOT_STRUCT>
+                     <ORGANISATION>Ministry of Finance, Central Financing and Contracting Department (CFCD)</ORGANISATION>
+                     <BLK_BTX>, Dame Gruev 12, 1000</BLK_BTX>
+                     <TOWN>Skopje</TOWN>
+                     <BLK_BTX>, IR-REPUBBLIKA TAL-MAĊEDONJA TA' FUQ</BLK_BTX>
+                  </ADDRESS_NOT_STRUCT>
+               </P>
+               <CORREC>
+                  <FOR_READ>
+                     <FOR>
+                        <INT_FOR>Minflok:</INT_FOR>
+                        <OLD QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Id-data tal-għeluq għat-tfigħ tal-offerti</P>
+                           <P>24.9.2019, fl-12:00 ħin lokali fl-indirizz:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, IR-REPUBBLIKA TAL-MAĊEDONJA TA' FUQ.</P>
+                           <P>Il-ħinijiet tal-ftuħ tal-Awtorità li qiegħda toħroġ il-kuntratt huma: Mit-Tnejn sal-Ġimgħa, mit-8:30 sal-16:30 ħin lokali</P>
+                           <P>Kwalunkwe offerta li tintefa' lill-awtorità li qiegħda toħroġ il-kuntratt wara din id-data tal-għeluq mhix se titqies.</P>
+                           <P>[...]</P>
+                           <P>20. Is-seduta tal-ftuħ tal-offerti</P>
+                           <P>1.10.2019, fl-10:00 ħin lokali fl-indirizz:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, IR-REPUBBLIKA TAL-MAĊEDONJA TA' FUQ.</P>
+                           <P>Rappreżentant awtorizzat għal kull min jitfa' offerta jista' jattendi għall-ftuħ tal-offerti. Il-kumpaniji li jixtiequ jattendu huma mitluba jinnotifikaw l-intenzjoni tagħhom billi jibagħtu email lil cfcd@finance.gov.mk mill-inqas 48 siegħa qabel, bl-isem tar-rappreżentant awtorizzat mistenni li jattendi s-seduta tal-ftuħ.</P>
+                           <P>[...]</P>
+                        </OLD>
+                     </FOR>
+                     <READ>
+                        <INT_READ>Aqra:</INT_READ>
+                        <NEW QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Id-data tal-għeluq għat-tfigħ tal-offerti</P>
+                           <P>25.10.2019, fl-12:00 ħin lokali fl-indirizz:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, IR-REPUBBLIKA TAL-MAĊEDONJA TA' FUQ.</P>
+                           <P>Il-ħinijiet tal-ftuħ tal-Awtorità li qiegħda toħroġ il-kuntratt huma: Mit-Tnejn sal-Ġimgħa, mit-8:30 sal-16:30 ħin lokali</P>
+                           <P>Kwalunkwe offerta li tintefa' lill-awtorità li qiegħda toħroġ il-kuntratt wara din id-data tal-għeluq mhix se titqies.</P>
+                           <P>[...]</P>
+                           <P>20. Is-seduta tal-ftuħ tal-offerti</P>
+                           <P>1.11.2019, fl-10:00 ħin lokali fl-indirizz:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, IR-REPUBBLIKA TAL-MAĊEDONJA TA' FUQ.</P>
+                           <P>Rappreżentant awtorizzat għal kull min jitfa' offerta jista' jattendi għall-ftuħ tal-offerti. Il-kumpaniji li jixtiequ jattendu huma mitluba jinnotifikaw l-intenzjoni tagħhom billi jibagħtu email lil cfcd@finance.gov.mk mill-inqas 48 siegħa qabel, bl-isem tar-rappreżentant awtorizzat mistenni li jattendi s-seduta tal-ftuħ.</P>
+                           <P>[...]</P>
+                        </NEW>
+                     </READ>
+                  </FOR_READ>
+               </CORREC>
+               <P>It-termini u l-kundizzjonijiet l-oħrajn kollha tal-avviż dwar kuntratt jibqgħu ma jinbidlux. It-tibdiliet u/jew it-tiswijiet ta' hawn fuq lill-avviż dwar kuntratt huma parti integrali mill-avviż dwar kuntratt.</P>
+            </CONTENTS>
+         </FD_OTH_NOT>
+      </OTH_NOT>
+      <OTH_NOT CATEGORY="TRANSLATION" LG="PL" VERSION="R2.0.8.S04.E01">
+         <FD_OTH_NOT>
+            <TI_DOC>
+               <P>MK-Skopje: IPA - Remont i rozbudowa sieci kanalizacyjnej w gminie Kiczewo</P>
+            </TI_DOC>
+            <STI_DOC>
+               <P>Sprostowanie nr 2 ogłoszenia o zamówieniu</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Numer referencyjny publikacji: EuropeAid/139225/IH/WKS/MK</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Lokalizacja: Europa (państwa niebędące członkami UE) / Republika Macedonii Północnej</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>
+                  <FT TYPE="REFOJ">(Suplement do Dziennika Urzędowego Unii Europejskiej, 5.6.2019, 2019/S 107-260332)</FT>
+               </P>
+            </STI_DOC>
+            <CONTENTS>
+               <P>
+                  <ADDRESS_NOT_STRUCT>
+                     <ORGANISATION>Ministry of Finance, Central Financing and Contracting Department (CFCD)</ORGANISATION>
+                     <BLK_BTX>, Dame Gruev 12, 1000</BLK_BTX>
+                     <TOWN>Skopje</TOWN>
+                     <BLK_BTX>, REPUBLIKA MACEDONII PÓŁNOCNEJ</BLK_BTX>
+                  </ADDRESS_NOT_STRUCT>
+               </P>
+               <CORREC>
+                  <FOR_READ>
+                     <FOR>
+                        <INT_FOR>Zamiast:</INT_FOR>
+                        <OLD QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Termin składania ofert</P>
+                           <P>24.9.2019, 12:00 czasu lokalnego, pod adresem:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIKA MACEDONII PÓŁNOCNEJ.</P>
+                           <P>Godziny pracy instytucji zamawiającej są następujące: od poniedziałku do piątku w godz. 8:30–16:30 czasu lokalnego.</P>
+                           <P>Oferty otrzymane przez instytucję zamawiającą po upływie tego terminu nie będą rozpatrywane.</P>
+                           <P>[...]</P>
+                           <P>20. Otwarcie ofert</P>
+                           <P>1.10.2019, 10:00 czasu lokalnego, pod adresem:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIKA MACEDONII PÓŁNOCNEJ.</P>
+                           <P>W sesji otwarcia ofert może uczestniczyć 1 upoważniony przedstawiciel każdego oferenta. Firmy pragnące wziąć udział w sesji otwarcia proszone są o zgłoszenie pod następujący adres e-mail: cfcd@finance.gov.mk, z co najmniej 48-godzinnym wyprzedzeniem, podając imię i nazwisko upoważnionego przedstawiciela, który ma wziąć udział w sesji otwarcia ofert.</P>
+                           <P>[...]</P>
+                        </OLD>
+                     </FOR>
+                     <READ>
+                        <INT_READ>Powinno być:</INT_READ>
+                        <NEW QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Termin składania ofert</P>
+                           <P>25.10.2019, 12:00 czasu lokalnego, pod adresem:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIKA MACEDONII PÓŁNOCNEJ.</P>
+                           <P>Godziny pracy instytucji zamawiającej są następujące: od poniedziałku do piątku w godz. 8:30–16:30 czasu lokalnego.</P>
+                           <P>Oferty otrzymane przez instytucję zamawiającą po upływie tego terminu nie będą rozpatrywane.</P>
+                           <P>[...]</P>
+                           <P>20. Otwarcie ofert</P>
+                           <P>1.11.2019, 10:00 czasu lokalnego, pod adresem:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIKA MACEDONII PÓŁNOCNEJ.</P>
+                           <P>W sesji otwarcia ofert może uczestniczyć 1 upoważniony przedstawiciel każdego oferenta. Firmy pragnące wziąć udział w sesji otwarcia proszone są o zgłoszenie pod następujący adres e-mail: cfcd@finance.gov.mk, z co najmniej 48-godzinnym wyprzedzeniem, podając imię i nazwisko upoważnionego przedstawiciela, który ma wziąć udział w sesji otwarcia ofert.</P>
+                           <P>[...]</P>
+                        </NEW>
+                     </READ>
+                  </FOR_READ>
+               </CORREC>
+               <P>Pozostałe warunki wymienione w ogłoszeniu o zamówieniu nie ulegają zmianie. Powyższe zmiany i/lub poprawki ogłoszenia o zamówieniu stanowią jego integralną część.</P>
+            </CONTENTS>
+         </FD_OTH_NOT>
+      </OTH_NOT>
+      <OTH_NOT CATEGORY="TRANSLATION" LG="SK" VERSION="R2.0.8.S04.E01">
+         <FD_OTH_NOT>
+            <TI_DOC>
+               <P>MK-Skopje: IPA - Obnova a rozšírenie kanalizačnej siete v meste Kičevo</P>
+            </TI_DOC>
+            <STI_DOC>
+               <P>Korigendum č. 2 k oznámeniu o vyhlásení verejného obstarávania</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Referenčné číslo: EuropeAid/139225/IH/WKS/MK</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Miesto: Európa (mimo EÚ)/Severomacedónska republika</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>
+                  <FT TYPE="REFOJ">(Príloha k Úradnému vestníku Európskej únie, 5.6.2019, 2019/S 107-260332)</FT>
+               </P>
+            </STI_DOC>
+            <CONTENTS>
+               <P>
+                  <ADDRESS_NOT_STRUCT>
+                     <ORGANISATION>Ministry of Finance, Central Financing and Contracting Department (CFCD)</ORGANISATION>
+                     <BLK_BTX>“Dame Gruev” 12, 1000</BLK_BTX>
+                     <TOWN>Skopje</TOWN>
+                     <BLK_BTX>, SEVEROMACEDÓNSKA REPUBLIKA</BLK_BTX>
+                  </ADDRESS_NOT_STRUCT>
+               </P>
+               <CORREC>
+                  <FOR_READ>
+                     <FOR>
+                        <INT_FOR>Namiesto:</INT_FOR>
+                        <OLD QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Konečný termín predloženia ponúk</P>
+                           <P>24.9.2019, 12.00 miestneho času na adresu:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, SEVEROMACEDÓNSKA REPUBLIKA</P>
+                           <P>Pracovné hodiny verejného obstarávateľa: pondelok až piatok, 8:30 – 16:30 hod. miestneho času</P>
+                           <P>Ponuky predložené verejnému obstarávateľovi po tomto termíne sa nebudú brať do úvahy.</P>
+                           <P>[...]</P>
+                           <P>20. Otváranie ponúk</P>
+                           <P>1.10.2019, 10:00 miestneho času na adresu:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, SEVEROMACEDÓNSKA REPUBLIKA</P>
+                           <P>Otvárania ponúk sa môže zúčastniť jeden oprávnený zástupca za každého uchádzača. Spoločnosti, ktoré sa chcú zúčastniť, sú povinné oznámiť svoj úmysel zaslaním e-mailu na adresu cfcd@finance.gov.mk najmenej 48 hodín vopred s uvedením mena oprávneného zástupcu, ktorý sa zúčastní na otváraní ponúk.</P>
+                           <P>[...]</P>
+                        </OLD>
+                     </FOR>
+                     <READ>
+                        <INT_READ>Viď:</INT_READ>
+                        <NEW QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Konečný termín predloženia ponúk</P>
+                           <P>25.10.2019, 12:00 miestneho času na adresu:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, SEVEROMACEDÓNSKA REPUBLIKA</P>
+                           <P>Pracovné hodiny verejného obstarávateľa: pondelok až piatok, 8:30 – 16:30 hod. miestneho času</P>
+                           <P>Ponuky predložené verejnému obstarávateľovi po tomto termíne sa nebudú brať do úvahy.</P>
+                           <P>[...]</P>
+                           <P>20. Otváranie ponúk</P>
+                           <P>1.11.2019, 10:00 miestneho času na adresu:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, SEVEROMACEDÓNSKA REPUBLIKA</P>
+                           <P>Otvárania ponúk sa môže zúčastniť jeden oprávnený zástupca za každého uchádzača. Spoločnosti, ktoré sa chcú zúčastniť, sú povinné oznámiť svoj úmysel zaslaním e-mailu na adresu cfcd@finance.gov.mk najmenej 48 hodín vopred s uvedením mena oprávneného zástupcu, ktorý sa zúčastní na otváraní ponúk.</P>
+                           <P>[...]</P>
+                        </NEW>
+                     </READ>
+                  </FOR_READ>
+               </CORREC>
+               <P>Všetky ostatné body a podmienky oznámenia o vyhlásení verejného obstarávania zostanú nezmenené. Vyššie uvedené zmeny a/alebo úpravy v oznámení o vyhlásení verejného obstarávania tvoria neoddeliteľnú súčasť oznámenia.</P>
+            </CONTENTS>
+         </FD_OTH_NOT>
+      </OTH_NOT>
+      <OTH_NOT CATEGORY="TRANSLATION" LG="SL" VERSION="R2.0.8.S04.E01">
+         <FD_OTH_NOT>
+            <TI_DOC>
+               <P>MK-Skopje: IPA - Sanacija in razširitev kanalizacijskega omrežja v občini Kičevo</P>
+            </TI_DOC>
+            <STI_DOC>
+               <P>Popravek št. 2 obvestila o naročilu</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Referenčna številka objave: EuropeAid/139225/IH/WKS/MK</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Lokacija: Evropa (zunaj EU), Republika Severna Makedonija</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>
+                  <FT TYPE="REFOJ">(Dodatek k Uradnemu listu Evropske unije, 5.6.2019, 2019/S 107-260332)</FT>
+               </P>
+            </STI_DOC>
+            <CONTENTS>
+               <P>
+                  <ADDRESS_NOT_STRUCT>
+                     <ORGANISATION>Ministry of Finance, Central Financing and Contracting Department (CFCD)</ORGANISATION>
+                     <BLK_BTX>, Dame Gruev 12, 1000</BLK_BTX>
+                     <TOWN>Skopje</TOWN>
+                     <BLK_BTX>, REPUBLIKA SEVERNA MAKEDONIJA.</BLK_BTX>
+                  </ADDRESS_NOT_STRUCT>
+               </P>
+               <CORREC>
+                  <FOR_READ>
+                     <FOR>
+                        <INT_FOR>Namesto:</INT_FOR>
+                        <OLD QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Rok za oddajo ponudb</P>
+                           <P>24.9.2019 (12:00) po lokalnem času na:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIKA SEVERNA MAKEDONIJA.</P>
+                           <P>Delovni čas naročnika: Od ponedeljka do petka 8:30–16:30 po lokalnem času.</P>
+                           <P>Ponudbe, ki bodo naročniku oddane po tem skrajnem roku, ne bodo upoštevane.</P>
+                           <P>[...]</P>
+                           <P>20. Odpiranje ponudb</P>
+                           <P>1.10.2019 (10:00) po lokalnem času na:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIKA SEVERNA MAKEDONIJA.</P>
+                           <P>Odpiranja ponudb se lahko udeleži 1 pooblaščeni zastopnik vsakega ponudnika. Podjetja, ki se želijo odpiranja udeležiti, naj svojo namero sporočijo po elektronski pošti na naslov cfcd@finance.gov.mk najpozneje 48 ur vnaprej, z navedbo imena pooblaščenega zastopnika, ki se bo udeležil odpiranja.</P>
+                           <P>[...]</P>
+                        </OLD>
+                     </FOR>
+                     <READ>
+                        <INT_READ>Beri:</INT_READ>
+                        <NEW QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Rok za oddajo ponudb</P>
+                           <P>25.10.2019 (12:00) po lokalnem času na:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIKA SEVERNA MAKEDONIJA.</P>
+                           <P>Delovni čas naročnika: Od ponedeljka do petka 8:30–16:30 po lokalnem času.</P>
+                           <P>Ponudbe, ki bodo naročniku oddane po tem skrajnem roku, ne bodo upoštevane.</P>
+                           <P>[...]</P>
+                           <P>20. Odpiranje ponudb</P>
+                           <P>1.11.2019 (10:00) po lokalnem času na:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIKA SEVERNA MAKEDONIJA.</P>
+                           <P>Odpiranja ponudb se lahko udeleži 1 pooblaščeni zastopnik vsakega ponudnika. Podjetja, ki se želijo odpiranja udeležiti, naj svojo namero sporočijo po elektronski pošti na naslov cfcd@finance.gov.mk najpozneje 48 ur vnaprej, z navedbo imena pooblaščenega zastopnika, ki se bo udeležil odpiranja.</P>
+                           <P>[...]</P>
+                        </NEW>
+                     </READ>
+                  </FOR_READ>
+               </CORREC>
+               <P>Vsi drugi formalni pogoji obvestila o naročilu ostanejo nespremenjeni. Zgornje spremembe in/ali popravki obvestila o naročilu so sestavni del obvestila o naročilu.</P>
+            </CONTENTS>
+         </FD_OTH_NOT>
+      </OTH_NOT>
+      <OTH_NOT CATEGORY="TRANSLATION" LG="GA" VERSION="R2.0.8.S04.E01">
+         <FD_OTH_NOT>
+            <TI_DOC>
+               <P>MK-Scóipé: IPA - Líonra séarachais a athshlánú agus a shíneadh i mbardas Kichevo</P>
+            </TI_DOC>
+            <STI_DOC>
+               <P>Ceartúchán uimh. 2 ar an bhfógra conartha</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Tagairt an fhoilseacháin: EuropeAid/139225/IH/WKS/MK</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Láthair: an Eoraip (neamh-AE)/ Poblacht na Macadóine Thuaidh</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>
+                  <FT TYPE="REFOJ">(Forlíonaidh d'Iris Oifigiúil an Aontais Eorpaigh, 5.6.2019, 2019/S 107-260332)</FT>
+               </P>
+            </STI_DOC>
+            <CONTENTS>
+               <P>
+                  <ADDRESS_NOT_STRUCT>
+                     <ORGANISATION>Ministry of Finance, Central Financing and Contracting Department (CFCD)</ORGANISATION>
+                     <BLK_BTX>, Dame Gruev 12, 1000</BLK_BTX>
+                     <TOWN>Skopje</TOWN>
+                     <BLK_BTX>, POBLACHT NA MACADÓINE THUAIDH</BLK_BTX>
+                  </ADDRESS_NOT_STRUCT>
+               </P>
+               <CORREC>
+                  <FOR_READ>
+                     <FOR>
+                        <INT_FOR>Seachas:</INT_FOR>
+                        <OLD QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Spriocdháta chun tairiscintí a chur isteach</P>
+                           <P>24.9.2019, 12.00 am áitiúil ag:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, POBLACHT NA MACADÓINE THUAIDH</P>
+                           <P>Is iad uaireanta oscailte an údaráis chonarthaigh: Luan go hAoine, idir 8:30 agus 16:30, am áitiúil</P>
+                           <P>Ní bhreithneofar aon tairiscint a gheobhaidh an tÚdarás Conarthach tar éis an spriocdháta sin.</P>
+                           <P>[...]</P>
+                           <P>20. Seisiún um oscailt na dtairiscintí</P>
+                           <P>1.10.2019, 10:00 am áitiúil ag:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, POBLACHT NA MACADÓINE THUAIDH</P>
+                           <P>Is féidir le hionadaí údaraithe do gach tairgeoir freastal ar oscailt na dtairiscintí. Iarrtar ar chuideachtaí ar mian leo freastal é sin a chur in iúl trí ríomhphost a chur chuig cfcd@finance.gov.mk 48 n-uair ar a laghad roimh ré, ag lua ainm an ionadaí údaraithe a bheartaítear freastal ar an seisiún oscailte.</P>
+                           <P>[...]</P>
+                        </OLD>
+                     </FOR>
+                     <READ>
+                        <INT_READ>Léigh:</INT_READ>
+                        <NEW QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Spriocdháta chun tairiscintí a chur isteach</P>
+                           <P>25.10.2019, 12:00 am áitiúil ag:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, POBLACHT NA MACADÓINE THUAIDH</P>
+                           <P>Is iad uaireanta oscailte an údaráis chonarthaigh: Luan go hAoine, idir 8:30 agus 16:30, am áitiúil</P>
+                           <P>Ní bhreithneofar aon tairiscint a gheobhaidh an tÚdarás Conarthach tar éis an spriocdháta sin.</P>
+                           <P>[...]</P>
+                           <P>20. Seisiún um oscailt na dtairiscintí</P>
+                           <P>1.11.2019, 10:00 am áitiúil ag:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, POBLACHT NA MACADÓINE THUAIDH</P>
+                           <P>Is féidir le hionadaí údaraithe do gach tairgeoir freastal ar oscailt na dtairiscintí. Iarrtar ar chuideachtaí ar mian leo freastal é sin a chur in iúl trí ríomhphost a chur chuig cfcd@finance.gov.mk 48 n-uair ar a laghad roimh ré, ag lua ainm an ionadaí údaraithe a bheartaítear freastal ar an seisiún oscailte.</P>
+                           <P>[...]</P>
+                        </NEW>
+                     </READ>
+                  </FOR_READ>
+               </CORREC>
+               <P>Níl athrú ar bith thairis sin ar théarmaí ná ar choinníollacha an fhógra chonartha. Is dlúthchuid den fhógra conartha iad na hathruithe nó na ceartúcháin thuas leis an bhfógra conartha.</P>
+            </CONTENTS>
+         </FD_OTH_NOT>
+      </OTH_NOT>
+      <OTH_NOT CATEGORY="TRANSLATION" LG="BG" VERSION="R2.0.8.S04.E01">
+         <FD_OTH_NOT>
+            <TI_DOC>
+               <P>MK-Скопие: ИПП - Реконструкция и разширение на канализационната мрежа в община Кичево</P>
+            </TI_DOC>
+            <STI_DOC>
+               <P>Поправка № 2 към обявление за поръчка</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Референтен номер на публикация: EuropeAid/139225/IH/WKS/MK</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Местоположение: Европа (извън ЕС)/Република Северна Македония</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>
+                  <FT TYPE="REFOJ">(Приложение към Официален вестник на Европейския съюз, 5.6.2019, 2019/S 107-260332)</FT>
+               </P>
+            </STI_DOC>
+            <CONTENTS>
+               <P>
+                  <ADDRESS_NOT_STRUCT>
+                     <ORGANISATION>Ministry of Finance, Central Financing and Contracting Department (CFCD)</ORGANISATION>
+                     <BLK_BTX>, Dame Gruev 12, 1000</BLK_BTX>
+                     <TOWN>Skopje</TOWN>
+                     <BLK_BTX>, РЕПУБЛИКА СЕВЕРНА МАКЕДОНИЯ</BLK_BTX>
+                  </ADDRESS_NOT_STRUCT>
+               </P>
+               <CORREC>
+                  <FOR_READ>
+                     <FOR>
+                        <INT_FOR>Вместо:</INT_FOR>
+                        <OLD QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Краен срок за подаване на оферти</P>
+                           <P>24.9.2019 г., в 12:00 ч. местно време в:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, РЕПУБЛИКА СЕВЕРНА МАКЕДОНИЯ.</P>
+                           <P>Работното време на възлагащия орган е: От понеделник до петък, 8:30—16:30 ч., местно време</P>
+                           <P>Оферта, подадена до възлагащия орган след този краен срок, няма да бъде разглеждана.</P>
+                           <P>[...]</P>
+                           <P>20. Заседание по отваряне на офертите</P>
+                           <P>1.10.2019 г., в 10:00 ч. местно време в:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, РЕПУБЛИКА СЕВЕРНА МАКЕДОНИЯ.</P>
+                           <P>Един упълномощен представител на всеки оферент може да присъства на отварянето на офертите. Дружествата, които желаят да присъстват, трябва да уведомят за намерението си, като изпратят имейл на адрес cfcd@finance.gov.mk най-малко 48 часа предварително, с името на упълномощения представител, който се очаква да присъства на откриването.</P>
+                           <P>[...]</P>
+                        </OLD>
+                     </FOR>
+                     <READ>
+                        <INT_READ>Да се чете:</INT_READ>
+                        <NEW QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Краен срок за подаване на оферти</P>
+                           <P>25.10.2019 г., в 12:00 ч. местно време в:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, РЕПУБЛИКА СЕВЕРНА МАКЕДОНИЯ.</P>
+                           <P>Работното време на възлагащия орган е: От понеделник до петък, 8:30—16:30 ч., местно време</P>
+                           <P>Оферта, подадена до възлагащия орган след този краен срок, няма да бъде разглеждана.</P>
+                           <P>[...]</P>
+                           <P>20. Заседание по отваряне на офертите</P>
+                           <P>1.11.2019 г., в 10:00 ч. местно време в:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, РЕПУБЛИКА СЕВЕРНА МАКЕДОНИЯ.</P>
+                           <P>Един упълномощен представител на всеки оферент може да присъства на отварянето на офертите. Дружествата, които желаят да присъстват, трябва да уведомят за намерението си, като изпратят имейл на адрес cfcd@finance.gov.mk най-малко 48 часа предварително, с името на упълномощения представител, който се очаква да присъства на откриването.</P>
+                           <P>[...]</P>
+                        </NEW>
+                     </READ>
+                  </FOR_READ>
+               </CORREC>
+               <P>Всички други срокове и условия на обявлението за поръчка остават непроменени. Горепосочените промени и/или поправки към обявлението за поръчка са неразделна част от него.</P>
+            </CONTENTS>
+         </FD_OTH_NOT>
+      </OTH_NOT>
+      <OTH_NOT CATEGORY="TRANSLATION" LG="RO" VERSION="R2.0.8.S04.E01">
+         <FD_OTH_NOT>
+            <TI_DOC>
+               <P>MK-Skopje: IPA - Reabilitarea și extinderea rețelei de canalizare din municipiul Kichevo</P>
+            </TI_DOC>
+            <STI_DOC>
+               <P>Erata nr. 2 la anunțul de participare</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Referința publicației: EuropeAid/139225/IH/WKS/MK</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Locație: Europa (țările din afara UE) / Republica Macedonia de Nord</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>
+                  <FT TYPE="REFOJ">(Suplimentul Jurnalului Oficial al Uniunii Europene, 5.6.2019, 2019/S 107-260332)</FT>
+               </P>
+            </STI_DOC>
+            <CONTENTS>
+               <P>
+                  <ADDRESS_NOT_STRUCT>
+                     <ORGANISATION>Ministry of Finance, Central Financing and Contracting Department (CFCD)</ORGANISATION>
+                     <BLK_BTX>, Dame Gruev 12, 1000</BLK_BTX>
+                     <TOWN>Skopje</TOWN>
+                     <BLK_BTX>, REPUBLICA MACEDONIA DE NORD</BLK_BTX>
+                  </ADDRESS_NOT_STRUCT>
+               </P>
+               <CORREC>
+                  <FOR_READ>
+                     <FOR>
+                        <INT_FOR>În loc de:</INT_FOR>
+                        <OLD QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Termenul-limită de depunere a ofertelor</P>
+                           <P>24.9.2019, ora locală 12:00, la:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLICA MACEDONIA DE NORD</P>
+                           <P>Programul de lucru al autorității contractante este următorul: de luni până vineri, între orele 8:30 și 16:30, ora locală.</P>
+                           <P>Nu va fi luată în considerare nicio ofertă depusă la autoritatea contractantă după acest termen-limită.</P>
+                           <P>[...]</P>
+                           <P>20. Ședința de deschidere a ofertelor</P>
+                           <P>1.10.2019, ora locală 10:00, la:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLICA MACEDONIA DE NORD</P>
+                           <P>La deschiderea ofertelor poate participa un reprezentant autorizat din partea fiecărui ofertant. Companiile care doresc să participe sunt rugate să-și anunțe intenția prin trimiterea unui e-mail la cfcd@finance.gov.mk cu cel puțin 48 de ore în avans, cu numele reprezentantului autorizat care va participa la ședința de deschidere.</P>
+                           <P>[...]</P>
+                        </OLD>
+                     </FOR>
+                     <READ>
+                        <INT_READ>A se citi:</INT_READ>
+                        <NEW QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Termenul-limită de depunere a ofertelor</P>
+                           <P>25.10.2019, ora locală 12:00, la:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLICA MACEDONIA DE NORD</P>
+                           <P>Programul de lucru al autorității contractante este următorul: de luni până vineri, între orele 8:30 și 16:30, ora locală.</P>
+                           <P>Nu va fi luată în considerare nicio ofertă depusă la autoritatea contractantă după acest termen-limită.</P>
+                           <P>[...]</P>
+                           <P>20. Ședința de deschidere a ofertelor</P>
+                           <P>1.11.2019, ora locală 10:00, la:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLICA MACEDONIA DE NORD</P>
+                           <P>La deschiderea ofertelor poate participa un reprezentant autorizat din partea fiecărui ofertant. Companiile care doresc să participe sunt rugate să-și anunțe intenția prin trimiterea unui e-mail la cfcd@finance.gov.mk cu cel puțin 48 de ore în avans, cu numele reprezentantului autorizat care va participa la ședința de deschidere.</P>
+                           <P>[...]</P>
+                        </NEW>
+                     </READ>
+                  </FOR_READ>
+               </CORREC>
+               <P>Toți ceilalți termeni și toate celelalte condiții din anunțul de participare rămân neschimbate. Modificările și/sau rectificările de mai sus aduse anunțului de participare fac parte integrantă din acesta.</P>
+            </CONTENTS>
+         </FD_OTH_NOT>
+      </OTH_NOT>
+      <OTH_NOT CATEGORY="TRANSLATION" LG="HR" VERSION="R2.0.8.S04.E01">
+         <FD_OTH_NOT>
+            <TI_DOC>
+               <P>MK-Skopje: IPA - Obnova i proširenje kanalizacijske mreže u općini Kičevo</P>
+            </TI_DOC>
+            <STI_DOC>
+               <P>Ispravak br. 2 poziva na nadmetanje</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Uputa na objavu: EuropeAid/139225/IH/WKS/MK</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>Lokacija: Europa (izvan EU-a)/Republika Sjeverna Makedonija</P>
+            </STI_DOC>
+            <STI_DOC>
+               <P>
+                  <FT TYPE="REFOJ">(Dodatak Službenom listu Europske unije, 5.6.2019, 2019/S 107-260332)</FT>
+               </P>
+            </STI_DOC>
+            <CONTENTS>
+               <P>
+                  <ADDRESS_NOT_STRUCT>
+                     <ORGANISATION>Ministry of Finance, Central Financing and Contracting Department (CFCD)</ORGANISATION>
+                     <BLK_BTX>, Dame Gruev 12, 1000</BLK_BTX>
+                     <TOWN>Skopje</TOWN>
+                     <BLK_BTX>, REPUBLIKA SJEVERNA MAKEDONIJA</BLK_BTX>
+                  </ADDRESS_NOT_STRUCT>
+               </P>
+               <CORREC>
+                  <FOR_READ>
+                     <FOR>
+                        <INT_FOR>Umjesto:</INT_FOR>
+                        <OLD QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Rok za dostavu ponuda</P>
+                           <P>24.9.2019. u 12:00 prema lokalnom vremenu na adresi:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIKA SJEVERNA MAKEDONIJA.</P>
+                           <P>Radno vrijeme javnog naručitelja: od ponedjeljka do petka, od 8:30 do 16:30 sati po lokalnom vremenu</P>
+                           <P>Ponude koje javni naručitelj zaprimi nakon isteka navedenog roka neće se razmatrati.</P>
+                           <P>[...]</P>
+                           <P>20. Javno otvaranje ponuda</P>
+                           <P>1.10.2019. u 10:00 prema lokalnom vremenu na adresi:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIKA SJEVERNA MAKEDONIJA.</P>
+                           <P>Otvaranju ponuda može nazočiti ovlašteni predstavnik svakog ponuditelja. Društva koja žele nazočiti otvaranju moraju svoju namjeru izraziti slanjem e-pošte na adresu cfcd@finance.gov.mk najmanje 48 sati unaprijed, navodeći ime ovlaštenog predstavnika za kojeg se očekuje da će sudjelovati na javnom otvaranju ponuda.</P>
+                           <P>[...]</P>
+                        </OLD>
+                     </FOR>
+                     <READ>
+                        <INT_READ>Glasi:</INT_READ>
+                        <NEW QUOTE="NO">
+                           <P>[...]</P>
+                           <P>19. Rok za dostavu ponuda</P>
+                           <P>25.10.2019. u 12:00 prema lokalnom vremenu na adresi:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIKA SJEVERNA MAKEDONIJA.</P>
+                           <P>Radno vrijeme javnog naručitelja: od ponedjeljka do petka, od 8:30 do 16:30 sati po lokalnom vremenu</P>
+                           <P>Ponude koje javni naručitelj zaprimi nakon isteka navedenog roka neće se razmatrati.</P>
+                           <P>[...]</P>
+                           <P>20. Javno otvaranje ponuda</P>
+                           <P>1.11.2019. u 10:00 prema lokalnom vremenu na adresi:</P>
+                           <P>Ministry of Finance, Central Financing and Contracting Department (CFCD), Dame Gruev 12, 1000 Skopje, REPUBLIKA SJEVERNA MAKEDONIJA.</P>
+                           <P>Otvaranju ponuda može nazočiti ovlašteni predstavnik svakog ponuditelja. Društva koja žele nazočiti otvaranju moraju svoju namjeru izraziti slanjem e-pošte na adresu cfcd@finance.gov.mk najmanje 48 sati unaprijed, navodeći ime ovlaštenog predstavnika za kojeg se očekuje da će sudjelovati na javnom otvaranju ponuda.</P>
+                           <P>[...]</P>
+                        </NEW>
+                     </READ>
+                  </FOR_READ>
+               </CORREC>
+               <P>Svi ostali uvjeti poziva na nadmetanje ostaju nepromijenjeni. Prethodno navedene izmjene i/ili ispravci poziva na nadmetanje čine sastavni dio poziva na nadmetanje.</P>
+            </CONTENTS>
+         </FD_OTH_NOT>
+      </OTH_NOT>
+   </FORM_SECTION>
+</TED_EXPORT>

@@ -12,10 +12,6 @@ from app.server_requests import get_request_class
 from scratch import settings
 
 
-def get_ungm_parser_class():
-    return UNGMWorker()
-
-
 class UNGMWorker:
     requester = get_request_class(public=True)
 
@@ -57,7 +53,7 @@ class UNGMWorker:
 
         tenders_list = [
             {
-                'published': tender.contents[7].span.string or date.today(),
+                'published': tender.contents[7].span.string.strip() or date.today(),
                 'reference': tender.contents[13].span.string,
                 'url': settings.UNGM_ENDPOINT_URI + tender.contents[3].a['href']
             }

@@ -1,5 +1,6 @@
 from app.models import UNSPSCCode
 from app.parsers.ungm import UNGMWorker
+from app.management.commands.add_winner import Command
 
 from datetime import timedelta
 from django.utils.datetime_safe import datetime
@@ -42,3 +43,13 @@ class UngmParserTestCase(TestCase):
         self.assertEqual(tender['tender']['published'], '')
         self.assertEqual(tender['tender']['deadline'], expected_deadline)
 
+    def test_ungm_parser_notice_list(self):
+        with open('app/tests/parser_file/base_ungm_notice_list.html', 'r') as f:
+            html_string = f.read()
+
+        tender_list = self.worker.parse_ungm_notice_list(html_string)
+
+        self.assertEqual(len(tender_list), 2)
+        self.assertEqual(tender_list[1]['published'], '')
+        self.assertEqual(tender_list[1]['reference'], '')
+        self.assertEqual(tender_list[1]['url'], '')
