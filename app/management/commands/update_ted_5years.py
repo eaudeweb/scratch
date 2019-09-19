@@ -23,7 +23,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         now = date.today()
-        default = now - relativedelta(days=5)
+        default = now - relativedelta(years=5)
 
         try:
             given_date = datetime.strptime(options['date'], '%d/%m/%Y').date()
