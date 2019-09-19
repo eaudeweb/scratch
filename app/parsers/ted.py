@@ -97,7 +97,6 @@ class TEDWorker:
         for archive_path in self.archives:
             folder_name = self.extract_data(archive_path, self.path)
             folders.append(folder_name)
-
             p = TEDParser(self.path, [folder_name])
             changed_tenders = p.parse_notices(tenders, set_notified)
 
