@@ -351,6 +351,14 @@ class ContractAwardsListView(LoginRequiredMixin, ListView):
         return context
 
 
+class ContractAwardDetailView(LoginRequiredMixin, DetailView):
+    model = Winner
+    template_name = "detail_award.html"
+    context_object_name = "winner"
+    login_url = "/login"
+    redirect_field_name = "login_view"
+
+
 class SearchView(TendersListView):
 
     def get_queryset(self):

@@ -23,7 +23,11 @@
 
 .table_detail {
   padding: 45px;
+}
 
+.award_detail {
+  max-width: 60%;
+  float: left;
 }
 
 .favourite_button {

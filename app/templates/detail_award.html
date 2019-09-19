@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Scratch - Winner {{ winner.id }}</title>
+{% endblock %}
+
+{% block content %}
+<div class = "table_detail" >
+  <table id="tender_detail_table" class="cell-border display award_detail" style="margin-left: 60px;">
+    <thead>
+      <h2>Winner of {{ winner.tender.title }}</h2>
+    <br>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Tender</td>
+        <td><a href="{% url 'tender_detail_view' winner.tender.id %}">{{ winner.tender.title }}</a></td>
+      </tr>
+      <tr>
+        <td>Award Date</td>
+        <td>{{ winner.award_date | date:'d M Y' }}</td>
+      </tr>
+      <tr>
+        <td>Vendor(s)</td>
+        <td>{{ winner.vendor }}</td>
+      </tr>
+      <tr>
+        <td>Value</td>
+        <td>{{ winner.value }}</td>
+      </tr>
+      <tr>
+        <td>Currency</td>
+        <td>{{ winner.currency }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+{% endblock %}

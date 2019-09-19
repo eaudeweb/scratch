@@ -162,8 +162,36 @@ class TEDParser(object):
         ]
         self.folders = [os.path.join(path, folder) for folder in folder_names]
 
-    def _parse_notice(self, content, set_notified):
+    def _parse_notice(self, content, tenders, xml_file, codes, set_notified):
         soup = BeautifulSoup(content, "html.parser")
+
+        if not tenders or self.file_in_tender_list(xml_file, tenders):
+            cpv_elements = soup.find_all("cpv_code") or soup.find_all(
+                "original_cpv"
+            )
+            cpv_codes = set([c.get("code") for c in cpv_elements])
+
+            doc_type = soup.find("td_document_type").text
+            country = soup.find("iso_country").get("value")
+            auth_type = soup.find("aa_authority_type").text
+
+            accept_notice = (
+                    cpv_codes & set(self.CPV_CODES)
+                    and doc_type in settings.TED_DOC_TYPES
+                    and country in self.TED_COUNTRIES
+                    and auth_type == settings.TED_AUTH_TYPE
+            )
+
+            if not accept_notice:
+                self.xml_files.remove(xml_file)
+                os.remove(xml_file)
+                raise StopIteration
+            else:
+                codes[xml_file] = cpv_codes
+        else:
+            self.xml_files.remove(xml_file)
+            os.remove(xml_file)
+            raise StopIteration
 
         tender = dict()
         tender["reference"] = soup.find("ted_export").get("doc_id")
@@ -265,10 +293,19 @@ class TEDParser(object):
 
     def parse_notices(self, tenders, set_notified):
         changed_tenders = []
-        codes = self._filter_notices(tenders)
-        for xml_file in self.xml_files:
+        codes = {}
+
+        # self.xml_files[:] is used instead of self.xml_files because as we are iterating over
+        # the list, we're deleting it's entries if they doesn't match our criteria
+        # changing it would result in a failure of deleting all subsequent files when the iteration ends
+
+        for xml_file in self.xml_files[:]:
             with open(xml_file, "r") as f:
-                tender, winners = self._parse_notice(f.read(), set_notified)
+                try:
+                    tender, winners = self._parse_notice(f.read(), tenders, xml_file, codes, set_notified)
+                except StopIteration:
+                    continue
+
                 if winners:
                     for winner in winners:
                         self.save_winner(tender, winner)
@@ -280,39 +317,6 @@ class TEDParser(object):
             os.remove(xml_file)
 
         return changed_tenders
-
-    def _filter_notices(self, tenders):
-        codes = dict()
-        for xml_file in self.xml_files[:]:
-            with open(xml_file, "r") as f:
-                if not tenders or self.file_in_tender_list(xml_file, tenders):
-                    soup = BeautifulSoup(f.read(), "html.parser")
-
-                    cpv_elements = soup.find_all("cpv_code") or soup.find_all(
-                        "original_cpv"
-                    )
-                    cpv_codes = set([c.get("code") for c in cpv_elements])
-
-                    doc_type = soup.find("td_document_type").text
-                    country = soup.find("iso_country").get("value")
-                    auth_type = soup.find("aa_authority_type").text
-
-                    accept_notice = (
-                            cpv_codes & set(self.CPV_CODES)
-                            and doc_type in settings.TED_DOC_TYPES
-                            and country in self.TED_COUNTRIES
-                            and auth_type == settings.TED_AUTH_TYPE
-                    )
-
-                    if not accept_notice:
-                        self.xml_files.remove(xml_file)
-                        os.remove(xml_file)
-                    else:
-                        codes[xml_file] = cpv_codes
-                else:
-                    self.xml_files.remove(xml_file)
-                    os.remove(xml_file)
-        return codes
 
     @staticmethod
     def update_winners(winners, soup):
