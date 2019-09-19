@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  let scroll_size = $('#log_container').height() * 0.8;
+  let scroll_size = $(window).height() * 0.35
   $('#log_table').DataTable({
     "order": [[ 0, "desc" ]],
     "lengthChange": false,
