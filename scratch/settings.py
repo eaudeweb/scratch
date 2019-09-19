@@ -16,6 +16,7 @@ from getenv import env
 from sentry_sdk.integrations.django import DjangoIntegration
 import ldap
 from django_auth_ldap.config import LDAPSearch
+from app.models import Keyword
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -162,7 +163,7 @@ TED_DOC_TYPES = env('TED_DOC_TYPES', [])
 TED_AUTH_TYPE = env('TED_AUTH_TYPE', '')
 
 # KEYWORDS
-KEYWORDS = env('KEYWORDS', '').split(',')
+KEYWORDS = Keyword.objects.values_list("value", flat=True)
 
 
 # Internationalization
