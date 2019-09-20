@@ -65,7 +65,7 @@ class Tender(models.Model):
 
     @staticmethod
     def get_keywords_setting():
-        return re.findall(r'[^,;\s]+', settings.TENDER_KEYWORDS)
+        return list(Keyword.objects.values_list('value', flat=True))
 
     def save(self, *args, **kwargs):
         self.has_keywords = any(self.check_contains(getattr(self, field)) for field in fields)
@@ -187,4 +187,5 @@ class Task(models.Model):
 class Keyword(models.Model):
     value = models.CharField(max_length=50)
 
-
+    def __str__(self):
+        return '{}'.format(self.value)
