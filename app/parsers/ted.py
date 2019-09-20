@@ -50,7 +50,7 @@ class TEDWorker:
 
         while last_date < today:
             self.download_archive(ftp, last_date, archives)
-            self.add_worker_log("TED")
+
 
             last_date += timedelta(1)
 
@@ -94,12 +94,13 @@ class TEDWorker:
     def parse_notices(self, tenders=[], set_notified=False):
         changed_tenders = []
         folders = []
+        tenders_no = 0
         for archive_path in self.archives:
             folder_name = self.extract_data(archive_path, self.path)
             folders.append(folder_name)
             p = TEDParser(self.path, [folder_name])
-            changed_tenders = p.parse_notices(tenders, set_notified)
-
+            changed_tenders, added_tenders = p.parse_notices(tenders,  set_notified)
+            tenders_no += added_tenders
             folder_date = folder_name[:8]
             formatted_date = datetime.strptime(folder_date, '%Y%m%d').strftime('%d/%m/%Y')
             logging.warning(f'Date {formatted_date} parsed successfully')
@@ -110,7 +111,7 @@ class TEDWorker:
         for folder in folders:
             os.rmdir(os.path.join(self.path, folder))
 
-        return changed_tenders
+        return changed_tenders, tenders_no
 
     @staticmethod
     def extract_data(archive_path, extract_path):
@@ -133,8 +134,8 @@ class TEDWorker:
         return None
 
     @staticmethod
-    def add_worker_log(source):
-        log = WorkerLog(source=source, update=date.today())
+    def add_worker_log(source, tenders_no):
+        log = WorkerLog(source=source, update=date.today(), tenders_no=tenders_no)
         log.save()
 
     @staticmethod
@@ -293,6 +294,7 @@ class TEDParser(object):
     def parse_notices(self, tenders, set_notified):
         changed_tenders = []
         codes = {}
+        tenders_no = 0
 
         # self.xml_files[:] is used instead of self.xml_files because as we are iterating over
         # the list, we're deleting it's entries if they doesn't match our criteria
@@ -310,12 +312,15 @@ class TEDParser(object):
                         self.save_winner(tender, winner)
                 created, attr_changes = self.save_tender(tender, codes.get(xml_file, []))
 
+                if created:
+                    tenders_no += 1
+
                 if not created and attr_changes:
                     changed_tenders.append((tender, attr_changes))
 
             os.remove(xml_file)
 
-        return changed_tenders
+        return changed_tenders, tenders_no
 
     @staticmethod
     def update_winners(winners, soup):
