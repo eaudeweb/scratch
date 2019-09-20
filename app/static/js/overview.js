@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  let scroll_size = 205
+  let scroll_size = $('#log_container').height() * 0.8;
   $('#log_table').DataTable({
     "order": [[ 0, "desc" ]],
     "lengthChange": false,
@@ -7,9 +7,7 @@ $(document).ready(function () {
     "pageLength": 6,
     "bInfo": false,
     "columnDefs": [
-      { "orderable": false, "targets": 0 },
-      { "orderable": false, "targets": 1 },
-      { "orderable": false, "targets": 2 }
+      { "orderable": false, "targets": 0 }
     ],
     "dom": 't<"bottom"flp><"clear">',
     "bScrollCollapse" : false,

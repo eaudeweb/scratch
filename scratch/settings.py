@@ -161,6 +161,9 @@ DEADLINE_NOTIFICATIONS = env('DEADLINE_NOTIFICATIONS', (1, 2, 7))
 TED_DOC_TYPES = env('TED_DOC_TYPES', [])
 TED_AUTH_TYPE = env('TED_AUTH_TYPE', '')
 
+# KEYWORDS
+KEYWORDS = env('KEYWORDS', '').split(',')
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
@@ -228,3 +231,5 @@ LOGGING = {
     "handlers": {"console": {"class": "logging.StreamHandler"}},
     "loggers": {"django_auth_ldap": {"level": "DEBUG", "handlers": ["console"]}},
 }
+
+TENDER_KEYWORDS = env('TENDER_KEYWORDS', 'python, drupal')

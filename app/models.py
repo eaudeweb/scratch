@@ -97,7 +97,6 @@ class TenderDocument(models.Model):
 class WorkerLog(models.Model):
     update = models.DateField()
     source = models.CharField(max_length=10, choices=SOURCE_CHOICES)
-    tenders_count = models.IntegerField()
 
     def __str__(self):
         return '{}'.format(self.update)
@@ -182,9 +181,3 @@ class Task(models.Model):
 
     def __str__(self):
         return 'task_{}'.format(self.args)
-
-
-class Keyword(models.Model):
-    value = models.CharField(max_length=50)
-
-

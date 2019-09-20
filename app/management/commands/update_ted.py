@@ -38,7 +38,7 @@ class Command(BaseCommand, BaseParamsUI):
 
         w = TEDWorker(last_ted_update)
         w.ftp_download_latest_archives()
-        changed_tenders, tenders_count = w.parse_notices()
-        w.add_worker_log("TED", tenders_count)
+        w.parse_notices()
+
         self.stdout.write(self.style.SUCCESS('TED tenders updated'))
         return "TED tenders updated"

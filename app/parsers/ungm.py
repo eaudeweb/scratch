@@ -27,7 +27,6 @@ class UNGMWorker:
         codes = UNSPSCCode.objects.all()
         last_date = last_date.strftime('%d-%b-%Y')
         page_index = 0
-        tenders_count = 0
         while True:
             requested_html_tenders = self.requester.request_tenders_list(last_date, page_index)
             page_index += 1
@@ -37,13 +36,10 @@ class UNGMWorker:
             parsed_tenders = []
             for tender in extracted_tenders:
                 text = self.requester.get_request(tender['url'])
-                parsed_tender = self.parse_ungm_notice(text, tender['url'], codes)
-                if parsed_tender:
-                    parsed_tenders.append(parsed_tender)
-            ungm_tenders, added_tenders = UNGMWorker.update_ungm_tenders(parsed_tenders)
-            tenders_count += added_tenders
+                parsed_tenders.append(self.parse_ungm_notice(text, tender['url'], codes))
+            UNGMWorker.update_ungm_tenders(parsed_tenders)
 
-        WorkerLog.objects.create(update=date.today(), source='UNGM', tenders_count=tenders_count)
+        WorkerLog.objects.create(update=date.today(), source='UNGM')
         return
 
     @staticmethod
@@ -138,14 +134,11 @@ class UNGMWorker:
     @staticmethod
     def update_ungm_tenders(parsed_tenders):
         changed_tenders = []
-        new_tenders = 0
         for item in parsed_tenders:
             reference = item['tender'].pop('reference')
             old_tender = Tender.objects.filter(reference=reference).first()
             new_tender, created = Tender.objects.update_or_create(reference=reference, defaults=dict(item['tender']))
 
-            if created:
-                new_tenders += 1
             attr_changes = {}
             if old_tender:
                 for attr, value in [(k, v) for (k, v) in item['tender'].items()]:
@@ -175,7 +168,7 @@ class UNGMWorker:
             if not created and (attr_changes or new_docs):
                 changed_tenders.append((item['tender'], attr_changes, new_docs))
 
-        return changed_tenders, new_tenders
+        return changed_tenders
 
     @staticmethod
     def download_document(tender_doc):

@@ -7,24 +7,22 @@
 {% block content %}
   <div class="overview-page">
     <h3><b>Last scraping sessions</b></h3>
-    <table id="log_table" class="hover condensed">
-      <thead class="thead-dark">
-      <tr>
-        <th>Update date</th>
-        <th>Source</th>
-        <th>Scrapped tenders</th>
-      </tr>
-      </thead>
-      <tbody>
-      {% for log in worker_logs %}
+    <ul id="log_container" class="table_container">
+      <table id="log_table" class="table-hover table-condensed">
+        <thead class="thead-dark">
         <tr>
-          <td id="log_col" class="overview-page-list">{{ log.update | date:'d M Y' }}</td>
-          <td id="log_col" class="overview-page-list">{{ log.source }}</td>
-          <td id="log_col" class="overview-page-list">{{ log.tenders_count }}</td>
+          <th>Update date</th>
         </tr>
-      {% endfor %}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+        {% for log in worker_logs %}
+          <tr>
+            <td id="log_col" class="overview-page-list">{{ log.update | date:'d M Y' }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </ul>
 
     <h3><b>Deadline Notifications</b></h3>
     <ul>

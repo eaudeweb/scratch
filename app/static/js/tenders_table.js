@@ -36,7 +36,7 @@ $(document).ready(function() {
         { "width": "8%", "targets": 4 },
         { "width": "8%", "targets": 5 },
       ],
-      "order": [[ 4, "desc" ]],
+      "order": [[ 3, "asc" ]],
       "pageLength": 10,
       "lengthChange": false,
       "search": {
