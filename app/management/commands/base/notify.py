@@ -97,6 +97,6 @@ class BaseNotifyCommand(BaseCommand, BaseParamsUI):
         changed_ungm_tenders = []
         if len(ungm_tenders):
             w = UNGMWorker()
-            changed_ungm_tenders = w.parse_tenders(ungm_tenders)
+            changed_ungm_tenders, tenders_no = w.parse_tenders(ungm_tenders)
 
         return changed_ted_tenders + changed_ungm_tenders

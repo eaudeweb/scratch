@@ -40,8 +40,8 @@ class UNGMWorker:
                 parsed_tender = self.parse_ungm_notice(text, tender['url'], codes)
                 if parsed_tender:
                     parsed_tenders.append(parsed_tender)
-            UNGMWorker.update_ungm_tenders(parsed_tenders)
-            tenders_no += len(parsed_tenders)
+            ungm_tenders, added_tenders = UNGMWorker.update_ungm_tenders(parsed_tenders)
+            tenders_no += added_tenders
 
         WorkerLog.objects.create(update=date.today(), source='UNGM', tenders_no=tenders_no)
         return
@@ -138,11 +138,14 @@ class UNGMWorker:
     @staticmethod
     def update_ungm_tenders(parsed_tenders):
         changed_tenders = []
+        new_tenders = 0
         for item in parsed_tenders:
             reference = item['tender'].pop('reference')
             old_tender = Tender.objects.filter(reference=reference).first()
             new_tender, created = Tender.objects.update_or_create(reference=reference, defaults=dict(item['tender']))
 
+            if created:
+                new_tenders += 1
             attr_changes = {}
             if old_tender:
                 for attr, value in [(k, v) for (k, v) in item['tender'].items()]:
@@ -172,7 +175,7 @@ class UNGMWorker:
             if not created and (attr_changes or new_docs):
                 changed_tenders.append((item['tender'], attr_changes, new_docs))
 
-        return changed_tenders
+        return changed_tenders, new_tenders
 
     @staticmethod
     def download_document(tender_doc):
