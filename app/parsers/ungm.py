@@ -27,7 +27,7 @@ class UNGMWorker:
         codes = UNSPSCCode.objects.all()
         last_date = last_date.strftime('%d-%b-%Y')
         page_index = 0
-        tenders_no = 0
+        tenders_count = 0
         while True:
             requested_html_tenders = self.requester.request_tenders_list(last_date, page_index)
             page_index += 1
@@ -41,9 +41,9 @@ class UNGMWorker:
                 if parsed_tender:
                     parsed_tenders.append(parsed_tender)
             ungm_tenders, added_tenders = UNGMWorker.update_ungm_tenders(parsed_tenders)
-            tenders_no += added_tenders
+            tenders_count += added_tenders
 
-        WorkerLog.objects.create(update=date.today(), source='UNGM', tenders_no=tenders_no)
+        WorkerLog.objects.create(update=date.today(), source='UNGM', tenders_count=tenders_count)
         return
 
     @staticmethod

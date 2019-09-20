@@ -59,7 +59,7 @@ class WinnerAdmin(admin.ModelAdmin):
 
 
 class WorkerLogAdmin(admin.ModelAdmin):
-    list_display = ['update', 'source', 'tenders_no']
+    list_display = ['update', 'source', 'tenders_count']
     list_filter = ('update',)
     search_fields = ['update']
 
