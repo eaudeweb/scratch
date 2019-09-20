@@ -1,8 +1,8 @@
 .overview-page {
   width: 40%;
   margin-top: 25px;
-  margin-left: auto;
-  margin-right: 53%;
+  margin-left: 14%;
+  margin-right: auto;
   padding-top: 10px;
 
 }
@@ -28,4 +28,8 @@ h3 {
 
 table.dataTable tbody th, table.dataTable tbody td {
   padding: 8px 18px;
+}
+
+table.dataTable tbody td {
+  line-height: 17px !important;
 }
