@@ -63,7 +63,10 @@ class UNGMWorker:
         soup = BeautifulSoup(html, 'html.parser')
         documents = UNGMWorker.find_by_class(soup, "lnkShowDocument", "a")
         description = UNGMWorker.find_by_class(soup, "ungm-list-item ungm-background", "div")
-        description = description[1].text.strip().lstrip('Description')
+        try:
+            description = description[1].text.strip().lstrip('Description')
+        except IndexError:
+            description = ''
         nodes = UNGMWorker.find_by_class(soup, "nodeName", "span")
         scraped_nodes = [parent.find_all("span")[0].text for parent in nodes[1:]]
         unspsc_codes = [
