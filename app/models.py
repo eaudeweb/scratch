@@ -97,7 +97,7 @@ class TenderDocument(models.Model):
 class WorkerLog(models.Model):
     update = models.DateField()
     source = models.CharField(max_length=10, choices=SOURCE_CHOICES)
-    tenders_no = models.IntegerField()
+    tenders_count = models.IntegerField()
 
     def __str__(self):
         return '{}'.format(self.update)
