@@ -48,7 +48,7 @@ class TEDWorker:
         archives = ftp.nlst()
         today = date.today()
 
-        while last_date < today:
+        while last_date <= today:
             self.download_archive(ftp, last_date, archives)
             self.add_worker_log("TED")
 
