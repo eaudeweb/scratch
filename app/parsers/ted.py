@@ -99,7 +99,7 @@ class TEDWorker:
             folder_name = self.extract_data(archive_path, self.path)
             folders.append(folder_name)
             p = TEDParser(self.path, [folder_name])
-            changed_tenders, added_tenders = p.parse_notices(tenders,  set_notified)
+            changed_tenders, added_tenders = p.parse_notices(tenders, set_notified)
             tenders_count += added_tenders
             folder_date = folder_name[:8]
             formatted_date = datetime.strptime(folder_date, '%Y%m%d').strftime('%d/%m/%Y')
