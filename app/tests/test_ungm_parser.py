@@ -12,11 +12,12 @@ class UngmParserTestCase(TestCase):
 
     def setUp(self) -> None:
         self.worker = UNGMWorker()
+        self.winner = Command()
         self.url = 'wwww.parser_test.com'
         self.unspsc_codes = UNSPSCCode.objects.all()
 
     def test_ungm_parse_notice_empty(self):
-        with open('app/tests/parser_file/ungm_notice_all_empty.html', 'r') as f:
+        with open('app/tests/parser_files/ungm_notice_all_empty.html', 'r') as f:
             html_string = f.read()
         tender = self.worker.parse_ungm_notice(html_string, self.url,
                                                self.unspsc_codes)
@@ -28,7 +29,7 @@ class UngmParserTestCase(TestCase):
         self.assertEqual(len(tender['documents']), 0)
 
     def test_ungm_parser_notice_date_format(self):
-        with open('app/tests/parser_file/ungm_notice_date.html', 'r') as f:
+        with open('app/tests/parser_files/ungm_notice_date.html', 'r') as f:
             html_string = f.read()
         tender = self.worker.parse_ungm_notice(html_string, self.url,
                                                self.unspsc_codes)
@@ -44,7 +45,7 @@ class UngmParserTestCase(TestCase):
         self.assertEqual(tender['tender']['deadline'], expected_deadline)
 
     def test_ungm_parser_notice_list(self):
-        with open('app/tests/parser_file/base_ungm_notice_list.html', 'r') as f:
+        with open('app/tests/parser_files/base_ungm_notice_list.html', 'r') as f:
             html_string = f.read()
 
         tender_list = self.worker.parse_ungm_notice_list(html_string)
@@ -53,3 +54,21 @@ class UngmParserTestCase(TestCase):
         self.assertEqual(tender_list[1]['published'], '')
         self.assertEqual(tender_list[1]['reference'], '')
         self.assertEqual(tender_list[1]['url'], '')
+
+    def test_ungm_winner_all_empty(self):
+        with open('app/tests/parser_files/ungm_notice_winner_all_empty.html', 'r') as f:
+            html_string = f.read()
+
+        winner = self.winner.parse_winner(html_string)
+
+        self.assertEqual(winner.vendor, '')
+        self.assertEqual(winner.value, 0)
+        self.assertEqual(winner.currency, 'USD')
+        self.assertEqual(winner.award_date, datetime.now())
+
+    def test_ungm_winner_date_format(self):
+        with open('app/tests/parser_files/ungm_notice_winner_all_empty.html', 'r') as f:
+            html_string = f.read()
+
+        winner = self.winner.parse_winner(html_string)
+        self.assertEqual(winner.award_date, datetime.now())
