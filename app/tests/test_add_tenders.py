@@ -1,10 +1,11 @@
 from django.test import TestCase
-from app.models import Tender, TenderDocument
-from app.factories import TenderFactory, TenderDocumentFactory
+from app.models import Tender, TenderDocument, Keyword
+from app.factories import TenderFactory, TenderDocumentFactory, KeywordFactory
 
 
 class AddTenderTestCase(TestCase):
     def setUp(self):
+        self.keyword = KeywordFactory()
         self.tender_1 = TenderFactory(title='Tender_1 python')
         self.tender_2 = TenderFactory(title='Tender_2', source='TED')
         self.doc_1 = TenderDocumentFactory(tender=self.tender_2)

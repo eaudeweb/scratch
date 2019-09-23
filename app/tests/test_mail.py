@@ -5,11 +5,12 @@ from django.template.loader import render_to_string
 from django.conf import settings
 from app.management.commands.notify import build_email
 from django.core import management
-from app.factories import TenderFactory, NotificationFactory
+from app.factories import TenderFactory, NotificationFactory, KeywordFactory
 
 
 class SendMailTest(TestCase):
     def setUp(self):
+        self.keyword = KeywordFactory()
         self.tender1 = TenderFactory(
             reference="RFQ 47-2019",
             title="test_title1",
