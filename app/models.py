@@ -88,7 +88,6 @@ class Tender(models.Model):
         for keyword in found_keywords:
             self.keywords.add(Keyword.objects.get(value=keyword))
 
-        super().save(*args, **kwargs)
 
 class Winner(models.Model):
     vendor = models.CharField(null=True, max_length=255)
