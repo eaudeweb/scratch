@@ -16,9 +16,30 @@ class UngmParserTestCase(TestCase):
         self.url = 'wwww.parser_test.com'
         self.unspsc_codes = UNSPSCCode.objects.all()
 
+        expected_deadline = make_aware(datetime.strptime('15-Sep-2019 16:45', '%d-%b-%Y %H:%M'))
+        time_now = datetime.now()
+        time_utc = datetime.utcnow()
+        add_hours = round(float((time_utc - time_now).total_seconds()) / 3600)
+        expected_deadline += timedelta(hours=add_hours)
+        expected_deadline -= timedelta(hours=5)
+        self.deadline = expected_deadline
 
     def test_ungm_parse_notice_simple(self):
-        pass
+        with open('app/tests/parser_files/base_ungm_notice.html', 'r') as f:
+            html_string = f.read()
+
+        tender = self.worker.parse_ungm_notice(html_string, self.url,
+                                               self.unspsc_codes)
+
+        expected_published = datetime.strptime('04-Sep-2019', '%d-%b-%Y').date()
+        self.assertEqual(tender['tender']['reference'], 'LRFQ-2019-9151917')
+        self.assertEqual(tender['tender']['published'], expected_published)
+        self.assertEqual(tender['tender']['deadline'], self.deadline)
+        self.assertEqual(tender['tender']['source'], 'UNGM')
+        self.assertEqual(tender['tender']['organization'], 'UNICEF')
+        self.assertEqual(tender['tender']['url'], self.url)
+        self.assertNotEqual(tender['tender']['description'], '')
+        self.assertEqual(len(tender['documents']), 1)
 
     def test_ungm_parse_notice_list_simple(self):
         with open('app/tests/parser_files/base_ungm_notice_list.html', 'r') as f:
@@ -61,17 +82,10 @@ class UngmParserTestCase(TestCase):
         tender = self.worker.parse_ungm_notice(html_string, self.url,
                                                self.unspsc_codes)
 
-        expected_deadline = make_aware(datetime.strptime('15-Sep-2019 16:45', '%d-%b-%Y %H:%M'))
-        time_now = datetime.now()
-        time_utc = datetime.utcnow()
-        add_hours = round(float((time_utc - time_now).total_seconds()) / 3600)
-        expected_deadline += timedelta(hours=add_hours)
-        expected_deadline -= timedelta(hours=5)
-
         self.assertEqual(tender['tender']['published'], '')
-        self.assertEqual(tender['tender']['deadline'], expected_deadline)
+        self.assertEqual(tender['tender']['deadline'], self.deadline)
 
-    def test_ungm_parser_notice_list(self):
+    def test_ungm_parser_notice_list_empty(self):
         with open('app/tests/parser_files/ungm_notice_list_empty.html', 'r') as f:
             html_string = f.read()
 
