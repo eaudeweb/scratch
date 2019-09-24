@@ -1,9 +1,10 @@
 .overview-page {
-  width: 80%;
+  width: 40%;
   margin-top: 25px;
-  margin-left: auto;
+  margin-left: 14%;
   margin-right: auto;
   padding-top: 10px;
+
 }
 
 .overview-page-list {
@@ -27,4 +28,8 @@ h3 {
 
 table.dataTable tbody th, table.dataTable tbody td {
   padding: 8px 18px;
+}
+
+table.dataTable tbody td {
+  line-height: 17px !important;
 }

@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
-from app.factories import TenderFactory
+from app.factories import TenderFactory, KeywordFactory
 
 
 class TendersListViewTests(TestCase):
@@ -32,6 +32,7 @@ class TendersListViewTests(TestCase):
         self.assertEqual(response.context['tenders'][1].source, tender_2.source)
 
     def test_list_view_has_keywords(self):
+        keyword = KeywordFactory()
         tender = TenderFactory(title='Tender1 python')
         url = reverse('tenders_list_view')
         response = self.client.get(url)

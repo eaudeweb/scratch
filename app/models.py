@@ -17,6 +17,13 @@ SOURCE_CHOICES = [
 fields = [r'title', r'description']
 
 
+class Keyword(models.Model):
+    value = models.CharField(max_length=50)
+
+    def __str__(self):
+        return '{}'.format(self.value)
+
+
 class Tender(models.Model):
     reference = models.CharField(unique=True, max_length=255)
     notice_type = models.CharField(null=True, max_length=255)
@@ -34,6 +41,7 @@ class Tender(models.Model):
     unspsc_codes = models.CharField(max_length=1024, null=True, blank=True)
     cpv_codes = models.CharField(max_length=1024, null=True, blank=True)
     seen_by = models.ForeignKey(User, on_delete=models.CASCADE, default=None, null=True, blank=True)
+    keywords = models.ManyToManyField(Keyword, related_name="keywords", blank=True)
 
     def __str__(self):
         return '{}'.format(self.title)
@@ -60,16 +68,25 @@ class Tender(models.Model):
 
     @staticmethod
     def check_contains(value):
-        keywords = Tender.get_keywords_setting()
-        return any(keyword.lower() in str(value).lower() for keyword in keywords)
+        keywords = set(Tender.get_keywords_setting())
+        return list(keywords & set(re.sub("[^a-zA-Z0-9 ]", " ", str(value)).lower().split()))
 
     @staticmethod
     def get_keywords_setting():
-        return re.findall(r'[^,;\s]+', settings.TENDER_KEYWORDS)
+        return list(Keyword.objects.values_list('value', flat=True))
 
     def save(self, *args, **kwargs):
         self.has_keywords = any(self.check_contains(getattr(self, field)) for field in fields)
         super().save(*args, **kwargs)
+
+        found_keywords = []
+        for field in fields:
+            found_keywords += self.check_contains(getattr(self, field))
+
+        found_keywords = list(dict.fromkeys(found_keywords))
+
+        for keyword in found_keywords:
+            self.keywords.add(Keyword.objects.get(value=keyword))
 
 
 class Winner(models.Model):
@@ -97,6 +114,7 @@ class TenderDocument(models.Model):
 class WorkerLog(models.Model):
     update = models.DateField()
     source = models.CharField(max_length=10, choices=SOURCE_CHOICES)
+    tenders_count = models.IntegerField()
 
     def __str__(self):
         return '{}'.format(self.update)
