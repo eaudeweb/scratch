@@ -36,6 +36,7 @@ class HomepageView(TemplateView):
     template_name = "homepage.html"
 
     def post(self, request):
+
         form = SearchForm(request.POST)
 
         if form.is_valid() and request.user.is_authenticated:
