@@ -47,15 +47,25 @@ class UNGMWorker:
         return
 
     @staticmethod
+    def parse_date(date_string, date_format):
+        try:
+            result = datetime.strptime(date_string, date_format).date()
+        except ValueError:
+            result = date.today()
+        return result
+
+    @staticmethod
     def parse_ungm_notice_list(html):
         soup = BeautifulSoup(html, 'html.parser')
         tenders = soup.find_all('div', 'tableRow dataRow')
 
+        endpoint = settings.UNGM_ENDPOINT_URI
+
         tenders_list = [
             {
-                'published': tender.contents[7].span.string.strip() or date.today(),
-                'reference': tender.contents[13].span.string,
-                'url': settings.UNGM_ENDPOINT_URI + tender.contents[3].a['href']
+                'published': UNGMWorker.parse_date(tender.contents[7].span.string.strip(), '%d-%b-%Y'),
+                'reference': tender.contents[13].span.string.strip(),
+                'url': endpoint + tender.contents[3].a['href'].strip() if tender.contents[3].a['href'].strip() else '',
             }
             for tender in tenders
         ]
@@ -81,9 +91,21 @@ class UNGMWorker:
         title = UNGMWorker.find_by_class(soup, "title", "span", True)
         organization = UNGMWorker.find_by_class(soup, "highlighted", "span", True)
 
-        reference = soup.find('span', text=re.compile('Reference:')).next_sibling.next_sibling.text
-        published = soup.find('span', text=re.compile('Published on:')).next_sibling.next_sibling.text
-        deadline = soup.find('span', text=re.compile('Deadline on:')).next_sibling.next_sibling.text
+        reference = UNGMWorker.find_by_span(soup, 'Reference:')
+        published = UNGMWorker.find_by_span(soup, 'Published on:')
+        deadline = UNGMWorker.find_by_span(soup, 'Deadline on:')
+
+        published = UNGMWorker.parse_date(published, '%d-%b-%Y')
+
+        gmt = deadline
+        try:
+            deadline = make_aware(datetime.strptime(deadline[:17], '%d-%b-%Y %H:%M'))
+            gmt = gmt[gmt.find("GMT") + 4:gmt.find(")")]
+            if gmt:
+                hours = float(gmt)
+                deadline -= timedelta(hours=hours)
+        except ValueError:
+            deadline = ''
 
         tender = {
             'source': 'UNGM',
@@ -92,25 +114,12 @@ class UNGMWorker:
             'title': title,
             'organization': organization,
             'reference': reference,
-            'published': datetime.strptime(published, '%d-%b-%Y').date() or date.today(),
-            'deadline': make_aware(datetime.strptime(deadline[:17], '%d-%b-%Y %H:%M')),
+            'published': published,
+            'deadline': deadline,
             'description': description,
             'unspsc_codes': ', '.join(unspsc_codes),
         }
 
-        gmt = deadline
-        try:
-            gmt = gmt[gmt.find("GMT") + 4:gmt.find(")")]
-            if gmt:
-                hours = float(gmt)
-                tender['deadline'] -= timedelta(hours=hours)
-        except ValueError:
-            pass
-
-        time_now = datetime.now()
-        time_utc = datetime.utcnow()
-        add_hours = round(float((time_utc - time_now).total_seconds()) / 3600)
-        tender['deadline'] += timedelta(hours=add_hours)
         tender_item = {
             'tender': tender,
             'documents': [
@@ -124,6 +133,13 @@ class UNGMWorker:
         }
 
         return tender_item
+
+    @staticmethod
+    def find_by_span(soup, span):
+        try:
+            return soup.find('span', text=re.compile(span)).next_sibling.next_sibling.text
+        except AttributeError:
+            return ''
 
     @staticmethod
     def find_by_class(soup, class_value, element_type="span", text_return=False):

@@ -2,7 +2,7 @@ from app.models import UNSPSCCode
 from app.parsers.ungm import UNGMWorker
 from app.management.commands.add_winner import Command
 from django.conf import settings
-from datetime import timedelta
+from datetime import timedelta, date
 from django.utils.datetime_safe import datetime
 from django.utils.timezone import make_aware
 from django.test import TestCase
@@ -49,7 +49,7 @@ class UngmParserTestCase(TestCase):
         expected_url = settings.UNGM_ENDPOINT_URI + '/Public/Notice/96949'
         self.assertEqual(len(tenders), 2)
         self.assertEqual(tenders[0]['reference'], '2019/FAAFG/FAAFG/103063')
-        self.assertEqual(tenders[0]['published'], '15-Sep-2019')
+        self.assertEqual(tenders[0]['published'],  datetime.strptime('15-Sep-2019', '%d-%b-%Y').date())
         self.assertEqual(tenders[1]['reference'], 'ILOAMM_NFQA_G20')
         self.assertEqual(tenders[1]['url'], expected_url)
 
@@ -71,9 +71,9 @@ class UngmParserTestCase(TestCase):
                                                self.unspsc_codes)
 
         self.assertEqual(tender['tender']['title'], '')
-        self.assertEqual(tender['tender']['source'], '')
+        self.assertEqual(tender['tender']['source'], 'UNGM')
         self.assertEqual(tender['tender']['unspsc_codes'], '')
-        self.assertEqual(tender['tenders']['url'], self.url)
+        self.assertEqual(tender['tender']['url'], self.url)
         self.assertEqual(len(tender['documents']), 0)
 
     def test_ungm_parser_notice_date_format(self):
@@ -82,8 +82,8 @@ class UngmParserTestCase(TestCase):
         tender = self.worker.parse_ungm_notice(html_string, self.url,
                                                self.unspsc_codes)
 
-        self.assertEqual(tender['tender']['published'], '')
-        self.assertEqual(tender['tender']['deadline'], self.deadline)
+        self.assertEqual(tender['tender']['published'], date.today())
+        self.assertEqual(tender['tender']['deadline'], '')
 
     def test_ungm_parser_notice_list_empty(self):
         with open('app/tests/parser_files/ungm_notice_list_empty.html', 'r') as f:
@@ -92,7 +92,7 @@ class UngmParserTestCase(TestCase):
         tender_list = self.worker.parse_ungm_notice_list(html_string)
 
         self.assertEqual(len(tender_list), 2)
-        self.assertEqual(tender_list[1]['published'], '')
+        self.assertEqual(tender_list[1]['published'], datetime.strptime('16-Sep-2019', '%d-%b-%Y').date())
         self.assertEqual(tender_list[1]['reference'], '')
         self.assertEqual(tender_list[1]['url'], '')
 
@@ -103,13 +103,13 @@ class UngmParserTestCase(TestCase):
         winner = self.winner.parse_winner(html_string)
 
         self.assertEqual(winner['vendor'], '')
-        self.assertEqual(winner['value'], 0)
-        self.assertEqual(winner['currency'], 'USD')
-        self.assertEqual(winner['award_date'], datetime.now())
+        self.assertEqual(winner['value'], '')
+        self.assertEqual(winner['currency'], '')
+        self.assertEqual(winner['award_date'], datetime.now().date())
 
     def test_ungm_winner_date_format(self):
         with open('app/tests/parser_files/ungm_winner_all_empty.html', 'r') as f:
             html_string = f.read()
 
         winner = self.winner.parse_winner(html_string)
-        self.assertEqual(winner['award_date'], datetime.now())
+        self.assertEqual(winner['award_date'], datetime.now().date())
