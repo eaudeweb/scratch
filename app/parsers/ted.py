@@ -183,14 +183,20 @@ class TEDParser(object):
             )
 
             if not accept_notice:
-                self.xml_files.remove(xml_file)
-                os.remove(xml_file)
+                try:
+                    self.xml_files.remove(xml_file)
+                    os.remove(xml_file)
+                except ValueError:
+                    pass
                 raise StopIteration
             else:
                 codes[xml_file] = cpv_codes
         else:
-            self.xml_files.remove(xml_file)
-            os.remove(xml_file)
+            try:
+                self.xml_files.remove(xml_file)
+                os.remove(xml_file)
+            except ValueError:
+                pass
             raise StopIteration
 
         tender = dict()
