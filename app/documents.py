@@ -1,13 +1,21 @@
 from django_elasticsearch_dsl import DocType, Index, fields
 from elasticsearch_dsl import analyzer
+from elasticsearch_dsl.analysis import normalizer, tokenizer
 
 from .models import Tender, Winner
 
-html_strip = analyzer(
-    'html_strip',
+case_insensitive_analyzer = analyzer(
+    'case_insensitive_analyzer',
     tokenizer="standard",
-    filter=["standard", "lowercase", "stop", "snowball"],
-    char_filter=["html_strip"]
+    token_chars=["whitespace", "punctuation"],
+    filter=['lowercase']
+)
+
+case_insensitive_normalizer = normalizer(
+    type="custom",
+    name_or_instance='case_insensitive_normalizer',
+    char_filter=[],
+    filter="lowercase",
 )
 
 tender = Index('tenders')
@@ -25,18 +33,33 @@ winner.settings(
 
 @tender.doc_type
 class TenderDoc(DocType):
+    description = fields.TextField(
+        analyzer=case_insensitive_analyzer,
+        fielddata=True,
+        fields={'raw': fields.KeywordField(
+            multi=True, ignore_above=256,
+            normalizer=case_insensitive_normalizer
+        )}
+    )
+
+    title = fields.TextField(
+        analyzer=case_insensitive_analyzer,
+        fielddata=True,
+        fields={'raw': fields.KeywordField(
+            multi=True, ignore_above=256,
+            normalizer=case_insensitive_normalizer
+        )}
+    )
 
     class Meta:
         model = Tender
         fields = [
-            'title',
             'reference',
             'unspsc_codes',
             'cpv_codes',
             'organization',
             'source',
             'notified',
-            'description',
         ]
 
 

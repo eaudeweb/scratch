@@ -360,7 +360,10 @@ class ContractAwardDetailView(LoginRequiredMixin, DetailView):
     redirect_field_name = "login_view"
 
 
-class SearchView(TendersListView):
+class SearchView(LoginRequiredMixin, TemplateView):
+    template_name = "search_results.html"
+    login_url = "/login"
+    redirect_field_name = "login_view"
 
     def get_queryset(self):
         pk = self.kwargs['pk'].replace('+', ' ')
@@ -380,40 +383,63 @@ class SearchView(TendersListView):
                 ]
             )
         )
-
         tenders = result.to_queryset()
+
         awards = Winner.objects.all()
 
-        if self.request.GET.get("filter_button"):
-            organization = self.request.GET.get("organization")
-            if organization:
-                tenders = tenders.filter(organization=organization)
-
-            source = self.request.GET.get("source")
-            if source:
-                tenders = tenders.filter(source=source)
-
-            favourite = self.request.GET.get("favourite")
-            if favourite:
-                tenders = tenders.filter(favourite=favourite)
-
-            keyword = self.request.GET.get("keyword")
-            if keyword:
-                tenders = tenders.filter(keyword=keyword)
-
-            status = self.request.GET.get("status")
-            if status:
-                award_refs = [award.tender.reference for award in awards]
-                if status == "open":
-                    tenders = tenders.exclude(reference__in=award_refs)
-                else:
-                    tenders = tenders.filter(reference__in=award_refs)
+        # if self.request.GET.get("filter_button"):
+        #     organization = self.request.GET.get("organization")
+        #     if organization:
+        #         tenders = tenders.filter(organization=organization)
+        #
+        #     source = self.request.GET.get("source")
+        #     if source:
+        #         tenders = tenders.filter(source=source)
+        #
+        #     favourite = self.request.GET.get("favourite")
+        #     if favourite:
+        #         tenders = tenders.filter(favourite=favourite)
+        #
+        #     keyword = self.request.GET.get("keyword")
+        #     if keyword:
+        #         tenders = tenders.filter(keyword=keyword)
+        #
+        #     status = self.request.GET.get("status")
+        #     if status:
+        #         award_refs = [award.tender.reference for award in awards]
+        #         if status == "open":
+        #             tenders = tenders.exclude(reference__in=award_refs)
+        #         else:
+        #             tenders = tenders.filter(reference__in=award_refs)
 
         return tenders
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["reset_url"] = '/search/' + self.kwargs['pk']
+        #context["reset_url"] = '/search/' + self.kwargs['pk']
+        tenders = []
+        awards = []
+
+        pk = self.kwargs['pk'].replace('+', ' ')
+
+        result = TenderDoc.search().query(
+            elasticQ(
+                "multi_match",
+                query=pk,
+                fields=[
+                    'title',
+                    'organization',
+                    'source',
+                    'reference',
+                    'unspsc_codes',
+                    'cpv_codes',
+                    'description',
+                ]
+            )
+        )
+        tenders = result.to_queryset()
+        context['tenders'] = tenders
+        context['awards'] = awards
         return context
 
 

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title>Scratch - Search Results</title>
+{% endblock %}
+
+{% block content %}
+  {% if tenders %}
+    <div class="title-search">
+      <h2>Tenders</h2>
+    </div>
+    <div class="list-group search-list">
+      {% for tender in tenders %}
+        <p class="list-group-item list-group-item-action search-element">
+          <a class="search-tender-title" href="{% url 'tender_detail_view' tender.id %}" >{{ tender.title }}</a>
+          <br>
+          <a class="truncate-search">{{ tender.description }}</a>
+        </p>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if awards %}
+    <ul>
+      {% for award in awards %}
+        <li>{{ awards.vendor }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% if not tenders and not awards %}
+    <h2>No Tender or Contract Award matching the search was found </h2>
+  {% endif %}
+{% endblock %}

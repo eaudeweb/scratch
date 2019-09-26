@@ -1,0 +1,27 @@
+.title-search {
+  padding: 30px;
+}
+
+.search-list {
+  padding-left: 30px;
+  padding-right: 30px;;
+}
+
+.search-element {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.search-tender-title {
+  font-weight: bold;
+}
+
+.truncate-search {
+  padding-top: 7px;
+  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
