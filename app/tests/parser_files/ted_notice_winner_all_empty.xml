@@ -348,7 +348,7 @@
                         Europa-Parlamentets bygninger i Bruxelles.
                     </P>
                 </SHORT_DESCR>
-                <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                
                 <NO_LOT_DIVISION/>
                 <OBJECT_DESCR ITEM="1">
                     <CPV_ADDITIONAL>
@@ -465,7 +465,7 @@
                     <P>Renovation af MEP-områderne i Europa-Parlamentets bygninger i Bruxelles</P>
                 </TITLE>
                 <AWARDED_CONTRACT>
-                    <DATE_CONCLUSION_CONTRACT>2019-03-11</DATE_CONCLUSION_CONTRACT>
+                    
                     <TENDERS>
                         <NB_TENDERS_RECEIVED>7</NB_TENDERS_RECEIVED>
                         <NB_TENDERS_RECEIVED_SME>7</NB_TENDERS_RECEIVED_SME>
@@ -477,7 +477,7 @@
                         <AWARDED_TO_GROUP/>
                         <CONTRACTOR>
                             <ADDRESS_CONTRACTOR>
-                                <OFFICIALNAME>Société Momentanée Cit Blaton-Jacques Delens</OFFICIALNAME>
+                                <OFFICIALNAME></OFFICIALNAME>
                                 <ADDRESS>Avenue Jean Jaurès 50</ADDRESS>
                                 <TOWN>Bruxelles</TOWN>
                                 <POSTAL_CODE>1030</POSTAL_CODE>
@@ -489,7 +489,7 @@
                     </CONTRACTORS>
                     <VALUES>
                         <VAL_ESTIMATED_TOTAL CURRENCY="EUR">13000000.00</VAL_ESTIMATED_TOTAL>
-                        <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                        
                     </VALUES>
                 </AWARDED_CONTRACT>
             </AWARD_CONTRACT>
@@ -560,7 +560,7 @@
                         Europäischen Parlaments in Brüssel genutzten Bereichen.
                     </P>
                 </SHORT_DESCR>
-                <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                
                 <NO_LOT_DIVISION/>
                 <OBJECT_DESCR ITEM="1">
                     <CPV_ADDITIONAL>
@@ -679,7 +679,7 @@
                     <P>Renovierung der MEP-Bereiche in den Gebäuden des Europäischen Parlaments in Brüssel</P>
                 </TITLE>
                 <AWARDED_CONTRACT>
-                    <DATE_CONCLUSION_CONTRACT>2019-03-11</DATE_CONCLUSION_CONTRACT>
+                    
                     <TENDERS>
                         <NB_TENDERS_RECEIVED>7</NB_TENDERS_RECEIVED>
                         <NB_TENDERS_RECEIVED_SME>7</NB_TENDERS_RECEIVED_SME>
@@ -691,7 +691,6 @@
                         <AWARDED_TO_GROUP/>
                         <CONTRACTOR>
                             <ADDRESS_CONTRACTOR>
-                                <OFFICIALNAME>Société Momentanée Cit Blaton-Jacques Delens</OFFICIALNAME>
                                 <ADDRESS>Avenue Jean Jaurès 50</ADDRESS>
                                 <TOWN>Bruxelles</TOWN>
                                 <POSTAL_CODE>1030</POSTAL_CODE>
@@ -703,7 +702,7 @@
                     </CONTRACTORS>
                     <VALUES>
                         <VAL_ESTIMATED_TOTAL CURRENCY="EUR">13000000.00</VAL_ESTIMATED_TOTAL>
-                        <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                        
                     </VALUES>
                 </AWARDED_CONTRACT>
             </AWARD_CONTRACT>
@@ -774,7 +773,7 @@
                         the European Parliament in Brussels.
                     </P>
                 </SHORT_DESCR>
-                <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                
                 <NO_LOT_DIVISION/>
                 <OBJECT_DESCR ITEM="1">
                     <CPV_ADDITIONAL>
@@ -893,7 +892,7 @@
                     <P>Renovation of MEPs’ areas in the buildings of the European Parliament in Brussels</P>
                 </TITLE>
                 <AWARDED_CONTRACT>
-                    <DATE_CONCLUSION_CONTRACT>2019-03-11</DATE_CONCLUSION_CONTRACT>
+                    
                     <TENDERS>
                         <NB_TENDERS_RECEIVED>7</NB_TENDERS_RECEIVED>
                         <NB_TENDERS_RECEIVED_SME>7</NB_TENDERS_RECEIVED_SME>
@@ -905,7 +904,6 @@
                         <AWARDED_TO_GROUP/>
                         <CONTRACTOR>
                             <ADDRESS_CONTRACTOR>
-                                <OFFICIALNAME>Société Momentanée Cit Blaton-Jacques Delens</OFFICIALNAME>
                                 <ADDRESS>Avenue Jean Jaurès 50</ADDRESS>
                                 <TOWN>Bruxelles</TOWN>
                                 <POSTAL_CODE>1030</POSTAL_CODE>
@@ -917,7 +915,7 @@
                     </CONTRACTORS>
                     <VALUES>
                         <VAL_ESTIMATED_TOTAL CURRENCY="EUR">13000000.00</VAL_ESTIMATED_TOTAL>
-                        <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                        
                     </VALUES>
                 </AWARDED_CONTRACT>
             </AWARD_CONTRACT>
@@ -990,7 +988,7 @@
                         por los miembros del Parlamento Europeo en Bruselas.
                     </P>
                 </SHORT_DESCR>
-                <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                
                 <NO_LOT_DIVISION/>
                 <OBJECT_DESCR ITEM="1">
                     <CPV_ADDITIONAL>
@@ -1113,7 +1111,6 @@
                     </P>
                 </TITLE>
                 <AWARDED_CONTRACT>
-                    <DATE_CONCLUSION_CONTRACT>2019-03-11</DATE_CONCLUSION_CONTRACT>
                     <TENDERS>
                         <NB_TENDERS_RECEIVED>7</NB_TENDERS_RECEIVED>
                         <NB_TENDERS_RECEIVED_SME>7</NB_TENDERS_RECEIVED_SME>
@@ -1125,7 +1122,7 @@
                         <AWARDED_TO_GROUP/>
                         <CONTRACTOR>
                             <ADDRESS_CONTRACTOR>
-                                <OFFICIALNAME>Société Momentanée Cit Blaton-Jacques Delens</OFFICIALNAME>
+                                
                                 <ADDRESS>Avenue Jean Jaurès 50</ADDRESS>
                                 <TOWN>Bruxelles</TOWN>
                                 <POSTAL_CODE>1030</POSTAL_CODE>
@@ -1137,7 +1134,7 @@
                     </CONTRACTORS>
                     <VALUES>
                         <VAL_ESTIMATED_TOTAL CURRENCY="EUR">13000000.00</VAL_ESTIMATED_TOTAL>
-                        <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                        
                     </VALUES>
                 </AWARDED_CONTRACT>
             </AWARD_CONTRACT>
@@ -1208,7 +1205,7 @@
                         tiloissa Brysselissä.
                     </P>
                 </SHORT_DESCR>
-                <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                
                 <NO_LOT_DIVISION/>
                 <OBJECT_DESCR ITEM="1">
                     <CPV_ADDITIONAL>
@@ -1327,7 +1324,7 @@
                     <P>Euroopan parlamentin jäsenten tilojen kunnostus Euroopan parlamentin rakennuksissa</P>
                 </TITLE>
                 <AWARDED_CONTRACT>
-                    <DATE_CONCLUSION_CONTRACT>2019-03-11</DATE_CONCLUSION_CONTRACT>
+                    
                     <TENDERS>
                         <NB_TENDERS_RECEIVED>7</NB_TENDERS_RECEIVED>
                         <NB_TENDERS_RECEIVED_SME>7</NB_TENDERS_RECEIVED_SME>
@@ -1339,7 +1336,7 @@
                         <AWARDED_TO_GROUP/>
                         <CONTRACTOR>
                             <ADDRESS_CONTRACTOR>
-                                <OFFICIALNAME>Société Momentanée Cit Blaton-Jacques Delens</OFFICIALNAME>
+                                
                                 <ADDRESS>Avenue Jean Jaurès 50</ADDRESS>
                                 <TOWN>Bruxelles</TOWN>
                                 <POSTAL_CODE>1030</POSTAL_CODE>
@@ -1351,7 +1348,7 @@
                     </CONTRACTORS>
                     <VALUES>
                         <VAL_ESTIMATED_TOTAL CURRENCY="EUR">13000000.00</VAL_ESTIMATED_TOTAL>
-                        <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                        
                     </VALUES>
                 </AWARDED_CONTRACT>
             </AWARD_CONTRACT>
@@ -1422,7 +1419,7 @@
                         Parlement européen à Bruxelles.
                     </P>
                 </SHORT_DESCR>
-                <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                
                 <NO_LOT_DIVISION/>
                 <OBJECT_DESCR ITEM="1">
                     <CPV_ADDITIONAL>
@@ -1541,7 +1538,7 @@
                     <P>Rénovation des espaces MEPS dans les bâtiments du Parlement européen à Bruxelles</P>
                 </TITLE>
                 <AWARDED_CONTRACT>
-                    <DATE_CONCLUSION_CONTRACT>2019-03-11</DATE_CONCLUSION_CONTRACT>
+                    
                     <TENDERS>
                         <NB_TENDERS_RECEIVED>7</NB_TENDERS_RECEIVED>
                         <NB_TENDERS_RECEIVED_SME>7</NB_TENDERS_RECEIVED_SME>
@@ -1553,7 +1550,7 @@
                         <AWARDED_TO_GROUP/>
                         <CONTRACTOR>
                             <ADDRESS_CONTRACTOR>
-                                <OFFICIALNAME>Société Momentanée Cit Blaton-Jacques Delens</OFFICIALNAME>
+                                
                                 <ADDRESS>Avenue Jean Jaurès 50</ADDRESS>
                                 <TOWN>Bruxelles</TOWN>
                                 <POSTAL_CODE>1030</POSTAL_CODE>
@@ -1565,7 +1562,7 @@
                     </CONTRACTORS>
                     <VALUES>
                         <VAL_ESTIMATED_TOTAL CURRENCY="EUR">13000000.00</VAL_ESTIMATED_TOTAL>
-                        <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                        
                     </VALUES>
                 </AWARDED_CONTRACT>
             </AWARD_CONTRACT>
@@ -1636,7 +1633,7 @@
                         Ευρωπαϊκού Κοινοβουλίου στις Βρυξέλλες.
                     </P>
                 </SHORT_DESCR>
-                <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                
                 <NO_LOT_DIVISION/>
                 <OBJECT_DESCR ITEM="1">
                     <CPV_ADDITIONAL>
@@ -1755,7 +1752,7 @@
                     <P>Ανακαίνιση χώρων των ευρωβουλευτών στα κτίρια του Ευρωπαϊκού Κοινοβουλίου στις Βρυξέλλες</P>
                 </TITLE>
                 <AWARDED_CONTRACT>
-                    <DATE_CONCLUSION_CONTRACT>2019-03-11</DATE_CONCLUSION_CONTRACT>
+                    
                     <TENDERS>
                         <NB_TENDERS_RECEIVED>7</NB_TENDERS_RECEIVED>
                         <NB_TENDERS_RECEIVED_SME>7</NB_TENDERS_RECEIVED_SME>
@@ -1767,7 +1764,7 @@
                         <AWARDED_TO_GROUP/>
                         <CONTRACTOR>
                             <ADDRESS_CONTRACTOR>
-                                <OFFICIALNAME>Société Momentanée Cit Blaton-Jacques Delens</OFFICIALNAME>
+                                
                                 <ADDRESS>Avenue Jean Jaurès 50</ADDRESS>
                                 <TOWN>Bruxelles</TOWN>
                                 <POSTAL_CODE>1030</POSTAL_CODE>
@@ -1779,7 +1776,7 @@
                     </CONTRACTORS>
                     <VALUES>
                         <VAL_ESTIMATED_TOTAL CURRENCY="EUR">13000000.00</VAL_ESTIMATED_TOTAL>
-                        <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                        
                     </VALUES>
                 </AWARDED_CONTRACT>
             </AWARD_CONTRACT>
@@ -1851,7 +1848,7 @@
                         membri del Parlamento europeo a Bruxelles.
                     </P>
                 </SHORT_DESCR>
-                <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                
                 <NO_LOT_DIVISION/>
                 <OBJECT_DESCR ITEM="1">
                     <CPV_ADDITIONAL>
@@ -1972,7 +1969,7 @@
                     </P>
                 </TITLE>
                 <AWARDED_CONTRACT>
-                    <DATE_CONCLUSION_CONTRACT>2019-03-11</DATE_CONCLUSION_CONTRACT>
+                    
                     <TENDERS>
                         <NB_TENDERS_RECEIVED>7</NB_TENDERS_RECEIVED>
                         <NB_TENDERS_RECEIVED_SME>7</NB_TENDERS_RECEIVED_SME>
@@ -1984,7 +1981,7 @@
                         <AWARDED_TO_GROUP/>
                         <CONTRACTOR>
                             <ADDRESS_CONTRACTOR>
-                                <OFFICIALNAME>Société Momentanée Cit Blaton-Jacques Delens</OFFICIALNAME>
+                                
                                 <ADDRESS>Avenue Jean Jaurès 50</ADDRESS>
                                 <TOWN>Bruxelles</TOWN>
                                 <POSTAL_CODE>1030</POSTAL_CODE>
@@ -1996,7 +1993,7 @@
                     </CONTRACTORS>
                     <VALUES>
                         <VAL_ESTIMATED_TOTAL CURRENCY="EUR">13000000.00</VAL_ESTIMATED_TOTAL>
-                        <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                        
                     </VALUES>
                 </AWARDED_CONTRACT>
             </AWARD_CONTRACT>
@@ -2069,7 +2066,7 @@
                         door leden van het Europees Parlement te Brussel worden gebruikt.
                     </P>
                 </SHORT_DESCR>
-                <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                
                 <NO_LOT_DIVISION/>
                 <OBJECT_DESCR ITEM="1">
                     <CPV_ADDITIONAL>
@@ -2190,7 +2187,7 @@
                     </P>
                 </TITLE>
                 <AWARDED_CONTRACT>
-                    <DATE_CONCLUSION_CONTRACT>2019-03-11</DATE_CONCLUSION_CONTRACT>
+                    
                     <TENDERS>
                         <NB_TENDERS_RECEIVED>7</NB_TENDERS_RECEIVED>
                         <NB_TENDERS_RECEIVED_SME>7</NB_TENDERS_RECEIVED_SME>
@@ -2202,7 +2199,7 @@
                         <AWARDED_TO_GROUP/>
                         <CONTRACTOR>
                             <ADDRESS_CONTRACTOR>
-                                <OFFICIALNAME>Société Momentanée Cit Blaton-Jacques Delens</OFFICIALNAME>
+                                
                                 <ADDRESS>Avenue Jean Jaurès 50</ADDRESS>
                                 <TOWN>Bruxelles</TOWN>
                                 <POSTAL_CODE>1030</POSTAL_CODE>
@@ -2214,7 +2211,7 @@
                     </CONTRACTORS>
                     <VALUES>
                         <VAL_ESTIMATED_TOTAL CURRENCY="EUR">13000000.00</VAL_ESTIMATED_TOTAL>
-                        <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                        
                     </VALUES>
                 </AWARDED_CONTRACT>
             </AWARD_CONTRACT>
@@ -2287,7 +2284,7 @@
                         membros do Parlamento Europeu em Bruxelas.
                     </P>
                 </SHORT_DESCR>
-                <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                
                 <NO_LOT_DIVISION/>
                 <OBJECT_DESCR ITEM="1">
                     <CPV_ADDITIONAL>
@@ -2408,7 +2405,7 @@
                     </P>
                 </TITLE>
                 <AWARDED_CONTRACT>
-                    <DATE_CONCLUSION_CONTRACT>2019-03-11</DATE_CONCLUSION_CONTRACT>
+                    
                     <TENDERS>
                         <NB_TENDERS_RECEIVED>7</NB_TENDERS_RECEIVED>
                         <NB_TENDERS_RECEIVED_SME>7</NB_TENDERS_RECEIVED_SME>
@@ -2420,7 +2417,7 @@
                         <AWARDED_TO_GROUP/>
                         <CONTRACTOR>
                             <ADDRESS_CONTRACTOR>
-                                <OFFICIALNAME>Société Momentanée Cit Blaton-Jacques Delens</OFFICIALNAME>
+                                
                                 <ADDRESS>Avenue Jean Jaurès 50</ADDRESS>
                                 <TOWN>Bruxelles</TOWN>
                                 <POSTAL_CODE>1030</POSTAL_CODE>
@@ -2432,7 +2429,7 @@
                     </CONTRACTORS>
                     <VALUES>
                         <VAL_ESTIMATED_TOTAL CURRENCY="EUR">13000000.00</VAL_ESTIMATED_TOTAL>
-                        <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                        
                     </VALUES>
                 </AWARDED_CONTRACT>
             </AWARD_CONTRACT>
@@ -2503,7 +2500,7 @@
                         i Europaparlamentet i Bryssel.
                     </P>
                 </SHORT_DESCR>
-                <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                
                 <NO_LOT_DIVISION/>
                 <OBJECT_DESCR ITEM="1">
                     <CPV_ADDITIONAL>
@@ -2616,7 +2613,7 @@
                     <P>Renovering av MEPS-utrymmena i Europaparlamentets byggnader i Bryssel</P>
                 </TITLE>
                 <AWARDED_CONTRACT>
-                    <DATE_CONCLUSION_CONTRACT>2019-03-11</DATE_CONCLUSION_CONTRACT>
+                    
                     <TENDERS>
                         <NB_TENDERS_RECEIVED>7</NB_TENDERS_RECEIVED>
                         <NB_TENDERS_RECEIVED_SME>7</NB_TENDERS_RECEIVED_SME>
@@ -2628,7 +2625,7 @@
                         <AWARDED_TO_GROUP/>
                         <CONTRACTOR>
                             <ADDRESS_CONTRACTOR>
-                                <OFFICIALNAME>Société Momentanée Cit Blaton-Jacques Delens</OFFICIALNAME>
+                                
                                 <ADDRESS>Avenue Jean Jaurès 50</ADDRESS>
                                 <TOWN>Bruxelles</TOWN>
                                 <POSTAL_CODE>1030</POSTAL_CODE>
@@ -2640,7 +2637,7 @@
                     </CONTRACTORS>
                     <VALUES>
                         <VAL_ESTIMATED_TOTAL CURRENCY="EUR">13000000.00</VAL_ESTIMATED_TOTAL>
-                        <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                        
                     </VALUES>
                 </AWARDED_CONTRACT>
             </AWARD_CONTRACT>
@@ -2711,7 +2708,7 @@
                         parlamentu v Bruselu.
                     </P>
                 </SHORT_DESCR>
-                <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                
                 <NO_LOT_DIVISION/>
                 <OBJECT_DESCR ITEM="1">
                     <CPV_ADDITIONAL>
@@ -2824,7 +2821,7 @@
                     <P>Rekonstrukce prostor MEPS v budovách Evropského parlamentu v Bruselu</P>
                 </TITLE>
                 <AWARDED_CONTRACT>
-                    <DATE_CONCLUSION_CONTRACT>2019-03-11</DATE_CONCLUSION_CONTRACT>
+                    
                     <TENDERS>
                         <NB_TENDERS_RECEIVED>7</NB_TENDERS_RECEIVED>
                         <NB_TENDERS_RECEIVED_SME>7</NB_TENDERS_RECEIVED_SME>
@@ -2836,7 +2833,7 @@
                         <AWARDED_TO_GROUP/>
                         <CONTRACTOR>
                             <ADDRESS_CONTRACTOR>
-                                <OFFICIALNAME>Société Momentanée Cit Blaton-Jacques Delens</OFFICIALNAME>
+                                
                                 <ADDRESS>Avenue Jean Jaurès 50</ADDRESS>
                                 <TOWN>Bruxelles</TOWN>
                                 <POSTAL_CODE>1030</POSTAL_CODE>
@@ -2848,7 +2845,7 @@
                     </CONTRACTORS>
                     <VALUES>
                         <VAL_ESTIMATED_TOTAL CURRENCY="EUR">13000000.00</VAL_ESTIMATED_TOTAL>
-                        <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                        
                     </VALUES>
                 </AWARDED_CONTRACT>
             </AWARD_CONTRACT>
@@ -2918,7 +2915,7 @@
                         Brüsselis asuvates hoonetes.
                     </P>
                 </SHORT_DESCR>
-                <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                
                 <NO_LOT_DIVISION/>
                 <OBJECT_DESCR ITEM="1">
                     <CPV_ADDITIONAL>
@@ -3031,7 +3028,7 @@
                     <P>Euroopa Parlamendi Brüsselis asuvate hoonete MEPS-alade renoveerimine</P>
                 </TITLE>
                 <AWARDED_CONTRACT>
-                    <DATE_CONCLUSION_CONTRACT>2019-03-11</DATE_CONCLUSION_CONTRACT>
+                    
                     <TENDERS>
                         <NB_TENDERS_RECEIVED>7</NB_TENDERS_RECEIVED>
                         <NB_TENDERS_RECEIVED_SME>7</NB_TENDERS_RECEIVED_SME>
@@ -3043,7 +3040,7 @@
                         <AWARDED_TO_GROUP/>
                         <CONTRACTOR>
                             <ADDRESS_CONTRACTOR>
-                                <OFFICIALNAME>Société Momentanée Cit Blaton-Jacques Delens</OFFICIALNAME>
+                                
                                 <ADDRESS>Avenue Jean Jaurès 50</ADDRESS>
                                 <TOWN>Bruxelles</TOWN>
                                 <POSTAL_CODE>1030</POSTAL_CODE>
@@ -3055,7 +3052,7 @@
                     </CONTRACTORS>
                     <VALUES>
                         <VAL_ESTIMATED_TOTAL CURRENCY="EUR">13000000.00</VAL_ESTIMATED_TOTAL>
-                        <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                        
                     </VALUES>
                 </AWARDED_CONTRACT>
             </AWARD_CONTRACT>
@@ -3127,7 +3124,7 @@
                         felújítására irányuló munkálatok kivitelezése.
                     </P>
                 </SHORT_DESCR>
-                <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                
                 <NO_LOT_DIVISION/>
                 <OBJECT_DESCR ITEM="1">
                     <CPV_ADDITIONAL>
@@ -3249,7 +3246,7 @@
                     </P>
                 </TITLE>
                 <AWARDED_CONTRACT>
-                    <DATE_CONCLUSION_CONTRACT>2019-03-11</DATE_CONCLUSION_CONTRACT>
+                    
                     <TENDERS>
                         <NB_TENDERS_RECEIVED>7</NB_TENDERS_RECEIVED>
                         <NB_TENDERS_RECEIVED_SME>7</NB_TENDERS_RECEIVED_SME>
@@ -3261,7 +3258,7 @@
                         <AWARDED_TO_GROUP/>
                         <CONTRACTOR>
                             <ADDRESS_CONTRACTOR>
-                                <OFFICIALNAME>Société Momentanée Cit Blaton-Jacques Delens</OFFICIALNAME>
+                                
                                 <ADDRESS>Avenue Jean Jaurès 50</ADDRESS>
                                 <TOWN>Bruxelles</TOWN>
                                 <POSTAL_CODE>1030</POSTAL_CODE>
@@ -3273,7 +3270,7 @@
                     </CONTRACTORS>
                     <VALUES>
                         <VAL_ESTIMATED_TOTAL CURRENCY="EUR">13000000.00</VAL_ESTIMATED_TOTAL>
-                        <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                        
                     </VALUES>
                 </AWARDED_CONTRACT>
             </AWARD_CONTRACT>
@@ -3344,7 +3341,7 @@
                         Briuselyje.
                     </P>
                 </SHORT_DESCR>
-                <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                
                 <NO_LOT_DIVISION/>
                 <OBJECT_DESCR ITEM="1">
                     <CPV_ADDITIONAL>
@@ -3457,7 +3454,7 @@
                     <P>Europos Parlamento Briuselyje MEPS erdvių atnaujinimas</P>
                 </TITLE>
                 <AWARDED_CONTRACT>
-                    <DATE_CONCLUSION_CONTRACT>2019-03-11</DATE_CONCLUSION_CONTRACT>
+                    
                     <TENDERS>
                         <NB_TENDERS_RECEIVED>7</NB_TENDERS_RECEIVED>
                         <NB_TENDERS_RECEIVED_SME>7</NB_TENDERS_RECEIVED_SME>
@@ -3469,7 +3466,7 @@
                         <AWARDED_TO_GROUP/>
                         <CONTRACTOR>
                             <ADDRESS_CONTRACTOR>
-                                <OFFICIALNAME>Société Momentanée Cit Blaton-Jacques Delens</OFFICIALNAME>
+                                
                                 <ADDRESS>Avenue Jean Jaurès 50</ADDRESS>
                                 <TOWN>Bruxelles</TOWN>
                                 <POSTAL_CODE>1030</POSTAL_CODE>
@@ -3481,7 +3478,7 @@
                     </CONTRACTORS>
                     <VALUES>
                         <VAL_ESTIMATED_TOTAL CURRENCY="EUR">13000000.00</VAL_ESTIMATED_TOTAL>
-                        <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                        
                     </VALUES>
                 </AWARDED_CONTRACT>
             </AWARD_CONTRACT>
@@ -3549,7 +3546,7 @@
                 <SHORT_DESCR>
                     <P>Šī līguma mērķis ir veikt Eiropas Parlamenta deputātu darba telpu atjaunošanu Briselē.</P>
                 </SHORT_DESCR>
-                <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                
                 <NO_LOT_DIVISION/>
                 <OBJECT_DESCR ITEM="1">
                     <CPV_ADDITIONAL>
@@ -3662,7 +3659,7 @@
                     <P>EP deputātu telpu atjaunošana Eiropas Parlamenta ēkās Briselē</P>
                 </TITLE>
                 <AWARDED_CONTRACT>
-                    <DATE_CONCLUSION_CONTRACT>2019-03-11</DATE_CONCLUSION_CONTRACT>
+                    
                     <TENDERS>
                         <NB_TENDERS_RECEIVED>7</NB_TENDERS_RECEIVED>
                         <NB_TENDERS_RECEIVED_SME>7</NB_TENDERS_RECEIVED_SME>
@@ -3674,7 +3671,7 @@
                         <AWARDED_TO_GROUP/>
                         <CONTRACTOR>
                             <ADDRESS_CONTRACTOR>
-                                <OFFICIALNAME>Société Momentanée Cit Blaton-Jacques Delens</OFFICIALNAME>
+                                
                                 <ADDRESS>Avenue Jean Jaurès 50</ADDRESS>
                                 <TOWN>Bruxelles</TOWN>
                                 <POSTAL_CODE>1030</POSTAL_CODE>
@@ -3686,7 +3683,7 @@
                     </CONTRACTORS>
                     <VALUES>
                         <VAL_ESTIMATED_TOTAL CURRENCY="EUR">13000000.00</VAL_ESTIMATED_TOTAL>
-                        <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                        
                     </VALUES>
                 </AWARDED_CONTRACT>
             </AWARD_CONTRACT>
@@ -3756,7 +3753,7 @@
                         tal-Parlament Ewropew fi Brussell.
                     </P>
                 </SHORT_DESCR>
-                <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                
                 <NO_LOT_DIVISION/>
                 <OBJECT_DESCR ITEM="1">
                     <CPV_ADDITIONAL>
@@ -3875,7 +3872,7 @@
                     <P>Titjib tal-ispazji MEPS fil-binjiet tal-Parlament Ewropew fi Brussell</P>
                 </TITLE>
                 <AWARDED_CONTRACT>
-                    <DATE_CONCLUSION_CONTRACT>2019-03-11</DATE_CONCLUSION_CONTRACT>
+                    
                     <TENDERS>
                         <NB_TENDERS_RECEIVED>7</NB_TENDERS_RECEIVED>
                         <NB_TENDERS_RECEIVED_SME>7</NB_TENDERS_RECEIVED_SME>
@@ -3887,7 +3884,7 @@
                         <AWARDED_TO_GROUP/>
                         <CONTRACTOR>
                             <ADDRESS_CONTRACTOR>
-                                <OFFICIALNAME>Société Momentanée Cit Blaton-Jacques Delens</OFFICIALNAME>
+                                
                                 <ADDRESS>Avenue Jean Jaurès 50</ADDRESS>
                                 <TOWN>Bruxelles</TOWN>
                                 <POSTAL_CODE>1030</POSTAL_CODE>
@@ -3899,7 +3896,7 @@
                     </CONTRACTORS>
                     <VALUES>
                         <VAL_ESTIMATED_TOTAL CURRENCY="EUR">13000000.00</VAL_ESTIMATED_TOTAL>
-                        <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                        
                     </VALUES>
                 </AWARDED_CONTRACT>
             </AWARD_CONTRACT>
@@ -3972,7 +3969,7 @@
                         Parlamentu Europejskiego w Brukseli.
                     </P>
                 </SHORT_DESCR>
-                <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                
                 <NO_LOT_DIVISION/>
                 <OBJECT_DESCR ITEM="1">
                     <CPV_ADDITIONAL>
@@ -4095,7 +4092,7 @@
                     </P>
                 </TITLE>
                 <AWARDED_CONTRACT>
-                    <DATE_CONCLUSION_CONTRACT>2019-03-11</DATE_CONCLUSION_CONTRACT>
+                    
                     <TENDERS>
                         <NB_TENDERS_RECEIVED>7</NB_TENDERS_RECEIVED>
                         <NB_TENDERS_RECEIVED_SME>7</NB_TENDERS_RECEIVED_SME>
@@ -4107,7 +4104,7 @@
                         <AWARDED_TO_GROUP/>
                         <CONTRACTOR>
                             <ADDRESS_CONTRACTOR>
-                                <OFFICIALNAME>Société Momentanée Cit Blaton-Jacques Delens</OFFICIALNAME>
+                                
                                 <ADDRESS>Avenue Jean Jaurès 50</ADDRESS>
                                 <TOWN>Bruxelles</TOWN>
                                 <POSTAL_CODE>1030</POSTAL_CODE>
@@ -4119,7 +4116,7 @@
                     </CONTRACTORS>
                     <VALUES>
                         <VAL_ESTIMATED_TOTAL CURRENCY="EUR">13000000.00</VAL_ESTIMATED_TOTAL>
-                        <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                        
                     </VALUES>
                 </AWARDED_CONTRACT>
             </AWARD_CONTRACT>
@@ -4189,7 +4186,7 @@
                         parlamentu v Bruseli.
                     </P>
                 </SHORT_DESCR>
-                <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                
                 <NO_LOT_DIVISION/>
                 <OBJECT_DESCR ITEM="1">
                     <CPV_ADDITIONAL>
@@ -4307,7 +4304,7 @@
                     <P>Renovácia priestorov pre členov EP v Európskom parlamente v Bruseli</P>
                 </TITLE>
                 <AWARDED_CONTRACT>
-                    <DATE_CONCLUSION_CONTRACT>2019-03-11</DATE_CONCLUSION_CONTRACT>
+                    
                     <TENDERS>
                         <NB_TENDERS_RECEIVED>7</NB_TENDERS_RECEIVED>
                         <NB_TENDERS_RECEIVED_SME>7</NB_TENDERS_RECEIVED_SME>
@@ -4319,7 +4316,7 @@
                         <AWARDED_TO_GROUP/>
                         <CONTRACTOR>
                             <ADDRESS_CONTRACTOR>
-                                <OFFICIALNAME>Société Momentanée Cit Blaton-Jacques Delens</OFFICIALNAME>
+                                
                                 <ADDRESS>Avenue Jean Jaurès 50</ADDRESS>
                                 <TOWN>Bruxelles</TOWN>
                                 <POSTAL_CODE>1030</POSTAL_CODE>
@@ -4331,7 +4328,7 @@
                     </CONTRACTORS>
                     <VALUES>
                         <VAL_ESTIMATED_TOTAL CURRENCY="EUR">13000000.00</VAL_ESTIMATED_TOTAL>
-                        <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                        
                     </VALUES>
                 </AWARDED_CONTRACT>
             </AWARD_CONTRACT>
@@ -4402,7 +4399,7 @@
                         v Bruslju.
                     </P>
                 </SHORT_DESCR>
-                <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                
                 <NO_LOT_DIVISION/>
                 <OBJECT_DESCR ITEM="1">
                     <CPV_ADDITIONAL>
@@ -4517,7 +4514,7 @@
                     <P>Obnova prostorov poslancev EP v stavbah Evropskega parlamenta v Bruslju</P>
                 </TITLE>
                 <AWARDED_CONTRACT>
-                    <DATE_CONCLUSION_CONTRACT>2019-03-11</DATE_CONCLUSION_CONTRACT>
+                    
                     <TENDERS>
                         <NB_TENDERS_RECEIVED>7</NB_TENDERS_RECEIVED>
                         <NB_TENDERS_RECEIVED_SME>7</NB_TENDERS_RECEIVED_SME>
@@ -4541,7 +4538,7 @@
                     </CONTRACTORS>
                     <VALUES>
                         <VAL_ESTIMATED_TOTAL CURRENCY="EUR">13000000.00</VAL_ESTIMATED_TOTAL>
-                        <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                        
                     </VALUES>
                 </AWARDED_CONTRACT>
             </AWARD_CONTRACT>
@@ -4611,7 +4608,7 @@
                         áitiú ag Feisirí Pharlaimint na hEorpa sa Bhruiséil.
                     </P>
                 </SHORT_DESCR>
-                <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                
                 <NO_LOT_DIVISION/>
                 <OBJECT_DESCR ITEM="1">
                     <CPV_ADDITIONAL>
@@ -4730,7 +4727,7 @@
                     <P>Athchóiriú limistéir na FPEnna i bhfoirgnimh Pharlaimint na hEorpa sa Bhruiséil</P>
                 </TITLE>
                 <AWARDED_CONTRACT>
-                    <DATE_CONCLUSION_CONTRACT>2019-03-11</DATE_CONCLUSION_CONTRACT>
+                    
                     <TENDERS>
                         <NB_TENDERS_RECEIVED>7</NB_TENDERS_RECEIVED>
                         <NB_TENDERS_RECEIVED_SME>7</NB_TENDERS_RECEIVED_SME>
@@ -4742,7 +4739,7 @@
                         <AWARDED_TO_GROUP/>
                         <CONTRACTOR>
                             <ADDRESS_CONTRACTOR>
-                                <OFFICIALNAME>Société Momentanée Cit Blaton-Jacques Delens</OFFICIALNAME>
+                                
                                 <ADDRESS>Avenue Jean Jaurès 50</ADDRESS>
                                 <TOWN>Bruxelles</TOWN>
                                 <POSTAL_CODE>1030</POSTAL_CODE>
@@ -4754,7 +4751,7 @@
                     </CONTRACTORS>
                     <VALUES>
                         <VAL_ESTIMATED_TOTAL CURRENCY="EUR">13000000.00</VAL_ESTIMATED_TOTAL>
-                        <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                        
                     </VALUES>
                 </AWARDED_CONTRACT>
             </AWARD_CONTRACT>
@@ -4827,7 +4824,7 @@
                         Европейския парламент в сградите на Европейския парламент в Брюксел.
                     </P>
                 </SHORT_DESCR>
-                <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                
                 <NO_LOT_DIVISION/>
                 <OBJECT_DESCR ITEM="1">
                     <CPV_ADDITIONAL>
@@ -4946,7 +4943,7 @@
                     </P>
                 </TITLE>
                 <AWARDED_CONTRACT>
-                    <DATE_CONCLUSION_CONTRACT>2019-03-11</DATE_CONCLUSION_CONTRACT>
+                    
                     <TENDERS>
                         <NB_TENDERS_RECEIVED>7</NB_TENDERS_RECEIVED>
                         <NB_TENDERS_RECEIVED_SME>7</NB_TENDERS_RECEIVED_SME>
@@ -4958,7 +4955,7 @@
                         <AWARDED_TO_GROUP/>
                         <CONTRACTOR>
                             <ADDRESS_CONTRACTOR>
-                                <OFFICIALNAME>Société Momentanée Cit Blaton-Jacques Delens</OFFICIALNAME>
+                                
                                 <ADDRESS>Avenue Jean Jaurès 50</ADDRESS>
                                 <TOWN>Bruxelles</TOWN>
                                 <POSTAL_CODE>1030</POSTAL_CODE>
@@ -4970,7 +4967,7 @@
                     </CONTRACTORS>
                     <VALUES>
                         <VAL_ESTIMATED_TOTAL CURRENCY="EUR">13000000.00</VAL_ESTIMATED_TOTAL>
-                        <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                        
                     </VALUES>
                 </AWARDED_CONTRACT>
             </AWARD_CONTRACT>
@@ -5041,7 +5038,7 @@
                         Parlamentului European la Bruxelles.
                     </P>
                 </SHORT_DESCR>
-                <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                
                 <NO_LOT_DIVISION/>
                 <OBJECT_DESCR ITEM="1">
                     <CPV_ADDITIONAL>
@@ -5160,7 +5157,7 @@
                     <P>Renovarea spațiilor MEPS în clădirile Parlamentului European din Bruxelles</P>
                 </TITLE>
                 <AWARDED_CONTRACT>
-                    <DATE_CONCLUSION_CONTRACT>2019-03-11</DATE_CONCLUSION_CONTRACT>
+                    
                     <TENDERS>
                         <NB_TENDERS_RECEIVED>7</NB_TENDERS_RECEIVED>
                         <NB_TENDERS_RECEIVED_SME>7</NB_TENDERS_RECEIVED_SME>
@@ -5172,7 +5169,7 @@
                         <AWARDED_TO_GROUP/>
                         <CONTRACTOR>
                             <ADDRESS_CONTRACTOR>
-                                <OFFICIALNAME>Société Momentanée Cit Blaton-Jacques Delens</OFFICIALNAME>
+                                
                                 <ADDRESS>Avenue Jean Jaurès 50</ADDRESS>
                                 <TOWN>Bruxelles</TOWN>
                                 <POSTAL_CODE>1030</POSTAL_CODE>
@@ -5184,7 +5181,7 @@
                     </CONTRACTORS>
                     <VALUES>
                         <VAL_ESTIMATED_TOTAL CURRENCY="EUR">13000000.00</VAL_ESTIMATED_TOTAL>
-                        <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                        
                     </VALUES>
                 </AWARDED_CONTRACT>
             </AWARD_CONTRACT>
@@ -5255,7 +5252,7 @@
                         parlamenta u Bruxellesu.
                     </P>
                 </SHORT_DESCR>
-                <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                
                 <NO_LOT_DIVISION/>
                 <OBJECT_DESCR ITEM="1">
                     <CPV_ADDITIONAL>
@@ -5367,7 +5364,7 @@
                     <P>Obnova prostora zastupnika Europskog parlamenta u zgradama Europskog parlamenta u Bruxellesu</P>
                 </TITLE>
                 <AWARDED_CONTRACT>
-                    <DATE_CONCLUSION_CONTRACT>2019-03-11</DATE_CONCLUSION_CONTRACT>
+                    
                     <TENDERS>
                         <NB_TENDERS_RECEIVED>7</NB_TENDERS_RECEIVED>
                         <NB_TENDERS_RECEIVED_SME>7</NB_TENDERS_RECEIVED_SME>
@@ -5379,7 +5376,7 @@
                         <AWARDED_TO_GROUP/>
                         <CONTRACTOR>
                             <ADDRESS_CONTRACTOR>
-                                <OFFICIALNAME>Société Momentanée Cit Blaton-Jacques Delens</OFFICIALNAME>
+                                
                                 <ADDRESS>Avenue Jean Jaurès 50</ADDRESS>
                                 <TOWN>Bruxelles</TOWN>
                                 <POSTAL_CODE>1030</POSTAL_CODE>
@@ -5391,7 +5388,7 @@
                     </CONTRACTORS>
                     <VALUES>
                         <VAL_ESTIMATED_TOTAL CURRENCY="EUR">13000000.00</VAL_ESTIMATED_TOTAL>
-                        <VAL_TOTAL CURRENCY="EUR">17565752.85</VAL_TOTAL>
+                        
                     </VALUES>
                 </AWARDED_CONTRACT>
             </AWARD_CONTRACT>
