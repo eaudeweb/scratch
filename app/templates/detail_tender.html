@@ -83,6 +83,14 @@
         <td>{{ tender.marked_keyword_description | safe | linebreaks }}</td>
       </tr>
       <tr>
+        <td>Keywords</td>
+        <td>
+          {% for keyword in tender.keywords.all %}
+            <span class="badge badge-danger">{{ keyword }}</span>
+          {% endfor %}
+        </td>
+      </tr>
+      <tr>
         {% if tender.source == 'UNGM' %}
         <td>UNSPSCS codes</td>
         <td>{{ tender.unspsc_codes }}</td>

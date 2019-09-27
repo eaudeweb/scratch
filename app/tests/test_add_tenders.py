@@ -22,6 +22,14 @@ class AddTenderTestCase(TestCase):
         t2 = Tender.objects.get(reference=self.tender_2.reference)
         self.assertEqual(t1.has_keywords, True)
         self.assertEqual(t2.has_keywords, False)
+        self.assertEqual(list(t1.keywords.all()), list(Keyword.objects.all()))
+
+    def test_update_tenders_with_keywords(self):
+        t2 = Tender.objects.get(reference=self.tender_2.reference)
+        t2.title = 'Tender_2 python'
+        t2.save()
+        self.assertEqual(t2.has_keywords, True)
+        self.assertEqual(list(t2.keywords.all()), list(Keyword.objects.all()))
 
     def test_remove_tenders(self):
         Tender.objects.get(reference=self.tender_1.reference).delete()
