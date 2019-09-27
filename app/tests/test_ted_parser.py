@@ -1,6 +1,6 @@
 from datetime import date, datetime, timedelta
 
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from django.utils.datetime_safe import datetime
 from django.utils.timezone import make_aware
 
@@ -8,6 +8,10 @@ from app.factories import CPVCodeFactory, TedCountryFactory
 from app.parsers.ted import TEDParser
 
 
+@override_settings(
+    TED_DOC_TYPES="Contract award notice",
+    TED_AUTH_TYPE="European Institution/Agency or International Organisation"
+)
 class TedParserTestCase(TestCase):
 
     def setUp(self) -> None:
