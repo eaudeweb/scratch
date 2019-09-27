@@ -134,3 +134,9 @@ ul {
 .description {
   vertical-align: top;
 }
+
+.more-link {
+  font-size: 12px;
+  float: right;
+  padding-right: 9px;
+}

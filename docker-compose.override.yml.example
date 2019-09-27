@@ -8,11 +8,11 @@ services:
       - .:/var/local/scratch
     entrypoint: ["/usr/bin/tail", "-f", "/dev/null"]
 
-   async:
+  async:
     image: scratch
     build: .
-    depends:
-      - postfix
+    depends_on:
+      - smtp
 
   cron:
     image: scratch

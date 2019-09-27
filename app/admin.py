@@ -10,6 +10,7 @@ class TenderAdmin(admin.ModelAdmin):
                      'organization', 'unspsc_codes']
     list_filter = ('organization', 'notice_type', 'deadline', 'source',
                    'unspsc_codes', 'notified')
+    readonly_fields = ('keywords',)
 
 
 class TenderDocumentAdmin(admin.ModelAdmin):

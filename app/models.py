@@ -79,6 +79,8 @@ class Tender(models.Model):
         self.has_keywords = any(self.check_contains(getattr(self, field)) for field in fields)
         super().save(*args, **kwargs)
 
+        self.keywords.clear()
+
         found_keywords = []
         for field in fields:
             found_keywords += self.check_contains(getattr(self, field))
