@@ -83,7 +83,7 @@ class UngmParserTestCase(TestCase):
                                                self.unspsc_codes)
 
         self.assertEqual(tender['tender']['published'], date.today())
-        self.assertEqual(tender['tender']['deadline'], '')
+        self.assertEqual(tender['tender']['deadline'], None)
 
     def test_ungm_parser_notice_list_empty(self):
         with open('app/tests/parser_files/ungm_notice_list_empty.html', 'r') as f:

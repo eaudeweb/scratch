@@ -105,7 +105,7 @@ class UNGMWorker:
                 hours = float(gmt)
                 deadline -= timedelta(hours=hours)
         except ValueError:
-            deadline = ''
+            deadline = None
 
         tender = {
             'source': 'UNGM',
