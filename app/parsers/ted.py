@@ -103,13 +103,16 @@ class TEDWorker:
             tenders_count += added_tenders
             folder_date = folder_name[:8]
             formatted_date = datetime.strptime(folder_date, '%Y%m%d').strftime('%d/%m/%Y')
-            logging.warning(f'Date {formatted_date} parsed successfully')
+            logging.info(f'Date {formatted_date} parsed successfully')
 
         for archive_path in self.archives:
             os.remove(archive_path)
 
         for folder in folders:
-            os.rmdir(os.path.join(self.path, folder))
+            try:
+                os.rmdir(os.path.join(self.path, folder))
+            except OSError:
+                pass
 
         return changed_tenders, tenders_count
 
