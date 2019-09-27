@@ -3,9 +3,6 @@
   border-radius: 20px;
   border: 2px solid #D3D3D3;
 }
-.dataTables_filter input:focus, :active {
-  outline: 0;
-}
 
 .table {
   padding-top: 35px;
@@ -21,6 +18,11 @@
 
 .table_detail {
   padding: 45px;
+}
+
+.original-link {
+  font-style: italic;
+  font-size: 12px;
 }
 
 .award_detail {

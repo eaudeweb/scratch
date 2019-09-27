@@ -11,11 +11,11 @@
     </div>
     <div class="list-group search-list">
       {% for tender in tenders %}
-        <p class="list-group-item list-group-item-action search-element">
+        <div class="list-group-item list-group-item-action search-element">
           <a class="search-tender-title" href="{% url 'tender_detail_view' tender.id %}" >{{ tender.title }}</a>
           <br>
-          <a class="truncate-search">{{ tender.description}}</a>
-        </p>
+          <p class="truncate-search">{{ tender.description}}</p>
+        </div>
       {% endfor %}
     </div>
   {% endif %}

@@ -5,8 +5,8 @@
 {% endblock %}
 {% block content %}
 <p id="usr_seen_by" hidden>{{ user.username }}</p>
-<div class = "table_detail" >
-  <table id="tender_detail_table"  class="cell-border display compact">
+<div class="table_detail" >
+  <table id="tender_detail_table" class="cell-border display">
     <thead>
       <th>Favourite</th>
       <th>
@@ -101,7 +101,7 @@
         <td class="description">Documents</td>
         <td>
           {% for doc in documents_set %}
-          <p><a href="{{ doc.document.url }}">{{ doc.name }}</a></p>
+          <p><a href="{{ doc.document.url }}">{{ doc.name }}</a> (<span class="original-link"><a href="{{ doc.download_url }}">Original URL</a></span>)</p>
           {% endfor %}
         </td>
       </tr>

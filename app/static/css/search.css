@@ -10,6 +10,7 @@
 .search-element {
   padding-top: 10px;
   margin-bottom: 15px;
+  border: 1px solid black;
 }
 
 .search-tender-title {
