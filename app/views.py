@@ -367,7 +367,6 @@ class SearchView(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
         pk = self.kwargs['pk'].replace('+', '|')
 
         result_tenders = TenderDoc.search().query(
