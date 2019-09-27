@@ -4,6 +4,7 @@ import urllib3
 from datetime import datetime
 from random import randint
 from time import sleep
+from app.models import UNSPSCCode
 
 LIVE_ENDPOINT_URI = 'https://www.ungm.org'
 TENDERS_ENDPOINT_URI = 'https://www.ungm.org/Public/Notice'
@@ -65,7 +66,7 @@ HEADERS = {
     'X-Requested-With': 'XMLHttpRequest',
 }
 
-UNSPSC_CODES = [104943, 104945, 104970]
+UNSPSC_CODES = UNSPSCCode.objects.values_list("id", flat=True)
 
 
 def get_request_class(public=True):
@@ -110,7 +111,7 @@ class UNGMrequester(Requester):
             payload['DeadlineFrom'] = payload['PublishedTo'] = today
             payload['PublishedFrom'] = last_date
             payload['PageIndex'] = index
-        payload['UNSPSCs'] = UNSPSC_CODES
+        payload['UNSPSCs'] = list(UNSPSC_CODES)
         return json.dumps(payload)
 
     def request(self, url, last_date, index):
