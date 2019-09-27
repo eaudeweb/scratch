@@ -3,10 +3,8 @@
   border-radius: 20px;
   border: 2px solid #D3D3D3;
 }
-.dataTables_filter input:focus, :active  {
+.dataTables_filter input:focus, :active {
   outline: 0;
-  -moz-user-select: none;
-  user-select: none;
 }
 
 .table {

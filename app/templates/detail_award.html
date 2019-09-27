@@ -2,21 +2,19 @@
 {% load static %}
 
 {% block title %}
-<title>Scratch - Winner {{ winner.id }}</title>
+  <title>Scratch - Winner {{ winner.id }}</title>
 {% endblock %}
 
 {% block content %}
-<div class = "table_detail" >
-  <table id="tender_detail_table" class="cell-border display award_detail" style="margin-left: 60px;">
-    <thead>
+  <div class = "table_detail" >
+    <table id="tender_detail_table" class="cell-border display award_detail" style="margin-left: 60px;">
       <h2>Winner of {{ winner.tender.title }}</h2>
-    <br>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Tender</td>
-        <td><a href="{% url 'tender_detail_view' winner.tender.id %}">{{ winner.tender.title }}</a></td>
-      </tr>
+      <br>
+      <thead>
+      <th>Tender</th>
+      <th><a href="{% url 'tender_detail_view' winner.tender.id %}">{{ winner.tender.title }}</a></th>
+      </thead>
+      <tbody>
       <tr>
         <td>Award Date</td>
         <td>{{ winner.award_date | date:'d M Y' }}</td>
@@ -33,7 +31,7 @@
         <td>Currency</td>
         <td>{{ winner.currency }}</td>
       </tr>
-    </tbody>
-  </table>
-</div>
+      </tbody>
+    </table>
+  </div>
 {% endblock %}

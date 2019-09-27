@@ -1,0 +1,41 @@
+.title-search {
+  padding: 30px 30px 20px 30px;
+}
+
+.search-list {
+  padding-left: 30px;
+  padding-right: 30px;;
+}
+
+.search-element {
+  padding-top: 10px;
+  margin-bottom: 15px;
+}
+
+.search-tender-title {
+  font-weight: bold;
+}
+
+.truncate-search {
+  padding-top: 7px;
+  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.no_results {
+  text-align: center;
+  margin: 30px;
+}
+
+.error-message {
+  color: black;
+  margin: 0px 10px;
+}
+
+.retry_button {
+  width: 200px;
+}

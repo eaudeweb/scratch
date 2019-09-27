@@ -8,7 +8,7 @@
 
     {% if user.is_authenticated %}
 
-      <form action="{% url 'tenders_list_view' %}" method="get" class="form-group">
+      <form action="{% url 'homepage_view' %}" method="post" class="form-group">
         {% csrf_token %}
         <input type="text" class="form-control src-bar" name="terms" required="" id="terms" maxlength="400" placeholder="Search..." autofocus>
       </form>
