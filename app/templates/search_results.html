@@ -14,21 +14,34 @@
         <p class="list-group-item list-group-item-action search-element">
           <a class="search-tender-title" href="{% url 'tender_detail_view' tender.id %}" >{{ tender.title }}</a>
           <br>
-          <a class="truncate-search">{{ tender.description }}</a>
+          <a class="truncate-search">{{ tender.description}}</a>
         </p>
       {% endfor %}
     </div>
   {% endif %}
 
   {% if awards %}
-    <ul>
+    <div class="title-search">
+      <h2>Contract awards</h2>
+    </div>
+    <div class="list-group search-list">
       {% for award in awards %}
-        <li>{{ awards.vendor }}</li>
+        <p class="list-group-item list-group-item-action search-element">
+          <a class="search-tender-title" href="{% url 'contract_awards_detail_view' award.id %}" >{{ award.vendor }}</a>
+          <br>
+          <a class="truncate-search">{{ award.currency }}, {{ award.value }}, {{ award.tender.title }}</a>
+        </p>
       {% endfor %}
-    </ul>
+    </div>
   {% endif %}
 
+
   {% if not tenders and not awards %}
-    <h2>No Tender or Contract Award matching the search was found </h2>
+    <div class="alert alert-light no_results">
+      <h3 class="error-message">No Tender or Contract Award matching the search was found</h3>
+      <hr>
+      <a href="{% url 'homepage_view' %}"><button type="button" name="retry_search" class="btn btn-dark retry_button">Retry</button></a>
+    </div>
   {% endif %}
+
 {% endblock %}

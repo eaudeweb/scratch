@@ -4,7 +4,6 @@ from django.utils.html import strip_tags
 from django.utils.functional import cached_property
 from django.contrib.postgres.fields import ArrayField
 from django.contrib.auth.models import User
-from django.conf import settings
 
 import re
 
@@ -99,6 +98,9 @@ class Winner(models.Model):
 
     def __str__(self):
         return '{} WON BY {}'.format(self.tender.title, self.vendor)
+
+    def convert_value_to_string(self):
+        return str(self.value)
 
 
 class TenderDocument(models.Model):
