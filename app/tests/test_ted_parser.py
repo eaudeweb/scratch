@@ -57,8 +57,8 @@ class TedParserTestCase(TestCase):
             self.assertEqual(tender["title"], "")
             self.assertEqual(tender["source"], "TED")
             self.assertEqual(tender["reference"], "")
-            self.assertEqual(tender["published"], "")
-            self.assertEqual(tender["deadline"], "")
+            self.assertEqual(tender["published"], None)
+            self.assertEqual(tender["deadline"], None)
             self.assertEqual(tender["organization"], "")
             self.assertEqual(tender["url"], "")
             self.assertNotEqual(tender["description"], "")
@@ -67,8 +67,8 @@ class TedParserTestCase(TestCase):
         with open("app/tests/parser_files/ted_notice_date.xml", "r") as f:
             tender, winners = self.parser._parse_notice(f.read(), [], "test", {}, False)
 
-            self.assertEqual(tender["published"], "")
-            self.assertEqual(tender["deadline"], "")
+            self.assertEqual(tender["published"], None)
+            self.assertEqual(tender["deadline"], None)
 
     def test_ted_winner_all_empty(self):
         with open("app/tests/parser_files/ted_notice_winner_all_empty.xml", "r") as f:
