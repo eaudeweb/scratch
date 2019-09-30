@@ -57,12 +57,20 @@ class TEDWorker:
             if last_year != last_date.strftime("%Y"):
                 last_year = last_date.strftime("%Y")
                 last_month = last_date.strftime("%m")
-                ftp.cwd("../../{}/{}".format(last_year, last_month))
-                archives = ftp.nlst()
+                try:
+                    ftp.cwd("../../{}/{}".format(last_year, last_month))
+                    archives = ftp.nlst()
+                except error_perm as e:
+                    logging.warning(e)
+                    pass
             elif last_month != last_date.strftime("%m"):
                 last_month = last_date.strftime("%m")
-                ftp.cwd("../{}".format(last_month))
-                archives = ftp.nlst()
+                try:
+                    ftp.cwd("../{}".format(last_month))
+                    archives = ftp.nlst()
+                except error_perm as e:
+                    logging.warning(e)
+                    pass
 
         ftp.quit()
 
@@ -97,30 +105,41 @@ class TEDWorker:
         tenders_count = 0
         for archive_path in self.archives:
             folder_name = self.extract_data(archive_path, self.path)
-            folders.append(folder_name)
-            p = TEDParser(self.path, [folder_name])
-            changed_tenders, added_tenders = p.parse_notices(tenders, set_notified)
-            tenders_count += added_tenders
-            folder_date = folder_name[:8]
-            formatted_date = datetime.strptime(folder_date, '%Y%m%d').strftime('%d/%m/%Y')
-            logging.info(f'Date {formatted_date} parsed successfully')
+            if folder_name:
+                folders.append(folder_name)
+                p = TEDParser(self.path, [folder_name])
+                changed_tenders, added_tenders = p.parse_notices(tenders, set_notified)
+                tenders_count += added_tenders
+                folder_date = folder_name[:8]
+                formatted_date = datetime.strptime(folder_date, '%Y%m%d').strftime('%d/%m/%Y')
+                logging.info(f'Date {formatted_date} parsed successfully')
 
         for archive_path in self.archives:
-            os.remove(archive_path)
+            try:
+                os.remove(archive_path)
+            except OSError as e:
+                logging.critical(e)
+                pass
 
         for folder in folders:
             try:
                 os.rmdir(os.path.join(self.path, folder))
-            except OSError:
+            except OSError as e:
+                logging.critical(e)
                 pass
 
         return changed_tenders, tenders_count
 
     @staticmethod
     def extract_data(archive_path, extract_path):
-        tf = tarfile.open(archive_path, "r:gz")
-        tf.extractall(extract_path)
-        return tf.getnames()[0]
+        try:
+            tf = tarfile.open(archive_path, "r:gz")
+            tf.extractall(extract_path)
+            return tf.getnames()[0]
+        except FileNotFoundError as e:
+            logging.critical(e)
+
+        return
 
     @staticmethod
     def ftp_login():
@@ -394,23 +413,15 @@ def get_archives_path():
 
 def process_daily_archive(given_date):
     w = TEDWorker(given_date)
-
-    message = ""
-
     while True:
         try:
             w.ftp_download_daily_archives()
             w.parse_notices([], True)
-            message = f"Updated {given_date} TED tenders"
             break
-        except error_perm as err:
-            if err.args[0][:3] == '530':
-                time.sleep(30)
-                continue
-            else:
-                raise
-        except Exception as e:
-            message = str(e)
-            break
+        except error_perm as e:
+            logging.warning(f"Waiting 30 seconds: {e}")
+            time.sleep(30)
+            logging.warning("Retrying")
+            continue
 
-    return message
+    return f"Updated {given_date} TED tenders"
