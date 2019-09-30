@@ -371,7 +371,7 @@ class SearchView(LoginRequiredMixin, TemplateView):
         for entry in context:
             for item in fields:
                 field = getattr(entry, item)
-                setattr(entry, item, regex.sub(r'<mark class="mark-highlight">\1</mark>', field))
+                setattr(entry, item, regex.sub(r'<mark>\1</mark>', field))
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

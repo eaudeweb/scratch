@@ -34,8 +34,8 @@ class TendersDetailViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, new_tender.title)
         self.assertContains(response, new_tender.reference)
-        self.assertContains(response, 'Tender_1 <mark class="mark-highlight">python</mark>')
-        self.assertContains(response, 'Tender_1 <mark class="mark-highlight">drupal</mark>')
+        self.assertContains(response, 'Tender_1 <mark>python</mark>')
+        self.assertContains(response, 'Tender_1 <mark>drupal</mark>')
 
     @override_settings(TENDER_KEYWORDS='')
     def test_detail_view_one_tender_has_keywords_with_no_keywords_set(self):
