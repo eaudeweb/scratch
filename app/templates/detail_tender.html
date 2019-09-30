@@ -39,7 +39,7 @@
       </tr>
       <tr>
         <td>Link to tender</td>
-        <td><a href="{{ tender.url }}">{{ tender.url }}</a></td>
+        <td><a href="{{ tender.url }}" target="_blank">{{ tender.url }}</a></td>
       </tr>
       <tr>
         <td>Title</td>
@@ -101,7 +101,7 @@
         <td class="description">Documents</td>
         <td>
           {% for doc in documents_set %}
-          <p><a href="{{ doc.document.url }}">{{ doc.name }}</a> (<span class="original-link"><a href="{{ doc.download_url }}">Original URL</a></span>)</p>
+          <p><a href="{{ doc.document.url }}">{{ doc.name }}</a> (<span class="original-link"><a href="{{ doc.download_url }}" target="_blank">Original URL</a></span>)</p>
           {% endfor %}
         </td>
       </tr>
