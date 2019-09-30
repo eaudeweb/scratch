@@ -43,7 +43,7 @@
       </tr>
       <tr>
         <td>Title</td>
-        <td>{{ tender.title }}</td>
+        <td>{{ tender.marked_keyword_title|safe }}</td>
       </tr>
       <tr>
         <td>Organization</td>
@@ -78,7 +78,7 @@
       {% endif %}
       <tr>
         <td>Description</td>
-        <td>{{ tender.marked_keyword_description | safe | linebreaks }}</td>
+        <td>{{ tender.marked_keyword_description|safe|linebreaks }}</td>
       </tr>
       {% if tender.keywords.all.count > 0 %}
       <tr>
@@ -110,4 +110,11 @@
     </tbody>
   </table>
 </div>
+
+<style>
+  mark {
+      background: yellow;
+  }
+</style>
+
 {% endblock %}
