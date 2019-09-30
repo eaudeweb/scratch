@@ -249,13 +249,13 @@ class TEDParser(object):
             published_str = soup.find("date_pub").text
             tender["published"] = datetime.strptime(published_str, "%Y%m%d").date()
         except (AttributeError, ValueError):
-            tender["published"] = ""
+            tender["published"] = None
 
         try:
             deadline = soup.find("dt_date_for_submission").text
             tender["deadline"] = make_aware(datetime.strptime(deadline, "%Y%m%d %H:%M"))
         except (AttributeError, ValueError):
-            tender["deadline"] = ""
+            tender["deadline"] = None
 
         if tender["deadline"]:
             time_now = datetime.now()
