@@ -1,3 +1,4 @@
+import re
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.views.generic.list import ListView
@@ -365,6 +366,13 @@ class SearchView(LoginRequiredMixin, TemplateView):
     login_url = "/login"
     redirect_field_name = "login_view"
 
+    @staticmethod
+    def update_fields(context, fields, regex):
+        for entry in context:
+            for item in fields:
+                field = getattr(entry, item)
+                setattr(entry, item, regex.sub(r'<mark>\1</mark>', field))
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         pk = self.kwargs['pk'].replace('+', '|')
@@ -400,6 +408,15 @@ class SearchView(LoginRequiredMixin, TemplateView):
 
         context['tenders'] = result_tenders.to_queryset()
         context['awards'] = result_awards.to_queryset()
+
+        regex = re.compile(rf'(\b({pk})\b(\s*({pk})\b)*)', re.I)
+
+        tender_fields = ['title', 'description']
+        award_fields = ['title', 'vendor', 'value', 'currency']
+
+        SearchView.update_fields(context['tenders'], tender_fields, regex)
+        SearchView.update_fields(context['awards'], award_fields, regex)
+
         return context
 
 

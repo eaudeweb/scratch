@@ -38,6 +38,7 @@
 {% url 'logout_view' as logout %}
 {% url 'tenders_archive_list' as archives %}
 {% url 'management_view' as management %}
+{% url 'admin_view' as admin %}
 
 <ul class="nav-menu1">
   <li><a class="{% active request homepage %} nav-menu2" href="{{ homepage }}">Home</a></li>
@@ -47,6 +48,7 @@
   <li><a class="{% active request overview %} nav-menu2" href="{{ overview }}">Overview</a></li>
   {% if user.is_authenticated and user.is_superuser %}
     <li><a class="{% active request management %} nav-menu2" href="{{ management }}">Management</a></li>
+    <li><a class="{% active request admin %} nav-menu2" href="{{ admin }}">Admin</a></li>
   {% endif %}
 
   {% if user.is_authenticated %}

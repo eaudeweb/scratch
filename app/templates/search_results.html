@@ -12,9 +12,9 @@
     <div class="list-group search-list">
       {% for tender in tenders %}
         <div class="list-group-item list-group-item-action search-element">
-          <a class="search-tender-title" href="{% url 'tender_detail_view' tender.id %}" >{{ tender.title }}</a>
+          <a class="search-tender-title" href="{% url 'tender_detail_view' tender.id %}" >{{ tender.title|safe }}</a>
           <br>
-          <p class="truncate-search">{{ tender.description}}</p>
+          <p class="truncate-search">{{ tender.description|safe }}</p>
         </div>
       {% endfor %}
     </div>
