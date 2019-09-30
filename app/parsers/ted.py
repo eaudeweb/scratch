@@ -13,14 +13,16 @@ from django.utils.timezone import make_aware
 from app.models import WorkerLog, Tender, Winner, CPVCode, TedCountry
 
 logger = logging.getLogger(__name__)
-logging.basicConfig(format='%(levelname)s: %(message)s')
+logging.basicConfig(format="%(levelname)s: %(message)s")
 
 
 class TEDWorker:
     archives = []
 
-    def __init__(self, last_ted_update):
+    def __init__(self, last_ted_update=None):
         self.path = get_archives_path()
+        if not last_ted_update:
+            last_ted_update = datetime.now()
         self.last_ted_update = last_ted_update
 
     def ftp_download_tender_archive(self, tenders):
@@ -111,8 +113,8 @@ class TEDWorker:
                 changed_tenders, added_tenders = p.parse_notices(tenders, set_notified)
                 tenders_count += added_tenders
                 folder_date = folder_name[:8]
-                formatted_date = datetime.strptime(folder_date, '%Y%m%d').strftime('%d/%m/%Y')
-                logging.info(f'Date {formatted_date} parsed successfully')
+                formatted_date = datetime.strptime(folder_date, "%Y%m%d").strftime("%d/%m/%Y")
+                logging.warning(f"Date {formatted_date} parsed successfully")
 
         for archive_path in self.archives:
             try:
@@ -165,17 +167,17 @@ class TEDWorker:
         worker_log = (
             WorkerLog.objects
                 .filter(source=source)
-                .order_by('-update')
+                .order_by("-update")
                 .first()
         )
         return worker_log.update if worker_log else None
 
 
 class TEDParser(object):
-    CPV_CODES = [x.code for x in CPVCode.objects.all()]
-    TED_COUNTRIES = [x.name for x in TedCountry.objects.all()]
-
     def __init__(self, path="", folder_names=[]):
+        self.CPV_CODES = [x.code for x in CPVCode.objects.all()]
+        self.TED_COUNTRIES = [x.name for x in TedCountry.objects.all()]
+
         path = path or get_archives_path()
         self.xml_files = [
             os.path.join(path, folder, xml_file)
@@ -205,38 +207,61 @@ class TEDParser(object):
             )
 
             if not accept_notice:
-                self.xml_files.remove(xml_file)
-                os.remove(xml_file)
+                try:
+                    self.xml_files.remove(xml_file)
+                    os.remove(xml_file)
+                except ValueError:
+                    pass
                 raise StopIteration
             else:
                 codes[xml_file] = cpv_codes
         else:
-            self.xml_files.remove(xml_file)
-            os.remove(xml_file)
+            try:
+                self.xml_files.remove(xml_file)
+                os.remove(xml_file)
+            except ValueError:
+                pass
             raise StopIteration
 
         tender = dict()
-        tender["reference"] = soup.find("ted_export").get("doc_id")
+        tender["reference"] = soup.find("ted_export").get("doc_id") or ""
         tender["notice_type"] = soup.find("td_document_type").text
-        parts = [
-            e.text
-            for e in soup.find("ml_ti_doc", {"lg": "EN"}).children
-            if isinstance(e, element.Tag)
-        ]
-        tender["title"] = "{0}-{1}: {2}".format(*parts)
-        tender["organization"] = (
-                soup.find("aa_name", {"lg": "EN"}) or soup.find("aa_name")
-        ).text
-        published_str = soup.find("date_pub").text
-        tender["published"] = datetime.strptime(published_str, "%Y%m%d").date()
 
-        tender['deadline'] = soup.find("dt_date_for_submission")
-        if tender['deadline']:
-            tender['deadline'] = make_aware(datetime.strptime(tender['deadline'].text, "%Y%m%d %H:%M"))
+        title = soup.find("ml_ti_doc", {"lg": "EN"})
+        if title:
+            parts = [
+                e.text
+                for e in title.children
+                if isinstance(e, element.Tag)
+            ]
+            tender["title"] = "{0}-{1}: {2}".format(*parts)
+        else:
+            tender["title"] = ""
+
+        try:
+            tender["organization"] = (
+                    soup.find("aa_name", {"lg": "EN"}) or soup.find("aa_name")
+            ).text
+        except AttributeError:
+            tender["organization"] = ""
+
+        try:
+            published_str = soup.find("date_pub").text
+            tender["published"] = datetime.strptime(published_str, "%Y%m%d").date()
+        except (AttributeError, ValueError):
+            tender["published"] = ""
+
+        try:
+            deadline = soup.find("dt_date_for_submission").text
+            tender["deadline"] = make_aware(datetime.strptime(deadline, "%Y%m%d %H:%M"))
+        except (AttributeError, ValueError):
+            tender["deadline"] = ""
+
+        if tender["deadline"]:
             time_now = datetime.now()
             time_utc = datetime.utcnow()
             add_hours = round(float((time_utc - time_now).total_seconds()) / 3600)
-            tender['deadline'] += timedelta(hours=add_hours)
+            tender["deadline"] += timedelta(hours=add_hours)
 
         sections = soup.find("form_section").find_all(lg="EN")
         if sections:
@@ -297,7 +322,11 @@ class TEDParser(object):
             tender["description"] = ""
 
         url = soup.find("uri_doc")
-        tender["url"] = url.text.replace(url.get("lg"), "EN")
+        try:
+            tender["url"] = url.text.replace(url.get("lg"), "EN")
+        except AttributeError:
+            tender["url"] = ""
+
         tender["source"] = "TED"
 
         winners = []
@@ -311,7 +340,7 @@ class TEDParser(object):
     @staticmethod
     def file_in_tender_list(xml_file, tenders):
         tender_references = list(map(lambda t: t.reference, tenders))
-        return os.path.basename(xml_file).replace('_', '-').replace('.xml', '') in tender_references
+        return os.path.basename(xml_file).replace("_", "-").replace(".xml", "") in tender_references
 
     def parse_notices(self, tenders, set_notified):
         changed_tenders = []
@@ -319,7 +348,7 @@ class TEDParser(object):
         tenders_count = 0
 
         # self.xml_files[:] is used instead of self.xml_files because as we are iterating over
-        # the list, we're deleting it's entries if they doesn't match our criteria
+        # the list, we"re deleting it"s entries if they doesn't match our criteria
         # changing it would result in a failure of deleting all subsequent files when the iteration ends
 
         for xml_file in self.xml_files[:]:
@@ -353,16 +382,16 @@ class TEDParser(object):
             for awarded_contract in awarded_contracts:
 
                 try:
-                    date_conclusion_contract = awarded_contract.find('date_conclusion_contract').text
+                    date_conclusion_contract = awarded_contract.find("date_conclusion_contract").text
                     award_date = datetime.strptime(date_conclusion_contract, "%Y-%m-%d")
-                except (TypeError, ValueError):
+                except (AttributeError, TypeError, ValueError):
                     award_date = date.today()
 
                 try:
-                    val_total = awarded_contract.find('val_total')
+                    val_total = awarded_contract.find("val_total")
                     contract_value = float(val_total.text)
                     currency_currency = val_total.get("currency")
-                except (TypeError, ValueError):
+                except (AttributeError, TypeError, ValueError):
                     contract_value = 0
                     currency_currency = "N/A"
 
@@ -370,9 +399,11 @@ class TEDParser(object):
                 for contractor in contractors:
                     winner = {}
 
-                    officialname = contractor.find('officialname')
+                    officialname = contractor.find("officialname")
                     if officialname:
                         winner["vendor"] = officialname.text
+                    else:
+                        winner["vendor"] = ""
 
                     winner["award_date"] = award_date
                     winner["value"] = contract_value

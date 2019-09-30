@@ -16,6 +16,7 @@ services:
       - db
     volumes:
       - static:/var/local/scratch/static
+      - media:/var/local/scratch/app/media
     ports:
       - 8000:8000
 
@@ -86,6 +87,8 @@ volumes:
   data:
     driver: local
   static:
+    driver: local
+  media:
     driver: local
   esdata:
     driver: local

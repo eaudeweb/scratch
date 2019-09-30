@@ -1,3 +1,4 @@
+import re
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.views.generic.list import ListView
@@ -23,7 +24,7 @@ from datetime import timezone, datetime, date, timedelta
 from django.core.management import call_command
 from .forms import TendersFilter, AwardsFilter
 from .forms import MAX, STEP, SearchForm
-from app.documents import TenderDoc
+from app.documents import TenderDoc, WinnerDoc
 from django.contrib.auth.models import User
 from elasticsearch_dsl import Q as elasticQ
 from django.db.models import Q
@@ -36,6 +37,7 @@ class HomepageView(TemplateView):
     template_name = "homepage.html"
 
     def post(self, request):
+
         form = SearchForm(request.POST)
 
         if form.is_valid() and request.user.is_authenticated:
@@ -359,12 +361,23 @@ class ContractAwardDetailView(LoginRequiredMixin, DetailView):
     redirect_field_name = "login_view"
 
 
-class SearchView(TendersListView):
+class SearchView(LoginRequiredMixin, TemplateView):
+    template_name = "search_results.html"
+    login_url = "/login"
+    redirect_field_name = "login_view"
 
-    def get_queryset(self):
-        pk = self.kwargs['pk'].replace('+', ' ')
+    @staticmethod
+    def update_fields(context, fields, regex):
+        for entry in context:
+            for item in fields:
+                field = getattr(entry, item)
+                setattr(entry, item, regex.sub(r'<mark>\1</mark>', field))
 
-        result = TenderDoc.search().query(
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pk = self.kwargs['pk'].replace('+', '|')
+
+        result_tenders = TenderDoc.search().query(
             elasticQ(
                 "multi_match",
                 query=pk,
@@ -380,39 +393,30 @@ class SearchView(TendersListView):
             )
         )
 
-        tenders = result.to_queryset()
-        awards = Winner.objects.all()
+        result_awards = WinnerDoc.search().query(
+            elasticQ(
+                "multi_match",
+                query=pk,
+                fields=[
+                    'vendor',
+                    'tender_title',
+                    'currency',
+                    'value',
+                ]
+            )
+        )
 
-        if self.request.GET.get("filter_button"):
-            organization = self.request.GET.get("organization")
-            if organization:
-                tenders = tenders.filter(organization=organization)
+        context['tenders'] = result_tenders.to_queryset()
+        context['awards'] = result_awards.to_queryset()
 
-            source = self.request.GET.get("source")
-            if source:
-                tenders = tenders.filter(source=source)
+        regex = re.compile(rf'(\b({pk})\b(\s*({pk})\b)*)', re.I)
 
-            favourite = self.request.GET.get("favourite")
-            if favourite:
-                tenders = tenders.filter(favourite=favourite)
+        tender_fields = ['title', 'description']
+        award_fields = ['title', 'vendor', 'value', 'currency']
 
-            keyword = self.request.GET.get("keyword")
-            if keyword:
-                tenders = tenders.filter(keyword=keyword)
+        SearchView.update_fields(context['tenders'], tender_fields, regex)
+        SearchView.update_fields(context['awards'], award_fields, regex)
 
-            status = self.request.GET.get("status")
-            if status:
-                award_refs = [award.tender.reference for award in awards]
-                if status == "open":
-                    tenders = tenders.exclude(reference__in=award_refs)
-                else:
-                    tenders = tenders.filter(reference__in=award_refs)
-
-        return tenders
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["reset_url"] = '/search/' + self.kwargs['pk']
         return context
 
 

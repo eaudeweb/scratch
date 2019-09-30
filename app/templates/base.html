@@ -11,6 +11,7 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/nav_menu.css' %}"/>
   <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}"/>
   <link rel="stylesheet" type="text/css" href="{% static 'css/homepage.css' %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/search.css' %}"/>
   <link rel="stylesheet" type="text/css" href="{% static 'css/overview.css' %}"/>
   <link rel="stylesheet" type="text/css" href="{% static 'css/commands.css' %}"/>
   <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-confirm.min.css' %}"/>
@@ -31,21 +32,23 @@
 
 {% url 'homepage_view' as homepage %}
 {% url 'tenders_list_view' as tender_list %}
-{% url 'contract_awards_list_view' as awards %}
+{% url 'contract_awards_list_view' as awards_list %}
 {% url 'overview_view' as overview %}
 {% url 'login_view' as login %}
 {% url 'logout_view' as logout %}
 {% url 'tenders_archive_list' as archives %}
 {% url 'management_view' as management %}
+{% url 'admin_view' as admin %}
 
 <ul class="nav-menu1">
   <li><a class="{% active request homepage %} nav-menu2" href="{{ homepage }}">Home</a></li>
   <li><a class="{% active request tender_list %} nav-menu2" href="{{ tender_list }}">Tenders</a></li>
-  <li><a class="{% active request awards %} nav-menu2" href="{{ awards }}">Contract Awards</a></li>
+  <li><a class="{% active request awards_list %} nav-menu2" href="{{ awards_list }}">Contract Awards</a></li>
   <li><a class="{% active request archives %} nav-menu2" href="{{ archives }}"> Archive </a></li>
   <li><a class="{% active request overview %} nav-menu2" href="{{ overview }}">Overview</a></li>
   {% if user.is_authenticated and user.is_superuser %}
     <li><a class="{% active request management %} nav-menu2" href="{{ management }}">Management</a></li>
+    <li><a class="{% active request admin %} nav-menu2" href="{{ admin }}">Admin</a></li>
   {% endif %}
 
   {% if user.is_authenticated %}

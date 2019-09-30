@@ -1,4 +1,5 @@
 from django.urls import path
+from django.views.generic import RedirectView
 from .views import LoginView, LogoutView, ContractAwardsListView
 from .views import (
     TendersListView,
@@ -32,4 +33,5 @@ urlpatterns = [
     path('search/<str:pk>', SearchView.as_view(), name='search_results'),
     path('management/', ManagementView.as_view(), name='management_view'),
     path('management/delete/<str:pk>', ManagementDeleteView.as_view(), name='management_delete_view'),
+    path('admin_page', RedirectView.as_view(url='/admin'), name='admin_view')
 ]

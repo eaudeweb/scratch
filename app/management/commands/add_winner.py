@@ -56,9 +56,10 @@ class Command(BaseCommand, BaseParamsUI):
 
     @staticmethod
     def find_by_label(soup, label):
-        return soup.find(
-            "label", attrs={"for": label}
-        ).next_sibling.next_sibling
+        try:
+            return soup.find("label", attrs={"for": label}).next_sibling.next_sibling.string
+        except AttributeError:
+            return ''
 
     @staticmethod
     def get_contract_id(reference):
@@ -104,11 +105,12 @@ class Command(BaseCommand, BaseParamsUI):
         award_date = self.find_by_label(soup, CSS_AWARD_DATE)
         value = self.find_by_label(soup, CSS_VALUE)
         winner_fields = {
-            "award_date": self.string_to_date(award_date.string)
-            or datetime.date.today(),
+            "award_date": self.string_to_date(award_date) or datetime.date.today(),
             "vendor": vendor_list,
-            "value": float(value.string or 0) if value.string else None,
+            "value": float(value or 0) if value else '',
+            "currency": '',
         }
+
         if winner_fields["value"]:
             winner_fields["currency"] = "USD"
 
