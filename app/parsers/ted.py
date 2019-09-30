@@ -424,7 +424,6 @@ class TEDParser(object):
     @staticmethod
     def save_tender(tender, codes):
         old_tender = Tender.objects.filter(reference=tender["reference"]).first()
-        print(tender)
         new_tender, created = Tender.objects.update_or_create(
             reference=tender["reference"],
             defaults=dict(tender, **{"cpv_codes": ", ".join(codes)}),
