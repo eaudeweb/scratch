@@ -1,15 +1,16 @@
-from django.core import mail
-from django.test import TestCase
-from app.models import Notification, Tender
-from django.template.loader import render_to_string
 from django.conf import settings
-from app.management.commands.notify import build_email
-from django.core import management
+from django.core import mail, management
+from django.template.loader import render_to_string
+
 from app.factories import TenderFactory, NotificationFactory, KeywordFactory
+from app.management.commands.notify import build_email
+from app.models import Notification, Tender
+from app.tests.base import BaseTestCase
 
 
-class SendMailTest(TestCase):
+class SendMailTest(BaseTestCase):
     def setUp(self):
+        super(SendMailTest, self).setUp()
         self.keyword = KeywordFactory()
         self.tender1 = TenderFactory(
             reference="RFQ 47-2019",

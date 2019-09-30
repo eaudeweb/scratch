@@ -1,12 +1,14 @@
-from django.test import TestCase
 from django.urls import reverse
-from app.models import Tender
 from django.contrib.auth.models import User
+
 from app.factories import TenderFactory
+from app.models import Tender
+from app.tests.base import BaseTestCase
 
 
-class TendersFavouriteTests(TestCase):
+class TendersFavouriteTests(BaseTestCase):
     def setUp(self):
+        super(TendersFavouriteTests, self).setUp()
         user = User.objects.create(username='test_user')
         user.set_password('12345')
         user.save()

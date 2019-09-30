@@ -1,11 +1,13 @@
-from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
+
 from app.factories import TenderFactory, KeywordFactory
+from app.tests.base import BaseTestCase
 
 
-class TendersListViewTests(TestCase):
+class TendersListViewTests(BaseTestCase):
     def setUp(self):
+        super(TendersListViewTests, self).setUp()
         user = User.objects.create(username='test_user')
         user.set_password('12345')
         user.save()

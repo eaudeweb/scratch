@@ -9,10 +9,8 @@ services:
     entrypoint: ["/usr/bin/tail", "-f", "/dev/null"]
 
   async:
-    image: scratch
-    build: .
-    depends_on:
-      - smtp
+    volumes:
+      - .:/var/local/scratch
 
   cron:
     image: scratch
