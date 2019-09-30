@@ -53,7 +53,7 @@ class Tender(models.Model):
             return title
 
         regex = r'(' + r'|'.join(keywords) + r')'
-        return re.sub(regex, r'<mark>\1</mark>', title, flags=re.IGNORECASE)
+        return re.sub(regex, r'<mark class="mark-highlight">\1</mark>', title, flags=re.IGNORECASE)
 
     @cached_property
     def marked_keyword_description(self):
@@ -63,7 +63,7 @@ class Tender(models.Model):
             return description
 
         regex = r'(' + r'|'.join(keywords) + r')'
-        return re.sub(regex, r'<mark>\1</mark>', description, flags=re.IGNORECASE)
+        return re.sub(regex, r'<mark class="mark-highlight">\1</mark>', description, flags=re.IGNORECASE)
 
     @staticmethod
     def check_contains(value):

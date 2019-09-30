@@ -40,3 +40,7 @@
 .retry_button {
   width: 200px;
 }
+
+.mark-highlight {
+   background: yellow;
+}

@@ -28,7 +28,7 @@
           <li class="li_buttons"><span id="seen_usr"></span></li>
           {% endif %}
           </li>
-          <li class="li_buttons"><button type="button" action="{% url 'tender_delete_view' tender.id %}"  class="remove_button" id="remove_button_detail" name="{{ tender.marked_keyword_title|safe }}"></button></li>
+          <li class="li_buttons"><button type="button" action="{% url 'tender_delete_view' tender.id %}"  class="remove_button" id="remove_button_detail" name="{{ tender.marked_keyword_title }}"></button></li>
         </ul>
       </th>
     </thead>
@@ -80,6 +80,7 @@
         <td>Description</td>
         <td>{{ tender.marked_keyword_description | safe | linebreaks }}</td>
       </tr>
+      {% if tender.keywords.all.count > 0 %}
       <tr>
         <td>Keywords</td>
         <td>
@@ -88,6 +89,7 @@
           {% endfor %}
         </td>
       </tr>
+      {% endif %}
       <tr>
         {% if tender.source == 'UNGM' %}
         <td>UNSPSCS codes</td>

@@ -42,4 +42,4 @@ class TendersListViewTests(TestCase):
             ['<Tender: Tender1 python>']
         )
         self.assertEqual(response.context['tenders'][0].reference, tender.reference)
-        self.assertContains(response, 'Tender1 <mark>python</mark>')
+        self.assertContains(response, 'Tender1 <mark class="mark-highlight">python</mark>')
