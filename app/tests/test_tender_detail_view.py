@@ -1,12 +1,16 @@
-from django.test import TestCase, override_settings
 from bs4 import BeautifulSoup
+
 from django.urls import reverse
 from django.contrib.auth.models import User
+from django.test import override_settings
+
 from app.factories import TenderFactory, KeywordFactory
+from app.tests.base import BaseTestCase
 
 
-class TendersDetailViewTests(TestCase):
+class TendersDetailViewTests(BaseTestCase):
     def setUp(self):
+        super(TendersDetailViewTests, self).setUp()
         user = User.objects.create(username='test_user')
         user.set_password('12345')
         user.save()

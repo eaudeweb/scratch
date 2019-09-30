@@ -1,10 +1,11 @@
-from django.test import TestCase
 from app.models import Tender, Winner
 from app.factories import TenderFactory, WinnerFactory
+from app.tests.base import BaseTestCase
 
 
-class AddWinnerTestCase(TestCase):
+class AddWinnerTestCase(BaseTestCase):
     def setUp(self):
+        super(AddWinnerTestCase, self).setUp()
         tender = TenderFactory(title="test_title")
         WinnerFactory(vendor="test_vendor", tender=tender)
 

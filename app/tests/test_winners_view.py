@@ -1,12 +1,15 @@
-from django.test import TestCase
+from datetime import timedelta, date
+
 from django.contrib.auth.models import User
 from django.urls import reverse
 
 from app.factories import TenderFactory, WinnerFactory
+from app.tests.base import BaseTestCase
 
 
-class WinnersViewTest(TestCase):
+class WinnersViewTest(BaseTestCase):
     def setUp(self):
+        super(WinnersViewTest, self).setUp()
         user = User.objects.create(username="testuser")
         user.set_password("12345")
         user.save()

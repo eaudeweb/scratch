@@ -1,16 +1,19 @@
+from datetime import timedelta, date
+
+from django.conf import settings
+from django.utils.datetime_safe import datetime
+from django.utils.timezone import make_aware
+
 from app.models import UNSPSCCode
 from app.parsers.ungm import UNGMWorker
 from app.management.commands.add_winner import Command
-from django.conf import settings
-from datetime import timedelta, date
-from django.utils.datetime_safe import datetime
-from django.utils.timezone import make_aware
-from django.test import TestCase
+from app.tests.base import BaseTestCase
 
 
-class UngmParserTestCase(TestCase):
+class UngmParserTestCase(BaseTestCase):
 
     def setUp(self) -> None:
+        super(UngmParserTestCase, self).setUp()
         self.worker = UNGMWorker()
         self.winner = Command()
         self.url = 'wwww.parser_test.com'
