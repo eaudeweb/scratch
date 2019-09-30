@@ -29,7 +29,7 @@ class Command(BaseCommand):
             given_date = datetime.strptime(options['date'], '%d/%m/%Y').date()
         except TypeError:
             given_date = default
-            logger.warning('No date was provived or it was provided but does not match the format (e.g. 19/05/2017)')
+            logger.warning('No date was provided or it was provided but does not match the format (e.g. 19/05/2017)')
             logger.warning('Default value of 5 years ago is chosen')
 
         try:
