@@ -78,7 +78,7 @@ class UNGMWorker:
         documents = UNGMWorker.find_by_class(soup, "lnkShowDocument", "a")
         description = UNGMWorker.find_by_class(soup, "ungm-list-item ungm-background", "div")
         try:
-            description = description[1].text.strip().lstrip('Description')
+            description = description[1].text.strip().strip('\n').lstrip('Description')
         except IndexError:
             description = ''
         nodes = UNGMWorker.find_by_class(soup, "nodeName", "span")
@@ -104,6 +104,8 @@ class UNGMWorker:
             if gmt:
                 hours = float(gmt)
                 deadline -= timedelta(hours=hours)
+            if not deadline:
+                deadline = None
         except ValueError:
             deadline = None
 
