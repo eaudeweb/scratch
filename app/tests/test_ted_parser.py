@@ -18,7 +18,9 @@ class TedParserTestCase(BaseTestCase):
     def setUp(self) -> None:
         super(TedParserTestCase, self).setUp()
         CPVCodeFactory(code=44115800)
+        CPVCodeFactory(code=72320000)
         TedCountryFactory(name="BE")
+        TedCountryFactory(name="ES")
 
         self.parser = TEDParser("", [])
 
@@ -30,8 +32,12 @@ class TedParserTestCase(BaseTestCase):
         expected_deadline -= timedelta(hours=5)
         self.expected_deadline = expected_deadline
 
-        self.expected_title = "Belgium-Brussels: \nRenovation of MEPs’ areas in the buildings of the European " \
+        self.expected_title = "Belgium-Brussels: \n" \
+                              "Renovation of MEPs’ areas in the buildings of the European " \
                               "Parliament in Brussels\n"
+
+        self.expected_title_1 = "Spain-Seville: Licence for a database on " \
+                                "digital music downloads in 2012 and 2013"
 
     def test_ted_parse_notice_simple(self):
         with open("app/tests/parser_files/base_ted_notice.xml", "r") as f:
@@ -50,6 +56,26 @@ class TedParserTestCase(BaseTestCase):
             self.assertEqual(winners[0]["vendor"], "Société Momentanée Cit Blaton-Jacques Delens")
             self.assertEqual(winners[0]["award_date"], datetime(2019, 3, 11, 0, 0))
             self.assertEqual(winners[0]["value"], 17565752.85)
+            self.assertEqual(winners[0]["currency"], "EUR")
+
+    def test_ted_parse_notice_contract_award(self):
+        with open("app/tests/parser_files/ted_notice_contract_award.xml", "r") as f:
+            tender, winners = self.parser._parse_notice(f.read(), [], "test", {}, False)
+
+            self.assertEqual(tender["reference"], "386555-2014")
+            self.assertEqual(tender["title"], self.expected_title_1)
+            self.assertEqual(tender["published"], datetime.strptime("20141113", "%Y%m%d").date())
+            self.assertEqual(tender["deadline"], None)
+            self.assertEqual(tender["source"], "TED")
+            self.assertEqual(tender["organization"],
+                             "European Commission, JRC, Institute for Prospective Technological Studies (IPTS)")
+            self.assertEqual(tender["url"], "http://ted.europa.eu/udl?uri=TED:NOTICE:386555-2014:TEXT:EN:HTML")
+            self.assertEqual(tender["description"], "")
+
+            self.assertEqual(len(winners), 1)
+            self.assertEqual(winners[0]["vendor"], "The Nielsen Company LLC")
+            self.assertEqual(winners[0]["award_date"], datetime(2014, 10, 16).date())
+            self.assertEqual(winners[0]["value"], "60000")
             self.assertEqual(winners[0]["currency"], "EUR")
 
     def test_ted_parse_notice_all_empty(self):
