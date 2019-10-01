@@ -120,14 +120,14 @@ class TEDWorker:
             try:
                 os.remove(archive_path)
             except OSError as e:
-                logging.critical(e)
+                logging.debug(e)
                 pass
 
         for folder in folders:
             try:
                 os.rmdir(os.path.join(self.path, folder))
             except OSError as e:
-                logging.critical(e)
+                logging.debug(e)
                 pass
 
         return changed_tenders, tenders_count
@@ -139,7 +139,7 @@ class TEDWorker:
             tf.extractall(extract_path)
             return tf.getnames()[0]
         except FileNotFoundError as e:
-            logging.critical(e)
+            logging.debug(e)
 
         return
 
@@ -235,6 +235,7 @@ class TEDParser(object):
                 if isinstance(e, element.Tag)
             ]
             tender["title"] = "{0}-{1}: {2}".format(*parts)
+            tender["title"] = tender["title"][:255]
         else:
             tender["title"] = ""
 
