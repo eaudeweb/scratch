@@ -34,7 +34,7 @@ class TedParserTestCase(BaseTestCase):
 
         self.expected_title = "Belgium-Brussels: \n" \
                               "Renovation of MEPs’ areas in the buildings of the European " \
-                              "`Parliament in Brussels\n"
+                              "Parliament in Brussels\n"
 
         self.expected_title_1 = "Spain-Seville: Licence for a database on " \
                                 "digital music downloads in 2012 and 2013"
