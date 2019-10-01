@@ -32,12 +32,12 @@ class TedParserTestCase(BaseTestCase):
         expected_deadline -= timedelta(hours=5)
         self.expected_deadline = expected_deadline
 
-        self.expected_title_contract_award_notice = "Belgium-Brussels: \n" \
-                                                    "Renovation of MEPs’ areas in the buildings of the European " \
-                                                    "Parliament in Brussels\n"
+        self.expected_title = "Belgium-Brussels: \n" \
+                              "Renovation of MEPs’ areas in the buildings of the European " \
+                              "`Parliament in Brussels\n"
 
-        self.expected_title_contract_award = "Spain-Seville: Licence for a database on " \
-                                             "digital music downloads in 2012 and 2013"
+        self.expected_title_1 = "Spain-Seville: Licence for a database on " \
+                                "digital music downloads in 2012 and 2013"
 
     def test_ted_parse_notice_simple(self):
         with open("app/tests/parser_files/base_ted_notice.xml", "r") as f:
@@ -63,11 +63,12 @@ class TedParserTestCase(BaseTestCase):
             tender, winners = self.parser._parse_notice(f.read(), [], "test", {}, False)
 
             self.assertEqual(tender["reference"], "386555-2014")
-            self.assertEqual(tender["title"], self.expected_title_contract_award)
+            self.assertEqual(tender["title"], self.expected_title_1)
             self.assertEqual(tender["published"], datetime.strptime("20141113", "%Y%m%d").date())
             self.assertEqual(tender["deadline"], None)
             self.assertEqual(tender["source"], "TED")
-            self.assertEqual(tender["organization"], "European Commission, JRC, Institute for Prospective Technological Studies (IPTS)")
+            self.assertEqual(tender["organization"],
+                             "European Commission, JRC, Institute for Prospective Technological Studies (IPTS)")
             self.assertEqual(tender["url"], "http://ted.europa.eu/udl?uri=TED:NOTICE:386555-2014:TEXT:EN:HTML")
             self.assertEqual(tender["description"], "")
 
