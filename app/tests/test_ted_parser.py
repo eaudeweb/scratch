@@ -5,6 +5,7 @@ from django.utils.datetime_safe import datetime
 from django.utils.timezone import make_aware
 
 from app.factories import CPVCodeFactory, TedCountryFactory
+from app.models import Winner, Tender
 from app.parsers.ted import TEDParser
 from app.tests.base import BaseTestCase
 
@@ -57,6 +58,32 @@ class TedParserTestCase(BaseTestCase):
             self.assertEqual(winners[0]["award_date"], datetime(2019, 3, 11, 0, 0))
             self.assertEqual(winners[0]["value"], 17565752.85)
             self.assertEqual(winners[0]["currency"], "EUR")
+
+    def test_ted_parse_notice_full(self):
+        with open("app/tests/parser_files/ted_notice_full.xml", "r") as f:
+            tender, winners = self.parser._parse_notice(f.read(), [], "test", {}, False)
+
+            self.assertEqual(tender["reference"], "125860-2019")
+            self.assertEqual(tender["title"], self.expected_title)
+            self.assertEqual(tender["published"], datetime.strptime("20190319", "%Y%m%d").date())
+            self.assertEqual(tender["deadline"], None)
+            self.assertEqual(tender["source"], "TED")
+            self.assertEqual(tender["organization"], "European Parliament")
+            self.assertEqual(tender["url"], "http://ted.europa.eu/udl?uri=TED:NOTICE:125860-2019:TEXT:EN:HTML")
+            self.assertNotEqual(tender["description"], "")
+            self.parser.save_tender(tender, {})
+
+            self.assertEqual(len(winners), 2)
+            for winner in winners:
+                self.assertEqual(winner["vendor"], "Société Momentanée Cit Blaton-Jacques Delens")
+                self.assertEqual(winner["award_date"], datetime(2019, 3, 11, 0, 0))
+                self.assertEqual(winner["value"], 17565752.85)
+                self.assertEqual(winner["currency"], "EUR")
+                self.parser.save_winner(tender, winner)
+
+            tender_entry = Tender.objects.filter(reference=tender["reference"]).first()
+            winners = Winner.objects.filter(tender=tender_entry)
+            self.assertEqual(len(winners), 1)
 
     def test_ted_parse_notice_contract_award(self):
         with open("app/tests/parser_files/ted_notice_contract_award.xml", "r") as f:

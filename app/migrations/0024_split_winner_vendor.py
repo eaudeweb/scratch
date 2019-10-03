@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='Winner',
             name='vendor_link',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='app.Vendor'),
+            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.DO_NOTHING, to='app.Vendor'),
         ),
         migrations.RunPython(link_vendors),
         migrations.RemoveField(
@@ -41,5 +41,10 @@ class Migration(migrations.Migration):
             model_name='Winner',
             old_name='vendor_link',
             new_name='vendor',
+        ),
+        migrations.AlterField(
+            model_name='Winner',
+            name='vendor',
+            field=models.ForeignKey(null=False, on_delete=django.db.models.deletion.DO_NOTHING, to='app.Vendor'),
         ),
     ]
