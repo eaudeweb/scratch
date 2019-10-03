@@ -26,11 +26,17 @@ class TenderDocumentAdmin(admin.ModelAdmin):
 
 
 class WinnerAdmin(admin.ModelAdmin):
-    list_display = ['vendor', 'value', 'currency', 'award_date', 'notified',
+    list_display = [
+        # 'vendor',
+        'value', 'currency', 'award_date', 'notified',
                     'get_tender_title', 'get_tender_organization',
                     'get_tender_source', 'get_tender_deadline']
-    search_fields = ['vendor', 'tender__title', 'award_date']
-    list_filter = ('vendor', 'tender__title', 'tender__deadline',
+    search_fields = [
+        # 'vendor',
+        'tender__title', 'award_date']
+    list_filter = (
+        # 'vendor',
+        'tender__title', 'tender__deadline',
                    'tender__source', 'tender__organization', 'currency',
                    'award_date')
 

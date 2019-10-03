@@ -106,6 +106,7 @@ venv.bak/
 #  PyCharm
 .idea/
 scratch/static/
+scratch/files/
 app/management/commands/add_unspsc_codes.py
 app/management/commands/add_cpv_codes.py
 app/management/commands/add_ted_countries.py
@@ -117,3 +118,6 @@ docker-compose.override.yml
 docker/app.env
 docker/db.env
 docker/redis.env
+
+# MacOS
+.DS_Store
