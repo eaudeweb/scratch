@@ -90,16 +90,23 @@ class Tender(models.Model):
             self.keywords.add(Keyword.objects.get(value=keyword))
 
 
+class Vendor(models.Model):
+    name = models.CharField(null=True, max_length=255)
+
+    def __str__(self):
+        return '{}'.format(self.name)
+
+
 class Winner(models.Model):
-    vendor = models.CharField(null=True, max_length=255)
     value = models.FloatField(null=True)
     currency = models.CharField(null=True, max_length=3)
     award_date = models.DateField()
     notified = models.BooleanField(default=False)
+    vendor = models.ForeignKey(Vendor, on_delete=models.DO_NOTHING)
     tender = models.ForeignKey(Tender, on_delete=models.CASCADE)
 
     def __str__(self):
-        return '{} WON BY {}'.format(self.tender.title, self.vendor)
+        return '{} WON BY {}'.format(self.tender.title, self.vendor.name)
 
     def convert_value_to_string(self):
         return str(self.value)

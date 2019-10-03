@@ -10,7 +10,7 @@ from ftplib import error_perm, FTP
 
 from django.utils.timezone import make_aware
 
-from app.models import WorkerLog, Tender, Winner, CPVCode, TedCountry
+from app.models import WorkerLog, Tender, Winner, CPVCode, TedCountry, Vendor
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(format="%(levelname)s: %(message)s")
@@ -362,10 +362,11 @@ class TEDParser(object):
                 except StopIteration:
                     continue
 
+                created, attr_changes = self.save_tender(tender, codes.get(xml_file, []))
+
                 if winners:
                     for winner in winners:
                         self.save_winner(tender, winner)
-                created, attr_changes = self.save_tender(tender, codes.get(xml_file, []))
 
                 if created:
                     tenders_count += 1
@@ -447,6 +448,8 @@ class TEDParser(object):
         tender_entry = Tender.objects.filter(reference=reference).first()
 
         if tender_entry:
+            vendor, _ = Vendor.objects.get_or_create(name=winner_fields["vendor"])
+            winner_fields["vendor"] = vendor
             Winner.objects.get_or_create(tender=tender_entry, **winner_fields)
 
         return

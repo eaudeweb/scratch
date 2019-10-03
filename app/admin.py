@@ -26,13 +26,21 @@ class TenderDocumentAdmin(admin.ModelAdmin):
 
 
 class WinnerAdmin(admin.ModelAdmin):
-    list_display = ['vendor', 'value', 'currency', 'award_date', 'notified',
-                    'get_tender_title', 'get_tender_organization',
-                    'get_tender_source', 'get_tender_deadline']
-    search_fields = ['vendor', 'tender__title', 'award_date']
-    list_filter = ('vendor', 'tender__title', 'tender__deadline',
-                   'tender__source', 'tender__organization', 'currency',
-                   'award_date')
+    list_display = [
+        'value', 'currency', 'award_date', 'notified', 'get_vendor_name',
+        'get_tender_title', 'get_tender_organization', 'get_tender_source', 'get_tender_deadline',
+    ]
+    search_fields = ['vendor__name', 'tender__title', 'award_date']
+    list_filter = (
+        'vendor__name', 'tender__title', 'tender__deadline', 'tender__source',
+        'tender__organization', 'currency', 'award_date',
+    )
+
+    def get_vendor_name(self, obj):
+        return obj.vendor.name
+
+    get_vendor_name.short_description = 'Vendor Name'
+    get_vendor_name.admin_order_field = 'vendor__name'
 
     def get_tender_title(self, obj):
         return obj.tender.title

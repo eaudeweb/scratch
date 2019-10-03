@@ -66,11 +66,11 @@ class TenderDoc(DocType):
 @winner.doc_type
 class WinnerDoc(DocType):
     tender_title = fields.KeywordField(attr='tender.title')
+    vendor_name = fields.KeywordField(attr='vendor.name')
     value = fields.TextField(attr="convert_value_to_string")
 
     class Meta:
         model = Winner
         fields = [
-            'vendor',
             'currency',
         ]
