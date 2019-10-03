@@ -332,10 +332,10 @@ class TEDParser(object):
 
         winners = []
         if tender["notice_type"] == "Contract award":
-            self.update_contract_award_winners(winners, soup)
+            self.update_contract_award_winners(winners, soup, set_notified)
 
         if tender["notice_type"] == "Contract award notice":
-            self.update_contract_award_notice_winners(winners, soup)
+            self.update_contract_award_notice_winners(winners, soup, set_notified)
 
         tender["notified"] = set_notified
 
@@ -379,7 +379,7 @@ class TEDParser(object):
         return changed_tenders, tenders_count
 
     @staticmethod
-    def update_contract_award_winners(winners, soup):
+    def update_contract_award_winners(winners, soup, set_notified):
         winner = {}
         award_date = soup.find("contract_award_date")
         if award_date:
@@ -402,10 +402,12 @@ class TEDParser(object):
             winner["value"] = value.get("fmtval")
             winner["currency"] = value.parent.get("currency")
 
+        winner["notified"] = set_notified
+
         winners.append(winner)
 
     @staticmethod
-    def update_contract_award_notice_winners(winners, soup):
+    def update_contract_award_notice_winners(winners, soup, set_notified):
         sections = soup.find("form_section").find_all(lg="EN")
         if sections:
             section = sections[0]
@@ -439,6 +441,7 @@ class TEDParser(object):
                     winner["award_date"] = award_date
                     winner["value"] = contract_value
                     winner["currency"] = currency_currency
+                    winner["notified"] = set_notified
 
                     winners.append(winner)
 
