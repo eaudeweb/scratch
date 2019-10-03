@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import (Tender, TenderDocument, Winner, WorkerLog, Notification,
-                     UNSPSCCode, CPVCode, TedCountry, Task, Keyword)
+                     UNSPSCCode, CPVCode, TedCountry, Task, Keyword, Vendor)
 
 
 class TenderAdmin(admin.ModelAdmin):
@@ -104,6 +104,11 @@ class KeywordAdmin(admin.ModelAdmin):
     search_fields = ['value']
 
 
+class VendorAdmin(admin.ModelAdmin):
+    list_display = ['name']
+    search_fields = ['name']
+
+
 admin.site.register(Tender, TenderAdmin)
 admin.site.register(TenderDocument, TenderDocumentAdmin)
 admin.site.register(Winner, WinnerAdmin)
@@ -114,3 +119,4 @@ admin.site.register(CPVCode, CPVCodeAdmin)
 admin.site.register(TedCountry, TedCountryAdmin)
 admin.site.register(Task, TaskAdmin)
 admin.site.register(Keyword, KeywordAdmin)
+admin.site.register(Vendor, VendorAdmin)
