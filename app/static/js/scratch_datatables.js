@@ -27,33 +27,12 @@ $(document).ready(function() {
   let doc = this;
 
   const searchTerm = $.urlParam(doc, 'terms');
+  const ungm_deadline_today = $.urlParam(doc, 'ungm_deadline_today');
+  const ted_published_today = $.urlParam(doc, 'ted_published_today');
+  const ted_deadline_today = $.urlParam(doc, 'ted_deadline_today');
+  const ungm_published_today = $.urlParam(doc, 'ungm_published_today');
 
-  $('#tenders_table').DataTable(
-    {
-      "columnDefs": [
-        { "width": "55%", "targets": 0 },
-        { "width": "10%", "targets": 3 },
-        { "width": "8%", "targets": 4 },
-        { "width": "8%", "targets": 5 },
-      ],
-      "order": [[ 4, "desc" ]],
-      "pageLength": 10,
-      "lengthChange": false,
-      "search": {
-        "search": searchTerm
-      }
-    });
-
-  $('#tender_detail_table').DataTable(
-    {
-      "searching": false,
-      "bPaginate": false,
-      "bLengthChange": false,
-      "bInfo" : false,
-      "ordering": false,
-    });
-
-  $('button').click(function () {
+  function buttonsClick() {
 
     let button_id = $(this).attr('id');
     let page = (button_id == 'remove_button_detail') ? 1 : 2;
@@ -124,7 +103,115 @@ $(document).ready(function() {
         }
       });
     }
-  });
+  };
+
+  $('#tenders_table').DataTable(
+    {
+      "columnDefs": [
+        { "width": "55%", "targets": 0 },
+        { "width": "10%", "targets": 3 },
+        { "width": "8%", "targets": 4 },
+        { "width": "8%", "targets": 5 },
+      ],
+      "order": [[ 4, "desc" ]],
+      "pageLength": 10,
+      "lengthChange": false,
+      "search": {
+        "search": searchTerm
+      },
+      "processing": true,
+      "serverSide": true,
+      "ajax": {
+        "url": "/tenders/ajax",
+        "type": "GET",
+        "data": function (d) {
+          d.organization = $('#id_organization').val();
+          d.status = $('#id_status').val();
+          d.source = $('#id_source').val();
+          d.favourite = $('#id_favourite').val();
+          d.has_keywords = $('#id_keyword').val();
+          d.notice_type = $('#id_type').val();
+          d.seen = $('#id_seen').val();
+          d.ungm_deadline_today = ungm_deadline_today;
+          d.ted_published_today = ted_published_today;
+          d.ted_deadline_today = ted_deadline_today;
+          d.ungm_published_today = ungm_published_today;
+        },
+      },
+      columnDefs: [
+      {
+       "targets": 0,
+       "orderable": true,
+        "render": function ( data, type, row ) {
+            return '<a href="' + row['url'] +'">' + data + '</a>';
+        }
+     },
+     ],
+      "columns": [
+        { "data": "title" },
+        { "data": "source" },
+        { "data": "organization" },
+        { "data": "deadline" },
+        { "data": "published" },
+        { "data": "notice_type" }
+    ],
+      "drawCallback": function(settings) {
+          $('button').click(buttonsClick)
+      }
+    });
+
+  $('#contract_awards_table').DataTable(
+    {
+      "order": [[ 4, "desc" ]],
+      "pageLength": 10,
+      "lengthChange": false,
+      "search": {
+        "search": searchTerm
+      },
+      "processing": true,
+      "serverSide": true,
+      "ajax": {
+        "url": "/awards/ajax",
+        "type": "GET",
+        "data": function (d) {
+          d.organization = $('#id_organization').val();
+          d.source = $('#id_source').val();
+          d.vendor = $('#id_vendor').val();
+          d.value = $('#id_value').val();
+        },
+      },
+      columnDefs: [
+      {
+        "targets": 0,
+        "orderable": true,
+        "render": function ( data, type, row ) {
+            return '<a href="' + row['url'] +'">' + data + '</a>';
+
+        },
+      },
+      ],
+      "columns": [
+        { "data": "title" },
+        { "data": "source" },
+        { "data": "organization" },
+        { "data": "award_date" },
+        { "data": "vendor" },
+        { "data": "value" },
+        { "data": "currency" }
+    ],
+      "drawCallback": function(settings) {
+          $('button').click(buttonsClick)
+      }
+    });
+
+  $('#tender_detail_table').DataTable(
+    {
+      "searching": false,
+      "bPaginate": false,
+      "bLengthChange": false,
+      "bInfo" : false,
+      "ordering": false,
+    });
 });
 
 function toggleFavourite(x) {
