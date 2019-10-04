@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.utils.http import urlencode
 
-from app.factories import WinnerFactory, TenderFactory
+from app.factories import WinnerFactory, TenderFactory, VendorFactory
 from app.tests.base import BaseTestCase
 
 
@@ -23,10 +23,13 @@ class WinnersListAjaxViewTests(BaseTestCase):
             "draw": '1', 
             "length": '2',
         }
-        new_winner1 = WinnerFactory()
-        new_winner2 = WinnerFactory()
-        new_winner3 = WinnerFactory()
-        new_winner4 = WinnerFactory()
+        vendor1 = VendorFactory()
+        vendor2 = VendorFactory()
+
+        new_winner1 = WinnerFactory(vendor=vendor1)
+        new_winner2 = WinnerFactory(vendor=vendor1)
+        new_winner3 = WinnerFactory(vendor=vendor2)
+        new_winner4 = WinnerFactory(vendor=vendor2)
 
         url =  '{}?{}'.format(reverse('contract_awards_list_ajax_view'),  urlencode(query_kwargs))
         response = self.client.get(url)
@@ -38,13 +41,13 @@ class WinnersListAjaxViewTests(BaseTestCase):
         self.assertEqual(data[0]['title'], new_winner1.tender.title)
         self.assertEqual(data[0]['source'], new_winner1.tender.source)
         self.assertEqual(data[0]['organization'], new_winner1.tender.organization)
-        self.assertEqual(data[0]['value'], new_winner1.value)
+        self.assertEqual(data[0]['value'], str(new_winner1.value))
         self.assertEqual(data[0]['currency'], new_winner1.currency)
 
         self.assertEqual(data[1]['title'], new_winner2.tender.title)
         self.assertEqual(data[1]['source'], new_winner2.tender.source)
         self.assertEqual(data[1]['organization'], new_winner2.tender.organization)
-        self.assertEqual(data[1]['value'], new_winner2.value)
+        self.assertEqual(data[1]['value'], str(new_winner2.value))
         self.assertEqual(data[1]['currency'], new_winner2.currency)
 
         query_kwargs.update({"draw": '2', 'start': '2'})
@@ -58,13 +61,13 @@ class WinnersListAjaxViewTests(BaseTestCase):
         self.assertEqual(data[0]['title'], new_winner3.tender.title)
         self.assertEqual(data[0]['source'], new_winner3.tender.source)
         self.assertEqual(data[0]['organization'], new_winner3.tender.organization)
-        self.assertEqual(data[0]['value'], new_winner3.value)
+        self.assertEqual(data[0]['value'], str(new_winner3.value))
         self.assertEqual(data[0]['currency'], new_winner3.currency)
 
         self.assertEqual(data[1]['title'], new_winner4.tender.title)
         self.assertEqual(data[1]['source'], new_winner4.tender.source)
         self.assertEqual(data[1]['organization'], new_winner4.tender.organization)
-        self.assertEqual(data[1]['value'], new_winner4.value)
+        self.assertEqual(data[1]['value'], str(new_winner4.value))
         self.assertEqual(data[1]['currency'], new_winner4.currency)
 
     def test_list_ajax_view_filters(self):
@@ -80,8 +83,10 @@ class WinnersListAjaxViewTests(BaseTestCase):
             source="TED", organization="Test organization",
             value="45000"
         )
-        winner_meeting_filters = WinnerFactory(tender=tender)
-        winner_not_meeting_filters =  WinnerFactory()
+        vendor1 = VendorFactory()
+        vendor2 = VendorFactory()
+        winner_meeting_filters = WinnerFactory(tender=tender, vendor=vendor1)
+        winner_not_meeting_filters =  WinnerFactory(vendor=vendor2)
         url =  '{}?{}'.format(reverse('contract_awards_list_ajax_view'),  urlencode(query_kwargs))
         response = self.client.get(url)
         data = json.loads(response.content)['data']
@@ -104,8 +109,10 @@ class WinnersListAjaxViewTests(BaseTestCase):
 
         tender1 = TenderFactory(source="TED")
         tender2 =  TenderFactory(source="UNGM")
-        winner1 = WinnerFactory(tender=tender1)
-        winner2 = WinnerFactory(tender=tender2)
+        vendor1 = VendorFactory()
+        vendor2 = VendorFactory()
+        winner1 = WinnerFactory(tender=tender1, vendor=vendor1)
+        winner2 = WinnerFactory(tender=tender2, vendor=vendor2)
 
         url =  '{}?{}'.format(reverse('contract_awards_list_ajax_view'),  urlencode(query_kwargs))
         response = self.client.get(url)
@@ -115,5 +122,5 @@ class WinnersListAjaxViewTests(BaseTestCase):
         self.assertEqual(data[0]['title'], winner2.tender.title)
         self.assertEqual(data[0]['source'], winner2.tender.source)
         self.assertEqual(data[0]['organization'], winner2.tender.organization)
-        self.assertEqual(data[0]['value'], winner2.value)
+        self.assertEqual(data[0]['value'], str(winner2.value))
         self.assertEqual(data[0]['currency'], winner2.currency)
