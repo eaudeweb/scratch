@@ -10,5 +10,5 @@ class Command(BaseNotifyCommand, BaseParamsUI):
         return 'Keyword'
 
     def get_tenders(self):
-        tenders = Tender.objects.filter(has_keywords=True)
+        tenders = Tender.objects.filter(has_keywords=True).order_by('-published')
         return tenders

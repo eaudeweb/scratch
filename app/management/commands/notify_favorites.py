@@ -10,5 +10,5 @@ class Command(BaseNotifyCommand, BaseParamsUI):
         return 'Favorite'
 
     def get_tenders(self):
-        tenders = Tender.objects.filter(favourite=True)
+        tenders = Tender.objects.filter(favourite=True).order_by('-published')
         return tenders
