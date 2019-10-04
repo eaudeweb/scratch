@@ -31,6 +31,8 @@ $(document).ready(function() {
   const ted_published_today = $.urlParam(doc, 'ted_published_today');
   const ted_deadline_today = $.urlParam(doc, 'ted_deadline_today');
   const ungm_published_today = $.urlParam(doc, 'ungm_published_today');
+  const archive = $.urlParam(doc, 'archive');
+
 
   function buttonsClick() {
 
@@ -160,6 +162,61 @@ $(document).ready(function() {
       }
     });
 
+    $('#tenders_table_archive').DataTable(
+      {
+        "columnDefs": [
+          { "width": "55%", "targets": 0 },
+          { "width": "10%", "targets": 3 },
+          { "width": "8%", "targets": 4 },
+          { "width": "8%", "targets": 5 },
+        ],
+        "order": [[ 4, "desc" ]],
+        "pageLength": 10,
+        "lengthChange": false,
+        "search": {
+          "search": searchTerm
+        },
+        "processing": true,
+        "serverSide": true,
+        "ajax": {
+          "url": "/archive/ajax",
+          "type": "GET",
+          "data": function (d) {
+            d.organization = $('#id_organization').val();
+            d.status = $('#id_status').val();
+            d.source = $('#id_source').val();
+            d.favourite = $('#id_favourite').val();
+            d.has_keywords = $('#id_keyword').val();
+            d.notice_type = $('#id_type').val();
+            d.seen = $('#id_seen').val();
+            d.ungm_deadline_today = ungm_deadline_today;
+            d.ted_published_today = ted_published_today;
+            d.ted_deadline_today = ted_deadline_today;
+            d.ungm_published_today = ungm_published_today;
+          },
+        },
+        columnDefs: [
+        {
+         "targets": 0,
+         "orderable": true,
+          "render": function ( data, type, row ) {
+              return '<a href="' + row['url'] +'">' + data + '</a>';
+          }
+       },
+       ],
+        "columns": [
+          { "data": "title" },
+          { "data": "source" },
+          { "data": "organization" },
+          { "data": "deadline" },
+          { "data": "published" },
+          { "data": "notice_type" }
+      ],
+        "drawCallback": function(settings) {
+            $('button').click(buttonsClick)
+        }
+      });
+
   $('#contract_awards_table').DataTable(
     {
       "order": [[ 4, "desc" ]],
@@ -241,8 +298,13 @@ function toggleSeen(x) {
   }
   else {
     x.addClass("seen_pressed");
-    usr.textContent = document.getElementById("usr_seen_by").textContent;
-    value = true;
+    try {
+      usr.textContent = document.getElementById("usr_seen_by").textContent;
+    }
+    catch(err){
+
+    }
+      value = true;
   }
 
   return value;

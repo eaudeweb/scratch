@@ -1,14 +1,11 @@
 from datetime import timezone, datetime, date
-import json
 import re
 
 from django.http import HttpResponse
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.core.serializers.json import DjangoJSONEncoder
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
-from django.db.models.functions import Lower
 from django.template.loader import render_to_string
+from django.db.models import Q
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic import TemplateView, View
@@ -18,6 +15,7 @@ from elasticsearch_dsl import Q as elasticQ
 from app.documents import TenderDoc, WinnerDoc
 from app.forms import TendersFilter
 from app.models import Tender, TenderDocument, Winner
+from app.views.base import BaseAjaxListingView
 
 class TendersListView(LoginRequiredMixin, ListView):
     model = Tender
@@ -73,20 +71,48 @@ class TendersListView(LoginRequiredMixin, ListView):
 
         return context
 
-class TenderListAjaxView(View):
 
-    def get(self, request):
-        tenders = self.get_data(request)
-        return HttpResponse(json.dumps(tenders, cls=DjangoJSONEncoder),
-                            content_type='application/json')
+class TenderListAjaxView(BaseAjaxListingView):
+    filter_names = [
+        ('organization', 'organization'),
+        ('source', 'source'),
+        ('favourite', 'favourite'),
+        ('has_keywords', 'has_keywords'),
+        ('notice_type', 'notice_type'),
+    ]
+    order_fields = ['title', 'source', 'organization', 'deadline', 'published', 'notice_type']
+    case_sensitive_fields = ['title', 'source', 'organization', 'notice_type']
+    model = Tender
 
-    def filter_by_field(self, request, tenders):
-        filter_names = ['organization', 'source', 'favourite', 'has_keywords', 'notice_type']
-        filters = {}
-        for filter_name in filter_names:
-            filter_value = self.request.GET.get(filter_name)
-            if filter_value:
-                filters.update({filter_name: filter_value})
+    def format_data(self, object_list):
+        data = [
+            {
+                'title': tender.marked_keyword_title,
+                'url': reverse('tender_detail_view', kwargs={'pk':tender.id}),
+                'source': tender.source,
+                'organization': tender.organization,
+                'deadline': 'Not specified' if not tender.deadline  else tender.deadline.strftime("%m/%d/%Y, %H:%M"),
+                'published': 'Not specified' if not tender.published else tender.published.strftime("%m/%d/%Y"),
+                'notice_type': render_to_string('tenders_buttons.html', {'tender': tender})
+            } for tender in object_list
+        ]
+        return data
+
+    def order_data(self, request, tenders):
+        tenders.order_by('-published')
+        tenders = super(TenderListAjaxView, self).order_data(request, tenders)
+        return tenders
+
+    def filter_data(self, request):
+        tenders = super(TenderListAjaxView, self).filter_data(request)
+
+        search = request.GET.get("search[value]")
+        if search:
+            tenders = Tender.objects.filter(
+                           Q(title__icontains=search)|
+                           Q(organization__icontains=search)|
+                           Q(notice_type=search)
+                       )
 
         status = self.request.GET.get("status")
 
@@ -122,77 +148,7 @@ class TenderListAjaxView(View):
                 deadline__month=today.month,
                 deadline__day=today.day,
             )
-
-        tenders = tenders.filter(**filters)
         return tenders
-
-    def filter_data(self, request):
-        tenders = Tender.objects.all()
-        
-        search = request.GET.get("search[value]")
-        if search:
-            tenders = Tender.objects.filter(
-                           Q(title__icontains=search)|
-                           Q(organization__icontains=search)|
-                           Q(notice_type=search)
-                       )
-        tenders = self.filter_by_field(request, tenders)
-        return tenders
-
-    def order_data(self, request, tenders):
-        fields = ['title', 'source', 'organization', 'deadline', 'published', 'notice_type']
-        case_sensitive_fields = ['title', 'source', 'organization', 'notice_type']
-        field = request.GET.get('order[0][column]')
-        sort_type =  request.GET.get('order[0][dir]')
-        if field and sort_type:
-            field_name = fields[int(field)]
-            if field_name in case_sensitive_fields:
-                field_name =  Lower(fields[int(field)])
-            tenders = tenders.order_by(field_name)
-            if sort_type =='desc':
-                return tenders.reverse()
-            return tenders
-        return tenders.order_by('-published')
-
-    def get_data(self, request):
-
-        length = int(request.GET.get('length'))
-        start = int(request.GET.get("start"))
-        draw = int(request.GET.get("draw"))
-
-        tenders = self.filter_data(request)
-        tenders = self.order_data(request, tenders)
-        tenders_count = tenders.count()
-        tenders_filtered_count = tenders_count
-
-        paginator = Paginator(tenders, length)
-        page_number = start / length + 1
-
-        try:
-            object_list = paginator.page(page_number).object_list
-        except PageNotAnInteger:
-            object_list = paginator.page(1).object_list
-        except EmptyPage:
-            object_list = paginator.page(1).object_list
-
-        data = [
-            {
-                'title': tender.marked_keyword_title,
-                'url': reverse('tender_detail_view', kwargs={'pk':tender.id}),
-                'source': tender.source,
-                'organization': tender.organization,
-                'deadline': 'Not specified' if not tender.deadline  else tender.deadline.strftime("%m/%d/%Y, %H:%M"),
-                'published': 'Not specified' if not tender.published else tender.published.strftime("%m/%d/%Y"),
-                'notice_type': render_to_string('tenders_buttons.html', {'tender': tender})
-            } for tender in object_list
-        ]
-
-        return {
-            'draw': draw,
-            'recordsTotal': tenders_count,
-            'recordsFiltered': tenders_filtered_count,
-            'data': data,
-        }
 
 class TenderDetailView(LoginRequiredMixin, DetailView):
     model = Tender
@@ -263,19 +219,17 @@ class TenderArchiveView(TendersListView):
     login_url = "/login"
     redirect_field_name = "login_view"
 
-    def get_queryset(self):
-        tenders = super().get_queryset()
-        current_time = datetime.now(timezone.utc)
-        archive = []
-        for tender in tenders:
-            if tender.deadline and current_time > tender.deadline:
-                archive.append(tender)
-        return archive
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['reset_url'] = '/archive'
         return context
+
+class TenderArchiveAjaxView(TenderListAjaxView):
+
+    def get_objects(self):
+        current_time = datetime.now(timezone.utc)
+        tenders = Tender.objects.filter(deadline__lt=current_time, deadline__isnull=False)
+        return tenders
 
 class SearchView(LoginRequiredMixin, TemplateView):
     template_name = "search_results.html"
