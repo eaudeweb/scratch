@@ -71,20 +71,15 @@ class TenderDoc(DocType):
 
 @tender_document.doc_type
 class TenderDocumentDoc(DocType):
-    content = fields.FileField(
-        analyzer=case_insensitive_analyzer,
-        fielddata=True,
-        fields={'raw': fields.KeywordField(
-            multi=True, ignore_above=256,
-            normalizer=case_insensitive_normalizer
-        )}
-    )
+    tender_pk = fields.KeywordField(attr='tender.pk')
+    document = fields.FileField(attr="return_document_content")
 
     class Meta:
         model = TenderDocument
         fields = [
             'name'
         ]
+
 
 @winner.doc_type
 class WinnerDoc(DocType):

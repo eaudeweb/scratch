@@ -24,7 +24,7 @@ from datetime import timezone, datetime, date, timedelta
 from django.core.management import call_command
 from .forms import TendersFilter, AwardsFilter
 from .forms import MAX, STEP, SearchForm
-from app.documents import TenderDoc, WinnerDoc
+from app.documents import TenderDoc, WinnerDoc, TenderDocumentDoc
 from django.contrib.auth.models import User
 from elasticsearch_dsl import Q as elasticQ
 from django.db.models import Q
@@ -377,6 +377,20 @@ class SearchView(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         pk = self.kwargs['pk'].replace('+', '|')
 
+        # Find the tenders that have documents containing the input string
+        result_tender_documents = TenderDocumentDoc.search().query(
+            elasticQ(
+                "multi_match",
+                query=pk,
+                fields=[
+                    'name',
+                    'document',
+                ]
+            )
+        )
+        tender_ids = result_tender_documents.to_queryset().values_list('id', flat=True)
+
+        # Find the tenders that match the input string and the tender ids of the tender documents
         result_tenders = TenderDoc.search().query(
             elasticQ(
                 "multi_match",
@@ -390,6 +404,11 @@ class SearchView(LoginRequiredMixin, TemplateView):
                     'cpv_codes',
                     'description',
                 ]
+            )
+            |
+            elasticQ(
+                "ids",
+                values=list(tender_ids),
             )
         )
 
