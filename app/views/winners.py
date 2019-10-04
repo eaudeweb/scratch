@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.serializers.json import DjangoJSONEncoder
+from django.db.models.functions import Lower
 from django.template.defaultfilters import floatformat
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -54,7 +55,7 @@ class ContractAwardsListAjaxView(View):
         filter_names = [
             ('organization', 'tender__organization'),
             ('source', 'tender__source'),
-            ('vendor', 'vendor'),
+            ('vendor', 'vendor__name'),
         ]
         filters = {}
         for filter_name, filter_field in filter_names:
@@ -83,22 +84,26 @@ class ContractAwardsListAjaxView(View):
             awards = Winner.objects.filter(
                         Q(tender__title__icontains=search)|
                         Q(tender__organization__icontains=search)|
-                        Q(vendor=search)
+                        Q(vendor__name=search)
                     )
         awards = self.filter_by_field(request, awards)
         return awards
 
     def order_data(self, request, awards):
-        fields = ['tender__title', 'tender__source', 'tender__organization', 'award_date', 'vendor', 'value', 'currency']
+        fields = ['tender__title', 'tender__source', 'tender__organization', 'award_date', 'vendor__name', 'value', 'currency']
+        case_sensitive_fields = ['tender__title', 'tender__source', 'tender__organization', 'vendor__name']
+
         field = request.GET.get('order[0][column]')
-        sort_types = {
-            'asc': '',
-            'desc': '-',
-        }
         sort_type =  request.GET.get('order[0][dir]')
         if field and sort_type:
-            return awards.order_by(sort_types[sort_type] + fields[int(field)])
-        return awards.order_by('-vendor')
+            field_name = fields[int(field)]
+            if field_name in case_sensitive_fields:
+                field_name =  Lower(fields[int(field)])
+            awards = awards.order_by(field_name)
+            if sort_type == 'desc':
+                return awards.reverse()
+            return awards
+        return awards.order_by(Lower(vendor__name)).reverse()
 
     def get_data(self, request):
 
@@ -120,7 +125,6 @@ class ContractAwardsListAjaxView(View):
             object_list = paginator.page(1).object_list
         except EmptyPage:
             object_list = paginator.page(1).object_list
-
         data = [
             {
                 'title': winner.tender.title,
@@ -128,7 +132,7 @@ class ContractAwardsListAjaxView(View):
                 'source': winner.tender.source,
                 'organization': winner.tender.organization,
                 'award_date': 'Not specified' if not winner.award_date  else winner.award_date.strftime("%m/%d/%Y"),
-                'vendor': winner.vendor,
+                'vendor': winner.vendor.name,
                 'value': floatformat(winner.value, '0'),
                 'currency': winner.currency,
 

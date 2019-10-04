@@ -7,6 +7,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.serializers.json import DjangoJSONEncoder
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
+from django.db.models.functions import Lower
 from django.template.loader import render_to_string
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
@@ -140,14 +141,17 @@ class TenderListAjaxView(View):
 
     def order_data(self, request, tenders):
         fields = ['title', 'source', 'organization', 'deadline', 'published', 'notice_type']
+        case_sensitive_fields = ['title', 'source', 'organization', 'notice_type']
         field = request.GET.get('order[0][column]')
-        sort_types = {
-            'asc': '',
-            'desc': '-',
-        }
         sort_type =  request.GET.get('order[0][dir]')
         if field and sort_type:
-            return tenders.order_by(sort_types[sort_type] + fields[int(field)])
+            field_name = fields[int(field)]
+            if field_name in case_sensitive_fields:
+                field_name =  Lower(fields[int(field)])
+            tenders = tenders.order_by(field_name)
+            if sort_type =='desc':
+                return tenders.reverse()
+            return tenders
         return tenders.order_by('-published')
 
     def get_data(self, request):
