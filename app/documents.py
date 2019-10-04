@@ -2,7 +2,7 @@ from django_elasticsearch_dsl import DocType, Index, fields
 from elasticsearch_dsl import analyzer
 from elasticsearch_dsl.analysis import normalizer, tokenizer
 
-from .models import Tender, Winner
+from .models import Tender, Winner, TenderDocument
 
 case_insensitive_analyzer = analyzer(
     'case_insensitive_analyzer',
@@ -21,13 +21,19 @@ case_insensitive_normalizer = normalizer(
 tender = Index('tenders')
 tender.settings(
     number_of_shards=1,
-    number_of_replicas=0
+    number_of_replicas=0,
 )
 
 winner = Index('winners')
 winner.settings(
     number_of_shards=1,
-    number_of_replicas=0
+    number_of_replicas=0,
+)
+
+tender_document = Index('tender_documents')
+tender_document.settings(
+    number_of_shards=1,
+    number_of_replicas=0,
 )
 
 
@@ -62,6 +68,23 @@ class TenderDoc(DocType):
             'notified',
         ]
 
+
+@tender_document.doc_type
+class TenderDocumentDoc(DocType):
+    content = fields.FileField(
+        analyzer=case_insensitive_analyzer,
+        fielddata=True,
+        fields={'raw': fields.KeywordField(
+            multi=True, ignore_above=256,
+            normalizer=case_insensitive_normalizer
+        )}
+    )
+
+    class Meta:
+        model = TenderDocument
+        fields = [
+            'name'
+        ]
 
 @winner.doc_type
 class WinnerDoc(DocType):
