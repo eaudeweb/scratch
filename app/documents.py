@@ -72,12 +72,21 @@ class TenderDoc(DocType):
 @tender_document.doc_type
 class TenderDocumentDoc(DocType):
     tender_pk = fields.KeywordField(attr='tender.pk')
-    document = fields.FileField(attr="return_document_content")
+    content = fields.TextField(
+        analyzer=case_insensitive_analyzer,
+        fielddata=True,
+        attr="content",
+        fields={'raw': fields.KeywordField(
+            multi=True, ignore_above=256,
+            normalizer=case_insensitive_normalizer
+        )}
+    )
 
     class Meta:
         model = TenderDocument
         fields = [
-            'name'
+            'name',
+            'download_url'
         ]
 
 

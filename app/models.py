@@ -1,5 +1,8 @@
 import logging
+from tempfile import TemporaryFile
 
+import requests
+from django.core.files import File
 from django.core.mail import EmailMultiAlternatives
 from django.db import models
 from django.utils.html import strip_tags
@@ -121,12 +124,11 @@ class TenderDocument(models.Model):
     tender = models.ForeignKey(Tender, on_delete=models.CASCADE)
     document = models.FileField(upload_to='documents', max_length=300)
 
-    @cached_property
-    def return_document_content(self):
+    def content(self):
         try:
             parsed = parser.from_file(self.document.path)
             return parsed["content"]
-        except FileNotFoundError as e:
+        except (ValueError, FileNotFoundError) as e:
             logging.debug(e)
             pass
 

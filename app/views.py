@@ -387,7 +387,7 @@ class SearchView(LoginRequiredMixin, TemplateView):
                 query=pk,
                 fields=[
                     'name',
-                    'document',
+                    'content',
                 ]
             )
         )
