@@ -47,7 +47,10 @@ class HomepageView(TemplateView):
         context = super().get_context_data(**kwargs)
 
         today = date.today()
-        tomorrow = today + timedelta(days=1)
+
+        now = datetime.now(timezone.utc)
+        deadline_gte = now.replace(hour=0, minute=0, second=0, microsecond=0)
+        deadline_lt = now.replace(hour=0, minute=0, second=0, microsecond=0) + timedelta(days=1)
 
         context["ungm_tenders"] = Tender.objects.filter(source="UNGM").count()
         context["ted_tenders"] = Tender.objects.filter(source="TED").count()
@@ -68,10 +71,10 @@ class HomepageView(TemplateView):
             published__exact=today, source="TED"
         ).count()
         context["ungm_deadline_today"] = Tender.objects.filter(
-            deadline__gte=today, deadline__lt=tomorrow, source="UNGM"
+            deadline__gte=deadline_gte, deadline__lt=deadline_lt, source="UNGM"
         ).count()
         context["ted_deadline_today"] = Tender.objects.filter(
-            deadline__gte=today, deadline__lt=tomorrow, source="TED"
+            deadline__gte=deadline_gte, deadline__lt=deadline_lt, source="TED"
         ).count()
 
         return context

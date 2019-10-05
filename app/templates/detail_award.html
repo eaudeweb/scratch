@@ -16,6 +16,10 @@
       </thead>
       <tbody>
       <tr>
+        <td>Link to tender</td>
+        <td><a href="{{ winner.tender.url }}" target="_blank">{{ winner.tender.url }}</a></td>
+      </tr>
+      <tr>
         <td>Award Date</td>
         <td>{{ winner.award_date | date:'d M Y' }}</td>
       </tr>
@@ -25,7 +29,7 @@
       </tr>
       <tr>
         <td>Value</td>
-        <td>{{ winner.value }}</td>
+        <td>{{ winner.value | floatformat:'0' }}</td>
       </tr>
       <tr>
         <td>Currency</td>

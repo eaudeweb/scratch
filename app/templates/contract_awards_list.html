@@ -35,7 +35,7 @@
           <td>{{ winner.tender.organization }}</td>
           <td>{{ winner.award_date | date:'d M Y' }}</td>
           <td>{{ winner.vendor }}</td>
-          <td>{{ winner.value }}</td>
+          <td>{{ winner.value| floatformat:'0' }}</td>
           <td>{{ winner.currency }}</td>
         </tr>
       {% endfor %}

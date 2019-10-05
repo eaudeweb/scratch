@@ -155,7 +155,7 @@ instance_dir = os.path.abspath(os.path.dirname(__file__))
 FILES_DIR = os.path.join(instance_dir, 'files')
 
 # DEADLINE
-DEADLINE_NOTIFICATIONS = env('DEADLINE_NOTIFICATIONS', (1, 2, 7))
+DEADLINE_NOTIFICATIONS = env('DEADLINE_NOTIFICATIONS', (1, 3, 7))
 
 # TED
 TED_DOC_TYPES = env('TED_DOC_TYPES', [])
@@ -174,6 +174,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+USE_THOUSAND_SEPARATOR = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/

@@ -28,8 +28,8 @@ class Command(BaseCommand, BaseParamsUI):
 
     def handle(self, *args, **options):
         digest = options['digest']
-        tenders = Tender.objects.filter(notified=False)
-        awards = Winner.objects.filter(notified=False)
+        tenders = Tender.objects.filter(notified=False).order_by('-published')
+        awards = Winner.objects.filter(notified=False).order_by('-award_date')
         if (len(tenders) > 0) or (len(awards) > 0):
             send_email(tenders, awards, digest)
 
