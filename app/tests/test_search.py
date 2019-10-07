@@ -1,5 +1,7 @@
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django.core import management
+from elasticsearch import RequestError
 
 from app.factories import KeywordFactory, TenderFactory
 from app.models import UNSPSCCode, Tender
@@ -10,6 +12,11 @@ from app.tests.base import BaseTestCase
 class SearchTestCase(BaseTestCase):
     def setUp(self):
         super(SearchTestCase, self).setUp()
+
+        try:
+            management.call_command("search_index", "--create")
+        except RequestError:
+            pass
 
         user = User.objects.create(username='test_user')
         user.set_password('12345')
@@ -43,5 +50,4 @@ class SearchTestCase(BaseTestCase):
             url = reverse('search_results', kwargs={'pk': 'Courtney'})
             response = self.client.get(url, follow=True)
             self.assertEqual(response.status_code, 200)
-            print(response.content)
             self.assertContains(response, "Software Development and Maintenance of NET-VISA, on a Call-off Basis")

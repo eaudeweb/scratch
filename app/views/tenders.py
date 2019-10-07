@@ -110,10 +110,10 @@ class TenderListAjaxView(BaseAjaxListingView):
         search = request.GET.get("search[value]")
         if search:
             tenders = Tender.objects.filter(
-                           Q(title__icontains=search) |
-                           Q(organization__icontains=search) |
-                           Q(notice_type=search)
-                       )
+                Q(title__icontains=search) |
+                Q(organization__icontains=search) |
+                Q(notice_type=search)
+            )
 
         status = self.request.GET.get("status")
 
