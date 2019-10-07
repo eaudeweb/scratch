@@ -57,7 +57,7 @@ class UNGMWorker:
     @staticmethod
     def parse_ungm_notice_list(html):
         soup = BeautifulSoup(html, 'html.parser')
-        tenders = soup.find_all('div', {"class": ["tableRow", "dataRow"]})
+        tenders = soup.find_all('div', {'class': ['tableRow', 'dataRow']})
 
         endpoint = settings.UNGM_ENDPOINT_URI
 
