@@ -76,7 +76,7 @@ class UNGMWorker:
     def parse_ungm_notice(html, url, codes):
         soup = BeautifulSoup(html, 'html.parser')
         documents = UNGMWorker.find_by_class(soup, "lnkShowDocument", "a")
-        description = UNGMWorker.find_by_class(soup, "ungm-list-item ungm-background", "div")
+        description = UNGMWorker.find_by_class(soup, ["ungm-list-item", "ungm-background"], "div")
         try:
             description = description[1].text.strip().strip('\n').lstrip('Description')
         except IndexError:
