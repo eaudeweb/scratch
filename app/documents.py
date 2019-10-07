@@ -39,6 +39,7 @@ tender_document.settings(
 
 @tender.doc_type
 class TenderDoc(DocType):
+    reference = fields.KeywordField(attr='reference')
     description = fields.TextField(
         analyzer=case_insensitive_analyzer,
         fielddata=True,
@@ -60,7 +61,6 @@ class TenderDoc(DocType):
     class Meta:
         model = Tender
         fields = [
-            'reference',
             'unspsc_codes',
             'cpv_codes',
             'organization',
@@ -71,7 +71,7 @@ class TenderDoc(DocType):
 
 @tender_document.doc_type
 class TenderDocumentDoc(DocType):
-    tender_pk = fields.KeywordField(attr='tender.pk')
+    reference = fields.KeywordField(attr='tender.reference')
     content = fields.TextField(
         analyzer=case_insensitive_analyzer,
         fielddata=True,
@@ -86,7 +86,7 @@ class TenderDocumentDoc(DocType):
         model = TenderDocument
         fields = [
             'name',
-            'download_url'
+            'download_url',
         ]
 
 

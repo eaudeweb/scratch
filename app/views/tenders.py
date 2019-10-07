@@ -89,10 +89,10 @@ class TenderListAjaxView(BaseAjaxListingView):
         data = [
             {
                 'title': tender.marked_keyword_title,
-                'url': reverse('tender_detail_view', kwargs={'pk':tender.id}),
+                'url': reverse('tender_detail_view', kwargs={'pk': tender.id}),
                 'source': tender.source,
                 'organization': tender.organization,
-                'deadline': 'Not specified' if not tender.deadline  else tender.deadline.strftime("%m/%d/%Y, %H:%M"),
+                'deadline': 'Not specified' if not tender.deadline else tender.deadline.strftime("%m/%d/%Y, %H:%M"),
                 'published': 'Not specified' if not tender.published else tender.published.strftime("%m/%d/%Y"),
                 'notice_type': render_to_string('tenders_buttons.html', {'tender': tender})
             } for tender in object_list
@@ -110,8 +110,8 @@ class TenderListAjaxView(BaseAjaxListingView):
         search = request.GET.get("search[value]")
         if search:
             tenders = Tender.objects.filter(
-                           Q(title__icontains=search)|
-                           Q(organization__icontains=search)|
+                           Q(title__icontains=search) |
+                           Q(organization__icontains=search) |
                            Q(notice_type=search)
                        )
 
@@ -151,6 +151,7 @@ class TenderListAjaxView(BaseAjaxListingView):
             )
         return tenders
 
+
 class TenderDetailView(LoginRequiredMixin, DetailView):
     model = Tender
     template_name = "detail_tender.html"
@@ -182,6 +183,7 @@ class TenderDetailView(LoginRequiredMixin, DetailView):
         context["documents_set"] = TenderDocument.objects.filter(tender=self.object)
         return context
 
+
 class TenderFavouriteView(View):
     def post(self, request, pk):
         current_tender = Tender.objects.filter(id=pk)
@@ -193,6 +195,7 @@ class TenderFavouriteView(View):
             current_tender.update(favourite=False)
 
         return HttpResponse("Success!")
+
 
 class TenderSeenByView(View):
     def post(self, request, pk):
@@ -206,6 +209,7 @@ class TenderSeenByView(View):
             current_tender.update(seen_by=None)
 
         return HttpResponse("Success!")
+
 
 class TenderDeleteView(View):
     def post(self, request, pk):
@@ -225,12 +229,14 @@ class TenderArchiveView(TendersListView):
         context['reset_url'] = '/archive'
         return context
 
+
 class TenderArchiveAjaxView(TenderListAjaxView):
 
     def get_objects(self):
         current_time = datetime.now(timezone.utc)
         tenders = Tender.objects.filter(deadline__lt=current_time, deadline__isnull=False)
         return tenders
+
 
 class SearchView(LoginRequiredMixin, TemplateView):
     template_name = "search_results.html"
@@ -259,7 +265,7 @@ class SearchView(LoginRequiredMixin, TemplateView):
                 ]
             )
         )
-        tender_ids = result_tender_documents.to_queryset().values_list('id', flat=True)
+        tender_references = [o.reference for o in result_tender_documents if o.reference is not None]
 
         # Find the tenders that match the input string and the tender ids of the tender documents
         result_tenders = TenderDoc.search().query(
@@ -278,8 +284,8 @@ class SearchView(LoginRequiredMixin, TemplateView):
             )
             |
             Q(
-                "ids",
-                values=list(tender_ids),
+                "terms",
+                reference=tender_references,
             )
         )
 
