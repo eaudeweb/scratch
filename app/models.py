@@ -127,7 +127,6 @@ class TenderDocument(models.Model):
     def content(self):
         try:
             parsed = parser.from_file(self.document.path)
-            print(parsed["content"])
             return parsed["content"]
         except (ValueError, FileNotFoundError) as e:
             logging.debug(e)

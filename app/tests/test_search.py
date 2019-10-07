@@ -43,4 +43,4 @@ class SearchTestCase(BaseTestCase):
             url = reverse('search_results', kwargs={'pk': 'Courtney'})
             response = self.client.get(url, follow=True)
             self.assertEqual(response.status_code, 200)
-            self.assertContains(response, 'Software Development and Maintenance of NET-VISA, on a Call-off Basis')
+            self.assertEqual(response, 'Software Development and Maintenance of NET-VISA, on a Call-off Basis')
