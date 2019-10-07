@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 
 from app.factories import KeywordFactory, TenderFactory
-from app.models import UNSPSCCode
+from app.models import UNSPSCCode, Tender
 from app.parsers.ungm import UNGMWorker
 from app.tests.base import BaseTestCase
 
@@ -43,4 +43,5 @@ class SearchTestCase(BaseTestCase):
             url = reverse('search_results', kwargs={'pk': 'Courtney'})
             response = self.client.get(url, follow=True)
             self.assertEqual(response.status_code, 200)
-            self.assertEqual(response, 'Software Development and Maintenance of NET-VISA, on a Call-off Basis')
+            print(response.content)
+            self.assertContains(response, "Software Development and Maintenance of NET-VISA, on a Call-off Basis")
