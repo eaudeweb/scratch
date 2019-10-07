@@ -9,6 +9,7 @@ class TenderFactory(factory.DjangoModelFactory):
         model = Tender
 
     reference = factory.sequence(lambda n: "RFC/TEST/%s" % n)
+    title = factory.sequence(lambda n: "Tender%s" % n)
     organization = 'UNOPS'
     source = 'UNGM'
     description = 'test'
