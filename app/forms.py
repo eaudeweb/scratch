@@ -75,7 +75,7 @@ class TendersFilter(forms.Form):
 class AwardsFilter(forms.Form):
     source = forms.ChoiceField(choices=SOURCES, required=False)
     organization = forms.ChoiceField(required=False)
-    # vendor = forms.ChoiceField(required=False)
+    vendor = forms.ChoiceField(required=False)
     value = forms.ChoiceField(choices=VALUES, required=False)
 
     def __init__(self, *args, **kwargs):
@@ -88,12 +88,12 @@ class AwardsFilter(forms.Form):
         self.fields["organization"].choices = [("", "All organizations")] + [
             (org, org) for org in organizations_list
         ]
-        # vendors_list = Winner.objects.values_list(
-        #     "vendor", flat=True
-        # ).distinct()
-        # self.fields["vendor"].choices = [("", "All vendors")] + [
-        #     (vendor, vendor) for vendor in vendors_list
-        # ]
+        vendors_list = Winner.objects.values_list(
+            "vendor__name", flat=True
+        ).distinct()
+        self.fields["vendor"].choices = [("", "All vendors")] + [
+            (vendor, vendor) for vendor in vendors_list
+        ]
 
 
 class SearchForm(forms.Form):

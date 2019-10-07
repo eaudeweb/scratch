@@ -13,8 +13,8 @@
   </div>
 
   {% include 'tenders_filters.html' %}
-  <div class = "table" >
-    <table id="tenders_table"  class="cell-border display compact">
+  <div class="table">
+    <table id="tenders_table_archive"  class="cell-border display compact">
       <thead>
       <tr>
         <th>Title</th>
@@ -25,28 +25,6 @@
         <th>Type of notice</th>
       </tr>
       </thead>
-      <tbody>
-      {% for tender in archive %}
-        <tr>
-          <td><a href="{% url 'tender_detail_view' tender.id %}" class="link">{{ tender.title }}</a></td>
-          <td>{{ tender.source }}</td>
-          <td>{{ tender.organization }}</td>
-          {% if tender.deadline %}
-            <td>{{ tender.deadline | date:'d M Y, H:i' }}</td>
-          {% else %}
-            <td>Not specified</td>
-          {% endif %}
-          {% if tender.published %}
-            <td>{{ tender.published | date:'d M Y' }}</td>
-          {% else %}
-            <td>Not specified</td>
-          {% endif %}
-          <td>
-            {{ tender.notice_type }}
-          </td>
-        </tr>
-      {% endfor %}
-      </tbody>
     </table>
   </div>
 
