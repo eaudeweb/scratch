@@ -34,19 +34,21 @@ class SearchTestCase(BaseTestCase):
         self.assertContains(response, '<mark>Tender_1</mark>')
 
     def test_tender_document_search(self):
-        self.worker = UNGMWorker()
-        self.url = 'wwww.parser_test.com'
-        self.unspsc_codes = UNSPSCCode.objects.all()
+        worker = UNGMWorker()
+        url = 'wwww.parser_test.com'
+        unspsc_codes = UNSPSCCode.objects.all()
 
         with open('app/tests/parser_files/ungm_notice_es_search.html', 'r') as f:
             html_string = f.read()
 
-            tender = self.worker.parse_ungm_notice(html_string, self.url,
-                                                   self.unspsc_codes)
+            tender = worker.parse_ungm_notice(html_string, url, unspsc_codes)
 
-            self.worker.update_ungm_tenders([tender])
+            worker.update_ungm_tenders([tender])
 
             url = reverse('search_results', kwargs={'pk': 'Courtney'})
             response = self.client.get(url, follow=True)
             self.assertEqual(response.status_code, 200)
-            self.assertContains(response, "Software Development and Maintenance of NET-VISA, on a Call-off Basis")
+            self.assertContains(
+                response,
+                'Software Development and Maintenance of NET-VISA, on a Call-off Basis',
+            )
