@@ -7,13 +7,16 @@ services:
     environment:
       - DJANGO_MIGRATE=yes
       - DJANGO_COLLECT_STATIC=yes
+      - DJANGO_INDEX_CONTENT=yes
       - UWSGI_PORT=8000
       - TZ=Europe/Bucharest
     env_file:
-      - docker/db.env
       - docker/app.env
+      - docker/db.env
+      - docker/tika.env
     depends_on:
       - db
+      - tika
     volumes:
       - static:/var/local/scratch/static
       - media:/var/local/scratch/app/media
@@ -25,13 +28,16 @@ services:
     container_name: scratch.async
     env_file:
       - docker/app.env
+      - docker/db.env
       - docker/redis.env
+      - docker/tika.env
     environment:
       - TZ=Europe/Bucharest
     depends_on:
       - web
       - db
       - redis
+      - tika
     command: ['qcluster']
 
   cron:
@@ -40,10 +46,12 @@ services:
     environment:
       - TZ=Europe/Bucharest
     env_file:
-      - docker/db.env
       - docker/app.env
+      - docker/db.env
+      - docker/tika.env
     depends_on:
       - db
+      - tika
     entrypoint: ["./docker-entrypoint.cron.sh"]
 
   db:
@@ -82,6 +90,12 @@ services:
     hostname: helpdesk.eaudeweb.ro
     env_file:
       - docker/app.env
+
+  tika:
+    image: logicalspark/docker-tikaserver
+    container_name: scratch.tika
+    ports:
+      - 9998:9998
 
 volumes:
   data:

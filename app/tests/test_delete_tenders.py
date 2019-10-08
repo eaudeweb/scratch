@@ -1,7 +1,8 @@
-from django.urls import reverse
-from app.models import Tender
 from django.contrib.auth.models import User
+from django.urls import reverse
+
 from app.factories import TenderFactory
+from app.models import Tender
 from app.tests.base import BaseTestCase
 
 

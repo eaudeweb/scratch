@@ -1,19 +1,14 @@
-import json
-
-from django.http import HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.core.serializers.json import DjangoJSONEncoder
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.template.defaultfilters import floatformat
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic import TemplateView, View
 from django.urls import reverse
 from app.forms import AwardsFilter, MAX, STEP
 from app.models import Winner
 from app.views import BaseAjaxListingView
+
 
 class ContractAwardsListView(LoginRequiredMixin, ListView):
     model = Winner
@@ -46,13 +41,15 @@ class ContractAwardsListView(LoginRequiredMixin, ListView):
         context["reset"] = reset
         return context
 
+
 class ContractAwardsListAjaxView(BaseAjaxListingView):
     filter_names = [
         ('organization', 'tender__organization'),
         ('source', 'tender__source'),
         ('vendor', 'vendor__name'),
     ]
-    order_fields = ['tender__title', 'tender__source', 'tender__organization', 'award_date', 'vendor__name', 'value', 'currency']
+    order_fields = ['tender__title', 'tender__source', 'tender__organization',
+                    'award_date', 'vendor__name', 'value', 'currency']
     case_sensitive_fields = ['tender__title', 'tender__source', 'tender__organization', 'vendor__name']
     model = Winner
 
@@ -60,10 +57,10 @@ class ContractAwardsListAjaxView(BaseAjaxListingView):
         data = [
             {
                 'title': winner.tender.title,
-                'url': reverse('contract_awards_detail_view', kwargs={'pk':winner.id}),
+                'url': reverse('contract_awards_detail_view', kwargs={'pk': winner.id}),
                 'source': winner.tender.source,
                 'organization': winner.tender.organization,
-                'award_date': 'Not specified' if not winner.award_date  else winner.award_date.strftime("%m/%d/%Y"),
+                'award_date': 'Not specified' if not winner.award_date else winner.award_date.strftime("%m/%d/%Y"),
                 'vendor': winner.vendor.name,
                 'value': floatformat(winner.value, '0'),
                 'currency': winner.currency,
@@ -78,8 +75,8 @@ class ContractAwardsListAjaxView(BaseAjaxListingView):
         search = request.GET.get("search[value]")
         if search:
             awards = Winner.objects.filter(
-                        Q(tender__title__icontains=search)|
-                        Q(tender__organization__icontains=search)|
+                        Q(tender__title__icontains=search) |
+                        Q(tender__organization__icontains=search) |
                         Q(vendor__name=search)
                     )
 

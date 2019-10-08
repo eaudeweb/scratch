@@ -1,3 +1,5 @@
+import logging
+
 from django.core.mail import EmailMultiAlternatives
 from django.db import models
 from django.utils.html import strip_tags
@@ -7,6 +9,7 @@ from django.contrib.auth.models import User
 
 import re
 
+from tika import parser
 
 SOURCE_CHOICES = [
     ('UNGM', 'UNGM'),
@@ -117,6 +120,14 @@ class TenderDocument(models.Model):
     download_url = models.CharField(max_length=255)
     tender = models.ForeignKey(Tender, on_delete=models.CASCADE)
     document = models.FileField(upload_to='documents', max_length=300)
+
+    def content(self):
+        try:
+            parsed = parser.from_file(self.document.path)
+            return parsed["content"]
+        except (ValueError, FileNotFoundError) as e:
+            logging.debug(e)
+            pass
 
     class Meta:
         unique_together = ('name', 'tender',)

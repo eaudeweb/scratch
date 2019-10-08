@@ -19,20 +19,20 @@ class BaseAjaxListingView(View):
                             content_type='application/json')
 
     def format_data(self, object_list):
-        return objects_list
+        return object_list
 
     def get_objects(self):
         return self.model.objects.all()
 
     def order_data(self, request, objects):
         field = request.GET.get('order[0][column]')
-        sort_type =  request.GET.get('order[0][dir]')
+        sort_type = request.GET.get('order[0][dir]')
         if field and sort_type:
             field_name = self.order_fields[int(field)]
             if field_name in self.case_sensitive_fields:
-                field_name =  Lower(field_name)
+                field_name = Lower(field_name)
             objects = objects.order_by(field_name)
-            if sort_type =='desc':
+            if sort_type == 'desc':
                 return objects.reverse()
         return objects
 

@@ -118,6 +118,7 @@ docker-compose.override.yml
 docker/app.env
 docker/db.env
 docker/redis.env
+docker/tika.env
 
 # MacOS
 .DS_Store

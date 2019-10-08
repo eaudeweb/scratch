@@ -31,8 +31,8 @@ class TendersDetailViewTests(BaseTestCase):
         self.assertContains(response, new_tender.reference)
 
     def test_detail_view_one_tender_has_keywords(self):
-        self.keyword1 = KeywordFactory(value='python')
-        self.keyword2 = KeywordFactory(value='drupal')
+        KeywordFactory(value='python')
+        KeywordFactory(value='drupal')
         new_tender = TenderFactory(title='Tender_1 python', description='Tender_1 drupal')
         url = reverse('tender_detail_view', kwargs={'pk': new_tender.id})
         response = self.client.get(url)
@@ -46,7 +46,6 @@ class TendersDetailViewTests(BaseTestCase):
 
         self.assertContains(response, new_tender.title)
         self.assertContains(response, new_tender.reference)
-
 
     @override_settings(TENDER_KEYWORDS='')
     def test_detail_view_one_tender_has_keywords_with_no_keywords_set(self):

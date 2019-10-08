@@ -8,6 +8,7 @@ from app.tests.base import BaseTestCase
 
 from django.utils.http import urlencode
 
+
 class TendersListAjaxViewTests(BaseTestCase):
     def setUp(self):
         super(TendersListAjaxViewTests, self).setUp()
@@ -23,24 +24,24 @@ class TendersListAjaxViewTests(BaseTestCase):
             "draw": '1', 
             "length": '2',
         }
-        keyword = KeywordFactory()
+        KeywordFactory()
         new_tender1 = TenderFactory(title='Tender1 python')
         new_tender2 = TenderFactory()
         new_tender3 = TenderFactory()
         new_tender4 = TenderFactory()
 
-        url =  '{}?{}'.format(reverse('tenders_list_ajax_view'),  urlencode(query_kwargs))
+        url = '{}?{}'.format(reverse('tenders_list_ajax_view'),  urlencode(query_kwargs))
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context), 2)
-        data= json.loads(response.content)['data']
+        data = json.loads(response.content)['data']
 
         self.assertEqual(response.context[0]['tender'], new_tender1)
-        self.assertEqual(data[0]['title'],'Tender1 <mark>python</mark>')
+        self.assertEqual(data[0]['title'], 'Tender1 <mark>python</mark>')
         self.assertEqual(response.context[1]['tender'], new_tender2)
 
         query_kwargs.update({"draw": '2', 'start': '2'})
-        url =  '{}?{}'.format(reverse('tenders_list_ajax_view'),  urlencode(query_kwargs))
+        url = '{}?{}'.format(reverse('tenders_list_ajax_view'),  urlencode(query_kwargs))
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context), 2)
@@ -61,8 +62,8 @@ class TendersListAjaxViewTests(BaseTestCase):
             title="Test title", source="TED", organization="Test organization",
             favourite=True, notice_type="Aditional information"
         )
-        tender_not_meeting_filters =  TenderFactory()
-        url =  '{}?{}'.format(reverse('tenders_list_ajax_view'),  urlencode(query_kwargs))
+        TenderFactory()
+        url = '{}?{}'.format(reverse('tenders_list_ajax_view'),  urlencode(query_kwargs))
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context.dicts), 2)
@@ -77,10 +78,10 @@ class TendersListAjaxViewTests(BaseTestCase):
             "order[0][dir]": "desc",
         }
 
-        tender1 = TenderFactory(source="TED")
-        tender2 =  TenderFactory(source="UNGM")
+        TenderFactory(source="TED")
+        tender2 = TenderFactory(source="UNGM")
 
-        url =  '{}?{}'.format(reverse('tenders_list_ajax_view'),  urlencode(query_kwargs))
+        url = '{}?{}'.format(reverse('tenders_list_ajax_view'), urlencode(query_kwargs))
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context), 2)
