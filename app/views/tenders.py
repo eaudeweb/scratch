@@ -12,7 +12,7 @@ from django.views.generic import TemplateView, View
 from django.urls import reverse
 from elasticsearch_dsl import Q
 
-from app.documents import TenderDoc, WinnerDoc, TenderDocumentDoc
+from app.documents import TenderDoc, TenderDocumentDoc
 from app.forms import TendersFilter
 from app.models import Tender, TenderDocument, Winner
 from app.views.base import BaseAjaxListingView
@@ -267,6 +267,34 @@ class SearchView(LoginRequiredMixin, TemplateView):
         )
         tender_references = [o.reference for o in result_tender_documents if o.reference is not None]
 
+        print(f'tender references {tender_references}')
+
+        x = TenderDoc.search().query(
+            Q(
+                "multi_match",
+                query=pk,
+                fields=[
+                    'title',
+                    'organization',
+                    'source',
+                    'reference',
+                    'unspsc_codes',
+                    'cpv_codes',
+                    'description',
+                ]
+            )
+        )
+
+        y = TenderDoc.search().query(
+            Q(
+                "terms",
+                reference=tender_references,
+            )
+        )
+
+        print(f'r1 {list(x)}')
+        print(f'r2 {list(y)}')
+
         # Find the tenders that match the input string and the tender ids of the tender documents
         result_tenders = TenderDoc.search().query(
             Q(
@@ -289,21 +317,22 @@ class SearchView(LoginRequiredMixin, TemplateView):
             )
         )
 
-        result_awards = WinnerDoc.search().query(
-            Q(
-                "multi_match",
-                query=pk,
-                fields=[
-                    'vendor',
-                    'tender_title',
-                    'currency',
-                    'value',
-                ]
-            )
-        )
+        # result_awards = WinnerDoc.search().query(
+        #     Q(
+        #         "multi_match",
+        #         query=pk,
+        #         fields=[
+        #             'vendor',
+        #             'tender_title',
+        #             'currency',
+        #             'value',
+        #         ]
+        #     )
+        # )
 
         context['tenders'] = result_tenders.to_queryset()
-        context['awards'] = result_awards.to_queryset()
+        # context['awards'] = result_awards.to_queryset()
+        context['awards'] = []
 
         regex = re.compile(rf'(\b({pk})\b(\s*({pk})\b)*)', re.I)
 

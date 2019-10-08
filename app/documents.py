@@ -1,6 +1,6 @@
 from django_elasticsearch_dsl import DocType, Index, fields
 from elasticsearch_dsl import analyzer
-from elasticsearch_dsl.analysis import normalizer, tokenizer
+from elasticsearch_dsl.analysis import normalizer
 
 from .models import Tender, Winner, TenderDocument
 
@@ -24,11 +24,11 @@ tender.settings(
     number_of_replicas=0,
 )
 
-winner = Index('winners')
-winner.settings(
-    number_of_shards=1,
-    number_of_replicas=0,
-)
+# winner = Index('winners')
+# winner.settings(
+#     number_of_shards=1,
+#     number_of_replicas=0,
+# )
 
 tender_document = Index('tender_documents')
 tender_document.settings(
@@ -39,7 +39,8 @@ tender_document.settings(
 
 @tender.doc_type
 class TenderDoc(DocType):
-    reference = fields.KeywordField(attr='reference')
+    reference = fields.TextField(attr='reference')
+
     description = fields.TextField(
         analyzer=case_insensitive_analyzer,
         fielddata=True,
@@ -69,9 +70,23 @@ class TenderDoc(DocType):
         ]
 
 
+# @winner.doc_type
+# class WinnerDoc(DocType):
+#     tender_title = fields.KeywordField(attr='tender.title')
+#     vendor_name = fields.KeywordField(attr='vendor.name')
+#     value = fields.TextField(attr="convert_value_to_string")
+#
+#     class Meta:
+#         model = Winner
+#         fields = [
+#             'currency',
+#         ]
+
+
 @tender_document.doc_type
 class TenderDocumentDoc(DocType):
     reference = fields.KeywordField(attr='tender.reference')
+
     content = fields.TextField(
         analyzer=case_insensitive_analyzer,
         fielddata=True,
@@ -87,17 +102,4 @@ class TenderDocumentDoc(DocType):
         fields = [
             'name',
             'download_url',
-        ]
-
-
-@winner.doc_type
-class WinnerDoc(DocType):
-    tender_title = fields.KeywordField(attr='tender.title')
-    vendor_name = fields.KeywordField(attr='vendor.name')
-    value = fields.TextField(attr="convert_value_to_string")
-
-    class Meta:
-        model = Winner
-        fields = [
-            'currency',
         ]
