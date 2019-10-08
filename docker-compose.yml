@@ -7,6 +7,7 @@ services:
     environment:
       - DJANGO_MIGRATE=yes
       - DJANGO_COLLECT_STATIC=yes
+      - DJANGO_INDEX_CONTENT=yes
       - UWSGI_PORT=8000
       - TZ=Europe/Bucharest
     env_file:
