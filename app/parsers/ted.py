@@ -22,7 +22,7 @@ class TEDWorker:
     def __init__(self, last_ted_update=None):
         self.path = get_archives_path()
         if not last_ted_update:
-            last_ted_update = datetime.now()
+            last_ted_update = date.today()
         self.last_ted_update = last_ted_update
 
     def ftp_download_tender_archive(self, tenders):
