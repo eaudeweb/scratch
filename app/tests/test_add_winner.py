@@ -7,9 +7,9 @@ class AddWinnerTestCase(BaseTestCase):
     def setUp(self):
         super(AddWinnerTestCase, self).setUp()
 
-        self.expected_vendor_name = "test_vendor"
+        self.expected_vendor_name = 'test_vendor'
 
-        tender = TenderFactory(title="test_title")
+        tender = TenderFactory(title='test_title')
         vendor = VendorFactory(name=self.expected_vendor_name)
         WinnerFactory(vendor=vendor, tender=tender)
 

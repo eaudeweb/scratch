@@ -6,16 +6,16 @@ from .models import Tender, Winner, TenderDocument
 
 case_insensitive_analyzer = analyzer(
     'case_insensitive_analyzer',
-    tokenizer="standard",
-    token_chars=["whitespace", "punctuation"],
+    tokenizer='standard',
+    token_chars=['whitespace', 'punctuation'],
     filter=['lowercase']
 )
 
 case_insensitive_normalizer = normalizer(
-    type="custom",
+    type='custom',
     name_or_instance='case_insensitive_normalizer',
     char_filter=[],
-    filter="lowercase",
+    filter='lowercase',
 )
 
 tender = Index('tenders')
@@ -57,7 +57,7 @@ class TenderDoc(DocType):
         )}
     )
 
-    reference = fields.KeywordField(attr="reference")
+    reference = fields.KeywordField(attr='reference')
 
     class Meta:
         model = Tender
@@ -66,7 +66,7 @@ class TenderDoc(DocType):
             'cpv_codes',
             'organization',
             'source',
-            'notified'
+            'notified',
         ]
 
 
@@ -74,7 +74,7 @@ class TenderDoc(DocType):
 class WinnerDoc(DocType):
     tender_title = fields.KeywordField(attr='tender.title')
     vendor_name = fields.KeywordField(attr='vendor.name')
-    value = fields.TextField(attr="convert_value_to_string")
+    value = fields.TextField(attr='convert_value_to_string')
 
     class Meta:
         model = Winner
@@ -90,7 +90,7 @@ class TenderDocumentDoc(DocType):
     content = fields.TextField(
         analyzer=case_insensitive_analyzer,
         fielddata=True,
-        attr="content",
+        attr='content',
         fields={'raw': fields.KeywordField(
             multi=True, ignore_above=256,
             normalizer=case_insensitive_normalizer
