@@ -1,8 +1,5 @@
 import logging
-from tempfile import TemporaryFile
 
-import requests
-from django.core.files import File
 from django.core.mail import EmailMultiAlternatives
 from django.db import models
 from django.utils.html import strip_tags
@@ -12,7 +9,7 @@ from django.contrib.auth.models import User
 
 import re
 
-from tika import parser, unpack
+from tika import parser
 
 SOURCE_CHOICES = [
     ('UNGM', 'UNGM'),

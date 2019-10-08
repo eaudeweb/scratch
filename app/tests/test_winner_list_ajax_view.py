@@ -31,7 +31,7 @@ class WinnersListAjaxViewTests(BaseTestCase):
         new_winner3 = WinnerFactory(vendor=vendor2)
         new_winner4 = WinnerFactory(vendor=vendor2)
 
-        url =  '{}?{}'.format(reverse('contract_awards_list_ajax_view'),  urlencode(query_kwargs))
+        url = '{}?{}'.format(reverse('contract_awards_list_ajax_view'),  urlencode(query_kwargs))
         response = self.client.get(url)
         data = json.loads(response.content)['data']
 
@@ -51,7 +51,7 @@ class WinnersListAjaxViewTests(BaseTestCase):
         self.assertEqual(data[1]['currency'], new_winner2.currency)
 
         query_kwargs.update({"draw": '2', 'start': '2'})
-        url =  '{}?{}'.format(reverse('contract_awards_list_ajax_view'),  urlencode(query_kwargs))
+        url = '{}?{}'.format(reverse('contract_awards_list_ajax_view'), urlencode(query_kwargs))
         response = self.client.get(url)
         data = json.loads(response.content)['data']
 
@@ -86,8 +86,8 @@ class WinnersListAjaxViewTests(BaseTestCase):
         vendor1 = VendorFactory()
         vendor2 = VendorFactory()
         winner_meeting_filters = WinnerFactory(tender=tender, vendor=vendor1)
-        winner_not_meeting_filters =  WinnerFactory(vendor=vendor2)
-        url =  '{}?{}'.format(reverse('contract_awards_list_ajax_view'),  urlencode(query_kwargs))
+        WinnerFactory(vendor=vendor2)
+        url = '{}?{}'.format(reverse('contract_awards_list_ajax_view'),  urlencode(query_kwargs))
         response = self.client.get(url)
         data = json.loads(response.content)['data']
         self.assertEqual(response.status_code, 200)
@@ -108,13 +108,13 @@ class WinnersListAjaxViewTests(BaseTestCase):
         }
 
         tender1 = TenderFactory(source="TED")
-        tender2 =  TenderFactory(source="UNGM")
+        tender2 = TenderFactory(source="UNGM")
         vendor1 = VendorFactory()
         vendor2 = VendorFactory()
-        winner1 = WinnerFactory(tender=tender1, vendor=vendor1)
+        WinnerFactory(tender=tender1, vendor=vendor1)
         winner2 = WinnerFactory(tender=tender2, vendor=vendor2)
 
-        url =  '{}?{}'.format(reverse('contract_awards_list_ajax_view'),  urlencode(query_kwargs))
+        url = '{}?{}'.format(reverse('contract_awards_list_ajax_view'),  urlencode(query_kwargs))
         response = self.client.get(url)
         data = json.loads(response.content)['data']
         self.assertEqual(response.status_code, 200)

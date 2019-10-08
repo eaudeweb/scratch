@@ -21,7 +21,7 @@ from django.views.generic import (
     FormView, RedirectView, TemplateView, View
 )
 from django.urls import reverse
-from django_q.tasks import async_task, result
+from django_q.tasks import async_task
 from django_q.models import Success, Failure
 
 from app.forms import SearchForm
@@ -75,6 +75,7 @@ class HomepageView(TemplateView):
         ).count()
 
         return context
+
 
 class ManagementView(LoginRequiredMixin, TemplateView):
     template_name = "management.html"
@@ -179,6 +180,7 @@ class ManagementDeleteView(LoginRequiredMixin, View):
         task = Task.objects.get(id=pk)
         task.delete()
         return redirect(reverse('management_view') + '#logs')
+
 
 class OverviewPageView(LoginRequiredMixin, TemplateView):
     template_name = "overview.html"

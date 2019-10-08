@@ -34,7 +34,7 @@ class TendersListViewTests(BaseTestCase):
         self.assertEqual(response.context['tenders'][1].source, tender_2.source)
 
     def test_list_view_has_keywords(self):
-        keyword = KeywordFactory()
+        KeywordFactory()
         tender = TenderFactory(title='Tender1 python')
         url = reverse('tenders_list_view')
         response = self.client.get(url)

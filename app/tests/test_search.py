@@ -5,7 +5,7 @@ from django.core.management import call_command
 from django.urls import reverse
 
 from app.factories import KeywordFactory, TenderFactory
-from app.models import UNSPSCCode, Tender
+from app.models import UNSPSCCode
 from app.parsers.ungm import UNGMWorker
 from app.tests.base import BaseTestCase
 

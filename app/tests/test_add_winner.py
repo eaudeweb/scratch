@@ -1,4 +1,4 @@
-from app.models import Tender, Winner, Vendor
+from app.models import Tender, Winner
 from app.factories import TenderFactory, WinnerFactory, VendorFactory
 from app.tests.base import BaseTestCase
 

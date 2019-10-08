@@ -47,7 +47,6 @@ class TendersDetailViewTests(BaseTestCase):
         self.assertContains(response, new_tender.title)
         self.assertContains(response, new_tender.reference)
 
-
     @override_settings(TENDER_KEYWORDS='')
     def test_detail_view_one_tender_has_keywords_with_no_keywords_set(self):
         new_tender = TenderFactory(title='Tender_2 python', description='Tender_2 drupal')
