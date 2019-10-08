@@ -10,7 +10,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic import TemplateView, View
 from django.urls import reverse
-from elasticsearch_dsl import Q
+from elasticsearch_dsl import Q as elasticQ
 
 from app.documents import TenderDoc, TenderDocumentDoc, WinnerDoc
 from app.forms import TendersFilter
@@ -256,7 +256,7 @@ class SearchView(LoginRequiredMixin, TemplateView):
 
         # Find the tenders that have documents containing the input string
         result_tender_documents = TenderDocumentDoc.search().query(
-            Q(
+            elasticQ(
                 "multi_match",
                 query=pk,
                 fields=[
@@ -269,7 +269,7 @@ class SearchView(LoginRequiredMixin, TemplateView):
 
         # Find the tenders that match the input string and the tender ids of the tender documents
         result_tenders = TenderDoc.search().query(
-            Q(
+            elasticQ(
                 "multi_match",
                 query=pk,
                 fields=[
@@ -283,14 +283,14 @@ class SearchView(LoginRequiredMixin, TemplateView):
                 ]
             )
             |
-            Q(
+            elasticQ(
                 "terms",
                 reference=tender_references,
             )
         )
 
         result_awards = WinnerDoc.search().query(
-            Q(
+            elasticQ(
                 "multi_match",
                 query=pk,
                 fields=[
