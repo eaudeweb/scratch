@@ -1,4 +1,7 @@
+import os
+
 from django.contrib.auth.models import User
+from django.core.management import call_command
 from django.urls import reverse
 
 from app.factories import KeywordFactory, TenderFactory
@@ -20,6 +23,9 @@ class SearchTestCase(BaseTestCase):
         self.keyword = KeywordFactory()
         self.tender_1 = TenderFactory(title='Tender_1')
         self.tender_2 = TenderFactory(title='Tender_2')
+
+        with open(os.devnull, 'w') as f:
+            call_command('search_index', '--rebuild', '-f', stdout=f)
 
     def test_tender_search(self):
         url = reverse('search_results', kwargs={'pk': 'Tender_1'})
