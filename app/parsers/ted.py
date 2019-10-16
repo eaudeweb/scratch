@@ -120,14 +120,14 @@ class TEDWorker:
             try:
                 os.remove(archive_path)
             except OSError as e:
-                logging.debug(e)
+                logging.warning(e)
                 pass
 
         for folder in folders:
             try:
                 os.rmdir(os.path.join(self.path, folder))
             except OSError as e:
-                logging.debug(e)
+                logging.warning(e)
                 pass
 
         return changed_tenders, tenders_count
@@ -138,15 +138,28 @@ class TEDWorker:
             tf = tarfile.open(archive_path, "r:gz")
             tf.extractall(extract_path)
             return tf.getnames()[0]
-        except FileNotFoundError as e:
-            logging.debug(e)
+        except (EOFError, FileNotFoundError) as e:
+            logging.warning(e)
 
         return
 
     @staticmethod
     def ftp_login():
-        ftp = FTP(settings.TED_FTP_URL)
-        ftp.login(user=settings.TED_FTP_USER, passwd=settings.TED_FTP_PASSWORD)
+        while True:
+            try:
+                import pdb
+                pdb.set_trace()
+                ftp = FTP(settings.TED_FTP_URL)
+                ftp.login(user=settings.TED_FTP_USER, passwd=settings.TED_FTP_PASSWORD)
+                logging.warning("Logged into FTP.")
+                break
+            except error_perm as e:
+                logging.warning(f"Waiting 30 seconds: {e}")
+                time.sleep(30)
+                logging.warning("Retrying")
+                continue
+
+
         return ftp
 
     @staticmethod
@@ -165,10 +178,7 @@ class TEDWorker:
     @staticmethod
     def last_update(source):
         worker_log = (
-            WorkerLog.objects
-                .filter(source=source)
-                .order_by("-update")
-                .first()
+            WorkerLog.objects.filter(source=source).order_by("-update").first()
         )
         return worker_log.update if worker_log else None
 
@@ -480,15 +490,6 @@ def get_archives_path():
 
 def process_daily_archive(given_date):
     w = TEDWorker(given_date)
-    while True:
-        try:
-            w.ftp_download_daily_archives()
-            w.parse_notices([], True)
-            break
-        except error_perm as e:
-            logging.warning(f"Waiting 30 seconds: {e}")
-            time.sleep(30)
-            logging.warning("Retrying")
-            continue
-
+    w.ftp_download_daily_archives()
+    w.parse_notices([], True)
     return f"Updated {given_date} TED tenders"

@@ -126,7 +126,7 @@ class TenderDocument(models.Model):
             parsed = parser.from_file(self.document.path)
             return parsed["content"]
         except (ValueError, FileNotFoundError) as e:
-            logging.debug(e)
+            logging.warning(e)
             pass
 
     class Meta:
