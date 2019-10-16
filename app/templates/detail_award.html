@@ -25,10 +25,16 @@
       </tr>
       <tr>
         <td>Vendor(s)</td>
-        <td>{{ winner.vendor }}</td>
+        <td>
+          <ol style="list-style-position: inside;">
+            {% for vendor in winner.vendors.all %}
+              <li>{{ vendor }}</li>
+            {% endfor %}
+          </ol>
+        </td>
       </tr>
       <tr>
-        <td>Value</td>
+        <td>Value {% if winner.tender.source == 'TED' %}(total value for all lots){% endif %}</td>
         <td>{{ winner.value | floatformat:'0' }}</td>
       </tr>
       <tr>

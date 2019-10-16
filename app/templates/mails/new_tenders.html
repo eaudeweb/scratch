@@ -53,7 +53,7 @@
               {% endif %}
             </p>
             <p class="published title_clip">
-              Vendor: {{ award.vendor }}
+              Vendor(s): {{ award.get_vendors }}
             </p>
           </li>
         {% endfor %}

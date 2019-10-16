@@ -27,7 +27,7 @@
     <div class="list-group search-list">
       {% for award in awards %}
         <p class="list-group-item list-group-item-action search-element">
-          <a class="search-tender-title" href="{% url 'contract_awards_detail_view' award.id %}" >{{ award.vendor }}</a>
+          <a class="search-tender-title" href="{% url 'contract_awards_detail_view' award.id %}" >{{ award.get_vendors }}</a>
           <br>
           <a class="truncate-search">{{ award.currency }}, {{ award.value | floatformat:'0' }}, {{ award.tender.title }}</a>
         </p>

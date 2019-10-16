@@ -294,7 +294,7 @@ class SearchView(LoginRequiredMixin, TemplateView):
                 "multi_match",
                 query=pk,
                 fields=[
-                    'vendor',
+                    'vendors_name',
                     'tender_title',
                     'currency',
                     'value',
@@ -308,7 +308,7 @@ class SearchView(LoginRequiredMixin, TemplateView):
         regex = re.compile(rf'(\b({pk})\b(\s*({pk})\b)*)', re.I)
 
         tender_fields = ['title', 'description']
-        award_fields = ['title', 'vendor', 'value', 'currency']
+        award_fields = ['title', 'vendors_name', 'value', 'currency']
 
         SearchView.update_fields(context['tenders'], tender_fields, regex)
         SearchView.update_fields(context['awards'], award_fields, regex)

@@ -12,7 +12,7 @@ class Command(BaseCommand, BaseParamsUI):
     help = 'Send deadline notifications to all users if there are tenders with 1, 3 or 7 days left'
 
     def handle(self, *args, **options):
-        tenders = Tender.objects.filter(favourite=True, winner=None).order_by('deadline')
+        tenders = Tender.objects.filter(favourite=True, winners=None).order_by('deadline')
 
         days_list = sorted(settings.DEADLINE_NOTIFICATIONS)
 

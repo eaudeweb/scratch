@@ -11,7 +11,9 @@ class AddWinnerTestCase(BaseTestCase):
 
         tender = TenderFactory(title='test_title')
         vendor = VendorFactory(name=self.expected_vendor_name)
-        WinnerFactory(vendor=vendor, tender=tender)
+        winner = WinnerFactory(tender=tender)
+        winner.vendors.add(vendor)
+        winner.save()
 
     def test_add_winner(self):
         tenders = Tender.objects.all()
@@ -19,7 +21,7 @@ class AddWinnerTestCase(BaseTestCase):
 
         self.assertEqual(len(winners), 1)
         self.assertEqual(len(tenders), 1)
-        self.assertEqual(winners[0].vendor.name, self.expected_vendor_name)
+        self.assertEqual(winners[0].vendors.first().name, self.expected_vendor_name)
         self.assertEqual(winners[0].tender.reference, tenders[0].reference)
 
     def test_remove_winner(self):
