@@ -1,11 +1,12 @@
 from datetime import date, datetime, timedelta
+from multiprocessing import Process
 
 from django.test import override_settings
 from django.utils.timezone import make_aware
 
 from app.factories import CPVCodeFactory, TedCountryFactory
 from app.models import Winner, Tender
-from app.parsers.ted import TEDParser
+from app.parsers.ted import TEDParser, process_daily_archive
 from app.tests.base import BaseTestCase
 
 
@@ -149,3 +150,16 @@ class TedParserTestCase(BaseTestCase):
             _, winners = self.parser._parse_notice(f.read(), [], 'test', {}, False)
 
             self.assertEqual(winners[0]['award_date'], date.today())
+
+    def test_multiple_update_ted_ftp_retry(self):
+        def run_process_daily_archive():
+            process_daily_archive(date(day=13, month=10, year=2019))
+
+        processes = []
+        for _ in range(4):
+            p = Process(target=run_process_daily_archive)
+            p.start()
+            processes.append(p)
+
+        join = [p.join() for p in processes]
+        assert len([p for p in join if p]) == 0

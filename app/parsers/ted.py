@@ -53,7 +53,6 @@ class TEDWorker:
         while last_date <= today:
             self.download_archive(ftp, last_date, archives)
 
-
             last_date += timedelta(1)
 
             if last_year != last_date.strftime('%Y'):
@@ -95,11 +94,17 @@ class TEDWorker:
             if not os.path.exists(self.path):
                 os.makedirs(self.path)
             file_path = os.path.join(self.path, archive_name)
-            with open(file_path, 'wb') as f:
-                ftp.retrbinary(
-                    'RETR %s' % archive_name, lambda data: f.write(data)
-                )
-            self.archives.append(file_path)
+            while True:
+                if not os.path.exists(file_path):
+                    with open(file_path, "wb") as f:
+                        ftp.retrbinary(
+                            "RETR %s" % archive_name, lambda data: f.write(data)
+                        )
+                    self.archives.append(file_path)
+                    break
+                logging.warning(f"File already downloaded, waiting 30 seconds: {file_path}")
+                time.sleep(30)
+                logging.warning("Retrying")
 
     def parse_notices(self, tenders=[], set_notified=False):
         changed_tenders = []
@@ -120,14 +125,14 @@ class TEDWorker:
             try:
                 os.remove(archive_path)
             except OSError as e:
-                logging.debug(e)
+                logging.warning(e)
                 pass
 
         for folder in folders:
             try:
                 os.rmdir(os.path.join(self.path, folder))
             except OSError as e:
-                logging.debug(e)
+                logging.warning(e)
                 pass
 
         return changed_tenders, tenders_count
@@ -138,16 +143,24 @@ class TEDWorker:
             tf = tarfile.open(archive_path, 'r:gz')
             tf.extractall(extract_path)
             return tf.getnames()[0]
-        except FileNotFoundError as e:
-            logging.debug(e)
+        except (EOFError, FileNotFoundError) as e:
+            logging.warning(e)
 
         return
 
     @staticmethod
     def ftp_login():
-        ftp = FTP(settings.TED_FTP_URL)
-        ftp.login(user=settings.TED_FTP_USER, passwd=settings.TED_FTP_PASSWORD)
-        return ftp
+        while True:
+            try:
+                ftp = FTP(settings.TED_FTP_URL)
+                ftp.login(user=settings.TED_FTP_USER, passwd=settings.TED_FTP_PASSWORD)
+                logging.warning("Logged into FTP.")
+                return ftp
+            except error_perm as e:
+                logging.warning(f"Cannot login to FTP, waiting 30 seconds: {e}")
+                time.sleep(30)
+                logging.warning("Retrying")
+                continue
 
     @staticmethod
     def get_archive_name(last_date, archives):
@@ -165,10 +178,7 @@ class TEDWorker:
     @staticmethod
     def last_update(source):
         worker_log = (
-            WorkerLog.objects
-                .filter(source=source)
-                .order_by('-update')
-                .first()
+            WorkerLog.objects.filter(source=source).order_by("-update").first()
         )
         return worker_log.update if worker_log else None
 
@@ -486,15 +496,6 @@ def get_archives_path():
 
 def process_daily_archive(given_date):
     w = TEDWorker(given_date)
-    while True:
-        try:
-            w.ftp_download_daily_archives()
-            w.parse_notices([], True)
-            break
-        except error_perm as e:
-            logging.warning(f'Waiting 30 seconds: {e}')
-            time.sleep(30)
-            logging.warning('Retrying')
-            continue
-
-    return f'Updated {given_date} TED tenders'
+    w.ftp_download_daily_archives()
+    w.parse_notices([], True)
+    return f"Updated {given_date} TED tenders"
