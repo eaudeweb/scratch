@@ -62,7 +62,7 @@ class UngmParserTestCase(BaseTestCase):
 
         winner = self.winner.parse_winner(html_string)
         expected_date = datetime.strptime('18-Sep-2019', '%d-%b-%Y')
-        self.assertEqual(winner['vendor'], 'E-Secure Sàrl')
+        self.assertEqual(winner['vendors'][0], 'E-Secure Sàrl')
         self.assertEqual(winner['value'], 25000.00)
         self.assertEqual(winner['currency'], 'USD')
         self.assertEqual(winner['award_date'], expected_date)
@@ -105,7 +105,7 @@ class UngmParserTestCase(BaseTestCase):
 
         winner = self.winner.parse_winner(html_string)
 
-        self.assertEqual(winner['vendor'], '')
+        self.assertEqual(winner['vendors'][0], '')
         self.assertEqual(winner['value'], '')
         self.assertEqual(winner['currency'], '')
         self.assertEqual(winner['award_date'], datetime.now().date())

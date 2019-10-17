@@ -2,6 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.template.defaultfilters import floatformat
+from django.template.loader import render_to_string
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.urls import reverse
@@ -46,11 +47,11 @@ class ContractAwardsListAjaxView(BaseAjaxListingView):
     filter_names = [
         ('organization', 'tender__organization'),
         ('source', 'tender__source'),
-        ('vendor', 'vendor__name'),
+        ('vendor', 'vendors__name'),
     ]
-    order_fields = ['tender__title', 'tender__source', 'tender__organization',
-                    'award_date', 'vendor__name', 'value', 'currency']
-    case_sensitive_fields = ['tender__title', 'tender__source', 'tender__organization', 'vendor__name']
+    order_fields = ['tender__title', 'tender__source', 'tender__organization', 
+                    'award_date', '', 'value', 'currency']
+    case_sensitive_fields = ['tender__title', 'tender__source', 'tender__organization']
     model = Winner
 
     def format_data(self, object_list):
@@ -60,8 +61,8 @@ class ContractAwardsListAjaxView(BaseAjaxListingView):
                 'url': reverse('contract_awards_detail_view', kwargs={'pk': winner.id}),
                 'source': winner.tender.source,
                 'organization': winner.tender.organization,
-                'award_date': 'Not specified' if not winner.award_date else winner.award_date.strftime("%m/%d/%Y"),
-                'vendor': winner.vendor.name,
+                'award_date': 'Not specified' if not winner.award_date  else winner.award_date.strftime("%m/%d/%Y"),
+                'vendor': render_to_string('award_vendors.html', {'vendors': winner.vendors.all()}),
                 'value': floatformat(winner.value, '0'),
                 'currency': winner.currency,
 
@@ -75,9 +76,9 @@ class ContractAwardsListAjaxView(BaseAjaxListingView):
         search = request.GET.get("search[value]")
         if search:
             awards = Winner.objects.filter(
-                        Q(tender__title__icontains=search) |
-                        Q(tender__organization__icontains=search) |
-                        Q(vendor__name=search)
+                        Q(tender__title__icontains=search)|
+                        Q(tender__organization__icontains=search)|
+                        Q(vendors__name__icontains=search)
                     )
 
         value = self.request.GET.get("value")
@@ -91,7 +92,7 @@ class ContractAwardsListAjaxView(BaseAjaxListingView):
         return awards
 
     def order_data(self, request, awards):
-        awards.order_by(Lower('vendor__name')).reverse()
+        awards.order_by('-award_date')
         awards = super(ContractAwardsListAjaxView, self).order_data(request, awards)
         return awards
 

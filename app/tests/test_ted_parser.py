@@ -57,10 +57,10 @@ class TedParserTestCase(BaseTestCase):
             self.assertNotEqual(tender['description'], '')
 
             self.assertEqual(len(winners), 1)
-            self.assertEqual(winners[0]['vendor'], 'Société Momentanée Cit Blaton-Jacques Delens')
-            self.assertEqual(winners[0]['award_date'], datetime(2019, 3, 11, 0, 0))
-            self.assertEqual(winners[0]['value'], 17565752.85)
-            self.assertEqual(winners[0]['currency'], 'EUR')
+            self.assertEqual(winners[0]["vendors"], ["Société Momentanée Cit Blaton-Jacques Delens"])
+            self.assertEqual(winners[0]["award_date"], datetime(2019, 3, 11, 0, 0))
+            self.assertEqual(winners[0]["value"], 17565752.85)
+            self.assertEqual(winners[0]["currency"], "EUR")
 
     def test_ted_parse_notice_full(self):
         with open('app/tests/parser_files/ted_notice_full.xml', 'r') as f:
@@ -79,13 +79,12 @@ class TedParserTestCase(BaseTestCase):
             self.assertNotEqual(tender['description'], '')
             self.parser.save_tender(tender, {})
 
-            self.assertEqual(len(winners), 2)
-            for winner in winners:
-                self.assertEqual(winner['vendor'], 'Société Momentanée Cit Blaton-Jacques Delens')
-                self.assertEqual(winner['award_date'], datetime(2019, 3, 11, 0, 0))
-                self.assertEqual(winner['value'], 17565752.85)
-                self.assertEqual(winner['currency'], 'EUR')
-                self.parser.save_winner(tender, winner)
+            self.assertEqual(len(winners), 1)
+            self.assertEqual(winners[0]["vendors"], ["Société Momentanée Cit Blaton-Jacques Delens", "Société Momentanée Cit Blaton-Jacques Delens"])
+            self.assertEqual(winners[0]["award_date"], datetime(2019, 3, 11, 0, 0))
+            self.assertEqual(winners[0]["value"], 17565752.85)
+            self.assertEqual(winners[0]["currency"], "EUR")
+            self.parser.save_winner(tender, winners[0])
 
             tender_entry = Tender.objects.filter(reference=tender['reference']).first()
             winners = Winner.objects.filter(tender=tender_entry)
@@ -141,10 +140,10 @@ class TedParserTestCase(BaseTestCase):
             _, winners = self.parser._parse_notice(f.read(), [], 'test', {}, False)
 
             self.assertEqual(len(winners), 1)
-            self.assertEqual(winners[0]['vendor'], '')
-            self.assertEqual(winners[0]['award_date'], date.today())
-            self.assertEqual(winners[0]['value'], 0)
-            self.assertEqual(winners[0]['currency'], 'N/A')
+            self.assertEqual(winners[0]["vendors"], [])
+            self.assertEqual(winners[0]["award_date"], date.today())
+            self.assertEqual(winners[0]["value"], 0)
+            self.assertEqual(winners[0]["currency"], "N/A")
 
     def test_ted_winner_date_format(self):
         with open('app/tests/parser_files/ted_notice_winner_date.xml', 'r') as f:

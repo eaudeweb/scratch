@@ -67,7 +67,7 @@ Create the stack and start it:
 -   **notify:** Sends an e-mail for every new tender or winner(default) or an e-mail with all new tenders and winners(digest parameter specified);
 -   **notify_favourites:** Sends e-mails for favourites tenders, according to digest parameter described previously
 -   **notify_keywords:** Sends e-mails for tenders with keywords, according to digest parameter described previously
--   **remove_unnecessary_newlines:** Removes newlines from Winner vendor field
+-   **remove_unnecessary_newlines:** Removes newlines Vendors' names
 -   **update_ted:** Add new TED tenders, according to days_ago parameter or beginning with latest published date
     from database, if not specified
 -   **update_ungm:** Add new UNGM tenders, according to days_ago parameter or beginning with latest published date from

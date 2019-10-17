@@ -14,7 +14,8 @@ class WinnersViewTest(BaseTestCase):
 
         vendor = VendorFactory(name="test_vendor")
         self.tender = TenderFactory(title="test_title")
-        self.winner = WinnerFactory(vendor=vendor, tender=self.tender)
+        self.winner = WinnerFactory(tender=self.tender)
+        self.winner.vendors.add(vendor)
 
     def test_awards_page(self):
         response = self.client.get(reverse('contract_awards_list_view'))
@@ -31,5 +32,5 @@ class WinnersViewTest(BaseTestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(winners), 1)
         self.assertEqual(winners[0].tender.title, self.winner.tender.title)
-        self.assertEqual(winners[0].vendor, self.winner.vendor)
+        self.assertEqual(winners[0].vendors.first(), self.winner.vendors.all().first())
         self.assertEqual(winners[0].currency, self.winner.currency)
