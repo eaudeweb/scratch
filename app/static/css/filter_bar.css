@@ -1,56 +1,59 @@
 .filter_menu {
-    padding-top: 20px;
-    padding-left: 130px;
-    padding-right: 130px;
+  padding-top: 20px;
+  padding-left: 130px;
+  padding-right: 130px;
 
 }
 .up_bar {
-    background: #333;
-    border-radius: 3px;
-    alignment: center;
-    padding-left: 5px;
-    height:30px;
-    font-weight: bold;
-    font-family: "Arial";
-    font-size: large;
-    color: white;
+  background: #333;
+  border-radius: 3px;
+  alignment: center;
+  padding-left: 5px;
+  height:30px;
+  font-weight: bold;
+  font-family: "Arial";
+  font-size: large;
+  color: white;
 }
 
 .bottom_bar {
-    background: #f8f8f8;
-    border-radius: 3px;
-    border: 2px solid gainsboro;
-    padding-left: 5px;
-    padding-top: 5px;
-    height: 70px;
-    font-weight: bold;
-    font-family: "Arial";
-    font-size: 15px;
-    position: relative;
+  background: #f8f8f8;
+  border-radius: 3px;
+  border: 2px solid gainsboro;
+  padding-left: 5px;
+  padding-top: 5px;
+  font-weight: bold;
+  font-family: "Arial";
+  font-size: 15px;
+  position: relative;
+}
+
+.flexed {
+  display: flex;
 }
 
 .filter_button {
-    width: 120px;
-    font-family: "Arial";
+  width: 120px;
+  font-family: "Arial";
 }
 
 .div_button {
-    position: relative;
-    padding-top: 15px;
-    padding-left: 10px;
+  padding-top: 15px;
+  padding-right: 10px;
+  padding-left: 10px;
 }
 
 .date_filter {
-    margin-top: 13px;
-    padding-left: 10px;
-    font-size: 17px;
-    font-weight: bold;
-    color: #447e9b;
+  margin-top: 13px;
+  padding-left: 10px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #447e9b;
 }
 
 .quiet {
-    padding-left: 12px;
-    font-size: 14px;
-    font-weight: normal;
-    color: #666666;
+  padding-left: 12px;
+  font-size: 14px;
+  font-weight: normal;
+  color: #666666;
 }

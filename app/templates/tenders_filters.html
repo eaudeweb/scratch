@@ -15,46 +15,61 @@
       <p>Filter</p>
     </div>
   </div>
-  <form method="GET" id="form_id">
-    <div class="row bottom_bar ">
-      <div class="form-group col-sm">
-        {{ form.organization.label }}
-        {% render_field form.organization class+="form-control form-control-sm" %}
+
+  <div class="row bottom_bar">
+    <form method="GET" id="form_id">
+
+      <div class="flexed">
+        <div class="form-group col-lg">
+          {{ form.organization.label }}
+          {% render_field form.organization class+="form-control form-control-sm" %}
+        </div>
       </div>
-      <div class="form-group col-sm">
-        {{ form.status.label }}
-        {% render_field form.status class+="form-control form-control-sm" %}
-      </div>
-      <div class="form-group col-sm">
-        {{ form.source.label }}
-        {% render_field form.source class+="form-control form-control-sm" %}
-      </div>
-      <div class ="form-group col-sm">
-        {{ form.favourite.label }}
-        {% render_field form.favourite class+="form-control form-control-sm" %}
-      </div>
-      <div class ="form-group col-sm">
-        {{ form.keyword.label }}
-        {% render_field form.keyword class+="form-control form-control-sm" %}
-      </div>
-      <div class ="form-group col-sm">
-        {{ form.type.label }}
-        {% render_field form.type class+="form-control form-control-sm" %}
-      </div>
-      <div class ="form-group col-sm">
-        {{ form.seen.label }}
-        {% render_field form.seen class+="form-control form-control-sm" %}
-      </div>
-      <div class="col-sm-2 div_button">
+
+      <div class="flexed">
+        <div class="form-group col-sm">
+          {{ form.status.label }}
+          {% render_field form.status class+="form-control form-control-sm" %}
+        </div>
+
+        <div class="form-group col-sm">
+          {{ form.source.label }}
+          {% render_field form.source class+="form-control form-control-sm" %}
+        </div>
+
+        <div class ="form-group col-sm">
+          {{ form.favourite.label }}
+          {% render_field form.favourite class+="form-control form-control-sm" %}
+        </div>
+
+        <div class ="form-group col-sm">
+          {{ form.keyword.label }}
+          {% render_field form.keyword class+="form-control form-control-sm" %}
+        </div>
+
+        <div class ="form-group col-sm">
+          {{ form.type.label }}
+          {% render_field form.type class+="form-control form-control-sm" %}
+        </div>
+
+        <div class ="form-group col-sm">
+          {{ form.seen.label }}
+          {% render_field form.seen class+="form-control form-control-sm" %}
+        </div>
+
         {% if reset %}
-          <a href="{{ reset_url }}"><button type="button" name="reset_filters" value="reset" class="btn btn-dark filter_button">Reset filters</button></a>
+          <div class="div_button">
+            <a href="{{ reset_url }}"><button type="button" name="reset_filters" value="reset" class="btn btn-dark filter_button">Reset filters</button></a>
+          </div>
         {% endif %}
+
+        <div class="div_button">
+          <button type="submit" name="filter_button" value="filter" class="btn btn-dark filter_button">Filter</button>
+        </div>
       </div>
-      <div class="col-sm div_button">
-        <button type="submit" name="filter_button" value="filter" class="btn btn-dark filter_button">Filter</button>
-      </div>
-    </div>
-  </form>
+    </form>
+  </div>
+</div>
 
   {% if ungm_published_today %}
     <ul>
