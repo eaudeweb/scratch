@@ -17,15 +17,14 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-
-        migrations.RunPython(move_vendors_link),
-        migrations.RemoveField(
-            model_name='winner',
-            name='vendor',
-        ),
         migrations.AddField(
             model_name='winner',
             name='vendors',
             field=models.ManyToManyField(related_name='winners', to='app.Vendor'),
+        ),
+        migrations.RunPython(move_vendors_link),
+        migrations.RemoveField(
+            model_name='winner',
+            name='vendor',
         ),
     ]
