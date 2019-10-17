@@ -6,25 +6,25 @@ import json
 import datetime
 from time import sleep
 from random import randint
-from app.models import Tender, Winner
+from app.models import Tender, Winner, Vendor
 from app.server_requests import PAYLOAD
 import logging
 from app.management.commands.base.params import BaseParamsUI
 
 logger = logging.getLogger(__name__)
-WINNERS_ENDPOINT_URI = "https://www.ungm.org/Public/ContractAward"
+WINNERS_ENDPOINT_URI = 'https://www.ungm.org/Public/ContractAward'
 
-CSS_TITLE = "Title"
-CSS_REFERENCE = "Reference"
-CSS_AWARD_DATE = "AwardDate"
-CSS_DESCRIPTION = "raw clear"
-CSS_ORGANIZATION = "AgencyId"
-CSS_VALUE = "ContractValue"
-CSS_VENDOR_LIST = "contractAwardVendorsContainer"
+CSS_TITLE = 'Title'
+CSS_REFERENCE = 'Reference'
+CSS_AWARD_DATE = 'AwardDate'
+CSS_DESCRIPTION = 'raw clear'
+CSS_ORGANIZATION = 'AgencyId'
+CSS_VALUE = 'ContractValue'
+CSS_VENDOR_LIST = 'contractAwardVendorsContainer'
 
 
 class Command(BaseCommand, BaseParamsUI):
-    help = "Gets all awards from the past day"
+    help = 'Gets all awards from the past day'
 
     def handle(self, *args, **options):
         expired_tenders = Tender.objects.filter(
@@ -41,7 +41,7 @@ class Command(BaseCommand, BaseParamsUI):
                 try:
                     contract_id = self.get_contract_id(tender.reference)
                 except TypeError:
-                    logger.warning(f"No winner was found for the corresponding tender reference ({ tender.reference })")
+                    logger.warning(f'No winner was found for the corresponding tender reference ({ tender.reference })')
                     continue
 
                 request_cls = get_request_class(public=True)
@@ -52,39 +52,38 @@ class Command(BaseCommand, BaseParamsUI):
                     winner_fields = self.parse_winner(html_data)
                     self.save_winner(tender.reference, winner_fields)
                 except TypeError:
-                    logger.error("Contract does not exist!")
+                    logger.error('Contract does not exist!')
 
     @staticmethod
     def find_by_label(soup, label):
         try:
-            return soup.find("label", attrs={"for": label}).next_sibling.next_sibling.string
+            return soup.find('label', attrs={'for': label}).next_sibling.next_sibling.string
         except AttributeError:
             return ''
 
     @staticmethod
     def get_contract_id(reference):
         if len(reference) < 3:
-            logger.error("The search text must be at least 3 characters long.")
+            logger.error('The search text must be at least 3 characters long.')
             return
 
         requester = get_request_class(public=True)
 
-        payload = PAYLOAD["winners"]
-        payload["Reference"] = reference
-
+        payload = PAYLOAD['winners']
+        payload['Reference'] = reference
         for i in range(0, 3):
             resp = requester.post_request(
                 WINNERS_ENDPOINT_URI,
-                WINNERS_ENDPOINT_URI + "/Search",
+                WINNERS_ENDPOINT_URI + '/Search',
                 json.dumps(payload),
             )
             if resp:
-                soup = BeautifulSoup(resp, "html.parser")
-                contract_id = soup.find("div", {"class": "tableRow dataRow"})["data-contractawardid"]
+                soup = BeautifulSoup(resp, 'html.parser')
+                contract_id = soup.find('div', {'class': 'tableRow dataRow'})['data-contractawardid']
                 return contract_id
             sleep(randint(10, 15))
 
-        logger.error("POST request failed.")
+        logger.error('POST request failed.')
         return None
 
     def parse_winner(self, html):
@@ -92,36 +91,41 @@ class Command(BaseCommand, BaseParamsUI):
          such as: title, reference, vendor etc
         """
 
-        soup = BeautifulSoup(html, "html.parser")
+        soup = BeautifulSoup(html, 'html.parser')
         vendor_list = []
         for vendors_div in soup.find_all(id=CSS_VENDOR_LIST):
             vendors = vendors_div.descendants
             for vendor in vendors:
-                if vendor.name == "div" and vendor.get("class", "") == [
-                    "editableListItem"
+                if vendor.name == 'div' and vendor.get('class', '') == [
+                    'editableListItem'
                 ]:
                     vendor_list.append(vendor.text.strip())
-        vendor_list = ", ".join(vendor_list)
+        vendor_list = vendor_list
         award_date = self.find_by_label(soup, CSS_AWARD_DATE)
         value = self.find_by_label(soup, CSS_VALUE)
         winner_fields = {
-            "award_date": self.string_to_date(award_date) or datetime.date.today(),
-            "vendor": vendor_list,
-            "value": float(value or 0) if value else '',
-            "currency": '',
+            'award_date': self.string_to_date(award_date) or datetime.date.today(),
+            'vendors': vendor_list,
+            'value': float(value or 0) if value else '',
+            'currency': '',
         }
 
-        if winner_fields["value"]:
-            winner_fields["currency"] = "USD"
+        if winner_fields['value']:
+            winner_fields['currency'] = 'USD'
 
         return winner_fields
 
     @staticmethod
     def save_winner(reference, winner_fields):
         tender_entry = Tender.objects.filter(reference=reference).first()
-
-        winner = Winner(tender=tender_entry, **winner_fields)
+        vendors = winner_fields.pop('vendors')
+        vendor_objects = []
+        for vendor in vendors:
+            vendor_object, _ = Vendor.objects.get_or_create(name=vendor)
+            vendor_objects.append(vendor_object)
+        winner = Winner.objects.update_or_create(tender=tender_entry, **winner_fields)
         winner.save()
+        winner.vendors.add(*vendor_objects)
 
         return winner
 
@@ -130,10 +134,10 @@ class Command(BaseCommand, BaseParamsUI):
         if not string or isinstance(string, str):
             return string
         else:
-            return str(string, "utf8")
+            return str(string, 'utf8')
 
     @staticmethod
     def string_to_date(string_date):
         if string_date:
-            return datetime.datetime.strptime(string_date.strip(), "%d-%b-%Y")
+            return datetime.datetime.strptime(string_date.strip(), '%d-%b-%Y')
         return None

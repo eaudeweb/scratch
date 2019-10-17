@@ -219,7 +219,7 @@ $(document).ready(function() {
 
   $('#contract_awards_table').DataTable(
     {
-      "order": [[ 4, "desc" ]],
+      "order": [[ 3, "desc" ]],
       "pageLength": 10,
       "lengthChange": false,
       "search": {
@@ -245,6 +245,10 @@ $(document).ready(function() {
             return '<a href="' + row['url'] +'">' + data + '</a>';
 
         },
+      },
+      {
+        "targets": 4,
+        "orderable": false,
       },
       ],
       "columns": [

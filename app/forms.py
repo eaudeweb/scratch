@@ -89,7 +89,7 @@ class AwardsFilter(forms.Form):
             (org, org) for org in organizations_list
         ]
         vendors_list = Winner.objects.values_list(
-            "vendor__name", flat=True
+            "vendors__name", flat=True
         ).distinct()
         self.fields["vendor"].choices = [("", "All vendors")] + [
             (vendor, vendor) for vendor in vendors_list
