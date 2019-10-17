@@ -33,6 +33,8 @@ $(document).ready(function() {
   const ungm_published_today = $.urlParam(doc, 'ungm_published_today');
   const archive = $.urlParam(doc, 'archive');
 
+  $('#id_organization').select2();
+  $('#id_vendor').select2();
 
   function buttonsClick() {
 
