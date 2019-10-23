@@ -69,20 +69,13 @@
             <p>{{ winners }}</p>
           </a>
         </div>
-
         <div class="card col-sm-2">
-          <a href="{% url 'tenders_list_view' %}?favourite=True&filter_button=filter" class="container-card">
-            <h5><b>Favorite Tenders</b></h5>
-            <p>{{ favorite_tenders }}</p>
-          </a>
         </div>
-
         <div class="card col-sm-2">
           <a  href="{% url 'tenders_archive_list' %}" class="container-card">
             <h5><b>Expired Tenders</b></h5>
             <p>{{ expired_tenders }}</p>
           </a>
-        </div>
       </div>
 
       <div class="row home-page">
@@ -92,8 +85,18 @@
             <p>{{ keyword_tenders }}</p>
           </a>
         </div>
+        <div class="card col-sm-2">
+
+        </div>
+        <div class="card col-sm-2">
+          <a href="{% url 'tenders_list_view' %}?favourite=True&filter_button=filter" class="container-card">
+            <h5><b>Favorite Tenders</b></h5>
+            <p>{{ favorite_tenders }}</p>
+          </a>
+        </div>
       </div>
-    {% endif %}
+    </div>
+  {% endif %}
 
   </div>
 
