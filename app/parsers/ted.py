@@ -99,6 +99,7 @@ class TEDWorker:
                 if not os.path.exists(file_path) or count >= 5:
                     if count >= 5:
                         try:
+                            ftp = self.ftp_login()
                             os.remove(file_path)
                         except OSError as e:
                             logging.warning(e)
