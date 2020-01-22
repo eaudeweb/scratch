@@ -7,7 +7,7 @@ from django.template.loader import render_to_string
 from django.utils import timezone
 
 from app.factories import TenderFactory, NotificationFactory, KeywordFactory
-from app.management.commands.notify import build_email
+from app.notifications import build_email
 from app.models import Notification, Tender
 from app.tests.base import BaseTestCase
 

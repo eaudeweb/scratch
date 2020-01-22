@@ -2,7 +2,7 @@ from django.core.management.base import BaseCommand
 from django.template.loader import render_to_string
 from getenv import env
 
-from app.management.commands.notify import build_email
+from app.notifications import build_email
 from app.models import Notification, SOURCE_CHOICES
 from app.parsers.ted import TEDWorker
 from app.parsers.ungm import UNGMWorker

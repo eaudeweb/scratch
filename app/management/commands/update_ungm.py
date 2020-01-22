@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 from app.parsers.ungm import UNGMWorker
 from django.core.management.base import BaseCommand, CommandError
 from app.management.commands.base.params import BaseParamsUI
+from app.notifications import send_error_email
 
 ENDPOINT_URI = 'https://www.ungm.org'
 
@@ -32,11 +33,17 @@ class Command(BaseCommand, BaseParamsUI):
         else:
             last_date = Tender.objects.latest('published').published
 
-        w = UNGMWorker()
-        w.parse_latest_notices(last_date)
+        try:
+            w = UNGMWorker()
+            w.parse_latest_notices(last_date)
 
-        self.stdout.write(self.style.SUCCESS('UNGM tenders updated'))
-        return 'UNGM tenders updated'
+            self.stdout.write(self.style.SUCCESS('UNGM tenders updated'))
+            return 'UNGM tenders updated'
+        except Exception as error:
+            self.stdout.write(
+                self.style.ERROR('TED tenders update failed: {}'.format(error))
+            )
+            send_error_email(str(error))
 
     def add_arguments(self, parser):
         parser.add_argument(
