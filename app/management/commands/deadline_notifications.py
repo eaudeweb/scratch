@@ -3,7 +3,7 @@ from datetime import timedelta
 from app.models import Tender, Notification
 from django.template.loader import render_to_string
 from django.conf import settings
-from .notify import build_email
+from app.notifications import build_email
 from django.utils import timezone
 from app.management.commands.base.params import BaseParamsUI
 

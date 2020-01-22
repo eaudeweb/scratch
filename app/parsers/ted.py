@@ -16,6 +16,13 @@ logger = logging.getLogger(__name__)
 logging.basicConfig(format='%(levelname)s: %(message)s')
 
 
+def quit_or_close(ftp):
+    try:
+        ftp.quit()
+    except EOFError:
+        ftp.close()
+
+
 class TEDWorker:
     archives = []
 
@@ -36,7 +43,7 @@ class TEDWorker:
 
                 self.download_archive(ftp, tender.published, archives)
 
-        ftp.quit()
+        quit_or_close(ftp)
 
     def ftp_download_latest_archives(self):
         ftp = self.ftp_login()
@@ -73,7 +80,7 @@ class TEDWorker:
                     logging.warning(e)
                     pass
 
-        ftp.quit()
+        quit_or_close(ftp)
 
     def ftp_download_daily_archives(self):
         last_month = self.last_ted_update.strftime('%m')
@@ -86,7 +93,7 @@ class TEDWorker:
 
         self.download_archive(ftp, self.last_ted_update, archives)
 
-        ftp.quit()
+        quit_or_close(ftp)
 
     def download_archive(self, ftp, archive_date, archives):
         archive_name = self.get_archive_name(archive_date, archives)
