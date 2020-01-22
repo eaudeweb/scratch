@@ -1,42 +1,50 @@
 # Scratch ![alt text](https://travis-ci.com/eaudeweb/scratch.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/github/eaudeweb/scratch/badge.svg?branch=master)](https://coveralls.io/github/eaudeweb/scratch?branch=master) [![Docker](https://img.shields.io/docker/cloud/build/eaudeweb/scratch?label=Docker&style=flat)](https://hub.docker.com/r/eaudeweb/scratch/builds)
 
-### Python Django Scratch 
+### Python Django Scratch
 
-## Installation 
+## Installation
 
 1. Clone project using SSH key:
 
         git clone git@github.com:eaudeweb/scratch.git
-        
-2. Copy docker example files:
+
+1. Copy docker example files:
 
         cd scratch/
         cp docker-compose.override.yml.example docker-compose.override.yml
         cp docker/app.env.example docker/app.env
         cp docker/db.env.example docker/db.env
-        
- 3. Create the stack and start it:
- 
+        cp docker/redis.env.example docker/redis.env
+        cp docker/tika.env.example docker/tika.env
+
+1. Create the stack and start it:
+
         docker-compose up -d
-        
-4. Verify if the containers were created:
+
+1. Verify if the containers were created:
 
         docker-compose ps
-        
-5. Go into application container:
-        
+
+1. Go into application container:
+
         docker exec -it scratch.app sh
-        
-6. Run server:
+
+1. Load fixtures:
+
+  ```
+  python manage.py loaddata fixture app/fixtures/*.json
+  ```
+
+1. Run server:
 
         python manage.py runserver 0.0.0.0:8000
-        
+
 ## Running with NGINX
-        
+
 If you want to use NGINX to serve the project you need to do the following:
 
 Comment the web service the ports in docker-compose.yml
-``` 
+```
     web:
       ...
       ports:
@@ -52,14 +60,24 @@ Create the stack and start it:
 ```
     docker-compose up
 ```
-        
+
+## Testing
+
+Install the test requirements
+
+    pip install -r requirements-dev.txt
+
+Run the test suite
+
+    python manage.py test --settings=scratch.test_settings
+
 ## Errors
 
 - Bootstrap checks failed: When starting the Elasticsearch container, this error may ocurr. The following command should fix it.
-        
+
         sudo sysctl -w vm.max_map_count=262144
 
-##Management Commands
+## Management Commands
 
 -   **add_winner:** Adds Contract Awards for expired UNGM tenders
 -   **deadline_notifications:** Sends e-mails with favourite tenders that have deadline in DEADLINE_NOTIFICATIONS days
