@@ -105,7 +105,8 @@ class Winner(models.Model):
     currency = models.CharField(null=True, max_length=3)
     award_date = models.DateField()
     notified = models.BooleanField(default=False)
-    tender = models.ForeignKey(Tender, on_delete=models.CASCADE, related_name='winners')
+    tender = models.ForeignKey(
+        Tender, on_delete=models.CASCADE, related_name='winners')
     vendors = models.ManyToManyField('Vendor', related_name='winners')
 
     def __str__(self):
@@ -113,7 +114,7 @@ class Winner(models.Model):
 
     @property
     def get_vendors(self):
-        return  ",".join(self.vendors.values_list('name', flat=True))
+        return ",".join(self.vendors.values_list('name', flat=True))
     get_vendors.fget.short_description = "Vendors names"
 
     def convert_value_to_string(self):
