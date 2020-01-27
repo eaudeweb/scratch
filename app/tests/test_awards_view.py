@@ -1,21 +1,21 @@
 from django.contrib.auth.models import User
 from django.urls import reverse
 
-from app.factories import TenderFactory, WinnerFactory, VendorFactory
+from app.factories import TenderFactory, AwardFactory, VendorFactory
 from app.tests.base import BaseTestCase
 
 
-class WinnersViewTest(BaseTestCase):
+class AwardsViewTest(BaseTestCase):
     def setUp(self):
-        super(WinnersViewTest, self).setUp()
+        super(AwardsViewTest, self).setUp()
         user = User.objects.create(username="testuser")
         user.set_password("12345")
         user.save()
 
         vendor = VendorFactory(name="test_vendor")
         self.tender = TenderFactory(title="test_title")
-        self.winner = WinnerFactory(tender=self.tender)
-        self.winner.vendors.add(vendor)
+        self.award = AwardFactory(tender=self.tender)
+        self.award.vendors.add(vendor)
 
     def test_awards_page(self):
         response = self.client.get(reverse('contract_awards_list_view'))
@@ -27,10 +27,10 @@ class WinnersViewTest(BaseTestCase):
             self.assertEqual(login_status, True)
 
         response = self.client.get(reverse('contract_awards_list_view'))
-        winners = response.context["winners"]
+        awards = response.context["awards"]
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(len(winners), 1)
-        self.assertEqual(winners[0].tender.title, self.winner.tender.title)
-        self.assertEqual(winners[0].vendors.first(), self.winner.vendors.all().first())
-        self.assertEqual(winners[0].currency, self.winner.currency)
+        self.assertEqual(len(awards), 1)
+        self.assertEqual(awards[0].tender.title, self.award.tender.title)
+        self.assertEqual(awards[0].vendors.first(), self.award.vendors.all().first())
+        self.assertEqual(awards[0].currency, self.award.currency)

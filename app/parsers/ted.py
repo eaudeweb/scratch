@@ -10,7 +10,7 @@ from ftplib import error_perm, FTP
 
 from django.utils.timezone import make_aware
 
-from app.models import WorkerLog, Tender, Winner, CPVCode, TedCountry, Vendor
+from app.models import WorkerLog, Tender, Award, CPVCode, TedCountry, Vendor
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(format='%(levelname)s: %(message)s')
@@ -356,16 +356,16 @@ class TEDParser(object):
 
         tender['source'] = 'TED'
 
-        winners = []
+        awards = []
         if tender['notice_type'] == 'Contract award':
-            self.update_contract_award_winners(winners, soup, set_notified)
+            self.update_contract_award_awards(awards, soup, set_notified)
 
         if tender['notice_type'] == 'Contract award notice':
-            self.update_contract_award_notice_winners(winners, soup, set_notified)
+            self.update_contract_award_notice_awards(awards, soup, set_notified)
 
         tender['notified'] = set_notified
 
-        return tender, winners
+        return tender, awards
 
     @staticmethod
     def file_in_tender_list(xml_file, tenders):
@@ -384,15 +384,15 @@ class TEDParser(object):
         for xml_file in self.xml_files[:]:
             with open(xml_file, 'r') as f:
                 try:
-                    tender, winners = self._parse_notice(f.read(), tenders, xml_file, codes, set_notified)
+                    tender, awards = self._parse_notice(f.read(), tenders, xml_file, codes, set_notified)
                 except StopIteration:
                     continue
 
                 created, attr_changes = self.save_tender(tender, codes.get(xml_file, []))
 
-                if winners:
-                    for winner in winners:
-                        self.save_winner(tender, winner)
+                if awards:
+                    for award in awards:
+                        self.save_award(tender, award)
 
                 if created:
                     tenders_count += 1
@@ -405,8 +405,8 @@ class TEDParser(object):
         return changed_tenders, tenders_count
 
     @staticmethod
-    def update_contract_award_winners(winners, soup, set_notified):
-        winner = {}
+    def update_contract_award_awards(awards, soup, set_notified):
+        award = {}
         award_date = soup.find('contract_award_date')
         if award_date:
             fields = {}
@@ -415,25 +415,25 @@ class TEDParser(object):
                     fields[c.name] = int(c.text)
                 except AttributeError:
                     pass
-            winner['award_date'] = date(**fields)
+            award['award_date'] = date(**fields)
         vendor = soup.find('economic_operator_name_address') or soup.find(
             'contact_data_without_responsible_name_chp'
         )
         if vendor:
-            winner['vendor'] = (
+            award['vendor'] = (
                 vendor.officialname.text if vendor.officialname else None
             )
         value = soup.find('value_cost')
         if value:
-            winner['value'] = value.get('fmtval')
-            winner['currency'] = value.parent.get('currency')
+            award['value'] = value.get('fmtval')
+            award['currency'] = value.parent.get('currency')
 
-        winner['notified'] = set_notified
+        award['notified'] = set_notified
 
-        winners.append(winner)
+        awards.append(award)
 
     @staticmethod
-    def update_contract_award_notice_winners(winners, soup, set_notified):
+    def update_contract_award_notice_awards(awards, soup, set_notified):
         sections = soup.find('form_section').find_all(lg='EN')
         if sections:
             section = sections[0]
@@ -456,7 +456,7 @@ class TEDParser(object):
 
                 contractors = awarded_contract.find_all('contractor')
                 if contractors:
-                    winner = {
+                    award = {
                         "vendors": [],
                         "award_date": award_date,
                         "value": contract_value,
@@ -467,27 +467,27 @@ class TEDParser(object):
                     for contractor in contractors:
                         officialname = contractor.find('officialname')
                         if officialname:
-                            winner['vendors'].append(officialname.text)
+                            award['vendors'].append(officialname.text)
 
-                    winners.append(winner)
+                    awards.append(award)
 
     @staticmethod
-    def save_winner(tender_fields, winner_fields):
+    def save_award(tender_fields, award_fields):
         reference = tender_fields['reference']
         tender_entry = Tender.objects.filter(reference=reference).first()
 
         if tender_entry:
-            vendors = winner_fields.pop('vendors')
+            vendors = award_fields.pop('vendors')
             vendor_objects = []
             for vendor in vendors:
                 vendor_object, _ = Vendor.objects.get_or_create(name=vendor)
                 vendor_objects.append(vendor_object)
-            winner, created = Winner.objects.get_or_create(tender=tender_entry, defaults=winner_fields)
+            award, created = Award.objects.get_or_create(tender=tender_entry, defaults=award_fields)
             if not created:
-                winner.value += winner_fields['value']
-                winner.save()
-            winner.vendors.add(*vendor_objects)
-            return winner
+                award.value += award_fields['value']
+                award.save()
+            award.vendors.add(*vendor_objects)
+            return award
 
     @staticmethod
     def save_tender(tender, codes):

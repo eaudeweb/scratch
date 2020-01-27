@@ -71,6 +71,11 @@ Run the test suite
 
     python manage.py test --settings=scratch.test_settings
 
+## ElasticSearch Web Client
+
+If you need to debug ElasticSearch during development, you can connect to the
+web client at http://localhost:1358/?appname=%2A&url=http://localhost:9200/
+
 ## Errors
 
 - Bootstrap checks failed: When starting the Elasticsearch container, this error may ocurr. The following command should fix it.
@@ -79,7 +84,7 @@ Run the test suite
 
 ## Management Commands
 
--   **add_winner:** Adds Contract Awards for expired UNGM tenders
+-   **add_award:** Adds Contract Awards for expired UNGM tenders
 -   **deadline_notifications:** Sends e-mails with favourite tenders that have deadline in DEADLINE_NOTIFICATIONS days
 -   **delete_expired_tenders:** Deletes tenders from archive with deadline passed since DELETE_EXPIRED_DAYS days ago or more
 -   **notify:** Sends an e-mail for every new tender or winner(default) or an e-mail with all new tenders and winners(digest parameter specified);

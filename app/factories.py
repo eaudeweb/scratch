@@ -1,5 +1,5 @@
 import factory
-from .models import Tender, Winner, Notification, TenderDocument, CPVCode, TedCountry, Keyword, Vendor
+from .models import Tender, Award, Notification, TenderDocument, CPVCode, TedCountry, Keyword, Vendor
 from datetime import datetime
 from django.utils import timezone
 
@@ -28,9 +28,9 @@ class TenderDocumentFactory(factory.DjangoModelFactory):
     tender = factory.SubFactory(TenderFactory)
 
 
-class WinnerFactory(factory.DjangoModelFactory):
+class AwardFactory(factory.DjangoModelFactory):
     class Meta:
-        model = Winner
+        model = Award
 
     value = 10
     currency = "USD"

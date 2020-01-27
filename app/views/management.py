@@ -27,7 +27,7 @@ from django_q.models import Success, Failure
 from app.forms import SearchForm
 from app.models import (
     CPVCode, UNSPSCCode, Notification,
-    Task, Tender, Winner, WorkerLog
+    Task, Tender, Award, WorkerLog
 )
 
 
@@ -57,7 +57,7 @@ class HomepageView(TemplateView):
         context["keyword_tenders"] = Tender.objects.filter(
             has_keywords=True
         ).count()
-        context["winners"] = Winner.objects.all().count()
+        context["awards"] = Award.objects.all().count()
         context["expired_tenders"] = Tender.objects.filter(
             deadline__lt=datetime.now(timezone.utc)
         ).count()

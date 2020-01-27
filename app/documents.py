@@ -2,7 +2,7 @@ from django_elasticsearch_dsl import DocType, Index, fields
 from elasticsearch_dsl import analyzer
 from elasticsearch_dsl.analysis import normalizer
 
-from .models import Tender, Winner, TenderDocument
+from .models import Tender, Award, TenderDocument
 
 case_insensitive_analyzer = analyzer(
     'case_insensitive_analyzer',
@@ -24,8 +24,8 @@ tender.settings(
     number_of_replicas=0,
 )
 
-winner = Index('winners')
-winner.settings(
+award = Index('awards')
+award.settings(
     number_of_shards=1,
     number_of_replicas=0,
 )
@@ -70,14 +70,14 @@ class TenderDoc(DocType):
         ]
 
 
-@winner.doc_type
-class WinnerDoc(DocType):
+@award.doc_type
+class AwardDoc(DocType):
     tender_title = fields.KeywordField(attr='tender.title')
     vendors_name = fields.KeywordField(attr='get_vendors')
     value = fields.TextField(attr="convert_value_to_string")
 
     class Meta:
-        model = Winner
+        model = Award
         fields = [
             'currency',
         ]

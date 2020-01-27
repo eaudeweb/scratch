@@ -32,7 +32,7 @@ PAYLOAD = {
         'Reference': '',
         'DeadlineTo': '',
     },
-    'winners': {
+    'awards': {
         'PageIndex': 0,
         'PageSize': 100,
         'Title': '',
@@ -95,7 +95,7 @@ class Requester(object):
     def request_tenders_list(self, last_date, index):
         return self.request(TENDERS_ENDPOINT_URI, last_date, index)
 
-    def request_winners_list(self):
+    def request_awards_list(self):
         return self.request(WINNERS_ENDPOINT_URI)
 
 
@@ -104,7 +104,7 @@ class UNGMrequester(Requester):
     WINNERS_ENDPOINT_URI = WINNERS_ENDPOINT_URI
 
     def get_data(self, url, last_date, index):
-        category = 'tenders' if 'Notice' in url else 'winners'
+        category = 'tenders' if 'Notice' in url else 'awards'
         payload = PAYLOAD[category]
         if category == 'tenders':
             today = datetime.now().strftime('%d-%b-%Y')
@@ -159,7 +159,7 @@ class UNGMrequester(Requester):
 # class LOCALrequester(Requester):
 #
 #     TENDERS_ENDPOINT_URI = TENDERS_ENDPOINT_URI + '/tender_notices'
-#     WINNERS_ENDPOINT_URI = WINNERS_ENDPOINT_URI + '/contract_winners'
+#     WINNERS_ENDPOINT_URI = WINNERS_ENDPOINT_URI + '/contract_awards'
 #
 #     def get_request(self, url):
 #         url = url.replace(LIVE_ENDPOINT_URI, app.config['LOCAL_ENDPOINT_URI'])

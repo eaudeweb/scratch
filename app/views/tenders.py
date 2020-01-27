@@ -12,9 +12,9 @@ from django.views.generic import TemplateView, View
 from django.urls import reverse
 from elasticsearch_dsl import Q as elasticQ
 
-from app.documents import TenderDoc, TenderDocumentDoc, WinnerDoc
+from app.documents import TenderDoc, TenderDocumentDoc, AwardDoc
 from app.forms import TendersFilter
-from app.models import Tender, TenderDocument, Winner
+from app.models import Tender, TenderDocument, Award
 from app.views.base import BaseAjaxListingView
 
 
@@ -118,7 +118,7 @@ class TenderListAjaxView(BaseAjaxListingView):
         status = self.request.GET.get("status")
 
         if status:
-            awards = Winner.objects.all()
+            awards = Award.objects.all()
             award_refs = [award.tender.reference for award in awards]
             if status == "open":
                 tenders = tenders.exclude(Q(reference__in=award_refs) | Q(deadline__lt=date.today()))
@@ -289,7 +289,7 @@ class SearchView(LoginRequiredMixin, TemplateView):
             )
         )
 
-        result_awards = WinnerDoc.search().query(
+        result_awards = AwardDoc.search().query(
             elasticQ(
                 "multi_match",
                 query=pk,

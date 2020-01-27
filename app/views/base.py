@@ -9,7 +9,7 @@ from django.views.generic import View
 
 class BaseAjaxListingView(View):
     filter_names = []
-    order_fields = []
+    order_fields = ['id']
     case_sensitive_fields = []
     model = None
 
@@ -22,7 +22,7 @@ class BaseAjaxListingView(View):
         return object_list
 
     def get_objects(self):
-        return self.model.objects.all()
+        return self.model.objects.order_by('id')
 
     def order_data(self, request, objects):
         field = request.GET.get('order[0][column]')
