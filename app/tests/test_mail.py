@@ -6,7 +6,8 @@ from django.core import mail, management
 from django.template.loader import render_to_string
 from django.utils import timezone
 
-from app.factories import TenderFactory, NotificationFactory, KeywordFactory
+from app.factories import (
+    AwardFactory, TenderFactory, NotificationFactory, KeywordFactory)
 from app.notifications import build_email
 from app.models import Notification, Tender
 from app.tests.base import BaseTestCase
@@ -73,8 +74,8 @@ class SendMailTest(BaseTestCase):
         self.assertEqual(self.tender2.organization in alt_body, True)
         self.assertEqual(self.tender3.organization in alt_body, True)
 
-    def test_notify(self):
-        management.call_command('notify')
+    def test_notify_tenders(self):
+        management.call_command('notify_tenders')
         self.assertEqual(len(mail.outbox), 3)
 
         mail1 = mail.outbox[0].alternatives[0][0]
@@ -85,8 +86,8 @@ class SendMailTest(BaseTestCase):
         self.assertEqual(self.tender1.title in mail2, True)
         self.assertEqual(self.tender2.title in mail3, True)
 
-    def test_notify_digest(self):
-        management.call_command('notify', digest=True)
+    def test_notify_tenders_digest(self):
+        management.call_command('notify_tenders', digest=True)
         self.assertEqual(len(mail.outbox), 1)
 
         alt_body = mail.outbox[0].alternatives[0][0]
@@ -97,6 +98,37 @@ class SendMailTest(BaseTestCase):
         self.assertEqual(tender_list[0]['href'], self.tender3.url)
         self.assertEqual(tender_list[1]['href'], self.tender1.url)
         self.assertEqual(tender_list[2]['href'], self.tender2.url)
+
+    def test_notify_awards(self):
+        award1 = AwardFactory()
+        award2 = AwardFactory()
+        award3 = AwardFactory()
+        management.call_command('notify_awards')
+        self.assertEqual(len(mail.outbox), 3)
+
+        mail1 = mail.outbox[0].alternatives[0][0]
+        mail2 = mail.outbox[1].alternatives[0][0]
+        mail3 = mail.outbox[2].alternatives[0][0]
+
+        self.assertEqual(award1.tender.title in mail1, True)
+        self.assertEqual(award2.tender.title in mail2, True)
+        self.assertEqual(award3.tender.title in mail3, True)
+
+    def test_notify_awards_digest(self):
+        award1 = AwardFactory()
+        award2 = AwardFactory()
+        award3 = AwardFactory()
+        management.call_command('notify_awards', digest=True)
+        self.assertEqual(len(mail.outbox), 1)
+
+        alt_body = mail.outbox[0].alternatives[0][0]
+        soup = BeautifulSoup(alt_body, 'html.parser')
+
+        award_list = soup.find('ol', {'class': 'award-list'}).find_all('a')
+        self.assertEqual(len(award_list), 3)
+        self.assertEqual(award_list[0]['href'], award1.tender.url)
+        self.assertEqual(award_list[1]['href'], award2.tender.url)
+        self.assertEqual(award_list[2]['href'], award3.tender.url)
 
     def test_mailing_favorites(self):
         original_tender1_organization = self.tender1.organization

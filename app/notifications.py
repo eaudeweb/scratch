@@ -5,25 +5,17 @@ from getenv import env
 from app.models import Notification, Email, set_notified
 
 
-def send_update_email(tenders, awards, digest):
+def send_tenders_email(tenders, digest):
     subject = 'New tenders available' if digest else 'New tender available'
     notifications = Notification.objects.all()
     recipients = [notification.email for notification in notifications]
-    title = ''
+    title = 'New Tenders'
 
     if digest:
-        if tenders:
-            title += 'New Tenders'
-            if awards:
-                title += ' and '
-        if awards:
-            title += 'New Contract Awards'
-
         html_content = render_to_string(
             'mails/new_tenders.html',
             {
                 'tenders': tenders,
-                'awards': awards,
                 'title': title,
                 'domain': env('BASE_URL')
             }
@@ -32,14 +24,9 @@ def send_update_email(tenders, awards, digest):
         email = build_email(subject, recipients, None, html_content)
         email.send()
 
-        for tender in tenders:
-            set_notified(tender)
-
-        for award in awards:
-            set_notified(award)
+        tenders.update(notified=True)
 
     else:
-        title = 'New Tenders'
         for tender in tenders:
             html_content = render_to_string(
                 'mails/new_tenders.html',
@@ -55,10 +42,32 @@ def send_update_email(tenders, awards, digest):
 
             set_notified(tender)
 
+
+def send_awards_email(awards, digest):
+    subject = 'New award granted' if digest else 'New awards granted'
+    notifications = Notification.objects.all()
+    recipients = [notification.email for notification in notifications]
+    title = 'New Contract Awards'
+
+    if digest:
+        html_content = render_to_string(
+            'mails/new_awards.html',
+            {
+                'awards': awards,
+                'title': title,
+                'domain': env('BASE_URL')
+            }
+        )
+
+        email = build_email(subject, recipients, None, html_content)
+        email.send()
+
+        awards.update(notified=True)
+
+    else:
         for award in awards:
-            title = 'New Contract Awards'
             html_content = render_to_string(
-                'mails/new_tenders.html',
+                'mails/new_awards.html',
                 {
                     'awards': [award],
                     'title': title,
