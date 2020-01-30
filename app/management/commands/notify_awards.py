@@ -1,11 +1,11 @@
 from django.core.management.base import BaseCommand
-from app.models import Tender, Winner
+from app.models import Award
 from app.management.commands.base.params import BaseParamsUI
-from app.notifications import send_update_email
+from app.notifications import send_awards_email
 
 
 class Command(BaseCommand, BaseParamsUI):
-    help = 'Notifies all users about new available tenders'
+    help = 'Notifies all users about new contract awards'
 
     @staticmethod
     def get_parameters():
@@ -21,12 +21,11 @@ class Command(BaseCommand, BaseParamsUI):
         parser.add_argument(
             '--digest',
             action='store_true',
-            help='If set, all tenders will be notified in one email.'
+            help='If set, all awards will be notified in one email.'
         )
 
     def handle(self, *args, **options):
         digest = options['digest']
-        tenders = Tender.objects.filter(notified=False).order_by('-published')
-        awards = Winner.objects.filter(notified=False).order_by('-award_date')
-        if (len(tenders) > 0) or (len(awards) > 0):
-            send_update_email(tenders, awards, digest)
+        awards = Award.objects.filter(notified=False).order_by('-award_date')
+        if awards:
+            send_awards_email(awards, digest)

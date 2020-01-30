@@ -6,7 +6,7 @@ import json
 import datetime
 from time import sleep
 from random import randint
-from app.models import Tender, Winner, Vendor
+from app.models import Tender, Award, Vendor
 from app.server_requests import PAYLOAD
 import logging
 from app.management.commands.base.params import BaseParamsUI
@@ -33,15 +33,15 @@ class Command(BaseCommand, BaseParamsUI):
         )
 
         for tender in expired_tenders:
-            winner = Winner.objects.filter(
+            award = Award.objects.filter(
                 tender__reference=tender.reference
             ).first()
 
-            if not winner:
+            if not award:
                 try:
                     contract_id = self.get_contract_id(tender.reference)
                 except TypeError:
-                    logger.warning(f'No winner was found for the corresponding tender reference ({ tender.reference })')
+                    logger.warning(f'No award was found for the corresponding tender reference ({ tender.reference })')
                     continue
 
                 request_cls = get_request_class(public=True)
@@ -49,8 +49,8 @@ class Command(BaseCommand, BaseParamsUI):
                 html_data = request_cls.get_request(url)
 
                 try:
-                    winner_fields = self.parse_winner(html_data)
-                    self.save_winner(tender.reference, winner_fields)
+                    award_fields = self.parse_award(html_data)
+                    self.save_award(tender.reference, award_fields)
                 except TypeError:
                     logger.error('Contract does not exist!')
 
@@ -69,7 +69,7 @@ class Command(BaseCommand, BaseParamsUI):
 
         requester = get_request_class(public=True)
 
-        payload = PAYLOAD['winners']
+        payload = PAYLOAD['awards']
         payload['Reference'] = reference
         for i in range(0, 3):
             resp = requester.post_request(
@@ -86,7 +86,7 @@ class Command(BaseCommand, BaseParamsUI):
         logger.error('POST request failed.')
         return None
 
-    def parse_winner(self, html):
+    def parse_award(self, html):
         """ Parse a contract award HTML and return a dictionary with information
          such as: title, reference, vendor etc
         """
@@ -103,31 +103,31 @@ class Command(BaseCommand, BaseParamsUI):
         vendor_list = vendor_list
         award_date = self.find_by_label(soup, CSS_AWARD_DATE)
         value = self.find_by_label(soup, CSS_VALUE)
-        winner_fields = {
+        award_fields = {
             'award_date': self.string_to_date(award_date) or datetime.date.today(),
             'vendors': vendor_list,
             'value': float(value or 0) if value else '',
             'currency': '',
         }
 
-        if winner_fields['value']:
-            winner_fields['currency'] = 'USD'
+        if award_fields['value']:
+            award_fields['currency'] = 'USD'
 
-        return winner_fields
+        return award_fields
 
     @staticmethod
-    def save_winner(reference, winner_fields):
+    def save_award(reference, award_fields):
         tender_entry = Tender.objects.filter(reference=reference).first()
-        vendors = winner_fields.pop('vendors')
+        vendors = award_fields.pop('vendors')
         vendor_objects = []
         for vendor in vendors:
             vendor_object, _ = Vendor.objects.get_or_create(name=vendor)
             vendor_objects.append(vendor_object)
-        winner = Winner.objects.update_or_create(tender=tender_entry, **winner_fields)
-        winner.save()
-        winner.vendors.add(*vendor_objects)
+        award = Award.objects.update_or_create(tender=tender_entry, **award_fields)
+        award.save()
+        award.vendors.add(*vendor_objects)
 
-        return winner
+        return award
 
     @staticmethod
     def to_unicode(string):

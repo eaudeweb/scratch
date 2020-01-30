@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import (Tender, TenderDocument, Winner, WorkerLog, Notification,
+from .models import (Tender, TenderDocument, Award, WorkerLog, Notification,
                      UNSPSCCode, CPVCode, TedCountry, Task, Keyword, Vendor)
 
 
@@ -25,7 +25,7 @@ class TenderDocumentAdmin(admin.ModelAdmin):
     get_tender_title.admin_order_field = 'tender__title'
 
 
-class WinnerAdmin(admin.ModelAdmin):
+class AwardAdmin(admin.ModelAdmin):
     list_display = [
         'value', 'currency', 'award_date', 'notified', 'get_vendors',
         'get_tender_title', 'get_tender_organization', 'get_tender_source', 'get_tender_deadline',
@@ -106,7 +106,7 @@ class VendorAdmin(admin.ModelAdmin):
 
 admin.site.register(Tender, TenderAdmin)
 admin.site.register(TenderDocument, TenderDocumentAdmin)
-admin.site.register(Winner, WinnerAdmin)
+admin.site.register(Award, AwardAdmin)
 admin.site.register(WorkerLog, WorkerLogAdmin)
 admin.site.register(Notification, NotificationAdmin)
 admin.site.register(UNSPSCCode, UNSPSCCodeAdmin)

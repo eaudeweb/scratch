@@ -1,5 +1,5 @@
 from django import forms
-from .models import Tender, Winner
+from .models import Tender, Award
 
 MAX = 220000
 STEP = 20000
@@ -88,7 +88,7 @@ class AwardsFilter(forms.Form):
         self.fields["organization"].choices = [("", "All organizations")] + [
             (org, org) for org in organizations_list
         ]
-        vendors_list = Winner.objects.values_list(
+        vendors_list = Award.objects.values_list(
             "vendors__name", flat=True
         ).distinct()
         self.fields["vendor"].choices = [("", "All vendors")] + [

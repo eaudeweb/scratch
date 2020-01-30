@@ -1,0 +1,30 @@
+{% extends 'mails/layout.html' %}
+
+{% block header %}{{ title }}{% endblock %}
+
+{% block content %}
+  <ol class="award-list">
+    <li>
+      <h2>Contract Awards</h2>
+    </li>
+    <ol>
+      {% for award in awards %}
+        <li>
+          <h2>
+            <a href="{{ award.tender.url }}">{{ award.tender.title }}</a>
+          </h2>
+          <p class="published clip">
+            {% if award.award_date %}
+              Award Date: {{ award.award_date }}
+            {% else %}
+              Published: Not specified
+            {% endif %}
+          </p>
+          <p class="published title_clip">
+            Vendor(s): {{ award.get_vendors }}
+          </p>
+        </li>
+      {% endfor %}
+    </ol>
+  </ol>
+{% endblock %}

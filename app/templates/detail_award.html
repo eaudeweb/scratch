@@ -2,44 +2,44 @@
 {% load static %}
 
 {% block title %}
-  <title>Scratch - Winner {{ winner.id }}</title>
+  <title>Scratch - Award {{ award.id }}</title>
 {% endblock %}
 
 {% block content %}
   <div class = "table_detail" >
     <table id="tender_detail_table" class="cell-border display award_detail" style="margin-left: 60px;">
-      <h2>Winner of {{ winner.tender.title }}</h2>
+      <h2>Winner of {{ award.tender.title }}</h2>
       <br>
       <thead>
       <th>Tender</th>
-      <th><a href="{% url 'tender_detail_view' winner.tender.id %}">{{ winner.tender.title }}</a></th>
+      <th><a href="{% url 'tender_detail_view' award.tender.id %}">{{ award.tender.title }}</a></th>
       </thead>
       <tbody>
       <tr>
         <td>Link to tender</td>
-        <td><a href="{{ winner.tender.url }}" target="_blank">{{ winner.tender.url }}</a></td>
+        <td><a href="{{ award.tender.url }}" target="_blank">{{ award.tender.url }}</a></td>
       </tr>
       <tr>
         <td>Award Date</td>
-        <td>{{ winner.award_date | date:'d M Y' }}</td>
+        <td>{{ award.award_date | date:'d M Y' }}</td>
       </tr>
       <tr>
         <td>Vendor(s)</td>
         <td>
           <ol style="list-style-position: inside;">
-            {% for vendor in winner.vendors.all %}
+            {% for vendor in award.vendors.all %}
               <li>{{ vendor }}</li>
             {% endfor %}
           </ol>
         </td>
       </tr>
       <tr>
-        <td>Value {% if winner.tender.source == 'TED' %}(total value for all lots){% endif %}</td>
-        <td>{{ winner.value | floatformat:'0' }}</td>
+        <td>Value {% if award.tender.source == 'TED' %}(total value for all lots){% endif %}</td>
+        <td>{{ award.value | floatformat:'0' }}</td>
       </tr>
       <tr>
         <td>Currency</td>
-        <td>{{ winner.currency }}</td>
+        <td>{{ award.currency }}</td>
       </tr>
       </tbody>
     </table>

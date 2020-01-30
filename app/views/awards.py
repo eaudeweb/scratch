@@ -7,13 +7,13 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.urls import reverse
 from app.forms import AwardsFilter, MAX, STEP
-from app.models import Winner
+from app.models import Award
 from app.views import BaseAjaxListingView
 
 
 class ContractAwardsListView(LoginRequiredMixin, ListView):
-    model = Winner
-    context_object_name = "winners"
+    model = Award
+    context_object_name = "awards"
     template_name = "contract_awards_list.html"
     login_url = "/login"
     redirect_field_name = "login_view"
@@ -52,21 +52,21 @@ class ContractAwardsListAjaxView(BaseAjaxListingView):
     order_fields = ['tender__title', 'tender__source', 'tender__organization', 
                     'award_date', '', 'value', 'currency']
     case_sensitive_fields = ['tender__title', 'tender__source', 'tender__organization']
-    model = Winner
+    model = Award
 
     def format_data(self, object_list):
         data = [
             {
-                'title': winner.tender.title,
-                'url': reverse('contract_awards_detail_view', kwargs={'pk': winner.id}),
-                'source': winner.tender.source,
-                'organization': winner.tender.organization,
-                'award_date': 'Not specified' if not winner.award_date  else winner.award_date.strftime("%m/%d/%Y"),
-                'vendor': render_to_string('award_vendors.html', {'vendors': winner.vendors.all()}),
-                'value': floatformat(winner.value, '0'),
-                'currency': winner.currency,
+                'title': award.tender.title,
+                'url': reverse('contract_awards_detail_view', kwargs={'pk': award.id}),
+                'source': award.tender.source,
+                'organization': award.tender.organization,
+                'award_date': 'Not specified' if not award.award_date  else award.award_date.strftime("%m/%d/%Y"),
+                'vendor': render_to_string('award_vendors.html', {'vendors': award.vendors.all()}),
+                'value': floatformat(award.value, '0'),
+                'currency': award.currency,
 
-            } for winner in object_list
+            } for award in object_list
         ]
         return data
 
@@ -75,7 +75,7 @@ class ContractAwardsListAjaxView(BaseAjaxListingView):
         
         search = request.GET.get("search[value]")
         if search:
-            awards = Winner.objects.filter(
+            awards = Award.objects.filter(
                         Q(tender__title__icontains=search)|
                         Q(tender__organization__icontains=search)|
                         Q(vendors__name__icontains=search)
@@ -98,8 +98,8 @@ class ContractAwardsListAjaxView(BaseAjaxListingView):
 
 
 class ContractAwardDetailView(LoginRequiredMixin, DetailView):
-    model = Winner
+    model = Award
     template_name = "detail_award.html"
-    context_object_name = "winner"
+    context_object_name = "award"
     login_url = "/login"
     redirect_field_name = "login_view"

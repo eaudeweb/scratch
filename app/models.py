@@ -100,20 +100,22 @@ class Vendor(models.Model):
         return '{}'.format(self.name)
 
 
-class Winner(models.Model):
+class Award(models.Model):
     value = models.FloatField(null=True)
     currency = models.CharField(null=True, max_length=3)
     award_date = models.DateField()
     notified = models.BooleanField(default=False)
-    tender = models.ForeignKey(Tender, on_delete=models.CASCADE, related_name='winners')
-    vendors = models.ManyToManyField('Vendor', related_name='winners')
+    # TODO: Investigate whether this coould be refactored to a OneToOneField
+    tender = models.ForeignKey(
+        Tender, on_delete=models.CASCADE, related_name='awards')
+    vendors = models.ManyToManyField('Vendor', related_name='awards')
 
     def __str__(self):
         return '{} WON BY {}'.format(self.tender.title, self.get_vendors)
 
     @property
     def get_vendors(self):
-        return  ",".join(self.vendors.values_list('name', flat=True))
+        return ",".join(self.vendors.values_list('name', flat=True))
     get_vendors.fget.short_description = "Vendors names"
 
     def convert_value_to_string(self):
@@ -190,9 +192,9 @@ def last_update(source):
     return worker_log.update if worker_log else None
 
 
-def set_notified(tender_or_winner):
-    tender_or_winner.notified = True
-    tender_or_winner.save()
+def set_notified(tender_or_award):
+    tender_or_award.notified = True
+    tender_or_award.save()
 
 
 class UNSPSCCode(models.Model):
