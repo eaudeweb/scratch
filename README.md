@@ -17,6 +17,8 @@
         cp docker/redis.env.example docker/redis.env
         cp docker/tika.env.example docker/tika.env
 
+  > NOTE: LDAP variables in `app.env` must be configured manually
+
 1. Create the stack and start it:
 
         docker-compose up -d
