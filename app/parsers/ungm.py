@@ -20,7 +20,8 @@ class UNGMWorker:
         parsed_tenders = []
         for tender in tenders:
             text = self.requester.get_request(getattr(tender, 'url'))
-            parsed_tenders.append(self.parse_ungm_notice(text, getattr(tender, 'url'), codes))
+            parsed_tenders.append(
+                self.parse_ungm_notice(text, getattr(tender, 'url'), codes))
         return UNGMWorker.update_ungm_tenders(parsed_tenders)
 
     def parse_latest_notices(self, last_date):
@@ -29,21 +30,26 @@ class UNGMWorker:
         page_index = 0
         tenders_count = 0
         while True:
-            requested_html_tenders = self.requester.request_tenders_list(last_date, page_index)
+            requested_html_tenders = self.requester.request_tenders_list(
+                last_date, page_index)
             page_index += 1
-            extracted_tenders = self.parse_ungm_notice_list(requested_html_tenders)
+            extracted_tenders = self.parse_ungm_notice_list(
+                requested_html_tenders)
             if not len(extracted_tenders):
                 break
             parsed_tenders = []
             for tender in extracted_tenders:
                 text = self.requester.get_request(tender['url'])
-                parsed_tender = self.parse_ungm_notice(text, tender['url'], codes)
+                parsed_tender = self.parse_ungm_notice(
+                    text, tender['url'], codes)
                 if parsed_tender:
                     parsed_tenders.append(parsed_tender)
-            ungm_tenders, added_tenders = UNGMWorker.update_ungm_tenders(parsed_tenders)
+            ungm_tenders, added_tenders = UNGMWorker.update_ungm_tenders(
+                parsed_tenders)
             tenders_count += added_tenders
 
-        WorkerLog.objects.create(update=date.today(), source='UNGM', tenders_count=tenders_count)
+        WorkerLog.objects.create(
+            update=date.today(), source='UNGM', tenders_count=tenders_count)
         return
 
     @staticmethod
@@ -57,15 +63,19 @@ class UNGMWorker:
     @staticmethod
     def parse_ungm_notice_list(html):
         soup = BeautifulSoup(html, 'html.parser')
-        tenders = soup.find_all('div', 'tableRow dataRow')
+        tenders = soup.select('div.tableRow.dataRow')
 
         endpoint = settings.UNGM_ENDPOINT_URI
 
         tenders_list = [
             {
-                'published': UNGMWorker.parse_date(tender.contents[7].span.string.strip(), '%d-%b-%Y'),
+                'published': UNGMWorker.parse_date(
+                    tender.contents[7].span.string.strip(), '%d-%b-%Y'),
                 'reference': tender.contents[13].span.string.strip(),
-                'url': endpoint + tender.contents[3].a['href'].strip() if tender.contents[3].a['href'].strip() else '',
+                'url': (
+                    endpoint + tender.contents[3].a['href'].strip()
+                    if tender.contents[3].a['href'].strip() else ''
+                ),
             }
             for tender in tenders
         ]
@@ -76,9 +86,11 @@ class UNGMWorker:
     def parse_ungm_notice(html, url, codes):
         soup = BeautifulSoup(html, 'html.parser')
         documents = UNGMWorker.find_by_class(soup, "lnkShowDocument", "a")
-        description = UNGMWorker.find_by_class(soup, "ungm-list-item ungm-background", "div")
+        description = UNGMWorker.find_by_class(
+            soup, "ungm-list-item ungm-background", "div")
         try:
-            description = description[1].text.strip().strip('\n').lstrip('Description')
+            description = description[1].text.strip().strip('\n').lstrip(
+                'Description')
         except IndexError:
             description = ''
         nodes = UNGMWorker.find_by_class(soup, "nodeName", "span")
@@ -89,7 +101,8 @@ class UNGMWorker:
         ]
         notice_type = UNGMWorker.find_by_class(soup, "status-tag", "span", True)
         title = UNGMWorker.find_by_class(soup, "title", "span", True)
-        organization = UNGMWorker.find_by_class(soup, "highlighted", "span", True)
+        organization = UNGMWorker.find_by_class(
+            soup, "highlighted", "span", True)
 
         reference = UNGMWorker.find_by_span(soup, 'Reference:')
         published = UNGMWorker.find_by_span(soup, 'Published on:')
@@ -99,7 +112,8 @@ class UNGMWorker:
 
         gmt = deadline
         try:
-            deadline = make_aware(datetime.strptime(deadline[:17], '%d-%b-%Y %H:%M'))
+            deadline = make_aware(datetime.strptime(
+                deadline[:17], '%d-%b-%Y %H:%M'))
             gmt = gmt[gmt.find("GMT") + 4:gmt.find(")")]
             if gmt:
                 hours = float(gmt)
@@ -139,12 +153,14 @@ class UNGMWorker:
     @staticmethod
     def find_by_span(soup, span):
         try:
-            return soup.find('span', text=re.compile(span)).next_sibling.next_sibling.text
+            return soup.find(
+                'span', text=re.compile(span)).next_sibling.next_sibling.text
         except AttributeError:
             return ''
 
     @staticmethod
-    def find_by_class(soup, class_value, element_type="span", text_return=False):
+    def find_by_class(
+            soup, class_value, element_type="span", text_return=False):
         try:
             result = soup.find_all(element_type, {"class": class_value})
             if text_return:
@@ -160,7 +176,8 @@ class UNGMWorker:
         for item in parsed_tenders:
             reference = item['tender'].pop('reference')
             old_tender = Tender.objects.filter(reference=reference).first()
-            new_tender, created = Tender.objects.update_or_create(reference=reference, defaults=dict(item['tender']))
+            new_tender, created = Tender.objects.update_or_create(
+                reference=reference, defaults=dict(item['tender']))
 
             if created:
                 new_tenders += 1
@@ -175,7 +192,8 @@ class UNGMWorker:
             tender_doc = None
             for doc in item['documents']:
                 try:
-                    tender_doc = TenderDocument.objects.get(tender=old_tender, name=doc['name'])
+                    tender_doc = TenderDocument.objects.get(
+                        tender=old_tender, name=doc['name'])
 
                     for k, v in doc.items():
                         old_value = getattr(tender_doc, k)
@@ -185,7 +203,8 @@ class UNGMWorker:
 
                     tender_doc.save()
                 except TenderDocument.DoesNotExist:
-                    tender_doc = TenderDocument.objects.create(tender=new_tender, **doc)
+                    tender_doc = TenderDocument.objects.create(
+                        tender=new_tender, **doc)
                     new_docs.append(doc)
                 finally:
                     UNGMWorker.download_document(tender_doc)
@@ -203,4 +222,5 @@ class UNGMWorker:
                 for chunk in response.iter_content(chunk_size=4096):
                     content.write(chunk)
                 content.seek(0)
-                tender_doc.document.save(tender_doc.name, File(content), save=True)
+                tender_doc.document.save(
+                    tender_doc.name, File(content), save=True)

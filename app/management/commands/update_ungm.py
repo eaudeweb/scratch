@@ -23,10 +23,11 @@ class Command(BaseCommand, BaseParamsUI):
 
     def handle(self, *args, **kwargs):
 
+        old_tender_count = Tender.objects.count()
         if kwargs['days_ago']:
             days_ago = kwargs['days_ago']
             last_date = (datetime.today() - timedelta(days=days_ago)).date()
-        elif not Tender.objects.all():
+        elif not old_tender_count:
             raise CommandError(
                 "The database is empty, argument --days_ago is missing"
             )
@@ -36,9 +37,13 @@ class Command(BaseCommand, BaseParamsUI):
         try:
             w = UNGMWorker()
             w.parse_latest_notices(last_date)
-
-            self.stdout.write(self.style.SUCCESS('UNGM tenders updated'))
-            return 'UNGM tenders updated'
+            new_tender_count = Tender.objects.count()
+            success_msg = '{} new UNGM tender(s) imported'.format(
+                new_tender_count - old_tender_count)
+            self.stdout.write(
+                self.style.SUCCESS(success_msg)
+            )
+            return success_msg
         except Exception as error:
             self.stdout.write(
                 self.style.ERROR('TED tenders update failed: {}'.format(error))
