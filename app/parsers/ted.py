@@ -3,6 +3,7 @@ import tarfile
 import os
 import time
 
+from typing import List, Tuple
 from bs4 import BeautifulSoup, element
 from datetime import date, datetime, timedelta
 from django.conf import settings
@@ -38,7 +39,7 @@ class TEDWorker:
         for tender in tenders:
             if tender.published:
                 ftp_path = tender.published.strftime('%Y/%m')
-                ftp.cwd(f'daily-packages/{ftp_path}')
+                ftp.cwd(f'/daily-packages/{ftp_path}')
                 archives = ftp.nlst()
 
                 self.download_archive(ftp, tender.published, archives)
@@ -52,7 +53,7 @@ class TEDWorker:
         last_month = last_date.strftime('%m')
         last_year = last_date.strftime('%Y')
 
-        ftp.cwd(f'daily-packages/{last_year}/{last_month}')
+        ftp.cwd(f'/daily-packages/{last_year}/{last_month}')
 
         archives = ftp.nlst()
         today = date.today()
@@ -87,7 +88,7 @@ class TEDWorker:
         last_year = self.last_ted_update.strftime('%Y')
 
         ftp = self.ftp_login()
-        ftp.cwd(f'daily-packages/{last_year}/{last_month}')
+        ftp.cwd(f'/daily-packages/{last_year}/{last_month}')
 
         archives = ftp.nlst()
 
@@ -111,19 +112,18 @@ class TEDWorker:
                         except OSError as e:
                             logging.warning(e)
                     with open(file_path, "wb") as f:
-                        ftp.retrbinary(
-                            "RETR %s" % archive_name, lambda data: f.write(data)
-                        )
+                        ftp.retrbinary("RETR %s" % archive_name, f.write)
                     self.archives.append(file_path)
                     break
-                logging.warning(f"File already downloaded, waiting 30 seconds: {file_path}")
+                logging.warning(
+                    f"File already downloaded, waiting 30 seconds: {file_path}")
                 count += 1
                 time.sleep(30 * count)
 
                 logging.warning("Retrying")
 
     def parse_notices(self, tenders=[], set_notified=False):
-        changed_tenders = []
+        all_changed_tenders = []
         folders = []
         tenders_count = 0
         for archive_path in self.archives:
@@ -131,10 +131,13 @@ class TEDWorker:
             if folder_name:
                 folders.append(folder_name)
                 p = TEDParser(self.path, [folder_name])
-                changed_tenders, added_tenders = p.parse_notices(tenders, set_notified)
+                changed_tenders, added_tenders = p.parse_notices(
+                    tenders, set_notified)
+                all_changed_tenders += changed_tenders
                 tenders_count += added_tenders
                 folder_date = folder_name[:8]
-                formatted_date = datetime.strptime(folder_date, '%Y%m%d').strftime('%d/%m/%Y')
+                formatted_date = datetime.strptime(
+                    folder_date, '%Y%m%d').strftime('%d/%m/%Y')
                 logging.warning(f'Date {formatted_date} parsed successfully')
 
         for archive_path in self.archives:
@@ -151,7 +154,7 @@ class TEDWorker:
                 logging.warning(e)
                 pass
 
-        return changed_tenders, tenders_count
+        return all_changed_tenders, tenders_count
 
     @staticmethod
     def extract_data(archive_path, extract_path):
@@ -169,11 +172,15 @@ class TEDWorker:
         while True:
             try:
                 ftp = FTP(settings.TED_FTP_URL)
-                ftp.login(user=settings.TED_FTP_USER, passwd=settings.TED_FTP_PASSWORD)
+                ftp.login(
+                    user=settings.TED_FTP_USER,
+                    passwd=settings.TED_FTP_PASSWORD
+                )
                 logging.warning("Logged into FTP.")
                 return ftp
             except error_perm as e:
-                logging.warning(f"Cannot login to FTP, waiting 30 seconds: {e}")
+                logging.warning(
+                    f"Cannot login to FTP, waiting 30 seconds: {e}")
                 time.sleep(30)
                 logging.warning("Retrying")
                 continue
@@ -188,7 +195,8 @@ class TEDWorker:
 
     @staticmethod
     def add_worker_log(source, tenders_count):
-        log = WorkerLog(source=source, update=date.today(), tenders_count=tenders_count)
+        log = WorkerLog(
+            source=source, update=date.today(), tenders_count=tenders_count)
         log.save()
 
     @staticmethod
@@ -212,7 +220,9 @@ class TEDParser(object):
         ]
         self.folders = [os.path.join(path, folder) for folder in folder_names]
 
-    def _parse_notice(self, content, tenders, xml_file, codes, set_notified):
+    def _parse_notice(
+        self, content, tenders, xml_file, codes, set_notified
+    ) -> Tuple[dict, List[dict]]:
         soup = BeautifulSoup(content, 'html.parser')
 
         if not tenders or self.file_in_tender_list(xml_file, tenders):
@@ -226,10 +236,11 @@ class TEDParser(object):
             auth_type = soup.find('aa_authority_type').text
 
             accept_notice = (
-                    cpv_codes & set(self.CPV_CODES)
-                    and doc_type in settings.TED_DOC_TYPES
-                    and country in self.TED_COUNTRIES
-                    and auth_type == settings.TED_AUTH_TYPE
+                cpv_codes & set(self.CPV_CODES) and (
+                    doc_type in settings.TED_DOC_TYPES
+                ) and country in self.TED_COUNTRIES and (
+                    auth_type == settings.TED_AUTH_TYPE
+                )
             )
 
             if not accept_notice:
@@ -267,27 +278,30 @@ class TEDParser(object):
 
         try:
             tender['organization'] = (
-                    soup.find('aa_name', {'lg': 'EN'}) or soup.find('aa_name')
+                soup.find('aa_name', {'lg': 'EN'}) or soup.find('aa_name')
             ).text
         except AttributeError:
             tender['organization'] = ''
 
         try:
             published_str = soup.find('date_pub').text
-            tender['published'] = datetime.strptime(published_str, '%Y%m%d').date()
+            tender['published'] = datetime.strptime(
+                published_str, '%Y%m%d').date()
         except (AttributeError, ValueError):
             tender['published'] = None
 
         try:
             deadline = soup.find('dt_date_for_submission').text
-            tender['deadline'] = make_aware(datetime.strptime(deadline, '%Y%m%d %H:%M'))
+            tender['deadline'] = make_aware(
+                datetime.strptime(deadline, '%Y%m%d %H:%M'))
         except (AttributeError, ValueError):
             tender['deadline'] = None
 
         if tender['deadline']:
             time_now = datetime.now()
             time_utc = datetime.utcnow()
-            add_hours = round(float((time_utc - time_now).total_seconds()) / 3600)
+            add_hours = round(
+                float((time_utc - time_now).total_seconds()) / 3600)
             tender['deadline'] += timedelta(hours=add_hours)
 
         sections = soup.find('form_section').find_all(lg='EN')
@@ -302,20 +316,20 @@ class TEDParser(object):
 
             try:
                 estimated_total = (
-                        'Estimated total: '
-                        + section.find('val_estimated_total').get_text()
-                        + ' '
-                        + str(section.find('val_estimated_total')['currency'])
-                        + '\n\n'
+                    'Estimated total: '
+                    + section.find('val_estimated_total').get_text()
+                    + ' '
+                    + str(section.find('val_estimated_total')['currency'])
+                    + '\n\n'
                 )
             except AttributeError:
                 estimated_total = ''
 
             try:
                 lots = (
-                        'Tenders may be submitted for maximum number of lots: '
-                        + section.find('lot_max_number').get_text()
-                        + '\n\n'
+                    'Tenders may be submitted for maximum number of lots: '
+                    + section.find('lot_max_number').get_text()
+                    + '\n\n'
                 )
             except AttributeError:
                 lots = ''
@@ -324,26 +338,24 @@ class TEDParser(object):
 
             try:
                 short_desc = (
-                        'Short Description:'
-                        + '\n\t'
-                        + str(descriptions[0].get_text())
-                        + '\n\n'
+                    'Short Description:'
+                    + '\n\t'
+                    + str(descriptions[0].get_text())
+                    + '\n\n'
                 )
             except (AttributeError, IndexError):
                 short_desc = ''
 
             try:
                 procurement_desc = descriptions[1]
-                procurement_desc = (
-                        'Description of the procurement:'
-                        + '\n\t'
-                        + str(descriptions[1].get_text())
+                procurement_desc = 'Description of the procurement:' + (
+                    '\n\t' + str(descriptions[1].get_text())
                 )
             except IndexError:
                 pass
 
             tender['description'] = (
-                    title + estimated_total + lots + short_desc + procurement_desc
+                title + estimated_total + lots + short_desc + procurement_desc
             )
         else:
             tender['description'] = ''
@@ -370,21 +382,24 @@ class TEDParser(object):
     @staticmethod
     def file_in_tender_list(xml_file, tenders):
         tender_references = list(map(lambda t: t.reference, tenders))
-        return os.path.basename(xml_file).replace('_', '-').replace('.xml', '') in tender_references
+        return os.path.basename(xml_file).replace(
+            '_', '-').replace('.xml', '') in tender_references
 
     def parse_notices(self, tenders, set_notified):
         changed_tenders = []
         codes = {}
         tenders_count = 0
 
-        # self.xml_files[:] is used instead of self.xml_files because as we are iterating over
-        # the list, we"re deleting it"s entries if they doesn't match our criteria
-        # changing it would result in a failure of deleting all subsequent files when the iteration ends
+        # self.xml_files[:] is used instead of self.xml_files because as we are
+        # iterating over the list, we"re deleting it"s entries if they doesn't
+        # match our criteria changing it would result in a failure of deleting
+        # all subsequent files when the iteration ends
 
         for xml_file in self.xml_files[:]:
             with open(xml_file, 'r') as f:
                 try:
-                    tender, awards = self._parse_notice(f.read(), tenders, xml_file, codes, set_notified)
+                    tender, awards = self._parse_notice(
+                        f.read(), tenders, xml_file, codes, set_notified)
                 except StopIteration:
                     continue
 
@@ -406,6 +421,11 @@ class TEDParser(object):
 
     @staticmethod
     def update_contract_award_awards(awards, soup, set_notified):
+        """
+        Extract data from the soup and populate a dictionary representing an
+        award, subsequently adding it to the list of awards received as
+        parameter.
+        """
         award = {}
         award_date = soup.find('contract_award_date')
         if award_date:
@@ -441,8 +461,10 @@ class TEDParser(object):
             for awarded_contract in awarded_contracts:
 
                 try:
-                    date_conclusion_contract = awarded_contract.find('date_conclusion_contract').text
-                    award_date = datetime.strptime(date_conclusion_contract, '%Y-%m-%d')
+                    date_conclusion_contract = awarded_contract.find(
+                        'date_conclusion_contract').text
+                    award_date = datetime.strptime(
+                        date_conclusion_contract, '%Y-%m-%d')
                 except (AttributeError, TypeError, ValueError):
                     award_date = date.today()
 
