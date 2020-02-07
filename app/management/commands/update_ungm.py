@@ -49,6 +49,7 @@ class Command(BaseCommand, BaseParamsUI):
                 self.style.ERROR('TED tenders update failed: {}'.format(error))
             )
             send_error_email(str(error))
+            raise
 
     def add_arguments(self, parser):
         parser.add_argument(
