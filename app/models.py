@@ -7,6 +7,8 @@ from django.utils.functional import cached_property
 from django.contrib.postgres.fields import ArrayField
 from django.contrib.auth.models import User
 
+from app.fields import LowerCharField
+
 import re
 
 from tika import parser
@@ -20,10 +22,20 @@ fields = [r'title', r'description']
 
 
 class Keyword(models.Model):
-    value = models.CharField(max_length=50)
+    value = LowerCharField(max_length=50, unique=True)
 
     def __str__(self):
         return '{}'.format(self.value)
+
+    @staticmethod
+    def get_values_list():
+        return list(Keyword.objects.values_list('value', flat=True))
+
+
+def keywords_in(text):
+    """ Returns a list with all the keywords found in the text content """
+    keywords = Keyword.get_values_list()
+    return list(set(keywords) & set(re.split(r"\W+", str(text).lower())))
 
 
 class Tender(models.Model):
@@ -42,15 +54,17 @@ class Tender(models.Model):
     source = models.CharField(max_length=10, choices=SOURCE_CHOICES)
     unspsc_codes = models.CharField(max_length=1024, null=True, blank=True)
     cpv_codes = models.CharField(max_length=1024, null=True, blank=True)
-    seen_by = models.ForeignKey(User, on_delete=models.CASCADE, default=None, null=True, blank=True)
-    keywords = models.ManyToManyField(Keyword, related_name="keywords", blank=True)
+    seen_by = models.ForeignKey(
+        User, on_delete=models.CASCADE, default=None, null=True, blank=True)
+    keywords = models.ManyToManyField(
+        Keyword, related_name="tenders", blank=True)
 
     def __str__(self):
         return '{}'.format(self.title)
 
     @cached_property
     def marked_keyword_title(self):
-        keywords = Tender.get_keywords_setting()
+        keywords = Keyword.get_values_list()
         title = self.title or ''
         if not keywords:
             return title
@@ -60,37 +74,34 @@ class Tender(models.Model):
 
     @cached_property
     def marked_keyword_description(self):
-        keywords = Tender.get_keywords_setting()
+        keywords = Keyword.get_values_list()
         description = self.description or ''
         if not keywords:
             return description
 
         regex = r'(' + r'|'.join(keywords) + r')'
-        return re.sub(regex, r'<mark>\1</mark>', description, flags=re.IGNORECASE)
+        return re.sub(
+            regex, r'<mark>\1</mark>', description, flags=re.IGNORECASE)
 
-    @staticmethod
-    def check_contains(value):
-        keywords = set(Tender.get_keywords_setting())
-        return list(keywords & set(re.sub("[^a-zA-Z0-9 ]", " ", str(value)).lower().split()))
+    def find_keywords(self, fields):
+        """
+        Return queryset with all Keyword objects whose value was found in the
+        text of any of the fields.
+        """
+        found_keywords = []
 
-    @staticmethod
-    def get_keywords_setting():
-        return list(Keyword.objects.values_list('value', flat=True))
+        for field in fields:
+            field_content = getattr(self, field)
+            found_keywords += keywords_in(field_content)
+
+        return Keyword.objects.filter(value__in=found_keywords)
 
     def save(self, *args, **kwargs):
-        self.has_keywords = any(self.check_contains(getattr(self, field)) for field in fields)
+        keywords = list(self.find_keywords(fields))
+        if keywords:
+            self.has_keywords = True
         super().save(*args, **kwargs)
-
-        self.keywords.clear()
-
-        found_keywords = []
-        for field in fields:
-            found_keywords += self.check_contains(getattr(self, field))
-
-        found_keywords = list(dict.fromkeys(found_keywords))
-
-        for keyword in found_keywords:
-            self.keywords.add(Keyword.objects.get(value=keyword))
+        self.keywords.set(keywords)
 
 
 class Vendor(models.Model):
@@ -223,7 +234,8 @@ class Task(models.Model):
     kwargs = models.CharField(max_length=255, null=True, blank=True)
     started = models.DateTimeField(null=True, blank=True, default=None)
     stopped = models.DateTimeField(null=True, blank=True, default=None)
-    status = models.CharField(max_length=255, null=True, blank=True, default="processing")
+    status = models.CharField(
+        max_length=255, null=True, blank=True, default="processing")
     output = models.TextField(max_length=5055, null=True, blank=True)
 
     def __str__(self):

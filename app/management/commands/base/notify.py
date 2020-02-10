@@ -31,7 +31,7 @@ class BaseNotifyCommand(BaseCommand, BaseParamsUI):
 
     def handle(self, *args, **options):
         digest = options['digest']
-        changed_tenders = self.scrap_tenders()
+        changed_tenders = self.scrape_tenders()
 
         if changed_tenders:
             BaseNotifyCommand.send_update_email(changed_tenders, digest, self.notification_type())
@@ -77,26 +77,21 @@ class BaseNotifyCommand(BaseCommand, BaseParamsUI):
                 email = build_email(subject, recipients, None, html_content)
                 email.send()
 
-    def scrap_tenders(self):
+    def scrape_tenders(self):
         tenders = self.get_tenders()
 
-        ungm_tenders = []
-        ted_tenders = []
-        for tender in tenders:
-            if tender.source == dict(SOURCE_CHOICES).get('TED'):
-                ted_tenders.append(tender)
-            else:
-                ungm_tenders.append(tender)
+        ted_tenders = tenders.filter(source=dict(SOURCE_CHOICES).get('TED'))
+        ungm_tenders = tenders.filter(source=dict(SOURCE_CHOICES).get('UNGM'))
 
         changed_ted_tenders = []
-        if len(ted_tenders):
+        if ted_tenders.exists():
             w = TEDWorker()
             w.ftp_download_tender_archive(ted_tenders)
-            changed_ted_tenders = w.parse_notices(ted_tenders)
+            changed_ted_tenders, _ = w.parse_notices(ted_tenders)
 
         changed_ungm_tenders = []
-        if len(ungm_tenders):
+        if ungm_tenders.exists():
             w = UNGMWorker()
-            changed_ungm_tenders, tenders_count = w.parse_tenders(ungm_tenders)
+            changed_ungm_tenders, _ = w.parse_tenders(ungm_tenders)
 
         return changed_ted_tenders + changed_ungm_tenders

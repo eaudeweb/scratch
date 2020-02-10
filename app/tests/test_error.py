@@ -13,7 +13,8 @@ class UpdateErrorTestCase(BaseTestCase):
     )
     @patch('app.notifications.send_error_email')
     def test_ted_update_error(self, send_error_email, _):
-        call_command('update_ted')
+        with self.assertRaises(Exception):
+            call_command('update_ted')
         send_error_email.assert_called_once_with('Test error')
 
     @patch.object(
@@ -22,5 +23,6 @@ class UpdateErrorTestCase(BaseTestCase):
     )
     @patch('app.notifications.send_error_email')
     def test_ungm_update_error(self, send_error_email, _):
-        call_command('update_ungm', days_ago=1)
+        with self.assertRaises(Exception):
+            call_command('update_ungm', days_ago=1)
         send_error_email.assert_called_once_with('Test error')
