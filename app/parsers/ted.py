@@ -49,37 +49,24 @@ class TEDWorker:
     def ftp_download_latest_archives(self):
         ftp = self.ftp_login()
 
-        last_date = self.last_ted_update or self.last_update('TED')
-        last_month = last_date.strftime('%m')
-        last_year = last_date.strftime('%Y')
-
-        ftp.cwd(f'/daily-packages/{last_year}/{last_month}')
-
-        archives = ftp.nlst()
         today = date.today()
+        last_date = self.last_ted_update or self.last_update('TED')
 
         while last_date <= today:
-            self.download_archive(ftp, last_date, archives)
+
+            last_month = last_date.strftime('%m')
+            last_year = last_date.strftime('%Y')
+
+            try:
+                ftp.cwd(f'/daily-packages/{last_year}/{last_month}')
+                archives = ftp.nlst()
+                self.download_archive(ftp, last_date, archives)
+            except error_perm as e:
+                # Directory doesn't exist
+                logging.warning(e)
+                pass
 
             last_date += timedelta(1)
-
-            if last_year != last_date.strftime('%Y'):
-                last_year = last_date.strftime('%Y')
-                last_month = last_date.strftime('%m')
-                try:
-                    ftp.cwd('../../{}/{}'.format(last_year, last_month))
-                    archives = ftp.nlst()
-                except error_perm as e:
-                    logging.warning(e)
-                    pass
-            elif last_month != last_date.strftime('%m'):
-                last_month = last_date.strftime('%m')
-                try:
-                    ftp.cwd('../{}'.format(last_month))
-                    archives = ftp.nlst()
-                except error_perm as e:
-                    logging.warning(e)
-                    pass
 
         quit_or_close(ftp)
 
