@@ -37,9 +37,8 @@ class Command(BaseCommand, BaseParamsUI):
         try:
             w = UNGMWorker()
             w.parse_latest_notices(last_date)
-            new_tender_count = Tender.objects.count()
-            success_msg = '{} new UNGM tender(s) imported'.format(
-                new_tender_count - old_tender_count)
+            tenders_imported = Tender.objects.count() - old_tender_count
+            success_msg = f'{tenders_imported} new UNGM tender(s) imported'
             self.stdout.write(
                 self.style.SUCCESS(success_msg)
             )
