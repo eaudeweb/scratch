@@ -78,6 +78,11 @@ class BaseNotifyCommand(BaseCommand, BaseParamsUI):
                 email.send()
 
     def scrape_tenders(self):
+        """
+        Downloads new tender data and scrape it, using the information to
+        update existing tenders. New tenders are not created. This is done to
+        make sure we are notifying the users only about the latest information.
+        """
         tenders = self.get_tenders()
 
         ted_tenders = tenders.filter(source=dict(SOURCE_CHOICES).get('TED'))

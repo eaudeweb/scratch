@@ -47,6 +47,9 @@ class TEDWorker:
         quit_or_close(ftp)
 
     def ftp_download_latest_archives(self):
+        """
+        Download latest tender archives and save them in a local directory.
+        """
         ftp = self.ftp_login()
 
         today = date.today()
@@ -109,19 +112,27 @@ class TEDWorker:
 
                 logging.warning("Retrying")
 
-    def parse_notices(self, tenders=[], set_notified=False):
-        all_changed_tenders = []
+    def parse_notices(
+        self, tenders=None, set_notified=False
+    ) -> Tuple[Tuple[Tender, dict], int]:
+        """
+        Parse an archive file, extract all tender data from it and use it to
+        update existing tenders or create new ones.
+        """
+        if tenders is None:
+            tenders = []
+        all_updated_tenders = []
         folders = []
-        tenders_count = 0
+        new_tender_count = 0
         for archive_path in self.archives:
             folder_name = self.extract_data(archive_path, self.path)
             if folder_name:
                 folders.append(folder_name)
                 p = TEDParser(self.path, [folder_name])
-                changed_tenders, added_tenders = p.parse_notices(
+                updated_tenders, created_tenders = p.parse_notices(
                     tenders, set_notified)
-                all_changed_tenders += changed_tenders
-                tenders_count += added_tenders
+                all_updated_tenders += updated_tenders
+                new_tender_count += created_tenders
                 folder_date = folder_name[:8]
                 formatted_date = datetime.strptime(
                     folder_date, '%Y%m%d').strftime('%d/%m/%Y')
@@ -141,7 +152,7 @@ class TEDWorker:
                 logging.warning(e)
                 pass
 
-        return all_changed_tenders, tenders_count
+        return all_updated_tenders, new_tender_count
 
     @staticmethod
     def extract_data(archive_path, extract_path):
@@ -208,44 +219,54 @@ class TEDParser(object):
         self.folders = [os.path.join(path, folder) for folder in folder_names]
 
     def _parse_notice(
-        self, content, tenders, xml_file, codes, set_notified
+        self, content, tenders_to_update, xml_file, codes, set_notified
     ) -> Tuple[dict, List[dict]]:
-        soup = BeautifulSoup(content, 'html.parser')
-
-        if not tenders or self.file_in_tender_list(xml_file, tenders):
-            cpv_elements = soup.find_all('cpv_code') or soup.find_all(
-                'original_cpv'
-            )
-            cpv_codes = set([c.get('code') for c in cpv_elements])
-
-            doc_type = soup.find('td_document_type').text
-            country = soup.find('iso_country').get('value')
-            auth_type = soup.find('aa_authority_type').text
-
-            accept_notice = (
-                cpv_codes & set(self.CPV_CODES) and (
-                    doc_type in settings.TED_DOC_TYPES
-                ) and country in self.TED_COUNTRIES and (
-                    auth_type == settings.TED_AUTH_TYPE
-                )
-            )
-
-            if not accept_notice:
-                try:
-                    self.xml_files.remove(xml_file)
-                    os.remove(xml_file)
-                except ValueError:
-                    pass
-                raise StopIteration
-            else:
-                codes[xml_file] = cpv_codes
-        else:
+        """
+        :param tenders_to_update: a list of tenders to be updated. If the list
+            is empty, we update all tenders and create new ones when the tender
+            reference in the file does not correspond to any tender in the
+            database.
+        """
+        if tenders_to_update and not self.file_in_tender_list(
+                xml_file, tenders_to_update):
+            # Update mode: we only care about updating the tenders on the list,
+            # new tenders will not be created. Therefore, if the tender this
+            # file is about is not in the list, the file is irrelevant.
             try:
                 self.xml_files.remove(xml_file)
                 os.remove(xml_file)
             except ValueError:
                 pass
             raise StopIteration
+
+        soup = BeautifulSoup(content, 'html.parser')
+
+        cpv_elements = soup.find_all('cpv_code') or soup.find_all(
+            'original_cpv'
+        )
+        cpv_codes = set([c.get('code') for c in cpv_elements])
+
+        doc_type = soup.find('td_document_type').text
+        country = soup.find('iso_country').get('value')
+        auth_type = soup.find('aa_authority_type').text
+
+        accept_notice = (
+            cpv_codes & set(self.CPV_CODES) and (
+                doc_type in settings.TED_DOC_TYPES
+            ) and country in self.TED_COUNTRIES and (
+                auth_type == settings.TED_AUTH_TYPE
+            )
+        )
+
+        if not accept_notice:
+            try:
+                self.xml_files.remove(xml_file)
+                os.remove(xml_file)
+            except ValueError:
+                pass
+            raise StopIteration
+        else:
+            codes[xml_file] = cpv_codes
 
         tender = dict()
         tender['reference'] = soup.find('ted_export').get('doc_id') or ''
@@ -368,14 +389,14 @@ class TEDParser(object):
 
     @staticmethod
     def file_in_tender_list(xml_file, tenders):
-        tender_references = list(map(lambda t: t.reference, tenders))
+        tender_references = [t.reference for t in tenders]
         return os.path.basename(xml_file).replace(
             '_', '-').replace('.xml', '') in tender_references
 
     def parse_notices(self, tenders, set_notified):
         changed_tenders = []
         codes = {}
-        tenders_count = 0
+        new_tender_count = 0
 
         # self.xml_files[:] is used instead of self.xml_files because as we are
         # iterating over the list, we"re deleting it"s entries if they doesn't
@@ -397,14 +418,14 @@ class TEDParser(object):
                         self.save_award(tender, award)
 
                 if created:
-                    tenders_count += 1
+                    new_tender_count += 1
 
                 if not created and attr_changes:
                     changed_tenders.append((tender, attr_changes))
 
             os.remove(xml_file)
 
-        return changed_tenders, tenders_count
+        return changed_tenders, new_tender_count
 
     @staticmethod
     def update_contract_award_awards(awards, soup, set_notified):
@@ -499,7 +520,7 @@ class TEDParser(object):
             return award
 
     @staticmethod
-    def save_tender(tender, codes):
+    def save_tender(tender: dict, codes: list):
         old_tender = Tender.objects.filter(reference=tender['reference']).first()
         new_tender, created = Tender.objects.update_or_create(
             reference=tender['reference'],
