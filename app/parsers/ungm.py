@@ -174,7 +174,7 @@ class UNGMWorker:
         changed_tenders = []
         new_tenders = 0
         for item in parsed_tenders:
-            reference = item['tender'].pop('reference')
+            reference = item['tender'].get('reference')
             old_tender = Tender.objects.filter(reference=reference).first()
             new_tender, created = Tender.objects.update_or_create(
                 reference=reference, defaults=dict(item['tender']))

@@ -27,5 +27,11 @@ class Command(BaseCommand, BaseParamsUI):
     def handle(self, *args, **options):
         digest = options['digest']
         tenders = Tender.objects.filter(notified=False).order_by('-published')
-        if tenders:
+        tender_count = tenders.count()
+        if tender_count:
             send_tenders_email(tenders, digest)
+        self.stdout.write(
+            self.style.SUCCESS(
+                f'Sent notifications about {tender_count} tender(s).'
+            )
+        )

@@ -222,9 +222,9 @@ class SendMailTest(BaseTestCase):
 
         tender_list = soup.find('ol', {'class': 'tender-list'}).find_all('a')
         self.assertEqual(len(tender_list), 3)
-        self.assertEqual(tender_list[0]['href'], self.tender3.url)
-        self.assertEqual(tender_list[1]['href'], self.tender1.url)
-        self.assertEqual(tender_list[2]['href'], self.tender2.url)
+        email_urls = {t['href'] for t in tender_list}
+        db_urls = {self.tender1.url, self.tender2.url, self.tender3.url}
+        self.assertEqual(email_urls, db_urls)
 
     def test_deadline_notification(self):
         self.tender2 = Tender.objects.get(reference=self.tender2.reference)
