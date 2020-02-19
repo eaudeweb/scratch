@@ -24,8 +24,6 @@ def send_tenders_email(tenders, digest):
         email = build_email(subject, recipients, None, html_content)
         email.send()
 
-        tenders.update(notified=True)
-
     else:
         for tender in tenders:
             html_content = render_to_string(
@@ -40,7 +38,7 @@ def send_tenders_email(tenders, digest):
             email = build_email(subject, recipients, None, html_content)
             email.send()
 
-            set_notified(tender)
+    tenders.update(notified=True)
 
 
 def send_awards_email(awards, digest):

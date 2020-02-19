@@ -4,7 +4,10 @@ from app.models import Tender
 
 
 class Command(BaseNotifyCommand, BaseParamsUI):
-    help = 'Notifies all users about tenders which contain one or more keywords'
+    help = (
+        "Notifies all users about updates to existing tenders which contain "
+        "one or more keywords."
+    )
 
     def notification_type(self):
         return 'Keyword'

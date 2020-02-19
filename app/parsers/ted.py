@@ -114,7 +114,7 @@ class TEDWorker:
 
     def parse_notices(
         self, tenders=None, set_notified=False
-    ) -> Tuple[Tuple[Tender, dict], int]:
+    ) -> Tuple[Tuple[dict, dict], int]:
         """
         Parse an archive file, extract all tender data from it and use it to
         update existing tenders or create new ones.
@@ -123,16 +123,16 @@ class TEDWorker:
             tenders = []
         all_updated_tenders = []
         folders = []
-        new_tender_count = 0
+        total_created_tenders = 0
         for archive_path in self.archives:
             folder_name = self.extract_data(archive_path, self.path)
             if folder_name:
                 folders.append(folder_name)
                 p = TEDParser(self.path, [folder_name])
-                updated_tenders, created_tenders = p.parse_notices(
+                updated_tenders, num_created_tenders = p.parse_notices(
                     tenders, set_notified)
                 all_updated_tenders += updated_tenders
-                new_tender_count += created_tenders
+                total_created_tenders += num_created_tenders
                 folder_date = folder_name[:8]
                 formatted_date = datetime.strptime(
                     folder_date, '%Y%m%d').strftime('%d/%m/%Y')
@@ -152,7 +152,7 @@ class TEDWorker:
                 logging.warning(e)
                 pass
 
-        return all_updated_tenders, new_tender_count
+        return all_updated_tenders, total_created_tenders
 
     @staticmethod
     def extract_data(archive_path, extract_path):
@@ -383,8 +383,6 @@ class TEDParser(object):
         if tender['notice_type'] == 'Contract award notice':
             self.update_contract_award_notice_awards(awards, soup, set_notified)
 
-        tender['notified'] = set_notified
-
         return tender, awards
 
     @staticmethod
@@ -393,10 +391,12 @@ class TEDParser(object):
         return os.path.basename(xml_file).replace(
             '_', '-').replace('.xml', '') in tender_references
 
-    def parse_notices(self, tenders, set_notified):
+    def parse_notices(
+        self, tenders: List[dict], set_notified: bool
+    ) -> Tuple[List[Tuple[dict, dict]], int]:
         changed_tenders = []
         codes = {}
-        new_tender_count = 0
+        num_created_tenders = 0
 
         # self.xml_files[:] is used instead of self.xml_files because as we are
         # iterating over the list, we"re deleting it"s entries if they doesn't
@@ -406,26 +406,28 @@ class TEDParser(object):
         for xml_file in self.xml_files[:]:
             with open(xml_file, 'r') as f:
                 try:
-                    tender, awards = self._parse_notice(
+                    tender_dict, awards = self._parse_notice(
                         f.read(), tenders, xml_file, codes, set_notified)
                 except StopIteration:
                     continue
 
-                created, attr_changes = self.save_tender(tender, codes.get(xml_file, []))
+                created, attr_changes = self.save_tender(
+                    tender_dict, codes.get(xml_file, []))
 
                 if awards:
-                    for award in awards:
-                        self.save_award(tender, award)
+                    for award_dict in awards:
+                        self.save_award(tender_dict, award_dict)
 
                 if created:
-                    new_tender_count += 1
+                    num_created_tenders += 1
 
                 if not created and attr_changes:
-                    changed_tenders.append((tender, attr_changes))
+                    changed_tenders.append((tender_dict, attr_changes))
 
             os.remove(xml_file)
 
-        return changed_tenders, new_tender_count
+        # Only the changed tender info is returned, the created ones are not
+        return changed_tenders, num_created_tenders
 
     @staticmethod
     def update_contract_award_awards(awards, soup, set_notified):
@@ -502,37 +504,38 @@ class TEDParser(object):
                     awards.append(award)
 
     @staticmethod
-    def save_award(tender_fields, award_fields):
-        reference = tender_fields['reference']
+    def save_award(tender_dict, award_dict) -> Award:
+        reference = tender_dict['reference']
         tender_entry = Tender.objects.filter(reference=reference).first()
 
         if tender_entry:
-            vendors = award_fields.pop('vendors')
+            vendors = award_dict.pop('vendors')
             vendor_objects = []
             for vendor in vendors:
                 vendor_object, _ = Vendor.objects.get_or_create(name=vendor)
                 vendor_objects.append(vendor_object)
-            award, created = Award.objects.get_or_create(tender=tender_entry, defaults=award_fields)
+            award, created = Award.objects.get_or_create(
+                tender=tender_entry, defaults=award_dict)
             if not created:
-                award.value += award_fields['value']
+                award.value += award_dict['value']
                 award.save()
             award.vendors.add(*vendor_objects)
             return award
 
     @staticmethod
-    def save_tender(tender: dict, codes: list):
-        old_tender = Tender.objects.filter(reference=tender['reference']).first()
+    def save_tender(tender_dict, codes) -> Tuple[bool, dict]:
+        old_tender = Tender.objects.filter(
+            reference=tender_dict['reference']).first()
         new_tender, created = Tender.objects.update_or_create(
-            reference=tender['reference'],
-            defaults=dict(tender, **{'cpv_codes': ', '.join(codes)}),
+            reference=tender_dict['reference'],
+            defaults=dict(tender_dict, **{'cpv_codes': ', '.join(codes)}),
         )
 
         attr_changes = {}
-        for attr, value in [(k, v) for (k, v) in tender.items()]:
+        for attr, value in [(k, v) for (k, v) in tender_dict.items()]:
             old_value = getattr(old_tender, str(attr), None)
             if str(value) != str(old_value):
                 attr_changes.update({attr: (old_value, value)})
-
         return created, attr_changes
 
 
