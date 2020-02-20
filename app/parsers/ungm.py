@@ -65,6 +65,10 @@ class UNGMWorker:
         soup = BeautifulSoup(html, 'html.parser')
         tenders = soup.select('div.tableRow.dataRow')
 
+        if not tenders:
+            raise Exception(
+                'UNGM scraping failed. Cannot find tenders in HTML.')
+
         endpoint = settings.UNGM_ENDPOINT_URI
 
         tenders_list = [
