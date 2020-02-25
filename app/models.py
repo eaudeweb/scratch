@@ -13,6 +13,7 @@ import re
 
 from tika import parser
 
+
 SOURCE_CHOICES = [
     ('UNGM', 'UNGM'),
     ('TED', 'TED'),
@@ -21,7 +22,15 @@ SOURCE_CHOICES = [
 fields = [r'title', r'description']
 
 
-class Keyword(models.Model):
+class BaseTimedModel(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True
+
+
+class Keyword(BaseTimedModel):
     value = LowerCharField(max_length=50, unique=True)
 
     def __str__(self):
@@ -38,7 +47,7 @@ def keywords_in(text):
     return list(set(keywords) & set(re.split(r"\W+", str(text).lower())))
 
 
-class Tender(models.Model):
+class Tender(BaseTimedModel):
     reference = models.CharField(unique=True, max_length=255)
     notice_type = models.CharField(null=True, max_length=255)
     title = models.CharField(null=True, max_length=255)
@@ -104,14 +113,14 @@ class Tender(models.Model):
         self.keywords.set(keywords)
 
 
-class Vendor(models.Model):
+class Vendor(BaseTimedModel):
     name = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return '{}'.format(self.name)
 
 
-class Award(models.Model):
+class Award(BaseTimedModel):
     value = models.FloatField(null=True)
     currency = models.CharField(null=True, max_length=3)
     award_date = models.DateField()
@@ -133,7 +142,7 @@ class Award(models.Model):
         return str(self.value)
 
 
-class TenderDocument(models.Model):
+class TenderDocument(BaseTimedModel):
     name = models.CharField(null=True, max_length=255)
     download_url = models.CharField(max_length=255)
     tender = models.ForeignKey(Tender, on_delete=models.CASCADE)
@@ -151,7 +160,7 @@ class TenderDocument(models.Model):
         unique_together = ('name', 'tender',)
 
 
-class WorkerLog(models.Model):
+class WorkerLog(BaseTimedModel):
     update = models.DateField()
     source = models.CharField(max_length=10, choices=SOURCE_CHOICES)
     tenders_count = models.IntegerField()
@@ -160,8 +169,7 @@ class WorkerLog(models.Model):
         return '{}'.format(self.update)
 
 
-class Email(models.Model):
-    date = models.DateTimeField(auto_now_add=True)
+class Email(BaseTimedModel):
     subject = models.CharField(max_length=255, blank=True, null=False)
     from_email = models.CharField(max_length=255)
     to = ArrayField(models.CharField(max_length=255))
@@ -186,7 +194,7 @@ class Email(models.Model):
         return "Email '%s' sent." % self.subject
 
 
-class EmailAddress(models.Model):
+class EmailAddress(BaseTimedModel):
     email = models.EmailField(blank=True, null=True)
     notify = models.BooleanField(default=True)
 
@@ -212,7 +220,7 @@ def set_notified(tender_or_award):
     tender_or_award.save()
 
 
-class UNSPSCCode(models.Model):
+class UNSPSCCode(BaseTimedModel):
     id = models.CharField(max_length=1024, primary_key=True)
     id_ungm = models.CharField(max_length=1024)
     name = models.CharField(max_length=1024)
@@ -221,18 +229,18 @@ class UNSPSCCode(models.Model):
         return '{}'.format(self.id)
 
 
-class CPVCode(models.Model):
+class CPVCode(BaseTimedModel):
     code = models.CharField(max_length=1024, primary_key=True)
 
     def __str__(self):
         return '{}'.format(self.code)
 
 
-class TedCountry(models.Model):
+class TedCountry(BaseTimedModel):
     name = models.CharField(max_length=1024, primary_key=True)
 
 
-class Task(models.Model):
+class Task(BaseTimedModel):
     id = models.CharField(max_length=32, primary_key=True)
     args = models.CharField(max_length=255, null=True, blank=True)
     kwargs = models.CharField(max_length=255, null=True, blank=True)
