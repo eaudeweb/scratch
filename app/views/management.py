@@ -26,7 +26,7 @@ from django_q.models import Success, Failure
 
 from app.forms import SearchForm
 from app.models import (
-    CPVCode, UNSPSCCode, Notification,
+    CPVCode, UNSPSCCode, EmailAddress,
     Task, Tender, Award, WorkerLog
 )
 
@@ -191,7 +191,7 @@ class OverviewPageView(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
 
         context["deadline_notifications"] = settings.DEADLINE_NOTIFICATIONS
-        context["emails"] = Notification.objects.all()
+        context["emails"] = EmailAddress.objects.filter(notify=True)
         context["worker_logs"] = WorkerLog.objects.order_by('-update')
         context["unspscs_codes"] = UNSPSCCode.objects.all()
         context["cpv_codes"] = CPVCode.objects.all()

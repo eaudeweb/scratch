@@ -2,12 +2,12 @@ from django.conf import settings
 from django.template.loader import render_to_string
 from getenv import env
 
-from app.models import Notification, Email, set_notified
+from app.models import EmailAddress, Email, set_notified
 
 
 def send_tenders_email(tenders, digest):
     subject = 'New tenders available' if digest else 'New tender available'
-    notifications = Notification.objects.all()
+    notifications = EmailAddress.objects.filter(notify=True)
     recipients = [notification.email for notification in notifications]
     title = 'New Tenders'
 
@@ -43,7 +43,7 @@ def send_tenders_email(tenders, digest):
 
 def send_awards_email(awards, digest):
     subject = 'New award granted' if digest else 'New awards granted'
-    notifications = Notification.objects.all()
+    notifications = EmailAddress.objects.filter(notify=True)
     recipients = [notification.email for notification in notifications]
     title = 'New Contract Awards'
 
@@ -81,7 +81,7 @@ def send_awards_email(awards, digest):
 
 def send_error_email(error):
     subject = 'An error occurred while parsing new tenders'
-    notifications = Notification.objects.all()
+    notifications = EmailAddress.objects.filter(notify=True)
     recipients = [notification.email for notification in notifications]
     title = 'An error occurred while parsing new tenders'
 

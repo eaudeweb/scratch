@@ -186,11 +186,15 @@ class Email(models.Model):
         return "Email '%s' sent." % self.subject
 
 
-class Notification(models.Model):
+class EmailAddress(models.Model):
     email = models.EmailField(blank=True, null=True)
+    notify = models.BooleanField(default=True)
 
     def __str__(self):
         return str(self.email)
+
+    class Meta:
+        verbose_name_plural = "email addresses"
 
 
 def last_update(source):
