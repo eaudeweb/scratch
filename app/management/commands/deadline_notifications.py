@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 from datetime import timedelta
-from app.models import Tender, Notification
+from app.models import Tender, EmailAddress
 from django.template.loader import render_to_string
 from django.conf import settings
 from app.notifications import build_email
@@ -29,7 +29,7 @@ class Command(BaseCommand, BaseParamsUI):
     @staticmethod
     def send_deadline_mail(tender, days_remained):
         subject = 'Deadline alert'
-        notifications = Notification.objects.all()
+        notifications = EmailAddress.objects.filter(notify=True)
         recipients = [notification.email for notification in notifications]
 
         html_content = render_to_string(

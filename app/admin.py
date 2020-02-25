@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import (Tender, TenderDocument, Award, WorkerLog, Notification,
+from .models import (Tender, TenderDocument, Award, WorkerLog, EmailAddress,
                      UNSPSCCode, CPVCode, TedCountry, Task, Keyword, Vendor)
 
 
@@ -28,12 +28,13 @@ class TenderDocumentAdmin(admin.ModelAdmin):
 class AwardAdmin(admin.ModelAdmin):
     list_display = [
         'value', 'currency', 'award_date', 'notified', 'get_vendors',
-        'get_tender_title', 'get_tender_organization', 'get_tender_source', 'get_tender_deadline',
+        'get_tender_title', 'get_tender_organization', 'get_tender_source',
+        'get_tender_deadline',
     ]
 
     search_fields = ['vendors__name', 'tender__title', 'award_date']
     list_filter = (
-        'vendors','tender__title', 'tender__deadline', 'tender__source',
+        'vendors', 'tender__title', 'tender__deadline', 'tender__source',
         'tender__organization', 'currency', 'award_date',
     )
 
@@ -68,9 +69,18 @@ class WorkerLogAdmin(admin.ModelAdmin):
     search_fields = ['update']
 
 
-class NotificationAdmin(admin.ModelAdmin):
-    list_display = ['email']
+def turn_notifications_off(modeladmin, request, queryset):
+    queryset.update(notify=False)
+
+
+turn_notifications_off.short_description = 'Turn notifications off'
+
+
+class EmailAddressAdmin(admin.ModelAdmin):
+    list_display = ['email', 'notify']
+    list_filter = ['notify']
     search_fields = ['email']
+    actions = [turn_notifications_off]
 
 
 class UNSPSCCodeAdmin(admin.ModelAdmin):
@@ -108,7 +118,7 @@ admin.site.register(Tender, TenderAdmin)
 admin.site.register(TenderDocument, TenderDocumentAdmin)
 admin.site.register(Award, AwardAdmin)
 admin.site.register(WorkerLog, WorkerLogAdmin)
-admin.site.register(Notification, NotificationAdmin)
+admin.site.register(EmailAddress, EmailAddressAdmin)
 admin.site.register(UNSPSCCode, UNSPSCCodeAdmin)
 admin.site.register(CPVCode, CPVCodeAdmin)
 admin.site.register(TedCountry, TedCountryAdmin)
