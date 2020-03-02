@@ -82,11 +82,18 @@ def turn_notifications_off(modeladmin, request, queryset):
 turn_notifications_off.short_description = 'Turn notifications off'
 
 
+def turn_notifications_on(modeladmin, request, queryset):
+    queryset.update(notify=True)
+
+
+turn_notifications_on.short_description = 'Turn notifications on'
+
+
 class EmailAddressAdmin(admin.ModelAdmin):
     list_display = ['email', 'notify']
     list_filter = ['notify']
     search_fields = ['email']
-    actions = [turn_notifications_off]
+    actions = [turn_notifications_off, turn_notifications_on]
 
 
 class UNSPSCCodeAdmin(admin.ModelAdmin):
