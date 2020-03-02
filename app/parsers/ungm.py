@@ -109,6 +109,8 @@ class UNGMWorker:
             soup, "highlighted", "span", True)
 
         reference = UNGMWorker.find_by_span(soup, 'Reference:')
+        if not reference:
+            raise Exception('Parsed UNGM tender has no reference.')
         published = UNGMWorker.find_by_span(soup, 'Published on:')
         deadline = UNGMWorker.find_by_span(soup, 'Deadline on:')
 
