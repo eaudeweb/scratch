@@ -45,7 +45,7 @@ class Command(BaseCommand, BaseParamsUI):
             return success_msg
         except Exception as error:
             self.stdout.write(
-                self.style.ERROR('TED tenders update failed: {}'.format(error))
+                self.style.ERROR('UNGM tenders update failed: {}'.format(error))
             )
             send_error_email(str(error))
             raise

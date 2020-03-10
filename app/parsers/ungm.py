@@ -1,4 +1,5 @@
 from datetime import date, datetime, timedelta
+import logging
 import re
 import requests
 from tempfile import TemporaryFile
@@ -16,12 +17,17 @@ class UNGMWorker:
     requester = get_request_class(public=True)
 
     def parse_tenders(self, tenders):
+        """
+        Args:
+            tenders: QuerySet
+        """
         codes = UNSPSCCode.objects.all()
         parsed_tenders = []
         for tender in tenders:
-            text = self.requester.get_request(getattr(tender, 'url'))
-            parsed_tenders.append(
-                self.parse_ungm_notice(text, getattr(tender, 'url'), codes))
+            html = self.requester.get_request(tender.url)
+            parsed_tender = self.parse_ungm_notice(html, tender.url, codes)
+            if parsed_tender:
+                parsed_tenders.append(parsed_tender)
         return UNGMWorker.update_ungm_tenders(parsed_tenders)
 
     def parse_latest_notices(self, last_date):
@@ -39,9 +45,9 @@ class UNGMWorker:
                 break
             parsed_tenders = []
             for tender in extracted_tenders:
-                text = self.requester.get_request(tender['url'])
+                html = self.requester.get_request(tender['url'])
                 parsed_tender = self.parse_ungm_notice(
-                    text, tender['url'], codes)
+                    html, tender['url'], codes)
                 if parsed_tender:
                     parsed_tenders.append(parsed_tender)
             ungm_tenders, added_tenders = UNGMWorker.update_ungm_tenders(
@@ -65,14 +71,11 @@ class UNGMWorker:
         soup = BeautifulSoup(html, 'html.parser')
         tenders = soup.select('div.tableRow.dataRow')
 
-        if not tenders:
-            raise Exception(
-                'UNGM scraping failed. Cannot find tenders in HTML.')
-
         endpoint = settings.UNGM_ENDPOINT_URI
 
-        tenders_list = [
-            {
+        tenders_list = []
+        for tender in tenders:
+            tender_dict = {
                 'published': UNGMWorker.parse_date(
                     tender.contents[7].span.string.strip(), '%d-%b-%Y'),
                 'reference': tender.contents[13].span.string.strip(),
@@ -81,13 +84,27 @@ class UNGMWorker:
                     if tender.contents[3].a['href'].strip() else ''
                 ),
             }
-            for tender in tenders
-        ]
+            if tender_dict['url'] == 'http://google.com':
+                # This is a bug that should be investigated
+                logging.error('Invalid tender.', exc_info=True)
+            else:
+                tenders_list.append(tender_dict)
 
         return tenders_list
 
     @staticmethod
     def parse_ungm_notice(html, url, codes):
+        """
+        Args:
+            html: A string containing the HTML returned when accessing `url`
+            ulr: A string containing the URL where details about a specific
+                tender can be found.
+            codes: A list of UNSPSC codes. In principle it should be
+                UNSPSCCode.objects.all().
+        Returns:
+            A dictionary representing a tender and its documents, or None if
+            the tender is invalid.
+        """
         soup = BeautifulSoup(html, 'html.parser')
         documents = UNGMWorker.find_by_class(soup, "lnkShowDocument", "a")
         description = UNGMWorker.find_by_class(
@@ -109,8 +126,6 @@ class UNGMWorker:
             soup, "highlighted", "span", True)
 
         reference = UNGMWorker.find_by_span(soup, 'Reference:')
-        if not reference:
-            raise Exception('Parsed UNGM tender has no reference.')
         published = UNGMWorker.find_by_span(soup, 'Published on:')
         deadline = UNGMWorker.find_by_span(soup, 'Deadline on:')
 
@@ -141,6 +156,11 @@ class UNGMWorker:
             'description': description,
             'unspsc_codes': ', '.join(unspsc_codes),
         }
+
+        if not tender['reference']:
+            logging.error(
+                'Parsed UNGM tender has no reference.', exc_info=True)
+            return None
 
         tender_item = {
             'tender': tender,
@@ -199,7 +219,7 @@ class UNGMWorker:
             for doc in item['documents']:
                 try:
                     tender_doc = TenderDocument.objects.get(
-                        tender=old_tender, name=doc['name'])
+                        tender=new_tender, name=doc['name'])
 
                     for k, v in doc.items():
                         old_value = getattr(tender_doc, k)

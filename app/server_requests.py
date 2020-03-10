@@ -117,13 +117,14 @@ class UNGMrequester(Requester):
     def request(self, url, last_date, index):
         # Original
         for i in range(0, 3):
-            resp = self.post_request(url, url + '/Search', self.get_data(url, last_date, index))
+            resp = self.post_request(
+                url, url + '/Search', self.get_data(url, last_date, index))
             if resp:
                 return resp
             sleep(randint(10, 15))
 
-    def post_request(self, get_url, post_url, data, headers=HEADERS,
-                     content_type=None):
+    def post_request(
+            self, get_url, post_url, data, headers=HEADERS, content_type=None):
         """
         AJAX-like POST request. Does a GET initially to receive cookies that
         are used to the subsequent POST request.
