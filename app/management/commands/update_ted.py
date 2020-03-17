@@ -33,6 +33,9 @@ class Command(BaseCommand, BaseParamsUI):
         )
 
     def handle(self, *args, **options):
+        self.stdout.write(
+            self.style.SUCCESS('Importing new TED tenders...')
+        )
         try:
             last_ted_update = Command.days_ago(int(options['days_ago']))
         except TypeError:

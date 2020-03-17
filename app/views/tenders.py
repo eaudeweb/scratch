@@ -42,7 +42,10 @@ class TendersListView(LoginRequiredMixin, ListView):
             keyword = self.request.GET.get("keyword")
             notice_type = self.request.GET.get("type")
             seen = self.request.GET.get("seen")
-            reset = any([source, organization, status, favourite, keyword, notice_type, seen])
+            reset = any([
+                source, organization, status, favourite, keyword, notice_type,
+                seen
+            ])
             form = TendersFilter(
                 initial={
                     "organization": organization,
@@ -57,10 +60,14 @@ class TendersListView(LoginRequiredMixin, ListView):
         else:
             form = TendersFilter()
 
-        ungm_published_today |= (self.request.GET.get("ungm_published_today") == 'True')
-        ungm_deadline_today |= (self.request.GET.get("ungm_deadline_today") == 'True')
-        ted_published_today |= (self.request.GET.get("ted_published_today") == 'True')
-        ted_deadline_today |= (self.request.GET.get("ted_deadline_today") == 'True')
+        ungm_published_today |= (
+            self.request.GET.get("ungm_published_today") == 'True')
+        ungm_deadline_today |= (
+            self.request.GET.get("ungm_deadline_today") == 'True')
+        ted_published_today |= (
+            self.request.GET.get("ted_published_today") == 'True')
+        ted_deadline_today |= (
+            self.request.GET.get("ted_deadline_today") == 'True')
 
         context["form"] = form
         context["reset"] = reset
@@ -81,7 +88,10 @@ class TenderListAjaxView(BaseAjaxListingView):
         ('has_keywords', 'has_keywords'),
         ('notice_type', 'notice_type'),
     ]
-    order_fields = ['title', 'source', 'organization', 'deadline', 'published', 'notice_type']
+    order_fields = [
+        'title', 'source', 'organization', 'deadline', 'published',
+        'notice_type'
+    ]
     case_sensitive_fields = ['title', 'source', 'organization', 'notice_type']
     model = Tender
 
@@ -92,9 +102,12 @@ class TenderListAjaxView(BaseAjaxListingView):
                 'url': reverse('tender_detail_view', kwargs={'pk': tender.id}),
                 'source': tender.source,
                 'organization': tender.organization,
-                'deadline': 'Not specified' if not tender.deadline else tender.deadline.strftime("%m/%d/%Y, %H:%M"),
-                'published': 'Not specified' if not tender.published else tender.published.strftime("%m/%d/%Y"),
-                'notice_type': render_to_string('tenders_buttons.html', {'tender': tender})
+                'deadline': 'Not specified' if not tender.deadline else (
+                    tender.deadline.strftime("%m/%d/%Y, %H:%M")),
+                'published': 'Not specified' if not tender.published else (
+                    tender.published.strftime("%m/%d/%Y")),
+                'notice_type': render_to_string(
+                    'tenders_buttons.html', {'tender': tender})
             } for tender in object_list
         ]
         return data
@@ -121,9 +134,11 @@ class TenderListAjaxView(BaseAjaxListingView):
             awards = Award.objects.all()
             award_refs = [award.tender.reference for award in awards]
             if status == "open":
-                tenders = tenders.exclude(Q(reference__in=award_refs) | Q(deadline__lt=date.today()))
+                tenders = tenders.exclude(
+                    Q(reference__in=award_refs) | Q(deadline__lt=date.today()))
             else:
-                tenders = tenders.filter(Q(reference__in=award_refs) | Q(deadline__lt=date.today()))
+                tenders = tenders.filter(
+                    Q(reference__in=award_refs) | Q(deadline__lt=date.today()))
 
         seen = self.request.GET.get("seen")
         if seen:
@@ -180,7 +195,8 @@ class TenderDetailView(LoginRequiredMixin, DetailView):
         if deadline and deadline >= datetime.now(timezone.utc):
             deadline -= datetime.now(timezone.utc)
             context["deadline_in"] = self.deadline_in_string(deadline)
-        context["documents_set"] = TenderDocument.objects.filter(tender=self.object)
+        context["documents_set"] = TenderDocument.objects.filter(
+            tender=self.object)
         return context
 
 
@@ -234,7 +250,8 @@ class TenderArchiveAjaxView(TenderListAjaxView):
 
     def get_objects(self):
         current_time = datetime.now(timezone.utc)
-        tenders = Tender.objects.filter(deadline__lt=current_time, deadline__isnull=False)
+        tenders = Tender.objects.filter(
+            deadline__lt=current_time, deadline__isnull=False)
         return tenders
 
 
@@ -265,9 +282,13 @@ class SearchView(LoginRequiredMixin, TemplateView):
                 ]
             )
         )
-        tender_references = [o.reference for o in result_tender_documents if o.reference is not None]
+        tender_references = [
+            o.reference
+            for o in result_tender_documents if o.reference is not None
+        ]
 
-        # Find the tenders that match the input string and the tender ids of the tender documents
+        # Find the tenders that match the input string and the tender ids of
+        # the tender documents
         result_tenders = TenderDoc.search().query(
             elasticQ(
                 "multi_match",

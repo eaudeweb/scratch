@@ -1,7 +1,8 @@
-from datetime import date, datetime, timedelta
 import logging
 import re
 import requests
+
+from datetime import date, datetime, timedelta
 from tempfile import TemporaryFile
 
 from bs4 import BeautifulSoup
@@ -21,17 +22,9 @@ class UNGMWorker:
         Args:
             tenders: QuerySet
         """
-        codes = UNSPSCCode.objects.all()
-        parsed_tenders = []
-        for tender in tenders:
-            html = self.requester.get_request(tender.url)
-            parsed_tender = self.parse_ungm_notice(html, tender.url, codes)
-            if parsed_tender:
-                parsed_tenders.append(parsed_tender)
-        return UNGMWorker.update_ungm_tenders(parsed_tenders)
+        return UNGMWorker.update_ungm_tenders(self.parsed_tenders(tenders))
 
     def parse_latest_notices(self, last_date):
-        codes = UNSPSCCode.objects.all()
         last_date = last_date.strftime('%d-%b-%Y')
         page_index = 0
         tenders_count = 0
@@ -43,15 +36,8 @@ class UNGMWorker:
                 requested_html_tenders)
             if not len(extracted_tenders):
                 break
-            parsed_tenders = []
-            for tender in extracted_tenders:
-                html = self.requester.get_request(tender['url'])
-                parsed_tender = self.parse_ungm_notice(
-                    html, tender['url'], codes)
-                if parsed_tender:
-                    parsed_tenders.append(parsed_tender)
             ungm_tenders, added_tenders = UNGMWorker.update_ungm_tenders(
-                parsed_tenders)
+                self.parsed_tenders(extracted_tenders))
             tenders_count += added_tenders
 
         WorkerLog.objects.create(
@@ -175,6 +161,18 @@ class UNGMWorker:
         }
 
         return tender_item
+    
+    def parsed_tenders(self, tenders):
+        codes = UNSPSCCode.objects.all()
+        for tender in tenders:
+            try:
+                url = tender.url
+            except AttributeError:
+                url = tender['url']
+            html = self.requester.get_request(url)
+            parsed_tender = self.parse_ungm_notice(html, url, codes)
+            if parsed_tender:
+                yield parsed_tender
 
     @staticmethod
     def find_by_span(soup, span):

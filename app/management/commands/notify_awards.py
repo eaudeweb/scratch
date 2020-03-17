@@ -25,7 +25,15 @@ class Command(BaseCommand, BaseParamsUI):
         )
 
     def handle(self, *args, **options):
+        self.stdout.write(
+            self.style.SUCCESS('Sending notifications about awards...')
+        )
         digest = options['digest']
         awards = Award.objects.filter(notified=False).order_by('-award_date')
         if awards:
             send_awards_email(awards, digest)
+        self.stdout.write(
+            self.style.SUCCESS(
+                f'Sent notifications about {awards.count()} awards...'
+            )
+        )

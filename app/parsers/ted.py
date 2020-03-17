@@ -92,25 +92,9 @@ class TEDWorker:
             if not os.path.exists(self.path):
                 os.makedirs(self.path)
             file_path = os.path.join(self.path, archive_name)
-            count = 0
-            while True:
-                if not os.path.exists(file_path) or count >= 5:
-                    if count >= 5:
-                        try:
-                            ftp = self.ftp_login()
-                            os.remove(file_path)
-                        except OSError as e:
-                            logging.warning(e)
-                    with open(file_path, "wb") as f:
-                        ftp.retrbinary("RETR %s" % archive_name, f.write)
-                    self.archives.append(file_path)
-                    break
-                logging.warning(
-                    f"File already downloaded, waiting 30 seconds: {file_path}")
-                count += 1
-                time.sleep(30 * count)
-
-                logging.warning("Retrying")
+            with open(file_path, "wb") as f:
+                ftp.retrbinary("RETR %s" % archive_name, f.write)
+            self.archives.append(file_path)
 
     def parse_notices(
         self, tenders=None, set_notified=False

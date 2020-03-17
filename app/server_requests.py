@@ -93,9 +93,11 @@ class Requester(object):
             return None
 
     def request_tenders_list(self, last_date, index):
+        """ Returns HTML page with a list of tenders """
         return self.request(TENDERS_ENDPOINT_URI, last_date, index)
 
     def request_awards_list(self):
+        """ Returns HTML page with a list of awards """
         return self.request(WINNERS_ENDPOINT_URI)
 
 
@@ -115,12 +117,11 @@ class UNGMrequester(Requester):
         return json.dumps(payload)
 
     def request(self, url, last_date, index):
-        # Original
         for i in range(0, 3):
-            resp = self.post_request(
+            html = self.post_request(
                 url, url + '/Search', self.get_data(url, last_date, index))
-            if resp:
-                return resp
+            if html:
+                return html
             sleep(randint(10, 15))
 
     def post_request(
@@ -128,6 +129,8 @@ class UNGMrequester(Requester):
         """
         AJAX-like POST request. Does a GET initially to receive cookies that
         are used to the subsequent POST request.
+
+        Returns HTML, NOT Response object.
         """
         try:
             resp = requests.get(get_url)
