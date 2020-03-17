@@ -1,3 +1,4 @@
+
 from app.models import Tender
 from datetime import datetime, timedelta
 from app.parsers.ungm import UNGMWorker
@@ -22,7 +23,9 @@ class Command(BaseCommand, BaseParamsUI):
         ]
 
     def handle(self, *args, **kwargs):
-
+        self.stdout.write(
+            self.style.SUCCESS('Importing new UNGM tenders...')
+        )
         old_tender_count = Tender.objects.count()
         if kwargs['days_ago']:
             days_ago = kwargs['days_ago']

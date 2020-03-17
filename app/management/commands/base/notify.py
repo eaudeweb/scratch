@@ -36,6 +36,12 @@ class BaseNotifyCommand(BaseCommand, BaseParamsUI):
         )
 
     def handle(self, *args, **options):
+        self.stdout.write(
+            self.style.SUCCESS(
+                f'Sending notifications about {self.notification_type()} '
+                f'tender updates...'
+            )
+        )
         digest = options['digest']
         changed_tenders = self.scrape_tenders()
 
@@ -44,7 +50,8 @@ class BaseNotifyCommand(BaseCommand, BaseParamsUI):
                 changed_tenders, digest, self.notification_type())
         self.stdout.write(
             self.style.SUCCESS(
-                f'Sent notifications about {changed_tenders.count()} tender(s).'
+                f'Sent notifications about {changed_tenders.count()} '
+                f'tender(s).'
             )
         )
 
