@@ -36,6 +36,8 @@ class BaseNotifyCommand(BaseCommand, BaseParamsUI):
         )
 
     def handle(self, *args, **options):
+        # TODO: Investigate why this is not printed to the console in the case
+        # of notify_keywords
         self.stdout.write(
             self.style.SUCCESS(
                 f'Sending notifications about {self.notification_type()} '
@@ -111,12 +113,22 @@ class BaseNotifyCommand(BaseCommand, BaseParamsUI):
 
         changed_ted_tenders = []
         if ted_tenders.exists():
+            self.stdout.write(
+                self.style.SUCCESS(
+                    f'Scraping {ted_tenders.count()} TED tenders...'
+                )
+            )
             w = TEDWorker()
             w.ftp_download_tender_archive(ted_tenders)
             changed_ted_tenders, _ = w.parse_notices(ted_tenders)
 
         changed_ungm_tenders = []
         if ungm_tenders.exists():
+            self.stdout.write(
+                self.style.SUCCESS(
+                    f'Scraping {ungm_tenders.count()} UNGM tenders...'
+                )
+            )
             w = UNGMWorker()
             changed_ungm_tenders, _ = w.parse_tenders(ungm_tenders)
         return Tender.objects.filter(
