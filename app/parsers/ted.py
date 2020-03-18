@@ -35,14 +35,21 @@ class TEDWorker:
 
     def ftp_download_tender_archive(self, tenders):
         ftp = self.ftp_login()
-
+        tender_count = tenders.count()
+        downloaded = 0
         for tender in tenders:
-            if tender.published:
-                ftp_path = tender.published.strftime('%Y/%m')
-                ftp.cwd(f'/daily-packages/{ftp_path}')
-                archives = ftp.nlst()
-
+            ftp_path = tender.published.strftime('%Y/%m')
+            ftp.cwd(f'/daily-packages/{ftp_path}')
+            archives = ftp.nlst()
+            try:
                 self.download_archive(ftp, tender.published, archives)
+                downloaded += 1
+                logging.warning(
+                    f"Downloaded {downloaded} out of "
+                    f"{tender_count} tender archives."
+                )
+            except Exception as e:
+                logging.error(e, exc_info=True)
 
         quit_or_close(ftp)
 
