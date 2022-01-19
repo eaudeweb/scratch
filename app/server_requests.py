@@ -55,7 +55,7 @@ PAYLOAD = {
 }
 
 
-HEADERS = {
+POST_HEADERS = {
     'Accept': '*/*',
     'Accept-Encoding': 'gzip, deflate',
     'Accept-Language': 'en-US,en;q=0.5',
@@ -65,6 +65,12 @@ HEADERS = {
     ' Gecko/20100101 Firefox/31.0',
     'X-Requested-With': 'XMLHttpRequest',
 }
+
+GET_HEADERS = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
+    'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36'
+}
+
 
 UNSPSC_CODES = UNSPSCCode.objects.values_list("id", flat=True)
 
@@ -77,7 +83,7 @@ class Requester(object):
 
     def get_request(self, url):
         try:
-            response = requests.get(url)
+            response = requests.get(url, headers=GET_HEADERS)
         except requests.exceptions.ConnectionError:
             return None
 
@@ -125,7 +131,7 @@ class UNGMrequester(Requester):
             sleep(randint(10, 15))
 
     def post_request(
-            self, get_url, post_url, data, headers=HEADERS, content_type=None):
+            self, get_url, post_url, data, headers=POST_HEADERS, content_type=None):
         """
         AJAX-like POST request. Does a GET initially to receive cookies that
         are used to the subsequent POST request.
@@ -133,7 +139,7 @@ class UNGMrequester(Requester):
         Returns HTML, NOT Response object.
         """
         try:
-            resp = requests.get(get_url)
+            resp = requests.get(get_url, headers=GET_HEADERS)
         except requests.exceptions.ConnectionError:
             return None
 

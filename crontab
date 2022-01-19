@@ -1,2 +1,2 @@
-0 8 * * * python /var/local/scratch/manage.py update_ungm; python /var/local/scratch/manage.py update_ted  --days_ago 2; python /var/local/scratch/manage.py notify_tenders --digest; python /var/local/scratch/manage.py notify_favorites --digest; python /var/local/scratch/manage.py notify_keywords --digest
+0 8 * * * python /var/local/scratch/manage.py update_ungm --days_ago 2; python /var/local/scratch/manage.py update_ted  --days_ago 2; python /var/local/scratch/manage.py notify_tenders --digest; python /var/local/scratch/manage.py notify_favorites --digest; python /var/local/scratch/manage.py notify_keywords --digest
 5 8 * * 1 python /var/local/scratch/manage.py notify_awards --digest
