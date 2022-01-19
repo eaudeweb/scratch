@@ -4,6 +4,7 @@ ARG REQFILE=requirements-dep.txt
 ENV APP_HOME=/var/local/scratch
 
 RUN apk add --no-cache --update gcc tzdata postgresql-dev libc-dev linux-headers openldap-dev
+RUN ln /usr/lib/libldap.so /usr/lib/libldap_r.so
 
 RUN mkdir -p $APP_HOME
 
