@@ -8,7 +8,7 @@
 
         git clone git@github.com:eaudeweb/scratch.git
 
-2. Copy docker example files:
+1. Copy docker example files:
 
         cd scratch/
         cp docker-compose.override.yml.example docker-compose.override.yml
@@ -17,25 +17,24 @@
         cp docker/redis.env.example docker/redis.env
         cp docker/tika.env.example docker/tika.env
 
-  > NOTE: LDAP variables in `app.env` must be configured manually
-
-3. Create the stack and start it:
+    > NOTE: LDAP variables in `app.env` must be configured manually
+1. Create the stack and start it:
 
         docker-compose up -d
 
-4. Verify if the containers were created:
+1. Verify if the containers were created:
 
         docker-compose ps
 
-5. Go into application container:
+1. Go into application container:
 
         docker exec -it scratch.app sh
 
-6. Run migrations:
+1. Run migrations:
     ```
     python manage.py migrate
     ```
-7. Run server:
+1. Run server:
     ```commandline
     python manage.py runserver 0.0.0.0:8000
     ```
