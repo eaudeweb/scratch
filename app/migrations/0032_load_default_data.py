@@ -3,10 +3,11 @@
 from django.db import migrations
 import json
 
+fixtures_dir = "./app/fixtures/"
 def add_cpv_codes(apps, schema_editor):
     CPVCode = apps.get_model("app", "CPVCode")
     db_alias = schema_editor.connection.alias
-    with open('/var/local/scratch/app/fixtures/cpv_codes.json') as f:
+    with open(fixtures_dir + "cpv_codes.json") as f:
         cpv_codes = json.load(f)
         for code in cpv_codes:
             CPVCode.objects.using(db_alias).bulk_create([CPVCode(pk=code["pk"])])
@@ -14,7 +15,7 @@ def add_cpv_codes(apps, schema_editor):
 def remove_cpv_codes(apps, schema_editor):
     CPVCode = apps.get_model("app", "CPVCode")
     db_alias = schema_editor.connection.alias
-    with open('/var/local/scratch/app/fixtures/cpv_codes.json') as f:
+    with open(fixtures_dir + "cpv_codes.json") as f:
         cpv_codes = json.load(f)
         for code in cpv_codes:
             CPVCode.objects.using(db_alias).filter(pk=code["pk"]).delete()
@@ -22,7 +23,7 @@ def remove_cpv_codes(apps, schema_editor):
 def add_ted_countries(apps, schema_editor):
     TedCountry = apps.get_model("app", "TedCountry")
     db_alias = schema_editor.connection.alias
-    with open('/var/local/scratch/app/fixtures/ted_countries.json') as f:
+    with open(fixtures_dir + "ted_countries.json") as f:
         ted_countries = json.load(f)
         for country in ted_countries:
             TedCountry.objects.using(db_alias).bulk_create([TedCountry(pk=country["pk"])])
@@ -30,7 +31,7 @@ def add_ted_countries(apps, schema_editor):
 def remove_ted_countries(apps, schema_editor):
     TedCountry = apps.get_model("app", "TedCountry")
     db_alias = schema_editor.connection.alias
-    with open('/var/local/scratch/app/fixtures/ted_countries.json') as f:
+    with open(fixtures_dir + "ted_countries.json") as f:
         ted_countries = json.load(f)
         for country in ted_countries:
             TedCountry.objects.using(db_alias).filter(pk=country["pk"]).delete()
@@ -39,7 +40,7 @@ def remove_ted_countries(apps, schema_editor):
 def add_unspsc_codes(apps, schema_editor):
     UNSPSCCode = apps.get_model("app", "UNSPSCCode")
     db_alias = schema_editor.connection.alias
-    with open('/var/local/scratch/app/fixtures/unspsc_codes_software.json') as f:
+    with open(fixtures_dir + "unspsc_codes_software.json") as f:
         unspsc_codes = json.load(f)
         for code in unspsc_codes:
             UNSPSCCode.objects.using(db_alias).bulk_create([UNSPSCCode(
@@ -52,7 +53,7 @@ def add_unspsc_codes(apps, schema_editor):
 def remove_unspsc_codes(apps, schema_editor):
     UNSPSCCode = apps.get_model("app", "UNSPSCCode")
     db_alias = schema_editor.connection.alias
-    with open('/var/local/scratch/app/fixtures/unspsc_codes_software.json') as f:
+    with open(fixtures_dir + "unspsc_codes_software.json") as f:
         unspsc_codes = json.load(f)
         for code in unspsc_codes:
             UNSPSCCode.objects.using(db_alias).filter(pk=code["pk"]).delete()

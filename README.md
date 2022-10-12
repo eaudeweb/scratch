@@ -8,7 +8,7 @@
 
         git clone git@github.com:eaudeweb/scratch.git
 
-1. Copy docker example files:
+2. Copy docker example files:
 
         cd scratch/
         cp docker-compose.override.yml.example docker-compose.override.yml
@@ -19,27 +19,26 @@
 
   > NOTE: LDAP variables in `app.env` must be configured manually
 
-1. Create the stack and start it:
+3. Create the stack and start it:
 
         docker-compose up -d
 
-1. Verify if the containers were created:
+4. Verify if the containers were created:
 
         docker-compose ps
 
-1. Go into application container:
+5. Go into application container:
 
         docker exec -it scratch.app sh
 
-1. Load fixtures:
-
-  ```
-  python manage.py loaddata fixture app/fixtures/*.json
-  ```
-
-1. Run server:
-
-        python manage.py runserver 0.0.0.0:8000
+6. Run migrations:
+    ```
+    python manage.py migrate
+    ```
+7. Run server:
+    ```commandline
+    python manage.py runserver 0.0.0.0:8000
+    ```
 
 ## Running with NGINX
 
