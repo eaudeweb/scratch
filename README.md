@@ -17,8 +17,7 @@
         cp docker/redis.env.example docker/redis.env
         cp docker/tika.env.example docker/tika.env
 
-  > NOTE: LDAP variables in `app.env` must be configured manually
-
+    > NOTE: LDAP variables in `app.env` must be configured manually
 1. Create the stack and start it:
 
         docker-compose up -d
@@ -31,15 +30,14 @@
 
         docker exec -it scratch.app sh
 
-1. Load fixtures:
-
-  ```
-  python manage.py loaddata fixture app/fixtures/*.json
-  ```
-
+1. Run migrations:
+    ```
+    python manage.py migrate
+    ```
 1. Run server:
-
-        python manage.py runserver 0.0.0.0:8000
+    ```commandline
+    python manage.py runserver 0.0.0.0:8000
+    ```
 
 ## Running with NGINX
 
