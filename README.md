@@ -34,6 +34,11 @@
     ```
     python manage.py migrate
     ```
+1. Load CPV codes, TED Countries and UNSPSC codes to the database:
+   ```commandline
+       python manage.py load_initial_data
+    ```
+   > NOTE: Run the command with `--reverse` flag to delete the data added by the command
 1. Run server:
     ```commandline
     python manage.py runserver 0.0.0.0:8000
