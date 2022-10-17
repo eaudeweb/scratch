@@ -13,10 +13,12 @@ class Command(BaseCommand, BaseParamsUI):
         tenders = Tender.objects.all()
 
         for tender in tenders:
-            time_diff = tender.deadline - current_time
-            days = time_diff.days
-            if days < 0 and abs(days) >= int(settings.DELETE_EXPIRED_DAYS):
-                tender.delete()
+            if tender.deadline:
+                time_diff = tender.deadline - current_time
+                days = time_diff.days
+                if days < 0 and abs(days) >= int(settings.DELETE_EXPIRED_DAYS):
+                    tender.delete()
 
-        return self.stdout.write(self.style.SUCCESS('Tenders expired for more than %d days deleted'
-                                                    % settings.DELETE_EXPIRED_DAYS))
+        msg = 'Tenders expired for more than %d days deleted' % settings.DELETE_EXPIRED_DAYS
+        self.stdout.write(self.style.SUCCESS(msg))
+        return msg
