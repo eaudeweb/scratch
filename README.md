@@ -68,11 +68,7 @@ Create the stack and start it:
 
 ## Testing
 
-Install the test requirements
-
-    pip install -r requirements-dev.txt
-
-Run the test suite
+You can run the test suite as follows:
 
     python manage.py test --settings=scratch.test_settings
 
