@@ -241,7 +241,10 @@ class UNGMWorker:
     @staticmethod
     def download_document(tender_doc):
         with TemporaryFile() as content:
-            response = requests.get(tender_doc.download_url, stream=True)
+            headers = {
+                'User-Agent': 'Mozilla/5.0'
+            }
+            response = requests.get(tender_doc.download_url, headers=headers, stream=True)
             if response.status_code == 200:
                 for chunk in response.iter_content(chunk_size=4096):
                     content.write(chunk)
