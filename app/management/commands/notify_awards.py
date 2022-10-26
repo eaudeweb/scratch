@@ -32,8 +32,7 @@ class Command(BaseCommand, BaseParamsUI):
         awards = Award.objects.filter(notified=False).order_by('-award_date')
         if awards:
             send_awards_email(awards, digest)
-        self.stdout.write(
-            self.style.SUCCESS(
+
+        return self.style.SUCCESS(
                 f'Sent notifications about {awards.count()} awards...'
             )
-        )
