@@ -38,7 +38,6 @@ sentry_sdk.init(
     integrations=[DjangoIntegration()]
 )
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -51,7 +50,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'django_elasticsearch_dsl',
     'django_q',
-
+    'explorer',
     'app'
 ]
 
@@ -88,7 +87,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'scratch.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
@@ -129,7 +127,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # REDIS
 Q_CLUSTER = {
     'redis': {
@@ -160,7 +157,6 @@ DEADLINE_NOTIFICATIONS = env('DEADLINE_NOTIFICATIONS', (1, 3, 7))
 # TED
 TED_DOC_TYPES = env('TED_DOC_TYPES', [])
 TED_AUTH_TYPE = env('TED_AUTH_TYPE', '')
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
@@ -223,6 +219,10 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'django_auth_ldap.backend.LDAPBackend',
 )
+
+# DJANGO-SQL-EXPLORER
+EXPLORER_CONNECTIONS = {'Default': 'default'}
+EXPLORER_DEFAULT_CONNECTION = 'default'
 
 LOGGING = {
     "version": 1,
