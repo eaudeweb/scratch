@@ -105,6 +105,23 @@ services:
     ports:
       - 9998:9998
 
+  cachet:
+    image: cachethq/docker:latest
+    container_name: scratch.cachet
+    ports:
+      - 81:8000
+    links:
+      - db:postgres
+    env_file:
+      - docker/cachet.env
+    environment:
+      - DEBUG=false
+    depends_on:
+      - db
+      - redis
+      - smtp
+    restart: on-failure
+
 volumes:
   data:
     driver: local

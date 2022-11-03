@@ -1,0 +1,26 @@
+endpoints:
+  - name: Scratch
+    url: #url to check
+    method: GET
+    timeout: 15 # seconds
+    expectation:
+      - type: HTTP_STATUS
+        status_range: 200-205
+        incident: PARTIAL
+    allowed_fails: 0
+    component_id: 1
+    metric_id:
+    action:
+      - UPDATE_STATUS
+    public_incidents: true
+    latency_unit: ms
+    frequency: 60
+cachet:
+  api_url: # url to cachet api (e.g. https://demo.cachethq.io/api/v1)
+  token:
+    - type: TOKEN
+      value: #API token from cachet
+messages:
+  incident_outage: "{name} is unavailable"
+  incident_operational: "{name} is operational"
+  incident_performance: "{name} has degraded performance"
