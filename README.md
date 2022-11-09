@@ -17,8 +17,9 @@
         cp docker/redis.env.example docker/redis.env
         cp docker/tika.env.example docker/tika.env
 
-    > NOTE: LDAP variables in `app.env` must be configured manually
-1. Create the stack and start it:
+    > NOTE:
+    > 1. LDAP variables in `app.env` must be configured manually.
+    > 2. If you're on macOS, you might need to customze docker-compose.override to use the `amd64/elasticsearch:6.8.23` image in elasticsearch services.
 
         docker-compose up -d
 
