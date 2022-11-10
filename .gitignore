@@ -115,10 +115,13 @@ ted_countries.txt
 app/media
 
 docker-compose.override.yml
+docker-compose.prod.yml
 docker/app.env
 docker/db.env
 docker/redis.env
 docker/tika.env
+.env
+.venv/
 
 # MacOS
 .DS_Store
