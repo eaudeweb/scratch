@@ -7,6 +7,7 @@ from django.utils.functional import cached_property
 from django.contrib.postgres.fields import ArrayField
 from django.contrib.auth.models import User
 
+from app.exceptions import NoRecipients
 from app.fields import LowerCharField
 
 import re
@@ -177,6 +178,8 @@ class Email(BaseTimedModel):
     body = models.TextField(blank=True, null=True)
 
     def send(self):
+        if not self.to:
+            raise NoRecipients("No recipients found.")
         text_content = strip_tags(self.body)
 
         email = EmailMultiAlternatives(

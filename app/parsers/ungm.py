@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup
 from django.core.files import File
 from django.utils.timezone import make_aware
 
+from app.exceptions import UNSPCCodesNotFound
 from app.models import UNSPSCCode, WorkerLog, Tender, TenderDocument
 from app.server_requests import get_request_class
 from scratch import settings
@@ -164,6 +165,8 @@ class UNGMWorker:
     
     def parsed_tenders(self, tenders):
         codes = UNSPSCCode.objects.all()
+        if not codes:
+            raise UNSPCCodesNotFound("UNSPC Codes not found.")
         for tender in tenders:
             try:
                 url = tender.url

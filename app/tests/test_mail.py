@@ -7,7 +7,8 @@ from django.template.loader import render_to_string
 from django.utils import timezone
 
 from app.factories import (
-    AwardFactory, TenderFactory, EmailAddressFactory, KeywordFactory)
+    AwardFactory, TenderFactory, EmailAddressFactory, KeywordFactory, UNSPCCodeFactory
+)
 from app.notifications import build_email
 from app.models import EmailAddress, Tender
 from app.tests.base import BaseTestCase
@@ -44,6 +45,7 @@ class SendMailTest(BaseTestCase):
 
         self.notified_user1 = EmailAddressFactory()
         self.notified_user2 = EmailAddressFactory()
+        UNSPCCodeFactory()
 
     def test_mailing(self):
         subject = 'New tenders available'
