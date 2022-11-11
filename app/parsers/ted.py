@@ -151,7 +151,8 @@ class TEDWorker:
         try:
             tf = tarfile.open(archive_path, 'r:gz')
             tf.extractall(extract_path)
-            return tf.getnames()[0]
+            # Return the name of the folder containing the extracted files
+            return tf.getnames()[0].split("/")[0]
         except (EOFError, FileNotFoundError) as e:
             logging.warning(e)
 
