@@ -27,4 +27,6 @@ if [ -z "$1" ]; then
   uwsgi uwsgi.ini
 fi
 
+python status/server.py
+
 exec python manage.py $@

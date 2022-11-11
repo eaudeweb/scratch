@@ -38,6 +38,8 @@ services:
       - db
       - redis
       - tika
+    ports:
+      - 82:8080
     command: ['qcluster']
 
   cron:
@@ -52,6 +54,8 @@ services:
     depends_on:
       - db
       - tika
+    ports:
+      - 83:8080
     entrypoint: ["./docker-entrypoint.cron.sh"]
 
   db:
