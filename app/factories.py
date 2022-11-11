@@ -1,5 +1,8 @@
 import factory
-from .models import Tender, Award, EmailAddress, TenderDocument, CPVCode, TedCountry, Keyword, Vendor
+from .models import (
+    Tender, Award, EmailAddress, TenderDocument, CPVCode,
+    TedCountry, UNSPSCCode, Keyword, Vendor
+)
 from datetime import datetime
 from django.utils import timezone
 
@@ -60,6 +63,11 @@ class CPVCodeFactory(factory.DjangoModelFactory):
 class TedCountryFactory(factory.DjangoModelFactory):
     class Meta:
         model = TedCountry
+
+
+class UNSPCCodeFactory(factory.DjangoModelFactory):
+    class Meta:
+        model = UNSPSCCode
 
 
 class KeywordFactory(factory.DjangoModelFactory):
