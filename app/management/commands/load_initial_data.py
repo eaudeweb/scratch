@@ -8,50 +8,49 @@ def add_cpv_codes():
 
     with open(fixtures_dir + "cpv_codes.json") as f:
         cpv_codes = json.load(f)
-        for code in cpv_codes:
-            CPVCode.objects.bulk_create([CPVCode(pk=code["pk"])])
+        CPVCode.objects.bulk_create([CPVCode(pk=code["pk"]) for code in cpv_codes])
 
 def remove_cpv_codes():
 
-
     with open(fixtures_dir + "cpv_codes.json") as f:
         cpv_codes = json.load(f)
-        for code in cpv_codes:
-            CPVCode.objects.filter(pk=code["pk"]).delete()
+        CPVCode.objects.filter(pk__in=[code["pk"] for code in cpv_codes]).delete()
 
 def add_ted_countries():
 
     with open(fixtures_dir + "ted_countries.json") as f:
         ted_countries = json.load(f)
-        for country in ted_countries:
-            TedCountry.objects.bulk_create([TedCountry(pk=country["pk"])])
+        TedCountry.objects.bulk_create(
+            [TedCountry(pk=country["pk"]) for country in ted_countries]
+        )
 
 def remove_ted_countries():
 
     with open(fixtures_dir + "ted_countries.json") as f:
         ted_countries = json.load(f)
-        for country in ted_countries:
-            TedCountry.objects.filter(pk=country["pk"]).delete()
+        TedCountry.objects.filter(
+            pk__in=[country["pk"] for country in ted_countries]
+        ).delete()
 
 
 def add_unspsc_codes():
 
     with open(fixtures_dir + "unspsc_codes_software.json") as f:
         unspsc_codes = json.load(f)
-        for code in unspsc_codes:
-            UNSPSCCode.objects.bulk_create([UNSPSCCode(
-                pk=code["pk"],
-                id_ungm=code["fields"]["id_ungm"],
-                name=code["fields"]["name"],
-            )])
+        UNSPSCCode.objects.bulk_create([UNSPSCCode(
+            pk=code["pk"],
+            id_ungm=code["fields"]["id_ungm"],
+            name=code["fields"]["name"],
+        ) for code in unspsc_codes])
 
 
 def remove_unspsc_codes():
 
     with open(fixtures_dir + "unspsc_codes_software.json") as f:
         unspsc_codes = json.load(f)
-        for code in unspsc_codes:
-            UNSPSCCode.objects.filter(pk=code["pk"]).delete()
+        UNSPSCCode.objects.filter(
+            pk__in=[code["pk"] for code in unspsc_codes]
+        ).delete()
 
 class Command(BaseCommand):
     help = "Loads data for CPVCode, TEDCountry and UNSPSCCode models"

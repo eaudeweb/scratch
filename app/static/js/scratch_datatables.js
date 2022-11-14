@@ -274,6 +274,9 @@ $(document).ready(function() {
       "bLengthChange": false,
       "bInfo" : false,
       "ordering": false,
+      "drawCallback": function(settings) {
+          $('button').click(buttonsClick)
+      }
     });
 });
 

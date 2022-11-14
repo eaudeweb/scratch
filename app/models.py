@@ -7,6 +7,7 @@ from django.utils.functional import cached_property
 from django.contrib.postgres.fields import ArrayField
 from django.contrib.auth.models import User
 
+from app.exceptions import NoRecipients
 from app.fields import LowerCharField
 
 import re
@@ -177,6 +178,8 @@ class Email(BaseTimedModel):
     body = models.TextField(blank=True, null=True)
 
     def send(self):
+        if not self.to:
+            raise NoRecipients("No recipients found.")
         text_content = strip_tags(self.body)
 
         email = EmailMultiAlternatives(
@@ -225,6 +228,10 @@ class UNSPSCCode(BaseTimedModel):
     id_ungm = models.CharField(max_length=1024)
     name = models.CharField(max_length=1024)
 
+    class Meta:
+        verbose_name = "UNSPC code"
+        verbose_name_plural = "UNSPC codes"
+
     def __str__(self):
         return '{}'.format(self.id)
 
@@ -232,12 +239,20 @@ class UNSPSCCode(BaseTimedModel):
 class CPVCode(BaseTimedModel):
     code = models.CharField(max_length=1024, primary_key=True)
 
+    class Meta:
+        verbose_name = "CPV code"
+        verbose_name_plural = "CPV codes"
+
     def __str__(self):
         return '{}'.format(self.code)
 
 
 class TedCountry(BaseTimedModel):
     name = models.CharField(max_length=1024, primary_key=True)
+
+    class Meta:
+        verbose_name = "TED country"
+        verbose_name_plural = "TED countries"
 
 
 class Task(BaseTimedModel):

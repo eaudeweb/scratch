@@ -33,8 +33,7 @@ class Command(BaseCommand, BaseParamsUI):
         tender_count = tenders.count()
         if tender_count:
             send_tenders_email(tenders, digest)
-        self.stdout.write(
-            self.style.SUCCESS(
-                f'Sent notifications about {tender_count} tender(s).'
-            )
+
+        return self.style.SUCCESS(
+            f'Sent notifications about {tender_count} tenders...'
         )

@@ -1,6 +1,6 @@
 import logging
-import tarfile
 import os
+import tarfile
 import time
 
 from typing import List, Tuple
@@ -11,6 +11,7 @@ from ftplib import error_perm, FTP
 
 from django.utils.timezone import make_aware
 
+from app.exceptions import CPVCodesNotFound, TEDCountriesNotFound
 from app.models import WorkerLog, Tender, Award, CPVCode, TedCountry, Vendor
 
 logger = logging.getLogger(__name__)
@@ -150,7 +151,8 @@ class TEDWorker:
         try:
             tf = tarfile.open(archive_path, 'r:gz')
             tf.extractall(extract_path)
-            return tf.getnames()[0]
+            # Return the name of the folder containing the extracted files
+            return tf.getnames()[0].split("/")[0]
         except (EOFError, FileNotFoundError) as e:
             logging.warning(e)
 
@@ -200,6 +202,11 @@ class TEDParser(object):
     def __init__(self, path='', folder_names=[]):
         self.CPV_CODES = [x.code for x in CPVCode.objects.all()]
         self.TED_COUNTRIES = [x.name for x in TedCountry.objects.all()]
+
+        if not self.CPV_CODES:
+            raise CPVCodesNotFound("CPV Codes not found.")
+        if not self.TED_COUNTRIES:
+            raise TEDCountriesNotFound("TED Countries not found.")
 
         path = path or get_archives_path()
         self.xml_files = [

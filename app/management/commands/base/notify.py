@@ -50,12 +50,10 @@ class BaseNotifyCommand(BaseCommand, BaseParamsUI):
         if changed_tenders:
             BaseNotifyCommand.send_update_email(
                 changed_tenders, digest, self.notification_type())
-        self.stdout.write(
-            self.style.SUCCESS(
-                f'Sent notifications about {changed_tenders.count()} '
-                f'tender(s).'
+
+        return self.style.SUCCESS(
+                f'Sent notifications about {changed_tenders.count()} tender(s).'
             )
-        )
 
     def add_arguments(self, parser):
         parser.add_argument(
