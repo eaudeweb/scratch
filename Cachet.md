@@ -40,7 +40,7 @@ Plugin for cachet that monitors an URL and update the status of the associated c
    ```
    1. For every component created in Cachet, complete the configurations in [cachet-url-monitor/config/config.yml](https://github.com/eaudeweb/scratch/blob/199debe9e0deadfbafa00bf28bd09533ad1ba2bc/cachet-url-monitor/config/config.yml)
    >    NOTE: for more info about the config file checkout: https://hub.docker.com/r/mtakaki/cachet-url-monitor
-1. After the config file is complete open a terminal in ```./cachet-url-monitor``` and run the docker container:
+1. After the config file is complete run the docker container:
    ```commandline
    docker-compose up
    ```
