@@ -122,3 +122,6 @@ docker/tika.env
 
 # MacOS
 .DS_Store
+
+# cachet
+cachet-url-monitor/config/config.yml
