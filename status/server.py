@@ -1,5 +1,4 @@
 import os
-import time
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from multiprocessing import Process
 
@@ -18,7 +17,6 @@ class StatusServer(BaseHTTPRequestHandler):
 def func():
     if os.fork() != 0:  # <--
         return  # <--
-    print('sub process is running')
     server = HTTPServer((hostName, serverPort), StatusServer)
     print("Server started http://%s:%s" % (hostName, serverPort))
 
@@ -29,12 +27,9 @@ def func():
 
     server.server_close()
     print("Server stopped.")
-    print('sub process finished')
 
 
 if __name__ == '__main__':
     p = Process(target=func)
     p.start()
     p.join()
-    print('done')
-

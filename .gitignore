@@ -120,7 +120,7 @@ docker/app.env
 docker/db.env
 docker/redis.env
 docker/tika.env
-.env
+docker/cachet.env
 .venv/
 
 # MacOS
