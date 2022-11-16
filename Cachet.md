@@ -6,6 +6,13 @@ Documentation: https://docs.cachethq.io/
 
 ## Setup
 
+1. Copy the cachet.env.example file and complete the cachet.env file
+   ```commandline
+   cp docker/cachet.env.example docker/cachet.env
+   ```
+   > NOTE: If the scratch.cachet container is started and the APP_KEY variable in cachet.env is not set, the service will
+   > exit with an error message which will contain a generated key. You can add the suggested value to the environment 
+   > file and restart the container.
 1. After the docker containers started, access the Cachet page to complete the setup.
 
 1. On the Environment Setup page set:

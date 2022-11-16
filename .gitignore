@@ -121,6 +121,7 @@ docker/db.env
 docker/redis.env
 docker/tika.env
 docker/cachet.env
+.env
 .venv/
 
 # MacOS
