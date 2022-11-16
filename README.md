@@ -16,6 +16,7 @@
         cp docker/db.env.example docker/db.env
         cp docker/redis.env.example docker/redis.env
         cp docker/tika.env.example docker/tika.env
+        cp docker/cachet.env.example docker/cachet.env
 
     > NOTE:
     > 1. LDAP variables in `app.env` must be configured manually.

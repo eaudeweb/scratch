@@ -7,6 +7,7 @@ while ! nc -z db 5432; do
   sleep 1s
 done
 
+python status/server.py
 # Update crontab
 crontab -u root crontab
 

@@ -1,0 +1,74 @@
+endpoints:
+  - name: Scratch
+    url: http://example:8000 #url to check
+    method: GET
+    timeout: 15 # seconds
+    expectation:
+      - type: HTTP_STATUS
+        status_range: 200-205
+    allowed_fails: 0
+    component_id: # the id of the Search component from Cachet
+    metric_id:
+    action:
+      - UPDATE_STATUS
+      - CREATE_INCIDENT
+    public_incidents: true
+    latency_unit: ms
+    frequency: 60
+  - name: ElasticSearch
+    url: http://example:9200 #url to check
+    method: GET
+    timeout: 15 # seconds
+    expectation:
+      - type: HTTP_STATUS
+        status_range: 200-205
+    allowed_fails: 0
+    component_id: # the id of the ElasticSearch component from Cachet
+    metric_id:
+    action:
+      - UPDATE_STATUS
+      - CREATE_INCIDENT
+    public_incidents: true
+    latency_unit: ms
+    frequency: 60
+  - name: Scrach.async
+    url: http://example:82 #url to check
+    method: GET
+    timeout: 15 # seconds
+    expectation:
+      - type: HTTP_STATUS
+        status_range: 200-205
+    allowed_fails: 0
+    component_id: # the id of the Search.async component from Cachet
+    metric_id:
+    action:
+      - UPDATE_STATUS
+      - CREATE_INCIDENT
+    public_incidents: true
+    latency_unit: ms
+    frequency: 60
+  - name: Scrach.cron
+    url:  http://example:83 #url to check
+    method: GET
+    timeout: 15 # seconds
+    expectation:
+      - type: HTTP_STATUS
+        status_range: 200-205
+    allowed_fails: 0
+    component_id: # the id of the Search.cron component from Cachet
+    metric_id:
+    action:
+      - UPDATE_STATUS
+      - CREATE_INCIDENT
+    public_incidents: true
+    latency_unit: ms
+    frequency: 60
+cachet:
+  api_url:  http://example:81/api/v1 # url to cachet api (e.g. https://demo.cachethq.io/api/v1)
+  token:
+    - type: TOKEN
+      value: #API token from cachet (you can see the token on the user profile page)
+messages:
+  incident_outage: "{name} is unavailable"
+  incident_operational: "{name} is operational"
+  incident_performance: "{name} has degraded performance"

@@ -120,8 +120,12 @@ docker/app.env
 docker/db.env
 docker/redis.env
 docker/tika.env
+docker/cachet.env
 .env
 .venv/
 
 # MacOS
 .DS_Store
+
+# cachet
+cachet-url-monitor/config/config.yml
