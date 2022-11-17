@@ -126,6 +126,16 @@ services:
       - smtp
     restart: on-failure
 
+  cachet-url-monitor:
+    image: mtakaki/cachet-url-monitor
+    container_name: scratch.cachet-url-monitor
+    volumes:
+      - ./config:/usr/src/app/config/
+    depends_on:
+      - cachet
+    command: chmod +x ./config/docker-entrypoint.cachet.sh
+    entrypoint: ["./config/docker-entrypoint.cachet.sh"]
+
 volumes:
   data:
     driver: local

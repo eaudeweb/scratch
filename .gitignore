@@ -128,4 +128,4 @@ docker/cachet.env
 .DS_Store
 
 # cachet
-cachet-url-monitor/config/config.yml
+config/config.yml
