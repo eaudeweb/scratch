@@ -1,8 +1,0 @@
-version: '2'
-
-services:
-  cachet-url-monitor:
-    image: mtakaki/cachet-url-monitor
-    container_name: scratch.cachet-url-monitor
-    volumes:
-      - ./config:/usr/src/app/config/

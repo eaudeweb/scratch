@@ -42,15 +42,14 @@ Plugin for cachet that monitors a URL and update the status of the associated ca
 1. Create a config file:
    1. Copy the ```config.yml.example``` file 
    ```commandline
-   cd cachet-url-monitor
    cp config/config.yml.example config/config.yml
    ```
-   1. For every component created in Cachet, complete the configurations in [cachet-url-monitor/config/config.yml](https://github.com/eaudeweb/scratch/blob/199debe9e0deadfbafa00bf28bd09533ad1ba2bc/cachet-url-monitor/config/config.yml):
+   1. For every component created in Cachet, complete the configurations in ``config/config.yml``:
       1. Complete the urls in the file by replacing ``example`` with the ip address of the host
       1. Add the id from cachet for every component. You can see the component ids by accessing the cachet api at http://localhost:81/api/v1/components
       1. Add the API token from cachet. You can get the token from the profile page (http://localhost:81/dashboard/user)
    >    NOTE: for more info about the config file checkout: https://hub.docker.com/r/mtakaki/cachet-url-monitor
 1. After the config file is complete run the docker container:
    ```commandline
-   docker-compose up
+   docker-compose start cachet-url-monitor
    ```

@@ -45,7 +45,7 @@
     ```commandline
     python manage.py runserver 0.0.0.0:8000
     ```
-
+### [Cachet Setup Info](Cachet.md)
 ## Running with NGINX
 
 If you want to use NGINX to serve the project you need to do the following:
