@@ -1,4 +1,5 @@
 from django.core.management.base import BaseCommand
+from sentry_sdk import capture_exception
 
 from app.models import TenderDocument
 from app.parsers.ungm import UNGMWorker
@@ -14,5 +15,7 @@ class Command(BaseCommand):
         for doc in tender_docs:
             if not doc.document:
                 self.stdout.write(self.style.SUCCESS("Downloading document %s" % doc.name))
-                UNGMWorker.download_document(doc)
-
+                try:
+                    UNGMWorker.download_document(doc)
+                except Exception as e:
+                    capture_exception(e)
