@@ -1,3 +1,5 @@
+import traceback
+
 from django.core.management.base import BaseCommand
 
 from app.models import TenderDocument
@@ -16,6 +18,5 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.SUCCESS("Downloading document %s" % doc.name))
                 try:
                     UNGMWorker.download_document(doc)
-                except Exception as e:
-                    self.stdout.write(e)
-
+                except Exception:
+                    traceback.print_exc()
