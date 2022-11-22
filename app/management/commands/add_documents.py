@@ -1,6 +1,5 @@
-import traceback
-
 from django.core.management.base import BaseCommand
+from sentry_sdk import capture_exception
 
 from app.models import TenderDocument
 from app.parsers.ungm import UNGMWorker
@@ -18,5 +17,5 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.SUCCESS("Downloading document %s" % doc.name))
                 try:
                     UNGMWorker.download_document(doc)
-                except Exception:
-                    traceback.print_exc()
+                except Exception as e:
+                    capture_exception(e)
