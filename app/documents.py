@@ -72,9 +72,34 @@ class TenderDoc(DocType):
 
 @award.doc_type
 class AwardDoc(DocType):
-    tender_title = fields.KeywordField(attr='tender.title')
-    vendors_name = fields.KeywordField(attr='get_vendors')
-    value = fields.TextField(attr="convert_value_to_string")
+    tender_title = fields.TextField(
+        attr='tender.title',
+        analyzer=case_insensitive_analyzer,
+        fielddata=True,
+        fields={'raw': fields.KeywordField(
+            multi=True, ignore_above=256,
+            normalizer=case_insensitive_normalizer
+        )}
+    )
+    vendors_name = fields.TextField(
+        attr='get_vendors',
+        analyzer=case_insensitive_analyzer,
+        fielddata=True,
+        fields={'raw': fields.KeywordField(
+            multi=True, ignore_above=256,
+            normalizer=case_insensitive_normalizer
+        )}
+
+    )
+    value = fields.TextField(
+        attr="convert_value_to_string",
+        analyzer=case_insensitive_analyzer,
+        fielddata=True,
+        fields={'raw': fields.KeywordField(
+            multi=True, ignore_above=256,
+            normalizer=case_insensitive_normalizer
+        )}
+    )
 
     class Meta:
         model = Award

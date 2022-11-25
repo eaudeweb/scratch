@@ -16,6 +16,9 @@ from app.documents import TenderDoc, TenderDocumentDoc, AwardDoc
 from app.forms import TendersFilter
 from app.models import Tender, TenderDocument, Award
 from app.views.base import BaseAjaxListingView
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class TendersListView(LoginRequiredMixin, ListView):
@@ -61,13 +64,13 @@ class TendersListView(LoginRequiredMixin, ListView):
             form = TendersFilter()
 
         ungm_published_today |= (
-            self.request.GET.get("ungm_published_today") == 'True')
+                self.request.GET.get("ungm_published_today") == 'True')
         ungm_deadline_today |= (
-            self.request.GET.get("ungm_deadline_today") == 'True')
+                self.request.GET.get("ungm_deadline_today") == 'True')
         ted_published_today |= (
-            self.request.GET.get("ted_published_today") == 'True')
+                self.request.GET.get("ted_published_today") == 'True')
         ted_deadline_today |= (
-            self.request.GET.get("ted_deadline_today") == 'True')
+                self.request.GET.get("ted_deadline_today") == 'True')
 
         context["form"] = form
         context["reset"] = reset
@@ -263,8 +266,11 @@ class SearchView(LoginRequiredMixin, TemplateView):
     @staticmethod
     def update_fields(context, fields, regex):
         for entry in context:
+            logger.info(entry)
             for item in fields:
+                logger.info(item)
                 field = getattr(entry, item)
+                logger.info(field)
                 setattr(entry, item, regex.sub(r'<mark>\1</mark>', field))
 
     def get_context_data(self, **kwargs):
@@ -322,14 +328,14 @@ class SearchView(LoginRequiredMixin, TemplateView):
                 ]
             )
         )
-
+        logger.info(result_awards.to_queryset())
         context['tenders'] = result_tenders.to_queryset()
         context['awards'] = result_awards.to_queryset()
 
         regex = re.compile(rf'(\b({pk})\b(\s*({pk})\b)*)', re.I)
 
         tender_fields = ['title', 'description']
-        award_fields = ['title', 'vendors_name', 'value', 'currency']
+        award_fields = [] #['title', 'vendors_name', 'value', 'currency']
 
         SearchView.update_fields(context['tenders'], tender_fields, regex)
         SearchView.update_fields(context['awards'], award_fields, regex)
