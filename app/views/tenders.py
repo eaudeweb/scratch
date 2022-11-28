@@ -61,13 +61,13 @@ class TendersListView(LoginRequiredMixin, ListView):
             form = TendersFilter()
 
         ungm_published_today |= (
-            self.request.GET.get("ungm_published_today") == 'True')
+                self.request.GET.get("ungm_published_today") == 'True')
         ungm_deadline_today |= (
-            self.request.GET.get("ungm_deadline_today") == 'True')
+                self.request.GET.get("ungm_deadline_today") == 'True')
         ted_published_today |= (
-            self.request.GET.get("ted_published_today") == 'True')
+                self.request.GET.get("ted_published_today") == 'True')
         ted_deadline_today |= (
-            self.request.GET.get("ted_deadline_today") == 'True')
+                self.request.GET.get("ted_deadline_today") == 'True')
 
         context["form"] = form
         context["reset"] = reset
@@ -267,6 +267,13 @@ class SearchView(LoginRequiredMixin, TemplateView):
                 field = getattr(entry, item)
                 setattr(entry, item, regex.sub(r'<mark>\1</mark>', field))
 
+    @staticmethod
+    def update_award_fields(context, regex):
+        for entry in context:
+            entry["award"].tender.title = regex.sub(r'<mark>\1</mark>', entry["award"].tender.title)
+            entry["award_vendors"] = regex.sub(r'<mark>\1</mark>', entry["award_vendors"])
+            entry["award"].currency = regex.sub(r'<mark>\1</mark>', entry["award"].currency)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         pk = self.kwargs['pk'].replace('+', '|')
@@ -322,16 +329,19 @@ class SearchView(LoginRequiredMixin, TemplateView):
                 ]
             )
         )
-
         context['tenders'] = result_tenders.to_queryset()
-        context['awards'] = result_awards.to_queryset()
+        context['awards'] = [
+            {
+                "award": award,
+                "award_vendors": award.get_vendors
+            } for award in result_awards.to_queryset()
+        ]
 
         regex = re.compile(rf'(\b({pk})\b(\s*({pk})\b)*)', re.I)
 
         tender_fields = ['title', 'description']
-        award_fields = ['title', 'vendors_name', 'value', 'currency']
 
         SearchView.update_fields(context['tenders'], tender_fields, regex)
-        SearchView.update_fields(context['awards'], award_fields, regex)
+        SearchView.update_award_fields(context['awards'], regex)
 
         return context

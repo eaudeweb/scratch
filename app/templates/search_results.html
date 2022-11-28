@@ -25,11 +25,11 @@
       <h2>Contract awards</h2>
     </div>
     <div class="list-group search-list">
-      {% for award in awards %}
+      {% for obj in awards %}
         <p class="list-group-item list-group-item-action search-element">
-          <a class="search-tender-title" href="{% url 'contract_awards_detail_view' award.id %}" >{{ award.get_vendors }}</a>
+          <a class="search-tender-title" href="{% url 'contract_awards_detail_view' obj.award.id %}" >{{ obj.award_vendors|safe }}</a>
           <br>
-          <a class="truncate-search">{{ award.currency }}, {{ award.value | floatformat:'0' }}, {{ award.tender.title }}</a>
+          <a class="truncate-search">{{ obj.award.currency|safe }}, {{ obj.award.value | floatformat:'0' }}, {{ obj.award.tender.title|safe }}</a>
         </p>
       {% endfor %}
     </div>
