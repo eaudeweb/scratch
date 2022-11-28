@@ -9,10 +9,8 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-import logging.config
 import os
 import sentry_sdk
-from django.utils.log import DEFAULT_LOGGING
 from getenv import env
 from sentry_sdk.integrations.django import DjangoIntegration
 import ldap
@@ -235,44 +233,3 @@ LOGGING = {
         }
     }
 }
-
-# Disable Django's logging setup
-LOGGING_CONFIG = None
-
-LOGLEVEL = os.environ.get('LOGLEVEL', 'info').upper()
-
-logging.config.dictConfig({
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'default': {
-            # exact format is not important, this is the minimum information
-            'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
-        },
-        'django.server': DEFAULT_LOGGING['formatters']['django.server'],
-    },
-    'handlers': {
-        # console logs to stderr
-        'console': {
-            'class': 'logging.StreamHandler',
-            'formatter': 'default',
-        },
-        'django.server': DEFAULT_LOGGING['handlers']['django.server'],
-    },
-    'loggers': {
-        # default for all undefined Python modules
-        '': {
-            'level': 'WARNING',
-            'handlers': ['console'],
-        },
-        # Our application code
-        'app': {
-            'level': LOGLEVEL,
-            'handlers': ['console'],
-            # Avoid double logging because of root logger
-            'propagate': False,
-        },
-        # Default runserver request logging
-        'django.server': DEFAULT_LOGGING['loggers']['django.server'],
-    },
-})

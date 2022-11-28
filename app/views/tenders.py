@@ -16,9 +16,6 @@ from app.documents import TenderDoc, TenderDocumentDoc, AwardDoc
 from app.forms import TendersFilter
 from app.models import Tender, TenderDocument, Award
 from app.views.base import BaseAjaxListingView
-import logging
-
-logger = logging.getLogger(__name__)
 
 
 class TendersListView(LoginRequiredMixin, ListView):
@@ -266,12 +263,16 @@ class SearchView(LoginRequiredMixin, TemplateView):
     @staticmethod
     def update_fields(context, fields, regex):
         for entry in context:
-            logger.info(entry)
             for item in fields:
-                logger.info(item)
                 field = getattr(entry, item)
-                logger.info(field)
                 setattr(entry, item, regex.sub(r'<mark>\1</mark>', field))
+
+    @staticmethod
+    def update_award_fields(context, regex):
+        for entry in context:
+            entry["award"].tender.title = regex.sub(r'<mark>\1</mark>', entry["award"].tender.title)
+            entry["award_vendors"] = regex.sub(r'<mark>\1</mark>', entry["award_vendors"])
+            entry["award"].currency = regex.sub(r'<mark>\1</mark>', entry["award"].currency)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -328,16 +329,19 @@ class SearchView(LoginRequiredMixin, TemplateView):
                 ]
             )
         )
-        logger.info(result_awards.to_queryset())
         context['tenders'] = result_tenders.to_queryset()
-        context['awards'] = result_awards.to_queryset()
+        context['awards'] = [
+            {
+                "award": award,
+                "award_vendors": award.get_vendors
+            } for award in result_awards.to_queryset()
+        ]
 
         regex = re.compile(rf'(\b({pk})\b(\s*({pk})\b)*)', re.I)
 
         tender_fields = ['title', 'description']
-        award_fields = [] #['title', 'vendors_name', 'value', 'currency']
 
         SearchView.update_fields(context['tenders'], tender_fields, regex)
-        SearchView.update_fields(context['awards'], award_fields, regex)
+        SearchView.update_award_fields(context['awards'], regex)
 
         return context
