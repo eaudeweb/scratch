@@ -247,7 +247,7 @@ class TEDParser(object):
         cpv_codes = set([c.get('code') for c in cpv_elements])
         
         
-        doc_type = soup.find('td_document_type')
+        doc_type = soup.find("td_document_type")
         
         if doc_type:
             doc_type = doc_type.text
