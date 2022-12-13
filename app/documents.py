@@ -1,4 +1,4 @@
-from django_elasticsearch_dsl import DocType, Index, fields
+from django_elasticsearch_dsl import Document, Index, fields
 from elasticsearch_dsl import analyzer
 from elasticsearch_dsl.analysis import normalizer
 
@@ -38,7 +38,7 @@ tender_document.settings(
 
 
 @tender.doc_type
-class TenderDoc(DocType):
+class TenderDoc(Document):
     description = fields.TextField(
         analyzer=case_insensitive_analyzer,
         fielddata=True,
@@ -59,7 +59,7 @@ class TenderDoc(DocType):
 
     reference = fields.KeywordField(attr='reference')
 
-    class Meta:
+    class Django:
         model = Tender
         fields = [
             'unspsc_codes',
@@ -71,7 +71,7 @@ class TenderDoc(DocType):
 
 
 @award.doc_type
-class AwardDoc(DocType):
+class AwardDoc(Document):
     tender_title = fields.TextField(
         attr='tender.title',
         analyzer=case_insensitive_analyzer,
@@ -101,7 +101,7 @@ class AwardDoc(DocType):
         )}
     )
 
-    class Meta:
+    class Django:
         model = Award
         fields = [
             'currency',
@@ -109,7 +109,7 @@ class AwardDoc(DocType):
 
 
 @tender_document.doc_type
-class TenderDocumentDoc(DocType):
+class TenderDocumentDoc(Document):
     reference = fields.KeywordField(attr='tender.reference')
 
     content = fields.TextField(
@@ -122,7 +122,7 @@ class TenderDocumentDoc(DocType):
         )}
     )
 
-    class Meta:
+    class Django:
         model = TenderDocument
         fields = [
             'name',

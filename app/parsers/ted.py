@@ -463,7 +463,7 @@ class TEDParser(object):
             for c in award_date.contents:
                 try:
                     fields[c.name] = int(c.text)
-                except AttributeError:
+                except (AttributeError, ValueError):
                     pass
             award['award_date'] = date(**fields)
         vendor = soup.find('economic_operator_name_address') or soup.find(
