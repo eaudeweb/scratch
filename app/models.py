@@ -125,6 +125,7 @@ class Award(BaseTimedModel):
     value = models.FloatField(null=True)
     currency = models.CharField(null=True, max_length=3)
     award_date = models.DateField()
+    renewal_date = models.DateField(null=True)
     notified = models.BooleanField(default=False)
     # TODO: Investigate whether this coould be refactored to a OneToOneField
     tender = models.ForeignKey(
