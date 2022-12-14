@@ -24,7 +24,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         now = date.today()
         default = now - relativedelta(years=5)
-
+        
         try:
             given_date = datetime.strptime(options['date'], '%d/%m/%Y').date()
         except TypeError:
@@ -34,10 +34,8 @@ class Command(BaseCommand):
 
         try:
             today = date.today()
-
             command_name = "update_ted_5years"
             command = 'app.parsers.ted.process_daily_archive'
-
             while given_date < today:
                 task_id = async_task(command, given_date)
 
