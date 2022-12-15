@@ -258,6 +258,7 @@ $(document).ready(function() {
         { "data": "source" },
         { "data": "organization" },
         { "data": "award_date" },
+        { "data": "renewal_date" },
         { "data": "vendor" },
         { "data": "value" },
         { "data": "currency" }

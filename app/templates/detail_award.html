@@ -24,6 +24,14 @@
         <td>{{ award.award_date | date:'d M Y' }}</td>
       </tr>
       <tr>
+        <td>Renewal Date</td>
+        {% if award.renewal_date %}
+        <td>{{ award.renewal_date | date:'d M Y' }}</td>
+        {% else %}
+        <td style="color: red">This contract is not subject to renewal</td>
+        {% endif %}
+      </tr>
+      <tr>
         <td>Vendor(s)</td>
         <td>
           <ol style="list-style-position: inside;">
