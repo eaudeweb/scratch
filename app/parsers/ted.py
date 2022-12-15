@@ -7,7 +7,7 @@ from typing import List, Tuple
 from bs4 import BeautifulSoup, element
 from datetime import date, datetime, timedelta
 from django.conf import settings
-from ftplib import error_perm, FTP,error_perm
+from ftplib import error_perm, FTP
 
 from django.utils.timezone import make_aware
 
@@ -94,6 +94,7 @@ class TEDWorker:
             archives = ftp.nlst()
         except error_perm as resp:
             logging.warning(resp)
+            
         self.download_archive(ftp, self.last_ted_update, archives)
 
         quit_or_close(ftp)
@@ -141,7 +142,7 @@ class TEDWorker:
                 if archive_path:
                     os.remove(archive_path)
             except OSError as e:
-                # logging.warning(e)
+                logging.warning(e)
                 pass
 
         for folder in folders:
@@ -149,7 +150,7 @@ class TEDWorker:
                 if folder:
                     os.rmdir(os.path.join(self.path, folder))
             except OSError as e:
-                # logging.warning(e)
+                logging.warning(e)
                 pass
         
         return all_updated_tenders, total_created_tenders
