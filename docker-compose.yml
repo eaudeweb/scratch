@@ -69,7 +69,7 @@ services:
       - data:/var/lib/postgresql/data
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.6.1
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.8
     container_name: scratch.elasticsearch
     environment:
       - discovery.type=single-node
