@@ -22,6 +22,8 @@ logger = logging.getLogger(__name__)
 logging.basicConfig(format='%(levelname)s: %(message)s')
 
 
+
+
 def quit_or_close(ftp):
     try:
         ftp.quit()
@@ -247,10 +249,28 @@ class TEDParser(object):
             'original_cpv'
         )
         cpv_codes = set([c.get('code') for c in cpv_elements])
-
-        doc_type = soup.find('td_document_type').text
-        country = soup.find('iso_country').get('value')
-        auth_type = soup.find('aa_authority_type').text
+        
+        
+        doc_type = soup.find("td_document_type")
+        
+        if doc_type:
+            doc_type = doc_type.text
+        else:
+            doc_type = ""
+            
+        country = soup.find('iso_country')
+        
+        if country:
+            country = country.get('value')
+        else:
+            country = ""
+        
+        auth_type = soup.find('aa_authority_type')
+        
+        if auth_type:
+            auth_type = auth_type.text
+        else:
+            auth_type = ""
 
         accept_notice = (
                 cpv_codes & set(self.CPV_CODES) and (
@@ -408,9 +428,11 @@ class TEDParser(object):
         for xml_file in self.xml_files[:]:
             with open(xml_file, 'r') as f:
                 try:
+                    
                     tender_dict, awards = self._parse_notice(
                         f.read(), tenders, xml_file, codes, set_notified)
                 except StopIteration:
+                    
                     continue
 
                 created, attr_changes = self.save_tender(
@@ -445,7 +467,7 @@ class TEDParser(object):
             for c in award_date.contents:
                 try:
                     fields[c.name] = int(c.text)
-                except AttributeError:
+                except (AttributeError, ValueError):
                     pass
             award['award_date'] = date(**fields)
         vendor = soup.find('economic_operator_name_address') or soup.find(
