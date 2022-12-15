@@ -1,4 +1,4 @@
-FROM python:3.6-alpine
+FROM python:3.11-alpine
 
 ARG REQFILE=requirements-dep.txt
 ENV APP_HOME=/var/local/scratch
