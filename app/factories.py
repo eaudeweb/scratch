@@ -38,6 +38,7 @@ class AwardFactory(factory.DjangoModelFactory):
     value = 10
     currency = "USD"
     award_date = datetime.now(timezone.utc)
+    renewal_date = datetime.now(timezone.utc)
     tender = factory.SubFactory(TenderFactory)
 
 
