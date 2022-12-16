@@ -12,7 +12,7 @@ from django.core.management import (
     call_command, get_commands, load_command_class
 )
 from django.shortcuts import redirect
-from django.utils.http import is_safe_url
+from django.utils.http import url_has_allowed_host_and_scheme
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
@@ -228,7 +228,7 @@ class LoginView(FormView):
 
     def get_success_url(self):
         redirect_to = self.request.GET.get(self.redirect_field_name)
-        if not is_safe_url(
+        if not url_has_allowed_host_and_scheme(
             url=redirect_to, allowed_hosts=self.request.get_host()
         ):
             redirect_to = self.success_url
