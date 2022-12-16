@@ -164,6 +164,7 @@ class TEDWorker:
             return tf.getnames()[0].split("/")[0]
         except (EOFError, FileNotFoundError) as e:
             logging.warning(e)
+        
         return
 
     @staticmethod
