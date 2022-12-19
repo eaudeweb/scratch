@@ -581,10 +581,8 @@ class TEDParser(object):
 
                     if document_type != "Contract notice":
                         previous_notice = contract_notice_soup.find('notice_number_oj').text
-                        logging.warning("OFFFFFFFFFF")
                         continue
 
-                    logging.warning("ONNNNNNNN")
                     contract_notice_sections = contract_notice_soup.find('form_section').find_all(lg='EN')
                     if contract_notice_sections:
                         contract_notice_section = contract_notice_sections[0]
@@ -601,7 +599,6 @@ class TEDParser(object):
                                 renewal_date = award_date + relativedelta(weeks=int(duration.text))
                             elif unit.lower() == 'day':
                                 renewal_date = award_date + relativedelta(days=int(duration.text))
-                            logging.warning(renewal_date)
                             return renewal_date
                 return None
 
