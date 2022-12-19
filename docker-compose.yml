@@ -59,7 +59,7 @@ services:
     entrypoint: ["./docker-entrypoint.cron.sh"]
 
   db:
-    image: postgres:10-alpine
+    image: postgres:15-alpine
     container_name: scratch.db
     environment:
       - TZ=Europe/Bucharest

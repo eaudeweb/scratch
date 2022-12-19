@@ -92,10 +92,13 @@ class TEDWorker:
         last_year = self.last_ted_update.strftime('%Y')
 
         ftp = self.ftp_login()
-        ftp.cwd(f'/daily-packages/{last_year}/{last_month}')
-
-        archives = ftp.nlst()
-
+        
+        try:
+            ftp.cwd(f'/daily-packages/{last_year}/{last_month}')
+            archives = ftp.nlst()
+        except error_perm as resp:
+            logging.warning(resp)
+            
         self.download_archive(ftp, self.last_ted_update, archives)
 
         quit_or_close(ftp)
@@ -109,6 +112,8 @@ class TEDWorker:
             with open(file_path, "wb") as f:
                 ftp.retrbinary("RETR %s" % archive_name, f.write)
             self.archives.append(file_path)
+
+    
 
     def parse_notices(
             self, tenders=None, set_notified=False
@@ -135,21 +140,23 @@ class TEDWorker:
                 formatted_date = datetime.strptime(
                     folder_date, '%Y%m%d').strftime('%d/%m/%Y')
                 logging.warning(f'Date {formatted_date} parsed successfully')
-
+        
         for archive_path in self.archives:
             try:
-                os.remove(archive_path)
+                if archive_path:
+                    os.remove(archive_path)
             except OSError as e:
                 logging.warning(e)
                 pass
 
         for folder in folders:
             try:
-                os.rmdir(os.path.join(self.path, folder))
+                if folder:
+                    os.rmdir(os.path.join(self.path, folder))
             except OSError as e:
                 logging.warning(e)
                 pass
-
+        
         return all_updated_tenders, total_created_tenders
 
     @staticmethod
@@ -161,7 +168,7 @@ class TEDWorker:
             return tf.getnames()[0].split("/")[0]
         except (EOFError, FileNotFoundError) as e:
             logging.warning(e)
-
+        
         return
 
     @staticmethod
@@ -466,7 +473,10 @@ class TEDParser(object):
             fields = {}
             for c in award_date.contents:
                 try:
-                    fields[c.name] = int(c.text)
+                    if c.text.endswith('.'):
+                        fields[c.name] = int(c.text.replace('.',''))
+                    else:
+                        fields[c.name] = int(c.text)
                 except (AttributeError, ValueError):
                     pass
             award['award_date'] = date(**fields)
@@ -573,21 +583,26 @@ class TEDParser(object):
     def save_award(tender_dict, award_dict) -> Award:
         reference = tender_dict['reference']
         tender_entry = Tender.objects.filter(reference=reference).first()
-
+        
         if tender_entry:
-            vendors = award_dict.pop('vendors')
             vendor_objects = []
-            for vendor in vendors:
-                vendor_object, _ = Vendor.objects.get_or_create(name=vendor)
-                vendor_objects.append(vendor_object)
-            award, created = Award.objects.get_or_create(
+            if award_dict.get('vendors'):
+                vendors = award_dict.pop('vendors')
+                
+                for vendor in vendors:
+                    vendor_object, _ = Vendor.objects.get_or_create(name=vendor)
+                    vendor_objects.append(vendor_object)
+                award, created = Award.objects.get_or_create(
                 tender=tender_entry, defaults=award_dict)
-            if not created:
-                award.value += award_dict['value']
-                award.save()
-            award.vendors.add(*vendor_objects)
-            return award
-
+            
+                if not created:
+                    award.value += award_dict['value']
+                    award.save()
+                award.vendors.add(*vendor_objects)
+                return award
+            else:
+                logging.warning(f"No vendors for {reference}.")
+            
     @staticmethod
     def save_tender(tender_dict, codes) -> Tuple[bool, dict]:
         old_tender = Tender.objects.filter(

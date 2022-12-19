@@ -28,7 +28,7 @@ class TendersListViewTests(BaseTestCase):
         self.assertEqual(response.status_code, 200)
         self.assertQuerysetEqual(
             list(response.context['tenders']),
-            ['<Tender: Tender1>', '<Tender: Tender2>']
+            [tender_1, tender_2]
         )
         self.assertEqual(response.context['tenders'][0].reference, tender_1.reference)
         self.assertEqual(response.context['tenders'][1].source, tender_2.source)
@@ -40,7 +40,6 @@ class TendersListViewTests(BaseTestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertQuerysetEqual(
-            list(response.context['tenders']),
-            ['<Tender: Tender1 python>']
+            list(response.context['tenders']), [tender]
         )
         self.assertEqual(response.context['tenders'][0].reference, tender.reference)

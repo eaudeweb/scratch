@@ -128,6 +128,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # REDIS
 Q_CLUSTER = {
+    'workers':int(env('DJ_Q_WORKERS', 3)),
     'redis': {
         'host': env('REDIS_HOST', 'redis'),
         'port': int(env('REDIS_PORT', 6379)),
