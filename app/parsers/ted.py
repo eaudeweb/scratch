@@ -556,8 +556,8 @@ class TEDParser(object):
     def find_renewal_date(previous_notice: 'str', award_date: 'datetime') -> 'datetime' or None:
         """
         Calculate the renewal date of the award by finding the contract notice and parsing its XML file.
-         After the duration of the contract and the information about contract renewal are extracted from
-         contract notice, the duration is added to award_date to obtain renewal_date.
+        After the duration of the contract and the information about contract renewal are extracted from the
+        contract notice, the duration is added to award_date to obtain renewal_date.
         """
         while True:
             file_name = previous_notice.split('/')[1].split('-')[1] + "-" + previous_notice.split('/')[0]
