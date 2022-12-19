@@ -90,13 +90,13 @@ class TEDWorker:
         last_year = self.last_ted_update.strftime('%Y')
 
         ftp = self.ftp_login()
-        
+
         try:
             ftp.cwd(f'/daily-packages/{last_year}/{last_month}')
             archives = ftp.nlst()
         except error_perm as resp:
             logging.warning(resp)
-            
+
         self.download_archive(ftp, self.last_ted_update, archives)
 
         quit_or_close(ftp)
@@ -110,8 +110,6 @@ class TEDWorker:
             with open(file_path, "wb") as f:
                 ftp.retrbinary("RETR %s" % archive_name, f.write)
             self.archives.append(file_path)
-
-    
 
     def parse_notices(
             self, tenders=None, set_notified=False
@@ -138,7 +136,7 @@ class TEDWorker:
                 formatted_date = datetime.strptime(
                     folder_date, '%Y%m%d').strftime('%d/%m/%Y')
                 logging.warning(f'Date {formatted_date} parsed successfully')
-        
+
         for archive_path in self.archives:
             try:
                 if archive_path:
@@ -154,7 +152,7 @@ class TEDWorker:
             except OSError as e:
                 logging.warning(e)
                 pass
-        
+
         return all_updated_tenders, total_created_tenders
 
     @staticmethod
@@ -166,7 +164,7 @@ class TEDWorker:
             return tf.getnames()[0].split("/")[0]
         except (EOFError, FileNotFoundError) as e:
             logging.warning(e)
-        
+
         return
 
     @staticmethod
@@ -471,7 +469,7 @@ class TEDParser(object):
             for c in award_date.contents:
                 try:
                     if c.text.endswith('.'):
-                        fields[c.name] = int(c.text.replace('.',''))
+                        fields[c.name] = int(c.text.replace('.', ''))
                     else:
                         fields[c.name] = int(c.text)
                 except (AttributeError, ValueError):
@@ -555,8 +553,12 @@ class TEDParser(object):
                     awards.append(award)
 
     @staticmethod
-    def find_renewal_date(previous_notice, award_date):
-
+    def find_renewal_date(previous_notice: 'str', award_date: 'datetime') -> 'datetime' or None:
+        """
+        Calculate the renewal date of the award by finding the contract notice and parsing its XML file.
+         After the duration of the contract and the information about contract renewal are extracted from
+         contract notice, the duration is added to award_date to obtain renewal_date.
+        """
         while True:
             file_name = previous_notice.split('/')[1].split('-')[1] + "-" + previous_notice.split('/')[0]
             url = "https://ted.europa.eu/udl?uri=TED:NOTICE:%s:XML:EN:HTML" % file_name
@@ -606,18 +608,18 @@ class TEDParser(object):
     def save_award(tender_dict, award_dict) -> Award:
         reference = tender_dict['reference']
         tender_entry = Tender.objects.filter(reference=reference).first()
-        
+
         if tender_entry:
             vendor_objects = []
             if award_dict.get('vendors'):
                 vendors = award_dict.pop('vendors')
-                
+
                 for vendor in vendors:
                     vendor_object, _ = Vendor.objects.get_or_create(name=vendor)
                     vendor_objects.append(vendor_object)
                 award, created = Award.objects.get_or_create(
-                tender=tender_entry, defaults=award_dict)
-            
+                    tender=tender_entry, defaults=award_dict)
+
                 if not created:
                     award.value += award_dict['value']
                     award.save()
@@ -625,7 +627,7 @@ class TEDParser(object):
                 return award
             else:
                 logging.warning(f"No vendors for {reference}.")
-            
+
     @staticmethod
     def save_tender(tender_dict, codes) -> Tuple[bool, dict]:
         old_tender = Tender.objects.filter(
