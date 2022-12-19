@@ -22,8 +22,6 @@ logger = logging.getLogger(__name__)
 logging.basicConfig(format='%(levelname)s: %(message)s')
 
 
-
-
 def quit_or_close(ftp):
     try:
         ftp.quit()
@@ -256,24 +254,23 @@ class TEDParser(object):
             'original_cpv'
         )
         cpv_codes = set([c.get('code') for c in cpv_elements])
-        
-        
+
         doc_type = soup.find("td_document_type")
-        
+
         if doc_type:
             doc_type = doc_type.text
         else:
             doc_type = ""
-            
+
         country = soup.find('iso_country')
-        
+
         if country:
             country = country.get('value')
         else:
             country = ""
-        
+
         auth_type = soup.find('aa_authority_type')
-        
+
         if auth_type:
             auth_type = auth_type.text
         else:
@@ -435,11 +432,11 @@ class TEDParser(object):
         for xml_file in self.xml_files[:]:
             with open(xml_file, 'r') as f:
                 try:
-                    
+
                     tender_dict, awards = self._parse_notice(
                         f.read(), tenders, xml_file, codes, set_notified)
                 except StopIteration:
-                    
+
                     continue
 
                 created, attr_changes = self.save_tender(
@@ -483,6 +480,17 @@ class TEDParser(object):
         vendor = soup.find('economic_operator_name_address') or soup.find(
             'contact_data_without_responsible_name_chp'
         )
+
+        try:
+            previous_notice = soup.find('notice_number_oj').text
+
+            renewal_date = TEDParser.find_renewal_date(previous_notice, award_date)
+
+        except (AttributeError, TypeError, ValueError):
+            renewal_date = None
+
+        award["renewal_date"] = renewal_date
+
         if vendor:
             award['vendor'] = (
                 vendor.officialname.text if vendor.officialname else None
@@ -522,9 +530,8 @@ class TEDParser(object):
 
                 try:
                     previous_notice = section.find('notice_number_oj').text
-                    file_name = previous_notice.split('/')[1].split('-')[1] + "-" + previous_notice.split('/')[0]
 
-                    renewal_date = TEDParser.find_renewal_date(file_name, award_date)
+                    renewal_date = TEDParser.find_renewal_date(previous_notice, award_date)
 
                 except (AttributeError, TypeError, ValueError):
                     renewal_date = None
@@ -548,36 +555,55 @@ class TEDParser(object):
                     awards.append(award)
 
     @staticmethod
-    def find_renewal_date(file_name, award_date):
-        url = "https://ted.europa.eu/udl?uri=TED:NOTICE:%s:XML:EN:HTML" % file_name
+    def find_renewal_date(previous_notice, award_date):
 
-        with TemporaryFile() as content:
-            headers = {
-                'User-Agent': 'Mozilla/5.0'
-            }
-            response = requests.get(url, headers=headers, stream=True)
-            if response.status_code == 200:
-                for chunk in response.iter_content(chunk_size=4096):
-                    content.write(chunk)
-                content.seek(0)
-                contract_notice_soup = BeautifulSoup(content, 'html.parser')
-                contract_notice_sections = contract_notice_soup.find('form_section').find_all(lg='EN')
-                if contract_notice_sections:
-                    contract_notice_section = contract_notice_sections[0]
-                    duration = contract_notice_section.find('duration')
-                    renewal = contract_notice_section.find('renewal')
-                    renewal_date = None
-                    if renewal and duration:
-                        unit = duration.attrs['type']
-                        if unit.lower() == 'year':
-                            renewal_date = award_date + relativedelta(years=int(duration.text))
-                        elif unit.lower() == 'month':
-                            renewal_date = award_date + relativedelta(months=int(duration.text))
-                        elif unit.lower() == 'week':
-                            renewal_date = award_date + relativedelta(weeks=int(duration.text))
-                        elif unit.lower() == 'day':
-                            renewal_date = award_date + relativedelta(days=int(duration.text))
-                        return renewal_date
+        while True:
+            file_name = previous_notice.split('/')[1].split('-')[1] + "-" + previous_notice.split('/')[0]
+            url = "https://ted.europa.eu/udl?uri=TED:NOTICE:%s:XML:EN:HTML" % file_name
+            logging.warning(file_name)
+
+            with TemporaryFile() as content:
+                headers = {
+                    'User-Agent': 'Mozilla/5.0'
+                }
+                response = requests.get(url, headers=headers, stream=True)
+                if response.status_code == 200:
+                    for chunk in response.iter_content(chunk_size=4096):
+                        content.write(chunk)
+                    content.seek(0)
+                    contract_notice_soup = BeautifulSoup(content, 'html.parser')
+                    document_type = contract_notice_soup.find("td_document_type")
+                    if document_type:
+                        document_type = document_type.text
+                    else:
+                        document_type = ""
+                    logging.warning(document_type)
+
+                    if document_type != "Contract notice":
+                        previous_notice = contract_notice_soup.find('notice_number_oj').text
+                        logging.warning("OFFFFFFFFFF")
+                        continue
+
+                    logging.warning("ONNNNNNNN")
+                    contract_notice_sections = contract_notice_soup.find('form_section').find_all(lg='EN')
+                    if contract_notice_sections:
+                        contract_notice_section = contract_notice_sections[0]
+                        duration = contract_notice_section.find('duration')
+                        renewal = contract_notice_section.find('renewal')
+                        renewal_date = None
+                        if renewal and duration:
+                            unit = duration.attrs['type']
+                            if unit.lower() == 'year':
+                                renewal_date = award_date + relativedelta(years=int(duration.text))
+                            elif unit.lower() == 'month':
+                                renewal_date = award_date + relativedelta(months=int(duration.text))
+                            elif unit.lower() == 'week':
+                                renewal_date = award_date + relativedelta(weeks=int(duration.text))
+                            elif unit.lower() == 'day':
+                                renewal_date = award_date + relativedelta(days=int(duration.text))
+                            logging.warning(renewal_date)
+                            return renewal_date
+                return None
 
     @staticmethod
     def save_award(tender_dict, award_dict) -> Award:
