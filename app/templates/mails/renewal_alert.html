@@ -1,0 +1,26 @@
+{% extends 'mails/layout.html' %}
+{% block header %}
+  This contract is subject to renewal in less than {{ months_remained }} months!
+{% endblock %}
+{% block content %}
+  <h2>
+    <a href="{{ tender.url }}">{{ award.tender.title }}</a>
+  </h2>
+  {% if award.renewal_date %}
+    <p class="deadline">
+      Renewal date: {{ award.renewal_date }} | {{ award.renewal_date|safe }}
+    </p>
+  {% else %}
+    <p>Renewal date: Not specified</p>
+  {% endif %}
+  <hr>
+  <h3>Vendors</h3>
+  <p class="description">{{ award.get_vendors|safe }}</p>
+  <p class="published clip">
+    {% if award.award_date %}
+      Award date: {{ award.award_date }}
+    {% else %}
+      Award date: Not specified
+    {% endif %}
+  </p>
+{% endblock %}
