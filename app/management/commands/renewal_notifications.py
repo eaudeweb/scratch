@@ -8,49 +8,54 @@ from django.utils import timezone
 from app.management.commands.base.params import BaseParamsUI
 
 
+def send_renewal_mail(awards, months_remained):
+    subject = 'Renewal alert'
+    notifications = EmailAddress.objects.filter(notify=True)
+    recipients = [notification.email for notification in notifications]
+
+    html_content = render_to_string(
+        'mails/renewal_alert.html',
+        {
+            'awards': awards,
+            'months_remained': months_remained,
+            'domain': settings.BASE_URL
+        }
+    )
+
+    email = build_email(subject, recipients, None, html_content)
+    email.send()
+
+
+def get_awards(months):
+    date = timezone.now().date() + relativedelta(months=months)
+
+    awards = Award.objects.filter(
+        renewal_notified=False,
+        renewal_date__isnull=False,
+        renewal_date__lte=date
+    ).order_by('renewal_date')
+
+    return awards, awards.count()
+
+
+def set_renewal_notified(awards):
+    for award in awards:
+        award.renewal_notified = True
+        award.save()
+
+
 class Command(BaseCommand, BaseParamsUI):
     help = 'Send renewal notifications to all users if there are awards with an upcoming renewal date'
 
     def handle(self, *args, **options):
         months = settings.RENEWAL_NOTIFICATIONS
-        date = timezone.now().date() + relativedelta(months=months)
 
-        awards = Award.objects.filter(
-            renewal_notified=False,
-            renewal_date__isnull=False,
-            renewal_date__lte=date
-        ).order_by('renewal_date')
-
-        self.stdout.write(self.style.SUCCESS(
-            f'Months: {months}'
-        ))
-
-        award_count = awards.count()
+        awards, award_count = get_awards(months)
         if award_count:
-            self.send_renewal_mail(awards, months)
+            send_renewal_mail(awards, months)
 
-        for award in awards:
-            award.renewal_notified = True
-            award.save()
+        set_renewal_notified(awards)
 
         return self.style.SUCCESS(
             f'Sent notifications about {award_count} awards...'
         )
-
-    @staticmethod
-    def send_renewal_mail(awards, months_remained):
-        subject = 'Renewal alert'
-        notifications = EmailAddress.objects.filter(notify=True)
-        recipients = [notification.email for notification in notifications]
-
-        html_content = render_to_string(
-            'mails/renewal_alert.html',
-            {
-                'awards': awards,
-                'months_remained': months_remained,
-                'domain': settings.BASE_URL
-            }
-        )
-
-        email = build_email(subject, recipients, None, html_content)
-        email.send()

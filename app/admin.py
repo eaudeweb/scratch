@@ -33,7 +33,7 @@ class TenderDocumentAdmin(admin.ModelAdmin):
 
 class AwardAdmin(admin.ModelAdmin):
     list_display = [
-        'value', 'currency', 'award_date', 'renewal_date', 'notified', 'get_vendors',
+        'value', 'currency', 'award_date', 'renewal_date', 'notified', 'renewal_notified','get_vendors',
         'get_tender_title', 'get_tender_organization', 'get_tender_source',
         'get_tender_deadline',
     ]
