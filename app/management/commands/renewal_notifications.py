@@ -12,33 +12,33 @@ class Command(BaseCommand, BaseParamsUI):
     help = 'Send renewal notifications to all users if there are awards with an upcoming renewal date'
 
     def handle(self, *args, **options):
-        awards = Award.objects.filter(renewal_notified=False, renewal_date__isnull=False).order_by('renewal_date')
-
         months = settings.RENEWAL_NOTIFICATIONS
+        date = timezone.now().date() + relativedelta(months=months)
+
+        awards = Award.objects.filter(
+            renewal_notified=False,
+            renewal_date__isnull=False,
+            renewal_date__lte=date
+        ).order_by('renewal_date')
 
         self.stdout.write(self.style.SUCCESS(
             f'Months: {months}'
         ))
 
-        award_count = 0
+        award_count = awards.count()
+        if award_count:
+            self.send_renewal_mail(awards, months)
 
         for award in awards:
-
-            if timezone.now().date() + relativedelta(months=months) > award.renewal_date:
-                self.stdout.write(self.style.SUCCESS(
-                    f'Sending notification about: {award.tender.title}'
-                ))
-                self.send_renewal_mail(award, months)
-                award_count += 1
-                award.renewal_notified = True
-                award.save()
+            award.renewal_notified = True
+            award.save()
 
         return self.style.SUCCESS(
             f'Sent notifications about {award_count} awards...'
         )
 
     @staticmethod
-    def send_renewal_mail(award, months_remained):
+    def send_renewal_mail(awards, months_remained):
         subject = 'Renewal alert'
         notifications = EmailAddress.objects.filter(notify=True)
         recipients = [notification.email for notification in notifications]
@@ -46,7 +46,7 @@ class Command(BaseCommand, BaseParamsUI):
         html_content = render_to_string(
             'mails/renewal_alert.html',
             {
-                'award': award,
+                'awards': awards,
                 'months_remained': months_remained,
                 'domain': settings.BASE_URL
             }
