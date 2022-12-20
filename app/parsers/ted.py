@@ -2,22 +2,24 @@ import logging
 import os
 import tarfile
 import time
-
+from tempfile import TemporaryFile
 from typing import List, Tuple
+
+import requests
 from bs4 import BeautifulSoup, element
 from datetime import date, datetime, timedelta
 from django.conf import settings
 from ftplib import error_perm, FTP
 
+from django.core.files import File
 from django.utils.timezone import make_aware
 
 from app.exceptions import CPVCodesNotFound, TEDCountriesNotFound
 from app.models import WorkerLog, Tender, Award, CPVCode, TedCountry, Vendor
+from dateutil.relativedelta import relativedelta
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(format='%(levelname)s: %(message)s')
-
-
 
 
 def quit_or_close(ftp):
@@ -88,13 +90,13 @@ class TEDWorker:
         last_year = self.last_ted_update.strftime('%Y')
 
         ftp = self.ftp_login()
-        
+
         try:
             ftp.cwd(f'/daily-packages/{last_year}/{last_month}')
             archives = ftp.nlst()
         except error_perm as resp:
             logging.warning(resp)
-            
+
         self.download_archive(ftp, self.last_ted_update, archives)
 
         quit_or_close(ftp)
@@ -109,10 +111,8 @@ class TEDWorker:
                 ftp.retrbinary("RETR %s" % archive_name, f.write)
             self.archives.append(file_path)
 
-    
-
     def parse_notices(
-        self, tenders=None, set_notified=False
+            self, tenders=None, set_notified=False
     ) -> Tuple[Tuple[dict, dict], int]:
         """
         Parse an archive file, extract all tender data from it and use it to
@@ -136,7 +136,7 @@ class TEDWorker:
                 formatted_date = datetime.strptime(
                     folder_date, '%Y%m%d').strftime('%d/%m/%Y')
                 logging.warning(f'Date {formatted_date} parsed successfully')
-        
+
         for archive_path in self.archives:
             try:
                 if archive_path:
@@ -152,7 +152,7 @@ class TEDWorker:
             except OSError as e:
                 logging.warning(e)
                 pass
-        
+
         return all_updated_tenders, total_created_tenders
 
     @staticmethod
@@ -164,7 +164,7 @@ class TEDWorker:
             return tf.getnames()[0].split("/")[0]
         except (EOFError, FileNotFoundError) as e:
             logging.warning(e)
-        
+
         return
 
     @staticmethod
@@ -226,7 +226,7 @@ class TEDParser(object):
         self.folders = [os.path.join(path, folder) for folder in folder_names]
 
     def _parse_notice(
-        self, content, tenders_to_update, xml_file, codes, set_notified
+            self, content, tenders_to_update, xml_file, codes, set_notified
     ) -> Tuple[dict, List[dict]]:
         """
         :param tenders_to_update: a list of tenders to be updated. If the list
@@ -252,35 +252,34 @@ class TEDParser(object):
             'original_cpv'
         )
         cpv_codes = set([c.get('code') for c in cpv_elements])
-        
-        
+
         doc_type = soup.find("td_document_type")
-        
+
         if doc_type:
             doc_type = doc_type.text
         else:
             doc_type = ""
-            
+
         country = soup.find('iso_country')
-        
+
         if country:
             country = country.get('value')
         else:
             country = ""
-        
+
         auth_type = soup.find('aa_authority_type')
-        
+
         if auth_type:
             auth_type = auth_type.text
         else:
             auth_type = ""
 
         accept_notice = (
-            cpv_codes & set(self.CPV_CODES) and (
+                cpv_codes & set(self.CPV_CODES) and (
                 doc_type in settings.TED_DOC_TYPES
-            ) and country in self.TED_COUNTRIES and (
-                auth_type == settings.TED_AUTH_TYPE
-            )
+        ) and country in self.TED_COUNTRIES and (
+                        auth_type == settings.TED_AUTH_TYPE
+                )
         )
 
         if not accept_notice:
@@ -311,7 +310,7 @@ class TEDParser(object):
 
         try:
             tender['organization'] = (
-                soup.find('aa_name', {'lg': 'EN'}) or soup.find('aa_name')
+                    soup.find('aa_name', {'lg': 'EN'}) or soup.find('aa_name')
             ).text
         except AttributeError:
             tender['organization'] = ''
@@ -349,20 +348,20 @@ class TEDParser(object):
 
             try:
                 estimated_total = (
-                    'Estimated total: '
-                    + section.find('val_estimated_total').get_text()
-                    + ' '
-                    + str(section.find('val_estimated_total')['currency'])
-                    + '\n\n'
+                        'Estimated total: '
+                        + section.find('val_estimated_total').get_text()
+                        + ' '
+                        + str(section.find('val_estimated_total')['currency'])
+                        + '\n\n'
                 )
             except AttributeError:
                 estimated_total = ''
 
             try:
                 lots = (
-                    'Tenders may be submitted for maximum number of lots: '
-                    + section.find('lot_max_number').get_text()
-                    + '\n\n'
+                        'Tenders may be submitted for maximum number of lots: '
+                        + section.find('lot_max_number').get_text()
+                        + '\n\n'
                 )
             except AttributeError:
                 lots = ''
@@ -371,10 +370,10 @@ class TEDParser(object):
 
             try:
                 short_desc = (
-                    'Short Description:'
-                    + '\n\t'
-                    + str(descriptions[0].get_text())
-                    + '\n\n'
+                        'Short Description:'
+                        + '\n\t'
+                        + str(descriptions[0].get_text())
+                        + '\n\n'
                 )
             except (AttributeError, IndexError):
                 short_desc = ''
@@ -382,13 +381,13 @@ class TEDParser(object):
             try:
                 procurement_desc = descriptions[1]
                 procurement_desc = 'Description of the procurement:' + (
-                    '\n\t' + str(descriptions[1].get_text())
+                        '\n\t' + str(descriptions[1].get_text())
                 )
             except IndexError:
                 pass
 
             tender['description'] = (
-                title + estimated_total + lots + short_desc + procurement_desc
+                    title + estimated_total + lots + short_desc + procurement_desc
             )
         else:
             tender['description'] = ''
@@ -417,7 +416,7 @@ class TEDParser(object):
             '_', '-').replace('.xml', '') in tender_references
 
     def parse_notices(
-        self, tenders: List[dict], set_notified: bool
+            self, tenders: List[dict], set_notified: bool
     ) -> Tuple[List[Tuple[dict, dict]], int]:
         changed_tenders = []
         codes = {}
@@ -431,11 +430,11 @@ class TEDParser(object):
         for xml_file in self.xml_files[:]:
             with open(xml_file, 'r') as f:
                 try:
-                    
+
                     tender_dict, awards = self._parse_notice(
                         f.read(), tenders, xml_file, codes, set_notified)
                 except StopIteration:
-                    
+
                     continue
 
                 created, attr_changes = self.save_tender(
@@ -470,7 +469,7 @@ class TEDParser(object):
             for c in award_date.contents:
                 try:
                     if c.text.endswith('.'):
-                        fields[c.name] = int(c.text.replace('.',''))
+                        fields[c.name] = int(c.text.replace('.', ''))
                     else:
                         fields[c.name] = int(c.text)
                 except (AttributeError, ValueError):
@@ -479,6 +478,17 @@ class TEDParser(object):
         vendor = soup.find('economic_operator_name_address') or soup.find(
             'contact_data_without_responsible_name_chp'
         )
+
+        try:
+            previous_notice = soup.find('notice_number_oj').text
+
+            renewal_date = TEDParser.find_renewal_date(previous_notice, award_date)
+
+        except (AttributeError, TypeError, ValueError):
+            renewal_date = None
+
+        award["renewal_date"] = renewal_date
+
         if vendor:
             award['vendor'] = (
                 vendor.officialname.text if vendor.officialname else None
@@ -516,11 +526,20 @@ class TEDParser(object):
                     contract_value = 0
                     currency_currency = 'N/A'
 
+                try:
+                    previous_notice = section.find('notice_number_oj').text
+
+                    renewal_date = TEDParser.find_renewal_date(previous_notice, award_date)
+
+                except (AttributeError, TypeError, ValueError):
+                    renewal_date = None
+
                 contractors = awarded_contract.find_all('contractor')
                 if contractors:
                     award = {
                         "vendors": [],
                         "award_date": award_date,
+                        "renewal_date": renewal_date,
                         "value": contract_value,
                         "currency": currency_currency,
                         "notified": set_notified,
@@ -534,21 +553,73 @@ class TEDParser(object):
                     awards.append(award)
 
     @staticmethod
+    def find_renewal_date(previous_notice: 'str', award_date: 'datetime') -> 'datetime' or None:
+        """
+        Calculate the renewal date of the award by finding the contract notice and parsing its XML file.
+        After the duration of the contract and the information about contract renewal are extracted from the
+        contract notice, the duration is added to award_date to obtain renewal_date.
+        """
+        while True:
+            file_name = previous_notice.split('/')[1].split('-')[1] + "-" + previous_notice.split('/')[0]
+            url = "https://ted.europa.eu/udl?uri=TED:NOTICE:%s:XML:EN:HTML" % file_name
+            logging.warning(file_name)
+
+            with TemporaryFile() as content:
+                headers = {
+                    'User-Agent': 'Mozilla/5.0'
+                }
+                response = requests.get(url, headers=headers, stream=True)
+                if response.status_code == 200:
+                    for chunk in response.iter_content(chunk_size=4096):
+                        content.write(chunk)
+                    content.seek(0)
+                    contract_notice_soup = BeautifulSoup(content, 'html.parser')
+                    document_type = contract_notice_soup.find("td_document_type")
+                    if document_type:
+                        document_type = document_type.text
+                    else:
+                        document_type = ""
+                    logging.warning(document_type)
+
+                    if document_type != "Contract notice":
+                        previous_notice = contract_notice_soup.find('notice_number_oj').text
+                        continue
+
+                    contract_notice_sections = contract_notice_soup.find('form_section').find_all(lg='EN')
+                    if contract_notice_sections:
+                        contract_notice_section = contract_notice_sections[0]
+                        duration = contract_notice_section.find('duration')
+                        renewal = contract_notice_section.find('renewal')
+                        renewal_date = None
+                        if renewal and duration:
+                            unit = duration.attrs['type']
+                            if unit.lower() == 'year':
+                                renewal_date = award_date + relativedelta(years=int(duration.text))
+                            elif unit.lower() == 'month':
+                                renewal_date = award_date + relativedelta(months=int(duration.text))
+                            elif unit.lower() == 'week':
+                                renewal_date = award_date + relativedelta(weeks=int(duration.text))
+                            elif unit.lower() == 'day':
+                                renewal_date = award_date + relativedelta(days=int(duration.text))
+                            return renewal_date
+                return None
+
+    @staticmethod
     def save_award(tender_dict, award_dict) -> Award:
         reference = tender_dict['reference']
         tender_entry = Tender.objects.filter(reference=reference).first()
-        
+
         if tender_entry:
             vendor_objects = []
             if award_dict.get('vendors'):
                 vendors = award_dict.pop('vendors')
-                
+
                 for vendor in vendors:
                     vendor_object, _ = Vendor.objects.get_or_create(name=vendor)
                     vendor_objects.append(vendor_object)
                 award, created = Award.objects.get_or_create(
-                tender=tender_entry, defaults=award_dict)
-            
+                    tender=tender_entry, defaults=award_dict)
+
                 if not created:
                     award.value += award_dict['value']
                     award.save()
@@ -556,7 +627,7 @@ class TEDParser(object):
                 return award
             else:
                 logging.warning(f"No vendors for {reference}.")
-            
+
     @staticmethod
     def save_tender(tender_dict, codes) -> Tuple[bool, dict]:
         old_tender = Tender.objects.filter(

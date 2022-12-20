@@ -33,7 +33,7 @@ class TenderDocumentAdmin(admin.ModelAdmin):
 
 class AwardAdmin(admin.ModelAdmin):
     list_display = [
-        'value', 'currency', 'award_date', 'notified', 'get_vendors',
+        'value', 'currency', 'award_date', 'renewal_date', 'notified', 'get_vendors',
         'get_tender_title', 'get_tender_organization', 'get_tender_source',
         'get_tender_deadline',
     ]
@@ -41,7 +41,7 @@ class AwardAdmin(admin.ModelAdmin):
     search_fields = ['vendors__name', 'tender__title', 'award_date']
     list_filter = (
         'vendors', 'tender__title', 'tender__deadline', 'tender__source',
-        'tender__organization', 'currency', 'award_date',
+        'tender__organization', 'currency', 'award_date', 'renewal_date'
     )
 
     def get_tender_title(self, obj):

@@ -49,8 +49,8 @@ class ContractAwardsListAjaxView(BaseAjaxListingView):
         ('source', 'tender__source'),
         ('vendor', 'vendors__name'),
     ]
-    order_fields = ['tender__title', 'tender__source', 'tender__organization', 
-                    'award_date', '', 'value', 'currency']
+    order_fields = ['tender__title', 'tender__source', 'tender__organization',
+                    'award_date', 'renewal_date', 'value', 'currency']
     case_sensitive_fields = ['tender__title', 'tender__source', 'tender__organization']
     model = Award
 
@@ -61,7 +61,8 @@ class ContractAwardsListAjaxView(BaseAjaxListingView):
                 'url': reverse('contract_awards_detail_view', kwargs={'pk': award.id}),
                 'source': award.tender.source,
                 'organization': award.tender.organization,
-                'award_date': 'Not specified' if not award.award_date  else award.award_date.strftime("%m/%d/%Y"),
+                'award_date': 'Not specified' if not award.award_date else award.award_date.strftime("%m/%d/%Y"),
+                'renewal_date': 'Not specified' if not award.renewal_date else award.renewal_date.strftime("%m/%d/%Y"),
                 'vendor': render_to_string('award_vendors.html', {'vendors': award.vendors.all()}),
                 'value': floatformat(award.value, '0'),
                 'currency': award.currency,
@@ -72,14 +73,14 @@ class ContractAwardsListAjaxView(BaseAjaxListingView):
 
     def filter_data(self, request):
         awards = super(ContractAwardsListAjaxView, self).filter_data(request)
-        
+
         search = request.GET.get("search[value]")
         if search:
             awards = Award.objects.filter(
-                        Q(tender__title__icontains=search)|
-                        Q(tender__organization__icontains=search)|
-                        Q(vendors__name__icontains=search)
-                    )
+                Q(tender__title__icontains=search) |
+                Q(tender__organization__icontains=search) |
+                Q(vendors__name__icontains=search)
+            )
 
         value = self.request.GET.get("value")
         if value:

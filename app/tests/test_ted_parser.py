@@ -59,6 +59,7 @@ class TedParserTestCase(BaseTestCase):
             self.assertEqual(len(awards), 1)
             self.assertEqual(awards[0]["vendors"], ["Société Momentanée Cit Blaton-Jacques Delens"])
             self.assertEqual(awards[0]["award_date"], datetime(2019, 3, 11, 0, 0))
+            self.assertEqual(awards[0]["renewal_date"], None)
             self.assertEqual(awards[0]["value"], 17565752.85)
             self.assertEqual(awards[0]["currency"], "EUR")
 
@@ -82,6 +83,7 @@ class TedParserTestCase(BaseTestCase):
             self.assertEqual(len(awards), 1)
             self.assertEqual(awards[0]["vendors"], ["Société Momentanée Cit Blaton-Jacques Delens", "Société Momentanée Cit Blaton-Jacques Delens"])
             self.assertEqual(awards[0]["award_date"], datetime(2019, 3, 11, 0, 0))
+            self.assertEqual(awards[0]["renewal_date"], datetime(2024, 7, 11, 0, 0))
             self.assertEqual(awards[0]["value"], 17565752.85)
             self.assertEqual(awards[0]["currency"], "EUR")
             self.parser.save_award(tender, awards[0])
@@ -142,6 +144,7 @@ class TedParserTestCase(BaseTestCase):
             self.assertEqual(len(awards), 1)
             self.assertEqual(awards[0]["vendors"], [])
             self.assertEqual(awards[0]["award_date"], date.today())
+            self.assertEqual(awards[0]["renewal_date"], None)
             self.assertEqual(awards[0]["value"], 0)
             self.assertEqual(awards[0]["currency"], "N/A")
 
