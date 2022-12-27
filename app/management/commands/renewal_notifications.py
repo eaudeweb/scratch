@@ -8,6 +8,9 @@ from django.utils import timezone
 from app.management.commands.base.params import BaseParamsUI
 
 
+MONTHS = settings.RENEWAL_NOTIFICATIONS
+
+
 def send_renewal_mail(awards, months_remained):
     subject = 'Renewal alert'
     notifications = EmailAddress.objects.filter(notify=True)
@@ -47,8 +50,11 @@ def set_renewal_notified(awards):
 class Command(BaseCommand, BaseParamsUI):
     help = 'Send renewal notifications to all users if there are awards with an upcoming renewal date'
 
+    def add_arguments(self, parser):
+        parser.add_argument('months', nargs='?', type=int, default=MONTHS)
+
     def handle(self, *args, **options):
-        months = settings.RENEWAL_NOTIFICATIONS
+        months = options['months']
 
         awards, award_count = get_awards(months)
         if award_count:

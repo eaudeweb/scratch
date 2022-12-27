@@ -7,11 +7,11 @@
     <li>
       <h2>Awards</h2>
     </li>
-    <ol>
+    <ol class="award-list">
       {% for award in awards %}
         <li>
           <h2>
-            <a href="{{ tender.url }}">{{ award.tender.title }}</a>
+            <a href="{{ award.tender.url }}">{{ award.tender.title }}</a>
           </h2>
           {% if award.renewal_date %}
             <p class="deadline">
