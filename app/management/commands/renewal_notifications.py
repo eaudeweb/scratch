@@ -41,12 +41,6 @@ def get_awards(months):
     return awards, awards.count()
 
 
-def set_renewal_notified(awards):
-    for award in awards:
-        award.renewal_notified = True
-        award.save()
-
-
 class Command(BaseCommand, BaseParamsUI):
     help = 'Send renewal notifications to all users if there are awards with an upcoming renewal date'
 
@@ -60,7 +54,7 @@ class Command(BaseCommand, BaseParamsUI):
         if award_count:
             send_renewal_mail(awards, months)
 
-        set_renewal_notified(awards)
+        awards.update(renewal_notified=True)
 
         return self.style.SUCCESS(
             f'Sent notifications about {award_count} awards...'
