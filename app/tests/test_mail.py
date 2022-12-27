@@ -249,7 +249,7 @@ class SendMailTest(BaseTestCase):
         self.assertEqual(self.tender1.url in mail2, True)
         self.assertEqual(self.tender2.url in mail3, True)
     
-    def test_renewal_notification(self):
+    def test_notify_renewal(self):
 
         months = 4
 
@@ -264,7 +264,7 @@ class SendMailTest(BaseTestCase):
         self.assertEqual(award2.renewal_notified, False)
         self.assertEqual(award3.renewal_notified, False)
 
-        management.call_command('renewal_notifications', months=months)
+        management.call_command('notify_renewal', months=months)
         self.assertEqual(len(mail.outbox), 1)
 
         award1.refresh_from_db()
