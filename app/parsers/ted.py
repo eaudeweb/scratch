@@ -11,7 +11,6 @@ from datetime import date, datetime, timedelta
 from django.conf import settings
 from ftplib import error_perm, FTP
 
-from django.core.files import File
 from django.utils.timezone import make_aware
 
 from app.exceptions import CPVCodesNotFound, TEDCountriesNotFound
@@ -499,6 +498,7 @@ class TEDParser(object):
             award['currency'] = value.parent.get('currency')
 
         award['notified'] = set_notified
+        award['renewal_notified'] = False
 
         awards.append(award)
 
@@ -543,6 +543,7 @@ class TEDParser(object):
                         "value": contract_value,
                         "currency": currency_currency,
                         "notified": set_notified,
+                        "renewal_notified": False,
 
                     }
                     for contractor in contractors:

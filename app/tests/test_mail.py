@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 
 from bs4 import BeautifulSoup
+from dateutil.relativedelta import relativedelta
 from django.conf import settings
 from django.core import mail, management
 from django.template.loader import render_to_string
@@ -247,3 +248,37 @@ class SendMailTest(BaseTestCase):
         self.assertEqual(self.tender3.url in mail1, True)
         self.assertEqual(self.tender1.url in mail2, True)
         self.assertEqual(self.tender2.url in mail3, True)
+    
+    def test_notify_renewal(self):
+
+        months = 4
+
+        three_months_from_now = timezone.now().date() + relativedelta(months=3)
+        five_months_from_now = timezone.now().date() + relativedelta(months=5)
+
+        award1 = AwardFactory(renewal_date=three_months_from_now)
+        award2 = AwardFactory(renewal_date=three_months_from_now)
+        award3 = AwardFactory(renewal_date=five_months_from_now)
+
+        self.assertEqual(award1.renewal_notified, False)
+        self.assertEqual(award2.renewal_notified, False)
+        self.assertEqual(award3.renewal_notified, False)
+
+        management.call_command('notify_renewal', months=months)
+        self.assertEqual(len(mail.outbox), 1)
+
+        award1.refresh_from_db()
+        award2.refresh_from_db()
+        award3.refresh_from_db()
+
+        email_body = mail.outbox[0].alternatives[0][0]
+        soup = BeautifulSoup(email_body, 'html.parser')
+
+        award_list = soup.find('ol', {'class': 'award-list'}).find_all('a')
+        self.assertEqual(len(award_list), 2)
+        self.assertEqual(award_list[0]['href'], award1.tender.url)
+        self.assertEqual(award_list[1]['href'], award2.tender.url)
+
+        self.assertEqual(award1.renewal_notified, True)
+        self.assertEqual(award2.renewal_notified, True)
+        self.assertEqual(award3.renewal_notified, False)
