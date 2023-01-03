@@ -6,7 +6,7 @@ from tempfile import TemporaryFile
 from typing import List, Tuple
 
 import requests
-from bs4 import BeautifulSoup, element
+from bs4 import BeautifulSoup, element, PageElement
 from datetime import date, datetime, timedelta
 from django.conf import settings
 from ftplib import error_perm, FTP
@@ -508,6 +508,14 @@ class TEDParser(object):
         if sections:
             section = sections[0]
             awarded_contracts = section.find_all('awarded_contract')
+            try:
+                previous_notice = section.find('notice_number_oj').text
+
+                duration = TEDParser.find_renewal_date(previous_notice)
+
+            except (AttributeError, TypeError, ValueError):
+                duration = None
+
             for awarded_contract in awarded_contracts:
 
                 try:
@@ -519,20 +527,26 @@ class TEDParser(object):
                     award_date = date.today()
 
                 try:
+                    renewal_date = None
+                    unit = duration.attrs['type']
+                    if unit.lower() == 'year':
+                        renewal_date = award_date + relativedelta(years=int(duration.text))
+                    elif unit.lower() == 'month':
+                        renewal_date = award_date + relativedelta(months=int(duration.text))
+                    elif unit.lower() == 'week':
+                        renewal_date = award_date + relativedelta(weeks=int(duration.text))
+                    elif unit.lower() == 'day':
+                        renewal_date = award_date + relativedelta(days=int(duration.text))
+                except (AttributeError, TypeError, ValueError):
+                    renewal_date = None
+
+                try:
                     val_total = awarded_contract.find('val_total')
                     contract_value = float(val_total.text)
                     currency_currency = val_total.get('currency')
                 except (AttributeError, TypeError, ValueError):
                     contract_value = 0
                     currency_currency = 'N/A'
-
-                try:
-                    previous_notice = section.find('notice_number_oj').text
-
-                    renewal_date = TEDParser.find_renewal_date(previous_notice, award_date)
-
-                except (AttributeError, TypeError, ValueError):
-                    renewal_date = None
 
                 contractors = awarded_contract.find_all('contractor')
                 if contractors:
@@ -554,7 +568,7 @@ class TEDParser(object):
                     awards.append(award)
 
     @staticmethod
-    def find_renewal_date(previous_notice: 'str', award_date: 'datetime') -> 'datetime' or None:
+    def find_renewal_date(previous_notice: 'str') -> PageElement or None:
         """
         Calculate the renewal date of the award by finding the contract notice and parsing its XML file.
         After the duration of the contract and the information about contract renewal are extracted from the
@@ -591,18 +605,8 @@ class TEDParser(object):
                         contract_notice_section = contract_notice_sections[0]
                         duration = contract_notice_section.find('duration')
                         renewal = contract_notice_section.find('renewal')
-                        renewal_date = None
                         if renewal and duration:
-                            unit = duration.attrs['type']
-                            if unit.lower() == 'year':
-                                renewal_date = award_date + relativedelta(years=int(duration.text))
-                            elif unit.lower() == 'month':
-                                renewal_date = award_date + relativedelta(months=int(duration.text))
-                            elif unit.lower() == 'week':
-                                renewal_date = award_date + relativedelta(weeks=int(duration.text))
-                            elif unit.lower() == 'day':
-                                renewal_date = award_date + relativedelta(days=int(duration.text))
-                            return renewal_date
+                            return duration
                 return None
 
     @staticmethod
