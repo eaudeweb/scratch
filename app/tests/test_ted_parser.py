@@ -92,6 +92,35 @@ class TedParserTestCase(BaseTestCase):
             awards = Award.objects.filter(tender=tender_entry)
             self.assertEqual(len(awards), 1)
 
+    def test_ted_parse_notice_many_awards(self):
+        with open('app/tests/parser_files/ted_notice_many_awards.xml', 'r') as f:
+            tender, awards = self.parser._parse_notice(f.read(), [], 'test', {}, False)
+
+            self.assertEqual(tender['reference'], '125860-2019')
+            self.assertEqual(tender['title'], self.expected_title)
+            self.assertEqual(tender['published'], datetime.strptime('20190319', '%Y%m%d').date())
+            self.assertEqual(tender['deadline'], None)
+            self.assertEqual(tender['source'], 'TED')
+            self.assertEqual(tender['organization'], 'European Parliament')
+            self.assertEqual(
+                tender['url'],
+                'http://ted.europa.eu/udl?uri=TED:NOTICE:125860-2019:TEXT:EN:HTML',
+            )
+            self.assertNotEqual(tender['description'], '')
+            self.parser.save_tender(tender, {})
+
+            self.assertEqual(len(awards), 71)
+            self.assertEqual(awards[0]["vendors"], ["Société Momentanée Cit Blaton-Jacques Delens", "Société Momentanée Cit Blaton-Jacques Delens"])
+            self.assertEqual(awards[0]["award_date"], datetime(2019, 3, 11, 0, 0))
+            self.assertEqual(awards[0]["renewal_date"], datetime(2024, 7, 11, 0, 0))
+            self.assertEqual(awards[0]["value"], 17565752.85)
+            self.assertEqual(awards[0]["currency"], "EUR")
+            self.parser.save_award(tender, awards[0])
+
+            tender_entry = Tender.objects.filter(reference=tender['reference']).first()
+            awards = Award.objects.filter(tender=tender_entry)
+            self.assertEqual(len(awards), 1)
+
     def test_ted_parse_notice_contract_award(self):
         with open('app/tests/parser_files/ted_notice_contract_award.xml', 'r') as f:
             tender, awards = self.parser._parse_notice(f.read(), [], 'test', {}, False)
