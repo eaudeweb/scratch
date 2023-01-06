@@ -481,7 +481,18 @@ class TEDParser(object):
         try:
             previous_notice = soup.find('notice_number_oj').text
 
-            renewal_date = TEDParser.find_renewal_date(previous_notice, award_date)
+            duration = TEDParser.find_renewal_date(previous_notice)
+
+            renewal_date = None
+            unit = duration.attrs['type']
+            if unit.lower() == 'year':
+                renewal_date = award_date + relativedelta(years=int(duration.text))
+            elif unit.lower() == 'month':
+                renewal_date = award_date + relativedelta(months=int(duration.text))
+            elif unit.lower() == 'week':
+                renewal_date = award_date + relativedelta(weeks=int(duration.text))
+            elif unit.lower() == 'day':
+                renewal_date = award_date + relativedelta(days=int(duration.text))
 
         except (AttributeError, TypeError, ValueError):
             renewal_date = None
@@ -514,6 +525,7 @@ class TEDParser(object):
                 duration = TEDParser.find_renewal_date(previous_notice)
 
             except (AttributeError, TypeError, ValueError):
+
                 duration = None
 
             for awarded_contract in awarded_contracts:
@@ -579,35 +591,31 @@ class TEDParser(object):
             url = "https://ted.europa.eu/udl?uri=TED:NOTICE:%s:XML:EN:HTML" % file_name
             logging.warning(file_name)
 
-            with TemporaryFile() as content:
-                headers = {
-                    'User-Agent': 'Mozilla/5.0'
-                }
-                response = requests.get(url, headers=headers, stream=True)
-                if response.status_code == 200:
-                    for chunk in response.iter_content(chunk_size=4096):
-                        content.write(chunk)
-                    content.seek(0)
-                    contract_notice_soup = BeautifulSoup(content, 'html.parser')
-                    document_type = contract_notice_soup.find("td_document_type")
-                    if document_type:
-                        document_type = document_type.text
-                    else:
-                        document_type = ""
-                    logging.warning(document_type)
+            headers = {
+                'User-Agent': 'Mozilla/5.0'
+            }
+            response = requests.get(url, headers=headers, stream=True)
+            if response.status_code == 200:
+                contract_notice_soup = BeautifulSoup(response.content, 'html.parser')
+                document_type = contract_notice_soup.find("td_document_type")
+                if document_type:
+                    document_type = document_type.text
+                else:
+                    document_type = ""
+                logging.warning(document_type)
 
-                    if document_type != "Contract notice":
-                        previous_notice = contract_notice_soup.find('notice_number_oj').text
-                        continue
+                if document_type != "Contract notice":
+                    previous_notice = contract_notice_soup.find('notice_number_oj').text
+                    continue
 
-                    contract_notice_sections = contract_notice_soup.find('form_section').find_all(lg='EN')
-                    if contract_notice_sections:
-                        contract_notice_section = contract_notice_sections[0]
-                        duration = contract_notice_section.find('duration')
-                        renewal = contract_notice_section.find('renewal')
-                        if renewal and duration:
-                            return duration
-                return None
+                contract_notice_sections = contract_notice_soup.find('form_section').find_all(lg='EN')
+                if contract_notice_sections:
+                    contract_notice_section = contract_notice_sections[0]
+                    duration = contract_notice_section.find('duration')
+                    renewal = contract_notice_section.find('renewal')
+                    if renewal and duration:
+                        return duration
+            return None
 
     @staticmethod
     def save_award(tender_dict, award_dict) -> Award:
