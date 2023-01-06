@@ -1,17 +1,17 @@
 {{ tender.notice_type }}
 <ul style="min-width: 100px;">
-  {% if tender.favourite == False %}
-    <li class="li_buttons"><button type="button" action="{% url 'tender_favourite_view' tender.id %}" class="favourite_button" id="fav_button"></button></li>
+  {% if tender.favourite %}
+  <li class="li_buttons" title="Unmark as favorite"><button type="button" action="{% url 'tender_favourite_view' tender.id %}"  class="favourite_pressed" id="fav_button"></button></li>
   {% else %}
-    <li class="li_buttons"><button type="button" action="{% url 'tender_favourite_view' tender.id %}"  class="favourite_pressed" id="fav_button"></button></li>
+  <li class="li_buttons" title="Mark as favorite"><button type="button" action="{% url 'tender_favourite_view' tender.id %}" class="favourite_button" id="fav_button"></button></li>
   {% endif %}
   {% if tender.seen_by %}
-    <li class="li_buttons"><button type="button" action="{% url 'tender_seen_view' tender.id %}" class="seen_pressed" id="seen_button"></button></li>
+    <li class="li_buttons" title="Unmark as seen"><button type="button" action="{% url 'tender_seen_view' tender.id %}" class="seen_pressed" id="seen_button"></button></li>
   {% else %}
-    <li class="li_buttons"><button type="button" action="{% url 'tender_seen_view' tender.id %}"  class="seen_button" id="seen_button"></button></li>
+    <li class="li_buttons" title="Mark as seen"><button type="button" action="{% url 'tender_seen_view' tender.id %}"  class="seen_button" id="seen_button"></button></li>
   {% endif %}
   <span id="seen_usr" hidden></span>
-  <li class="li_buttons"><button type="button" action="{% url 'tender_delete_view' tender.id %}"  class="remove_button" id="remove_button_list" name="{{ tender.title }}"></button></li>
+  <li class="li_buttons" title="Delete tender"><button type="button" action="{% url 'tender_delete_view' tender.id %}"  class="remove_button" id="remove_button_list" name="{{ tender.title }}"></button></li>
 
 </ul>
 {% for keyword in tender.keywords.all|slice:"0:3" %}
