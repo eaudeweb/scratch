@@ -1,9 +1,10 @@
 from django.contrib import admin
 from .models import (Tender, TenderDocument, Award, WorkerLog, EmailAddress,
-                     UNSPSCCode, CPVCode, TedCountry, Task, Keyword, Vendor)
+                     UNSPSCCode, CPVCode, TedCountry, Task, Keyword, Vendor,Tag)
 
 
 class TenderAdmin(admin.ModelAdmin):
+    filter_horizontal = ['tags']
     list_display = [
         'id', 'title', 'notice_type', 'organization', 'published', 'deadline',
         'url', 'source', 'unspsc_codes', 'favourite', 'has_keywords'
@@ -127,6 +128,10 @@ class VendorAdmin(admin.ModelAdmin):
     search_fields = ['name']
 
 
+class TagAdmin(admin.ModelAdmin):
+    list_display = ['name']
+    search_field = ['name']
+
 admin.site.register(Tender, TenderAdmin)
 admin.site.register(TenderDocument, TenderDocumentAdmin)
 admin.site.register(Award, AwardAdmin)
@@ -138,3 +143,4 @@ admin.site.register(TedCountry, TedCountryAdmin)
 admin.site.register(Task, TaskAdmin)
 admin.site.register(Keyword, KeywordAdmin)
 admin.site.register(Vendor, VendorAdmin)
+admin.site.register(Tag,TagAdmin)

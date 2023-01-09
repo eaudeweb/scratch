@@ -35,6 +35,7 @@ $(document).ready(function() {
 
   $('#id_organization').select2();
   $('#id_vendor').select2();
+  $('#id_tags').select2();
 
   function buttonsClick() {
 
@@ -136,6 +137,7 @@ $(document).ready(function() {
           d.has_keywords = $('#id_keyword').val();
           d.notice_type = $('#id_type').val();
           d.seen = $('#id_seen').val();
+          d.tags = $('#id_tags').val().join(',');
           d.ungm_deadline_today = ungm_deadline_today;
           d.ted_published_today = ted_published_today;
           d.ted_deadline_today = ted_deadline_today;
@@ -157,6 +159,7 @@ $(document).ready(function() {
         { "data": "organization" },
         { "data": "deadline" },
         { "data": "published" },
+        {"data":"tags"},
         { "data": "notice_type" }
     ],
       "drawCallback": function(settings) {

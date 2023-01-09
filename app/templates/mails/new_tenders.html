@@ -12,7 +12,7 @@
         {% for tender in tenders %}
           <li>
             <h2>
-              <a href="{{ tender.url }}">{{ tender.title }}</a>
+              <a href="{{ domain }}/tenders/{{ tender.id }}">{{ tender.title }} </a>
             </h2>
             <p class="published clip">
               {% if tender.published %}

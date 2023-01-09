@@ -1,5 +1,5 @@
 from django import forms
-from .models import Tender, Award
+from .models import Tender, Award,Tag
 
 MAX = 220000
 STEP = 20000
@@ -53,6 +53,7 @@ class TendersFilter(forms.Form):
     keyword = forms.ChoiceField(choices=KEYWORDS, required=False)
     type = forms.ChoiceField(required=False)
     seen = forms.ChoiceField(choices=SEEN, required=False)
+    tags = forms.MultipleChoiceField(required=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -70,6 +71,8 @@ class TendersFilter(forms.Form):
         self.fields["type"].choices = [("", "All notice types")] + [
             (tp, tp) for tp in types_list
         ]
+      
+        self.fields['tags'].choices =  [(i.name,i.name) for i in Tag.objects.all()]
 
 
 class AwardsFilter(forms.Form):
