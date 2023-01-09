@@ -4,7 +4,7 @@
 {% endblock %}
 {% block content %}
   <h2>
-    <a href="{{ tender.url }}">{{ tender.title }}</a>
+    <a href="{{ domain }}/tenders/{{ tender.id }}">{{ tender.title }}</a>
   </h2>
   {% if tender.deadline %}
     <p class="deadline">

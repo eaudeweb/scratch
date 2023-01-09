@@ -106,9 +106,44 @@
           <p><a href="{{ doc.document.url }}">{{ doc.name }}</a> (<span class="original-link"><a href="{{ doc.download_url }}" target="_blank">Original URL</a></span>)</p>
           {% endfor %}
         </td>
+  
+      </tr>
+      <tr>
+        <td class="description">Tags</td>
+        <td>
+          <p id="tags_list_displayed">
+           {{ tender.tags.all|join:", " }} 
+          </p>
+  
+        </td>
       </tr>
     </tbody>
   </table>
+
+  
+<div class="container  mx-2 py-4">
+  <div class="row">
+    
+    <div class="col-sm-1">
+      Add tag: 
+    </div>
+    <div class="col-sm-2">
+      <input type="text" class="form-control" placeholder="Add tag" list="tags" id="tagValue">
+    </div>
+    <div class="col-sm-4">
+      <button action="{% url 'tender_tag_view' tender.id %}"  type="button" class="btn btn-primary btn" onclick='addTagToTender({{ tender.id }})'>Add</button>
+    </div>    
+  </div>
+</div>
+
+<datalist id="tags">
+  {% for tag in tags_autocomplete %}
+  {% if tag not in tender.tags.all %}
+  <option value="{{ tag.name }}"></option>
+  {% endif %}
+  {% endfor %}
+</datalist>
+
 </div>
 
 <style>
@@ -116,5 +151,7 @@
       background: yellow;
   }
 </style>
+
+<script type="text/javascript" src="{%  static 'js/detail_tender_view.js' %}"></script>
 
 {% endblock %}

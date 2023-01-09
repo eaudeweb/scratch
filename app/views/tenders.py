@@ -14,7 +14,7 @@ from elasticsearch_dsl import Q as elasticQ
 
 from app.documents import TenderDoc, TenderDocumentDoc, AwardDoc
 from app.forms import TendersFilter
-from app.models import Tender, TenderDocument, Award
+from app.models import Tender, TenderDocument, Award,Tag
 from app.views.base import BaseAjaxListingView
 
 
@@ -42,9 +42,10 @@ class TendersListView(LoginRequiredMixin, ListView):
             keyword = self.request.GET.get("keyword")
             notice_type = self.request.GET.get("type")
             seen = self.request.GET.get("seen")
+            tags = self.request.GET.getlist('tags')
             reset = any([
                 source, organization, status, favourite, keyword, notice_type,
-                seen
+                seen,tags
             ])
             form = TendersFilter(
                 initial={
@@ -54,7 +55,9 @@ class TendersListView(LoginRequiredMixin, ListView):
                     "favourite": favourite,
                     "keyword": keyword,
                     "type": notice_type,
-                    "seen": seen
+                    "seen": seen,
+                    "tags":tags
+                    
                 }
             )
         else:
@@ -107,7 +110,9 @@ class TenderListAjaxView(BaseAjaxListingView):
                 'published': 'Not specified' if not tender.published else (
                     tender.published.strftime("%m/%d/%Y")),
                 'notice_type': render_to_string(
-                    'tenders_buttons.html', {'tender': tender})
+                        'tenders_buttons.html', {'tender': tender}),
+                'tags': ', '.join(tender.tags.values_list('name', flat=True))
+                
             } for tender in object_list
         ]
         return data
@@ -119,6 +124,17 @@ class TenderListAjaxView(BaseAjaxListingView):
 
     def filter_data(self, request):
         tenders = super(TenderListAjaxView, self).filter_data(request)
+        tags_request = self.request.GET.get('tags')
+        tags_request = tags_request.split(',')
+        tags_request_list = [i for i in tags_request if i != '']
+        
+        if len(tags_request_list) > 0:
+            # Build a Q object for each tag in tags_request, then join them together with an 'OR' query
+            query = Q()
+            for tag in tags_request:
+                query |= Q(tags__name=tag)
+
+            tenders = tenders.filter(query)
 
         search = request.GET.get("search[value]")
         if search:
@@ -197,6 +213,7 @@ class TenderDetailView(LoginRequiredMixin, DetailView):
             context["deadline_in"] = self.deadline_in_string(deadline)
         context["documents_set"] = TenderDocument.objects.filter(
             tender=self.object)
+        context['tags_autocomplete'] = Tag.objects.all()
         return context
 
 
@@ -212,6 +229,19 @@ class TenderFavouriteView(View):
 
         return HttpResponse("Success!")
 
+
+class TenderTagView(View):
+
+    def post(self,request,pk):
+        current_tender = Tender.objects.filter(id=pk)
+        tender = current_tender[0]
+        tag_received = request.POST['tag_name']
+
+        if tender:
+            tag, created = Tag.objects.get_or_create(name=tag_received)
+            tender.tags.add(tag)
+      
+        return HttpResponse("Success!")
 
 class TenderSeenByView(View):
     def post(self, request, pk):
