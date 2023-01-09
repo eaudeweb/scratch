@@ -19,6 +19,7 @@ class SendMailTest(BaseTestCase):
         super(SendMailTest, self).setUp()
         self.keyword = KeywordFactory()
         self.tender1 = TenderFactory(
+            id=1,
             reference='RFQ 47-2019',
             title='test_title1',
             url='https://www.ungm.org/Public/Notice/94909',
@@ -28,6 +29,7 @@ class SendMailTest(BaseTestCase):
         )
 
         self.tender2 = TenderFactory(
+            id=2,
             reference='2019/FLCHI/FLCHI/102665',
             title='test_title2 python',
             url='https://www.ungm.org/Public/Notice/94920',
@@ -36,6 +38,7 @@ class SendMailTest(BaseTestCase):
         )
 
         self.tender3 = TenderFactory(
+            id=3,
             reference='RFP 56956',
             title='test_title3',
             url='https://www.ungm.org/Public/Notice/92850',
@@ -96,10 +99,14 @@ class SendMailTest(BaseTestCase):
         soup = BeautifulSoup(alt_body, 'html.parser')
 
         tender_list = soup.find('ol', {'class': 'tender-list'}).find_all('a')
+        
+        tender_1_url = f"{settings.BASE_URL}/tenders/{self.tender1.id}"
+        tender_2_url = f"{settings.BASE_URL}/tenders/{self.tender2.id}"
+        teder_3_url = f"{settings.BASE_URL}/tenders/{self.tender3.id}"
         self.assertEqual(len(tender_list), 3)
-        self.assertEqual(tender_list[0]['href'], self.tender3.url)
-        self.assertEqual(tender_list[1]['href'], self.tender1.url)
-        self.assertEqual(tender_list[2]['href'], self.tender2.url)
+        self.assertEqual(tender_list[0]['href'], teder_3_url)
+        self.assertEqual(tender_list[1]['href'], tender_1_url)
+        self.assertEqual(tender_list[2]['href'], tender_2_url)
 
     def test_notify_awards(self):
         award1 = AwardFactory()
@@ -127,10 +134,15 @@ class SendMailTest(BaseTestCase):
         soup = BeautifulSoup(alt_body, 'html.parser')
 
         award_list = soup.find('ol', {'class': 'award-list'}).find_all('a')
+        
+        award_tender_url1 = f"{settings.BASE_URL}/awards/{award1.id}"
+        award_tender_url2 = f"{settings.BASE_URL}/awards/{award2.id}"
+        award_tender_url3 = f"{settings.BASE_URL}/awards/{award3.id}"
+
         self.assertEqual(len(award_list), 3)
-        self.assertEqual(award_list[0]['href'], award1.tender.url)
-        self.assertEqual(award_list[1]['href'], award2.tender.url)
-        self.assertEqual(award_list[2]['href'], award3.tender.url)
+        self.assertEqual(award_list[0]['href'], award_tender_url1)
+        self.assertEqual(award_list[1]['href'], award_tender_url2)
+        self.assertEqual(award_list[2]['href'], award_tender_url3)
 
     def test_mailing_favorites(self):
         original_tender1_organization = self.tender1.organization
@@ -178,9 +190,13 @@ class SendMailTest(BaseTestCase):
 
         tender_list = soup.find('ol', {'class': 'tender-list'}).find_all('a')
         self.assertEqual(len(tender_list), 3)
-        self.assertEqual(tender_list[0]['href'], self.tender3.url)
-        self.assertEqual(tender_list[1]['href'], self.tender1.url)
-        self.assertEqual(tender_list[2]['href'], self.tender2.url)
+        tender_1_url = f"{settings.BASE_URL}/tenders/{self.tender1.id}"
+        tender_2_url = f"{settings.BASE_URL}/tenders/{self.tender2.id}"
+        teder_3_url = f"{settings.BASE_URL}/tenders/{self.tender3.id}"
+
+        self.assertEqual(tender_list[0]['href'], teder_3_url)
+        self.assertEqual(tender_list[1]['href'], tender_1_url)
+        self.assertEqual(tender_list[2]['href'], tender_2_url)
 
     def test_mailing_keywords(self):
         management.call_command('notify_keywords')
@@ -225,7 +241,11 @@ class SendMailTest(BaseTestCase):
         tender_list = soup.find('ol', {'class': 'tender-list'}).find_all('a')
         self.assertEqual(len(tender_list), 3)
         email_urls = {t['href'] for t in tender_list}
-        db_urls = {self.tender1.url, self.tender2.url, self.tender3.url}
+        tender_1_url = f"{settings.BASE_URL}/tenders/{self.tender1.id}"
+        tender_2_url = f"{settings.BASE_URL}/tenders/{self.tender2.id}"
+        teder_3_url = f"{settings.BASE_URL}/tenders/{self.tender3.id}"
+
+        db_urls = {tender_1_url,tender_2_url,teder_3_url}
         self.assertEqual(email_urls, db_urls)
 
     def test_deadline_notification(self):
@@ -244,6 +264,10 @@ class SendMailTest(BaseTestCase):
         mail2 = mail.outbox[1].alternatives[0][0]
         mail3 = mail.outbox[2].alternatives[0][0]
 
-        self.assertEqual(self.tender3.url in mail1, True)
-        self.assertEqual(self.tender1.url in mail2, True)
-        self.assertEqual(self.tender2.url in mail3, True)
+        tender_1_url = f"{settings.BASE_URL}/tenders/{self.tender1.id}"
+        tender_2_url = f"{settings.BASE_URL}/tenders/{self.tender2.id}"
+        tender_3_url = f"{settings.BASE_URL}/tenders/{self.tender3.id}"
+
+        self.assertEqual(tender_3_url in mail1, True)
+        self.assertEqual(tender_1_url in mail2, True)
+        self.assertEqual(tender_2_url in mail3, True)
