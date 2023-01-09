@@ -50,7 +50,7 @@ class ContractAwardsListAjaxView(BaseAjaxListingView):
         ('vendor', 'vendors__name'),
     ]
     order_fields = ['tender__title', 'tender__source', 'tender__organization',
-                    'award_date', 'renewal_date', 'value', 'currency']
+                    'award_date', 'renewal_date', 'vendor', 'value', 'currency']
     case_sensitive_fields = ['tender__title', 'tender__source', 'tender__organization']
     model = Award
 

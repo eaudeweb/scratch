@@ -1,6 +1,8 @@
 from datetime import date, datetime, timedelta
 from multiprocessing import Process
+from unittest.mock import patch, MagicMock
 
+from dateutil.relativedelta import relativedelta
 from django.test import override_settings
 from django.utils.timezone import make_aware
 
@@ -40,7 +42,16 @@ class TedParserTestCase(BaseTestCase):
         self.expected_title_1 = 'Spain-Seville: Licence for a database on ' \
                                 'digital music downloads in 2012 and 2013'
 
-    def test_ted_parse_notice_simple(self):
+    @patch('app.parsers.ted.requests')
+    def test_ted_parse_notice_simple(self, mock_requests):
+        with open('app/tests/parser_files/contract_notice_nonrenewable.xml', 'r') as g:
+            # mock the response
+            mock_response = MagicMock()
+            mock_response.status_code = 200
+            mock_response.content = g.read()
+
+        mock_requests.get.return_value = mock_response
+
         with open('app/tests/parser_files/base_ted_notice.xml', 'r') as f:
             tender, awards = self.parser._parse_notice(f.read(), [], 'test', {}, False)
 
@@ -63,7 +74,15 @@ class TedParserTestCase(BaseTestCase):
             self.assertEqual(awards[0]["value"], 17565752.85)
             self.assertEqual(awards[0]["currency"], "EUR")
 
-    def test_ted_parse_notice_full(self):
+    @patch('app.parsers.ted.requests')
+    def test_ted_parse_notice_full(self, mock_requests):
+        with open('app/tests/parser_files/contract_notice.xml', 'r') as g:
+            # mock the response
+            mock_response = MagicMock()
+            mock_response.status_code = 200
+            mock_response.content = g.read()
+
+        mock_requests.get.return_value = mock_response
         with open('app/tests/parser_files/ted_notice_full.xml', 'r') as f:
             tender, awards = self.parser._parse_notice(f.read(), [], 'test', {}, False)
 
@@ -92,7 +111,53 @@ class TedParserTestCase(BaseTestCase):
             awards = Award.objects.filter(tender=tender_entry)
             self.assertEqual(len(awards), 1)
 
-    def test_ted_parse_notice_contract_award(self):
+    @patch('app.parsers.ted.requests')
+    def test_ted_parse_notice_many_awards(self, mock_requests):
+        with open('app/tests/parser_files/contract_notice.xml', 'r') as g:
+            # mock the response
+            mock_response = MagicMock()
+            mock_response.status_code = 200
+            mock_response.content = g.read()
+
+        mock_requests.get.return_value = mock_response
+        with open('app/tests/parser_files/ted_notice_many_awards.xml', 'r') as f:
+            tender, awards = self.parser._parse_notice(f.read(), [], 'test', {}, False)
+
+            self.assertEqual(tender['reference'], '125860-2019')
+            self.assertEqual(tender['title'], self.expected_title)
+            self.assertEqual(tender['published'], datetime.strptime('20190319', '%Y%m%d').date())
+            self.assertEqual(tender['deadline'], None)
+            self.assertEqual(tender['source'], 'TED')
+            self.assertEqual(tender['organization'], 'European Parliament')
+            self.assertEqual(
+                tender['url'],
+                'http://ted.europa.eu/udl?uri=TED:NOTICE:125860-2019:TEXT:EN:HTML',
+            )
+            self.assertNotEqual(tender['description'], '')
+            self.parser.save_tender(tender, {})
+
+            mock_requests.get.assert_called_once()
+            self.assertEqual(len(awards), 71)
+            self.assertEqual(awards[0]["vendors"], ["Société Momentanée Cit Blaton-Jacques Delens", "Société Momentanée Cit Blaton-Jacques Delens"])
+            self.assertEqual(awards[0]["award_date"], datetime(2019, 3, 11, 0, 0))
+            self.assertEqual(awards[0]["renewal_date"], datetime(2024, 7, 11, 0, 0))
+            self.assertEqual(awards[0]["value"], 17565752.85)
+            self.assertEqual(awards[0]["currency"], "EUR")
+            self.parser.save_award(tender, awards[0])
+
+            tender_entry = Tender.objects.filter(reference=tender['reference']).first()
+            awards = Award.objects.filter(tender=tender_entry)
+            self.assertEqual(len(awards), 1)
+
+    @patch('app.parsers.ted.requests')
+    def test_ted_parse_notice_contract_award(self, mock_requests):
+        with open('app/tests/parser_files/contract_notice_nonrenewable.xml', 'r') as g:
+            # mock the response
+            mock_response = MagicMock()
+            mock_response.status_code = 200
+            mock_response.content = g.read()
+
+        mock_requests.get.return_value = mock_response
         with open('app/tests/parser_files/ted_notice_contract_award.xml', 'r') as f:
             tender, awards = self.parser._parse_notice(f.read(), [], 'test', {}, False)
 
@@ -114,6 +179,7 @@ class TedParserTestCase(BaseTestCase):
             self.assertEqual(len(awards), 1)
             self.assertEqual(awards[0]['vendor'], 'The Nielsen Company LLC')
             self.assertEqual(awards[0]['award_date'], datetime(2014, 10, 16).date())
+            self.assertEqual(awards[0]['renewal_date'], None)
             self.assertEqual(awards[0]['value'], '60000')
             self.assertEqual(awards[0]['currency'], 'EUR')
 
@@ -137,7 +203,15 @@ class TedParserTestCase(BaseTestCase):
             self.assertEqual(tender['published'], None)
             self.assertEqual(tender['deadline'], None)
 
-    def test_ted_award_all_empty(self):
+    @patch('app.parsers.ted.requests')
+    def test_ted_award_all_empty(self, mock_requests):
+        with open('app/tests/parser_files/contract_notice_nonrenewable.xml', 'r') as g:
+            # mock the response
+            mock_response = MagicMock()
+            mock_response.status_code = 200
+            mock_response.content = g.read()
+
+        mock_requests.get.return_value = mock_response
         with open('app/tests/parser_files/ted_notice_award_all_empty.xml', 'r') as f:
             _, awards = self.parser._parse_notice(f.read(), [], 'test', {}, False)
 
@@ -148,11 +222,20 @@ class TedParserTestCase(BaseTestCase):
             self.assertEqual(awards[0]["value"], 0)
             self.assertEqual(awards[0]["currency"], "N/A")
 
-    def test_ted_award_date_format(self):
+    @patch('app.parsers.ted.requests')
+    def test_ted_award_date_format(self, mock_requests):
+        with open('app/tests/parser_files/contract_notice.xml', 'r') as g:
+            # mock the response
+            mock_response = MagicMock()
+            mock_response.status_code = 200
+            mock_response.content = g.read()
+
+        mock_requests.get.return_value = mock_response
         with open('app/tests/parser_files/ted_notice_award_date.xml', 'r') as f:
             _, awards = self.parser._parse_notice(f.read(), [], 'test', {}, False)
 
             self.assertEqual(awards[0]['award_date'], date.today())
+            self.assertEqual(awards[0]['renewal_date'], date.today() + relativedelta(months=64))
 
     def test_multiple_update_ted_ftp_retry(self):
         def run_process_daily_archive():

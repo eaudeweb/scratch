@@ -6,12 +6,11 @@ from tempfile import TemporaryFile
 from typing import List, Tuple
 
 import requests
-from bs4 import BeautifulSoup, element
+from bs4 import BeautifulSoup, element, PageElement
 from datetime import date, datetime, timedelta
 from django.conf import settings
 from ftplib import error_perm, FTP
 
-from django.core.files import File
 from django.utils.timezone import make_aware
 
 from app.exceptions import CPVCodesNotFound, TEDCountriesNotFound
@@ -482,7 +481,18 @@ class TEDParser(object):
         try:
             previous_notice = soup.find('notice_number_oj').text
 
-            renewal_date = TEDParser.find_renewal_date(previous_notice, award_date)
+            duration = TEDParser.find_renewal_date(previous_notice)
+
+            renewal_date = None
+            unit = duration.attrs['type']
+            if unit.lower() == 'year':
+                renewal_date = award_date + relativedelta(years=int(duration.text))
+            elif unit.lower() == 'month':
+                renewal_date = award_date + relativedelta(months=int(duration.text))
+            elif unit.lower() == 'week':
+                renewal_date = award_date + relativedelta(weeks=int(duration.text))
+            elif unit.lower() == 'day':
+                renewal_date = award_date + relativedelta(days=int(duration.text))
 
         except (AttributeError, TypeError, ValueError):
             renewal_date = None
@@ -499,6 +509,7 @@ class TEDParser(object):
             award['currency'] = value.parent.get('currency')
 
         award['notified'] = set_notified
+        award['renewal_notified'] = False
 
         awards.append(award)
 
@@ -508,6 +519,15 @@ class TEDParser(object):
         if sections:
             section = sections[0]
             awarded_contracts = section.find_all('awarded_contract')
+            try:
+                previous_notice = section.find('notice_number_oj').text
+
+                duration = TEDParser.find_renewal_date(previous_notice)
+
+            except (AttributeError, TypeError, ValueError):
+
+                duration = None
+
             for awarded_contract in awarded_contracts:
 
                 try:
@@ -519,20 +539,26 @@ class TEDParser(object):
                     award_date = date.today()
 
                 try:
+                    renewal_date = None
+                    unit = duration.attrs['type']
+                    if unit.lower() == 'year':
+                        renewal_date = award_date + relativedelta(years=int(duration.text))
+                    elif unit.lower() == 'month':
+                        renewal_date = award_date + relativedelta(months=int(duration.text))
+                    elif unit.lower() == 'week':
+                        renewal_date = award_date + relativedelta(weeks=int(duration.text))
+                    elif unit.lower() == 'day':
+                        renewal_date = award_date + relativedelta(days=int(duration.text))
+                except (AttributeError, TypeError, ValueError):
+                    renewal_date = None
+
+                try:
                     val_total = awarded_contract.find('val_total')
                     contract_value = float(val_total.text)
                     currency_currency = val_total.get('currency')
                 except (AttributeError, TypeError, ValueError):
                     contract_value = 0
                     currency_currency = 'N/A'
-
-                try:
-                    previous_notice = section.find('notice_number_oj').text
-
-                    renewal_date = TEDParser.find_renewal_date(previous_notice, award_date)
-
-                except (AttributeError, TypeError, ValueError):
-                    renewal_date = None
 
                 contractors = awarded_contract.find_all('contractor')
                 if contractors:
@@ -543,6 +569,7 @@ class TEDParser(object):
                         "value": contract_value,
                         "currency": currency_currency,
                         "notified": set_notified,
+                        "renewal_notified": False,
 
                     }
                     for contractor in contractors:
@@ -553,7 +580,7 @@ class TEDParser(object):
                     awards.append(award)
 
     @staticmethod
-    def find_renewal_date(previous_notice: 'str', award_date: 'datetime') -> 'datetime' or None:
+    def find_renewal_date(previous_notice: 'str') -> PageElement or None:
         """
         Calculate the renewal date of the award by finding the contract notice and parsing its XML file.
         After the duration of the contract and the information about contract renewal are extracted from the
@@ -564,45 +591,31 @@ class TEDParser(object):
             url = "https://ted.europa.eu/udl?uri=TED:NOTICE:%s:XML:EN:HTML" % file_name
             logging.warning(file_name)
 
-            with TemporaryFile() as content:
-                headers = {
-                    'User-Agent': 'Mozilla/5.0'
-                }
-                response = requests.get(url, headers=headers, stream=True)
-                if response.status_code == 200:
-                    for chunk in response.iter_content(chunk_size=4096):
-                        content.write(chunk)
-                    content.seek(0)
-                    contract_notice_soup = BeautifulSoup(content, 'html.parser')
-                    document_type = contract_notice_soup.find("td_document_type")
-                    if document_type:
-                        document_type = document_type.text
-                    else:
-                        document_type = ""
-                    logging.warning(document_type)
+            headers = {
+                'User-Agent': 'Mozilla/5.0'
+            }
+            response = requests.get(url, headers=headers, stream=True)
+            if response.status_code == 200:
+                contract_notice_soup = BeautifulSoup(response.content, 'html.parser')
+                document_type = contract_notice_soup.find("td_document_type")
+                if document_type:
+                    document_type = document_type.text
+                else:
+                    document_type = ""
+                logging.warning(document_type)
 
-                    if document_type != "Contract notice":
-                        previous_notice = contract_notice_soup.find('notice_number_oj').text
-                        continue
+                if document_type != "Contract notice":
+                    previous_notice = contract_notice_soup.find('notice_number_oj').text
+                    continue
 
-                    contract_notice_sections = contract_notice_soup.find('form_section').find_all(lg='EN')
-                    if contract_notice_sections:
-                        contract_notice_section = contract_notice_sections[0]
-                        duration = contract_notice_section.find('duration')
-                        renewal = contract_notice_section.find('renewal')
-                        renewal_date = None
-                        if renewal and duration:
-                            unit = duration.attrs['type']
-                            if unit.lower() == 'year':
-                                renewal_date = award_date + relativedelta(years=int(duration.text))
-                            elif unit.lower() == 'month':
-                                renewal_date = award_date + relativedelta(months=int(duration.text))
-                            elif unit.lower() == 'week':
-                                renewal_date = award_date + relativedelta(weeks=int(duration.text))
-                            elif unit.lower() == 'day':
-                                renewal_date = award_date + relativedelta(days=int(duration.text))
-                            return renewal_date
-                return None
+                contract_notice_sections = contract_notice_soup.find('form_section').find_all(lg='EN')
+                if contract_notice_sections:
+                    contract_notice_section = contract_notice_sections[0]
+                    duration = contract_notice_section.find('duration')
+                    renewal = contract_notice_section.find('renewal')
+                    if renewal and duration:
+                        return duration
+            return None
 
     @staticmethod
     def save_award(tender_dict, award_dict) -> Award:

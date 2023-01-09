@@ -135,6 +135,7 @@ class Award(BaseTimedModel):
     award_date = models.DateField()
     renewal_date = models.DateField(null=True)
     notified = models.BooleanField(default=False)
+    renewal_notified = models.BooleanField(default=False)
     # TODO: Investigate whether this coould be refactored to a OneToOneField
     tender = models.ForeignKey(
         Tender, on_delete=models.CASCADE, related_name='awards')
