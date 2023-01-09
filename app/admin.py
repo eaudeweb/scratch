@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import (Tender, TenderDocument, Award, WorkerLog, EmailAddress,
-                     UNSPSCCode, CPVCode, TedCountry, Task, Keyword, Vendor,Tag)
+                     UNSPSCCode, CPVCode, TedCountry, Task, Keyword, Vendor, Tag)
 
 
 class TenderAdmin(admin.ModelAdmin):
@@ -34,7 +34,7 @@ class TenderDocumentAdmin(admin.ModelAdmin):
 
 class AwardAdmin(admin.ModelAdmin):
     list_display = [
-        'value', 'currency', 'award_date', 'renewal_date', 'notified', 'renewal_notified','get_vendors',
+        'value', 'currency', 'award_date', 'renewal_date', 'notified', 'renewal_notified', 'get_vendors',
         'get_tender_title', 'get_tender_organization', 'get_tender_source',
         'get_tender_deadline',
     ]
@@ -124,13 +124,15 @@ class KeywordAdmin(admin.ModelAdmin):
 
 
 class VendorAdmin(admin.ModelAdmin):
-    list_display = ['name']
-    search_fields = ['name']
+    list_display = ['name', 'email', 'contact_name']
+    search_fields = ['name', 'contact_name']
+    list_filter = ['awards']
 
 
 class TagAdmin(admin.ModelAdmin):
     list_display = ['name']
     search_field = ['name']
+
 
 admin.site.register(Tender, TenderAdmin)
 admin.site.register(TenderDocument, TenderDocumentAdmin)
@@ -143,4 +145,4 @@ admin.site.register(TedCountry, TedCountryAdmin)
 admin.site.register(Task, TaskAdmin)
 admin.site.register(Keyword, KeywordAdmin)
 admin.site.register(Vendor, VendorAdmin)
-admin.site.register(Tag,TagAdmin)
+admin.site.register(Tag, TagAdmin)

@@ -14,7 +14,6 @@ import re
 
 from tika import parser
 
-
 SOURCE_CHOICES = [
     ('UNGM', 'UNGM'),
     ('TED', 'TED'),
@@ -48,12 +47,12 @@ def keywords_in(text):
     return list(set(keywords) & set(re.split(r"\W+", str(text).lower())))
 
 
-
 class Tag(models.Model):
-    name = models.CharField(max_length=255,unique=True)
+    name = models.CharField(max_length=255, unique=True)
 
     def __str__(self):
         return '{}'.format(self.name)
+
 
 class Tender(BaseTimedModel):
     reference = models.CharField(unique=True, max_length=255)
@@ -76,7 +75,8 @@ class Tender(BaseTimedModel):
     keywords = models.ManyToManyField(
         Keyword, related_name="tenders", blank=True)
 
-    tags = models.ManyToManyField(Tag,blank=True)
+    tags = models.ManyToManyField(Tag, blank=True)
+
     def __str__(self):
         return '{}'.format(self.title)
 
@@ -124,6 +124,9 @@ class Tender(BaseTimedModel):
 
 class Vendor(BaseTimedModel):
     name = models.TextField(null=True, blank=True)
+    email = models.EmailField(null=True)
+    contact_name = models.TextField(null=True, blank=True)
+    comment = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return '{}'.format(self.name)
@@ -147,6 +150,7 @@ class Award(BaseTimedModel):
     @property
     def get_vendors(self):
         return ",".join(self.vendors.values_list('name', flat=True))
+
     get_vendors.fget.short_description = "Vendors names"
 
     def convert_value_to_string(self):
