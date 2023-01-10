@@ -196,9 +196,9 @@ class SendMailTest(BaseTestCase):
         self.assertEqual(len(tender_list), 3)
         tender_1_url = f"{settings.BASE_URL}/tenders/{self.tender1.id}"
         tender_2_url = f"{settings.BASE_URL}/tenders/{self.tender2.id}"
-        teder_3_url = f"{settings.BASE_URL}/tenders/{self.tender3.id}"
+        tender_3_url = f"{settings.BASE_URL}/tenders/{self.tender3.id}"
 
-        self.assertEqual(tender_list[0]['href'], teder_3_url)
+        self.assertEqual(tender_list[0]['href'], tender_3_url)
         self.assertEqual(tender_list[1]['href'], tender_1_url)
         self.assertEqual(tender_list[2]['href'], tender_2_url)
 
@@ -247,9 +247,9 @@ class SendMailTest(BaseTestCase):
         email_urls = {t['href'] for t in tender_list}
         tender_1_url = f"{settings.BASE_URL}/tenders/{self.tender1.id}"
         tender_2_url = f"{settings.BASE_URL}/tenders/{self.tender2.id}"
-        teder_3_url = f"{settings.BASE_URL}/tenders/{self.tender3.id}"
+        tender_3_url = f"{settings.BASE_URL}/tenders/{self.tender3.id}"
 
-        db_urls = {tender_1_url,tender_2_url,teder_3_url}
+        db_urls = {tender_1_url,tender_2_url,tender_3_url}
         self.assertEqual(email_urls, db_urls)
 
     def test_deadline_notification(self):
