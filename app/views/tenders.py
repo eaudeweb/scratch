@@ -130,7 +130,7 @@ class TenderListAjaxView(BaseAjaxListingView):
             tags_request = tags_request.split(',')
             tags_request_list = [i for i in tags_request if i != '']
             if len(tags_request_list) > 0:
-                tenders = tenders.filter(tags__name__in=tags_request)
+                tenders = tenders.filter(tags__name__in=tags_request_list)
  
         search = request.GET.get("search[value]")
         if search:

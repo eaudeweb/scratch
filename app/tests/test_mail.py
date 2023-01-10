@@ -103,9 +103,12 @@ class SendMailTest(BaseTestCase):
         
         tender_1_url = f"{settings.BASE_URL}/tenders/{self.tender1.id}"
         tender_2_url = f"{settings.BASE_URL}/tenders/{self.tender2.id}"
-        teder_3_url = f"{settings.BASE_URL}/tenders/{self.tender3.id}"
+        tender_3_url = f"{settings.BASE_URL}/tenders/{self.tender3.id}"
+
+        #The tenders in the email are ordered by -published
+
         self.assertEqual(len(tender_list), 3)
-        self.assertEqual(tender_list[0]['href'], teder_3_url)
+        self.assertEqual(tender_list[0]['href'], tender_3_url)
         self.assertEqual(tender_list[1]['href'], tender_1_url)
         self.assertEqual(tender_list[2]['href'], tender_2_url)
 
