@@ -3,13 +3,17 @@ function pushNewTagToTable(tagInputValue) {
     const tagsList = document.querySelector('#tags_list_displayed')
     const tagsListValues = tagsList.innerText.split(',')
 
-    tagsListValues.push(tagInputValue)
+    const trimmedArray = tagsListValues.map(str => str.trim());
+    if(!trimmedArray.includes(tagInputValue.trim())){
+        tagsListValues.push(tagInputValue)
 
-    const filteredArr = tagsListValues.filter(function (element) {
-        return element !== '';
-    });
+        const filteredArr = tagsListValues.filter(function (element) {
+            return element !== '';
+        });
+    
+        tagsList.innerHTML = filteredArr.join(', ')
+    }
 
-    tagsList.innerHTML = filteredArr.join(', ')
 }
 
 
