@@ -194,10 +194,13 @@ class SendMailTest(BaseTestCase):
 
         tender_list = soup.find('ol', {'class': 'tender-list'}).find_all('a')
         self.assertEqual(len(tender_list), 3)
+        
+        
         tender_1_url = f"{settings.BASE_URL}/tenders/{self.tender1.id}"
         tender_2_url = f"{settings.BASE_URL}/tenders/{self.tender2.id}"
         tender_3_url = f"{settings.BASE_URL}/tenders/{self.tender3.id}"
 
+        #The tenders in the email are ordered by -published
         self.assertEqual(tender_list[0]['href'], tender_3_url)
         self.assertEqual(tender_list[1]['href'], tender_1_url)
         self.assertEqual(tender_list[2]['href'], tender_2_url)
@@ -273,6 +276,7 @@ class SendMailTest(BaseTestCase):
         tender_2_url = f"{settings.BASE_URL}/tenders/{self.tender2.id}"
         tender_3_url = f"{settings.BASE_URL}/tenders/{self.tender3.id}"
 
+        #The tenders in the email are ordered by -published
         self.assertEqual(tender_3_url in mail1, True)
         self.assertEqual(tender_1_url in mail2, True)
         self.assertEqual(tender_2_url in mail3, True)
