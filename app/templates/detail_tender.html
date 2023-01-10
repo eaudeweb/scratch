@@ -131,7 +131,7 @@
       <input type="text" class="form-control" placeholder="Add tag" list="tags" id="tagValue">
     </div>
     <div class="col-sm-4">
-      <button action="{% url 'tender_tag_view' tender.id %}"  type="button" class="btn btn-primary btn" onclick="addTagToTender({{ tender.id }})">Add</button>
+      <button action="{% url 'tender_tag_view' tender.id %}"  type="button" class="btn btn-primary btn" action="/tenders/tag/{{ tender.id }}"  id="add_tag_button">Add</button>
     </div>    
   </div>
 </div>
