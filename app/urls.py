@@ -17,9 +17,10 @@ from .views import (
     TenderListAjaxView,
     ContractAwardsListAjaxView,
     TenderArchiveAjaxView,
-    TenderTagView
+    TenderTagView,
+    VendorsListView,
+    VendorsListAjaxView
 )
-
 
 urlpatterns = [
     path("", HomepageView.as_view(), name="homepage_view"),
@@ -36,6 +37,8 @@ urlpatterns = [
     path("awards/", ContractAwardsListView.as_view(), name="contract_awards_list_view"),
     path('awards/ajax', ContractAwardsListAjaxView.as_view(), name='contract_awards_list_ajax_view'),
     path("awards/<int:pk>/", ContractAwardDetailView.as_view(), name="contract_awards_detail_view"),
+    path("vendors/", VendorsListView.as_view(), name="vendors_list_view"),
+    path('vendors/ajax', VendorsListAjaxView.as_view(), name='vendors_list_ajax_view'),
     path('archive/', TenderArchiveView.as_view(), name='tenders_archive_list'),
     path('archive/ajax', TenderArchiveAjaxView.as_view(), name='tenders_archive_list_ajax_view'),
     path('search/<str:pk>', SearchView.as_view(), name='search_results'),

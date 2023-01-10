@@ -271,6 +271,43 @@ $(document).ready(function() {
       }
     });
 
+  $('#vendors_table').DataTable(
+    {
+      "order": [[ 0, "asc" ]],
+      "pageLength": 50,
+      "lengthChange": false,
+      "search": {
+        "search": searchTerm
+      },
+      "processing": true,
+      "serverSide": true,
+      "ajax": {
+        "url": "/vendors/ajax",
+        "type": "GET",
+        "data": function (d) {
+
+        }
+      },
+      columnDefs: [
+      {
+        "targets": 0,
+        "orderable": true,
+        "render": function ( data, type, row ) {
+            return '<a href="' + row['url'] +'">' + data + '</a>';
+
+        },
+      }
+      ],
+      "columns": [
+        { "data": "name" },
+        { "data": "email" },
+        { "data": "contact_name" },
+    ],
+      "drawCallback": function(settings) {
+          $('button').click(buttonsClick)
+      }
+    });
+
   $('#tender_detail_table').DataTable(
     {
       "searching": false,

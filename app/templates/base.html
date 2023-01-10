@@ -33,6 +33,7 @@
 {% url 'homepage_view' as homepage %}
 {% url 'tenders_list_view' as tender_list %}
 {% url 'contract_awards_list_view' as awards_list %}
+{% url 'vendors_list_view' as vendors_list %}
 {% url 'overview_view' as overview %}
 {% url 'login_view' as login %}
 {% url 'logout_view' as logout %}
@@ -44,6 +45,7 @@
   <li><a class="{% active request homepage %} nav-menu2" href="{{ homepage }}">Home</a></li>
   <li><a class="{% active request tender_list %} nav-menu2" href="{{ tender_list }}">Tenders</a></li>
   <li><a class="{% active request awards_list %} nav-menu2" href="{{ awards_list }}">Contract Awards</a></li>
+  <li><a class="{% active request vendors_list %} nav-menu2" href="{{ vendors_list }}">Award Vendors</a></li>
   <li><a class="{% active request archives %} nav-menu2" href="{{ archives }}"> Archive </a></li>
   <li><a class="{% active request overview %} nav-menu2" href="{{ overview }}">Overview</a></li>
   {% if user.is_authenticated and user.is_superuser %}
