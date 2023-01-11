@@ -125,17 +125,13 @@ class TenderListAjaxView(BaseAjaxListingView):
     def filter_data(self, request):
         tenders = super(TenderListAjaxView, self).filter_data(request)
         tags_request = self.request.GET.get('tags')
-        tags_request = tags_request.split(',')
-        tags_request_list = [i for i in tags_request if i != '']
         
-        if len(tags_request_list) > 0:
-            # Build a Q object for each tag in tags_request, then join them together with an 'OR' query
-            query = Q()
-            for tag in tags_request:
-                query |= Q(tags__name=tag)
-
-            tenders = tenders.filter(query)
-
+        if tags_request:
+            tags_request = tags_request.split(',')
+            tags_request_list = [i for i in tags_request if i != '']
+            if len(tags_request_list) > 0:
+                tenders = tenders.filter(tags__name__in=tags_request_list)
+ 
         search = request.GET.get("search[value]")
         if search:
             tenders = Tender.objects.filter(

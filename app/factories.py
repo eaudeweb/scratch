@@ -1,7 +1,7 @@
 import factory
 from .models import (
     Tender, Award, EmailAddress, TenderDocument, CPVCode,
-    TedCountry, UNSPSCCode, Keyword, Vendor
+    TedCountry, UNSPSCCode, Keyword, Vendor,Tag
 )
 from datetime import datetime
 from django.utils import timezone
@@ -76,3 +76,9 @@ class KeywordFactory(factory.DjangoModelFactory):
         model = Keyword
 
     value = 'python'
+
+class TagsFactory(factory.DjangoModelFactory):
+    class Meta:
+        model = Tag
+
+    name = 'django'

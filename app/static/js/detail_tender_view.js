@@ -1,46 +1,44 @@
 
 function pushNewTagToTable(tagInputValue) {
-    const tagsList = document.querySelector('#tags_list_displayed')
-    const tagsListValues = tagsList.innerText.split(',')
+    tagInputValue = tagInputValue.trim()
 
-    tagsListValues.push(tagInputValue)
+    const tagsList = $("#tags_list_displayed")
+    const tagsListValues = tagsList.text().split(',')
 
-    const filteredArr = tagsListValues.filter(function (element) {
-        return element !== '';
-    });
+    const trimmedArray = tagsListValues.map(str => str.replace('\n','').trim());
+    if (!trimmedArray.includes(tagInputValue)) {
+        tagsListValues.push(tagInputValue)
 
-    tagsList.innerHTML = filteredArr.join(', ')
-}
+        const filteredArr = tagsListValues.filter(function (element) {
+            return element.trim() !== '';
+        });
 
-
-
-
-function pushTagDb(id, tagInputValue) {
-    console.log(id)
-    $.ajax({
-        type: 'POST',
-        url: `/tenders/tag/${id}/`,
-        data: {
-            tag_name: tagInputValue,
-            csrfmiddlewaretoken: getCookie('csrftoken')
-        },
-        success: function (response) {
-            console.log(response)
-            document.querySelector('#tagValue').value = ''
-
-        }
-    });
-}
-
-
-function addTagToTender(tender_id) {
-    const tagInputValue = document.querySelector('#tagValue').value
-
-    if (tagInputValue.trim() == '') {
-        alert('Tag input can not be empty')
-    } else {
-        pushNewTagToTable(tagInputValue)
-        pushTagDb(tender_id, tagInputValue)
-
+        tagsList.html(filteredArr.join(', '))
     }
+
 }
+
+
+$(document).ready(
+    $('#add_tag_button').click(function () {
+
+        const tagValue = $('#tagValue').val()
+        if (tagValue.trim() === '') {
+            alert('Tag input can not be empty')
+        } else {
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: {
+                    tag_name: tagValue,
+                    csrfmiddlewaretoken: getCookie('csrftoken')
+                },
+                success: function (response) {
+                    $('#tagValue').val('');
+                    pushNewTagToTable(tagValue)
+                }
+            });
+        }
+    })
+)
+

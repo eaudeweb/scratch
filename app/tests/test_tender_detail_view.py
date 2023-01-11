@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.test import override_settings
 
-from app.factories import TenderFactory, KeywordFactory
+from app.factories import TenderFactory, KeywordFactory,TagsFactory
 from app.tests.base import BaseTestCase
 
 
@@ -57,3 +57,22 @@ class TendersDetailViewTests(BaseTestCase):
         self.assertContains(response, new_tender.reference)
         self.assertContains(response, 'Tender_2 python')
         self.assertContains(response, 'Tender_2 drupal')
+    
+    def test_detail_view_one_tender_has_tags(self):
+        tag1 = TagsFactory()
+        tag2 = TagsFactory(name='tag 2')
+        new_tender = TenderFactory(title='Tender_3', description='Tender_3 contains tags')
+            
+        new_tender.tags.add(tag1,tag2)
+        new_tender.refresh_from_db()
+        tender_tags_values= [tag.name for tag in new_tender.tags.all()]
+        
+        url = reverse('tender_detail_view', kwargs={'pk': new_tender.id})
+        response = self.client.get(url)
+        soup = BeautifulSoup(response.content.decode(), 'html.parser')
+        response.content = soup.get_text()
+        
+        self.assertIn(tag1, new_tender.tags.all())
+        self.assertIn(tag2,new_tender.tags.all())
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, ', '.join(tender_tags_values))
