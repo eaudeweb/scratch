@@ -5,6 +5,18 @@
   <head>
     <link rel="stylesheet" type="text/css" href="{% static 'css/filter_bar.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}"/>
+    <style>
+      .disable {
+        color: gray;
+        pointer-events:none;
+
+      }
+
+      .not-allowed {
+        cursor: not-allowed
+      }
+    </style>
+
   </head>
 
   <body>
@@ -22,10 +34,22 @@
               {{ form.organization.label }}
               {% render_field form.organization class+="form-control form-control-sm" %}
             </div>
+
+            {% if not vendor %}
             <div class="form-group col-sm">
               {{ form.vendor.label }}
               {% render_field form.vendor class+="form-control form-control-sm" %}
             </div>
+            {% else %}
+            <div class="not-allowed">
+              <div class="form-group col-sm disable">
+                {{ form.vendor.label }} (Fixed value)
+                {% render_field form.vendor class+="form-control form-control-sm" %}
+              </div>
+            </div>
+
+            {% endif %}
+
           </div>
 
           <div class="flexed">
@@ -39,10 +63,18 @@
               {% render_field form.value class+="form-control form-control-sm" %}
             </div>
 
+
             {% if reset %}
-              <div class="div_button">
-                <a href="{% url 'contract_awards_list_view' %}"><button type="button" name="reset_filters" value="reset" class="btn btn-dark filter_button">Reset filters</button></a>
-              </div>
+              {% if not vendor %}
+                <div class="div_button">
+                  <a href="{% url 'contract_awards_list_view' %}"><button type="button" name="reset_filters" value="reset" class="btn btn-dark filter_button">Reset filters</button></a>
+                </div>
+              {% else %}
+                <div class="div_button">
+                  <a href="{% url 'vendor_detail_view' vendor.pk %}"><button type="button" name="reset_filters" value="reset" class="btn btn-dark filter_button">Reset filters</button></a>
+                </div>
+
+              {% endif %}
             {% endif %}
 
             <div class="div_button">

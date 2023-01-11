@@ -1,11 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
-from django.template.defaultfilters import floatformat
-from django.template.loader import render_to_string
 from django.urls import reverse
+from django.views.generic import DetailView
 from django.views.generic.list import ListView
 
-from app.forms import MAX, STEP
+from app.forms import MAX, STEP, AwardsFilter
 from app.models import Vendor
 from app.views import BaseAjaxListingView
 
@@ -19,7 +18,6 @@ class VendorsListView(LoginRequiredMixin, ListView):
 
 
 class VendorsListAjaxView(BaseAjaxListingView):
-
     order_fields = ['name', 'email', 'contact_name']
     case_sensitive_fields = ['name']
     model = Vendor
@@ -28,7 +26,7 @@ class VendorsListAjaxView(BaseAjaxListingView):
         data = [
             {
                 'name': vendor.name,
-                'url': reverse('contract_awards_detail_view', kwargs={'pk': vendor.id}),
+                'url': reverse('vendor_detail_view', kwargs={'pk': vendor.id}),
                 'email': vendor.email,
                 'contact_name': vendor.contact_name
 
@@ -60,3 +58,41 @@ class VendorsListAjaxView(BaseAjaxListingView):
         # vendors.order_by('-name')
         vendors = super(VendorsListAjaxView, self).order_data(request, vendors)
         return vendors
+
+
+class VendorDetailView(LoginRequiredMixin, DetailView):
+    model = Vendor
+    template_name = "detail_vendor.html"
+    context_object_name = "vendor"
+    login_url = "/login"
+    redirect_field_name = "login_view"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        reset = False
+        if self.request.GET.get("filter_button"):
+            organization = self.request.GET.get("organization")
+            source = self.request.GET.get("source")
+            value = self.request.GET.get("value")
+            reset = any([source, organization, context["vendor"], value])
+            form = AwardsFilter(
+                initial={
+                    "organization": organization,
+                    "source": source,
+                    "vendor": context["vendor"],
+                    "value": value,
+                }
+            )
+        else:
+            form = AwardsFilter(
+                initial={
+                    "organization": None,
+                    "source": None,
+                    "vendor": context["vendor"],
+                    "value": None,
+                }
+            )
+
+        context["form"] = form
+        context["reset"] = reset
+        return context

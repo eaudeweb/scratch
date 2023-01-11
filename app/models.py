@@ -123,9 +123,9 @@ class Tender(BaseTimedModel):
 
 
 class Vendor(BaseTimedModel):
-    name = models.TextField(null=True, blank=True)
+    name = models.CharField(null=True, blank=True, max_length=255)
     email = models.EmailField(null=True)
-    contact_name = models.TextField(null=True, blank=True)
+    contact_name = models.CharField(null=True, blank=True, max_length=255)
     comment = models.TextField(null=True, blank=True)
 
     def __str__(self):
