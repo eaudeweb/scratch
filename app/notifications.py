@@ -1,6 +1,5 @@
 from django.conf import settings
 from django.template.loader import render_to_string
-from getenv import env
 
 from app.models import EmailAddress, Email, set_notified
 
@@ -17,7 +16,7 @@ def send_tenders_email(tenders, digest):
             {
                 'tenders': tenders,
                 'title': title,
-                'domain': env('BASE_URL')
+                'domain': settings.BASE_URL
             }
         )
 
@@ -31,7 +30,7 @@ def send_tenders_email(tenders, digest):
                 {
                     'tenders': [tender],
                     'title': title,
-                    'domain': env('BASE_URL')
+                    'domain': settings.BASE_URL
                 }
             )
 
@@ -53,7 +52,7 @@ def send_awards_email(awards, digest):
             {
                 'awards': awards,
                 'title': title,
-                'domain': env('BASE_URL')
+                'domain': settings.BASE_URL
             }
         )
 
@@ -69,7 +68,7 @@ def send_awards_email(awards, digest):
                 {
                     'awards': [award],
                     'title': title,
-                    'domain': env('BASE_URL')
+                    'domain': settings.BASE_URL
                 }
             )
 
@@ -90,7 +89,7 @@ def send_error_email(error):
         {
             'error': error,
             'title': title,
-            'domain': env('BASE_URL')
+            'domain': settings.BASE_URL
         }
     )
 

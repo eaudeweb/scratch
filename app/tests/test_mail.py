@@ -20,7 +20,6 @@ class SendMailTest(BaseTestCase):
         super(SendMailTest, self).setUp()
         self.keyword = KeywordFactory()
         self.tender1 = TenderFactory(
-            id=1,
             reference='RFQ 47-2019',
             title='test_title1',
             url='https://www.ungm.org/Public/Notice/94909',
@@ -30,7 +29,6 @@ class SendMailTest(BaseTestCase):
         )
 
         self.tender2 = TenderFactory(
-            id=2,
             reference='2019/FLCHI/FLCHI/102665',
             title='test_title2 python',
             url='https://www.ungm.org/Public/Notice/94920',
@@ -39,7 +37,6 @@ class SendMailTest(BaseTestCase):
         )
 
         self.tender3 = TenderFactory(
-            id=3,
             reference='RFP 56956',
             title='test_title3',
             url='https://www.ungm.org/Public/Notice/92850',
