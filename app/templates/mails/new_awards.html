@@ -11,7 +11,7 @@
       {% for award in awards %}
         <li>
           <h2>
-            <a href="{{ domain }}/awards/{{ award.id }}">{{ award.tender.title }} </a>
+            <a href="{{ domain }}/awards/{{ award.id|urlencode }}">{{ award.tender.title }} </a>
           </h2>
           <p class="published clip">
             {% if award.award_date %}
