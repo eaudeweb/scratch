@@ -2,6 +2,7 @@ import logging
 
 from django.core.mail import EmailMultiAlternatives
 from django.db import models
+from django.urls import reverse
 from django.utils.html import strip_tags
 from django.utils.functional import cached_property
 from django.contrib.postgres.fields import ArrayField
@@ -123,13 +124,16 @@ class Tender(BaseTimedModel):
 
 
 class Vendor(BaseTimedModel):
-    name = models.CharField(null=True, blank=True, max_length=255)
-    email = models.EmailField(null=True)
+    name = models.CharField(null=False, blank=False, max_length=255)
+    email = models.EmailField(null=True, blank=True)
     contact_name = models.CharField(null=True, blank=True, max_length=255)
     comment = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return '{}'.format(self.name)
+
+    def get_absolute_url(self):
+        return reverse('vendor_detail_view', kwargs={'pk': self.pk})
 
 
 class Award(BaseTimedModel):

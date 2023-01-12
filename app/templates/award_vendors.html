@@ -1,5 +1,5 @@
 <ol style="list-style-position: inside;">
   {% for vendor in vendors %}
-    <li>{{ vendor }}</li>
+  <li><a href="{% url 'vendor_detail_view' vendor.id %}">{{ vendor }}</a></li>
   {% endfor %}
 </ol>

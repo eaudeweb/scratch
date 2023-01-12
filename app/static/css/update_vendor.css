@@ -1,0 +1,23 @@
+.vendor-update-form{
+    margin-top: 30px;
+    margin-left: 5%;
+    width: 70%;
+    max-width: 700px;
+    font-weight: bold;
+}
+
+.vendor-update-field{
+    font-size: 17px;
+    padding: 20px 15px;
+}
+
+.vendor-update-button{
+    float: right;
+    margin-right: 15px;
+}
+
+#update-title{
+    margin-top: 20px;
+    margin-left: 5%;
+    padding-left:10px
+}

@@ -1,20 +1,20 @@
 {% extends 'base.html' %}
 {% load static %}
-<head>
-  <style>
-    table {
-      color: red;
-    }
-  </style>
-</head>
+
 {% block title %}
   <title>Scratch - Vendor {{ vendor.id }}</title>
 {% endblock %}
 
 {% block content %}
-  <div class = "table_detail" >
+
+  <a href="{% url 'vendor_update_view' vendor.id %}" class="update_button margin"></a>
+
+  <h2 id="vendor-detail-main-title" class="margin vendor-detail-title">{{ vendor.name }}</h2>
+
+  <h4 class="margin vendor-detail-title"> Details </h4>
+
+  <div class = "table_detail vendor-details-table" >
     <table id="tender_detail_table" class="cell-border display award_detail" style="margin-left: 60px;">
-      <h2>{{ vendor.name }}</h2>
       <br>
       <thead>
       <th>Name</th>
@@ -23,15 +23,33 @@
       <tbody>
       <tr>
         <td>Email</td>
-        <td>{{ vendor.email }}</td>
+        <td>
+          {% if vendor.email %}
+            {{ vendor.email }}
+          {% else %}
+            <span style="color: red">No email</span>
+          {% endif %}
+        </td>
       </tr>
       <tr>
         <td>Contact name</td>
-        <td>{{ vendor.contact_name }}</td>
+        <td>
+          {% if vendor.contact_name %}
+            {{ vendor.contact_name }}
+          {% else %}
+            <span style="color: red">No contact person</span>
+          {% endif %}
+        </td>
       </tr>
       <tr>
         <td>Comment</td>
-        <td>{{ vendor.comment }}</td>
+        <td class="comment">
+          {% if vendor.comment %}
+            {{ vendor.comment }}
+          {% else %}
+            <span style="color: gray">No comment</span>
+          {% endif %}
+        </td>
       </tr>
       </tbody>
     </table>
@@ -41,26 +59,33 @@
   <br>
   <br>
 
-  <div >
+  <h4 class="margin vendor-detail-title">
+    Contract awards
+  </h4>
+
+
+
+  <div class="vendor-awards-table margin">
+    
     {% include 'awards_filters.html' %}
+
+    <div class = "table" >
+      <table id="contract_awards_table"  class="cell-border display compact">
+        <thead>
+        <tr>
+          <th>Title</th>
+          <th>Source</th>
+          <th>Organization</th>
+          <th style="width: 90px;">Award Date</th>
+          <th style="width: 90px;">Renewal Date</th>
+          <th style="width: 400px;">Vendor(s)</th>
+          <th>Value</th>
+          <th>Currency</th>
+        </tr>
+        </thead>
+      </table>
+    </div>
   </div>
 
-
-  <div class = "table" >
-    <table id="contract_awards_table"  class="cell-border display compact">
-      <thead>
-      <tr>
-        <th>Title</th>
-        <th>Source</th>
-        <th>Organization</th>
-        <th style="width: 90px;">Award Date</th>
-        <th style="width: 90px;">Renewal Date</th>
-        <th style="width: 400px;">Vendor(s)</th>
-        <th>Value</th>
-        <th>Currency</th>
-      </tr>
-      </thead>
-    </table>
-  </div>
 
 {% endblock %}

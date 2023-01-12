@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.urls import reverse
-from django.views.generic import DetailView
+from django.views.generic import DetailView, UpdateView
 from django.views.generic.list import ListView
 
 from app.forms import MAX, STEP, AwardsFilter
@@ -96,3 +96,9 @@ class VendorDetailView(LoginRequiredMixin, DetailView):
         context["form"] = form
         context["reset"] = reset
         return context
+
+
+class VendorUpdateView(UpdateView):
+    model = Vendor
+    fields = ['name', 'email', 'contact_name', 'comment']
+    template_name = 'update_vendor.html'

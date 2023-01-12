@@ -1,6 +1,6 @@
 from django.urls import path
 from django.views.generic import RedirectView
-from .views import LoginView, LogoutView, ContractAwardsListView, VendorDetailView
+from .views import LoginView, LogoutView, ContractAwardsListView
 from .views import (
     TendersListView,
     TenderDeleteView,
@@ -19,7 +19,9 @@ from .views import (
     TenderArchiveAjaxView,
     TenderTagView,
     VendorsListView,
-    VendorsListAjaxView
+    VendorsListAjaxView,
+    VendorDetailView,
+    VendorUpdateView
 )
 
 urlpatterns = [
@@ -40,6 +42,7 @@ urlpatterns = [
     path("vendors/", VendorsListView.as_view(), name="vendors_list_view"),
     path('vendors/ajax', VendorsListAjaxView.as_view(), name='vendors_list_ajax_view'),
     path("vendors/<int:pk>/", VendorDetailView.as_view(), name="vendor_detail_view"),
+    path("vendors/update/<int:pk>/", VendorUpdateView.as_view(), name="vendor_update_view"),
     path('archive/', TenderArchiveView.as_view(), name='tenders_archive_list'),
     path('archive/ajax', TenderArchiveAjaxView.as_view(), name='tenders_archive_list_ajax_view'),
     path('search/<str:pk>', SearchView.as_view(), name='search_results'),
