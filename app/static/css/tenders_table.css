@@ -30,95 +30,6 @@
   float: left;
 }
 
-.favourite_button {
-  display: block;
-  border:none;
-  width: 26px;
-  height: 26px;
-  background: url('../images/fav_unpressed.png') 50% 50% no-repeat;
-  background-size: 100%;
-}
-
-.favourite_button:hover {
-  background: url('../images/fav_pressed.png') 50% 50% no-repeat;
-}
-
-
-.favourite_button:focus, :active {
-  outline: 0;
-  border: 0;
-}
-
-.favourite_pressed {
-  display: block;
-  border:none;
-  width: 26px;
-  height: 26px;
-  background: url('../images/fav_pressed.png') 50% 50% no-repeat;
-  background-size: 100%;
-}
-
-.favourite_pressed:hover {
-  background: url('../images/fav_unpressed.png') 50% 50% no-repeat;
-}
-
-.favourite_pressed:focus, :active {
-  outline: 0;
-  border: 0;
-}
-
-.seen_button {
-  display: block;
-  border:none;
-  width: 24px;
-  height: 24px;
-  background: url('../images/unseen.png') 50% 50% no-repeat;
-  background-size: 100%;
-}
-
-.seen_button:hover {
-  background: url('../images/seen.png') 50% 50% no-repeat;
-}
-
-
-.seen_button:focus, :active {
-  outline: 0;
-  border: 0;
-}
-
-.seen_pressed {
-  display: block;
-  border:none;
-  width: 24px;
-  height: 24px;
-  background: url('../images/seen.png') 50% 50% no-repeat;
-  background-size: 100%;
-}
-
-.seen_pressed:hover {
-  background: url('../images/unseen.png') 50% 50% no-repeat;
-}
-
-.seen_pressed:focus, :active {
-  outline: 0;
-  border: 0;
-}
-
-.remove_button {
-  display: block;
-  border:none;
-  width: 26px;
-  height: 26px;
-  background: url('../images/remove_icon.png') 50% 50% no-repeat;
-  background-size: 100%;
-}
-
-
-.remove_button:focus, :active {
-  outline: 0;
-  border: 0;
-}
-
 ul {
   list-style-type: none;
   margin: 0;
@@ -126,9 +37,20 @@ ul {
   overflow: hidden;
 }
 
+.ul_buttons {
+  min-width: 100px;
+  min-height: 25px;
+  padding: 10px 0px 10px 0px;
+  margin: 0px;
+}
+
 .li_buttons {
   float: left;
   padding-left: 3px;
+}
+
+.li_buttons i {
+  cursor: pointer;
 }
 
 .description {

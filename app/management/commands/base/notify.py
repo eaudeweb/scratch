@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.core.management.base import BaseCommand
 from django.template.loader import render_to_string
 from getenv import env
@@ -74,7 +75,7 @@ class BaseNotifyCommand(BaseCommand, BaseParamsUI):
                 'mails/tender_update.html',
                 {
                     'tenders': tenders,
-                    'domain': env('BASE_URL'),
+                    'domain': settings.BASE_URL,
                     'notification_type': notification_type
                 }
             )
@@ -88,7 +89,7 @@ class BaseNotifyCommand(BaseCommand, BaseParamsUI):
                     'mails/tender_update.html',
                     {
                         'tenders': [tender],
-                        'domain': env('BASE_URL'),
+                        'domain': settings.BASE_URL,
                         'notification_type': notification_type
                     }
                 )

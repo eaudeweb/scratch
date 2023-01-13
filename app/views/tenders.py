@@ -110,7 +110,7 @@ class TenderListAjaxView(BaseAjaxListingView):
                 'published': 'Not specified' if not tender.published else (
                     tender.published.strftime("%m/%d/%Y")),
                 'notice_type': render_to_string(
-                        'tenders_buttons.html', {'tender': tender}),
+                    'tenders_buttons.html', {'tender': tender, 'include_notice_type': True}),
                 'tags': ', '.join(tender.tags.values_list('name', flat=True))
                 
             } for tender in object_list
@@ -125,17 +125,13 @@ class TenderListAjaxView(BaseAjaxListingView):
     def filter_data(self, request):
         tenders = super(TenderListAjaxView, self).filter_data(request)
         tags_request = self.request.GET.get('tags')
-        tags_request = tags_request.split(',')
-        tags_request_list = [i for i in tags_request if i != '']
         
-        if len(tags_request_list) > 0:
-            # Build a Q object for each tag in tags_request, then join them together with an 'OR' query
-            query = Q()
-            for tag in tags_request:
-                query |= Q(tags__name=tag)
-
-            tenders = tenders.filter(query)
-
+        if tags_request:
+            tags_request = tags_request.split(',')
+            tags_request_list = [i for i in tags_request if i != '']
+            if len(tags_request_list) > 0:
+                tenders = tenders.filter(tags__name__in=tags_request_list)
+ 
         search = request.GET.get("search[value]")
         if search:
             tenders = Tender.objects.filter(

@@ -128,6 +128,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # REDIS
 Q_CLUSTER = {
+    'timeout': 59,
+    'retry': 60,
     'workers':int(env('DJ_Q_WORKERS', 3)),
     'redis': {
         'host': env('REDIS_HOST', 'redis'),
@@ -237,3 +239,5 @@ LOGGING = {
         }
     }
 }
+
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"

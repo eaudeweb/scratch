@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('app', '0034_award_renewal_date'),
+        ('app', '0035_award_renewal_notified'),
     ]
 
     operations = [

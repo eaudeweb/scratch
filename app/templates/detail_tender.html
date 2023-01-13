@@ -10,26 +10,7 @@
     <thead>
       <th>Favourite</th>
       <th>
-        <ul>
-          <li class="li_buttons">
-            {% if tender.favourite == False %}
-            <button type="button" action="{% url 'tender_favourite_view' tender.id %}" class="favourite_button" id="fav_button"></button>
-            {% else %}
-            <button type="button" action="{% url 'tender_favourite_view' tender.id %}"  class="favourite_pressed" id="fav_button"></button>
-          </li>
-          {% endif %}
-          </li>
-          <li class="li_buttons">
-            {% if tender.seen_by %}
-            <button type="button" action="{% url 'tender_seen_view' tender.id %}" class="seen_pressed" id="seen_button"></button>
-          <li class="li_buttons"><span id="seen_usr">{{ tender.seen_by }}</span></li>
-          {% else %}
-          <button type="button" action="{% url 'tender_seen_view' tender.id %}"  class="seen_button" id="seen_button"></button></li>
-          <li class="li_buttons"><span id="seen_usr"></span></li>
-          {% endif %}
-          </li>
-          <li class="li_buttons"><button type="button" action="{% url 'tender_delete_view' tender.id %}"  class="remove_button" id="remove_button_detail" name="{{ tender.marked_keyword_title|safe }}"></button></li>
-        </ul>
+        {% include "tenders_buttons.html" %}
       </th>
     </thead>
     <tbody>
@@ -131,7 +112,7 @@
       <input type="text" class="form-control" placeholder="Add tag" list="tags" id="tagValue">
     </div>
     <div class="col-sm-4">
-      <button action="{% url 'tender_tag_view' tender.id %}"  type="button" class="btn btn-primary btn" onclick='addTagToTender({{ tender.id }})'>Add</button>
+      <button action="{% url 'tender_tag_view' tender.id %}"  type="button" class="btn btn-primary btn"  id="add_tag_button">Add</button>
     </div>    
   </div>
 </div>
