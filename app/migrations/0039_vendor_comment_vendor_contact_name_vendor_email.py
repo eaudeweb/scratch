@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('app', '0037_merge_0035_award_renewal_notified_0036_tender_tags'),
+        ('app', '0038_alter_tag_name'),
     ]
 
     operations = [
@@ -24,10 +24,5 @@ class Migration(migrations.Migration):
             model_name='vendor',
             name='email',
             field=models.EmailField(max_length=254, null=True),
-        ),
-        migrations.AlterField(
-            model_name='tag',
-            name='name',
-            field=models.CharField(max_length=255, unique=True),
         ),
     ]
