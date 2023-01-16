@@ -3,7 +3,7 @@ import json
 from django.urls import reverse
 from django.contrib.auth.models import User
 
-from app.factories import TenderFactory, KeywordFactory
+from app.factories import TenderFactory, KeywordFactory, AwardFactory
 from app.tests.base import BaseTestCase
 
 from django.utils.http import urlencode
@@ -29,6 +29,7 @@ class TendersListAjaxViewTests(BaseTestCase):
         new_tender2 = TenderFactory()
         new_tender3 = TenderFactory()
         new_tender4 = TenderFactory()
+        award = AwardFactory(tender=new_tender4)
 
         url = '{}?{}'.format(reverse('tenders_list_ajax_view'),  urlencode(query_kwargs))
         response = self.client.get(url)
@@ -47,6 +48,10 @@ class TendersListAjaxViewTests(BaseTestCase):
         self.assertEqual(len(response.context), 2)
         self.assertEqual(response.context[0]['tender'], new_tender3)
         self.assertEqual(response.context[1]['tender'], new_tender4)
+
+        award_url = reverse('contract_awards_detail_view',kwargs={'pk':award.id}) 
+        self.assertEqual(response.json()['data'][-1]['awards'][0],award_url)
+        
 
     def test_list_ajax_view_filters(self):
         query_kwargs = {
