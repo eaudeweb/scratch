@@ -1,11 +1,14 @@
 from dateutil.relativedelta import relativedelta
-from django.core.management.base import BaseCommand
-from app.models import EmailAddress, Award
-from django.template.loader import render_to_string
+
 from django.conf import settings
-from app.notifications import build_email
+from django.core.management.base import BaseCommand
+from django.template.loader import render_to_string
 from django.utils import timezone
+
 from app.management.commands.base.params import BaseParamsUI
+from app.models import Award
+from app.notifications import build_email
+from app.utils import emails_to_notify
 
 
 MONTHS = settings.RENEWAL_NOTIFICATIONS
@@ -13,8 +16,7 @@ MONTHS = settings.RENEWAL_NOTIFICATIONS
 
 def send_renewal_mail(awards, months_remained):
     subject = 'Renewal alert'
-    notifications = EmailAddress.objects.filter(notify=True)
-    recipients = [notification.email for notification in notifications]
+    recipients = emails_to_notify()
 
     html_content = render_to_string(
         'mails/renewal_alert.html',
