@@ -7,8 +7,11 @@
 
 {% block content %}
 
-  <a href="{% url 'vendor_update_view' vendor.id %}" class="update_button"></a>
+  <a href="{% url 'vendor_update_view' vendor.id %}" title="Edit vendor" class="update_button">
+    <i id="fav_button" class="fa-2xl fa-solid fa-pen-to-square" ></i>
+  </a>
 
+  <i class="fa-solid "></i>
   <h2 id="vendor-detail-main-title" class="vendor-margin vendor-detail-title">{{ vendor.name }}</h2>
 
   <h4 class="vendor-margin vendor-detail-title"> Details </h4>

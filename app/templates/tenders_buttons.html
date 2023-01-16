@@ -5,7 +5,7 @@
   {% if tender.favourite %}
   <li class="li_buttons" title="Unmark as favorite"><i id="fav_button" class="fa-lg fa-solid fa-star pressed" data-url="{% url 'tender_favourite_view' tender.id %}"></i></li>
   {% else %}
-  <li class="li_buttons" title="Mark as favorite"><i id="fav_button" class="fa-lg fa-regular fa-star" data-url="{% url 'tender_favourite_view' tender.id %}"></i></button></li>
+  <li class="li_buttons" title="Mark as favorite"><i id="fav_button" class="fa-lg fa-regular fa-star" data-url="{% url 'tender_favourite_view' tender.id %}"></i></li>
   {% endif %}
   {% if tender.seen_by %}
     <li class="li_buttons" title="Unmark as seen"><i id="seen_button" class="fa-lg fa-solid fa-eye pressed" data-url="{% url 'tender_seen_view' tender.id %}"></i></li>
