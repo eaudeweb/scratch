@@ -7,11 +7,11 @@
 
 {% block content %}
 
-  <a href="{% url 'vendor_update_view' vendor.id %}" class="update_button margin"></a>
+  <a href="{% url 'vendor_update_view' vendor.id %}" class="update_button"></a>
 
-  <h2 id="vendor-detail-main-title" class="margin vendor-detail-title">{{ vendor.name }}</h2>
+  <h2 id="vendor-detail-main-title" class="vendor-margin vendor-detail-title">{{ vendor.name }}</h2>
 
-  <h4 class="margin vendor-detail-title"> Details </h4>
+  <h4 class="vendor-margin vendor-detail-title"> Details </h4>
 
   <div class = "table_detail vendor-details-table" >
     <table id="tender_detail_table" class="cell-border display award_detail" style="margin-left: 60px;">
@@ -43,7 +43,7 @@
       </tr>
       <tr>
         <td>Comment</td>
-        <td class="comment">
+        <td class="vendor-comment">
           {% if vendor.comment %}
             {{ vendor.comment }}
           {% else %}
@@ -59,13 +59,13 @@
   <br>
   <br>
 
-  <h4 class="margin vendor-detail-title">
+  <h4 class="vendor-margin vendor-detail-title">
     Contract awards
   </h4>
 
 
 
-  <div class="vendor-awards-table margin">
+  <div class="vendor-awards-table vendor-margin">
     
     {% include 'awards_filters.html' %}
 

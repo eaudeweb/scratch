@@ -333,7 +333,13 @@ function initDataTables() {
   }
 
   let table = $(".table table, .table_detail table");
-  return table.DataTable(tableOptions[table.attr("id")]);
+
+  let aux = []
+  for(let i=0; i<table.length; i++){
+    aux += $(table[i]).DataTable(tableOptions[$(table[i]).attr("id")])
+  }
+
+  return aux
 }
 
 function activateHover() {
@@ -358,6 +364,5 @@ $(document).ready(function () {
   $('#id_vendor').select2();
   $('#id_organization').select2();
   $('#id_tags').select2();
-
   initDataTables();
 });
