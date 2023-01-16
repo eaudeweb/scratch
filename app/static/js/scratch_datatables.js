@@ -135,7 +135,8 @@ const tableColumns = {
     { "data": "organization" },
     { "data": "deadline" },
     { "data": "published" },
-    { "data": "notice_type" }
+    { "data": "notice_type" },
+    { "data": "awards"}
   ],
   "archive_table": [
     { "data": "title" },
@@ -191,6 +192,36 @@ function initDataTables() {
   const ted_deadline_today = $.urlParam(doc, 'ted_deadline_today');
   const ungm_published_today = $.urlParam(doc, 'ungm_published_today');
 
+  const tendersColumnDefs = [
+    {
+      "targets": 0,
+      "orderable": true,
+      "render": function (data, type, row) {
+        return '<a href="' + row['url'] + '">' + data + '</a>';
+      },
+    },
+    {
+      "targets": 1,
+      "orderable": true,
+      "render": function (data, type, row) {
+
+        return row['awards'].length > 0
+        ? `<a class="award-link-icon" href=${row['awards']}><i class="fa fa-external-link fa-lg" ></i> </a>`
+        : '';
+      }
+    }
+  ];
+
+  const awardColumnDefs = [
+    {
+      "targets": 0,
+      "orderable": true,
+      "render": function (data, type, row) {
+        return '<a href="' + row['url'] + '">' + data + '</a>';
+      },
+    }
+  ]
+  
   const tenderOptions = {
     "columnDefs": [
       { "width": "55%", "targets": 0 },
@@ -224,23 +255,16 @@ function initDataTables() {
         d.ungm_published_today = ungm_published_today;
       },
     },
-    columnDefs: [
-      {
-        "targets": 0,
-        "orderable": true,
-        "render": function (data, type, row) {
-          return '<a href="' + row['url'] + '">' + data + '</a>';
-        }
-      },
-    ],
+    columnDefs: tendersColumnDefs,
     "columns": [
       { "data": "title" },
+      { "data": "awards"},
       { "data": "source" },
       { "data": "organization" },
       { "data": "deadline" },
       { "data": "published" },
       { "data": "tags" },
-      { "data": "notice_type" }
+      { "data": "notice_type" },
     ],
     "drawCallback": function (settings) {
       $("i").click(buttonsClick);
@@ -250,6 +274,7 @@ function initDataTables() {
 
   const archiveOptions = {
     ...tenderOptions,
+    "columnDefs": tendersColumnDefs,
     "ajax": {
       ...tenderOptions.ajax,
       "url": "/archive/ajax"
@@ -258,6 +283,7 @@ function initDataTables() {
 
   const awardOptions = {
     ...tenderOptions,
+    "columnDefs": awardColumnDefs,
     "ajax": {
       "url": "/awards/ajax",
       "type": "GET",
@@ -325,4 +351,9 @@ $(document).ready(function () {
   $('#id_tags').select2();
 
   initDataTables();
+
+  $('#tenders_table').on('draw.dt', function () {
+    $("#tenders_table td a.award-link-icon").closest("tr").css("background-color", "#eaff7b");
+  });
+  
 });

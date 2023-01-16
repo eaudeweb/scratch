@@ -62,3 +62,12 @@ ul {
   float: right;
   padding-right: 9px;
 }
+
+.award-link-icon {
+  color: black;
+  background-color: transparent;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  padding: 30px 0px 10px 0px;
+}
