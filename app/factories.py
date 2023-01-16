@@ -1,10 +1,33 @@
 import factory
 from .models import (
-    Tender, Award, EmailAddress, TenderDocument, CPVCode,
-    TedCountry, UNSPSCCode, Keyword, Vendor,Tag
+    Tender, Award, TenderDocument, CPVCode,
+    TedCountry, UNSPSCCode, Keyword, Vendor, Tag, Profile
 )
 from datetime import datetime
+from django.contrib.auth import get_user_model
+from django.db.models.signals import post_save
 from django.utils import timezone
+
+User = get_user_model()
+
+
+@factory.django.mute_signals(post_save)
+class ProfileFactory(factory.DjangoModelFactory):
+    class Meta:
+        model = Profile
+    
+    notify = True
+    user = factory.SubFactory("app.factories.UserFactory")
+
+@factory.django.mute_signals(post_save)
+class UserFactory(factory.DjangoModelFactory):
+    class Meta:
+        model = User
+    
+    username = factory.sequence(lambda n: f"test{n}")
+    email = factory.sequence(lambda n: f"test{n}@test.test")
+    profile = factory.RelatedFactory(ProfileFactory, factory_related_name='user')
+
 
 
 class TenderFactory(factory.DjangoModelFactory):
@@ -47,13 +70,6 @@ class VendorFactory(factory.DjangoModelFactory):
         model = Vendor
 
     name = "test"
-
-
-class EmailAddressFactory(factory.DjangoModelFactory):
-    class Meta:
-        model = EmailAddress
-
-    email = factory.sequence(lambda n: "test%s@test.test" % n)
 
 
 class CPVCodeFactory(factory.DjangoModelFactory):

@@ -26,9 +26,9 @@ from django_q.models import Success, Failure
 
 from app.forms import SearchForm
 from app.models import (
-    CPVCode, UNSPSCCode, EmailAddress,
-    Task, Tender, Award, WorkerLog
+    CPVCode, UNSPSCCode, Task, Tender, Award, WorkerLog
 )
+from app.utils import emails_to_notify
 
 
 class HomepageView(TemplateView):
@@ -191,7 +191,7 @@ class OverviewPageView(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
 
         context["deadline_notifications"] = settings.DEADLINE_NOTIFICATIONS
-        context["emails"] = EmailAddress.objects.filter(notify=True)
+        context["emails"] = emails_to_notify()
         context["worker_logs"] = WorkerLog.objects.order_by('-update')
         context["unspscs_codes"] = UNSPSCCode.objects.all()
         context["cpv_codes"] = CPVCode.objects.all()

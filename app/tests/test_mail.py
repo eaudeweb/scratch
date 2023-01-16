@@ -8,11 +8,13 @@ from django.template.loader import render_to_string
 from django.utils import timezone
 
 from app.factories import (
-    AwardFactory, TenderFactory, EmailAddressFactory, KeywordFactory, UNSPCCodeFactory
+    AwardFactory, TenderFactory, KeywordFactory,
+    UNSPCCodeFactory, UserFactory
 )
 from app.notifications import build_email
-from app.models import EmailAddress, Tender
+from app.models import Tender
 from app.tests.base import BaseTestCase
+from app.utils import emails_to_notify
 
 
 class SendMailTest(BaseTestCase):
@@ -44,14 +46,13 @@ class SendMailTest(BaseTestCase):
             deadline=datetime.now(timezone.utc) + timedelta(days=1) - timedelta(hours=1),
         )
 
-        self.notified_user1 = EmailAddressFactory()
-        self.notified_user2 = EmailAddressFactory()
+        self.notified_user1 = UserFactory()
+        self.notified_user2 = UserFactory()
         UNSPCCodeFactory()
 
     def test_mailing(self):
         subject = 'New tenders available'
-        addresses = EmailAddress.objects.filter(notify=True)
-        recipients = [address.email for address in addresses]
+        recipients = emails_to_notify()
 
         html_content = render_to_string(
             'mails/new_tenders.html',

@@ -1,5 +1,7 @@
 import logging
 
+from django.conf import settings
+from django.core.exceptions import ValidationError
 from django.core.mail import EmailMultiAlternatives
 from django.db import models
 from django.utils.html import strip_tags
@@ -30,6 +32,29 @@ class BaseTimedModel(models.Model):
     class Meta:
         abstract = True
 
+
+class Profile(BaseTimedModel):
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+    )
+    notify = models.BooleanField(
+        default=True,
+        help_text="Whether this user should receive email notifications or not."
+    )
+
+    def __str__(self):
+        return f"{self.user.username}'s profile"
+    
+    def clean(self):
+        if self.notify and not self.user.email:
+            raise ValidationError(
+                "Notifications cannot be activated for users without an email."
+            )
+    
+    def save(self, *args, **kwargs):
+        self.clean()
+        super().save(*args, **kwargs)
 
 class Keyword(BaseTimedModel):
     value = LowerCharField(max_length=50, unique=True)
@@ -205,17 +230,6 @@ class Email(BaseTimedModel):
 
     def __str__(self):
         return "Email '%s' sent." % self.subject
-
-
-class EmailAddress(BaseTimedModel):
-    email = models.EmailField(blank=True, null=True)
-    notify = models.BooleanField(default=True)
-
-    def __str__(self):
-        return str(self.email)
-
-    class Meta:
-        verbose_name_plural = "email addresses"
 
 
 def last_update(source):
