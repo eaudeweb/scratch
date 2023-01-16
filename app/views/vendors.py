@@ -27,8 +27,8 @@ class VendorsListAjaxView(BaseAjaxListingView):
             {
                 'name': vendor.name,
                 'url': reverse('vendor_detail_view', kwargs={'pk': vendor.id}),
-                'email': vendor.email,
-                'contact_name': vendor.contact_name
+                'email': '------------' if not vendor.email else vendor.email,
+                'contact_name': '------------' if not vendor.contact_name else vendor.contact_name
 
             } for vendor in object_list
         ]
