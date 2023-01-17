@@ -1,6 +1,48 @@
+import json
 from django.contrib import admin
-from .models import (Tender, TenderDocument, Award, WorkerLog, EmailAddress,
-                     UNSPSCCode, CPVCode, TedCountry, Task, Keyword, Vendor, Tag)
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+from django.contrib.auth.models import User
+from django.forms.models import ModelForm
+from .models import (
+    Tender, TenderDocument, Award, WorkerLog, UNSPSCCode, CPVCode,
+    TedCountry, Task, Keyword, Vendor, Tag, Profile
+)
+
+
+class AlwaysChangedModelForm(ModelForm):
+    def has_changed(self):
+        return True
+
+
+class ProfileInline(admin.StackedInline):
+    model = Profile
+    form = AlwaysChangedModelForm
+    verbose_name_plural = 'profile'
+    extra = 0
+
+
+def custom_data(self):
+    return json.dumps(
+        {
+            "name": "#profile",
+            "options": {
+                "prefix": "profile",
+                "addText": "Create user profile",
+                "deleteText": "Remove"
+            }
+        }
+    )
+
+class UserAdmin(BaseUserAdmin):
+    inlines = (ProfileInline,)
+
+    def get_inline_formsets(self, request, formsets, inline_instances, obj=None):
+        if not obj:
+            return []
+        inline_formsets = super().get_inline_formsets(request, formsets, inline_instances, obj=obj)
+        formset = inline_formsets[0]
+        formset.inline_formset_data = custom_data.__get__(formset)
+        return inline_formsets
 
 
 class TenderAdmin(admin.ModelAdmin):
@@ -90,13 +132,6 @@ def turn_notifications_on(modeladmin, request, queryset):
 turn_notifications_on.short_description = 'Turn notifications on'
 
 
-class EmailAddressAdmin(admin.ModelAdmin):
-    list_display = ['email', 'notify']
-    list_filter = ['notify']
-    search_fields = ['email']
-    actions = [turn_notifications_off, turn_notifications_on]
-
-
 class UNSPSCCodeAdmin(admin.ModelAdmin):
     list_display = ['id', 'id_ungm', 'name']
     search_fields = ['id', 'id_ungm', 'name']
@@ -133,12 +168,12 @@ class TagAdmin(admin.ModelAdmin):
     list_display = ['name']
     search_field = ['name']
 
-
+admin.site.unregister(User)
+admin.site.register(User, UserAdmin)
 admin.site.register(Tender, TenderAdmin)
 admin.site.register(TenderDocument, TenderDocumentAdmin)
 admin.site.register(Award, AwardAdmin)
 admin.site.register(WorkerLog, WorkerLogAdmin)
-admin.site.register(EmailAddress, EmailAddressAdmin)
 admin.site.register(UNSPSCCode, UNSPSCCodeAdmin)
 admin.site.register(CPVCode, CPVCodeAdmin)
 admin.site.register(TedCountry, TedCountryAdmin)

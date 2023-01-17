@@ -4,10 +4,11 @@ from django.template.loader import render_to_string
 from getenv import env
 
 from app.notifications import build_email
-from app.models import Tender, EmailAddress, SOURCE_CHOICES
+from app.models import Tender, SOURCE_CHOICES
 from app.parsers.ted import TEDWorker
 from app.parsers.ungm import UNGMWorker
 from app.management.commands.base.params import BaseParamsUI
+from app.utils import emails_to_notify
 
 ENDPOINT_URI = 'https://www.ungm.org'
 
@@ -67,8 +68,7 @@ class BaseNotifyCommand(BaseCommand, BaseParamsUI):
     def send_update_email(tenders, digest, notification_type):
         s = 's' if digest else ''
         subject = f'{notification_type} tender{s} Update'
-        notifications = EmailAddress.objects.filter(notify=True)
-        recipients = [notification.email for notification in notifications]
+        recipients = emails_to_notify()
 
         if digest:
             html_content = render_to_string(

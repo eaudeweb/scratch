@@ -6,6 +6,16 @@
 {% block content %}
 <p id="usr_seen_by" hidden>{{ user.username }}</p>
 <div class="table_detail" >
+
+  <strong>Award: </strong> 
+{% if tender.awards.all %}
+    {% for award in tender.awards.all %}
+        <span><a href="{% url 'contract_awards_detail_view' award.id %}">{{ award.tender.title}}</a></span>
+    {% endfor %}
+{% else %}
+    <span>No award</span>
+{% endif %}
+
   <table id="tender_detail_table" class="cell-border display">
     <thead>
       <th>Favourite</th>

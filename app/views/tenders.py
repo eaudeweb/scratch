@@ -111,8 +111,10 @@ class TenderListAjaxView(BaseAjaxListingView):
                     tender.published.strftime("%m/%d/%Y")),
                 'notice_type': render_to_string(
                     'tenders_buttons.html', {'tender': tender, 'include_notice_type': True}),
-                'tags': ', '.join(tender.tags.values_list('name', flat=True))
-                
+                'tags': ', '.join(tender.tags.values_list('name', flat=True)),
+                'awards': [reverse('contract_awards_detail_view',kwargs={'pk': pk}) for pk in tender.awards.values_list("id", flat=True)]
+
+
             } for tender in object_list
         ]
         return data

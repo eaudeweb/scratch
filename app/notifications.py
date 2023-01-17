@@ -1,13 +1,13 @@
 from django.conf import settings
 from django.template.loader import render_to_string
 
-from app.models import EmailAddress, Email, set_notified
+from app.models import Email, set_notified
+from app.utils import emails_to_notify
 
 
 def send_tenders_email(tenders, digest):
     subject = 'New tenders available' if digest else 'New tender available'
-    notifications = EmailAddress.objects.filter(notify=True)
-    recipients = [notification.email for notification in notifications]
+    recipients = emails_to_notify()
     title = 'New Tenders'
 
     if digest:
@@ -42,8 +42,7 @@ def send_tenders_email(tenders, digest):
 
 def send_awards_email(awards, digest):
     subject = 'New award granted' if digest else 'New awards granted'
-    notifications = EmailAddress.objects.filter(notify=True)
-    recipients = [notification.email for notification in notifications]
+    recipients = emails_to_notify()
     title = 'New Contract Awards'
 
     if digest:
@@ -80,8 +79,7 @@ def send_awards_email(awards, digest):
 
 def send_error_email(error):
     subject = 'An error occurred while parsing new tenders'
-    notifications = EmailAddress.objects.filter(notify=True)
-    recipients = [notification.email for notification in notifications]
+    recipients = emails_to_notify()
     title = 'An error occurred while parsing new tenders'
 
     html_content = render_to_string(
