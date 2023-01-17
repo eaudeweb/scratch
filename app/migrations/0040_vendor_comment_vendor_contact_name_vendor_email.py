@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('app', '0038_alter_tag_name'),
+        ('app', '0039_profile'),
     ]
 
     operations = [
