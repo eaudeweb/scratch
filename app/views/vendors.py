@@ -55,7 +55,7 @@ class VendorsListAjaxView(BaseAjaxListingView):
         return vendors
 
     def order_data(self, request, vendors):
-        # vendors.order_by('-name')
+        vendors.order_by('-name')
         vendors = super(VendorsListAjaxView, self).order_data(request, vendors)
         return vendors
 
