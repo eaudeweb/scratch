@@ -7,15 +7,7 @@
 <p id="usr_seen_by" hidden>{{ user.username }}</p>
 <div class="table_detail" >
 
-  <strong>Award: </strong> 
-{% if tender.awards.all %}
-    {% for award in tender.awards.all %}
-        <span><a href="{% url 'contract_awards_detail_view' award.id %}">{{ award.tender.title}}</a></span>
-    {% endfor %}
-{% else %}
-    <span>No award</span>
-{% endif %}
-
+  
   <table id="tender_detail_table" class="cell-border display">
     <thead>
       <th>Favourite</th>
@@ -137,6 +129,55 @@
 
 </div>
 
+<div class="table_detail" >
+      {% for award in tender.awards.all %}
+          <table id="award_detail_table" class="cell-border display award_detail">
+            <br>
+            <thead>
+            <th>Award</th>
+            <th><span><a href="{% url 'contract_awards_detail_view' award.id %}">{{ award.tender.title}}</a></span></th>
+            </thead>
+            <tbody>
+            <tr>
+              <td>Link to tender</td>
+              <td><a href="{{ award.tender.url }}" target="_blank">{{ award.tender.url }}</a></td>
+            </tr>
+            <tr>
+              <td>Award Date</td>
+              <td>{{ award.award_date | date:'d M Y' }}</td>
+            </tr>
+            <tr>
+              <td>Renewal Date</td>
+              {% if award.renewal_date %}
+              <td>{{ award.renewal_date | date:'d M Y' }}</td>
+              {% else %}
+              <td style="color: red">This contract is not subject to renewal</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <td>Vendor(s)</td>
+              <td>
+                <ol style="list-style-position: inside;">
+                  {% for vendor in award.vendors.all %}
+                    <li>{{ vendor }}</li>
+                  {% endfor %}
+                </ol>
+              </td>
+            </tr>
+            <tr>
+              <td>Value {% if award.tender.source == 'TED' %}(total value for all lots){% endif %}</td>
+              <td>{{ award.value | floatformat:'0' }}</td>
+            </tr>
+            <tr>
+              <td>Currency</td>
+              <td>{{ award.currency }}</td>
+            </tr>
+            </tbody>
+          </table>
+
+      {% endfor %}
+      
+</div>
 <style>
   mark {
       background: yellow;
