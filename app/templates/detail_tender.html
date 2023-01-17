@@ -130,8 +130,6 @@
 </div>
 
 <div class="table_detail" >
-
-  {% if tender.awards.all %}
       {% for award in tender.awards.all %}
           <table id="award_detail_table" class="cell-border display award_detail">
             <br>
@@ -178,10 +176,7 @@
           </table>
 
       {% endfor %}
-
-  {% endif %}
-  
-
+      
 </div>
 <style>
   mark {
