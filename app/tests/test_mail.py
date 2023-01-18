@@ -91,6 +91,8 @@ class SendMailTest(BaseTestCase):
         self.assertEqual(self.tender2.title in mail3, True)
 
     def test_notify_tenders_digest(self):
+        AwardFactory(tender=self.tender1)
+
         management.call_command('notify_tenders', digest=True)
         self.assertEqual(len(mail.outbox), 1)
 
@@ -105,10 +107,12 @@ class SendMailTest(BaseTestCase):
 
         #The tenders in the email are ordered by -published
 
-        self.assertEqual(len(tender_list), 3)
+        self.assertEqual(len(tender_list), 2)
         self.assertEqual(tender_list[0]['href'], tender_3_url)
-        self.assertEqual(tender_list[1]['href'], tender_1_url)
-        self.assertEqual(tender_list[2]['href'], tender_2_url)
+        self.assertEqual(tender_list[1]['href'], tender_2_url)
+        
+        self.assertNotIn(tender_1_url,tender_list)
+ 
 
     def test_notify_awards(self):
         award1 = AwardFactory()
