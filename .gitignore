@@ -129,3 +129,6 @@ docker/cachet.env
 
 # cachet
 config/config.yml
+
+# Vs code
+.vscode
