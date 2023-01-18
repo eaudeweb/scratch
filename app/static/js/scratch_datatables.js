@@ -358,12 +358,9 @@ function initDataTables() {
     }
   }
 
-  let tables = $(".table table, .table_detail table");
-
-  return $.each(tables, function(index, value){
-    return $(value).DataTable(tableOptions[$(value).attr("id")])
+  $(".table table, .table_detail table").each(function(){
+    $(this).DataTable(tableOptions[$(this).attr("id")])
   })
-
 }
 
 function activateHover() {
