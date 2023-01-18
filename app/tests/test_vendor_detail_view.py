@@ -12,7 +12,7 @@ class VendorDetailViewTests(BaseTestCase):
         user.set_password('12345')
         user.save()
         logged_in = self.client.login(username='test_user', password='12345')
-        self.assertEqual(logged_in, True)
+        self.assertTrue(logged_in)
 
     def test_detail_view_no_tender(self):
         url = reverse('vendor_detail_view', kwargs={'pk': 0})

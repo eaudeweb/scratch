@@ -12,7 +12,7 @@ class VendorsListViewTests(BaseTestCase):
         user.set_password('12345')
         user.save()
         logged_in = self.client.login(username='test_user', password='12345')
-        self.assertEqual(logged_in, True)
+        self.assertTrue(logged_in)
 
     def test_list_view_empty_db(self):
         url = reverse('vendors_list_view')

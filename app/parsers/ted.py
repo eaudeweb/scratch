@@ -667,7 +667,6 @@ def transform_vendor_name(vendor_name):
     vendor_name = vendor_name.strip()
     vendor_name = vendor_name.translate(str.maketrans('', '', string.punctuation))
     vendor_name = vendor_name.upper()
-    logging.warning(vendor_name)
     
     return vendor_name
 

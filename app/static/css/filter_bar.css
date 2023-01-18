@@ -66,3 +66,7 @@
 .not-allowed {
   cursor: not-allowed
 }
+
+#form_id{
+  width:100%
+}

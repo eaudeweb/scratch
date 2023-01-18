@@ -17,7 +17,7 @@ class VendorsListAjaxViewTests(BaseTestCase):
         user.set_password('12345')
         user.save()
         logged_in = self.client.login(username='test_user', password='12345')
-        self.assertEqual(logged_in, True)
+        self.assertTrue(logged_in)
 
     def test_list_ajax_view_get(self):
         query_kwargs = {

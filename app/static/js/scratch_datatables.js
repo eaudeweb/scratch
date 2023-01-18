@@ -358,14 +358,12 @@ function initDataTables() {
     }
   }
 
-  let table = $(".table table, .table_detail table");
+  let tables = $(".table table, .table_detail table");
 
-  let aux = []
-  for(let i=0; i<table.length; i++){
-    aux += $(table[i]).DataTable(tableOptions[$(table[i]).attr("id")])
-  }
+  return $.each(tables, function(index, value){
+    return $(value).DataTable(tableOptions[$(value).attr("id")])
+  })
 
-  return aux
 }
 
 function activateHover() {
