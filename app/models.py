@@ -45,16 +45,17 @@ class Profile(BaseTimedModel):
 
     def __str__(self):
         return f"{self.user.username}'s profile"
-    
+
     def clean(self):
         if self.notify and not self.user.email:
             raise ValidationError(
                 "Notifications cannot be activated for users without an email."
             )
-    
+
     def save(self, *args, **kwargs):
         self.clean()
         super().save(*args, **kwargs)
+
 
 class Keyword(BaseTimedModel):
     value = LowerCharField(max_length=50, unique=True)
@@ -83,7 +84,7 @@ class Tag(models.Model):
 class Tender(BaseTimedModel):
     reference = models.CharField(unique=True, max_length=255)
     notice_type = models.CharField(null=True, max_length=255)
-    title = models.CharField(null=True, max_length=255)
+    title = models.CharField(null=True, max_length=512)
     organization = models.CharField(null=True, max_length=255)
     published = models.DateField(null=True)
     deadline = models.DateTimeField(null=True)
