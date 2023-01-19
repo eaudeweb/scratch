@@ -47,13 +47,15 @@ class HomepageView(TemplateView):
         today = date.today()
         now = datetime.now(timezone.utc)
         deadline_gte = now.replace(hour=0, minute=0, second=0, microsecond=0)
-        deadline_lt = now.replace(hour=0, minute=0, second=0, microsecond=0) + timedelta(days=1)
+        deadline_lt = now.replace(
+            hour=0, minute=0, second=0, microsecond=0) + timedelta(days=1)
 
         context["ungm_tenders"] = Tender.objects.filter(source="UNGM").count()
         context["ted_tenders"] = Tender.objects.filter(source="TED").count()
-        context["favorite_tenders"] = Tender.objects.filter(
-            favourite=True
-        ).count()
+        if self.request.user.is_authenticated:
+            context["favorite_tenders"] = self.request.user.favorite_tenders.count()
+        else:
+            context["favorite_tenders"] = 0
         context["keyword_tenders"] = Tender.objects.filter(
             has_keywords=True
         ).count()
@@ -98,7 +100,12 @@ class ManagementView(LoginRequiredMixin, TemplateView):
                 return False
 
         available_commands = get_commands()
-        module_commands = [cmd for cmd in available_commands.keys() if available_commands[cmd] == 'app']
+        module_commands = [
+            cmd for cmd in available_commands.keys()
+            if available_commands[cmd] == 'app' and cmd not in (
+                "notify_user_favorites", "user_deadline_notifications"
+            )
+        ]
 
         commands = []
 
@@ -153,9 +160,12 @@ class ManagementView(LoginRequiredMixin, TemplateView):
             except ValueError:
                 command_name = entry
 
-        parsed_parameters = [x for x in temp_parameters if command_name in x['command']]
-        parameters = {x['parameter']: x['value'] for x in parsed_parameters if x['value'] is not False}
-        formatted_parameters = ', '.join([': '.join((str(k), str(v))) for k, v in parameters.items()])
+        parsed_parameters = [
+            x for x in temp_parameters if command_name in x['command']]
+        parameters = {x['parameter']: x['value']
+                      for x in parsed_parameters if x['value'] is not False}
+        formatted_parameters = ', '.join(
+            [': '.join((str(k), str(v))) for k, v in parameters.items()])
 
         if request.user.is_authenticated and request.user.is_superuser:
             id = async_task(call_command, command_name, **parameters)

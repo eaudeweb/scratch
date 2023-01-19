@@ -42,9 +42,15 @@ class BaseAjaxListingView(View):
         filters = {}
         for filter_name, filter_field in self.filter_names:
             filter_value = self.request.GET.get(filter_name)
-            if filter_value:
+            if filter_name == "favourite":
+                if filter_value in ("t", "True", "1"):
+                    objects = objects.filter(
+                        followers__id=self.request.user.id)
+                elif filter_value in ("f", "False", "0"):
+                    objects = objects.exclude(
+                        followers__id=self.request.user.id)
+            elif filter_value:
                 filters.update({filter_field: filter_value})
-
         objects = objects.filter(**filters)
         return objects
 

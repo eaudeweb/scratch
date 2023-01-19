@@ -110,7 +110,12 @@ class TenderListAjaxView(BaseAjaxListingView):
                 'published': 'Not specified' if not tender.published else (
                     tender.published.strftime("%m/%d/%Y")),
                 'notice_type': render_to_string(
-                    'tenders_buttons.html', {'tender': tender, 'include_notice_type': True}),
+                    'tenders_buttons.html', {
+                        'tender': tender,
+                        'include_notice_type': True,
+                        'tender_is_user_favorite': tender.is_favorite_of(self.request.user)   
+                    }
+                ),
                 'tags': ', '.join(tender.tags.values_list('name', flat=True)),
                 'awards': [reverse('contract_awards_detail_view',kwargs={'pk': pk}) for pk in tender.awards.values_list("id", flat=True)]
 
@@ -212,18 +217,19 @@ class TenderDetailView(LoginRequiredMixin, DetailView):
         context["documents_set"] = TenderDocument.objects.filter(
             tender=self.object)
         context['tags_autocomplete'] = Tag.objects.all()
+        context['tender_is_user_favorite'] = self.object.is_favorite_of(self.request.user)
         return context
 
 
 class TenderFavouriteView(View):
     def post(self, request, pk):
-        current_tender = Tender.objects.filter(id=pk)
+        tender = Tender.objects.get(id=pk)
         state = request.POST["favourite"]
 
         if state == "true":
-            current_tender.update(favourite=True)
+            request.user.favorite_tenders.add(tender)
         else:
-            current_tender.update(favourite=False)
+            request.user.favorite_tenders.remove(tender)
 
         return HttpResponse("Success!")
 
