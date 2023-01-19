@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('app', '0041_delete_emailaddress'),
+        ('app', '0041_vendor_comment_vendor_contact_name_vendor_email'),
     ]
 
     operations = [
