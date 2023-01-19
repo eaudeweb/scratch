@@ -12,10 +12,11 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         vendors = Vendor.objects.all()
         for vendor in vendors:
-            self.stdout.write(self.style.SUCCESS("Old name: " + vendor.name))
+
             new_name = transform_vendor_name(vendor.name)
             vendor2 = Vendor.objects.filter(name=new_name).first()
             if vendor2 != vendor:
+                self.stdout.write(self.style.SUCCESS("Old name: " + vendor.name))
                 self.stdout.write(self.style.SUCCESS("New name: " + new_name))
                 if vendor2:
                     if not vendor2.email:
