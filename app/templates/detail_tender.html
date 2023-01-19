@@ -131,7 +131,7 @@
 
 <div class="table_detail" >
       {% for award in tender.awards.all %}
-          <table id="award_detail_table" class="cell-border display award_detail">
+          <table id="tender_detail_table" class="cell-border display award_detail">
             <br>
             <thead>
             <th>Award</th>
@@ -159,7 +159,7 @@
               <td>
                 <ol style="list-style-position: inside;">
                   {% for vendor in award.vendors.all %}
-                    <li>{{ vendor }}</li>
+                    <li><a href="{% url 'vendor_detail_view' vendor.id %}">{{ vendor }}</a></li>
                   {% endfor %}
                 </ol>
               </td>
