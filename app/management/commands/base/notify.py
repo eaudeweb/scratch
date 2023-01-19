@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.contrib.auth import get_user_model
 from django.core.management.base import BaseCommand
 from django.template.loader import render_to_string
 from getenv import env
@@ -11,6 +12,8 @@ from app.management.commands.base.params import BaseParamsUI
 from app.utils import emails_to_notify
 
 ENDPOINT_URI = 'https://www.ungm.org'
+
+User = get_user_model()
 
 
 class BaseNotifyCommand(BaseCommand, BaseParamsUI):
@@ -46,16 +49,17 @@ class BaseNotifyCommand(BaseCommand, BaseParamsUI):
                 f'tender updates...'
             )
         )
+        self.options = options
         digest = options['digest']
         changed_tenders = self.scrape_tenders()
 
         if changed_tenders:
-            BaseNotifyCommand.send_update_email(
+            self.send_update_email(
                 changed_tenders, digest, self.notification_type())
 
         return self.style.SUCCESS(
-                f'Sent notifications about {changed_tenders.count()} tender(s).'
-            )
+            f'Sent notifications about {changed_tenders.count()} tender(s).'
+        )
 
     def add_arguments(self, parser):
         parser.add_argument(
@@ -64,11 +68,16 @@ class BaseNotifyCommand(BaseCommand, BaseParamsUI):
             help='If set, all tenders will be notified in one email.'
         )
 
-    @staticmethod
-    def send_update_email(tenders, digest, notification_type):
+    def get_recipients(self):
+        user_id = self.options.get("user_id")
+        if user_id:
+            return [User.objects.get(id=user_id).email]
+        return emails_to_notify()
+
+    def send_update_email(self, tenders, digest, notification_type):
         s = 's' if digest else ''
         subject = f'{notification_type} tender{s} Update'
-        recipients = emails_to_notify()
+        recipients = self.get_recipients()
 
         if digest:
             html_content = render_to_string(

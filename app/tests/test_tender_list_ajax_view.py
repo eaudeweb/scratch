@@ -17,11 +17,12 @@ class TendersListAjaxViewTests(BaseTestCase):
         user.save()
         logged_in = self.client.login(username='test_user', password='12345')
         self.assertEqual(logged_in, True)
+        self.user = user
 
     def test_list_ajax_view_get(self):
         query_kwargs = {
             "start": '0',
-            "draw": '1', 
+            "draw": '1',
             "length": '2',
         }
         KeywordFactory()
@@ -31,7 +32,8 @@ class TendersListAjaxViewTests(BaseTestCase):
         new_tender4 = TenderFactory()
         award = AwardFactory(tender=new_tender4)
 
-        url = '{}?{}'.format(reverse('tenders_list_ajax_view'),  urlencode(query_kwargs))
+        url = '{}?{}'.format(
+            reverse('tenders_list_ajax_view'),  urlencode(query_kwargs))
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context), 2)
@@ -42,39 +44,43 @@ class TendersListAjaxViewTests(BaseTestCase):
         self.assertEqual(response.context[1]['tender'], new_tender2)
 
         query_kwargs.update({"draw": '2', 'start': '2'})
-        url = '{}?{}'.format(reverse('tenders_list_ajax_view'),  urlencode(query_kwargs))
+        url = '{}?{}'.format(
+            reverse('tenders_list_ajax_view'),  urlencode(query_kwargs))
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context), 2)
         self.assertEqual(response.context[0]['tender'], new_tender3)
         self.assertEqual(response.context[1]['tender'], new_tender4)
 
-        award_url = reverse('contract_awards_detail_view',kwargs={'pk':award.id}) 
-        self.assertEqual(response.json()['data'][-1]['awards'][0],award_url)
-        
+        award_url = reverse('contract_awards_detail_view',
+                            kwargs={'pk': award.id})
+        self.assertEqual(response.json()['data'][-1]['awards'][0], award_url)
 
     def test_list_ajax_view_filters(self):
         query_kwargs = {
             "start": '0',
-            "draw": '1', 
+            "draw": '1',
             "length": '10',
             "source": "TED",
             "organization": "Test organization",
             "favourite": "True",
             "notice_type": "Aditional information"
         }
-        tender_meeting_filters = TenderFactory(
+        tender = TenderFactory(
             title="Test title", source="TED", organization="Test organization",
-            favourite=True, notice_type="Aditional information"
+            notice_type="Aditional information"
         )
+        tender.followers.add(self.user)
         TenderFactory()
-        url = '{}?{}'.format(reverse('tenders_list_ajax_view'),  urlencode(query_kwargs))
+        url = '{}?{}'.format(
+            reverse('tenders_list_ajax_view'),  urlencode(query_kwargs))
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context.dicts), 2)
-        self.assertEqual(response.context.dicts[1]['tender'], tender_meeting_filters)
+        self.assertEqual(
+            response.context.dicts[1]['tender'], tender)
 
-    def test_list_ajax_view_filters(self):
+    def test_list_ajax_view_filters_ungm(self):
         query_kwargs = {
             "start": '0',
             "draw": '1',
@@ -86,7 +92,8 @@ class TendersListAjaxViewTests(BaseTestCase):
         TenderFactory(source="TED")
         tender2 = TenderFactory(source="UNGM")
 
-        url = '{}?{}'.format(reverse('tenders_list_ajax_view'), urlencode(query_kwargs))
+        url = '{}?{}'.format(
+            reverse('tenders_list_ajax_view'), urlencode(query_kwargs))
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context), 2)

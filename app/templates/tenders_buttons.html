@@ -2,7 +2,7 @@
   {{ tender.notice_type }}
 {% endif %}
 <ul class="ul_buttons">
-  {% if tender.favourite %}
+  {% if tender_is_user_favorite %}
   <li class="li_buttons" title="Unmark as favorite"><i id="fav_button" class="fa-lg fa-solid fa-star pressed" data-url="{% url 'tender_favourite_view' tender.id %}"></i></li>
   {% else %}
   <li class="li_buttons" title="Mark as favorite"><i id="fav_button" class="fa-lg fa-regular fa-star" data-url="{% url 'tender_favourite_view' tender.id %}"></i></li>

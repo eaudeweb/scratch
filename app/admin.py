@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.forms.models import ModelForm
 from .models import (
     Tender, TenderDocument, Award, WorkerLog, UNSPSCCode, CPVCode,
-    TedCountry, Task, Keyword, Vendor, Tag, Profile
+    TedCountry, Task, Keyword, Vendor, Tag, Profile, Favorite
 )
 
 
@@ -33,23 +33,39 @@ def custom_data(self):
         }
     )
 
+
+class FavoriteInline(admin.StackedInline):
+    model = Favorite
+    fk_name = "follower"
+    extra = 0
+    verbose_name_plural = 'favorite tenders'
+
+
+class FollowerInline(admin.StackedInline):
+    model = Favorite
+    extra = 0
+    verbose_name_plural = 'followers'
+
+
 class UserAdmin(BaseUserAdmin):
-    inlines = (ProfileInline,)
+    inlines = (ProfileInline, FavoriteInline)
 
     def get_inline_formsets(self, request, formsets, inline_instances, obj=None):
         if not obj:
             return []
-        inline_formsets = super().get_inline_formsets(request, formsets, inline_instances, obj=obj)
+        inline_formsets = super().get_inline_formsets(
+            request, formsets, inline_instances, obj=obj)
         formset = inline_formsets[0]
         formset.inline_formset_data = custom_data.__get__(formset)
         return inline_formsets
 
 
 class TenderAdmin(admin.ModelAdmin):
+    inlines = (FollowerInline,)
     filter_horizontal = ['tags']
     list_display = [
         'id', 'title', 'notice_type', 'organization', 'published', 'deadline',
-        'url', 'source', 'unspsc_codes', 'favourite', 'has_keywords'
+        'url', 'source', 'unspsc_codes', 'num_followers', 'has_keywords'
     ]
     search_fields = [
         'title', 'notice_type', 'published', 'deadline', 'source',
@@ -60,6 +76,11 @@ class TenderAdmin(admin.ModelAdmin):
         'unspsc_codes', 'notified'
     )
     readonly_fields = ('keywords', 'created_at', 'updated_at')
+
+    def num_followers(self, obj):
+        return obj.followers.count()
+
+    num_followers.short_description = 'Followers'
 
 
 class TenderDocumentAdmin(admin.ModelAdmin):
@@ -167,6 +188,7 @@ class VendorAdmin(admin.ModelAdmin):
 class TagAdmin(admin.ModelAdmin):
     list_display = ['name']
     search_field = ['name']
+
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)

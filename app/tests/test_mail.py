@@ -25,7 +25,6 @@ class SendMailTest(BaseTestCase):
             reference='RFQ 47-2019',
             title='test_title1',
             url='https://www.ungm.org/Public/Notice/94909',
-            favourite=True,
             published=datetime.now(timezone.utc) - timedelta(days=2),
             deadline=datetime.now(timezone.utc) +
             timedelta(days=3) - timedelta(hours=1),
@@ -49,8 +48,9 @@ class SendMailTest(BaseTestCase):
             timedelta(days=1) - timedelta(hours=1),
         )
 
-        self.notified_user1 = UserFactory()
-        self.notified_user2 = UserFactory()
+        self.user = UserFactory()
+        self.tender1.followers.add(self.user)
+
         UNSPCCodeFactory()
 
     def test_mailing(self):
@@ -182,12 +182,12 @@ class SendMailTest(BaseTestCase):
     def test_mailing_favorites_digest(self):
         self.tender2 = Tender.objects.get(reference=self.tender2.reference)
         self.tender2.organization = 'CHANGE2'
-        self.tender2.favourite = True
+        self.tender2.followers.add(self.user)
         self.tender2.save()
 
         self.tender3 = Tender.objects.get(reference=self.tender3.reference)
         self.tender3.organization = 'CHANGE3'
-        self.tender3.favourite = True
+        self.tender3.followers.add(self.user)
         self.tender3.save()
 
         management.call_command('notify_favorites', digest=True)
@@ -260,11 +260,11 @@ class SendMailTest(BaseTestCase):
 
     def test_deadline_notification(self):
         self.tender2 = Tender.objects.get(reference=self.tender2.reference)
-        self.tender2.favourite = True
+        self.tender2.followers.add(self.user)
         self.tender2.save()
 
         self.tender3 = Tender.objects.get(reference=self.tender3.reference)
-        self.tender3.favourite = True
+        self.tender3.followers.add(self.user)
         self.tender3.save()
 
         management.call_command('deadline_notifications')
