@@ -45,16 +45,17 @@ class Profile(BaseTimedModel):
 
     def __str__(self):
         return f"{self.user.username}'s profile"
-    
+
     def clean(self):
         if self.notify and not self.user.email:
             raise ValidationError(
                 "Notifications cannot be activated for users without an email."
             )
-    
+
     def save(self, *args, **kwargs):
         self.clean()
         super().save(*args, **kwargs)
+
 
 class Keyword(BaseTimedModel):
     value = LowerCharField(max_length=50, unique=True)
@@ -83,12 +84,11 @@ class Tag(models.Model):
 class Tender(BaseTimedModel):
     reference = models.CharField(unique=True, max_length=255)
     notice_type = models.CharField(null=True, max_length=255)
-    title = models.CharField(null=True, max_length=255)
+    title = models.CharField(null=True, max_length=512)
     organization = models.CharField(null=True, max_length=255)
     published = models.DateField(null=True)
     deadline = models.DateTimeField(null=True)
     description = models.TextField(null=True, blank=True, max_length=5059)
-    favourite = models.BooleanField(default=False)
     has_keywords = models.BooleanField(default=False)
     notified = models.BooleanField(default=False)
     url = models.CharField(max_length=255)
@@ -102,6 +102,12 @@ class Tender(BaseTimedModel):
         Keyword, related_name="tenders", blank=True)
 
     tags = models.ManyToManyField(Tag, blank=True)
+    followers = models.ManyToManyField(
+        User,
+        through="Favorite",
+        through_fields=("tender", "follower"),
+        related_name="favorite_tenders"
+    )
 
     def __str__(self):
         return '{}'.format(self.title)
@@ -140,12 +146,36 @@ class Tender(BaseTimedModel):
 
         return Keyword.objects.filter(value__in=found_keywords)
 
+    def is_favorite_of(self, user):
+        return self.followers.filter(id=user.id).exists()
+
     def save(self, *args, **kwargs):
         keywords = list(self.find_keywords(fields))
         if keywords:
             self.has_keywords = True
         super().save(*args, **kwargs)
         self.keywords.set(keywords)
+
+
+class Favorite(BaseTimedModel):
+    tender = models.ForeignKey(Tender, on_delete=models.CASCADE)
+    follower = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="favorites_where_follower"
+    )
+    inviter = models.ForeignKey(
+        User,
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name="favorites_where_inviter"
+    )
+
+    def __str__(self) -> str:
+        return (
+            f'Relation between tender "#{self.tender_id} ({self.tender.title[:5]}...)" '
+            f'and follower "{self.follower.username}"'
+        )
 
 
 class Vendor(BaseTimedModel):

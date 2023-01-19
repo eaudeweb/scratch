@@ -1,60 +1,19 @@
-from datetime import timedelta
-from django.conf import settings
-from django.core.management.base import BaseCommand
-from django.template.loader import render_to_string
-from django.utils import timezone
+from django.contrib.auth import get_user_model
+from django.core import management
 
-from app.models import Tender
-from app.notifications import build_email
-from app.management.commands.base.params import BaseParamsUI
-from app.utils import emails_to_notify
+from app.management.commands.base.notify import BaseNotifyCommand
+
+User = get_user_model()
 
 
-class Command(BaseCommand, BaseParamsUI):
-    help = 'Send deadline notifications to all users if there are favourite tenders with 1, 3 or 7 days left'
+class Command(BaseNotifyCommand):
+    help = 'Notifies all users about favorite tenders updates'
 
     def handle(self, *args, **options):
-        tenders = Tender.objects.filter(favourite=True, awards=None).order_by('deadline')
-
-        days_list = sorted(settings.DEADLINE_NOTIFICATIONS)
-
-        self.stdout.write(self.style.SUCCESS(
-            f'List of days: {days_list}'
-        ))
-
-        tender_count = 0
-
-        for tender in tenders:
-            for days in days_list:
-                if (
-                    timezone.now() + timedelta(days=days) >
-                    tender.deadline >=
-                    timezone.now() + timedelta(days=days - 1)
-                ):
-                    self.stdout.write(self.style.SUCCESS(
-                        f'Sending notification about: {tender.title}'
-                    ))
-                    self.send_deadline_mail(tender, days)
-                    tender_count += 1
-                    break
-
+        users = User.objects.filter(profile__notify=True)
+        for user in users:
+            management.call_command("user_deadline_notifications", user.id)
         return self.style.SUCCESS(
-            f'Sent notifications about {tender_count} tenders...'
+            'Sent deadline notifications to all users who have favorite tenders'
+            ' expiring in 1, 3 or 7 days.'
         )
-
-    @staticmethod
-    def send_deadline_mail(tender, days_remained):
-        subject = 'Deadline alert'
-        recipients = emails_to_notify()
-
-        html_content = render_to_string(
-            'mails/deadline_alert.html',
-            {
-                'tender': tender,
-                'days_remained': days_remained,
-                'domain': settings.BASE_URL
-            }
-        )
-
-        email = build_email(subject, recipients, None, html_content)
-        email.send()
