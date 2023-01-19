@@ -35,7 +35,7 @@ def custom_data(self):
 
 class UserAdmin(BaseUserAdmin):
     inlines = (ProfileInline,)
-    
+
     def get_inline_formsets(self, request, formsets, inline_instances, obj=None):
         if not obj:
             return []
@@ -43,7 +43,7 @@ class UserAdmin(BaseUserAdmin):
         formset = inline_formsets[0]
         formset.inline_formset_data = custom_data.__get__(formset)
         return inline_formsets
-    
+
 
 class TenderAdmin(admin.ModelAdmin):
     filter_horizontal = ['tags']
@@ -76,7 +76,7 @@ class TenderDocumentAdmin(admin.ModelAdmin):
 
 class AwardAdmin(admin.ModelAdmin):
     list_display = [
-        'value', 'currency', 'award_date', 'renewal_date', 'notified', 'renewal_notified','get_vendors',
+        'value', 'currency', 'award_date', 'renewal_date', 'notified', 'renewal_notified', 'get_vendors',
         'get_tender_title', 'get_tender_organization', 'get_tender_source',
         'get_tender_deadline',
     ]
@@ -159,8 +159,9 @@ class KeywordAdmin(admin.ModelAdmin):
 
 
 class VendorAdmin(admin.ModelAdmin):
-    list_display = ['name']
-    search_fields = ['name']
+    list_display = ['name', 'email', 'contact_name']
+    search_fields = ['name', 'contact_name']
+    list_filter = ['awards']
 
 
 class TagAdmin(admin.ModelAdmin):
@@ -179,4 +180,4 @@ admin.site.register(TedCountry, TedCountryAdmin)
 admin.site.register(Task, TaskAdmin)
 admin.site.register(Keyword, KeywordAdmin)
 admin.site.register(Vendor, VendorAdmin)
-admin.site.register(Tag,TagAdmin)
+admin.site.register(Tag, TagAdmin)

@@ -57,3 +57,16 @@
   font-weight: normal;
   color: #666666;
 }
+
+.disable {
+  color: gray;
+  pointer-events:none;
+}
+
+.not-allowed {
+  cursor: not-allowed
+}
+
+#form_id{
+  width:100%
+}

@@ -1,8 +1,8 @@
 import logging
 import os
+import string
 import tarfile
 import time
-from tempfile import TemporaryFile
 from typing import List, Tuple
 
 import requests
@@ -628,7 +628,7 @@ class TEDParser(object):
                 vendors = award_dict.pop('vendors')
 
                 for vendor in vendors:
-                    vendor_object, _ = Vendor.objects.get_or_create(name=vendor)
+                    vendor_object, _ = Vendor.objects.get_or_create(name=transform_vendor_name(vendor))
                     vendor_objects.append(vendor_object)
                 award, created = Award.objects.get_or_create(
                     tender=tender_entry, defaults=award_dict)
@@ -660,6 +660,15 @@ class TEDParser(object):
 
 def get_archives_path():
     return os.path.join(settings.FILES_DIR, 'TED_archives')
+
+
+def transform_vendor_name(vendor_name):
+    vendor_name = vendor_name.replace("(co-contractor)", "")
+    vendor_name = vendor_name.strip()
+    vendor_name = vendor_name.translate(str.maketrans('', '', string.punctuation))
+    vendor_name = vendor_name.upper()
+    
+    return vendor_name
 
 
 def process_daily_archive(given_date):

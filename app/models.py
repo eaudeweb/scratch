@@ -4,6 +4,7 @@ from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.core.mail import EmailMultiAlternatives
 from django.db import models
+from django.urls import reverse
 from django.utils.html import strip_tags
 from django.utils.functional import cached_property
 from django.contrib.postgres.fields import ArrayField
@@ -15,7 +16,6 @@ from app.fields import LowerCharField
 import re
 
 from tika import parser
-
 
 SOURCE_CHOICES = [
     ('UNGM', 'UNGM'),
@@ -73,12 +73,12 @@ def keywords_in(text):
     return list(set(keywords) & set(re.split(r"\W+", str(text).lower())))
 
 
-
 class Tag(models.Model):
-    name = models.CharField(max_length=255,unique=True)
+    name = models.CharField(max_length=255, unique=True)
 
     def __str__(self):
         return '{}'.format(self.name)
+
 
 class Tender(BaseTimedModel):
     reference = models.CharField(unique=True, max_length=255)
@@ -101,7 +101,8 @@ class Tender(BaseTimedModel):
     keywords = models.ManyToManyField(
         Keyword, related_name="tenders", blank=True)
 
-    tags = models.ManyToManyField(Tag,blank=True)
+    tags = models.ManyToManyField(Tag, blank=True)
+
     def __str__(self):
         return '{}'.format(self.title)
 
@@ -148,10 +149,16 @@ class Tender(BaseTimedModel):
 
 
 class Vendor(BaseTimedModel):
-    name = models.TextField(null=True, blank=True)
+    name = models.CharField(null=False, blank=False, max_length=255)
+    email = models.EmailField(null=True, blank=True)
+    contact_name = models.CharField(null=True, blank=True, max_length=255)
+    comment = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return '{}'.format(self.name)
+
+    def get_absolute_url(self):
+        return reverse('vendor_detail_view', kwargs={'pk': self.pk})
 
 
 class Award(BaseTimedModel):
@@ -172,6 +179,7 @@ class Award(BaseTimedModel):
     @property
     def get_vendors(self):
         return ",".join(self.vendors.values_list('name', flat=True))
+
     get_vendors.fget.short_description = "Vendors names"
 
     def convert_value_to_string(self):

@@ -306,10 +306,45 @@ function initDataTables() {
     ]
   };
 
+  const vendorOptions = {
+    "order": [[ 0, "asc" ]],
+    "pageLength": 50,
+    "lengthChange": false,
+    "search": {
+      "search": searchTerm
+    },
+    "processing": true,
+    "serverSide": true,
+    "ajax": {
+      "url": "/vendors/ajax",
+      "type": "GET",
+      "data": function (d) {
+      }
+    },
+    columnDefs: [
+    {
+      "targets": 0,
+      "orderable": true,
+      "render": function ( data, type, row ) {
+          return '<a href="' + row['url'] +'">' + data + '</a>';
+       },
+    }
+    ],
+    "columns": [
+      { "data": "name" },
+      { "data": "email" },
+      { "data": "contact_name" },
+    ],
+    "drawCallback": function(settings) {
+        $('button').click(buttonsClick)
+    }
+  };
+
   const tableOptions = {
     "tenders_table": tenderOptions,
     "archive_table": archiveOptions,
     "contract_awards_table": awardOptions,
+    "vendors_table": vendorOptions,
     "tender_detail_table": {
       "searching": false,
       "bPaginate": false,
@@ -323,8 +358,9 @@ function initDataTables() {
     }
   }
 
-  let table = $(".table table, .table_detail table");
-  return table.DataTable(tableOptions[table.attr("id")]);
+  $(".table table, .table_detail table").each(function(){
+    $(this).DataTable(tableOptions[$(this).attr("id")])
+  })
 }
 
 function activateHover() {
@@ -349,7 +385,6 @@ $(document).ready(function () {
   $('#id_vendor').select2();
   $('#id_organization').select2();
   $('#id_tags').select2();
-
   initDataTables();
 
   $('#tenders_table').on('draw.dt', function () {

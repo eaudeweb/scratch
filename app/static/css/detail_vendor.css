@@ -1,0 +1,41 @@
+.vendor-awards-table{
+    width: 1700px;
+}
+
+.vendor-margin{
+ margin-left: 5%
+}
+
+.vendor-detail-title{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-left: 15px;
+}
+
+.vendor-details-table{
+    margin-top: -60px;
+    margin-bottom: -60px;
+
+}
+
+#vendor-detail-main-title{
+    margin-bottom: 60px
+}
+
+.update_button {
+  display: block;
+  border:none;
+  float: right;
+  margin-right: 100px;
+  margin-top: 20px;
+  color: #353535;
+}
+
+.update_button:hover {
+color: black;
+}
+
+
+.vendor-comment {
+  white-space: pre-line;
+}

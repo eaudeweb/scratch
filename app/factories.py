@@ -70,6 +70,9 @@ class VendorFactory(factory.DjangoModelFactory):
         model = Vendor
 
     name = "test"
+    email = "test@email.com"
+    contact_name = "Test"
+    comment = "Test test"
 
 
 class CPVCodeFactory(factory.DjangoModelFactory):
