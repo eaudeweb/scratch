@@ -663,10 +663,12 @@ def get_archives_path():
 
 
 def transform_vendor_name(vendor_name):
-    vendor_name = vendor_name.replace("(co-contractor)", "")
+    vendor_name = vendor_name.upper()
+    vendor_name = vendor_name.replace("(CO-CONTRACTOR)", "")
+    vendor_name = vendor_name.replace("(GROUP LEADER)", "")
     vendor_name = vendor_name.strip()
     vendor_name = vendor_name.translate(str.maketrans('', '', string.punctuation))
-    vendor_name = vendor_name.upper()
+
     
     return vendor_name
 
