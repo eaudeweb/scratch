@@ -481,18 +481,18 @@ class TEDParser(object):
         try:
             previous_notice = soup.find('notice_number_oj').text
 
-            duration = TEDParser.find_renewal_date(previous_notice)
+            duration, unit = TEDParser.find_renewal_date(previous_notice)
 
             renewal_date = None
-            unit = duration.attrs['type']
+
             if unit.lower() == 'year':
-                renewal_date = award_date + relativedelta(years=int(duration.text))
+                renewal_date = award['award_date'] + relativedelta(years=int(duration.text))
             elif unit.lower() == 'month':
-                renewal_date = award_date + relativedelta(months=int(duration.text))
+                renewal_date = award['award_date'] + relativedelta(months=int(duration.text))
             elif unit.lower() == 'week':
-                renewal_date = award_date + relativedelta(weeks=int(duration.text))
+                renewal_date = award['award_date'] + relativedelta(weeks=int(duration.text))
             elif unit.lower() == 'day':
-                renewal_date = award_date + relativedelta(days=int(duration.text))
+                renewal_date = award['award_date'] + relativedelta(days=int(duration.text))
 
         except (AttributeError, TypeError, ValueError):
             renewal_date = None
@@ -522,11 +522,12 @@ class TEDParser(object):
             try:
                 previous_notice = section.find('notice_number_oj').text
 
-                duration = TEDParser.find_renewal_date(previous_notice)
+                duration, unit = TEDParser.find_renewal_date(previous_notice)
 
             except (AttributeError, TypeError, ValueError):
 
                 duration = None
+                unit = None
 
             for awarded_contract in awarded_contracts:
 
@@ -540,7 +541,6 @@ class TEDParser(object):
 
                 try:
                     renewal_date = None
-                    unit = duration.attrs['type']
                     if unit.lower() == 'year':
                         renewal_date = award_date + relativedelta(years=int(duration.text))
                     elif unit.lower() == 'month':
@@ -580,7 +580,7 @@ class TEDParser(object):
                     awards.append(award)
 
     @staticmethod
-    def find_renewal_date(previous_notice: 'str') -> PageElement or None:
+    def find_renewal_date(previous_notice: 'str') -> (PageElement, str) or (None, None):
         """
         Calculate the renewal date of the award by finding the contract notice and parsing its XML file.
         After the duration of the contract and the information about contract renewal are extracted from the
@@ -612,10 +612,27 @@ class TEDParser(object):
                 if contract_notice_sections:
                     contract_notice_section = contract_notice_sections[0]
                     duration = contract_notice_section.find('duration')
-                    renewal = contract_notice_section.find('renewal')
-                    if renewal and duration:
-                        return duration
-            return None
+                    renewal = contract_notice_section.find('renewal') or contract_notice_section.find('recurrent_contract')
+                    if renewal:
+                        if duration:
+                            return duration, duration.attrs['type']
+                        else:
+                            duration = contract_notice_section.find('period_work_date_starting')
+                            if duration:
+                                days = duration.find('days')
+                                if days:
+                                    return days, 'day'
+                                weeks = duration.find('weeks')
+                                if weeks:
+                                    return weeks, 'week'
+                                months = duration.find('months')
+                                if months:
+                                    return months, 'month'
+                                years = duration.find('years')
+                                if years:
+                                    return years, 'year'
+
+            return None, None
 
     @staticmethod
     def save_award(tender_dict, award_dict) -> Award:

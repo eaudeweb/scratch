@@ -151,7 +151,7 @@ class TedParserTestCase(BaseTestCase):
 
     @patch('app.parsers.ted.requests')
     def test_ted_parse_notice_contract_award(self, mock_requests):
-        with open('app/tests/parser_files/contract_notice_nonrenewable.xml', 'r') as g:
+        with open('app/tests/parser_files/contract_notice_alt.xml', 'r') as g:
             # mock the response
             mock_response = MagicMock()
             mock_response.status_code = 200
@@ -179,7 +179,7 @@ class TedParserTestCase(BaseTestCase):
             self.assertEqual(len(awards), 1)
             self.assertEqual(awards[0]['vendor'], 'The Nielsen Company LLC')
             self.assertEqual(awards[0]['award_date'], datetime(2014, 10, 16).date())
-            self.assertEqual(awards[0]['renewal_date'], None)
+            self.assertEqual(awards[0]['renewal_date'], datetime(2019, 10, 16).date())
             self.assertEqual(awards[0]['value'], '60000')
             self.assertEqual(awards[0]['currency'], 'EUR')
 
