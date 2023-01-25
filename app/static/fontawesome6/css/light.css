@@ -5,11 +5,11 @@
 @font-face {
   font-family: 'Font Awesome 6 Pro';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   font-display: block;
-  src: url("../webfonts/fa-regular-400.woff2") format("woff2"), url("../webfonts/fa-regular-400.woff") format("woff"), url("../webfonts/fa-regular-400.ttf") format("truetype"); }
+  src: url("../webfonts/fa-light-300.woff2") format("woff2"), url("../webfonts/fa-light-300.woff") format("woff"), url("../webfonts/fa-light-300.ttf") format("truetype"); }
 
-.far,
-.fa-regular {
+.fal,
+.fa-light {
   font-family: 'Font Awesome 6 Pro';
-  font-weight: 400; }
+  font-weight: 300; }
