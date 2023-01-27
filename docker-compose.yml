@@ -14,6 +14,7 @@ services:
       - docker/app.env
       - docker/db.env
       - docker/tika.env
+      - docker/cachet.env
     depends_on:
       - db
       - tika
@@ -31,6 +32,7 @@ services:
       - docker/db.env
       - docker/redis.env
       - docker/tika.env
+      - docker/cachet.env
     environment:
       - TZ=Europe/Bucharest
     depends_on:
@@ -51,6 +53,7 @@ services:
       - docker/app.env
       - docker/db.env
       - docker/tika.env
+      - docker/cachet.env
     depends_on:
       - db
       - tika

@@ -241,3 +241,7 @@ LOGGING = {
 }
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
+
+# cachet
+APP_TOKEN = env("APP_TOKEN")
+APP_URL = env("APP_URL")
