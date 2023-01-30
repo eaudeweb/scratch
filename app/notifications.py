@@ -5,6 +5,18 @@ from app.models import Email, set_notified
 from app.utils import emails_to_notify
 
 
+def build_email(subject, recipients, cc, body):
+    sender = settings.EMAIL_SENDER
+
+    return Email(
+        subject=subject,
+        from_email=sender,
+        to=recipients,
+        cc=cc,
+        body=body
+    )
+
+
 def send_tenders_email(tenders, digest):
     subject = 'New tenders available' if digest else 'New tender available'
     recipients = emails_to_notify()
@@ -95,13 +107,17 @@ def send_error_email(error):
     email.send()
 
 
-def build_email(subject, recipients, cc, body):
-    sender = settings.EMAIL_SENDER
-
-    return Email(
-        subject=subject,
-        from_email=sender,
-        to=recipients,
-        cc=cc,
-        body=body
+def send_new_tender_follower_email(tender, inviter, follower):
+    subject = f'{inviter} has made you a follower of tender {tender}'
+    recipients = [follower]
+    html_content = render_to_string(
+        'mails/new_tenders.html',
+        {
+            'tenders': [tender],
+            'title': 'New followed tenders',
+            'domain': settings.BASE_URL
+        }
     )
+
+    email = build_email(subject, recipients, None, html_content)
+    email.send()

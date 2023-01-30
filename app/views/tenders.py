@@ -16,7 +16,8 @@ from elasticsearch_dsl import Q as elasticQ
 
 from app.documents import TenderDoc, TenderDocumentDoc, AwardDoc
 from app.forms import TendersFilter
-from app.models import Tender, TenderDocument, Award, Tag
+from app.models import Tender, TenderDocument, Award, Tag, Favorite
+from app.notifications import send_new_tender_follower_email
 from app.views.base import BaseAjaxListingView
 
 
@@ -389,7 +390,7 @@ class SearchView(LoginRequiredMixin, TemplateView):
         return context
 
 
-class TenderFollowers(View):
+class TenderFollowers(LoginRequiredMixin, View):
     def get(self, request, pk):
         users = User.objects.annotate(
             is_follower=Exists(
@@ -410,6 +411,14 @@ class TenderFollowers(View):
     def post(self, request, pk):
         data = json.loads(request.body.decode('utf-8'))
         tender = Tender.objects.get(id=pk)
-        tender.followers.add(*[id for id in data["new_followers"]])
+        for follower_id in set(data["new_followers"]):
+            if not tender.followers.filter(id=follower_id).exists():
+                follower = User.objects.get(id=follower_id)
+                Favorite.objects.create(
+                    tender=tender,
+                    inviter=request.user,
+                    follower=follower
+                )
+                send_new_tender_follower_email(tender, request.user, follower),
         tender.followers.remove(*[id for id in data["unfollowers"]])
         return HttpResponse("Success!")
