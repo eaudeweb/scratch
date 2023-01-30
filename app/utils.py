@@ -17,8 +17,14 @@ def emails_to_notify():
 def log_tenders_update(tender_source: TenderSource):
     def decorator(fn):
         def wrapper(*args, **kwargs):
-            url = settings.APP_URL + "/api/v1/incidents"
+            headers = {
+                "accept": "application/json",
+                "X-Cachet-Application": "Demo",
+                "content-type": "application/json",
+                "X-Cachet-Token": settings.APP_TOKEN
+            }
 
+            url = settings.APP_URL + "/api/v1/incidents"
             payload = {
                 "visible": 1,
                 "notify": False,
@@ -26,43 +32,24 @@ def log_tenders_update(tender_source: TenderSource):
                 "message": f"Importing new {tender_source} tenders...",
                 "status": 3,
             }
-            headers = {
-                "accept": "application/json",
-                "X-Cachet-Application": "Demo",
-                "content-type": "application/json",
-                "X-Cachet-Token": settings.APP_TOKEN
-            }
             response_incident = requests.post(url, json=payload, headers=headers)
+
             try:
                 return_value = fn(*args, **kwargs)
 
                 url = settings.APP_URL + f"/api/v1/incidents/{response_incident.json()['data']['id']}/updates"
-
                 payload = {
                     "message": return_value,
                     "status": 4
-                }
-                headers = {
-                    "accept": "application/json",
-                    "X-Cachet-Application": "Demo",
-                    "content-type": "application/json",
-                    "X-Cachet-Token": settings.APP_TOKEN
                 }
                 requests.post(url, json=payload, headers=headers)
 
                 return return_value
             except Exception as error:
                 url = settings.APP_URL + f"/api/v1/incidents/{response_incident.json()['data']['id']}/updates"
-
                 payload = {
                     "message": f'{tender_source} tenders update failed: {error}',
                     "status": 2
-                }
-                headers = {
-                    "accept": "application/json",
-                    "X-Cachet-Application": "Demo",
-                    "content-type": "application/json",
-                    "X-Cachet-Token": settings.APP_TOKEN
                 }
                 requests.post(url, json=payload, headers=headers)
 
