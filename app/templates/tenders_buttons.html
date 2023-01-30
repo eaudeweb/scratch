@@ -7,6 +7,15 @@
   {% else %}
   <li class="li_buttons" title="Mark as favorite"><i id="fav_button" class="fa-lg fa-regular fa-star" data-url="{% url 'tender_favourite_view' tender.id %}"></i></li>
   {% endif %}
+  <li class="li_buttons" title="Manage followers">
+  {% if tender.followers.exists %}
+    <i id="add_follower_button_{{ tender.id }}" class="fa-lg fa-solid fa-user-plus pressed" data-url="{% url 'tender_followers_view' tender.id %}"></i>
+    <sub>{{ tender.followers.count }}</sub>
+  {% else %}
+    <i id="add_follower_button_{{ tender.id }}" class="fa-lg fa-regular fa-user-plus" data-url="{% url 'tender_followers_view' tender.id %}"></i>
+    <sub></sub>
+  {% endif %}
+  </li>
   {% if tender.seen_by %}
     <li class="li_buttons" title="Unmark as seen"><i id="seen_button" class="fa-lg fa-solid fa-eye pressed" data-url="{% url 'tender_seen_view' tender.id %}"></i></li>
   {% else %}

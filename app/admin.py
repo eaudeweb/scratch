@@ -48,15 +48,21 @@ class FollowerInline(admin.StackedInline):
 
 
 class UserAdmin(BaseUserAdmin):
-    inlines = (ProfileInline, FavoriteInline)
+
+    def change_view(self, *args, **kwargs):
+        self.inlines = (ProfileInline, FavoriteInline)
+        return super().change_view(*args, **kwargs)
+
+    def add_view(self, *args, **kwargs):
+        self.inlines = []
+        return super().add_view(*args, **kwargs)
 
     def get_inline_formsets(self, request, formsets, inline_instances, obj=None):
-        if not obj:
-            return []
         inline_formsets = super().get_inline_formsets(
             request, formsets, inline_instances, obj=obj)
-        formset = inline_formsets[0]
-        formset.inline_formset_data = custom_data.__get__(formset)
+        if inline_formsets:
+            formset = inline_formsets[0]
+            formset.inline_formset_data = custom_data.__get__(formset)
         return inline_formsets
 
 
