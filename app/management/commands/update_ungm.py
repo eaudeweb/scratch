@@ -5,6 +5,7 @@ from app.parsers.ungm import UNGMWorker
 from django.core.management.base import BaseCommand, CommandError
 from app.management.commands.base.params import BaseParamsUI
 from app.notifications import send_error_email
+from app.utils import log_tenders_update, TenderSource
 
 ENDPOINT_URI = 'https://www.ungm.org'
 
@@ -22,6 +23,7 @@ class Command(BaseCommand, BaseParamsUI):
             },
         ]
 
+    @log_tenders_update(tender_source=TenderSource.UNGM)
     def handle(self, *args, **kwargs):
         self.stdout.write(
             self.style.SUCCESS('Importing new UNGM tenders...')

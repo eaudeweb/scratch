@@ -4,6 +4,7 @@ from django.core.management.base import BaseCommand
 from app.management.commands.base.params import BaseParamsUI
 from app.parsers.ted import TEDWorker
 from app.notifications import send_error_email
+from app.utils import log_tenders_update, TenderSource
 
 
 class Command(BaseCommand, BaseParamsUI):
@@ -32,6 +33,7 @@ class Command(BaseCommand, BaseParamsUI):
             type=int,
         )
 
+    @log_tenders_update(tender_source=TenderSource.TED)
     def handle(self, *args, **options):
         self.stdout.write(
             self.style.SUCCESS('Importing new TED tenders...')
