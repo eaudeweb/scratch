@@ -1,0 +1,15 @@
+h1 {
+    margin: 35px 30px 1rem 30px !important;
+}
+
+.dataTables_filter label {
+    margin-bottom: 0.5rem;
+}
+
+body {
+    padding-bottom: 30px;
+}
+
+.nav-menu1 a {
+    text-decoration: none;
+}

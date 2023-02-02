@@ -1,40 +1,42 @@
 {% extends 'base.html' %}
 
+{% load static %}
+{% block extra_css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/manage_followers.css' %}"/>
+{% endblock %}
+
 {% block title %}
   <title>Scratch - Tenders</title>
 {% endblock %}
 
 {% block content %}
+<h1>
+  <span>Tenders</span>
+</h1>
 
-  <div class="row table" >
-    <h1 class="col-sm-12">
-      <span>Tenders</span>
-    </h1>
-  </div>
+{% include 'tenders_filters.html' %}
 
-  {% include 'tenders_filters.html' %}
+<div class = "table-responsive">
+  <table id="tenders_table"  class="table table-bordered table-striped align-top">
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Award</th>
+      <th>Source</th>
+      <th>Organization</th>
+      <th>Deadline</th>
+      <th>Published</th>
+      <th>Tags</th>
+      <th>Type of notice</th>
+    </tr>
+    </thead>
+  </table>
+</div>
 
-  <div class = "table" >
-    <table id="tenders_table"  class="cell-border display compact">
-      <thead>
-      <tr>
-        <th>Title</th>
-        <th>Award</th>
-        <th>Source</th>
-        <th>Organization</th>
-        <th>Deadline</th>
-        <th>Published</th>
-        <th>Tags</th>
-        <th>Type of notice</th>
-      </tr>
-      </thead>
-    </table>
-  </div>
-
-  <style>
-    mark {
-      background: yellow;
-    }
-  </style>
+<style>
+  mark {
+    background: yellow;
+  }
+</style>
 
 {% endblock %}

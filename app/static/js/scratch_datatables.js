@@ -205,7 +205,7 @@ function buttonsClick() {
     $.confirm({
       title: 'Manage tender followers',
       content: `
-      <table id="user_table_for_tender_${tender_id}" class="stripe">
+      <table id="user_table_for_tender_${tender_id}" class="table table-striped table-hover">
       <thead>
         <tr>
           <th>Users</th>
@@ -406,6 +406,9 @@ function initDataTables() {
     "search": {
       "search": searchTerm
     },
+    "language": {
+      "search": '',
+    },
     "processing": true,
     "serverSide": true,
     "ajax": {
@@ -484,6 +487,9 @@ function initDataTables() {
     "search": {
       "search": searchTerm
     },
+    "language": {
+      "search": '',
+    },
     "processing": true,
     "serverSide": true,
     "ajax": {
@@ -513,7 +519,7 @@ function initDataTables() {
 
   const tableOptions = {
     "tenders_table": tenderOptions,
-    "archive_table": archiveOptions,
+    "tenders_table_archive": archiveOptions,
     "contract_awards_table": awardOptions,
     "vendors_table": vendorOptions,
     "tender_detail_table": {
@@ -529,7 +535,10 @@ function initDataTables() {
     }
   }
 
-  $(".table table, .table_detail table").each(function(){
+  const tableIds = `#tenders_table, #tenders_table_archive,
+  #contract_awards_table, #vendors_table, #tender_detail_table`;
+
+  $(tableIds).each(function(){
     $(this).DataTable(tableOptions[$(this).attr("id")])
   })
 }

@@ -1,13 +1,12 @@
 .filter_menu {
   padding-top: 20px;
-  padding-left: 130px;
-  padding-right: 130px;
-
+  margin-left: 130px;
+  margin-right: 130px;
+  min-width: 700px;
 }
 .up_bar {
   background: #333;
   border-radius: 3px;
-  alignment: center;
   padding-left: 5px;
   height:30px;
   font-weight: bold;
@@ -28,6 +27,28 @@
   position: relative;
 }
 
+.bottom_bar form {
+  padding-left: 0;
+}
+
+.select2-selection {
+  border: var(--bs-border-width) solid var(--bs-border-color) !important;
+}
+
+.select2-selection--multiple {
+  min-height: 0px !important;
+  height: 30.6px;
+}
+
+.select2-container {
+  width: 100% !important;
+}
+
+.select2-dropdown {
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  font-size: 14px;
+}
+
 .flexed {
   display: flex;
 }
@@ -38,7 +59,7 @@
 }
 
 .div_button {
-  padding-top: 15px;
+  padding-top: 22.5px;
   padding-right: 10px;
   padding-left: 10px;
 }
@@ -69,4 +90,8 @@
 
 #form_id{
   width:100%
+}
+
+#id_type {
+  min-width: 140px;
 }

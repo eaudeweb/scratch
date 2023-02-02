@@ -4,7 +4,7 @@
   {% load widget_tweaks %}
   <head>
     <link rel="stylesheet" type="text/css" href="{% static 'css/filter_bar.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}"/>
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}"/> {% endcomment %}
   </head>
 
   <body>
@@ -18,21 +18,21 @@
       <div class="row bottom_bar">
         <form method="GET" id="form_id">
           <div class="flexed">
-            <div class="form-group col-sm">
+            <div class="mb-3 px-3 col-sm">
               {{ form.organization.label }}
-              {% render_field form.organization class+="form-control form-control-sm" %}
+              {% render_field form.organization class+="form-select form-select-sm" %}
             </div>
 
             {% if not vendor %}
-            <div class="form-group col-sm">
+            <div class="mb-3 px-3 col-sm">
               {{ form.vendor.label }}
-              {% render_field form.vendor class+="form-control form-control-sm" %}
+              {% render_field form.vendor class+="form-select form-select-sm" %}
             </div>
             {% else %}
-            <div class="form-group col-sm not-allowed">
-              <div class="form-group col-sm disable">
+            <div class="mb-3 px-3 col-sm not-allowed">
+              <div class="mb-3 px-3 col-sm disable">
                 {{ form.vendor.label }} (Fixed value)
-                {% render_field form.vendor class+="form-control form-control-sm" %}
+                {% render_field form.vendor class+="form-select form-select-sm" %}
               </div>
             </div>
 
@@ -41,14 +41,14 @@
           </div>
 
           <div class="flexed">
-            <div class="form-group col-sm">
+            <div class="mb-3 px-3 col-sm">
               {{ form.source.label }}
-              {% render_field form.source class+="form-control form-control-sm" %}
+              {% render_field form.source class+="form-select form-select-sm" %}
             </div>
 
-            <div class="form-group col-sm">
+            <div class="mb-3 px-3 col-sm">
               {{ form.value.label }}
-              {% render_field form.value class+="form-control form-control-sm" %}
+              {% render_field form.value class+="form-select form-select-sm" %}
             </div>
 
 
@@ -66,7 +66,7 @@
             {% endif %}
 
             <div class="div_button">
-              <button type="submit" name="filter_button" value="filter" class="btn btn-dark filter_button">Filter</button>
+              <button type="submit" name="filter_button" value="filter" class="btn btn-dark btn-sm filter_button">Filter</button>
             </div>
           </div>
         </form>

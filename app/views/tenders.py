@@ -110,9 +110,9 @@ class TenderListAjaxView(BaseAjaxListingView):
                 'source': tender.source,
                 'organization': tender.organization,
                 'deadline': 'Not specified' if not tender.deadline else (
-                    tender.deadline.strftime("%m/%d/%Y, %H:%M")),
+                    tender.deadline.strftime("%d/%m/%Y, %H:%M")),
                 'published': 'Not specified' if not tender.published else (
-                    tender.published.strftime("%m/%d/%Y")),
+                    tender.published.strftime("%d/%m/%Y")),
                 'notice_type': render_to_string(
                     'tenders_buttons.html', {
                         'tender': tender,
