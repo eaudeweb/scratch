@@ -50,8 +50,9 @@ class ContractAwardsListAjaxView(BaseAjaxListingView):
         ('vendor', 'vendors__name'),
     ]
     order_fields = ['tender__title', 'tender__source', 'tender__organization',
-                    'award_date', 'renewal_date', 'vendor', 'value', 'currency']
-    case_sensitive_fields = ['tender__title', 'tender__source', 'tender__organization']
+                    'award_date', 'renewal_date', None, 'value', 'currency']
+    case_sensitive_fields = ['tender__title',
+                             'tender__source', 'tender__organization']
     model = Award
 
     def format_data(self, object_list):
@@ -94,7 +95,8 @@ class ContractAwardsListAjaxView(BaseAjaxListingView):
 
     def order_data(self, request, awards):
         awards.order_by('-award_date')
-        awards = super(ContractAwardsListAjaxView, self).order_data(request, awards)
+        awards = super(ContractAwardsListAjaxView,
+                       self).order_data(request, awards)
         return awards
 
 

@@ -26,9 +26,9 @@ h3 {
   color: white;
 }
 
-table.dataTable tbody th, table.dataTable tbody td {
+/* table.dataTable tbody th, table.dataTable tbody td {
   padding: 8px 18px;
-}
+} */
 
 table.dataTable tbody td {
   line-height: 17px !important;

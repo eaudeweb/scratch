@@ -58,40 +58,16 @@ $.urlParam = function (doc, name) {
   return (results !== null) ? decodeURIComponent(results[1]) : '';
 };
 
-function toggleFavourite(x) {
+function toggleClick(x) {
   let value;
   if (x.hasClass('pressed')) {
     value = false;
-    x.addClass("fa-regular").removeClass("fa-solid").removeClass("pressed");
+    x.removeClass("pressed");
   }
   else {
-    x.addClass("fa-solid").addClass("pressed").removeClass("fa-regular");
     value = true;
+    x.addClass("pressed");
   }
-
-  return value;
-}
-
-function toggleSeen(x) {
-  let value;
-  let usr = document.getElementById("seen_usr");
-
-  if (x.hasClass('pressed')) {
-    value = false;
-    usr.textContent = '';
-    x.addClass("fa-regular").removeClass("fa-solid").removeClass("pressed");
-  }
-  else {
-    x.addClass("fa-solid").addClass("pressed").removeClass("fa-regular");
-    try {
-      usr.textContent = document.getElementById("usr_seen_by").textContent;
-    }
-    catch (err) {
-
-    }
-    value = true;
-  }
-
   return value;
 }
 
@@ -193,11 +169,29 @@ function buttonsClick() {
   let is_detail_page = (button_id == 'remove_button_detail');
 
   if (button_id == 'fav_button') {
-    let value = toggleFavourite($(this));
+    let isFavorite = toggleClick($(this));
+    let peopleIcon = $(this).closest("ul").find("i.people");
+    let subTag = $(this).closest("ul").find("sub");
     $.ajax({
       ...ajaxParams,
       url: $(this).attr('data-url'),
-      data: { favourite: value },
+      data: { favourite: isFavorite },
+      dataType: null,
+      success: function () {
+        let totalFollowers = parseInt(subTag.html()) || 0;
+        if (isFavorite){
+          totalFollowers += 1;
+          addFill(peopleIcon, "pressed");
+          subTag.html(totalFollowers);
+        } else {
+          totalFollowers -= 1;
+          if (!totalFollowers){
+            removeFill(peopleIcon, "pressed")
+            subTag.html('');
+          }
+        }
+        console.log('Success');
+      }
     });
   }
 
@@ -222,11 +216,12 @@ function buttonsClick() {
           isDisabled: true,
           action: function () {
             let payload = toJSON(tenderFollowers[tender_id]);
-            let iconBtn = $(`#add_follower_button_${tender_id}`);
+            let peopleIcon = $(`#add_follower_button_${tender_id}`);
+            let starIcon = peopleIcon.closest("ul").find("i.fav_button");
             $.ajax({
               ...ajaxParams,
               contentType: "application/json; charset=utf-8",
-              url: iconBtn.attr('data-url'),
+              url: peopleIcon.attr('data-url'),
               data: payload,
               success: function (result) {
                 let tender = tenderFollowers[tender_id];
@@ -239,12 +234,18 @@ function buttonsClick() {
                   + tenderFollowers[tender_id]["new_followers"].size
                   - tenderFollowers[tender_id]["unfollowers"].size
                 );
-                if(totalFollowers){
-                  iconBtn.siblings('sub').html(totalFollowers);
-                  iconBtn.addClass('pressed fa-solid').removeClass('fa-regular');
+                let subTag = peopleIcon.siblings('sub');
+                if (tender["old_followers"].has(loggedInUserId)){
+                  addFill(starIcon, "pressed");
                 } else {
-                  iconBtn.siblings('sub').html('');
-                  iconBtn.addClass('fa-regular').removeClass('pressed fa-solid');
+                  removeFill(starIcon, "pressed");
+                }
+                if(totalFollowers){
+                  subTag.html(totalFollowers);
+                  addFill(peopleIcon, "pressed");
+                } else {
+                  subTag.html('');
+                  removeFill(peopleIcon, "pressed");
                 }
                 console.log('Success');
               },
@@ -261,7 +262,7 @@ function buttonsClick() {
 
   if (button_id == 'seen_button') {
     let value;
-    value = toggleSeen($(this));
+    value = toggleClick($(this));
     $.ajax({
       ...ajaxParams,
       url: $(this).attr('data-url'),
@@ -372,13 +373,17 @@ function initDataTables() {
     },
     {
       "targets": 1,
-      "orderable": true,
+      "orderable": false,
       "render": function (data, type, row) {
 
         return row['awards'].length > 0
-        ? `<a class="award-link-icon" href=${row['awards']}><i class="fa fa-external-link fa-lg" ></i> </a>`
+        ? `<a class="award-link-icon" href=${row['awards']}><i class="bi bi-box-arrow-up-right"></i></a>`
         : '';
       }
+    },
+    {
+      "targets": 5,  // Vendor(s)
+      "orderable": false
     }
   ];
 
@@ -389,6 +394,10 @@ function initDataTables() {
       "render": function (data, type, row) {
         return '<a href="' + row['url'] + '">' + data + '</a>';
       },
+    },
+    {
+      "targets": 5,  // Published
+      "orderable": false
     }
   ]
 
@@ -400,7 +409,7 @@ function initDataTables() {
       { "width": "8%", "targets": 4 },
       { "width": "8%", "targets": 5 },
     ],
-    "order": [[4, "desc"]],
+    "order": [[5, "desc"]],  // Published
     "pageLength": 10,
     "lengthChange": false,
     "search": {
@@ -458,6 +467,7 @@ function initDataTables() {
   const awardOptions = {
     ...tenderOptions,
     "columnDefs": awardColumnDefs,
+    "order": [[4, "desc"]],  // Award date
     "ajax": {
       "url": "/awards/ajax",
       "type": "GET",
@@ -543,20 +553,35 @@ function initDataTables() {
   })
 }
 
+function toggleHover(icon) {
+  let classStr = icon.attr("class");
+  icon.attr("class", classStr.replace(/bi-[a-z]+(-fill)?/g, function(m) {
+    return m.endsWith("-fill") ? m.slice(0, -5) : m + "-fill";
+  }));
+}
+
+function addFill(icon, classToAdd="") {
+  let classStr = icon.attr("class");
+  icon.attr("class", classStr.replace(/bi-(\w+) (.*)/g, 'bi-$1-fill $2'));
+  icon.addClass(classToAdd);
+}
+
+function removeFill(icon, classToRemove="") {
+  let classStr = icon.attr("class");
+  icon.attr("class", classStr.replace("-fill", ""));
+  icon.removeClass(classToRemove);
+}
+
 function activateHover() {
   $(".li_buttons").mouseenter(function () {
     let icon = $(this).find("i");
-    if (icon.hasClass("pressed")) {
-      icon.addClass("fa-regular").removeClass("fa-solid");
-    } else {
-      icon.addClass("fa-solid").removeClass("fa-regular");
-    }
+    toggleHover(icon);
   }).mouseleave(function () {
     let icon = $(this).find("i");
-    if (icon.hasClass("pressed")) {
-      icon.addClass("fa-solid").removeClass("fa-regular");
+    if (icon.hasClass("pressed")){
+      addFill(icon);
     } else {
-      icon.addClass("fa-regular").removeClass("fa-solid");
+      removeFill(icon);
     }
   });
 }

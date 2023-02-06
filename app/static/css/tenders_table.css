@@ -10,8 +10,19 @@
   text-decoration: none;
 }
 
-.table_detail {
-  padding: 15px;
+.table_detail td:first-child {
+  width: 140px;
+}
+
+.table_detail th {
+  border-top: none;
+  border-right: none;
+  border-bottom: 1px solid black;
+  border-left: none;
+}
+
+.table_detail tr:last-child {
+  border-bottom: 1px solid black;
 }
 
 .original-link {
@@ -32,7 +43,8 @@ ul {
 }
 
 .ul_buttons {
-  min-width: 100px;
+  font-size: 140%;
+  min-width: 114px;
   min-height: 25px;
   padding: 10px 0px 10px 0px;
   margin: 0px;
@@ -40,7 +52,7 @@ ul {
 
 .li_buttons {
   float: left;
-  padding-left: 5px;
+  padding-right: 6px;
 }
 
 .li_buttons i {
@@ -49,9 +61,14 @@ ul {
 
 .li_buttons sub {
   display: block;
-  bottom: -0.5em;
   left: 2.5em;
-  font-size: 50%;
+  top: 0.2em;
+  font-size: 9px;
+  font-weight: normal;
+}
+
+.table_detail .li_buttons sub {
+  top: -0.2em;
 }
 
 .description {

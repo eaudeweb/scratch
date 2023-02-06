@@ -85,7 +85,7 @@ class TendersListAjaxViewTests(BaseTestCase):
             "start": '0',
             "draw": '1',
             "length": '10',
-            "order[0][column]": "1",
+            "order[0][column]": "2",  # Source
             "order[0][dir]": "desc",
         }
 

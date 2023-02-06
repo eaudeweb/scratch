@@ -95,8 +95,8 @@ class TenderListAjaxView(BaseAjaxListingView):
         ('notice_type', 'notice_type'),
     ]
     order_fields = [
-        'title', 'source', 'organization', 'deadline', 'published',
-        'notice_type'
+        'title', None, 'source', 'organization', 'deadline', 'published',
+        None, 'notice_type'
     ]
     case_sensitive_fields = ['title', 'source', 'organization', 'notice_type']
     model = Tender
@@ -128,13 +128,8 @@ class TenderListAjaxView(BaseAjaxListingView):
         ]
         return data
 
-    def order_data(self, request, tenders):
-        tenders.order_by('-published')
-        tenders = super(TenderListAjaxView, self).order_data(request, tenders)
-        return tenders
-
     def filter_data(self, request):
-        tenders = super(TenderListAjaxView, self).filter_data(request)
+        tenders = super().filter_data(request)
         tags_request = self.request.GET.get('tags')
 
         if tags_request:
