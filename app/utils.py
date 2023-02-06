@@ -52,6 +52,7 @@ def log_tenders_update(tender_source: TenderSource):
                     "status": 2
                 }
                 requests.post(url, json=payload, headers=headers)
+                raise
 
         return wrapper
 
