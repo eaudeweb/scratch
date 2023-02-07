@@ -32,12 +32,14 @@ def log_tenders_update(tender_source: TenderSource):
                 "message": f"Importing new {tender_source} tenders...",
                 "status": 3,
             }
-            response_incident = requests.post(url, json=payload, headers=headers)
+            response_incident = requests.post(
+                url, json=payload, headers=headers)
 
             try:
                 return_value = fn(*args, **kwargs)
 
-                url = settings.APP_URL + f"/api/v1/incidents/{response_incident.json()['data']['id']}/updates"
+                url = settings.APP_URL + \
+                    f"/api/v1/incidents/{response_incident.json()['data']['id']}/updates"
                 payload = {
                     "message": return_value,
                     "status": 4
@@ -46,12 +48,14 @@ def log_tenders_update(tender_source: TenderSource):
 
                 return return_value
             except Exception as error:
-                url = settings.APP_URL + f"/api/v1/incidents/{response_incident.json()['data']['id']}/updates"
+                url = settings.APP_URL + \
+                    f"/api/v1/incidents/{response_incident.json()['data']['id']}/updates"
                 payload = {
                     "message": f'{tender_source} tenders update failed: {error}',
                     "status": 2
                 }
                 requests.post(url, json=payload, headers=headers)
+                raise
 
         return wrapper
 
