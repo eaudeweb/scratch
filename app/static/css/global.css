@@ -1,0 +1,40 @@
+.content {
+  padding: 30px;
+}
+
+.dataTables_filter label {
+  margin-bottom: 0.5rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: var(--bs-blue);
+}
+
+.table_detail table {
+  width: auto;
+}
+
+.table_detail thead th, table.table-fit tfoot th {
+  width: auto !important;
+}
+
+.table_detail tbody td, .table_detail tfoot td {
+  width: auto !important;
+}
+
+.filter_menu {
+  margin-bottom: 30px;
+}
+
+.table thead {
+  vertical-align: middle;
+}
+
+#tenders_table, #contract_awards_table, #vendors_table, #tenders_table_archive {
+  width: 100% !important;
+}

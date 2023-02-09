@@ -11,14 +11,14 @@ Documentation: https://docs.cachethq.io/
    cp docker/cachet.env.example docker/cachet.env
    ```
    > NOTE: If the scratch.cachet container is started and the APP_KEY variable in cachet.env is not set, the service will
-   > exit with an error message which will contain a generated key. You can add the suggested value to the environment 
+   > exit with an error message which will contain a generated key. You can add the suggested value to the environment
    > file and restart the container.
 1. After the docker containers started, access the Cachet page to complete the setup.
 
 1. On the Environment Setup page set:
    1. Cache Driver to Redis
    1. Queue Driver to Database
-   1. Session Driver to Redis 
+   1. Session Driver to Redis
 
 1. On Status Page Setup choose a name for the status page, the site domain and a timezone.
 1. Create an admin user
@@ -37,15 +37,14 @@ https://hub.docker.com/r/mtakaki/cachet-url-monitor
 
 Plugin for cachet that monitors a URL and update the status of the associated cachet component
 
-## Setup 
+## Setup
 
 1. Create a config file:
-   1. Copy the ```config.yml.example``` file 
+   1. Copy the ```config.yml.example``` file
    ```commandline
    cp config/config.yml.example config/config.yml
    ```
    1. For every component created in Cachet, complete the configurations in ``config/config.yml``:
-      1. Complete the urls in the file by replacing ``example`` with the ip address of the host
       1. Add the id from cachet for every component. You can see the component ids by accessing the cachet api at http://localhost:81/api/v1/components
       1. Add the API token from cachet. You can get the token from the profile page (http://localhost:81/dashboard/user)
    >    NOTE: for more info about the config file checkout: https://hub.docker.com/r/mtakaki/cachet-url-monitor

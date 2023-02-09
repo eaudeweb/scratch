@@ -6,6 +6,7 @@ from .views import (
     TenderDeleteView,
     TenderDetailView,
     TenderFavouriteView,
+    TenderFollowers,
     HomepageView,
     OverviewPageView,
     TenderArchiveView,
@@ -21,7 +22,7 @@ from .views import (
     VendorsListView,
     VendorsListAjaxView,
     VendorDetailView,
-    VendorUpdateView
+    VendorUpdateView,
 )
 
 urlpatterns = [
@@ -33,6 +34,7 @@ urlpatterns = [
     path("tenders/seen/<int:pk>/", TenderSeenByView.as_view(), name="tender_seen_view"),
     path("tenders/delete/<int:pk>/", TenderDeleteView.as_view(), name="tender_delete_view"),
     path('tenders/ajax', TenderListAjaxView.as_view(), name='tenders_list_ajax_view'),
+    path("tenders/<int:pk>/followers", TenderFollowers.as_view(), name="tender_followers_view"),
     path("overview/", OverviewPageView.as_view(), name="overview_view"),
     path("login/", LoginView.as_view(), name="login_view"),
     path("logout/", LogoutView.as_view(), name="logout_view"),

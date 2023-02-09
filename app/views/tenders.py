@@ -1,11 +1,13 @@
-from datetime import timezone, datetime, date
+import json
 import re
 
-from django.http import HttpResponse
+from datetime import timezone, datetime, date
+
+from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.template.loader import render_to_string
-from django.db.models import Q
+from django.db.models import Q, Exists, OuterRef
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic import TemplateView, View
@@ -14,7 +16,8 @@ from elasticsearch_dsl import Q as elasticQ
 
 from app.documents import TenderDoc, TenderDocumentDoc, AwardDoc
 from app.forms import TendersFilter
-from app.models import Tender, TenderDocument, Award,Tag
+from app.models import Tender, TenderDocument, Award, Tag, Favorite
+from app.notifications import send_new_tender_follower_email
 from app.views.base import BaseAjaxListingView
 
 
@@ -45,7 +48,7 @@ class TendersListView(LoginRequiredMixin, ListView):
             tags = self.request.GET.getlist('tags')
             reset = any([
                 source, organization, status, favourite, keyword, notice_type,
-                seen,tags
+                seen, tags
             ])
             form = TendersFilter(
                 initial={
@@ -56,21 +59,21 @@ class TendersListView(LoginRequiredMixin, ListView):
                     "keyword": keyword,
                     "type": notice_type,
                     "seen": seen,
-                    "tags":tags
-                    
+                    "tags": tags
+
                 }
             )
         else:
             form = TendersFilter()
 
         ungm_published_today |= (
-                self.request.GET.get("ungm_published_today") == 'True')
+            self.request.GET.get("ungm_published_today") == 'True')
         ungm_deadline_today |= (
-                self.request.GET.get("ungm_deadline_today") == 'True')
+            self.request.GET.get("ungm_deadline_today") == 'True')
         ted_published_today |= (
-                self.request.GET.get("ted_published_today") == 'True')
+            self.request.GET.get("ted_published_today") == 'True')
         ted_deadline_today |= (
-                self.request.GET.get("ted_deadline_today") == 'True')
+            self.request.GET.get("ted_deadline_today") == 'True')
 
         context["form"] = form
         context["reset"] = reset
@@ -92,8 +95,8 @@ class TenderListAjaxView(BaseAjaxListingView):
         ('notice_type', 'notice_type'),
     ]
     order_fields = [
-        'title', 'source', 'organization', 'deadline', 'published',
-        'notice_type'
+        'title', None, 'source', 'organization', 'deadline', 'published',
+        None, 'notice_type'
     ]
     case_sensitive_fields = ['title', 'source', 'organization', 'notice_type']
     model = Tender
@@ -101,44 +104,40 @@ class TenderListAjaxView(BaseAjaxListingView):
     def format_data(self, object_list):
         data = [
             {
+                'id': tender.id,
                 'title': tender.marked_keyword_title,
                 'url': reverse('tender_detail_view', kwargs={'pk': tender.id}),
                 'source': tender.source,
                 'organization': tender.organization,
                 'deadline': 'Not specified' if not tender.deadline else (
-                    tender.deadline.strftime("%m/%d/%Y, %H:%M")),
+                    tender.deadline.strftime("%d/%m/%Y, %H:%M")),
                 'published': 'Not specified' if not tender.published else (
-                    tender.published.strftime("%m/%d/%Y")),
+                    tender.published.strftime("%d/%m/%Y")),
                 'notice_type': render_to_string(
                     'tenders_buttons.html', {
                         'tender': tender,
                         'include_notice_type': True,
-                        'tender_is_user_favorite': tender.is_favorite_of(self.request.user)   
+                        'tender_is_user_favorite': tender.is_favorite_of(self.request.user)
                     }
                 ),
                 'tags': ', '.join(tender.tags.values_list('name', flat=True)),
-                'awards': [reverse('contract_awards_detail_view',kwargs={'pk': pk}) for pk in tender.awards.values_list("id", flat=True)]
+                'awards': [reverse('contract_awards_detail_view', kwargs={'pk': pk}) for pk in tender.awards.values_list("id", flat=True)]
 
 
             } for tender in object_list
         ]
         return data
 
-    def order_data(self, request, tenders):
-        tenders.order_by('-published')
-        tenders = super(TenderListAjaxView, self).order_data(request, tenders)
-        return tenders
-
     def filter_data(self, request):
-        tenders = super(TenderListAjaxView, self).filter_data(request)
+        tenders = super().filter_data(request)
         tags_request = self.request.GET.get('tags')
-        
+
         if tags_request:
             tags_request = tags_request.split(',')
             tags_request_list = [i for i in tags_request if i != '']
             if len(tags_request_list) > 0:
                 tenders = tenders.filter(tags__name__in=tags_request_list)
- 
+
         search = request.GET.get("search[value]")
         if search:
             tenders = Tender.objects.filter(
@@ -217,7 +216,8 @@ class TenderDetailView(LoginRequiredMixin, DetailView):
         context["documents_set"] = TenderDocument.objects.filter(
             tender=self.object)
         context['tags_autocomplete'] = Tag.objects.all()
-        context['tender_is_user_favorite'] = self.object.is_favorite_of(self.request.user)
+        context['tender_is_user_favorite'] = self.object.is_favorite_of(
+            self.request.user)
         return context
 
 
@@ -236,7 +236,7 @@ class TenderFavouriteView(View):
 
 class TenderTagView(View):
 
-    def post(self,request,pk):
+    def post(self, request, pk):
         current_tender = Tender.objects.filter(id=pk)
         tender = current_tender[0]
         tag_received = request.POST['tag_name']
@@ -244,8 +244,9 @@ class TenderTagView(View):
         if tender:
             tag, created = Tag.objects.get_or_create(name=tag_received)
             tender.tags.add(tag)
-      
+
         return HttpResponse("Success!")
+
 
 class TenderSeenByView(View):
     def post(self, request, pk):
@@ -304,9 +305,12 @@ class SearchView(LoginRequiredMixin, TemplateView):
     @staticmethod
     def update_award_fields(context, regex):
         for entry in context:
-            entry["award"].tender.title = regex.sub(r'<mark>\1</mark>', entry["award"].tender.title)
-            entry["award_vendors"] = regex.sub(r'<mark>\1</mark>', entry["award_vendors"])
-            entry["award"].currency = regex.sub(r'<mark>\1</mark>', entry["award"].currency)
+            entry["award"].tender.title = regex.sub(
+                r'<mark>\1</mark>', entry["award"].tender.title)
+            entry["award_vendors"] = regex.sub(
+                r'<mark>\1</mark>', entry["award_vendors"])
+            entry["award"].currency = regex.sub(
+                r'<mark>\1</mark>', entry["award"].currency)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -379,3 +383,37 @@ class SearchView(LoginRequiredMixin, TemplateView):
         SearchView.update_award_fields(context['awards'], regex)
 
         return context
+
+
+class TenderFollowers(LoginRequiredMixin, View):
+    def get(self, request, pk):
+        users = User.objects.annotate(
+            is_follower=Exists(
+                Tender.objects.filter(id=pk, followers__id=OuterRef("pk"))
+            )
+        )
+        return JsonResponse(
+            [
+                {
+                    "id": user.id,
+                    "username": user.username,
+                    "email": user.email,
+                    "is_follower": user.is_follower
+                } for user in users
+            ], safe=False
+        )
+
+    def post(self, request, pk):
+        data = json.loads(request.body.decode('utf-8'))
+        tender = Tender.objects.get(id=pk)
+        for follower_id in set(data["new_followers"]):
+            if not tender.followers.filter(id=follower_id).exists():
+                follower = User.objects.get(id=follower_id)
+                Favorite.objects.create(
+                    tender=tender,
+                    inviter=request.user,
+                    follower=follower
+                )
+                send_new_tender_follower_email(tender, request.user, follower),
+        tender.followers.remove(*[id for id in data["unfollowers"]])
+        return HttpResponse("Success!")

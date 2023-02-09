@@ -6,9 +6,9 @@
 
 {% block content %}
   <div class="overview-page">
-    <h3><b>Last scraping sessions</b></h3>
-    <table id="log_table" class="hover">
-      <thead class="thead-dark">
+    <h1 class="h3"><b>Last scraping sessions</b></h1>
+    <table id="log_table" class="table table-borderless table-hover">
+      <thead class="table-dark">
       <tr>
         <th>Update date</th>
         <th>Source</th>
@@ -26,28 +26,28 @@
       </tbody>
     </table>
 
-    <h3><b>Deadline Notifications</b></h3>
+    <h1 class="h3"><b>Deadline Notifications</b></h1>
     <ul>
       {% for day in deadline_notifications %}
         <li class="overview-page-list">{{ day }} days</li>
       {% endfor %}
     </ul>
 
-    <h3><b>Notification emails</b></h3>
+    <h1 class="h3"><b>Notification emails</b></h1>
     <ul>
       {% for email in emails %}
         <li class="overview-page-list">{{ email }}</li>
       {% endfor %}
     </ul>
 
-    <h3><b>UNSPSCS Codes</b></h3>
+    <h1 class="h3"><b>UNSPSCS Codes</b></h1>
     <select class="js-example-basic-single" name="state">
       {% for code in unspscs_codes %}
         <option>{{ code }}</option>
       {% endfor %}
     </select>
 
-    <h3><b>CPV Codes</b></h3>
+    <h1 class="h3"><b>CPV Codes</b></h1>
     <select class="js-example-basic-single" name="state">
       {% for code in cpv_codes %}
         <option>{{ code }}</option>

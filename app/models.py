@@ -171,6 +171,9 @@ class Favorite(BaseTimedModel):
         related_name="favorites_where_inviter"
     )
 
+    class Meta:
+        unique_together = ["tender", "follower"]
+
     def __str__(self) -> str:
         return (
             f'Relation between tender "#{self.tender_id} ({self.tender.title[:5]}...)" '
