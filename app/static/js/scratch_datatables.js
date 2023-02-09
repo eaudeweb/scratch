@@ -166,7 +166,8 @@ function buttonsClick() {
 
   let button_id = $(this).attr('id');
   let tender_id = $(this).closest("tr").attr("id");
-  let is_detail_page = (button_id == 'remove_button_detail');
+  let is_detail_page = $('#tender_detail_table').length;
+  let url = $(this).attr('data-url');
 
   if (button_id == 'fav_button') {
     let isFavorite = toggleClick($(this));
@@ -270,7 +271,7 @@ function buttonsClick() {
     });
   }
 
-  if (button_id == 'remove_button_list' || button_id == 'remove_button_detail') {
+  if (button_id == 'remove_button') {
     $.confirm({
       title: 'Are you sure you want to delete this tender?',
       content: $(this).attr('data-name').toString(),
@@ -281,7 +282,7 @@ function buttonsClick() {
         YES: function () {
           $.ajax({
             ...ajaxParams,
-            url: $(this).attr('data-url'),
+            url: url,
             data: {},
             success: function (result) {
               if (is_detail_page) {
@@ -549,7 +550,7 @@ function initDataTables() {
   #contract_awards_table, #vendors_table, #tender_detail_table`;
 
   $(tableIds).each(function(){
-    $(this).DataTable(tableOptions[$(this).attr("id")])
+    $(this).DataTable(tableOptions[$(this).attr("id")]);
   })
 }
 

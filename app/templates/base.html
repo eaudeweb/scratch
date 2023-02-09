@@ -19,6 +19,7 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/overview.css' %}"/>
   <link rel="stylesheet" type="text/css" href="{% static 'css/commands.css' %}"/>
   <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-confirm.min.css' %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/filter_bar.css' %}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   {% block extra_css %}{% endblock %}
   <script type="text/javascript" src="{%  static 'js/moment.min.js' %}"></script>
@@ -70,8 +71,9 @@
     <li><a class="{% active request login %} nav-menu-logout" href="{{ login }}">Login</a></li>
   {% endif %}
 </ul>
-
-{% block content %}
-{% endblock %}
+<div class="content">
+  {% block content %}
+  {% endblock %}
+</div>
 </body>
 </html>

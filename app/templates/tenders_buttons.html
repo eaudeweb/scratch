@@ -21,7 +21,7 @@
   {% else %}
     <li class="li_buttons" title="Mark as seen"><i id="seen_button" class="bi-eye" data-url="{% url 'tender_seen_view' tender.id %}"></i></li>
   {% endif %}
-  <li class="li_buttons" title="Delete tender"><i id="remove_button_list" class="bi-trash remove_button" data-url="{% url 'tender_delete_view' tender.id %}" data-name="{{ tender.title }}"></i></li>
+  <li class="li_buttons" title="Delete tender"><i id="remove_button" class="bi-trash remove_button" data-url="{% url 'tender_delete_view' tender.id %}" data-name="{{ tender.title }}"></i></li>
 </ul>
 {% for keyword in tender.keywords.all|slice:"0:3" %}
     <span class="badge badge-danger">{{ keyword }}</span>

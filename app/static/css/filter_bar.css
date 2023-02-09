@@ -4,11 +4,12 @@
   margin-right: 130px;
   min-width: 700px;
 }
+
 .up_bar {
   background: #333;
   border-radius: 3px;
   padding-left: 5px;
-  height:30px;
+  height: 30px;
   font-weight: bold;
   font-family: "Arial";
   font-size: large;
@@ -81,15 +82,15 @@
 
 .disable {
   color: gray;
-  pointer-events:none;
+  pointer-events: none;
 }
 
 .not-allowed {
   cursor: not-allowed
 }
 
-#form_id{
-  width:100%
+#form_id {
+  width: 100%
 }
 
 #id_type {

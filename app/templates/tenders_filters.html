@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-{% load static %}
-
-<head>
-  {% load widget_tweaks %}
-  <link rel ="stylesheet" type="text/css" href="{% static 'css/filter_bar.css' %}" }>
-</head>
-
-<body>
+{% load widget_tweaks %}
 <div class="filter_menu">
   <div class="row up_bar">
     <div class="col-sm">
@@ -59,7 +50,7 @@
           {{ form.tags.label }}
           {% render_field form.tags class+="form-control form-control-sm" %}
         </div>
-          {% if reset %}
+        {% if reset %}
           <div class="div_button">
             <a href="{{ reset_url }}"><button type="button" name="reset_filters" value="reset" class="btn btn-dark filter_button">Reset filters</button></a>
           </div>
@@ -71,38 +62,33 @@
       </div>
     </form>
   </div>
-  <div >
-  </div>
 </div>
 
-  {% if ungm_published_today %}
-    <ul>
-      <li class="date_filter">UNGM tenders published today</li>
-      <li class="quiet">Remove filter by pressing <a href="{{ reset_url }}" style="color: red">RESET FILTERS</a></li>
-    </ul>
-  {% endif %}
+{% if ungm_published_today %}
+  <ul>
+    <li class="date_filter">UNGM tenders published today</li>
+    <li class="quiet">Remove filter by pressing <a href="{{ reset_url }}" style="color: red">RESET FILTERS</a></li>
+  </ul>
+{% endif %}
 
-  {% if ungm_deadline_today %}
-    <ul>
-      <li class="date_filter">UNGM tenders deadline today</li>
-      <li class="quiet">Remove filter by pressing <a href="{{ reset_url }}" style="color: red">RESET FILTERS</a></li>
-    </ul>
+{% if ungm_deadline_today %}
+  <ul>
+    <li class="date_filter">UNGM tenders deadline today</li>
+    <li class="quiet">Remove filter by pressing <a href="{{ reset_url }}" style="color: red">RESET FILTERS</a></li>
+  </ul>
 
-  {% endif %}
+{% endif %}
 
-  {% if ted_published_today %}
-    <ul>
-      <li class="date_filter">TED tenders published today</li>
-      <li class="quiet">Remove filter by pressing <a href="{{ reset_url }}" style="color: red">RESET FILTERS</a></li>
-    </ul>
-  {% endif %}
+{% if ted_published_today %}
+  <ul>
+    <li class="date_filter">TED tenders published today</li>
+    <li class="quiet">Remove filter by pressing <a href="{{ reset_url }}" style="color: red">RESET FILTERS</a></li>
+  </ul>
+{% endif %}
 
-  {% if ted_deadline_today %}
-    <ul>
-      <li class="date_filter">TED tenders deadline today</li>
-      <li class="quiet">Remove filter by pressing <a href="{{ reset_url }}" style="color: red">RESET FILTERS</a></li>
-    </ul>
-  {% endif %}
-</div>
-</body>
-</html>
+{% if ted_deadline_today %}
+  <ul>
+    <li class="date_filter">TED tenders deadline today</li>
+    <li class="quiet">Remove filter by pressing <a href="{{ reset_url }}" style="color: red">RESET FILTERS</a></li>
+  </ul>
+{% endif %}
