@@ -61,3 +61,7 @@
 .rm-link:hover {
   color: black;
 }
+
+.modal-content div {
+  border: 0;
+}

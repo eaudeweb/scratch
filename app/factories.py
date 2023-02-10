@@ -121,14 +121,11 @@ class TaskFactory(factory.django.DjangoModelFactory):
     kwargs = factory.fuzzy.FuzzyChoice(
         ["digest: True", "days_ago: 1", "given_date: 2022-12-21"]
     )
+    started = factory.LazyAttributeSequence(
+        lambda obj, n: timezone.now() + timedelta(minutes=n+1))
     stopped = factory.LazyAttribute(
         lambda obj: obj.started + timedelta(minutes=random.randint(1, 9)))
     status = factory.fuzzy.FuzzyChoice(["processing", "success", "error"])
-
-    @factory.sequence
-    def started(n):
-        one_year_ago = timezone.now() - timedelta(weeks=52)
-        return one_year_ago + timedelta(minutes=n+1)
 
     @factory.lazy_attribute
     def stopped(self):

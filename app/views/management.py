@@ -26,7 +26,7 @@ from app.forms import SearchForm
 from app.models import (
     CPVCode, UNSPSCCode, Task, Tender, Award, WorkerLog
 )
-from app.utils import emails_to_notify
+from app.utils import emails_to_notify, dt_to_json
 from app.views.base import BaseAjaxListingView
 
 
@@ -178,7 +178,7 @@ class TaskListAjaxView(LoginRequiredMixin, BaseAjaxListingView):
     model = Task
 
     def get_objects(self):
-        return self.model.objects.order_by('started')
+        return self.model.objects.order_by('-started')
 
     def format_data(self, object_list):
         data = [
@@ -186,12 +186,12 @@ class TaskListAjaxView(LoginRequiredMixin, BaseAjaxListingView):
                 'id': task.id,
                 'args': task.args,
                 'kwargs': task.kwargs,
-                'started': task.started.strftime("%d/%m/%Y %H:%M"),
-                'stopped': task.stopped.strftime("%d/%m/%Y %H:%M"),
+                'started': dt_to_json(task.started),
+                'stopped': dt_to_json(task.stopped),
                 'output': task.output,
                 'status': task.status,
-                'created_at': task.created_at.strftime("%d/%m/%Y %H:%M"),
-                'updated_at': task.updated_at.strftime("%d/%m/%Y %H:%M"),
+                'created_at': dt_to_json(task.created_at),
+                'updated_at': dt_to_json(task.updated_at),
             } for task in object_list
         ]
         return data

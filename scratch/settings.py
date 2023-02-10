@@ -261,3 +261,5 @@ RUNNABLE_COMMANDS = [
     "update_ted",
     "update_ungm",
 ]
+
+JSON_DATETIME_FORMAT = "%d/%m/%Y %H:%M"
