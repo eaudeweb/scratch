@@ -130,7 +130,7 @@ AUTH_PASSWORD_VALIDATORS = [
 Q_CLUSTER = {
     'timeout': 59,
     'retry': 60,
-    'workers':int(env('DJ_Q_WORKERS', 3)),
+    'workers': int(env('DJ_Q_WORKERS', 3)),
     'redis': {
         'host': env('REDIS_HOST', 'redis'),
         'port': int(env('REDIS_PORT', 6379)),
@@ -138,7 +138,8 @@ Q_CLUSTER = {
 }
 
 # EMAIL
-EMAIL_BACKEND = env('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')
+EMAIL_BACKEND = env(
+    'EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')
 EMAIL_HOST = env('EMAIL_HOST', 'smtp')
 EMAIL_PORT = env('EMAIL_PORT', 25)
 
@@ -245,3 +246,18 @@ DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 # cachet
 APP_TOKEN = env("APP_TOKEN")
 APP_URL = env("APP_URL")
+
+# Commands that can be run on the /management page.
+RUNNABLE_COMMANDS = [
+    "add_award",
+    "deadline_notifications",
+    "delete_expired_tenders",
+    "notify_awards",
+    "notify_favorites",
+    "notify_keywords",
+    "notify_renewal",
+    "notify_tenders",
+    "remove_unnecessary_newlines",
+    "update_ted",
+    "update_ungm",
+]
