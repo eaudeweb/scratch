@@ -1,6 +1,6 @@
 import requests
 
-from scratch import settings
+from django.conf import settings
 from .models import Profile
 
 
@@ -60,3 +60,7 @@ def log_tenders_update(tender_source: TenderSource):
         return wrapper
 
     return decorator
+
+
+def dt_to_json(dt):
+    return dt.strftime(settings.JSON_DATETIME_FORMAT) if dt else None

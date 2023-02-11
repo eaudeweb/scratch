@@ -510,13 +510,13 @@ function initDataTables() {
       }
     },
     columnDefs: [
-    {
-      "targets": 0,
-      "orderable": true,
-      "render": function ( data, type, row ) {
-          return '<a href="' + row['url'] +'">' + data + '</a>';
-       },
-    }
+      {
+        "targets": 0,
+        "orderable": true,
+        "render": function ( data, type, row ) {
+            return '<a href="' + row['url'] +'">' + data + '</a>';
+        },
+      }
     ],
     "columns": [
       { "data": "name" },
