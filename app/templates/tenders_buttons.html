@@ -9,10 +9,10 @@
   {% endif %}
   <li class="li_buttons" title="Manage followers">
   {% if tender.followers.exists %}
-    <i id="add_follower_button_{{ tender.id }}" class="bi-people-fill pressed people" data-url="{% url 'tender_followers_view' tender.id %}"></i>
+    <i id="add_follower_button_{{ tender.safe_id }}" class="bi-people-fill pressed people" data-url="{% url 'tender_followers_view' tender.id %}"></i>
     <sub>{{ tender.followers.count }}</sub>
   {% else %}
-    <i id="add_follower_button_{{ tender.id }}" class="bi-people people" data-url="{% url 'tender_followers_view' tender.id %}"></i>
+    <i id="add_follower_button_{{ tender.safe_id }}" class="bi-people people" data-url="{% url 'tender_followers_view' tender.id %}"></i>
     <sub></sub>
   {% endif %}
   </li>
