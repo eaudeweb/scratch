@@ -109,7 +109,7 @@ def send_error_email(error):
 
 def send_new_tender_follower_email(tender, inviter, follower):
     subject = f'{inviter} has made you a follower of tender {tender}'
-    recipients = [follower]
+    recipients = [follower.email]
     html_content = render_to_string(
         'mails/new_tenders.html',
         {
