@@ -1,6 +1,5 @@
 import logging
 import os
-import string
 import tarfile
 import time
 from typing import List, Tuple
@@ -16,6 +15,8 @@ from django.utils.timezone import make_aware
 from app.exceptions import CPVCodesNotFound, TEDCountriesNotFound
 from app.models import WorkerLog, Tender, Award, CPVCode, TedCountry, Vendor
 from dateutil.relativedelta import relativedelta
+
+from app.utils import transform_vendor_name
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(format='%(levelname)s: %(message)s')
@@ -677,17 +678,6 @@ class TEDParser(object):
 
 def get_archives_path():
     return os.path.join(settings.FILES_DIR, 'TED_archives')
-
-
-def transform_vendor_name(vendor_name):
-    vendor_name = vendor_name.upper()
-    vendor_name = vendor_name.replace("(CO-CONTRACTOR)", "")
-    vendor_name = vendor_name.replace("(GROUP LEADER)", "")
-    vendor_name = vendor_name.strip()
-    vendor_name = vendor_name.translate(str.maketrans('', '', string.punctuation))
-
-    
-    return vendor_name
 
 
 def process_daily_archive(given_date):

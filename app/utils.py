@@ -1,3 +1,5 @@
+import string
+
 import requests
 
 from scratch import settings
@@ -56,3 +58,13 @@ def log_tenders_update(tender_source: TenderSource):
         return wrapper
 
     return decorator
+
+
+def transform_vendor_name(vendor_name):
+    vendor_name = vendor_name.upper()
+    vendor_name = vendor_name.replace("(CO-CONTRACTOR)", "")
+    vendor_name = vendor_name.replace("(GROUP LEADER)", "")
+    vendor_name = vendor_name.strip()
+    vendor_name = vendor_name.translate(str.maketrans('', '', string.punctuation))
+
+    return vendor_name
