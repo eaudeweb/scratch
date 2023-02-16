@@ -1,0 +1,53 @@
+.user_email {
+  font-size: 90%;
+  color: gray;
+}
+
+button:disabled, button[disabled]{
+  cursor: not-allowed !important;
+}
+
+.jconfirm-content-pane {
+  width: 100%;
+}
+
+.jconfirm-content-pane .row {
+  width: 100%;
+  margin: 0;
+}
+
+.jconfirm-content-pane .row div {
+  padding: 0;
+}
+
+.jconfirm-content-pane .dt-row div:first-child {
+  padding: 0;
+}
+
+.jconfirm-content .dataTables_filter input:focus {
+  outline: 1px solid rgba(0, 0, 255, 0.303);
+}
+
+.jconfirm-content .dataTable label {
+  cursor: pointer !important;
+  padding: 8px 18px 8px 18px;
+  width: 100%;
+}
+
+.jconfirm-content .dataTable label input[type="checkbox"] {
+  cursor: inherit;
+}
+
+.jconfirm-content .dataTables_filter label {
+  display: flex;
+}
+
+.jconfirm-content .dataTables_filter input {
+  margin-left: 0;
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+.jconfirm-content td {
+  padding: 0 !important;
+}

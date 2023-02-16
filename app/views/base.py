@@ -15,8 +15,10 @@ class BaseAjaxListingView(View):
 
     def get(self, request):
         objects = self.get_data(request)
-        return HttpResponse(json.dumps(objects, cls=DjangoJSONEncoder),
-                            content_type='application/json')
+        return HttpResponse(
+            json.dumps(objects, cls=DjangoJSONEncoder),
+            content_type='application/json'
+        )
 
     def format_data(self, object_list):
         return object_list

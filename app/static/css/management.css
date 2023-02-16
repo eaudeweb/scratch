@@ -1,0 +1,67 @@
+.mgn-table {
+  width: 90%;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.mgn-display {
+  width: 85px;
+}
+
+.log-table {
+  width: 80%;
+  margin-bottom: 50px;
+}
+
+.icon-log {
+  width: 32px;
+  height: 32px;
+}
+
+.see-more {
+  color: dodgerblue;
+}
+
+.see-more:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#task-table {
+  width: 100%;
+}
+
+#task-table th {
+  text-align: center;
+}
+
+#task-table td:first-child {
+  font-weight: bold;
+}
+
+#task-table td:nth-child(5) {
+  width: 35%;
+}
+
+#task-table img {
+  cursor: help;
+}
+
+#task-table_wrapper {
+  width: 90%;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.rm-link {
+  color: gray;
+  visibility: hidden;
+}
+
+.rm-link:hover {
+  color: black;
+}
+
+.modal-content div {
+  border: 0;
+}

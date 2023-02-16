@@ -1,19 +1,25 @@
 {% extends 'base.html' %}
 {% load static %}
+
+{% block extra_css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/manage_followers.css' %}"/>
+{% endblock %}
+
 {% block title %}
 <title>Scratch - Tender {{ tender.id }}</title>
 {% endblock %}
+
 {% block content %}
 <p id="usr_seen_by" hidden>{{ user.username }}</p>
-<div class="table_detail" >
-
-  
-  <table id="tender_detail_table" class="cell-border display">
-    <thead>
-      <th>Favourite</th>
-      <th>
-        {% include "tenders_buttons.html" %}
-      </th>
+<div class="table-responsive table_detail" >
+  <table id="tender_detail_table" class="table table-striped table-bordered table-hover">
+    <thead class="align-middle">
+      <tr id="{{ tender.safe_id }}">
+        <th>Favourite</th>
+        <th>
+          {% include "tenders_buttons.html" %}
+        </th>
+      </tr>
     </thead>
     <tbody>
       <tr>
@@ -89,33 +95,33 @@
           <p><a href="{{ doc.document.url }}">{{ doc.name }}</a> (<span class="original-link"><a href="{{ doc.download_url }}" target="_blank">Original URL</a></span>)</p>
           {% endfor %}
         </td>
-  
+
       </tr>
       <tr>
         <td class="description">Tags</td>
         <td>
           <p id="tags_list_displayed">
-           {{ tender.tags.all|join:", " }} 
+           {{ tender.tags.all|join:", " }}
           </p>
-  
+
         </td>
       </tr>
     </tbody>
   </table>
 
-  
+
 <div class="container  mx-2 py-4">
   <div class="row">
-    
+
     <div class="col-sm-1">
-      Add tag: 
+      Add tag:
     </div>
     <div class="col-sm-2">
       <input type="text" class="form-control" placeholder="Add tag" list="tags" id="tagValue">
     </div>
     <div class="col-sm-4">
       <button action="{% url 'tender_tag_view' tender.id %}"  type="button" class="btn btn-primary btn"  id="add_tag_button">Add</button>
-    </div>    
+    </div>
   </div>
 </div>
 
@@ -129,54 +135,53 @@
 
 </div>
 
-<div class="table_detail" >
-      {% for award in tender.awards.all %}
-          <table id="tender_detail_table" class="cell-border display award_detail">
-            <br>
-            <thead>
-            <th>Award</th>
-            <th><span><a href="{% url 'contract_awards_detail_view' award.id %}">{{ award.tender.title}}</a></span></th>
-            </thead>
-            <tbody>
-            <tr>
-              <td>Link to tender</td>
-              <td><a href="{{ award.tender.url }}" target="_blank">{{ award.tender.url }}</a></td>
-            </tr>
-            <tr>
-              <td>Award Date</td>
-              <td>{{ award.award_date | date:'d M Y' }}</td>
-            </tr>
-            <tr>
-              <td>Renewal Date</td>
-              {% if award.renewal_date %}
-              <td>{{ award.renewal_date | date:'d M Y' }}</td>
-              {% else %}
-              <td style="color: red">This contract is not subject to renewal</td>
-              {% endif %}
-            </tr>
-            <tr>
-              <td>Vendor(s)</td>
-              <td>
-                <ol style="list-style-position: inside;">
-                  {% for vendor in award.vendors.all %}
-                    <li><a href="{% url 'vendor_detail_view' vendor.id %}">{{ vendor }}</a></li>
-                  {% endfor %}
-                </ol>
-              </td>
-            </tr>
-            <tr>
-              <td>Value {% if award.tender.source == 'TED' %}(total value for all lots){% endif %}</td>
-              <td>{{ award.value | floatformat:'0' }}</td>
-            </tr>
-            <tr>
-              <td>Currency</td>
-              <td>{{ award.currency }}</td>
-            </tr>
-            </tbody>
-          </table>
+<div class="table-responsive table_detail" >
+  {% for award in tender.awards.all %}
+    <table id="award_detail_table" class="table table-striped table-bordered table-hover award_detail">
+      <br>
+      <thead>
+      <th>Award</th>
+      <th><span><a href="{% url 'contract_awards_detail_view' award.id %}">{{ award.tender.title}}</a></span></th>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Link to tender</td>
+        <td><a href="{{ award.tender.url }}" target="_blank">{{ award.tender.url }}</a></td>
+      </tr>
+      <tr>
+        <td>Award Date</td>
+        <td>{{ award.award_date | date:'d M Y' }}</td>
+      </tr>
+      <tr>
+        <td>Renewal Date</td>
+        {% if award.renewal_date %}
+        <td>{{ award.renewal_date | date:'d M Y' }}</td>
+        {% else %}
+        <td style="color: red">This contract is not subject to renewal</td>
+        {% endif %}
+      </tr>
+      <tr>
+        <td>Vendor(s)</td>
+        <td>
+          <ol style="list-style-position: inside;">
+            {% for vendor in award.vendors.all %}
+              <li><a href="{% url 'vendor_detail_view' vendor.id %}">{{ vendor }}</a></li>
+            {% endfor %}
+          </ol>
+        </td>
+      </tr>
+      <tr>
+        <td>Value {% if award.tender.source == 'TED' %}(total value for all lots){% endif %}</td>
+        <td>{{ award.value | floatformat:'0' }}</td>
+      </tr>
+      <tr>
+        <td>Currency</td>
+        <td>{{ award.currency }}</td>
+      </tr>
+      </tbody>
+    </table>
+  {% endfor %}
 
-      {% endfor %}
-      
 </div>
 <style>
   mark {

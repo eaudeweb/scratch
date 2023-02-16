@@ -112,6 +112,16 @@ class Tender(BaseTimedModel):
     def __str__(self):
         return '{}'.format(self.title)
 
+    @property
+    def safe_id(self):
+        """
+        When USE_THOUSAND_SEPARATOR=True, Djando templates render ids with
+        commas (e.g. `1,000`). This can break CSS selectors and any Javascript
+        code that relies on it. This property returns a safe id string with no
+        commas.
+        """
+        return str(self.id)
+
     @cached_property
     def marked_keyword_title(self):
         keywords = Keyword.get_values_list()
@@ -170,6 +180,9 @@ class Favorite(BaseTimedModel):
         on_delete=models.SET_NULL,
         related_name="favorites_where_inviter"
     )
+
+    class Meta:
+        unique_together = ["tender", "follower"]
 
     def __str__(self) -> str:
         return (

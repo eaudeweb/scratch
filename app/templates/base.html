@@ -5,9 +5,10 @@
 <head>
   <meta charset="UTF-8">
   <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
-  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}"/>
-  <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.dataTables.min.css' %}"/>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/datatables.min.css' %}"/>
   <link rel="stylesheet" type="text/css" href="{% static 'css/select2.min.css' %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/global.css' %}"/>
   <link rel="stylesheet" type="text/css" href="{% static 'css/tenders_table.css' %}"/>
   <link rel="stylesheet" type="text/css" href="{% static 'css/nav_menu.css' %}"/>
   <link rel="stylesheet" type="text/css" href="{% static 'css/update_vendor.css' %}"/>
@@ -16,22 +17,24 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/homepage.css' %}"/>
   <link rel="stylesheet" type="text/css" href="{% static 'css/search.css' %}"/>
   <link rel="stylesheet" type="text/css" href="{% static 'css/overview.css' %}"/>
-  <link rel="stylesheet" type="text/css" href="{% static 'css/commands.css' %}"/>
   <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-confirm.min.css' %}"/>
-  <link rel="stylesheet" type="text/css" href="{% static 'fontawesome6/css/fontawesome.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'fontawesome6/css/brands.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'fontawesome6/css/regular.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'fontawesome6/css/solid.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/filter_bar.css' %}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  {% block extra_css %}{% endblock %}
   <script type="text/javascript" src="{%  static 'js/moment.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="{% static 'js/datatables.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/select2.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/scratch_datatables.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/jquery-confirm.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/datatable_moment.js' %}"></script>
   <script type="text/javascript" src="{%  static 'js/overview.js' %}"></script>
+  {% block extra_js %}{% endblock %}
+  <script>
+    var loggedInUserId = {{ user.id }};
+  </script>
   {% block title %}
   {% endblock %}
 </head>
@@ -67,8 +70,9 @@
     <li><a class="{% active request login %} nav-menu-logout" href="{{ login }}">Login</a></li>
   {% endif %}
 </ul>
-
-{% block content %}
-{% endblock %}
+<div class="content">
+  {% block content %}
+  {% endblock %}
+</div>
 </body>
 </html>

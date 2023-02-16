@@ -1,21 +1,29 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block extra_js %}
+<script type="text/javascript" src="{% static 'js/management.js' %}"></script>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/management.css' %}"/>
+{% endblock %}
 
 {% block title %}
 <title>Scratch - Management</title>
 {% endblock %}
 
 {% block content %}
-<script src="../static/js/management.js"></script>
-<div style="text-align: center">
-  <div class="row table" style="text-align: center">
+<div>
+  <div class="row text-center">
     <h1 class="col-sm-12">
-      <span>Commands</span>
+      Commands
     </h1>
   </div>
   <br>
   <form method="POST" class="mgn-table">
     {% csrf_token %}
-    <table class="table table-striped mgn-table">
+    <table class="table table-striped border-top text-center">
       <thead>
         <tr>
           <th scope="col">Name</th>
@@ -49,12 +57,12 @@
       </tbody>
     </table>
   </form>
-  <div class="row table" style="text-align: center">
+  <div class="row text-center">
     <h1 class="col-sm-12">
       <span id="logs">Logs</span>
     </h1>
   </div>
-  <table class="table table-striped mgn-table log-table">
+  <table id="task-table" class="table table-striped table-hover align-middle text-center border-top">
     <thead>
       <tr>
         <th scope="col">Command</th>
@@ -63,62 +71,9 @@
         <th scope="col">Finished</th>
         <th scope="col">Output</th>
         <th scope="col">State</th>
+        <th scope="col"></th>
       </tr>
     </thead>
-    <tbody>
-      {% for task in tasks %}
-      <tr>
-        <th scope="row" style="vertical-align: middle">{{ task.args }}</th>
-        <td>{{ task.kwargs }}</td>
-        <td>{{ task.started }}</td>
-
-        <td>
-        {% if task.stopped %}
-          {{ task.stopped }}
-        {% endif %}
-        </td>
-
-        <td style="width: 30%">
-          {% if task.output %}
-            {{ task.output | truncatechars:255 }}
-          {% endif %}
-
-          {% if task.output|length > 255 %}
-          <span class="see-more" data-toggle="modal" data-target="#exampleModal">See more</span>
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Output report</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  {{ task.output }}
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          {% endif %}
-        </td>
-        <td>
-          <a href="{% url 'management_delete_view' task.id %}">
-          {% if task.status == 'success' %}
-          <img src="../static/images/success.png" class="icon-log">
-          {% elif task.status == 'processing' %}
-          <img src="../static/images/processing.png" class="icon-log">
-          {% else %}
-          <img src="../static/images/error.png" class="icon-log">
-          {% endif %}
-          </a>
-        </td>
-      </tr>
-      {% endfor %}
-    </tbody>
   </table>
 </div>
 {% endblock %}

@@ -14,7 +14,7 @@ import sentry_sdk
 from getenv import env
 from sentry_sdk.integrations.django import DjangoIntegration
 import ldap
-from django_auth_ldap.config import LDAPSearch
+from django_auth_ldap.config import GroupOfNamesType, LDAPSearch
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -130,7 +130,7 @@ AUTH_PASSWORD_VALIDATORS = [
 Q_CLUSTER = {
     'timeout': 59,
     'retry': 60,
-    'workers':int(env('DJ_Q_WORKERS', 3)),
+    'workers': int(env('DJ_Q_WORKERS', 3)),
     'redis': {
         'host': env('REDIS_HOST', 'redis'),
         'port': int(env('REDIS_PORT', 6379)),
@@ -138,7 +138,8 @@ Q_CLUSTER = {
 }
 
 # EMAIL
-EMAIL_BACKEND = env('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')
+EMAIL_BACKEND = env(
+    'EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')
 EMAIL_HOST = env('EMAIL_HOST', 'smtp')
 EMAIL_PORT = env('EMAIL_PORT', 25)
 
@@ -202,15 +203,29 @@ DELETE_EXPIRED_DAYS = int(env('DELETE_EXPIRED_DAYS', 5))
 
 # LDAP
 LDAP_HOST = env('LDAP_HOST', '')
-LDAP_PORT = str(env('LDAP_PORT', ''))
 LDAP_AUTH_USER_DN = env('LDAP_AUTH_USER_DN', '')
+LDAP_AUTH_GROUP_DN = env('LDAP_AUTH_GROUP_DN')
+AUTH_LDAP_BIND_DN = env('AUTH_LDAP_BIND_DN')
+AUTH_LDAP_BIND_PASSWORD = env('AUTH_LDAP_BIND_PASSWORD')
 
 ldap.set_option(ldap.OPT_X_TLS_REQUIRE_CERT, ldap.OPT_X_TLS_NEVER)
-AUTH_LDAP_SERVER_URI = "ldap://" + ":".join((LDAP_HOST, LDAP_PORT))
+AUTH_LDAP_SERVER_URI = "ldap://" + LDAP_HOST
 AUTH_LDAP_ALWAYS_UPDATE_USER = True
-AUTH_LDAP_USER_SEARCH = LDAPSearch(
-    LDAP_AUTH_USER_DN, ldap.SCOPE_SUBTREE, "(uid=%(user)s)"
-)
+
+AUTH_LDAP_USER_DN_TEMPLATE = "uid=%(user)s," + LDAP_AUTH_USER_DN
+AUTH_LDAP_GROUP_SEARCH = LDAPSearch(LDAP_AUTH_GROUP_DN, ldap.SCOPE_SUBTREE,
+                                    "(objectClass=group)")
+
+AUTH_LDAP_GROUP_TYPE = GroupOfNamesType()
+
+AUTH_LDAP_REQUIRE_GROUP = env('AUTH_LDAP_REQUIRE_GROUP')
+
+AUTH_LDAP_USER_FLAGS_BY_GROUP = {
+    "is_active": AUTH_LDAP_REQUIRE_GROUP,
+    # "is_staff": AUTH_LDAP_REQUIRE_GROUP,
+    # "is_superuser": AUTH_LDAP_REQUIRE_GROUP
+}
+
 AUTH_LDAP_USER_ATTR_MAP = {
     "first_name": "gecos",
     "email": "mail",
@@ -245,3 +260,20 @@ DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 # cachet
 APP_TOKEN = env("APP_TOKEN")
 APP_URL = env("APP_URL")
+
+# Commands that can be run on the /management page.
+RUNNABLE_COMMANDS = [
+    "add_award",
+    "deadline_notifications",
+    "delete_expired_tenders",
+    "notify_awards",
+    "notify_favorites",
+    "notify_keywords",
+    "notify_renewal",
+    "notify_tenders",
+    "remove_unnecessary_newlines",
+    "update_ted",
+    "update_ungm",
+]
+
+JSON_DATETIME_FORMAT = "%d/%m/%Y %H:%M"

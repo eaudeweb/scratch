@@ -11,6 +11,7 @@ RUN mkdir -p $APP_HOME
 COPY requirements* $APP_HOME/
 WORKDIR $APP_HOME
 
+RUN pip install --upgrade pip
 RUN pip install --no-cache-dir  -r $REQFILE
 
 COPY . $APP_HOME

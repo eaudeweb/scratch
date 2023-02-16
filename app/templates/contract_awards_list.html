@@ -1,21 +1,19 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
   <title>Scratch - Contract Awards</title>
 {% endblock %}
 
 {% block content %}
-
-  <div class="row table" >
-    <h1 class="col-sm-12">
-      <span>Contract Awards</span>
-    </h1>
-  </div>
+  <h1>
+    <span>Contract Awards</span>
+  </h1>
 
   {% include 'awards_filters.html' %}
 
-  <div class = "table" >
-    <table id="contract_awards_table"  class="cell-border display compact">
+  <div class="table-responsive" >
+    <table id="contract_awards_table"  class="table table-bordered table-striped align-top">
       <thead>
       <tr>
         <th>Title</th>

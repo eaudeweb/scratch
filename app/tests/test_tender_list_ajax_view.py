@@ -29,7 +29,7 @@ class TendersListAjaxViewTests(BaseTestCase):
         new_tender1 = TenderFactory(title='Tender1 python')
         new_tender2 = TenderFactory()
         new_tender3 = TenderFactory()
-        new_tender4 = TenderFactory()
+        new_tender4 = TenderFactory(id=1000)
         award = AwardFactory(tender=new_tender4)
 
         url = '{}?{}'.format(
@@ -47,10 +47,15 @@ class TendersListAjaxViewTests(BaseTestCase):
         url = '{}?{}'.format(
             reverse('tenders_list_ajax_view'),  urlencode(query_kwargs))
         response = self.client.get(url)
+        data = json.loads(response.content)['data']
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context), 2)
         self.assertEqual(response.context[0]['tender'], new_tender3)
         self.assertEqual(response.context[1]['tender'], new_tender4)
+        self.assertIn("add_follower_button_1000",
+                      data[1]['notice_type'])
+        self.assertNotIn("add_follower_button_1,000",
+                         data[1]['notice_type'])
 
         award_url = reverse('contract_awards_detail_view',
                             kwargs={'pk': award.id})
@@ -85,7 +90,7 @@ class TendersListAjaxViewTests(BaseTestCase):
             "start": '0',
             "draw": '1',
             "length": '10',
-            "order[0][column]": "1",
+            "order[0][column]": "2",  # Source
             "order[0][dir]": "desc",
         }
 

@@ -123,6 +123,7 @@ docker/tika.env
 docker/cachet.env
 .env
 .venv/
+requirements-local.txt
 
 # MacOS
 .DS_Store

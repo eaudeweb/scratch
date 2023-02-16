@@ -30,7 +30,7 @@
 
 1. Go into application container:
 
-        docker exec -it scratch.app sh
+        docker compose exec web sh
 
 1. Run migrations:
     ```
@@ -59,7 +59,7 @@ Comment the web service the ports in docker-compose.yml
 ```
 
 Create docker-compose.override.yml from  docker-compose.override.yml.nginx.example
-```   
+```
     cp docker-compose.override.yml.nginx.example docker-compose.override.yml
 ```
 
@@ -84,9 +84,9 @@ web client at http://localhost:1358/?appname=%2A&url=http://localhost:9200/
 - Bootstrap checks failed: When starting the Elasticsearch container, this error may ocurr. The following command should fix it.
 
         sudo sysctl -w vm.max_map_count=262144
-- TenderDocument objects have no actual file associated: Due to a failed request to download a tender document, 
-TenderDocument objects without an actual document may be created and saved in the db. After the cause of the request 
-failure is resolved, you can fix the incomplete objects already saved in the db by running the following command, 
+- TenderDocument objects have no actual file associated: Due to a failed request to download a tender document,
+TenderDocument objects without an actual document may be created and saved in the db. After the cause of the request
+failure is resolved, you can fix the incomplete objects already saved in the db by running the following command,
 which will download the documents for the instances where they are missing:
 
    ```commandline

@@ -8,9 +8,7 @@ from django.contrib.auth import (
 )
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.management import (
-    call_command, get_commands, load_command_class
-)
+from django.core.management import call_command, load_command_class
 from django.shortcuts import redirect
 from django.utils.http import url_has_allowed_host_and_scheme
 from django.utils.decorators import method_decorator
@@ -28,7 +26,8 @@ from app.forms import SearchForm
 from app.models import (
     CPVCode, UNSPSCCode, Task, Tender, Award, WorkerLog
 )
-from app.utils import emails_to_notify
+from app.utils import emails_to_notify, dt_to_json
+from app.views.base import BaseAjaxListingView
 
 
 class HomepageView(TemplateView):
@@ -99,17 +98,9 @@ class ManagementView(LoginRequiredMixin, TemplateView):
             except class_obj.DoesNotExist:
                 return False
 
-        available_commands = get_commands()
-        module_commands = [
-            cmd for cmd in available_commands.keys()
-            if available_commands[cmd] == 'app' and cmd not in (
-                "notify_user_favorites", "user_deadline_notifications"
-            )
-        ]
-
         commands = []
 
-        for command_name in module_commands:
+        for command_name in settings.RUNNABLE_COMMANDS:
             try:
                 base_class = load_command_class('app', command_name)
 
@@ -180,6 +171,30 @@ class ManagementView(LoginRequiredMixin, TemplateView):
             t.save()
 
             return redirect('management_view')
+
+
+class TaskListAjaxView(LoginRequiredMixin, BaseAjaxListingView):
+
+    model = Task
+
+    def get_objects(self):
+        return self.model.objects.order_by('-started')
+
+    def format_data(self, object_list):
+        data = [
+            {
+                'id': task.id,
+                'args': task.args,
+                'kwargs': task.kwargs,
+                'started': dt_to_json(task.started),
+                'stopped': dt_to_json(task.stopped),
+                'output': task.output,
+                'status': task.status,
+                'created_at': dt_to_json(task.created_at),
+                'updated_at': dt_to_json(task.updated_at),
+            } for task in object_list
+        ]
+        return data
 
 
 class ManagementDeleteView(LoginRequiredMixin, View):
