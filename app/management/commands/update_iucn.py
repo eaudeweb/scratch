@@ -22,6 +22,7 @@ class Command(BaseCommand, BaseParamsUI):
             },
         ]
 
+    @log_tenders_update(tender_source=TenderSource.TED)
     def handle(self, *args, **kwargs):
         self.stdout.write(
             self.style.SUCCESS('Importing new IUCN tenders...')
