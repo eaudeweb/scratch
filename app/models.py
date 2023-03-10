@@ -20,6 +20,7 @@ from tika import parser
 SOURCE_CHOICES = [
     ('UNGM', 'UNGM'),
     ('TED', 'TED'),
+    ('IUCN', 'IUCN'),
 ]
 
 fields = [r'title', r'description']

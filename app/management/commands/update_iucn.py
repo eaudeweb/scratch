@@ -1,3 +1,5 @@
+from django.db.models import Q
+
 from app.models import Tender
 from datetime import datetime, timedelta
 from app.parsers.iucn import IUCNWorker
@@ -24,21 +26,22 @@ class Command(BaseCommand, BaseParamsUI):
         self.stdout.write(
             self.style.SUCCESS('Importing new IUCN tenders...')
         )
-        old_tender_count = Tender.objects.count()
+        old_tender_count = Tender.objects.filter(source="IUCN").count()
         if kwargs['days_ago']:
             days_ago = kwargs['days_ago']
-            last_date = (datetime.today() - timedelta(days=days_ago)).date()
+            last_date = datetime.today() - timedelta(days=days_ago)
         elif not old_tender_count:
             raise CommandError(
                 "The database is empty, argument --days_ago is missing"
             )
         else:
-            last_date = Tender.objects.latest('published').published
+            last_date = datetime.combine(Tender.objects.filter(~Q(published=None), Q(source='IUCN')).latest('published').published, datetime.min.time())
 
         try:
             w = IUCNWorker()
             w.parse_latest_notices(last_date)
-            tenders_imported = Tender.objects.count() - old_tender_count
+            tenders_imported = Tender.objects.filter(source="IUCN").count() - old_tender_count
+            IUCNWorker.add_worker_log(tenders_imported)
             success_msg = f'{tenders_imported} new IUCN tender(s) imported'
             self.stdout.write(
                 self.style.SUCCESS(success_msg)
