@@ -98,7 +98,6 @@ class IUCNWorker:
         title_and_links = tender_components[1]
         doc_links = [{'download_url': IUCNWorker.BASE_URI + doc.attrs['href'], 'name': doc.text.strip()} for doc in
                      title_and_links.select('a')]
-        print(doc_links)
         first_link = doc_links[0]
         print(first_link.get('download_url'))
         title, reference, published = IUCNWorker.parse_pdf(first_link.get('download_url'))
@@ -126,7 +125,6 @@ class IUCNWorker:
             'description': description,
         }
 
-        print(tender)
         if tender["reference"]:
             IUCNWorker.save_tender(tender, doc_links)
 
@@ -137,7 +135,6 @@ class IUCNWorker:
 
         title_and_links = notice_components[0]
         doc_links = [{ 'download_url' : IUCNWorker.BASE_URI + doc.attrs['href'], 'name': doc.text.strip() } for doc in title_and_links.select('a')]
-        print(doc_links)
         first_link = doc_links[0]
         print(first_link.get('download_url'))
         title, reference, published = IUCNWorker.parse_pdf(first_link.get('download_url'))
@@ -196,15 +193,13 @@ class IUCNWorker:
 
         }
 
-        print(tender)
         if tender["reference"]:
             IUCNWorker.save_tender(tender, doc_links)
             IUCNWorker.save_award(tender, award)
 
-        print(award)
 
     @staticmethod
-    def save_tender(tender_dict, doc_links) -> Tuple[bool, dict]:
+    def save_tender(tender_dict, doc_links) :
         old_tender = Tender.objects.filter(
             reference=tender_dict['reference']).first()
         new_tender, created = Tender.objects.update_or_create(
