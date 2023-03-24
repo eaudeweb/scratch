@@ -66,17 +66,27 @@ class IUCNWorker:
         tenders = []
         for table in tender_tables:
             tenders += table.select("tr")[1:]
+
+        new_tenders = []
+        new_awards = []
         for tender in tenders:
             try:
                 if notice_type == "Contract notice":
-                    IUCNWorker.parse_iucn_notice(tender, last_date)
+                    new_tender = IUCNWorker.parse_iucn_notice(tender, last_date)
+                    if new_tender:
+                        new_tenders.append(new_tender)
+
                 elif notice_type == "Contract award notice":
-                    IUCNWorker.parse_iucn_award(tender, last_date)
+                    new_tender, new_award = IUCNWorker.parse_iucn_award(tender, last_date)
+                    if new_tender:
+                        new_tenders.append(new_tender)
+                    if new_award:
+                        new_awards.append(new_award)
+
             except Exception as e:
                 print(e)
                 continue
-
-    # return tenders
+        return new_tenders, new_awards
 
     @staticmethod
     def parse_iucn_notice(tender, last_date):
@@ -118,7 +128,7 @@ class IUCNWorker:
             'url': first_link.get('download_url'),
             'notice_type': "Contract notice",
             'title': title,
-            'organization': iucn_office.text,
+            'organization': iucn_office.text.strip(),
             'reference': reference,
             'published': published,
             'deadline': deadline,
@@ -126,7 +136,8 @@ class IUCNWorker:
         }
 
         if tender["reference"]:
-            IUCNWorker.save_tender(tender, doc_links)
+            new_tender = IUCNWorker.save_tender(tender, doc_links)
+            return new_tender
 
     @staticmethod
     def parse_iucn_award(notice, last_date):
@@ -171,13 +182,13 @@ class IUCNWorker:
             try:
                 duration = int(extract_first_number(notice_components[3].text))
 
-                if notice_components[3].text.lower().find('weeks') != -1:
+                if notice_components[3].text.lower().find('weeks') != -1 or notice_components[3].text.lower().find('week') != -1:
                     renewal_date = award_date + relativedelta(weeks=duration)
-                elif notice_components[3].text.lower().find('days') != -1:
+                elif notice_components[3].text.lower().find('days') != -1 or notice_components[3].text.lower().find('day') != -1:
                     renewal_date = award_date + relativedelta(days=duration)
-                elif notice_components[3].text.lower().find('months') != -1:
+                elif notice_components[3].text.lower().find('months') != -1 or notice_components[3].text.lower().find('month') != -1:
                     renewal_date = award_date + relativedelta(months=duration)
-                elif notice_components[3].text.lower().find('years') != -1:
+                elif notice_components[3].text.lower().find('years') != -1 or notice_components[3].text.lower().find('year') != -1:
                     renewal_date = award_date + relativedelta(years=duration)
             except (AttributeError, TypeError, ValueError):
                 renewal_date = None
@@ -194,8 +205,9 @@ class IUCNWorker:
         }
 
         if tender["reference"]:
-            IUCNWorker.save_tender(tender, doc_links)
-            IUCNWorker.save_award(tender, award)
+            new_tender = IUCNWorker.save_tender(tender, doc_links)
+            new_award = IUCNWorker.save_award(tender, award)
+            return new_tender, new_award
 
 
     @staticmethod
@@ -206,6 +218,7 @@ class IUCNWorker:
             reference=tender_dict['reference'],
             defaults=tender_dict,
         )
+        print(tender_dict)
 
         if old_tender and old_tender.notified:
             new_tender.notified = True
@@ -231,6 +244,7 @@ class IUCNWorker:
                 new_docs.append(doc)
             finally:
                 IUCNWorker.download_document(tender_doc)
+        return new_tender
 
 
     @staticmethod
@@ -341,6 +355,8 @@ class IUCNWorker:
             headers = {
                 'User-Agent': 'Mozilla/5.0'
             }
+
+
             response = requests.get(tender_doc.download_url, headers=headers, stream=True)
             if response.status_code == 200:
                 for chunk in response.iter_content(chunk_size=4096):
