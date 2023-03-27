@@ -6,6 +6,7 @@ from getenv import env
 
 from app.notifications import build_email
 from app.models import Tender, SOURCE_CHOICES
+from app.parsers.iucn import IUCNWorker
 from app.parsers.ted import TEDWorker
 from app.parsers.ungm import UNGMWorker
 from app.management.commands.base.params import BaseParamsUI
@@ -118,6 +119,7 @@ class BaseNotifyCommand(BaseCommand, BaseParamsUI):
 
         ted_tenders = tenders.filter(source=dict(SOURCE_CHOICES).get('TED'))
         ungm_tenders = tenders.filter(source=dict(SOURCE_CHOICES).get('UNGM'))
+        iucn_tenders = tenders.filter(source=dict(SOURCE_CHOICES).get('IUCN'))
 
         changed_ted_tenders = []
         if ted_tenders.exists():
@@ -139,9 +141,20 @@ class BaseNotifyCommand(BaseCommand, BaseParamsUI):
             )
             w = UNGMWorker()
             changed_ungm_tenders, _ = w.parse_tenders(ungm_tenders)
+
+        changed_iucn_tenders = []
+        if iucn_tenders.exists():
+            self.stdout.write(
+                self.style.SUCCESS(
+                    f'Scraping {iucn_tenders.count()} IUCN tenders...'
+                )
+            )
+            w = IUCNWorker()
+            changed_iucn_tenders = w.update_tenders(iucn_tenders)
+
         return Tender.objects.filter(
             reference__in=[
                 t[0]['reference']
-                for t in changed_ted_tenders + changed_ungm_tenders
+                for t in changed_ted_tenders + changed_ungm_tenders + changed_iucn_tenders
             ]
         )

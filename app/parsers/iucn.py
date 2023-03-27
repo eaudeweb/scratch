@@ -4,7 +4,6 @@ import re
 from datetime import date
 from io import BytesIO
 from tempfile import TemporaryFile
-from typing import Tuple
 
 import datefinder
 import docx2txt
@@ -13,6 +12,7 @@ from bs4 import BeautifulSoup
 from dateutil import parser
 from dateutil.relativedelta import relativedelta
 from django.core.files import File
+from django.utils.timezone import make_aware
 from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
@@ -23,12 +23,6 @@ from app.models import Tender, Award, Vendor, WorkerLog, TenderDocument
 from app.utils import transform_vendor_name
 
 
-# TODO: save awards to database
-# TODO: add iucn source to tender filter
-# TODO: filter imported iucn tenders by keyword
-# TODO: implement last_date functionality
-# TODO: Check warning ->  RuntimeWarning: DateTimeField Tender.deadline received a naive datetime (2022-09-26 00:00:00)
-#  while time zone support is active.
 
 class IUCNWorker:
     BASE_URI = "https://www.iucn.org"
@@ -54,13 +48,24 @@ class IUCNWorker:
             tenders_html = self.get_tenders_html()
             awards_html = self.get_awards_html()
 
-            self.parse_iucn_notice_list(tenders_html, last_date, "Contract notice")
-            self.parse_iucn_notice_list(awards_html, last_date, "Contract award notice")
+            self.parse_iucn_notice_list(tenders_html, "Contract notice", last_date)
+            self.parse_iucn_notice_list(awards_html, "Contract award notice", last_date)
         except Exception as e:
-            print(e)
+            logging.error(e)
+
+    def update_tenders(self, tenders_to_update = None):
+        try:
+            tenders_html = self.get_tenders_html()
+            awards_html = self.get_awards_html()
+
+            _, updated_tenders, _ = self.parse_iucn_notice_list(tenders_html, "Contract notice", last_date=None, tenders_to_update=tenders_to_update)
+            _, updated_award_tenders, _ = self.parse_iucn_notice_list(awards_html, "Contract award notice", last_date=None, tenders_to_update=tenders_to_update)
+            return updated_tenders + updated_award_tenders
+        except Exception as e:
+            logging.error(e)
 
     @staticmethod
-    def parse_iucn_notice_list(html, last_date, notice_type):
+    def parse_iucn_notice_list(html, notice_type, last_date, tenders_to_update = None):
         soup = BeautifulSoup(html, 'html.parser')
         tender_tables = soup.select('table.datatables-enabled')
         tenders = []
@@ -68,28 +73,35 @@ class IUCNWorker:
             tenders += table.select("tr")[1:]
 
         new_tenders = []
+        updated_tenders = []
         new_awards = []
         for tender in tenders:
             try:
                 if notice_type == "Contract notice":
-                    new_tender = IUCNWorker.parse_iucn_notice(tender, last_date)
+                    new_tender = IUCNWorker.parse_iucn_notice(tender, last_date, tenders_to_update)
                     if new_tender:
-                        new_tenders.append(new_tender)
+                        if new_tender[1]:
+                            new_tenders.append(new_tender)
+                        elif new_tender[2] or new_tender[3]:
+                            updated_tenders.append(new_tender)
 
                 elif notice_type == "Contract award notice":
-                    new_tender, new_award = IUCNWorker.parse_iucn_award(tender, last_date)
+                    new_tender, new_award = IUCNWorker.parse_iucn_award(tender, last_date, tenders_to_update)
                     if new_tender:
-                        new_tenders.append(new_tender)
+                        if new_tender[1]:
+                            new_tenders.append(new_tender)
+                        elif new_tender[2] or new_tender[3]:
+                            updated_tenders.append(new_tender)
                     if new_award:
                         new_awards.append(new_award)
 
             except Exception as e:
-                print(e)
+                logging.error(e)
                 continue
-        return new_tenders, new_awards
+        return new_tenders, updated_tenders, new_awards
 
     @staticmethod
-    def parse_iucn_notice(tender, last_date):
+    def parse_iucn_notice(tender, last_date, tenders_to_update = None):
 
         tender_components = tender.select('td')
 
@@ -109,10 +121,12 @@ class IUCNWorker:
         doc_links = [{'download_url': IUCNWorker.BASE_URI + doc.attrs['href'], 'name': doc.text.strip()} for doc in
                      title_and_links.select('a')]
         first_link = doc_links[0]
-        print(first_link.get('download_url'))
         title, reference, published = IUCNWorker.parse_pdf(first_link.get('download_url'))
 
-        if published and published < last_date:
+        if tenders_to_update and reference not in [tender_to_update.reference for tender_to_update in tenders_to_update]:
+            return None, None, None, None
+
+        if last_date and published and published < last_date:
             return
 
         iucn_office = tender_components[2]
@@ -130,8 +144,8 @@ class IUCNWorker:
             'title': title,
             'organization': iucn_office.text.strip(),
             'reference': reference,
-            'published': published,
-            'deadline': deadline,
+            'published': published.date(),
+            'deadline': make_aware(deadline),
             'description': description,
         }
 
@@ -140,17 +154,19 @@ class IUCNWorker:
             return new_tender
 
     @staticmethod
-    def parse_iucn_award(notice, last_date):
+    def parse_iucn_award(notice, last_date, tenders_to_update = None):
 
         notice_components = notice.select('td')
 
         title_and_links = notice_components[0]
         doc_links = [{ 'download_url' : IUCNWorker.BASE_URI + doc.attrs['href'], 'name': doc.text.strip() } for doc in title_and_links.select('a')]
         first_link = doc_links[0]
-        print(first_link.get('download_url'))
         title, reference, published = IUCNWorker.parse_pdf(first_link.get('download_url'))
 
-        if published and published < last_date:
+        if tenders_to_update and reference not in [tender_to_update.reference for tender_to_update in tenders_to_update]:
+            return None, None
+
+        if last_date and published and published < last_date:
             return
 
         iucn_office = notice_components[1]
@@ -162,7 +178,7 @@ class IUCNWorker:
             'title': title,
             'organization': iucn_office.text.replace("\n", ""),
             'reference': reference,
-            'published': published,
+            'published': published.date(),
             'deadline': None,
             'description': '',
         }
@@ -218,11 +234,16 @@ class IUCNWorker:
             reference=tender_dict['reference'],
             defaults=tender_dict,
         )
-        print(tender_dict)
 
         if old_tender and old_tender.notified:
             new_tender.notified = True
             new_tender.save()
+
+        attr_changes = {}
+        for attr, value in [(k, v) for (k, v) in tender_dict.items()]:
+            old_value = getattr(old_tender, str(attr), None)
+            if str(value) != str(old_value):
+                attr_changes.update({attr: (old_value, value)})
 
         new_docs = []
         tender_doc = None
@@ -244,7 +265,8 @@ class IUCNWorker:
                 new_docs.append(doc)
             finally:
                 IUCNWorker.download_document(tender_doc)
-        return new_tender
+
+        return tender_dict, created, attr_changes, new_docs
 
 
     @staticmethod
