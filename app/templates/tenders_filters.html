@@ -79,6 +79,21 @@
 
 {% endif %}
 
+{% if iucn_published_today %}
+  <ul>
+    <li class="date_filter">IUCN tenders published today</li>
+    <li class="quiet">Remove filter by pressing <a href="{{ reset_url }}" style="color: red">RESET FILTERS</a></li>
+  </ul>
+{% endif %}
+
+{% if iucn_deadline_today %}
+  <ul>
+    <li class="date_filter">IUCN tenders deadline today</li>
+    <li class="quiet">Remove filter by pressing <a href="{{ reset_url }}" style="color: red">RESET FILTERS</a></li>
+  </ul>
+
+{% endif %}
+
 {% if ted_published_today %}
   <ul>
     <li class="date_filter">TED tenders published today</li>

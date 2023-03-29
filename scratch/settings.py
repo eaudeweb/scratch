@@ -274,6 +274,7 @@ RUNNABLE_COMMANDS = [
     "remove_unnecessary_newlines",
     "update_ted",
     "update_ungm",
+    "update_iucn",
 ]
 
 JSON_DATETIME_FORMAT = "%d/%m/%Y %H:%M"

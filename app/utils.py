@@ -1,3 +1,6 @@
+import logging
+import string
+
 import requests
 
 from django.conf import settings
@@ -7,6 +10,7 @@ from .models import Profile
 class TenderSource:
     TED = 'TED'
     UNGM = 'UNGM'
+    IUCN = 'IUCN'
 
 
 def emails_to_notify():
@@ -32,29 +36,43 @@ def log_tenders_update(tender_source: TenderSource):
                 "message": f"Importing new {tender_source} tenders...",
                 "status": 3,
             }
-            response_incident = requests.post(
-                url, json=payload, headers=headers)
+            try:
+                response_incident = requests.post(
+                    url, json=payload, headers=headers)
+            except Exception as e:
+                print(e)
+                logging.warning("Failed to connect to cachet")
 
             try:
                 return_value = fn(*args, **kwargs)
 
-                url = settings.APP_URL + \
-                    f"/api/v1/incidents/{response_incident.json()['data']['id']}/updates"
-                payload = {
-                    "message": return_value,
-                    "status": 4
-                }
-                requests.post(url, json=payload, headers=headers)
+                try:
+                    url = settings.APP_URL + \
+                        f"/api/v1/incidents/{response_incident.json()['data']['id']}/updates"
+                    payload = {
+                        "message": return_value,
+                        "status": 4
+                    }
+
+                    requests.post(url, json=payload, headers=headers)
+                except Exception as e:
+                    print(e)
+                    logging.warning("Failed to connect to cachet")
 
                 return return_value
             except Exception as error:
-                url = settings.APP_URL + \
-                    f"/api/v1/incidents/{response_incident.json()['data']['id']}/updates"
-                payload = {
-                    "message": f'{tender_source} tenders update failed: {error}',
-                    "status": 2
-                }
-                requests.post(url, json=payload, headers=headers)
+                try:
+                    url = settings.APP_URL + \
+                        f"/api/v1/incidents/{response_incident.json()['data']['id']}/updates"
+                    payload = {
+                        "message": f'{tender_source} tenders update failed: {error}',
+                        "status": 2
+                    }
+                    requests.post(url, json=payload, headers=headers)
+                except Exception as e:
+                    print(e)
+                    logging.warning("Failed to connect to cachet")
+
                 raise
 
         return wrapper
@@ -64,3 +82,13 @@ def log_tenders_update(tender_source: TenderSource):
 
 def dt_to_json(dt):
     return dt.strftime(settings.JSON_DATETIME_FORMAT) if dt else None
+
+
+def transform_vendor_name(vendor_name):
+    vendor_name = vendor_name.upper()
+    vendor_name = vendor_name.replace("(CO-CONTRACTOR)", "")
+    vendor_name = vendor_name.replace("(GROUP LEADER)", "")
+    vendor_name = vendor_name.strip()
+    vendor_name = vendor_name.translate(str.maketrans('', '', string.punctuation))
+
+    return vendor_name

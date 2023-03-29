@@ -39,6 +39,30 @@
 
       <div class="row home-page">
         <div class="card col-sm-2">
+          <a href="{% url 'tenders_list_view' %}?source=IUCN&filter_button=filter" class="container-card">
+            <h5><b>IUCN Tenders</b></h5>
+            <br>
+            <p>{{ iucn_tenders }}</p>
+          </a>
+        </div>
+
+        <div class="card col-sm-2">
+          <a href="{% url 'tenders_list_view' %}?source=IUCN&filter_button=filter&iucn_published_today=True" class="container-card">
+            <h5><b>IUCN Published Today</b></h5>
+            <p>{{ iucn_published_today }}</p>
+          </a>
+        </div>
+
+        <div class="card col-sm-2">
+          <a href="{% url 'tenders_list_view' %}?source=IUCN&filter_button=filter&iucn_deadline_today=True" class="container-card">
+            <h5><b>IUCN Deadline Today</b></h5>
+            <p>{{ iucn_deadline_today }}</p>
+          </a>
+        </div>
+      </div>
+
+      <div class="row home-page">
+        <div class="card col-sm-2">
           <a href="{% url 'tenders_list_view' %}?source=TED&filter_button=filter" class="container-card">
             <h5><b>TED Tenders</b></h5>
             <br>

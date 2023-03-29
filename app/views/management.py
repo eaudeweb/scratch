@@ -50,6 +50,7 @@ class HomepageView(TemplateView):
             hour=0, minute=0, second=0, microsecond=0) + timedelta(days=1)
 
         context["ungm_tenders"] = Tender.objects.filter(source="UNGM").count()
+        context["iucn_tenders"] = Tender.objects.filter(source="IUCN").count()
         context["ted_tenders"] = Tender.objects.filter(source="TED").count()
         if self.request.user.is_authenticated:
             context["favorite_tenders"] = self.request.user.favorite_tenders.count()
@@ -65,11 +66,17 @@ class HomepageView(TemplateView):
         context["ungm_published_today"] = Tender.objects.filter(
             published__exact=today, source="UNGM"
         ).count()
+        context["iucn_published_today"] = Tender.objects.filter(
+            published__exact=today, source="IUCN"
+        ).count()
         context["ted_published_today"] = Tender.objects.filter(
             published__exact=today, source="TED"
         ).count()
         context["ungm_deadline_today"] = Tender.objects.filter(
             deadline__gte=deadline_gte, deadline__lt=deadline_lt, source="UNGM"
+        ).count()
+        context["iucn_deadline_today"] = Tender.objects.filter(
+            deadline__gte=deadline_gte, deadline__lt=deadline_lt, source="IUCN"
         ).count()
         context["ted_deadline_today"] = Tender.objects.filter(
             deadline__gte=deadline_gte, deadline__lt=deadline_lt, source="TED"

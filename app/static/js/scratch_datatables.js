@@ -340,9 +340,11 @@ function tenderData(d) {
   d.seen = $('#id_seen').val();
   d.tags = $('#id_tags').val().join(',');
   d.ungm_deadline_today = ungm_deadline_today;
+  d.iucn_deadline_today = iucn_deadline_today;
   d.ted_published_today = ted_published_today;
   d.ted_deadline_today = ted_deadline_today;
   d.ungm_published_today = ungm_published_today;
+  d.iucn_published_today = iucn_published_today;
 }
 
 function awardData(d) {
@@ -360,9 +362,11 @@ function initDataTables() {
 
   const searchTerm = $.urlParam(doc, 'terms');
   const ungm_deadline_today = $.urlParam(doc, 'ungm_deadline_today');
+  const iucn_deadline_today = $.urlParam(doc, 'iucn_deadline_today');
   const ted_published_today = $.urlParam(doc, 'ted_published_today');
   const ted_deadline_today = $.urlParam(doc, 'ted_deadline_today');
   const ungm_published_today = $.urlParam(doc, 'ungm_published_today');
+  const iucn_published_today = $.urlParam(doc, 'iucn_published_today');
 
   const tendersColumnDefs = [
     {
@@ -434,9 +438,11 @@ function initDataTables() {
         d.seen = $('#id_seen').val();
         d.tags = $('#id_tags').val().join(',');
         d.ungm_deadline_today = ungm_deadline_today;
+        d.iucn_deadline_today = iucn_deadline_today;
         d.ted_published_today = ted_published_today;
         d.ted_deadline_today = ted_deadline_today;
         d.ungm_published_today = ungm_published_today;
+        d.iucn_published_today = iucn_published_today;
       },
     },
     columnDefs: tendersColumnDefs,
