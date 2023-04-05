@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+from unittest.mock import patch, MagicMock
 
 from bs4 import BeautifulSoup
 from dateutil.relativedelta import relativedelta
@@ -152,10 +153,32 @@ class SendMailTest(BaseTestCase):
         self.assertEqual(award_list[1]['href'], award_tender_url2)
         self.assertEqual(award_list[2]['href'], award_tender_url3)
 
-    def test_mailing_favorites(self):
+    @patch('app.server_requests.requests')
+    def test_mailing_favorites(self, mock_requests):
+
+        with open('app/tests/parser_files/94909.html', 'r') as f:
+            mock_response1 = MagicMock()
+            mock_response1.status_code = 200
+            mock_response1.content = f.read()
+
+
+        with open('app/tests/parser_files/94920.html', 'r') as f:
+            mock_response2 = MagicMock()
+            mock_response2.status_code = 200
+            mock_response2.content = f.read()
+
+        with open('app/tests/parser_files/92850.html', 'r') as f:
+            mock_response3 = MagicMock()
+            mock_response3.status_code = 200
+            mock_response3.content = f.read()
+
+        mock_requests.get.side_effect = [mock_response1, ]
+
         original_tender1_organization = self.tender1.organization
         management.call_command('notify_favorites')
         self.assertEqual(len(mail.outbox), 1)
+
+        mock_requests.get.side_effect = [mock_response1, ]
 
         self.tender1 = Tender.objects.get(reference=self.tender1.reference)
         self.tender1.organization = 'CHANGE1'
@@ -163,6 +186,8 @@ class SendMailTest(BaseTestCase):
 
         management.call_command('notify_favorites')
         self.assertEqual(len(mail.outbox), 2)
+
+        mock_requests.get.side_effect = [mock_response1, ]
 
         self.tender3 = Tender.objects.get(reference=self.tender3.reference)
         self.tender3.organization = 'CHANGE2'
@@ -179,7 +204,27 @@ class SendMailTest(BaseTestCase):
         self.assertEqual(self.tender1.organization in message, True)
         self.assertEqual(self.tender3.organization in message, False)
 
-    def test_mailing_favorites_digest(self):
+    @patch('app.server_requests.requests')
+    def test_mailing_favorites_digest(self, mock_requests):
+
+        with open('app/tests/parser_files/94909.html', 'r') as f:
+            mock_response1 = MagicMock()
+            mock_response1.status_code = 200
+            mock_response1.content = f.read()
+
+
+        with open('app/tests/parser_files/94920.html', 'r') as f:
+            mock_response2 = MagicMock()
+            mock_response2.status_code = 200
+            mock_response2.content = f.read()
+
+        with open('app/tests/parser_files/92850.html', 'r') as f:
+            mock_response3 = MagicMock()
+            mock_response3.status_code = 200
+            mock_response3.content = f.read()
+
+        mock_requests.get.side_effect = [mock_response3, mock_response1, mock_response2 ]
+
         self.tender2 = Tender.objects.get(reference=self.tender2.reference)
         self.tender2.organization = 'CHANGE2'
         self.tender2.followers.add(self.user)
@@ -208,15 +253,39 @@ class SendMailTest(BaseTestCase):
         self.assertEqual(tender_list[1]['href'], tender_1_url)
         self.assertEqual(tender_list[2]['href'], tender_2_url)
 
-    def test_mailing_keywords(self):
+    @patch('app.server_requests.requests')
+    def test_mailing_keywords(self, mock_requests):
+
+        with open('app/tests/parser_files/94909.html', 'r') as f:
+            mock_response1 = MagicMock()
+            mock_response1.status_code = 200
+            mock_response1.content = f.read()
+
+
+        with open('app/tests/parser_files/94920.html', 'r') as f:
+            mock_response2 = MagicMock()
+            mock_response2.status_code = 200
+            mock_response2.content = f.read()
+
+        with open('app/tests/parser_files/92850.html', 'r') as f:
+            mock_response3 = MagicMock()
+            mock_response3.status_code = 200
+            mock_response3.content = f.read()
+
+        mock_requests.get.side_effect = [mock_response3, mock_response1, mock_response2]
+
         management.call_command('notify_keywords')
         self.assertEqual(len(mail.outbox), 1)
+
+        mock_requests.get.side_effect = [mock_response1, mock_response2]
 
         self.tender2.organization = 'CHANGE1'
         self.tender2.save()
 
         management.call_command('notify_keywords')
         self.assertEqual(len(mail.outbox), 2)
+
+        mock_requests.get.side_effect = [mock_response1, mock_response2]
 
         self.tender3.organization = 'CHANGE2'
         self.tender3.save()
@@ -229,7 +298,27 @@ class SendMailTest(BaseTestCase):
         self.assertEqual(self.tender2.organization in message, False)
         self.assertEqual(self.tender3.organization in message, False)
 
-    def test_mailing_keywords_digest(self):
+    @patch('app.server_requests.requests')
+    def test_mailing_keywords_digest(self, mock_requests):
+
+        with open('app/tests/parser_files/94909.html', 'r') as f:
+            mock_response1 = MagicMock()
+            mock_response1.status_code = 200
+            mock_response1.content = f.read()
+
+
+        with open('app/tests/parser_files/94920.html', 'r') as f:
+            mock_response2 = MagicMock()
+            mock_response2.status_code = 200
+            mock_response2.content = f.read()
+
+        with open('app/tests/parser_files/92850.html', 'r') as f:
+            mock_response3 = MagicMock()
+            mock_response3.status_code = 200
+            mock_response3.content = f.read()
+
+        mock_requests.get.side_effect = [mock_response3, mock_response1, mock_response2]
+
         self.tender1 = Tender.objects.get(reference=self.tender1.reference)
         self.tender1.title = 'test_title1 python'
         self.tender1.save()
