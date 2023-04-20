@@ -235,10 +235,19 @@ class SendMailTest(BaseTestCase):
         self.tender3.followers.add(self.user)
         self.tender3.save()
 
+        print(self.tender1.published, self.tender1.id)
+        print(self.tender2.published, self.tender2.id)
+        print(self.tender3.published, self.tender3.id)
+
+        tenders = self.user.favorite_tenders.order_by('-published')
+        print(tenders)
+
         management.call_command('notify_favorites', digest=True)
         self.assertEqual(len(mail.outbox), 1)
 
+
         alt_body = mail.outbox[0].alternatives[0][0]
+        print(alt_body)
         soup = BeautifulSoup(alt_body, 'html.parser')
 
         tender_list = soup.find('ol', {'class': 'tender-list'}).find_all('a')
@@ -247,6 +256,11 @@ class SendMailTest(BaseTestCase):
         tender_1_url = f"{settings.BASE_URL}/tenders/{self.tender1.id}"
         tender_2_url = f"{settings.BASE_URL}/tenders/{self.tender2.id}"
         tender_3_url = f"{settings.BASE_URL}/tenders/{self.tender3.id}"
+
+        print(tender_list)
+        print(self.tender1.published, self.tender1.id)
+        print(self.tender2.published, self.tender2.id)
+        print(self.tender3.published, self.tender3.id)
 
         # The tenders in the email are ordered by -published
         self.assertEqual(tender_list[0]['href'], tender_3_url)

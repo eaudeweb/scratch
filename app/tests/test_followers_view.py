@@ -4,14 +4,14 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.core import mail
 
-from app.factories import TenderFactory
+from app.factories import TenderFactory, UserFactory
 from app.tests.base import BaseTestCase
 
 
 class TenderFollowersTests(BaseTestCase):
     def setUp(self):
         super().setUp()
-        user = User.objects.create(username='test_user')
+        user = UserFactory(username='test_user')
         user.set_password('12345')
         user.save()
         self.user = user
@@ -23,7 +23,7 @@ class TenderFollowersTests(BaseTestCase):
             'tender_followers_view', kwargs={'pk': self.tender.id})
 
         for i in range(2, 7):
-            setattr(self, f'user{i}', User.objects.create(username=f'user{i}'))
+            setattr(self, f'user{i}', UserFactory(username=f'user{i}', email=f'user{i}@email.com'))
 
     def test_login_required(self):
         self.client.logout()
