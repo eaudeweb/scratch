@@ -157,4 +157,4 @@ class BaseNotifyCommand(BaseCommand, BaseParamsUI):
                 t[0]['reference']
                 for t in changed_ted_tenders + changed_ungm_tenders + changed_iucn_tenders
             ]
-        )
+        ).order_by('-published')
