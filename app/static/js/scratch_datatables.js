@@ -387,7 +387,7 @@ function initDataTables() {
       }
     },
     {
-      "targets": 5,  // Vendor(s)
+      "targets": 6,  // Vendor(s)
       "orderable": false
     }
   ];
