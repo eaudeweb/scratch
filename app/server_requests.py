@@ -1,9 +1,14 @@
+import logging
+
 import requests
 import json
 import urllib3
 from datetime import datetime
 from random import randint
 from time import sleep
+
+from urllib3.exceptions import NewConnectionError
+
 from app.models import UNSPSCCode
 
 LIVE_ENDPOINT_URI = 'https://www.ungm.org'
@@ -75,6 +80,11 @@ GET_HEADERS = {
 UNSPSC_CODES = UNSPSCCode.objects.values_list("id", flat=True)
 
 
+class RequestsFailedError(Exception):
+    def __init__(self, message="Requests to get UNGM tenders html failed"):
+        self.message = message
+        super().__init__(self.message)
+
 def get_request_class(public=True):
     return UNGMrequester()
 
@@ -129,6 +139,7 @@ class UNGMrequester(Requester):
             if html:
                 return html
             sleep(randint(10, 15))
+        raise RequestsFailedError
 
     def post_request(
             self, get_url, post_url, data, headers=POST_HEADERS, content_type=None):
@@ -140,7 +151,8 @@ class UNGMrequester(Requester):
         """
         try:
             resp = requests.get(get_url, headers=GET_HEADERS)
-        except requests.exceptions.ConnectionError:
+        except requests.exceptions.ConnectionError as e:
+            logging.warning(e)
             return None
 
         cookies = dict(resp.cookies)
@@ -158,11 +170,15 @@ class UNGMrequester(Requester):
             sleep(randint(2, 5))
             resp = requests.post(post_url, data=data, cookies=cookies,
                                  headers=headers)
-        except requests.exceptions.ConnectionError:
+        except requests.exceptions.ConnectionError as e:
+            logging.warning(e)
             return None
+
 
         if resp.status_code == 200:
             return resp.content
+
+        logging.warning("Request failed with status code: " + str(resp.status_code))
         return None
 
 #
