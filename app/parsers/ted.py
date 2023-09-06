@@ -2,6 +2,7 @@ import logging
 import os
 import tarfile
 import time
+from random import randint
 from typing import List, Tuple
 
 import requests
@@ -595,6 +596,7 @@ class TEDParser(object):
             headers = {
                 'User-Agent': 'Mozilla/5.0'
             }
+            time.sleep(randint(1, 3))
             response = requests.get(url, headers=headers, stream=True)
             if response.status_code == 200:
                 contract_notice_soup = BeautifulSoup(response.content, 'html.parser')
