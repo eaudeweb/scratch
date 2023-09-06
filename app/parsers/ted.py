@@ -596,7 +596,7 @@ class TEDParser(object):
             headers = {
                 'User-Agent': 'Mozilla/5.0'
             }
-            time.sleep(randint(1, 3))
+            time.sleep(randint(2, 4))
             response = requests.get(url, headers=headers, stream=True)
             if response.status_code == 200:
                 contract_notice_soup = BeautifulSoup(response.content, 'html.parser')

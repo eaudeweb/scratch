@@ -300,7 +300,7 @@ class IUCNWorker:
     @staticmethod
     def parse_pdf(file_url):
         try:
-            sleep(randint(2, 5))
+            sleep(randint(2, 4))
             response = requests.get(file_url)
             i_f = BytesIO(response.content)
             resMgr = PDFResourceManager()
@@ -384,7 +384,7 @@ class IUCNWorker:
                 'User-Agent': 'Mozilla/5.0'
             }
 
-            sleep(randint(1, 3))
+            sleep(randint(2, 4))
             response = requests.get(tender_doc.download_url, headers=headers, stream=True)
             if response.status_code == 200:
                 for chunk in response.iter_content(chunk_size=4096):
