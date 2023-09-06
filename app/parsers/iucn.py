@@ -3,7 +3,9 @@ import logging
 import re
 from datetime import date
 from io import BytesIO
+from random import randint
 from tempfile import TemporaryFile
+from time import sleep
 
 import datefinder
 import docx2txt
@@ -31,6 +33,7 @@ class IUCNWorker:
 
     def get_tenders_html(self):
 
+        sleep(randint(2, 5))
         response = requests.get(self.BASE_URI + self.IUCN_TENDERS_ENDPOINT_URI)
         if response.status_code == 200:
             return response.content
@@ -38,6 +41,7 @@ class IUCNWorker:
 
     def get_awards_html(self):
 
+        sleep(randint(2, 5))
         response = requests.get(self.BASE_URI + self.IUCN_AWARDS_ENDPOINT_URI)
         if response.status_code == 200:
             return response.content
@@ -296,6 +300,7 @@ class IUCNWorker:
     @staticmethod
     def parse_pdf(file_url):
         try:
+            sleep(randint(2, 5))
             response = requests.get(file_url)
             i_f = BytesIO(response.content)
             resMgr = PDFResourceManager()
@@ -314,6 +319,7 @@ class IUCNWorker:
 
     @staticmethod
     def parse_docx(file_url):
+        sleep(randint(2, 5))
         response = requests.get(file_url)
         i_f = BytesIO(response.content)
         text = docx2txt.process(i_f)
@@ -378,7 +384,7 @@ class IUCNWorker:
                 'User-Agent': 'Mozilla/5.0'
             }
 
-
+            sleep(randint(1, 3))
             response = requests.get(tender_doc.download_url, headers=headers, stream=True)
             if response.status_code == 200:
                 for chunk in response.iter_content(chunk_size=4096):
