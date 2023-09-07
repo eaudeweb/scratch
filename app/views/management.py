@@ -1,3 +1,4 @@
+import logging
 from datetime import timezone, datetime, date, timedelta
 
 from django.conf import settings
@@ -93,18 +94,6 @@ class ManagementView(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        def update_fields(task, class_obj):
-            try:
-                obj = class_obj.objects.get(id=task.id)
-                task.stopped = obj.stopped
-                task.status = 'success' if obj.success else 'error'
-                task.output = obj.result
-
-                task.save()
-                return True
-            except class_obj.DoesNotExist:
-                return False
-
         commands = []
 
         for command_name in settings.RUNNABLE_COMMANDS:
@@ -121,16 +110,20 @@ class ManagementView(LoginRequiredMixin, TemplateView):
             except (ModuleNotFoundError, AttributeError):
                 continue
 
-        tasks = Task.objects.all().order_by('-started')
-
-        for task in tasks:
-            if task.status == 'processing' and not update_fields(task, Success):
-                update_fields(task, Failure)
-
         context["commands"] = commands
-        context['tasks'] = tasks
 
         return context
+
+    @staticmethod
+    def update_fields(task):
+        task_info = Task.objects.filter(id=task.id).first()
+
+        if task_info:
+            task_info.stopped = task.stopped
+            task_info.status = 'success' if task.success else 'error'
+            task_info.output = task.result
+            task_info.save()
+
 
     def post(self, request):
 
@@ -166,7 +159,7 @@ class ManagementView(LoginRequiredMixin, TemplateView):
             [': '.join((str(k), str(v))) for k, v in parameters.items()])
 
         if request.user.is_authenticated and request.user.is_superuser:
-            id = async_task(call_command, command_name, **parameters)
+            id = async_task(call_command, command_name, **parameters, hook=self.update_fields)
 
             t = Task(
                 id=id,
