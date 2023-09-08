@@ -128,8 +128,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # REDIS
 Q_CLUSTER = {
-    'timeout': 59,
-    'retry': 60,
+    'timeout': 30*60-1,
+    'retry': 30*60,
     'workers': int(env('DJ_Q_WORKERS', 3)),
     'redis': {
         'host': env('REDIS_HOST', 'redis'),
