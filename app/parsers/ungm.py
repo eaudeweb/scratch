@@ -87,7 +87,7 @@ class UNGMWorker:
         """
         Args:
             html: A string containing the HTML returned when accessing `url`
-            ulr: A string containing the URL where details about a specific
+            url: A string containing the URL where details about a specific
                 tender can be found.
             codes: A list of UNSPSC codes. In principle it should be
                 UNSPSCCode.objects.all().
