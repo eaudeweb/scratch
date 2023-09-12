@@ -1,22 +1,17 @@
-import logging
-from datetime import timedelta, date
+from datetime import timedelta
 from unittest.mock import patch, MagicMock
 
-from django.conf import settings
 from django.utils.datetime_safe import datetime
 from django.utils.timezone import make_aware
 
-from app.models import UNSPSCCode
 from app.parsers.iucn import IUCNWorker
-from app.parsers.ungm import UNGMWorker
-from app.management.commands.add_award import Command
 from app.tests.base import BaseTestCase
 
 
-class UngmParserTestCase(BaseTestCase):
+class IucnParserTestCase(BaseTestCase):
 
     def setUp(self) -> None:
-        super(UngmParserTestCase, self).setUp()
+        super(IucnParserTestCase, self).setUp()
         self.parser = IUCNWorker()
 
         expected_deadline = make_aware(datetime.strptime('25-Oct-2019 00:00', '%d-%b-%Y %H:%M'))
