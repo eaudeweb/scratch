@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
+
 import os
 import sentry_sdk
 from getenv import env
@@ -144,6 +145,7 @@ UNGM_ENDPOINT_URI = env("UNGM_ENDPOINT_URI", "https://www.ungm.org")
 # TED
 TED_FTP_URL = env("TED_FTP_URL", "ted.europa.eu")
 TED_CALENDAR_URL = env("TED_CALENDAR_URL", "en/release-calendar/-/download/file/CSV/")
+TED_DAILY = env("TED_DAILY", "packages/daily/")
 TED_FTP_USER = env("TED_FTP_USER", "guest")
 TED_FTP_PASSWORD = env("TED_FTP_PASSWORD", "guest")
 TED_DAYS_AGO = env("TED_DAYS_AGO", 3)

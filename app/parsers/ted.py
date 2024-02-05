@@ -13,7 +13,7 @@ from bs4 import BeautifulSoup, element, PageElement
 from datetime import date, datetime, timedelta
 from django.conf import settings
 from ftplib import error_perm, FTP
-
+from django.db.models.functions import ExtractYear
 from django.utils.timezone import make_aware
 
 from app.exceptions import CPVCodesNotFound, TEDCountriesNotFound
@@ -50,6 +50,10 @@ class TEDWorker:
             last_ted_update = date.today()
         self.last_ted_update = last_ted_update
 
+        self.get_archive_url = urljoin(
+            "https://" + settings.TED_FTP_URL, settings.TED_DAILY
+        )
+
     def ftp_download_tender_archive(self, tenders):
         ftp = self.ftp_login()
         tender_count = tenders.count()
@@ -74,27 +78,45 @@ class TEDWorker:
         """
         Download latest tender archives and save them in a local directory.
         """
-        ftp = self.ftp_login()
 
         today = date.today()
         last_date = self.last_ted_update or self.last_update("TED")
+        years_set = set(
+            TEDReleaseCalendar.objects.annotate(year=ExtractYear("date"))
+            .order_by()
+            .values_list("year", flat=True)
+            .distinct()
+        )
+        print(years_set)
+        years = list(set(range(last_date.year, today.year + 1)) - years_set)
+        print(years)
+        if years:
+            self.update_release_calendar(years)
+
+        dates = []
 
         while last_date <= today:
-            last_month = last_date.strftime("%m")
-            last_year = last_date.strftime("%Y")
+            # last_month = last_date.strftime("%m")
+            # last_year = last_date.strftime("%Y")
 
-            try:
-                ftp.cwd(f"/daily-packages/{last_year}/{last_month}")
-                archives = ftp.nlst()
-                self.download_archive(ftp, last_date, archives)
-            except error_perm as e:
-                # Directory doesn't exist
-                logging.warning(e)
-                pass
+            # try:
+            #     ftp.cwd(f"/daily-packages/{last_year}/{last_month}")
+            #     archives = ftp.nlst()
+            #     self.download_archive(ftp, last_date, archives)
+            # except error_perm as e:
+            #     # Directory doesn't exist
+            #     logging.warning(e)
+            #     pass
+            dates.append(last_date)
 
             last_date += timedelta(1)
 
-        quit_or_close(ftp)
+        daly_archives = (
+            TEDReleaseCalendar.objects.order_by("date").filter(date__in=dates).all()
+        )
+
+        for archive in daly_archives:
+            self.download_archive(archive)
 
     def ftp_download_daily_archives(self):
         last_month = self.last_ted_update.strftime("%m")
@@ -112,15 +134,18 @@ class TEDWorker:
 
         quit_or_close(ftp)
 
-    def download_archive(self, ftp, archive_date, archives):
-        archive_name = self.get_archive_name(archive_date, archives)
-        if archive_name:
-            if not os.path.exists(self.path):
-                os.makedirs(self.path)
-            file_path = os.path.join(self.path, archive_name)
-            with open(file_path, "wb") as f:
-                ftp.retrbinary("RETR %s" % archive_name, f.write)
-            self.archives.append(file_path)
+    def download_archive(self, archive):
+
+        if not os.path.exists(self.path):
+            os.makedirs(self.path)
+        file_path = os.path.join(self.path, archive.full_oj_s)
+        url = urljoin(self.get_archive_url, archive.full_oj_s)
+        with open(file_path, "wb") as f:
+            time.sleep(randint(2, 5))
+            response = requests.get(url)
+            print(response.status_code, file_path)
+            f.write(response.content)
+        self.archives.append(file_path)
 
     def parse_notices(
         self, tenders=None, set_notified=False
@@ -197,9 +222,10 @@ class TEDWorker:
     @staticmethod
     def update_release_calendar(years):
         url = urljoin("https://" + settings.TED_FTP_URL, settings.TED_CALENDAR_URL)
-
+        print(years)
         for year in years:
-            response = requests.get(urljoin(url, year))
+            time.sleep(randint(2, 5))
+            response = requests.get(urljoin(url, str(year)))
             reader = csv.DictReader(io.StringIO(response.text))
             for row in reader:
                 TEDReleaseCalendar.objects.create(
