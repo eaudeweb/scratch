@@ -143,7 +143,7 @@ EMAIL_PORT = env("EMAIL_PORT", 25)
 UNGM_ENDPOINT_URI = env("UNGM_ENDPOINT_URI", "https://www.ungm.org")
 
 # TED
-TED_FTP_URL = env("TED_FTP_URL", "ted.europa.eu")
+TED_URL = env("TED_URL", "ted.europa.eu")
 TED_CALENDAR_URL = env("TED_CALENDAR_URL", "en/release-calendar/-/download/file/CSV/")
 TED_DAILY = env("TED_DAILY", "packages/daily/")
 TED_FTP_USER = env("TED_FTP_USER", "guest")

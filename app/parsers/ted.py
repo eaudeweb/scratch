@@ -51,30 +51,36 @@ class TEDWorker:
         self.last_ted_update = last_ted_update
 
         self.get_archive_url = urljoin(
-            "https://" + settings.TED_FTP_URL, settings.TED_DAILY
+            "https://" + settings.TED_URL, settings.TED_DAILY
         )
 
-    def ftp_download_tender_archive(self, tenders):
-        ftp = self.ftp_login()
+    def download_tender_archive(self, tenders):
         tender_count = tenders.count()
         downloaded = 0
+        years_set = set(
+            TEDReleaseCalendar.objects.annotate(year=ExtractYear("date"))
+            .order_by()
+            .values_list("year", flat=True)
+            .distinct()
+        )
         for tender in tenders:
-            ftp_path = tender.published.strftime("%Y/%m")
-            ftp.cwd(f"/daily-packages/{ftp_path}")
-            archives = ftp.nlst()
-            try:
-                self.download_archive(ftp, tender.published, archives)
-                downloaded += 1
-                logging.warning(
-                    f"Downloaded {downloaded} out of "
-                    f"{tender_count} tender archives."
-                )
-            except Exception as e:
-                logging.error(e, exc_info=True)
 
-        quit_or_close(ftp)
+            if tender.published.year not in years_set:
+                self.update_release_calendar(tender.published.year)
 
-    def ftp_download_latest_archives(self):
+            archive = TEDReleaseCalendar.objects.filter(date=tender.published).first()
+            if archive:
+                try:
+                    self.download_archive(archive)
+                    downloaded += 1
+                    logging.warning(
+                        f"Downloaded {downloaded} out of "
+                        f"{tender_count} tender archives."
+                    )
+                except Exception as e:
+                    logging.error(e, exc_info=True)
+
+    def download_latest_archives(self):
         """
         Download latest tender archives and save them in a local directory.
         """
@@ -87,26 +93,13 @@ class TEDWorker:
             .values_list("year", flat=True)
             .distinct()
         )
-        print(years_set)
         years = list(set(range(last_date.year, today.year + 1)) - years_set)
-        print(years)
         if years:
             self.update_release_calendar(years)
 
         dates = []
 
         while last_date <= today:
-            # last_month = last_date.strftime("%m")
-            # last_year = last_date.strftime("%Y")
-
-            # try:
-            #     ftp.cwd(f"/daily-packages/{last_year}/{last_month}")
-            #     archives = ftp.nlst()
-            #     self.download_archive(ftp, last_date, archives)
-            # except error_perm as e:
-            #     # Directory doesn't exist
-            #     logging.warning(e)
-            #     pass
             dates.append(last_date)
 
             last_date += timedelta(1)
@@ -118,21 +111,19 @@ class TEDWorker:
         for archive in daly_archives:
             self.download_archive(archive)
 
-    def ftp_download_daily_archives(self):
-        last_month = self.last_ted_update.strftime("%m")
-        last_year = self.last_ted_update.strftime("%Y")
+    def download_daily_archives(self):
+        years_set = set(
+            TEDReleaseCalendar.objects.annotate(year=ExtractYear("date"))
+            .order_by()
+            .values_list("year", flat=True)
+            .distinct()
+        )
+        if self.last_ted_update.year not in years_set:
+            self.update_release_calendar(self.last_ted_update.year)
 
-        ftp = self.ftp_login()
-
-        try:
-            ftp.cwd(f"/daily-packages/{last_year}/{last_month}")
-            archives = ftp.nlst()
-        except error_perm as resp:
-            logging.warning(resp)
-
-        self.download_archive(ftp, self.last_ted_update, archives)
-
-        quit_or_close(ftp)
+        archive = TEDReleaseCalendar.objects.filter(date=self.last_ted_update).first()
+        if archive:
+            self.download_archive(archive)
 
     def download_archive(self, archive):
 
@@ -206,22 +197,8 @@ class TEDWorker:
         return
 
     @staticmethod
-    def ftp_login():
-        while True:
-            try:
-                ftp = FTP(settings.TED_FTP_URL)
-                ftp.login(user=settings.TED_FTP_USER, passwd=settings.TED_FTP_PASSWORD)
-                logging.warning("Logged into FTP.")
-                return ftp
-            except error_perm as e:
-                logging.warning(f"Cannot login to FTP, waiting 30 seconds: {e}")
-                time.sleep(30)
-                logging.warning("Retrying")
-                continue
-
-    @staticmethod
     def update_release_calendar(years):
-        url = urljoin("https://" + settings.TED_FTP_URL, settings.TED_CALENDAR_URL)
+        url = urljoin("https://" + settings.TED_URL, settings.TED_CALENDAR_URL)
         print(years)
         for year in years:
             time.sleep(randint(2, 5))
@@ -744,6 +721,6 @@ def get_archives_path():
 
 def process_daily_archive(given_date):
     w = TEDWorker(given_date)
-    w.ftp_download_daily_archives()
+    w.download_daily_archives()
     w.parse_notices([], True)
     return f"Updated {given_date} TED tenders"
