@@ -66,7 +66,7 @@ class TEDWorker:
         for tender in tenders:
 
             if tender.published.year not in years_set:
-                self.update_release_calendar(tender.published.year)
+                self.update_release_calendar([tender.published.year])
 
             archive = TEDReleaseCalendar.objects.filter(date=tender.published).first()
             if archive:
@@ -119,7 +119,7 @@ class TEDWorker:
             .distinct()
         )
         if self.last_ted_update.year not in years_set:
-            self.update_release_calendar(self.last_ted_update.year)
+            self.update_release_calendar([self.last_ted_update.year])
 
         archive = TEDReleaseCalendar.objects.filter(date=self.last_ted_update).first()
         if archive:

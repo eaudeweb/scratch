@@ -117,7 +117,6 @@ class BaseNotifyCommand(BaseCommand, BaseParamsUI):
         ted_tenders = tenders.filter(source=dict(SOURCE_CHOICES).get("TED"))
         ungm_tenders = tenders.filter(source=dict(SOURCE_CHOICES).get("UNGM"))
         iucn_tenders = tenders.filter(source=dict(SOURCE_CHOICES).get("IUCN"))
-        print(ted_tenders)
 
         changed_ted_tenders = []
         if ted_tenders.exists():
