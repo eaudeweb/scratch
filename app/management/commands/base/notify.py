@@ -12,7 +12,7 @@ from app.parsers.ungm import UNGMWorker
 from app.management.commands.base.params import BaseParamsUI
 from app.utils import emails_to_notify
 
-ENDPOINT_URI = 'https://www.ungm.org'
+ENDPOINT_URI = "https://www.ungm.org"
 
 User = get_user_model()
 
@@ -22,23 +22,21 @@ class BaseNotifyCommand(BaseCommand, BaseParamsUI):
     def get_parameters():
         return [
             {
-                'name': 'digest',
-                'display': 'Digest',
-                'type': 'checkbox',
+                "name": "digest",
+                "display": "Digest",
+                "type": "checkbox",
             },
         ]
 
     @property
     def notification_type(self):
         raise NotImplementedError(
-            'subclasses of BaseNotifyCommand must provide a notification_type '
-            'member'
+            "subclasses of BaseNotifyCommand must provide a notification_type " "member"
         )
 
     def get_tenders(self):
         raise NotImplementedError(
-            'subclasses of BaseNotifyCommand must provide a get_tenders() '
-            'method'
+            "subclasses of BaseNotifyCommand must provide a get_tenders() " "method"
         )
 
     def handle(self, *args, **options):
@@ -46,27 +44,26 @@ class BaseNotifyCommand(BaseCommand, BaseParamsUI):
         # of notify_keywords
         self.stdout.write(
             self.style.SUCCESS(
-                f'Sending notifications about {self.notification_type()} '
-                f'tender updates...'
+                f"Sending notifications about {self.notification_type()} "
+                f"tender updates..."
             )
         )
         self.options = options
-        digest = options['digest']
+        digest = options["digest"]
         changed_tenders = self.scrape_tenders()
 
         if changed_tenders:
-            self.send_update_email(
-                changed_tenders, digest, self.notification_type())
+            self.send_update_email(changed_tenders, digest, self.notification_type())
 
         return self.style.SUCCESS(
-            f'Sent notifications about {changed_tenders.count()} tender(s).'
+            f"Sent notifications about {changed_tenders.count()} tender(s)."
         )
 
     def add_arguments(self, parser):
         parser.add_argument(
-            '--digest',
-            action='store_true',
-            help='If set, all tenders will be notified in one email.'
+            "--digest",
+            action="store_true",
+            help="If set, all tenders will be notified in one email.",
         )
 
     def get_recipients(self):
@@ -76,18 +73,18 @@ class BaseNotifyCommand(BaseCommand, BaseParamsUI):
         return emails_to_notify()
 
     def send_update_email(self, tenders, digest, notification_type):
-        s = 's' if digest else ''
-        subject = f'{notification_type} tender{s} Update'
+        s = "s" if digest else ""
+        subject = f"{notification_type} tender{s} Update"
         recipients = self.get_recipients()
 
         if digest:
             html_content = render_to_string(
-                'mails/tender_update.html',
+                "mails/tender_update.html",
                 {
-                    'tenders': tenders,
-                    'domain': settings.BASE_URL,
-                    'notification_type': notification_type
-                }
+                    "tenders": tenders,
+                    "domain": settings.BASE_URL,
+                    "notification_type": notification_type,
+                },
             )
 
             email = build_email(subject, recipients, None, html_content)
@@ -96,12 +93,12 @@ class BaseNotifyCommand(BaseCommand, BaseParamsUI):
         else:
             for tender in tenders:
                 html_content = render_to_string(
-                    'mails/tender_update.html',
+                    "mails/tender_update.html",
                     {
-                        'tenders': [tender],
-                        'domain': settings.BASE_URL,
-                        'notification_type': notification_type
-                    }
+                        "tenders": [tender],
+                        "domain": settings.BASE_URL,
+                        "notification_type": notification_type,
+                    },
                 )
 
                 email = build_email(subject, recipients, None, html_content)
@@ -117,27 +114,23 @@ class BaseNotifyCommand(BaseCommand, BaseParamsUI):
         """
         tenders = self.get_tenders()
 
-        ted_tenders = tenders.filter(source=dict(SOURCE_CHOICES).get('TED'))
-        ungm_tenders = tenders.filter(source=dict(SOURCE_CHOICES).get('UNGM'))
-        iucn_tenders = tenders.filter(source=dict(SOURCE_CHOICES).get('IUCN'))
+        ted_tenders = tenders.filter(source=dict(SOURCE_CHOICES).get("TED"))
+        ungm_tenders = tenders.filter(source=dict(SOURCE_CHOICES).get("UNGM"))
+        iucn_tenders = tenders.filter(source=dict(SOURCE_CHOICES).get("IUCN"))
 
         changed_ted_tenders = []
         if ted_tenders.exists():
             self.stdout.write(
-                self.style.SUCCESS(
-                    f'Scraping {ted_tenders.count()} TED tenders...'
-                )
+                self.style.SUCCESS(f"Scraping {ted_tenders.count()} TED tenders...")
             )
             w = TEDWorker()
-            w.ftp_download_tender_archive(ted_tenders)
+            w.download_tender_archive(ted_tenders)
             changed_ted_tenders, _ = w.parse_notices(ted_tenders)
 
         changed_ungm_tenders = []
         if ungm_tenders.exists():
             self.stdout.write(
-                self.style.SUCCESS(
-                    f'Scraping {ungm_tenders.count()} UNGM tenders...'
-                )
+                self.style.SUCCESS(f"Scraping {ungm_tenders.count()} UNGM tenders...")
             )
             w = UNGMWorker()
             changed_ungm_tenders, _ = w.parse_tenders(ungm_tenders)
@@ -145,16 +138,16 @@ class BaseNotifyCommand(BaseCommand, BaseParamsUI):
         changed_iucn_tenders = []
         if iucn_tenders.exists():
             self.stdout.write(
-                self.style.SUCCESS(
-                    f'Scraping {iucn_tenders.count()} IUCN tenders...'
-                )
+                self.style.SUCCESS(f"Scraping {iucn_tenders.count()} IUCN tenders...")
             )
             w = IUCNWorker()
             changed_iucn_tenders = w.update_tenders(iucn_tenders)
 
         return Tender.objects.filter(
             reference__in=[
-                t[0]['reference']
-                for t in changed_ted_tenders + changed_ungm_tenders + changed_iucn_tenders
+                t[0]["reference"]
+                for t in changed_ted_tenders
+                + changed_ungm_tenders
+                + changed_iucn_tenders
             ]
-        ).order_by('-published')
+        ).order_by("-published")

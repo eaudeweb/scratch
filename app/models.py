@@ -18,12 +18,12 @@ import re
 from tika import parser
 
 SOURCE_CHOICES = [
-    ('UNGM', 'UNGM'),
-    ('TED', 'TED'),
-    ('IUCN', 'IUCN'),
+    ("UNGM", "UNGM"),
+    ("TED", "TED"),
+    ("IUCN", "IUCN"),
 ]
 
-fields = [r'title', r'description']
+fields = [r"title", r"description"]
 
 
 class BaseTimedModel(models.Model):
@@ -41,7 +41,7 @@ class Profile(BaseTimedModel):
     )
     notify = models.BooleanField(
         default=True,
-        help_text="Whether this user should receive email notifications or not."
+        help_text="Whether this user should receive email notifications or not.",
     )
 
     def __str__(self):
@@ -62,15 +62,15 @@ class Keyword(BaseTimedModel):
     value = LowerCharField(max_length=50, unique=True)
 
     def __str__(self):
-        return '{}'.format(self.value)
+        return "{}".format(self.value)
 
     @staticmethod
     def get_values_list():
-        return list(Keyword.objects.values_list('value', flat=True))
+        return list(Keyword.objects.values_list("value", flat=True))
 
 
 def keywords_in(text):
-    """ Returns a list with all the keywords found in the text content """
+    """Returns a list with all the keywords found in the text content"""
     keywords = Keyword.get_values_list()
     return list(set(keywords) & set(re.split(r"\W+", str(text).lower())))
 
@@ -79,7 +79,7 @@ class Tag(models.Model):
     name = models.CharField(max_length=255, unique=True)
 
     def __str__(self):
-        return '{}'.format(self.name)
+        return "{}".format(self.name)
 
 
 class Tender(BaseTimedModel):
@@ -98,20 +98,20 @@ class Tender(BaseTimedModel):
     unspsc_codes = models.CharField(max_length=1024, null=True, blank=True)
     cpv_codes = models.CharField(max_length=1024, null=True, blank=True)
     seen_by = models.ForeignKey(
-        User, on_delete=models.CASCADE, default=None, null=True, blank=True)
-    keywords = models.ManyToManyField(
-        Keyword, related_name="tenders", blank=True)
+        User, on_delete=models.CASCADE, default=None, null=True, blank=True
+    )
+    keywords = models.ManyToManyField(Keyword, related_name="tenders", blank=True)
 
     tags = models.ManyToManyField(Tag, blank=True)
     followers = models.ManyToManyField(
         User,
         through="Favorite",
         through_fields=("tender", "follower"),
-        related_name="favorite_tenders"
+        related_name="favorite_tenders",
     )
 
     def __str__(self):
-        return '{}'.format(self.title)
+        return "{}".format(self.title)
 
     @property
     def safe_id(self):
@@ -126,23 +126,22 @@ class Tender(BaseTimedModel):
     @cached_property
     def marked_keyword_title(self):
         keywords = Keyword.get_values_list()
-        title = self.title or ''
+        title = self.title or ""
         if not keywords:
             return title
 
-        regex = r'(' + r'|'.join(keywords) + r')'
-        return re.sub(regex, r'<mark>\1</mark>', title, flags=re.IGNORECASE)
+        regex = r"(" + r"|".join(keywords) + r")"
+        return re.sub(regex, r"<mark>\1</mark>", title, flags=re.IGNORECASE)
 
     @cached_property
     def marked_keyword_description(self):
         keywords = Keyword.get_values_list()
-        description = self.description or ''
+        description = self.description or ""
         if not keywords:
             return description
 
-        regex = r'(' + r'|'.join(keywords) + r')'
-        return re.sub(
-            regex, r'<mark>\1</mark>', description, flags=re.IGNORECASE)
+        regex = r"(" + r"|".join(keywords) + r")"
+        return re.sub(regex, r"<mark>\1</mark>", description, flags=re.IGNORECASE)
 
     def find_keywords(self, fields):
         """
@@ -171,15 +170,13 @@ class Tender(BaseTimedModel):
 class Favorite(BaseTimedModel):
     tender = models.ForeignKey(Tender, on_delete=models.CASCADE)
     follower = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name="favorites_where_follower"
+        User, on_delete=models.CASCADE, related_name="favorites_where_follower"
     )
     inviter = models.ForeignKey(
         User,
         null=True,
         on_delete=models.SET_NULL,
-        related_name="favorites_where_inviter"
+        related_name="favorites_where_inviter",
     )
 
     class Meta:
@@ -199,10 +196,10 @@ class Vendor(BaseTimedModel):
     comment = models.TextField(null=True, blank=True)
 
     def __str__(self):
-        return '{}'.format(self.name)
+        return "{}".format(self.name)
 
     def get_absolute_url(self):
-        return reverse('vendor_detail_view', kwargs={'pk': self.pk})
+        return reverse("vendor_detail_view", kwargs={"pk": self.pk})
 
 
 class Award(BaseTimedModel):
@@ -213,16 +210,15 @@ class Award(BaseTimedModel):
     notified = models.BooleanField(default=False)
     renewal_notified = models.BooleanField(default=False)
     # TODO: Investigate whether this coould be refactored to a OneToOneField
-    tender = models.ForeignKey(
-        Tender, on_delete=models.CASCADE, related_name='awards')
-    vendors = models.ManyToManyField('Vendor', related_name='awards')
+    tender = models.ForeignKey(Tender, on_delete=models.CASCADE, related_name="awards")
+    vendors = models.ManyToManyField("Vendor", related_name="awards")
 
     def __str__(self):
-        return '{} WON BY {}'.format(self.tender.title, self.get_vendors)
+        return "{} WON BY {}".format(self.tender.title, self.get_vendors)
 
     @property
     def get_vendors(self):
-        return ",".join(self.vendors.values_list('name', flat=True))
+        return ",".join(self.vendors.values_list("name", flat=True))
 
     get_vendors.fget.short_description = "Vendors names"
 
@@ -234,7 +230,7 @@ class TenderDocument(BaseTimedModel):
     name = models.CharField(null=True, max_length=255)
     download_url = models.CharField(max_length=255)
     tender = models.ForeignKey(Tender, on_delete=models.CASCADE)
-    document = models.FileField(upload_to='documents', max_length=300)
+    document = models.FileField(upload_to="documents", max_length=300)
 
     def content(self):
         try:
@@ -245,7 +241,10 @@ class TenderDocument(BaseTimedModel):
             pass
 
     class Meta:
-        unique_together = ('name', 'tender',)
+        unique_together = (
+            "name",
+            "tender",
+        )
 
 
 class WorkerLog(BaseTimedModel):
@@ -254,7 +253,7 @@ class WorkerLog(BaseTimedModel):
     tenders_count = models.IntegerField()
 
     def __str__(self):
-        return '{}'.format(self.update)
+        return "{}".format(self.update)
 
 
 class Email(BaseTimedModel):
@@ -274,7 +273,7 @@ class Email(BaseTimedModel):
             from_email=self.from_email,
             to=self.to,
             cc=self.cc,
-            body=text_content
+            body=text_content,
         )
 
         email.attach_alternative(self.body, "text/html")
@@ -285,12 +284,7 @@ class Email(BaseTimedModel):
 
 
 def last_update(source):
-    worker_log = (
-        WorkerLog.objects
-        .filter(source=source)
-        .order_by('-update')
-        .first()
-    )
+    worker_log = WorkerLog.objects.filter(source=source).order_by("-update").first()
     return worker_log.update if worker_log else None
 
 
@@ -309,7 +303,7 @@ class UNSPSCCode(BaseTimedModel):
         verbose_name_plural = "UNSPC codes"
 
     def __str__(self):
-        return '{}'.format(self.id)
+        return "{}".format(self.id)
 
 
 class CPVCode(BaseTimedModel):
@@ -320,7 +314,7 @@ class CPVCode(BaseTimedModel):
         verbose_name_plural = "CPV codes"
 
     def __str__(self):
-        return '{}'.format(self.code)
+        return "{}".format(self.code)
 
 
 class TedCountry(BaseTimedModel):
@@ -338,8 +332,27 @@ class Task(BaseTimedModel):
     started = models.DateTimeField(null=True, blank=True, default=None)
     stopped = models.DateTimeField(null=True, blank=True, default=None)
     status = models.CharField(
-        max_length=255, null=True, blank=True, default="processing")
+        max_length=255, null=True, blank=True, default="processing"
+    )
     output = models.TextField(max_length=5055, null=True, blank=True)
 
     def __str__(self):
-        return 'task_{}'.format(self.args)
+        return "task_{}".format(self.args)
+
+
+class TEDReleaseCalendar(BaseTimedModel):
+    oj_s = models.IntegerField(null=False)
+    date = models.DateField(null=False, blank=False)
+
+    class Meta:
+        verbose_name = "TED release calendar"
+        verbose_name_plural = "TED release calendar"
+        ordering = ["-date"]
+
+    @property
+    def year(self):
+        return str(self.date.year)
+
+    @property
+    def full_oj_s(self):
+        return self.year + str(self.oj_s).zfill(5)
