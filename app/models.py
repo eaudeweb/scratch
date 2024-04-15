@@ -356,3 +356,12 @@ class TEDReleaseCalendar(BaseTimedModel):
     @property
     def full_oj_s(self):
         return self.year + str(self.oj_s).zfill(5)
+
+
+class TEDNoticeCode(BaseTimedModel):
+    code = models.CharField(max_length=20)
+    name = models.CharField(max_length=140)
+
+    class Meta:
+        verbose_name = "TED notice code"
+        verbose_name_plural = "TED notice codes"

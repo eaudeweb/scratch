@@ -1,0 +1,116 @@
+[
+    {
+        "model": "app.tednoticecode",
+        "pk": 1,
+        "code": "brin-ecs",
+        "name": "European Company / European Cooperative Society notice"
+    },
+    {
+        "model": "app.tednoticecode",
+        "pk": 2,
+        "code": "brin-eeig",
+        "name": "European Economic Interest Grouping notice"
+    },
+    {
+        "model": "app.tednoticecode",
+        "pk": 3,
+        "code": "can-desg",
+        "name": "Design contest result notice"
+    },
+    {
+        "model": "app.tednoticecode",
+        "pk": 4,
+        "code": "can-modif",
+        "name": "Contract modification notice"
+    },
+    {
+        "model": "app.tednoticecode",
+        "pk": 5,
+        "code": "can-social",
+        "name": "Contract or concession award notice – light regime"
+    },
+    {
+        "model": "app.tednoticecode",
+        "pk": 6,
+        "code": "can-standard",
+        "name": "Contract or concession award notice – standard regime"
+    },
+    {
+        "model": "app.tednoticecode",
+        "pk": 7,
+        "code": "can-tran",
+        "name": "Contract award notice for public passenger transport services"
+    },
+    {
+        "model": "app.tednoticecode",
+        "pk": 8,
+        "code": "cn-desg",
+        "name": "Design contest notice"
+    },
+    {
+        "model": "app.tednoticecode",
+        "pk": 9,
+        "code": "cn-social",
+        "name": "Contract notice – light regime"
+    },
+    {
+        "model": "app.tednoticecode",
+        "pk": 10,
+        "code": "cn-standard",
+        "name": "Contract or concession notice – standard regime"
+    },
+    {
+        "model": "app.tednoticecode",
+        "pk": 11,
+        "code": "pin-buyer",
+        "name": "Notice of the publication of a prior information notice or a periodic information notice on a buyer profile"
+    },
+    {
+        "model": "app.tednoticecode",
+        "pk": 12,
+        "code": "pin-cfc-social",
+        "name": "Prior information notice or a periodic indicative notice used as a call for competition – light regime"
+    },
+    {
+        "model": "app.tednoticecode",
+        "pk": 13,
+        "code": "pin-cfc-standard",
+        "name": "Prior information notice or a periodic indicative notice used as a call for competition – standard regime"
+    },
+    {
+        "model": "app.tednoticecode",
+        "pk": 14,
+        "code": "pin-only",
+        "name": "Prior information notice or a periodic indicative notice used only for information"
+    },
+    {
+        "model": "app.tednoticecode",
+        "pk": 15,
+        "code": "pin-rtl",
+        "name": "Notice of the publication of a prior information notice or a periodic information notice on a buyer profile"
+    },
+    {
+        "model": "app.tednoticecode",
+        "pk": 16,
+        "code": "pin-tran",
+        "name": "Prior information notice for public passenger transport services"
+    },
+    {
+        "model": "app.tednoticecode",
+        "pk": 17,
+        "code": "qu-sy",
+        "name": "Notice on the existence of a qualification system"
+    },
+    {
+        "model": "app.tednoticecode",
+        "pk": 18,
+        "code": "subco",
+        "name": "Subcontracting notice"
+    },
+    {
+        "model": "app.tednoticecode",
+        "pk": 19,
+        "code": "veat",
+        "name": "Voluntary ex-ante transparency notice"
+    }
+]

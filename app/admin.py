@@ -4,6 +4,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
 from django.forms.models import ModelForm
 from .models import (
+    TEDNoticeCode,
     TEDReleaseCalendar,
     Tender,
     TenderDocument,
@@ -245,6 +246,10 @@ class TEDReleaseCalendarAdmin(admin.ModelAdmin):
     list_filter = ["date"]
 
 
+class TEDNoticeCodeAdmin(admin.ModelAdmin):
+    list_display = ["code", "name"]
+
+
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 admin.site.register(Tender, TenderAdmin)
@@ -259,3 +264,4 @@ admin.site.register(Keyword, KeywordAdmin)
 admin.site.register(Vendor, VendorAdmin)
 admin.site.register(Tag, TagAdmin)
 admin.site.register(TEDReleaseCalendar, TEDReleaseCalendarAdmin)
+admin.site.register(TEDNoticeCode, TEDNoticeCodeAdmin)
