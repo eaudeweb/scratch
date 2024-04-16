@@ -319,6 +319,7 @@ class CPVCode(BaseTimedModel):
 
 class TedCountry(BaseTimedModel):
     name = models.CharField(max_length=1024, primary_key=True)
+    iso_a3 = models.CharField(max_length=3, null=True, blank=True)
 
     class Meta:
         verbose_name = "TED country"

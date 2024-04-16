@@ -25,7 +25,10 @@ def add_ted_countries():
     with open(fixtures_dir + "ted_countries.json") as f:
         ted_countries = json.load(f)
         TedCountry.objects.bulk_create(
-            [TedCountry(pk=country["pk"]) for country in ted_countries]
+            [
+                TedCountry(pk=country["pk"], iso_a3=country["fields"]["iso_a3"])
+                for country in ted_countries
+            ]
         )
 
 
