@@ -362,6 +362,7 @@ class TEDReleaseCalendar(BaseTimedModel):
 class TEDNoticeCode(BaseTimedModel):
     code = models.CharField(max_length=20)
     name = models.CharField(max_length=140)
+    doc_type = models.CharField(max_length=140, null=True, blank=True)
 
     class Meta:
         verbose_name = "TED notice code"

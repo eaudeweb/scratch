@@ -68,7 +68,12 @@ def add_ted_notice_codes():
     with open(fixtures_dir + "ted_notice_codes.json") as f:
         codes = json.load(f)
         TEDNoticeCode.objects.bulk_create(
-            TEDNoticeCode(pk=code["pk"], code=code["code"], name=code["name"])
+            TEDNoticeCode(
+                pk=code["pk"],
+                code=code["code"],
+                name=code["name"],
+                doc_type=code.get("doc_type"),
+            )
             for code in codes
         )
 
