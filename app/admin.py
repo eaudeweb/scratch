@@ -105,10 +105,10 @@ class TenderAdmin(admin.ModelAdmin):
         "unspsc_codes",
     ]
     list_filter = (
-        "organization",
         "notice_type",
         "deadline",
         "source",
+        "organization",
         "unspsc_codes",
         "notified",
     )
