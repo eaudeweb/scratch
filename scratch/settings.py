@@ -144,6 +144,7 @@ UNGM_ENDPOINT_URI = env("UNGM_ENDPOINT_URI", "https://www.ungm.org")
 
 # TED
 TED_URL = env("TED_URL", "ted.europa.eu")
+TED_NOTICE_URL = env("TED_URL", "en/notice/-/detail/")
 TED_CALENDAR_URL = env("TED_CALENDAR_URL", "en/release-calendar/-/download/file/CSV/")
 TED_DAILY = env("TED_DAILY", "packages/daily/")
 TED_FTP_USER = env("TED_FTP_USER", "guest")
@@ -160,8 +161,9 @@ RENEWAL_NOTIFICATIONS = env("RENEWAL_NOTIFICATIONS", 4)
 
 # TED
 TED_DOC_TYPES = env("TED_DOC_TYPES", [])
-TED_DOC_CODES = env("TED_DOC_CODES", [])
+TED_DOC_CODES = [code for code in env("TED_DOC_CODES", "").strip().split(",")]
 TED_AUTH_TYPE = env("TED_AUTH_TYPE", "")
+TED_AUTH_CODES = [code for code in env("TED_AUTH_CODES", "").strip().split(",")]
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
