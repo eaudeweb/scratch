@@ -591,7 +591,7 @@ class TEDParser(object):
                     "cbc:Description", attrs={"languageID": "ENG"}
                 ).text
                 procurement_desc = "Description of the procurement:" + (
-                    "\n\t" + str(description)
+                    "\n\t" + str(description) + "\n\n"
                 )
             except AttributeError:
                 procurement_desc = ""
