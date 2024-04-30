@@ -665,8 +665,9 @@ class TEDParser(object):
 
         for xml_file in self.xml_files[:]:
             with open(xml_file, "r") as f:
+                is_ubl_format = self.is_ubl_format(xml_file)
                 try:
-                    if not self.is_ubl_format(xml_file):
+                    if not is_ubl_format:
                         tender_dict, awards = self._parse_notice(
                             f.read(), tenders, xml_file, codes, set_notified
                         )
@@ -683,7 +684,7 @@ class TEDParser(object):
 
                 if awards:
                     for award_dict in awards:
-                        self.save_award(tender_dict, award_dict)
+                        self.save_award(tender_dict, award_dict, is_ubl_format)
 
                 if created:
                     num_created_tenders += 1
@@ -875,9 +876,11 @@ class TEDParser(object):
                 for ten in lot_tenders:
                     try:
                         if ten.find("cbc:ID").text in lot_tender_ids:
+
                             tendering_party_ids.append(
                                 ten.find("efac:TenderingParty").find("cbc:ID").text
                             )
+
                     except (AttributeError, TypeError, ValueError):
                         continue
             org_ids = []
@@ -1014,7 +1017,7 @@ class TEDParser(object):
             return None, None
 
     @staticmethod
-    def save_award(tender_dict, award_dict) -> Award:
+    def save_award(tender_dict, award_dict, is_ubl_format) -> Award:
         reference = tender_dict["reference"]
         tender_entry = Tender.objects.filter(reference=reference).first()
 
@@ -1033,7 +1036,10 @@ class TEDParser(object):
                 )
 
                 if not created:
-                    award.value += award_dict["value"]
+                    if is_ubl_format:
+                        award.value = award_dict["value"]
+                    else:
+                        award.value += award_dict["value"]
                     award.save()
                 award.vendors.add(*vendor_objects)
                 return award
