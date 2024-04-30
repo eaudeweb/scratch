@@ -842,8 +842,10 @@ class TEDParser(object):
         except (AttributeError, TypeError, ValueError):
             contract_value = 0
             currency_currency = "N/A"
-        lot_results = result.find_all("efac:LotResult")
-        settled_contracts = result.find_all("efac:SettledContract", recursive=False)
+        lot_results = result.find_all("efac:LotResult", recursive=False)
+        settled_contracts_root = result.find_all(
+            "efac:SettledContract", recursive=False
+        )
         lot_tenders = result.find_all("efac:LotTender", recursive=False)
         tendering_parties = result.find_all("efac:TenderingParty", recursive=False)
         organizations = soup.find("efac:Organizations").find_all("efac:Organization")
@@ -851,41 +853,47 @@ class TEDParser(object):
         for lot_result in lot_results:
             vendors = []
             try:
-                settled_contract = lot_result.find(
+                settled_contracts = lot_result.find_all(
                     "efac:SettledContract",
                 )
-                settled_contract_id = settled_contract.find("cbc:ID").text
+                settled_contract_ids = [
+                    settled_contract.find("cbc:ID").text
+                    for settled_contract in settled_contracts
+                ]
             except (AttributeError, TypeError, ValueError):
                 continue
 
             try:
-                lot_tender_id = lot_result.find("efac:LotTender").find("cbc:ID").text
+                lot_tender_ids = [
+                    lot.find("cbc:ID").text
+                    for lot in lot_result.find_all("efac:LotTender")
+                ]
             except (AttributeError, TypeError, ValueError):
-                lot_tender_id = None
-            tendering_party_id = None
-            if lot_tender_id:
+                lot_tender_ids = []
+            tendering_party_ids = []
+            if lot_tender_ids:
                 for ten in lot_tenders:
                     try:
-                        if ten.find("cbc:ID").text == lot_tender_id:
-                            tendering_party_id = (
+                        if ten.find("cbc:ID").text in lot_tender_ids:
+                            tendering_party_ids.append(
                                 ten.find("efac:TenderingParty").find("cbc:ID").text
                             )
-                            break
                     except (AttributeError, TypeError, ValueError):
                         continue
             org_ids = []
-            if tendering_party_id:
+            if tendering_party_ids:
                 for ten_party in tendering_parties:
                     try:
                         if (
                             ten_party.find("cbc:ID", recoursive=False).text
-                            == tendering_party_id
+                            in tendering_party_ids
                         ):
-                            org_ids = [
-                                org_id.find("cbc:ID").text
-                                for org_id in ten_party.find_all("efac:Tenderer")
-                            ]
-                            break
+                            org_ids.extend(
+                                [
+                                    org_id.find("cbc:ID").text
+                                    for org_id in ten_party.find_all("efac:Tenderer")
+                                ]
+                            )
 
                     except (AttributeError, TypeError, ValueError):
                         continue
@@ -910,11 +918,10 @@ class TEDParser(object):
                 vendors.extend(vendor_names)
 
             award_date = date.today()
-            for con in settled_contracts:
-                if con.find("cbc:ID").text == settled_contract_id:
+            for con in settled_contracts_root:
+                if con.find("cbc:ID").text in settled_contract_ids:
                     award_date_str = con.find("cbc:AwardDate")
                     if award_date_str:
-
                         award_date = datetime.strptime(
                             award_date_str.text, "%Y-%m-%d%z"
                         ).date()

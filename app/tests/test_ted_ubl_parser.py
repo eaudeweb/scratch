@@ -92,7 +92,7 @@ class TedUblParserTestCase(BaseTestCase):
             self.assertEqual(len(awards), 1)
             self.assertEqual(
                 awards[0]["vendors"],
-                ["OHB SYSTEM AG"],
+                ["OHB SYSTEM AG", "Telespazio SpA"],
             )
             self.assertEqual(awards[0]["award_date"], datetime(2024, 1, 23).date())
             self.assertEqual(awards[0]["renewal_date"], None)
