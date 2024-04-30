@@ -1017,7 +1017,7 @@ class TEDParser(object):
             return None, None
 
     @staticmethod
-    def save_award(tender_dict, award_dict, is_ubl_format) -> Award:
+    def save_award(tender_dict, award_dict, is_ubl_format=False) -> Award:
         reference = tender_dict["reference"]
         tender_entry = Tender.objects.filter(reference=reference).first()
 
