@@ -10,7 +10,7 @@ from urllib.parse import urljoin
 
 import requests
 from bs4 import BeautifulSoup, element, PageElement
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 from django.conf import settings
 from ftplib import error_perm, FTP
 from django.db.models.functions import ExtractYear
@@ -18,6 +18,7 @@ from django.utils.timezone import make_aware
 
 from app.exceptions import CPVCodesNotFound, TEDCountriesNotFound
 from app.models import (
+    TEDNoticeCode,
     TEDReleaseCalendar,
     WorkerLog,
     Tender,
@@ -235,6 +236,7 @@ class TEDParser(object):
     def __init__(self, path="", folder_names=[]):
         self.CPV_CODES = [x.code for x in CPVCode.objects.all()]
         self.TED_COUNTRIES = [x.name for x in TedCountry.objects.all()]
+        self.TED_COUNTRIES_A3 = {x.iso_a3 for x in TedCountry.objects.all()}
 
         if not self.CPV_CODES:
             raise CPVCodesNotFound("CPV Codes not found.")
@@ -424,6 +426,216 @@ class TEDParser(object):
 
         return tender, awards
 
+    def _parse_ubl_notice(
+        self, content, tenders_to_update, xml_file, codes, set_notified
+    ) -> Tuple[dict, List[dict]]:
+        """
+        :param tenders_to_update: a list of tenders to be updated. If the list
+            is empty, we update all tenders and create new ones when the tender
+            reference in the file does not correspond to any tender in the
+            database.
+        """
+        if tenders_to_update and not self.file_in_tender_list(
+            xml_file, tenders_to_update
+        ):
+            # Update mode: we only care about updating the tenders on the list,
+            # new tenders will not be created. Therefore, if the tender this
+            # file is about is not in the list, the file is irrelevant.
+            try:
+                self.xml_files.remove(xml_file)
+                os.remove(xml_file)
+            except ValueError:
+                pass
+            raise StopIteration
+
+        soup = BeautifulSoup(content, "xml")
+
+        cpv_elements = soup.find_all(
+            "cbc:ItemClassificationCode", attrs={"listName": "cpv"}
+        )
+
+        cpv_codes = set([c.text for c in cpv_elements])
+
+        doc_type = soup.find("cbc:NoticeTypeCode")
+
+        if doc_type:
+            doc_type = doc_type.text
+        else:
+            doc_type = ""
+
+        projects = soup.find_all("cac:ProcurementProject")
+        country_set = set()
+        for project in projects:
+            countries = project.find_all(
+                "cbc:IdentificationCode", attrs={"listName": "country"}
+            )
+            country_set.update({country.text for country in countries})
+
+        auth_type = soup.find(
+            "cbc:PartyTypeCode", attrs={"listName": "buyer-legal-type"}
+        )
+
+        if auth_type:
+            auth_type = auth_type.text
+        else:
+            auth_type = ""
+
+        project = soup.find("cac:ProcurementProject")
+        title = ""
+        if project:
+            title = project.find("cbc:Name", attrs={"languageID": "ENG"})
+
+        if title:
+            title = title.text
+
+        accept_notice = (
+            cpv_codes & set(self.CPV_CODES)
+            and (doc_type in settings.TED_DOC_CODES)
+            and country_set & self.TED_COUNTRIES_A3
+            and (auth_type in settings.TED_AUTH_CODES)
+            and title
+        )
+
+        if not accept_notice:
+            try:
+                self.xml_files.remove(xml_file)
+                os.remove(xml_file)
+            except ValueError:
+                pass
+            raise StopIteration
+        else:
+            codes[xml_file] = cpv_codes
+
+        tender = dict()
+        tender["reference"] = (
+            soup.find(
+                "efbc:NoticePublicationID", attrs={"schemeName": "ojs-notice-id"}
+            ).text
+            or ""
+        )
+        tender["notice_type"] = TEDNoticeCode.objects.get(
+            code=soup.find("cbc:NoticeTypeCode").text
+        ).doc_type
+
+        tender["title"] = title
+
+        try:
+            organization_id = (
+                soup.find("cac:ContractingParty")
+                .find("cac:Party")
+                .find("cac:PartyIdentification")
+                .find("cbc:ID")
+                .text
+            )
+
+            organizations = soup.find("efac:Organizations").find_all(
+                "efac:Organization"
+            )
+
+            for organization in organizations:
+                if (
+                    organization.find("cac:PartyIdentification").find("cbc:ID").text
+                    == organization_id
+                ):
+                    org_name = (
+                        organization.find("cac:PartyName").find(
+                            "cbc:Name", attrs={"languageID": "ENG"}
+                        )
+                        or organization.find("cac:PartyName").find("cbc:Name")
+                    ).text
+                    break
+            tender["organization"] = org_name
+
+        except AttributeError:
+            tender["organization"] = ""
+
+        try:
+            published_str = soup.find("efbc:PublicationDate").text
+            tender["published"] = datetime.strptime(published_str, "%Y-%m-%d%z").date()
+        except (AttributeError, ValueError):
+            tender["published"] = None
+
+        try:
+            deadline = soup.find("cac:TenderSubmissionDeadlinePeriod") or soup.find(
+                "cac:ParticipationRequestReceptionPeriod"
+            )
+            deadline_date = deadline.find("cbc:EndDate").text
+            deadline_time = deadline.find("cbc:EndTime").text
+
+            deadline_str = f"{datetime.strftime(datetime.strptime(deadline_date, '%Y-%m-%d%z'),'%Y-%m-%d')}T{deadline_time}"
+
+            deadline_parts = deadline_str.split(".")
+            if len(deadline_parts) > 1:
+                if deadline_parts[1].find("Z") != -1:
+                    deadline_str = deadline_parts[0] + "Z"
+                else:
+                    deadline_str = deadline_parts[0] + deadline_parts[1][-6:]
+
+            tender["deadline"] = datetime.strptime(deadline_str, "%Y-%m-%dT%H:%M:%S%z")
+        except (AttributeError, ValueError):
+            tender["deadline"] = None
+
+        project = soup.find("cac:ProcurementProject")
+        if project:
+            try:
+                title = (
+                    "Title:\n\t"
+                    + project.find("cbc:Name", attrs={"languageID": "ENG"}).text
+                    + "\n\n"
+                )
+            except AttributeError:
+                title = ""
+
+            try:
+                description = project.find(
+                    "cbc:Description", attrs={"languageID": "ENG"}
+                ).text
+                procurement_desc = "Description of the procurement:" + (
+                    "\n\t" + str(description) + "\n\n"
+                )
+            except AttributeError:
+                procurement_desc = ""
+
+            tender["description"] = title + procurement_desc
+        else:
+            tender["description"] = ""
+
+        try:
+            estimated_total = (
+                "Estimated total: "
+                + soup.find("cbc:EstimatedOverallContractAmount").text
+                + " "
+                + str(soup.find("cbc:EstimatedOverallContractAmount")["currencyID"])
+                + "\n\n"
+            )
+        except AttributeError:
+            estimated_total = ""
+
+        tender["description"] += estimated_total
+
+        try:
+            lots = (
+                "Tenders may be submitted for maximum number of lots: "
+                + soup.find("cbc:MaximumLotsSubmittedNumeric").text
+                + "\n\n"
+            )
+        except AttributeError:
+            lots = ""
+
+        tender["description"] += lots
+
+        if tender["reference"]:
+            base_url = urljoin("https://" + settings.TED_URL, settings.TED_NOTICE_URL)
+            tender["url"] = urljoin(base_url, tender["reference"])
+
+        tender["source"] = "TED"
+
+        awards = []
+
+        if tender["notice_type"] == "Contract award notice":
+            self.update_ubl_contract_award_notice_awards(awards, soup, set_notified)
+        return tender, awards
+
     @staticmethod
     def file_in_tender_list(xml_file, tenders):
         tender_references = [t.reference for t in tenders]
@@ -431,6 +643,13 @@ class TEDParser(object):
             os.path.basename(xml_file).replace("_", "-").replace(".xml", "")
             in tender_references
         )
+
+    @staticmethod
+    def is_ubl_format(xml_file):
+        file_name = os.path.basename(xml_file)
+        if len(file_name) == 17:
+            return True
+        return False
 
     def parse_notices(
         self, tenders: List[dict], set_notified: bool
@@ -446,10 +665,16 @@ class TEDParser(object):
 
         for xml_file in self.xml_files[:]:
             with open(xml_file, "r") as f:
+                is_ubl_format = self.is_ubl_format(xml_file)
                 try:
-                    tender_dict, awards = self._parse_notice(
-                        f.read(), tenders, xml_file, codes, set_notified
-                    )
+                    if not is_ubl_format:
+                        tender_dict, awards = self._parse_notice(
+                            f.read(), tenders, xml_file, codes, set_notified
+                        )
+                    else:
+                        tender_dict, awards = self._parse_ubl_notice(
+                            f.read(), tenders, xml_file, codes, set_notified
+                        )
                 except StopIteration:
                     continue
 
@@ -459,7 +684,7 @@ class TEDParser(object):
 
                 if awards:
                     for award_dict in awards:
-                        self.save_award(tender_dict, award_dict)
+                        self.save_award(tender_dict, award_dict, is_ubl_format)
 
                 if created:
                     num_created_tenders += 1
@@ -468,7 +693,6 @@ class TEDParser(object):
                     changed_tenders.append((tender_dict, attr_changes))
 
             os.remove(xml_file)
-
         # Only the changed tender info is returned, the created ones are not
         return changed_tenders, num_created_tenders
 
@@ -609,6 +833,128 @@ class TEDParser(object):
                     awards.append(award)
 
     @staticmethod
+    def update_ubl_contract_award_notice_awards(awards, soup, set_notified):
+        result = soup.find("efac:NoticeResult")
+
+        try:
+            val_total = result.find("cbc:TotalAmount")
+            contract_value = float(val_total.text)
+            currency_currency = val_total.get("currencyID")
+        except (AttributeError, TypeError, ValueError):
+            contract_value = 0
+            currency_currency = "N/A"
+        lot_results = result.find_all("efac:LotResult", recursive=False)
+        settled_contracts_root = result.find_all(
+            "efac:SettledContract", recursive=False
+        )
+        lot_tenders = result.find_all("efac:LotTender", recursive=False)
+        tendering_parties = result.find_all("efac:TenderingParty", recursive=False)
+        organizations = soup.find("efac:Organizations").find_all("efac:Organization")
+
+        for lot_result in lot_results:
+            vendors = []
+            try:
+                settled_contracts = lot_result.find_all(
+                    "efac:SettledContract",
+                )
+                settled_contract_ids = [
+                    settled_contract.find("cbc:ID").text
+                    for settled_contract in settled_contracts
+                ]
+            except (AttributeError, TypeError, ValueError):
+                continue
+
+            try:
+                lot_tender_ids = [
+                    lot.find("cbc:ID").text
+                    for lot in lot_result.find_all("efac:LotTender")
+                ]
+            except (AttributeError, TypeError, ValueError):
+                lot_tender_ids = []
+            tendering_party_ids = []
+            if lot_tender_ids:
+                for ten in lot_tenders:
+                    try:
+                        if ten.find("cbc:ID").text in lot_tender_ids:
+
+                            tendering_party_ids.append(
+                                ten.find("efac:TenderingParty").find("cbc:ID").text
+                            )
+
+                    except (AttributeError, TypeError, ValueError):
+                        continue
+            org_ids = []
+            if tendering_party_ids:
+                for ten_party in tendering_parties:
+                    try:
+                        if (
+                            ten_party.find("cbc:ID", recoursive=False).text
+                            in tendering_party_ids
+                        ):
+                            org_ids.extend(
+                                [
+                                    org_id.find("cbc:ID").text
+                                    for org_id in ten_party.find_all("efac:Tenderer")
+                                ]
+                            )
+
+                    except (AttributeError, TypeError, ValueError):
+                        continue
+
+            vendor_names = []
+            if org_ids:
+                for org in organizations:
+                    try:
+                        if (
+                            org.find("cac:PartyIdentification").find("cbc:ID").text
+                            in org_ids
+                        ):
+                            vendor_names.append(
+                                (
+                                    org.find("cbc:Name", attrs={"languageID": "ENG"})
+                                    or org.find("cbc:Name")
+                                ).text
+                            )
+                    except (AttributeError, TypeError, ValueError):
+                        continue
+            if vendor_names:
+                vendors.extend(vendor_names)
+
+            award_date = date.today()
+            for con in settled_contracts_root:
+                if con.find("cbc:ID").text in settled_contract_ids:
+                    award_date_str = con.find("cbc:AwardDate")
+                    if award_date_str:
+                        award_date = datetime.strptime(
+                            award_date_str.text, "%Y-%m-%d%z"
+                        ).date()
+
+                    else:
+                        try:
+                            award_date_str = con.find("cbc:IssueDate").text
+                            award_date = datetime.strptime(
+                                award_date_str, "%Y-%m-%d%z"
+                            ).date()
+                        except (AttributeError, TypeError, ValueError):
+                            pass
+
+                    break
+                else:
+                    continue
+            if vendors:
+
+                award = {
+                    "vendors": vendors,
+                    "award_date": award_date,
+                    "renewal_date": None,
+                    "value": contract_value,
+                    "currency": currency_currency,
+                    "notified": set_notified,
+                    "renewal_notified": False,
+                }
+                awards.append(award)
+
+    @staticmethod
     def find_renewal_date(previous_notice: "str") -> (PageElement, str) or (None, None):
         """
         Calculate the renewal date of the award by finding the contract notice and parsing its XML file.
@@ -622,7 +968,6 @@ class TEDParser(object):
                 + previous_notice.split("/")[0]
             )
             url = "https://ted.europa.eu/udl?uri=TED:NOTICE:%s:XML:EN:HTML" % file_name
-            logging.warning(file_name)
 
             headers = {"User-Agent": "Mozilla/5.0"}
             time.sleep(randint(2, 4))
@@ -634,7 +979,6 @@ class TEDParser(object):
                     document_type = document_type.text
                 else:
                     document_type = ""
-                logging.warning(document_type)
 
                 if document_type != "Contract notice":
                     previous_notice = contract_notice_soup.find("notice_number_oj").text
@@ -673,7 +1017,7 @@ class TEDParser(object):
             return None, None
 
     @staticmethod
-    def save_award(tender_dict, award_dict) -> Award:
+    def save_award(tender_dict, award_dict, is_ubl_format=False) -> Award:
         reference = tender_dict["reference"]
         tender_entry = Tender.objects.filter(reference=reference).first()
 
@@ -692,7 +1036,10 @@ class TEDParser(object):
                 )
 
                 if not created:
-                    award.value += award_dict["value"]
+                    if is_ubl_format:
+                        award.value = award_dict["value"]
+                    else:
+                        award.value += award_dict["value"]
                     award.save()
                 award.vendors.add(*vendor_objects)
                 return award

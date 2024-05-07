@@ -319,6 +319,7 @@ class CPVCode(BaseTimedModel):
 
 class TedCountry(BaseTimedModel):
     name = models.CharField(max_length=1024, primary_key=True)
+    iso_a3 = models.CharField(max_length=3, null=True, blank=True)
 
     class Meta:
         verbose_name = "TED country"
@@ -356,3 +357,13 @@ class TEDReleaseCalendar(BaseTimedModel):
     @property
     def full_oj_s(self):
         return self.year + str(self.oj_s).zfill(5)
+
+
+class TEDNoticeCode(BaseTimedModel):
+    code = models.CharField(max_length=20)
+    name = models.CharField(max_length=140)
+    doc_type = models.CharField(max_length=140, null=True, blank=True)
+
+    class Meta:
+        verbose_name = "TED notice code"
+        verbose_name_plural = "TED notice codes"

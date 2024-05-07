@@ -3,8 +3,18 @@ import factory.fuzzy
 import random
 from faker import Faker
 from .models import (
-    Tender, Award, TenderDocument, CPVCode,
-    TedCountry, UNSPSCCode, Keyword, Vendor, Tag, Profile, Task
+    TEDNoticeCode,
+    Tender,
+    Award,
+    TenderDocument,
+    CPVCode,
+    TedCountry,
+    UNSPSCCode,
+    Keyword,
+    Vendor,
+    Tag,
+    Profile,
+    Task,
 )
 from datetime import datetime, timedelta
 from django.conf import settings
@@ -34,8 +44,7 @@ class UserFactory(factory.django.DjangoModelFactory):
 
     username = factory.sequence(lambda n: f"test{n}")
     email = factory.sequence(lambda n: f"test{n}@test.test")
-    profile = factory.RelatedFactory(
-        ProfileFactory, factory_related_name='user')
+    profile = factory.RelatedFactory(ProfileFactory, factory_related_name="user")
 
 
 class TenderFactory(factory.django.DjangoModelFactory):
@@ -44,10 +53,10 @@ class TenderFactory(factory.django.DjangoModelFactory):
 
     reference = factory.sequence(lambda n: "RFC/TEST/%s" % n)
     title = factory.sequence(lambda n: "Tender%s" % n)
-    organization = 'UNOPS'
-    source = 'UNGM'
-    description = 'test'
-    unspsc_codes = '98765'
+    organization = "UNOPS"
+    source = "UNGM"
+    description = "test"
+    unspsc_codes = "98765"
     url = factory.sequence(lambda n: "http://test.com/%s" % n)
     published = datetime.now(timezone.utc)
     deadline = datetime.now(timezone.utc)
@@ -57,7 +66,7 @@ class TenderDocumentFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = TenderDocument
 
-    name = factory.sequence(lambda n: 'Doc_%s' % n)
+    name = factory.sequence(lambda n: "Doc_%s" % n)
     download_url = factory.sequence(lambda n: "http://test.org/%s" % n)
     tender = factory.SubFactory(TenderFactory)
 
@@ -93,6 +102,11 @@ class TedCountryFactory(factory.django.DjangoModelFactory):
         model = TedCountry
 
 
+class TEDNoticeCodeFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = TEDNoticeCode
+
+
 class UNSPCCodeFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = UNSPSCCode
@@ -102,14 +116,14 @@ class KeywordFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Keyword
 
-    value = 'python'
+    value = "python"
 
 
 class TagsFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Tag
 
-    name = 'django'
+    name = "django"
 
 
 class TaskFactory(factory.django.DjangoModelFactory):
@@ -122,9 +136,11 @@ class TaskFactory(factory.django.DjangoModelFactory):
         ["digest: True", "days_ago: 1", "given_date: 2022-12-21"]
     )
     started = factory.LazyAttributeSequence(
-        lambda obj, n: timezone.now() + timedelta(minutes=n+1))
+        lambda obj, n: timezone.now() + timedelta(minutes=n + 1)
+    )
     stopped = factory.LazyAttribute(
-        lambda obj: obj.started + timedelta(minutes=random.randint(1, 9)))
+        lambda obj: obj.started + timedelta(minutes=random.randint(1, 9))
+    )
     status = factory.fuzzy.FuzzyChoice(["processing", "success", "error"])
 
     @factory.lazy_attribute
@@ -144,7 +160,5 @@ class TaskFactory(factory.django.DjangoModelFactory):
     def output(self):
         random_int = random.randint(-3, 9)
         if random_int > 0 and self.stopped:
-            return fake.paragraph(
-                nb_sentences=random_int, variable_nb_sentences=False
-            )
+            return fake.paragraph(nb_sentences=random_int, variable_nb_sentences=False)
         return ""

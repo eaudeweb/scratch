@@ -1,0 +1,967 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><ContractAwardNotice xmlns="urn:oasis:names:specification:ubl:schema:xsd:ContractAwardNotice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:efac="http://data.europa.eu/p27/eforms-ubl-extension-aggregate-components/1" xmlns:efbc="http://data.europa.eu/p27/eforms-ubl-extension-basic-components/1" xmlns:efext="http://data.europa.eu/p27/eforms-ubl-extensions/1" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2">
+   <ext:UBLExtensions>
+      <ext:UBLExtension>
+         <ext:ExtensionContent>
+            <efext:EformsExtension>
+               <efac:NoticeResult>
+                  <cbc:TotalAmount currencyID="EUR">4651804</cbc:TotalAmount>
+                  <efac:LotResult>
+                     <cbc:ID>RES-0001</cbc:ID>
+                     <cbc:TenderResultCode listName="winner-selection-status">selec-w</cbc:TenderResultCode>
+                     <efbc:DPSTerminationIndicator>false</efbc:DPSTerminationIndicator>
+                     <efac:LotTender>
+                        <cbc:ID>TEN-0001</cbc:ID>
+                     </efac:LotTender>
+                     <efac:LotTender>
+                        <cbc:ID>TEN-0002</cbc:ID>
+                     </efac:LotTender>
+                     <efac:ReceivedSubmissionsStatistics>
+                        <efbc:StatisticsCode listName="received-submission-type">tenders</efbc:StatisticsCode>
+                        <efbc:StatisticsNumeric>5</efbc:StatisticsNumeric>
+                     </efac:ReceivedSubmissionsStatistics>
+                     <efac:SettledContract>
+                        <cbc:ID>CON-0001</cbc:ID>
+                     </efac:SettledContract>
+                     <efac:SettledContract>
+                        <cbc:ID>CON-0002</cbc:ID>
+                     </efac:SettledContract>
+                     <efac:TenderLot>
+                        <cbc:ID>LOT-0000</cbc:ID>
+                     </efac:TenderLot>
+                  </efac:LotResult>
+                  <efac:LotTender>
+                     <cbc:ID>TEN-0001</cbc:ID>
+                     <cbc:RankCode>2</cbc:RankCode>
+                     <efbc:TenderRankedIndicator>true</efbc:TenderRankedIndicator>
+                     <efbc:TenderVariantIndicator>false</efbc:TenderVariantIndicator>
+                     <cac:LegalMonetaryTotal>
+                        <cbc:PayableAmount currencyID="EUR">2401812</cbc:PayableAmount>
+                     </cac:LegalMonetaryTotal>
+                     <efac:TenderingParty>
+                        <cbc:ID>TPA-0001</cbc:ID>
+                     </efac:TenderingParty>
+                     <efac:TenderLot>
+                        <cbc:ID>LOT-0000</cbc:ID>
+                     </efac:TenderLot>
+                     <efac:TenderReference>
+                        <cbc:ID>OHB_TENDER</cbc:ID>
+                     </efac:TenderReference>
+                  </efac:LotTender>
+                  <efac:LotTender>
+                     <cbc:ID>TEN-0002</cbc:ID>
+                     <cbc:RankCode>1</cbc:RankCode>
+                     <efbc:TenderRankedIndicator>true</efbc:TenderRankedIndicator>
+                     <efbc:TenderVariantIndicator>false</efbc:TenderVariantIndicator>
+                     <cac:LegalMonetaryTotal>
+                        <cbc:PayableAmount currencyID="EUR">2249992</cbc:PayableAmount>
+                     </cac:LegalMonetaryTotal>
+                     <efac:TenderingParty>
+                        <cbc:ID>TPA-0002</cbc:ID>
+                     </efac:TenderingParty>
+                     <efac:TenderLot>
+                        <cbc:ID>LOT-0000</cbc:ID>
+                     </efac:TenderLot>
+                     <efac:TenderReference>
+                        <cbc:ID>TEL_TENDER</cbc:ID>
+                     </efac:TenderReference>
+                  </efac:LotTender>
+                  <efac:SettledContract>
+                     <cbc:ID>CON-0001</cbc:ID>
+                     <cbc:IssueDate>2024-01-23+01:00</cbc:IssueDate>
+                     <cac:SignatoryParty>
+                        <cac:PartyIdentification>
+                           <cbc:ID>ORG-0001</cbc:ID>
+                        </cac:PartyIdentification>
+                     </cac:SignatoryParty>
+                     <efac:ContractReference>
+                        <cbc:ID>Contract N°2 DEFIS/2023/OP/0003</cbc:ID>
+                     </efac:ContractReference>
+                     <efac:LotTender>
+                        <cbc:ID>TEN-0001</cbc:ID>
+                     </efac:LotTender>
+                     <efac:Funding>
+                        <cbc:FundingProgramCode listName="eu-programme">SPACE</cbc:FundingProgramCode>
+                     </efac:Funding>
+                  </efac:SettledContract>
+                  <efac:SettledContract>
+                     <cbc:ID>CON-0002</cbc:ID>
+                     <cbc:IssueDate>2024-01-23+01:00</cbc:IssueDate>
+                     <cac:SignatoryParty>
+                        <cac:PartyIdentification>
+                           <cbc:ID>ORG-0001</cbc:ID>
+                        </cac:PartyIdentification>
+                     </cac:SignatoryParty>
+                     <efac:ContractReference>
+                        <cbc:ID>Contract N°1 DEFIS/2023/OP/0003</cbc:ID>
+                     </efac:ContractReference>
+                     <efac:LotTender>
+                        <cbc:ID>TEN-0002</cbc:ID>
+                     </efac:LotTender>
+                     <efac:Funding>
+                        <cbc:FundingProgramCode listName="eu-programme">SPACE</cbc:FundingProgramCode>
+                     </efac:Funding>
+                  </efac:SettledContract>
+                  <efac:TenderingParty>
+                     <cbc:ID>TPA-0001</cbc:ID>
+                     <cbc:Name>EO4GOV</cbc:Name>
+                     <efac:Tenderer>
+                        <cbc:ID>ORG-0004</cbc:ID>
+                        <efbc:GroupLeadIndicator>true</efbc:GroupLeadIndicator>
+                     </efac:Tenderer>
+                  </efac:TenderingParty>
+                  <efac:TenderingParty>
+                     <cbc:ID>TPA-0002</cbc:ID>
+                     <efac:Tenderer>
+                        <cbc:ID>ORG-0007</cbc:ID>
+                        <efbc:GroupLeadIndicator>true</efbc:GroupLeadIndicator>
+                     </efac:Tenderer>
+                  </efac:TenderingParty>
+               </efac:NoticeResult>
+               <efac:NoticeSubType>
+                  <cbc:SubTypeCode listName="notice-subtype">29</cbc:SubTypeCode>
+               </efac:NoticeSubType>
+               <efac:Organizations>
+                  <efac:Organization>
+                     <efac:Company>
+                        <cbc:WebsiteURI>https://ec.europa.eu/info/departments/defence-industry-and-space_en</cbc:WebsiteURI>
+                        <cac:PartyIdentification>
+                           <cbc:ID>ORG-0001</cbc:ID>
+                        </cac:PartyIdentification>
+                        <cac:PartyName>
+                           <cbc:Name languageID="DEU">European Commission, Directorate-General for Defence Industry and Space (DEFIS)</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="FIN">European Commission, Directorate-General for Defence Industry and Space (DEFIS)</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="SWE">European Commission, Directorate-General for Defence Industry and Space (DEFIS)</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="POR">European Commission, Directorate-General for Defence Industry and Space (DEFIS)</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="BUL">European Commission, Directorate-General for Defence Industry and Space (DEFIS)</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="ELL">European Commission, Directorate-General for Defence Industry and Space (DEFIS)</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="MLT">European Commission, Directorate-General for Defence Industry and Space (DEFIS)</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="LIT">European Commission, Directorate-General for Defence Industry and Space (DEFIS)</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="ENG">European Commission, Directorate-General for Defence Industry and Space (DEFIS)</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="LAV">European Commission, Directorate-General for Defence Industry and Space (DEFIS)</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="HRV">European Commission, Directorate-General for Defence Industry and Space (DEFIS)</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="ITA">European Commission, Directorate-General for Defence Industry and Space (DEFIS)</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="FRA">European Commission, Directorate-General for Defence Industry and Space (DEFIS)</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="HUN">European Commission, Directorate-General for Defence Industry and Space (DEFIS)</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="SPA">European Commission, Directorate-General for Defence Industry and Space (DEFIS)</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="EST">European Commission, Directorate-General for Defence Industry and Space (DEFIS)</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="CES">European Commission, Directorate-General for Defence Industry and Space (DEFIS)</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="SLK">European Commission, Directorate-General for Defence Industry and Space (DEFIS)</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="SLV">European Commission, Directorate-General for Defence Industry and Space (DEFIS)</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="GLE">European Commission, Directorate-General for Defence Industry and Space (DEFIS)</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="POL">European Commission, Directorate-General for Defence Industry and Space (DEFIS)</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="DAN">European Commission, Directorate-General for Defence Industry and Space (DEFIS)</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="RON">European Commission, Directorate-General for Defence Industry and Space (DEFIS)</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="NLD">European Commission, Directorate-General for Defence Industry and Space (DEFIS)</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PostalAddress>
+                           <cbc:StreetName>Avenue d'Auderghem 45</cbc:StreetName>
+                           <cbc:Department>DEFIS.C.3 – Earth Observation</cbc:Department>
+                           <cbc:CityName>Brussels</cbc:CityName>
+                           <cbc:PostalZone>1040</cbc:PostalZone>
+                           <cbc:CountrySubentityCode listName="nuts">BE100</cbc:CountrySubentityCode>
+                           <cac:Country>
+                              <cbc:IdentificationCode listName="country">BEL</cbc:IdentificationCode>
+                           </cac:Country>
+                        </cac:PostalAddress>
+                        <cac:PartyLegalEntity>
+                           <cbc:CompanyID>EUCOM_C3</cbc:CompanyID>
+                        </cac:PartyLegalEntity>
+                        <cac:Contact>
+                           <cbc:Telephone>32 2 29 91 111</cbc:Telephone>
+                           <cbc:ElectronicMail>defis-gp2-call-for-tenders@ec.europa.eu</cbc:ElectronicMail>
+                        </cac:Contact>
+                     </efac:Company>
+                  </efac:Organization>
+                  <efac:Organization>
+                     <efac:Company>
+                        <cbc:WebsiteURI>https://curia.europa.eu</cbc:WebsiteURI>
+                        <cac:PartyIdentification>
+                           <cbc:ID>ORG-0003</cbc:ID>
+                        </cac:PartyIdentification>
+                        <cac:PartyName>
+                           <cbc:Name languageID="DEU">Gericht der Europäischen Union</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="FIN">Euroopan unionin yleinen tuomioistuin</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="SWE">Europeiska unionens tribunal</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="POR">Tribunal Geral da União Europeia</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="BUL">Общ съд на Европейския съюз</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="ELL">Γενικό Δικαστήριο της Ευρωπαϊκής Ένωσης</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="MLT">Qorti Ġenerali tal-Unjoni Ewropea</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="LIT">Europos Sąjungos Bendrasis Teismas</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="ENG">General Court of the European Union</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="LAV">Eiropas Savienības Vispārējā tiesa</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="HRV">Opći sud Europske unije</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="ITA">Tribunale dell’Unione Europea</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="FRA">Tribunal de l'Union européenne</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="HUN">Az Európai Unió Törvényszéke</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="SPA">Tribunal General de la Unión Europea</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="EST">Euroopa Liidu Üldkohus </cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="CES">Tribunál Evropské unie</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="SLK">Všeobecný súd Európskej únie</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="SLV">Splošno sodišče Evropske unije</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="GLE">Cúirt Ghinearálta an Aontais Eorpaigh</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="POL">Sąd Unii Europejskiej</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="DAN">Den Europæiske Unions Retten</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="RON">Tribunalul Uniunii Europene</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="NLD">Gerecht van de Europese Unie</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PostalAddress>
+                           <cbc:StreetName>Rue du Fort Niedergrünewald</cbc:StreetName>
+                           <cbc:CityName>Luxembourg</cbc:CityName>
+                           <cbc:PostalZone>L-2925</cbc:PostalZone>
+                           <cbc:CountrySubentityCode listName="nuts">LU000</cbc:CountrySubentityCode>
+                           <cac:Country>
+                              <cbc:IdentificationCode listName="country">LUX</cbc:IdentificationCode>
+                           </cac:Country>
+                        </cac:PostalAddress>
+                        <cac:PartyLegalEntity>
+                           <cbc:CompanyID>CJEU</cbc:CompanyID>
+                        </cac:PartyLegalEntity>
+                        <cac:Contact>
+                           <cbc:Telephone>352 43031</cbc:Telephone>
+                           <cbc:ElectronicMail>GC.Registry@curia.europa.eu</cbc:ElectronicMail>
+                        </cac:Contact>
+                     </efac:Company>
+                  </efac:Organization>
+                  <efac:Organization>
+                     <efac:Company>
+                        <cbc:WebsiteURI>https://www.ohb-system.de</cbc:WebsiteURI>
+                        <cac:PartyIdentification>
+                           <cbc:ID>ORG-0004</cbc:ID>
+                        </cac:PartyIdentification>
+                        <cac:PartyName>
+                           <cbc:Name languageID="DEU">OHB SYSTEM AG</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="FIN">OHB SYSTEM AG</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="SWE">OHB SYSTEM AG</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="POR">OHB SYSTEM AG</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="BUL">OHB SYSTEM AG</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="ELL">OHB SYSTEM AG</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="MLT">OHB SYSTEM AG</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="LIT">OHB SYSTEM AG</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="ENG">OHB SYSTEM AG</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="HRV">OHB SYSTEM AG</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="LAV">OHB SYSTEM AG</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="ITA">OHB SYSTEM AG</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="FRA">OHB SYSTEM AG</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="HUN">OHB SYSTEM AG</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="SPA">OHB SYSTEM AG</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="EST">OHB SYSTEM AG</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="CES">OHB SYSTEM AG</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="SLK">OHB SYSTEM AG</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="SLV">OHB SYSTEM AG</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="GLE">OHB SYSTEM AG</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="POL">OHB SYSTEM AG</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="DAN">OHB SYSTEM AG</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="RON">OHB SYSTEM AG</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="NLD">OHB SYSTEM AG</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PostalAddress>
+                           <cbc:CityName>BREMEN</cbc:CityName>
+                           <cbc:PostalZone>28359</cbc:PostalZone>
+                           <cbc:CountrySubentityCode listName="nuts">DE501</cbc:CountrySubentityCode>
+                           <cac:Country>
+                              <cbc:IdentificationCode listName="country">DEU</cbc:IdentificationCode>
+                           </cac:Country>
+                        </cac:PostalAddress>
+                        <cac:PartyLegalEntity>
+                           <cbc:CompanyID>VAT Reg. DE114530670</cbc:CompanyID>
+                        </cac:PartyLegalEntity>
+                        <cac:Contact>
+                           <cbc:Telephone>49 421 2020 8</cbc:Telephone>
+                           <cbc:ElectronicMail>info@ohb.de</cbc:ElectronicMail>
+                        </cac:Contact>
+                     </efac:Company>
+                  </efac:Organization>
+                  <efac:Organization>
+                     <efac:Company>
+                        <cbc:WebsiteURI>https://www.telespazio.com/it/home</cbc:WebsiteURI>
+                        <cac:PartyIdentification>
+                           <cbc:ID>ORG-0007</cbc:ID>
+                        </cac:PartyIdentification>
+                        <cac:PartyName>
+                           <cbc:Name languageID="DEU">Telespazio SpA</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="FIN">Telespazio SpA</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="SWE">Telespazio SpA</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="POR">Telespazio SpA</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="BUL">Telespazio SpA</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="ELL">Telespazio SpA</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="MLT">Telespazio SpA</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="LIT">Telespazio SpA</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="ENG">Telespazio SpA</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="HRV">Telespazio SpA</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="LAV">Telespazio SpA</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="ITA">Telespazio SpA</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="FRA">Telespazio SpA</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="HUN">Telespazio SpA</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="SPA">Telespazio SpA</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="EST">Telespazio SpA</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="CES">Telespazio SpA</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="SLK">Telespazio SpA</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="SLV">Telespazio SpA</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="GLE">Telespazio SpA</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="POL">Telespazio SpA</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="DAN">Telespazio SpA</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="RON">Telespazio SpA</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PartyName>
+                           <cbc:Name languageID="NLD">Telespazio SpA</cbc:Name>
+                        </cac:PartyName>
+                        <cac:PostalAddress>
+                           <cbc:CityName>ROMA</cbc:CityName>
+                           <cbc:PostalZone>00156</cbc:PostalZone>
+                           <cbc:CountrySubentityCode listName="nuts">ITI43</cbc:CountrySubentityCode>
+                           <cac:Country>
+                              <cbc:IdentificationCode listName="country">ITA</cbc:IdentificationCode>
+                           </cac:Country>
+                        </cac:PostalAddress>
+                        <cac:PartyLegalEntity>
+                           <cbc:CompanyID>VAT Reg. IT04812701003</cbc:CompanyID>
+                        </cac:PartyLegalEntity>
+                        <cac:Contact>
+                           <cbc:Telephone>39 0640791</cbc:Telephone>
+                           <cbc:ElectronicMail>telespazio.pressoffice@telespazio.com</cbc:ElectronicMail>
+                        </cac:Contact>
+                     </efac:Company>
+                  </efac:Organization>
+               </efac:Organizations>
+            <efac:Publication><efbc:NoticePublicationID schemeName="ojs-notice-id">00243951-2024</efbc:NoticePublicationID><efbc:GazetteID schemeName="ojs-id">81/2024</efbc:GazetteID><efbc:PublicationDate>2024-04-24Z</efbc:PublicationDate></efac:Publication></efext:EformsExtension>
+         </ext:ExtensionContent>
+      </ext:UBLExtension>
+   </ext:UBLExtensions>
+   <cbc:UBLVersionID>2.3</cbc:UBLVersionID>
+   <cbc:CustomizationID>eforms-sdk-1.10</cbc:CustomizationID>
+   <cbc:ID schemeName="notice-id">5140e504-7cf2-45ea-8a25-dbeb2867918a</cbc:ID>
+   <cbc:ContractFolderID>43d98a45-9a97-49b3-b996-203437d04195</cbc:ContractFolderID>
+   <cbc:IssueDate>2024-04-23Z</cbc:IssueDate>
+   <cbc:IssueTime>10:29:39Z</cbc:IssueTime>
+   <cbc:VersionID>01</cbc:VersionID>
+   <cbc:RegulatoryDomain>32018R1046</cbc:RegulatoryDomain>
+   <cbc:NoticeTypeCode listName="result">can-standard</cbc:NoticeTypeCode>
+   <cbc:NoticeLanguageCode listName="language">ENG</cbc:NoticeLanguageCode>
+   <cac:AdditionalNoticeLanguage>
+      <cbc:ID>DAN</cbc:ID>
+   </cac:AdditionalNoticeLanguage>
+   <cac:AdditionalNoticeLanguage>
+      <cbc:ID>DEU</cbc:ID>
+   </cac:AdditionalNoticeLanguage>
+   <cac:AdditionalNoticeLanguage>
+      <cbc:ID>SPA</cbc:ID>
+   </cac:AdditionalNoticeLanguage>
+   <cac:AdditionalNoticeLanguage>
+      <cbc:ID>FIN</cbc:ID>
+   </cac:AdditionalNoticeLanguage>
+   <cac:AdditionalNoticeLanguage>
+      <cbc:ID>FRA</cbc:ID>
+   </cac:AdditionalNoticeLanguage>
+   <cac:AdditionalNoticeLanguage>
+      <cbc:ID>ELL</cbc:ID>
+   </cac:AdditionalNoticeLanguage>
+   <cac:AdditionalNoticeLanguage>
+      <cbc:ID>ITA</cbc:ID>
+   </cac:AdditionalNoticeLanguage>
+   <cac:AdditionalNoticeLanguage>
+      <cbc:ID>NLD</cbc:ID>
+   </cac:AdditionalNoticeLanguage>
+   <cac:AdditionalNoticeLanguage>
+      <cbc:ID>POR</cbc:ID>
+   </cac:AdditionalNoticeLanguage>
+   <cac:AdditionalNoticeLanguage>
+      <cbc:ID>SWE</cbc:ID>
+   </cac:AdditionalNoticeLanguage>
+   <cac:AdditionalNoticeLanguage>
+      <cbc:ID>CES</cbc:ID>
+   </cac:AdditionalNoticeLanguage>
+   <cac:AdditionalNoticeLanguage>
+      <cbc:ID>EST</cbc:ID>
+   </cac:AdditionalNoticeLanguage>
+   <cac:AdditionalNoticeLanguage>
+      <cbc:ID>HUN</cbc:ID>
+   </cac:AdditionalNoticeLanguage>
+   <cac:AdditionalNoticeLanguage>
+      <cbc:ID>LIT</cbc:ID>
+   </cac:AdditionalNoticeLanguage>
+   <cac:AdditionalNoticeLanguage>
+      <cbc:ID>LAV</cbc:ID>
+   </cac:AdditionalNoticeLanguage>
+   <cac:AdditionalNoticeLanguage>
+      <cbc:ID>MLT</cbc:ID>
+   </cac:AdditionalNoticeLanguage>
+   <cac:AdditionalNoticeLanguage>
+      <cbc:ID>POL</cbc:ID>
+   </cac:AdditionalNoticeLanguage>
+   <cac:AdditionalNoticeLanguage>
+      <cbc:ID>SLK</cbc:ID>
+   </cac:AdditionalNoticeLanguage>
+   <cac:AdditionalNoticeLanguage>
+      <cbc:ID>SLV</cbc:ID>
+   </cac:AdditionalNoticeLanguage>
+   <cac:AdditionalNoticeLanguage>
+      <cbc:ID>GLE</cbc:ID>
+   </cac:AdditionalNoticeLanguage>
+   <cac:AdditionalNoticeLanguage>
+      <cbc:ID>BUL</cbc:ID>
+   </cac:AdditionalNoticeLanguage>
+   <cac:AdditionalNoticeLanguage>
+      <cbc:ID>RON</cbc:ID>
+   </cac:AdditionalNoticeLanguage>
+   <cac:AdditionalNoticeLanguage>
+      <cbc:ID>HRV</cbc:ID>
+   </cac:AdditionalNoticeLanguage>
+   <cac:ContractingParty>
+      <cac:ContractingPartyType>
+         <cbc:PartyTypeCode listName="buyer-legal-type">eu-ins-bod-ag</cbc:PartyTypeCode>
+      </cac:ContractingPartyType>
+      <cac:ContractingActivity>
+         <cbc:ActivityTypeCode listName="authority-activity">gen-pub</cbc:ActivityTypeCode>
+      </cac:ContractingActivity>
+      <cac:Party>
+         <cac:PartyIdentification>
+            <cbc:ID>ORG-0001</cbc:ID>
+         </cac:PartyIdentification>
+      </cac:Party>
+   </cac:ContractingParty>
+   <cac:TenderingProcess>
+      <cbc:ProcedureCode listName="procurement-procedure-type">open</cbc:ProcedureCode>
+      <cac:NoticeDocumentReference>
+         <cbc:ID>363685-2023</cbc:ID>
+      </cac:NoticeDocumentReference>
+   </cac:TenderingProcess>
+   <cac:ProcurementProject>
+      <cbc:ID>DEFIS/2023/OP/0003</cbc:ID>
+      <cbc:Name languageID="DEU">Study on Potential EU Earth-Observation Services for Governmental Use</cbc:Name>
+      <cbc:Name languageID="FIN">Selvitys mahdollisista EU:n maanhavainnointipalveluista viranomaiskäyttöön</cbc:Name>
+      <cbc:Name languageID="SWE">Undersökning om potentiella jordobservationstjänster inom EU för statlig användning</cbc:Name>
+      <cbc:Name languageID="POR">Estudo sobre potenciais serviços de observação terrestre da UE para utilização governamental</cbc:Name>
+      <cbc:Name languageID="BUL">Проучване относно потенциалните услуги на ЕС за наблюдение на Земята за правителствени цели</cbc:Name>
+      <cbc:Name languageID="ELL">Μελέτη σχετικά με τις πιθανές υπηρεσίες γεωσκόπησης της ΕΕ για κυβερνητική χρήση</cbc:Name>
+      <cbc:Name languageID="MLT">Studju dwar is-Servizzi Potenzjali tal-UE għall-Osservazzjoni tad-Dinja għall-Użu Governattiv</cbc:Name>
+      <cbc:Name languageID="LIT">Potencialių ES Žemės stebėjimo paslaugų, skirtų vyriausybės naudojimui, tyrimas</cbc:Name>
+      <cbc:Name languageID="ENG">Study on Potential EU Earth-Observation Services for Governmental Use</cbc:Name>
+      <cbc:Name languageID="LAV">Pētījums par iespējamiem ES Zemes novērošanas pakalpojumiem valdības vajadzībām</cbc:Name>
+      <cbc:Name languageID="HRV">Studija o mogućim uslugama promatranja Zemlje EU-a za državnu uporabu</cbc:Name>
+      <cbc:Name languageID="ITA">Studio sui potenziali servizi di osservazione della Terra dell'UE per uso governativo</cbc:Name>
+      <cbc:Name languageID="FRA">Étude sur les services potentiels d'observation de la Terre de l'UE pour une utilisation gouvernementale</cbc:Name>
+      <cbc:Name languageID="HUN">Kormányzati felhasználásra szánt lehetséges uniós Föld-megfigyelési szolgáltatásokról szóló tanulmány</cbc:Name>
+      <cbc:Name languageID="SPA">Estudio sobre los posibles servicios de la UE de observación de la Tierra para uso gubernamental</cbc:Name>
+      <cbc:Name languageID="EST">Uuring ELi Maa seire võimalike teenuste kohta valitsuse tarbeks</cbc:Name>
+      <cbc:Name languageID="CES">Studie o potenciálních službách pozorování Země v EU pro vládní využití</cbc:Name>
+      <cbc:Name languageID="SLK">Štúdia o potenciálnych EÚ službách pozorovania Zeme na vládne použitie</cbc:Name>
+      <cbc:Name languageID="SLV">Študija o potencialnih storitvah EU za opazovanje Zemlje, namenjenih vladam</cbc:Name>
+      <cbc:Name languageID="GLE">Staidéar maidir le Seirbhísí Féideartha an Aontais um Fhaire na Cruinne le haghaidh Úsáid Rialtasach</cbc:Name>
+      <cbc:Name languageID="POL">Badanie potencjalnych usług UE obserwacji Ziemi do użytku rządowego</cbc:Name>
+      <cbc:Name languageID="DAN">Undersøgelse vedrørende potentielle EU-jordobservationstjenester til statslig brug</cbc:Name>
+      <cbc:Name languageID="RON">Studiu privind potențialele servicii de observare a Pământului ale UE pentru utilizare guvernamentală</cbc:Name>
+      <cbc:Name languageID="NLD">Onderzoek naar potentiële aardobservatiediensten van de EU voor overheidsgebruik</cbc:Name>
+      <cbc:Description languageID="DEU">Das Hauptziel dieser Studie besteht in der Analyse der Durchführbarkeit eines Erdbeobachtungsdienstes der Europäischen Union, der auf staatlich zugelassene Nutzer auf EU-Ebene und in den EU-Mitgliedstaaten für sensible Anwendungen in den Bereichen Sicherheit und Verteidigung beschränkt ist. Diese Initiative ist in der EU-Weltraumstrategie für Sicherheit und Verteidigung festgelegt. Die Ergebnisse der Studie sollen die notwendigen Elemente für die Kommission liefern, um die verschiedenen praktikablen technischen und programmatischen Optionen für die mögliche künftige Entwicklung und die vollständigen Tätigkeiten dieser Dienstleistung im mehrjährigen Finanzrahmen der EU 2028-2034 zu bewerten. Im Rahmen der Beschaffung werden bis zu zwei Aufträge mit einem maximalen Wert von 2 500 000 EUR vergeben.</cbc:Description>
+      <cbc:Description languageID="FIN">Tämän selvityksen päätavoitteena on analysoida sen toteutettavuutta, että Euroopan unionin maanhavainnointipalvelu rajataan viranomaisten valtuuttamiin käyttäjiin EU:n ja EU:n jäsenvaltioiden tasoilla arkaluonteisissa sovellutuksissa turvallisuuden ja puolustuksen aloilla. Tämä hanke on määritelty turvallisuutta ja puolustusta tukevassa EU:n avaruusstrategiassa. Selvityksen tulos tarjoaa komissiolle tarpeelliset ainekset arvioida tämän palvelun mahdollisen tulevan kehittämisen ja täysien toimintojen toteuttamiskelpoiset tekniset ja ohjelmalliset vaihtoehdot EU:n monivuotisessa rahoituskehyksessä vuosille 2028–2034. Hankinnassa solmitaan enintään kaksi sopimusta, kumpikin enimmäisarvoltaan 2 500 000 EUR.</cbc:Description>
+      <cbc:Description languageID="SWE">Huvudsyftet med denna undersökning är att analysera genomförbarheten av en jordobservationstjänst för Europeiska unionen. Tjänsten ska vara begränsad till användare med myndighetstillstånd på nivå för EU och -medlemsstater avseende känsliga tillämpningar inom områdena säkerhet och försvar. Detta initiativ anges i EU:s rymdstrategi för säkerhet och försvar. Resultatet av undersökningen ska tillhandahålla de beståndsdelar som krävs för att kommissionen ska kunna bedöma de olika utförbara tekniska och programrelaterade alternativen för den potentiella framtida utvecklingen och en fullödig drift av tjänsten inom EU:s fleråriga budgetram 2028–2034. Upphandlingen kommer att tilldela upp till 2 kontrakt, vart och ett med ett högsta värde på 2 500 000 EUR.</cbc:Description>
+      <cbc:Description languageID="POR">O principal objetivo do presente estudo consiste em analisar a viabilidade de um serviço de observação terrestre da União Europeia limitado a utilizadores autorizados pelo governo aos níveis da UE e dos Estados-Membros da UE para aplicações sensíveis nos domínios da segurança e da defesa. Esta iniciativa é identificada na estratégia espacial da UE para a segurança e a defesa. O resultado do estudo irá fornecer os elementos necessários para que a Comissão avalie as diferentes opções técnicas e programáticas viáveis para o potencial desenvolvimento futuro e todas as operações deste serviço no quadro financeiro plurianual da UE 2028-2034. O concurso irá adjudicar até dois contratos, cada um com um valor máximo de 2 500 000 EUR.</cbc:Description>
+      <cbc:Description languageID="BUL">Основната цел на това проучване е да се анализира осъществимостта на услугата на Европейския съюз за наблюдение на Земята, ограничена до упълномощени от правителството потребители на равнище ЕС и държави членки на ЕС, за чувствителни приложения в областта на сигурността и отбраната. Тази инициатива е включена в космическата стратегия на ЕС за сигурност и отбрана. Резултатите от проучването ще осигурят необходимите елементи, за да може Комисията да направи оценка на различните жизнеспособни технически и програмни варианти за потенциалното бъдещо развитие и пълноценно функциониране на тази услуга в многогодишната финансова рамка на ЕС за периода 2028-2034 г. В рамките на обществената поръчка ще бъдат възложени най-много два договора, всеки с максимална стойност 2 500 000 EUR.</cbc:Description>
+      <cbc:Description languageID="ELL">Ο κύριος στόχος της παρούσας μελέτης είναι η ανάλυση της σκοπιμότητας μιας υπηρεσίας γεωσκόπησης της Ευρωπαϊκής Ένωσης που θα περιορίζεται σε εξουσιοδοτημένους από την κυβέρνηση χρήστες σε επίπεδο ΕΕ και κρατών μελών της ΕΕ για ευαίσθητες εφαρμογές στους τομείς της ασφάλειας και της άμυνας. Αυτή η πρωτοβουλία προσδιορίζεται στη διαστημική στρατηγική της ΕΕ για την ασφάλεια και την άμυνα. Το αποτέλεσμα της μελέτης θα παράσχει τα απαραίτητα στοιχεία ώστε η Επιτροπή να αξιολογήσει τις διάφορες βιώσιμες τεχνικές και προγραμματικές επιλογές για την πιθανή μελλοντική ανάπτυξη και τις πλήρεις λειτουργίες της εν λόγω υπηρεσίας στο πολυετές δημοσιονομικό πλαίσιο της ΕΕ 2028-2034. Η σύμβαση θα αναθέσει έως και δύο συμβάσεις, με μέγιστη αξία 2 500 000 EUR έκαστη.</cbc:Description>
+      <cbc:Description languageID="MLT">L-għan ewlieni ta’ dan l-istudju hu li janalizza l-fattibbiltà ta’ servizz tal-Unjoni Ewropea għall-Osservazzjoni tad-Dinja ristrett għal utenti awtorizzati mill-gvern fil-livelli tal-UE u tal-Istati Membri tal-UE għal applikazzjonijiet sensittivi fl-oqsma tas-sigurtà u d-difiża. Din l-inizjattiva hija identifikata fl-istrateġija spazjali tal-UE għas-sigurtà u d-difiża. Ir-riżultat tal-istudju se jipprovdi l-elementi neċessarji għall-Kummissjoni biex tivvaluta l-għażliet tekniċi u programmatiċi vijabbli differenti għall-iżvilupp futur potenzjali u l-operazzjonijiet sħaħ ta’ dan is-servizz fil-qafas finanzjarju pluriennali tal-UE għall-2028-2034. Il-ksib se jagħti sa żewġ kuntratti, kull wieħed b’valur massimu ta’ EUR 2 500 000.</cbc:Description>
+      <cbc:Description languageID="LIT">Pagrindinis šio tyrimo tikslas – išanalizuoti galimybę sukurti Europos Sąjungos Žemės stebėjimo paslaugą, kuri būtų skirta tik vyriausybių įgaliotiems naudotojams ES ir ES valstybių narių lygmeniu ir būtų skirta konfidencialioms saugumo ir gynybos sritims. Ši iniciatyva nustatyta ES kosmoso strategijoje saugumo ir gynybos srityje. Tyrimo rezultatuose bus pateikta būtinų duomenų, kad Komisija galėtų įvertinti įvairias perspektyvias technines ir programines galimybes, susijusias su galimu būsimu šios paslaugos plėtojimu ir visapusišku veikimu 2028-2034 m. ES daugiametėje finansinėje programoje. Pirkimo metu bus paskirtos ne daugiau nei dvi sutartys, kurių kiekvienos didžiausia vertė – 2 500 000 EUR.</cbc:Description>
+      <cbc:Description languageID="ENG">The main objective of this study is to analyse the feasibility of a European Union’s Earth-Observation service restricted to government-authorised users at EU and EU Member States levels for sensitive applications in the areas of security and defence. This initiative is identified in the EU space strategy for security and defence. The outcome of the study will provide the necessary elements for the Commission to assess the different viable technical and programmatic options for the potential future development and full operations of this service in the EU multiannual financial framework 2028-2034. The procurement will award up to two contracts, each with a maximum value of EUR 2 500 000.</cbc:Description>
+      <cbc:Description languageID="LAV">Šā pētījuma galvenais mērķis ir analizēt Eiropas Savienības Zemes novērošanas pakalpojuma iespējamību, kas attiecas tikai uz valdības pilnvarotajiem lietotājiem ES un ES dalībvalstu līmenī attiecībā uz sensitīvajiem lietojumiem drošības un aizsardzības jomā. Šī iniciatīva ir noteikta ES kosmosa stratēģijā drošībai un aizsardzībai. Pētījuma rezultāti nodrošinās Komisijai nepieciešamos elementus, lai tā varētu novērtēt dažādas dzīvotspējīgas tehniskās un programmas iespējas šā pakalpojuma iespējamai turpmākai attīstīšanai un pilnīgai darbībai ES daudzgadu finanšu shēmā 2028.–2034. gadam. Iepirkuma ietvaros tiks piešķirti ne vairāk kā divi līgumi, kuru maksimālā vērtība ir 2 500 000 EUR.</cbc:Description>
+      <cbc:Description languageID="HRV">Glavni je cilj ove studije analizirati izvodljivost usluge promatranja Zemlje Europske unije ograničene na korisnike koje su ovlastile vlade na razinama EU-a i država članica EU-a za osjetljive primjene u područjima sigurnosti i obrane. Ova je inicijativa utvrđena svemirskom strategijom EU-a za sigurnost i obranu. Rezultat studije pružit će potrebne elemente za Komisiju u svrhu procjene različitih održivih tehničkih i programskih mogućnosti za potencijalni budući razvoj i potpune aktivnosti ove usluge u okviru višegodišnjeg financijskog okvira EU-a za razdoblje 2028-2034. Nabavom će se dodijeliti do dva ugovora, svaki s najvećom vrijednosti od 2 500 000 EUR.</cbc:Description>
+      <cbc:Description languageID="ITA">L'obiettivo principale del presente studio è analizzare la fattibilità di un servizio di osservazione della Terra dell'Unione europea limitato agli utenti autorizzati dai governi a livello UE e degli Stati membri dell'UE, per applicazioni sensibili nei settori della sicurezza e della difesa. Tale iniziativa è indicata nella strategia spaziale dell'UE per la sicurezza e la difesa. Il risultato dello studio dovrà fornire gli elementi necessari alla Commissione per valutare le diverse opzioni tecniche e programmatiche attuabili per il potenziale sviluppo futuro e il pieno funzionamento del servizio nel quadro finanziario pluriennale dell'UE 2028-2034. L'appalto aggiudicherà due contratti, ciascuno del valore massimo di 2 500 000 EUR.</cbc:Description>
+      <cbc:Description languageID="FRA">L'objectif principal de la présente étude est d'analyser la faisabilité d'un service d'observation de la Terre de l'Union européenne limité aux utilisateurs autorisés par les pouvoirs publics au niveau de l'UE et des États membres de l'UE pour des applications sensibles dans les domaines de la sécurité et de la défense. Cette initiative est identifiée dans la stratégie spatiale de l'UE pour la sécurité et la défense. Le résultat de l'étude fournira les éléments nécessaires à la Commission pour évaluer les différentes options techniques et programmatiques viables pour le développement futur potentiel et l'exploitation complète de ce service dans le cadre financier pluriannuel de l'UE 2028-2034. Le marché attribuera jusqu'à 2 marchés d'une valeur maximale de 2 500 000 EUR chacun.</cbc:Description>
+      <cbc:Description languageID="HUN">A tanulmány fő célkitűzése az Európai Unió Föld-megfigyelési szolgáltatásának megvalósíthatóságának elemzése, amely a kormány által engedélyezett felhasználókra korlátozódik az EU és az uniós tagállamok szintjén a biztonság és védelem területén alkalmazott érzékeny alkalmazások tekintetében. Ezt a kezdeményezést az EU biztonsági és védelmi űrstratégiája határozza meg. A tanulmány eredménye biztosítja a szükséges elemeket ahhoz, hogy a Bizottság értékelhesse az EU 2028 és 2034 közötti többéves pénzügyi keretén belüli szolgáltatás lehetséges jövőbeli fejlesztésére és teljes körű működésére vonatkozó különböző megvalósítható műszaki és programozási lehetőségeket. A közbeszerzés keretében legfeljebb két szerződés kerül odaítélésre, amelyek maximális értéke 2 500 000 EUR.</cbc:Description>
+      <cbc:Description languageID="SPA">El objetivo principal de este estudio consiste en analizar la viabilidad de un servicio de la UE de observación de la Tierra restringido a los usuarios autorizados por el gobierno a nivel de la Unión Europea y de los Estados miembros de la UE para aplicaciones sensibles en los ámbitos de la seguridad y la defensa. Esta iniciativa se identifica en la estrategia espacial de la UE para la seguridad y la defensa. El resultado del estudio proporcionará los elementos necesarios para que la Comisión evalúe las diferentes opciones técnicas y programáticas viables para el eventual desarrollo futuro y la plena operación de este servicio en el marco financiero plurianual de la Unión Europea 2028-2034. La licitación adjudicará un máximo de dos contratos, cada uno con un valor máximo de 2 500 000 EUR.</cbc:Description>
+      <cbc:Description languageID="EST">Kõnealuse uuringu peamine eesmärk on analüüsida Euroopa Liidu Maa seire teenuse teostatavust julgeoleku ja kaitse valdkonna tundlike rakenduste jaoks, mis on piiratud valitsuse poolt volitatud kasutajatega ELi ja ELi liikmesriikide tasandil. See algatus on määratletud ELi julgeoleku- ja kaitsevaldkonna kosmosestrateegias. Uuringu tulemus tagab vajalikud elemendid, et komisjon saaks ELi mitmeaastases finantsraamistikus 2028–2034 hinnata erinevaid elujõulisi tehnilisi ja programmilisi valikuid kõnealuse teenuse võimalikuks tulevaseks arendamiseks ja täielikuks toimimiseks. Hankega sõlmitakse kuni kaks lepingut, millest kummagi lepingu maksimaalne maksumus on 2 500 000 eurot.</cbc:Description>
+      <cbc:Description languageID="CES">Hlavním cílem této studie je analyzovat proveditelnost služby pozorování Země v Evropské unii omezené na uživatele s vládním oprávněním na úrovni EU a členských států EU z hlediska citlivých aplikací v oblastech bezpečnosti a obrany. Tato iniciativa je uvedena v kosmické strategii EU pro bezpečnost a obranu. Výsledek studie poskytne Komisi nezbytné prvky pro posouzení různých životaschopných technických a programových možností potenciálního budoucího vývoje a úplných operací této služby ve víceletém finančním rámci EU pro období 2028–2034. V zadávacím řízení budou zadány až dvě zakázky, každá s maximální hodnotou 2 500 000 EUR.</cbc:Description>
+      <cbc:Description languageID="SLK">Hlavným cieľom tejto štúdie je analyzovať uskutočniteľnosť EÚ služby pozorovania Zeme, ktorá je obmedzená na vládou oprávnených používateľov na úrovni EÚ a členských štátov EÚ pre citlivé aplikácie v oblastiach bezpečnosti a obrany. Táto iniciatíva je uvedená vo vesmírnej stratégii EÚ pre bezpečnosť a obranu. Výsledok štúdie poskytne Komisii potrebné prvky na posúdenie rôznych životaschopných technických a programových možností pre potenciálny budúci vývoj a úplnú prevádzku tejto služby vo viacročnom finančnom rámci EÚ 2028 – 2034. V rámci tohto obstarávania budú pridelené maximálne dve zmluvy, každá s maximálnou hodnotou 2 500 000 EUR.</cbc:Description>
+      <cbc:Description languageID="SLV">Glavni cilj te študije je analizirati izvedljivost uvedbe storitve Evropske unije za opazovanje Zemlje, namenjene zgolj uporabnikom, ki jih pooblasti vlada, na ravni EU in držav članic EU, in sicer za občutljive vrste uporabe na področju varnosti in obrambe. Ta pobuda je opredeljena v vesoljski strategiji EU za varnost in obrambo. Rezultat študije bo Komisiji zagotovil potrebne elemente za oceno različnih izvedljivih tehničnih in programskih rešitev za potencialni prihodnji razvoj in popolno operacionalizacijo te storitve v večletnem finančnem okviru EU 2028–2034. V okviru javnega naročila bosta sklenjeni največ dve pogodbi z najvišjo vrednostjo posamezne 2 500 000 EUR.</cbc:Description>
+      <cbc:Description languageID="GLE">Is é is príomhchuspóir an staidéir seo anailís a dhéanamh ar fhéidearthacht le haghaidh seirbhís an Aontais Eorpaigh um Fhaire na Cruinne a bheadh srianta d’úsáideoirí arna n-údarú ag rialtais ar leibhéil an Aontais agus na mBallstát le haghaidh feidhmeanna íogaire i limistéir na slándála agus na cosanta. Sainaithnítear an tionscnamh sin i straitéis spáis an Aontais um shlándáil agus spás. Le torthaí an staidéir soláthrófar na gnéithe riachtanacha le go ndéanfadh an Coimisiún measúnú ar roghanna difriúla teicniúla agus cláir inmharthana le haghaidh forbairt ionchasach agus oibríochtaí iomlána na seirbhíse sin amach anseo laistigh de chreat airgeadais ilbhliantúil an Aontais 2028-2034. Dámhfar suas le dhá chonradh faoin soláthar, agus uasluach EUR 2 500 000 bainteach le gach ceann acu.</cbc:Description>
+      <cbc:Description languageID="POL">Głównym celem badania jest analiza wykonalności usługi Unii Europejskiej obserwacji Ziemi ograniczonej do użytkowników upoważnionych przez rząd na poziomie UE i państw członkowskich UE w zakresie wrażliwych zastosowań w obszarach bezpieczeństwa i obrony. Inicjatywa ta została określona w unijnej strategii kosmicznej na rzecz bezpieczeństwa i obrony. Wyniki badania dostarczą Komisji niezbędnych elementów do oceny różnych wykonalnych opcji technicznych i programistycznych na potrzeby potencjalnego przyszłego rozwoju i pełnej obsługi tejże usługi w wieloletnich ramach finansowych UE na lata 2028-2034. Zamówienie obejmie maksymalnie 2 umowy, każda o maksymalnej wartości 2 500 000 EUR.</cbc:Description>
+      <cbc:Description languageID="DAN">Hovedformålet med denne undersøgelse er at analysere gennemførligheden af Den Europæiske Unions jordobservationstjeneste, der er begrænset til statsautoriserede brugere på EU's og EU-medlemsstaters niveauer for følsomme applikationer på sikkerheds- og forsvarsområdet. Dette initiativ er identificeret i EU's rumstrategi for sikkerhed og forsvar. Resultatet af undersøgelsen skal tilvejebringe de nødvendige elementer til, at Kommissionen kan vurdere de forskellige levedygtige tekniske og programmæssige muligheder for den potentielle fremtidige udvikling og fuld drift af denne tjeneste inden for EU's flerårige finansielle ramme 2028-2034. Udbuddet vil tildele op til to kontrakter, hver med en maksimumsværdi på 2 500 000 EUR.</cbc:Description>
+      <cbc:Description languageID="RON">Obiectivul principal al acestui studiu este de a analiza fezabilitatea unui serviciu de observare a Pământului al Uniunii Europene restrâns la utilizatorii autorizați de guvern la nivelurile UE și ale statelor membre ale UE pentru aplicații sensibile în domeniul securității și apărării. Această inițiativă este identificată în strategia spațială a UE pentru securitate și apărare. Rezultatul studiului va furniza elementele necesare Comisiei pentru a evalua diferitele opțiuni tehnice și programatice viabile pentru eventuala dezvoltare viitoare și operațiunile complete ale acestui serviciu în cadrul financiar multianual al UE 2028-2034. Achiziția va atribui maximum două contracte, fiecare cu o valoare maximă de 2 500 000 EUR.</cbc:Description>
+      <cbc:Description languageID="NLD">De hoofddoelstelling van dit onderzoek is het analyseren van de haalbaarheid van een aardobservatiedienst van de Europese Unie die beperkt is tot door de overheid gemachtigde gebruikers op het niveau van de EU en de EU-lidstaten voor gevoelige toepassingen op het gebied van veiligheid en defensie. Dit initiatief is opgenomen in de ruimtevaartstrategie van de EU voor veiligheid en defensie. Het resultaat van het onderzoek moet de Commissie de noodzakelijke elementen verschaffen om de verschillende levensvatbare technische en programmatische opties te beoordelen voor de potentiële toekomstige ontwikkeling en volledige werking van deze dienst in het meerjarig financieel kader van de EU in 2028-2034. In het kader van de aanbesteding worden maximaal twee opdrachten gegund, elk met een maximale waarde van 2 500 000 EUR.</cbc:Description>
+      <cbc:ProcurementTypeCode listName="contract-nature">services</cbc:ProcurementTypeCode>
+      <cac:RequestedTenderTotal>
+         <cbc:EstimatedOverallContractAmount currencyID="EUR">5000000</cbc:EstimatedOverallContractAmount>
+      </cac:RequestedTenderTotal>
+      <cac:MainCommodityClassification>
+         <cbc:ItemClassificationCode listName="cpv">73200000</cbc:ItemClassificationCode>
+      </cac:MainCommodityClassification>
+   </cac:ProcurementProject>
+   <cac:ProcurementProjectLot>
+      <cbc:ID schemeName="Lot">LOT-0000</cbc:ID>
+      <cac:TenderingTerms>
+         <cbc:FundingProgramCode listName="eu-funded">eu-funds</cbc:FundingProgramCode>
+         <cac:AwardingTerms>
+            <cac:AwardingCriterion>
+               <cac:SubordinateAwardingCriterion>
+                  <ext:UBLExtensions>
+                     <ext:UBLExtension>
+                        <ext:ExtensionContent>
+                           <efext:EformsExtension>
+                              <efac:AwardCriterionParameter>
+                                 <efbc:ParameterCode listName="number-weight">per-exa</efbc:ParameterCode>
+                                 <efbc:ParameterNumeric>20</efbc:ParameterNumeric>
+                              </efac:AwardCriterionParameter>
+                           </efext:EformsExtension>
+                        </ext:ExtensionContent>
+                     </ext:UBLExtension>
+                  </ext:UBLExtensions>
+                  <cbc:AwardingCriterionTypeCode listName="award-criterion-type">price</cbc:AwardingCriterionTypeCode>
+                  <cbc:Description languageID="DEU">Preis</cbc:Description>
+                  <cbc:Description languageID="FIN">Hinta</cbc:Description>
+                  <cbc:Description languageID="SWE">Pris</cbc:Description>
+                  <cbc:Description languageID="POR">Preço</cbc:Description>
+                  <cbc:Description languageID="BUL">Цена</cbc:Description>
+                  <cbc:Description languageID="ELL">Τιμή</cbc:Description>
+                  <cbc:Description languageID="MLT">Prezz</cbc:Description>
+                  <cbc:Description languageID="LIT">Kaina</cbc:Description>
+                  <cbc:Description languageID="ENG">Price</cbc:Description>
+                  <cbc:Description languageID="LAV">Cena</cbc:Description>
+                  <cbc:Description languageID="HRV">Cijena</cbc:Description>
+                  <cbc:Description languageID="ITA">Prezzo</cbc:Description>
+                  <cbc:Description languageID="FRA">Prix</cbc:Description>
+                  <cbc:Description languageID="HUN">Ár</cbc:Description>
+                  <cbc:Description languageID="SPA">Precio</cbc:Description>
+                  <cbc:Description languageID="EST">Hind</cbc:Description>
+                  <cbc:Description languageID="CES">Cena</cbc:Description>
+                  <cbc:Description languageID="SLK">Cena</cbc:Description>
+                  <cbc:Description languageID="SLV">Cena</cbc:Description>
+                  <cbc:Description languageID="GLE">Praghas</cbc:Description>
+                  <cbc:Description languageID="POL">Cena</cbc:Description>
+                  <cbc:Description languageID="DAN">Pris</cbc:Description>
+                  <cbc:Description languageID="RON">Preț</cbc:Description>
+                  <cbc:Description languageID="NLD">Prijs</cbc:Description>
+               </cac:SubordinateAwardingCriterion>
+               <cac:SubordinateAwardingCriterion>
+                  <ext:UBLExtensions>
+                     <ext:UBLExtension>
+                        <ext:ExtensionContent>
+                           <efext:EformsExtension>
+                              <efac:AwardCriterionParameter>
+                                 <efbc:ParameterCode listName="number-weight">per-exa</efbc:ParameterCode>
+                                 <efbc:ParameterNumeric>24</efbc:ParameterNumeric>
+                              </efac:AwardCriterionParameter>
+                           </efext:EformsExtension>
+                        </ext:ExtensionContent>
+                     </ext:UBLExtension>
+                  </ext:UBLExtensions>
+                  <cbc:AwardingCriterionTypeCode listName="award-criterion-type">quality</cbc:AwardingCriterionTypeCode>
+                  <cbc:Description languageID="DEU">Relevanz und Qualität des technischen Vorschlags</cbc:Description>
+                  <cbc:Description languageID="FIN">Teknisen ehdotuksen asianmukaisuus ja laatu</cbc:Description>
+                  <cbc:Description languageID="SWE">Det tekniska förslagets relevans och kvalitet</cbc:Description>
+                  <cbc:Description languageID="POR">Pertinência e qualidade da proposta técnica</cbc:Description>
+                  <cbc:Description languageID="BUL">Уместност и качество на техническото предложение</cbc:Description>
+                  <cbc:Description languageID="ELL">Συνάφεια και ποιότητα της τεχνικής πρότασης</cbc:Description>
+                  <cbc:Description languageID="MLT">Rilevanza u Kwalità tal-proposta teknika</cbc:Description>
+                  <cbc:Description languageID="LIT">Techninio pasiūlymo aktualumas ir kokybė</cbc:Description>
+                  <cbc:Description languageID="ENG">Relevance and Quality of the technical proposal</cbc:Description>
+                  <cbc:Description languageID="LAV">Tehniskā priekšlikuma atbilstība un kvalitāte</cbc:Description>
+                  <cbc:Description languageID="HRV">Relevantnost i kvaliteta tehničke ponude</cbc:Description>
+                  <cbc:Description languageID="ITA">Pertinenza e qualità della proposta tecnica</cbc:Description>
+                  <cbc:Description languageID="FRA">Pertinence et qualité de la proposition technique</cbc:Description>
+                  <cbc:Description languageID="HUN">A műszaki javaslat relevanciája és minősége</cbc:Description>
+                  <cbc:Description languageID="SPA">Pertinencia y calidad de la propuesta técnica</cbc:Description>
+                  <cbc:Description languageID="EST">Tehnilise ettepaneku asjakohasus ja kvaliteet</cbc:Description>
+                  <cbc:Description languageID="CES">Relevance a kvalita technického návrhu</cbc:Description>
+                  <cbc:Description languageID="SLK">Relevantnosť a kvalita technického návrhu</cbc:Description>
+                  <cbc:Description languageID="SLV">Ustreznost in kakovost tehničnega predloga</cbc:Description>
+                  <cbc:Description languageID="GLE">Ábharthacht agus Cáilíocht an togra theicniúil</cbc:Description>
+                  <cbc:Description languageID="POL">Adekwatność i jakość propozycji technicznej</cbc:Description>
+                  <cbc:Description languageID="DAN">Relevans og kvalitet af det tekniske forslag</cbc:Description>
+                  <cbc:Description languageID="RON">Relevanța și calitatea propunerii tehnice</cbc:Description>
+                  <cbc:Description languageID="NLD">Relevantie en kwaliteit van het technische voorstel</cbc:Description>
+               </cac:SubordinateAwardingCriterion>
+               <cac:SubordinateAwardingCriterion>
+                  <ext:UBLExtensions>
+                     <ext:UBLExtension>
+                        <ext:ExtensionContent>
+                           <efext:EformsExtension>
+                              <efac:AwardCriterionParameter>
+                                 <efbc:ParameterCode listName="number-weight">per-exa</efbc:ParameterCode>
+                                 <efbc:ParameterNumeric>32</efbc:ParameterNumeric>
+                              </efac:AwardCriterionParameter>
+                           </efext:EformsExtension>
+                        </ext:ExtensionContent>
+                     </ext:UBLExtension>
+                  </ext:UBLExtensions>
+                  <cbc:AwardingCriterionTypeCode listName="award-criterion-type">quality</cbc:AwardingCriterionTypeCode>
+                  <cbc:Description languageID="DEU">Neuartigkeit und Innovationsgrad</cbc:Description>
+                  <cbc:Description languageID="FIN">Uutuus ja innovaatioaste</cbc:Description>
+                  <cbc:Description languageID="SWE">Nyskapande och innovationsgrad</cbc:Description>
+                  <cbc:Description languageID="POR">Novidade e grau de inovação</cbc:Description>
+                  <cbc:Description languageID="BUL">Новост и степен на иновативност</cbc:Description>
+                  <cbc:Description languageID="ELL">Καινοτομία και βαθμός καινοτομίας</cbc:Description>
+                  <cbc:Description languageID="MLT">Rilevanza u Kwalità tal-proposta teknika</cbc:Description>
+                  <cbc:Description languageID="LIT">Naujumas ir naujovių laipsnis</cbc:Description>
+                  <cbc:Description languageID="ENG">Novelty and degree of innovation</cbc:Description>
+                  <cbc:Description languageID="LAV">Jaunums un inovācijas pakāpe</cbc:Description>
+                  <cbc:Description languageID="HRV">Relevantnost i kvaliteta tehničke ponude</cbc:Description>
+                  <cbc:Description languageID="ITA">Novità e grado di innovazione</cbc:Description>
+                  <cbc:Description languageID="FRA">Nouveauté et degré d'innovation</cbc:Description>
+                  <cbc:Description languageID="HUN">Újdonság és az innováció mértéke</cbc:Description>
+                  <cbc:Description languageID="SPA">Novedad y grado de innovación</cbc:Description>
+                  <cbc:Description languageID="EST">Uuenduslikkus ja uuenduslikkuse tase</cbc:Description>
+                  <cbc:Description languageID="CES">Novost a stupeň inovace</cbc:Description>
+                  <cbc:Description languageID="SLK">Novosť a stupeň inovácie</cbc:Description>
+                  <cbc:Description languageID="SLV">Novost in stopnja inovativnosti</cbc:Description>
+                  <cbc:Description languageID="GLE">Ábharthacht agus Cáilíocht an togra theicniúil</cbc:Description>
+                  <cbc:Description languageID="POL">Nowość i stopień innowacyjności</cbc:Description>
+                  <cbc:Description languageID="DAN">Nyhed og grad af innovation</cbc:Description>
+                  <cbc:Description languageID="RON">Noutatea și gradul de inovare</cbc:Description>
+                  <cbc:Description languageID="NLD">Nieuwheid en mate van innovatie</cbc:Description>
+               </cac:SubordinateAwardingCriterion>
+               <cac:SubordinateAwardingCriterion>
+                  <ext:UBLExtensions>
+                     <ext:UBLExtension>
+                        <ext:ExtensionContent>
+                           <efext:EformsExtension>
+                              <efac:AwardCriterionParameter>
+                                 <efbc:ParameterCode listName="number-weight">per-exa</efbc:ParameterCode>
+                                 <efbc:ParameterNumeric>24</efbc:ParameterNumeric>
+                              </efac:AwardCriterionParameter>
+                           </efext:EformsExtension>
+                        </ext:ExtensionContent>
+                     </ext:UBLExtension>
+                  </ext:UBLExtensions>
+                  <cbc:AwardingCriterionTypeCode listName="award-criterion-type">quality</cbc:AwardingCriterionTypeCode>
+                  <cbc:Description languageID="DEU">Relevanz und Qualität der Durchführung, Arbeitsorganisation und Mittelzuweisung</cbc:Description>
+                  <cbc:Description languageID="FIN">Täytäntöönpanon tarkoituksenmukaisuus ja laatu, työn organisointi ja resurssien kohdentaminen</cbc:Description>
+                  <cbc:Description languageID="SWE">Relevans och kvalitet i genomförandet, arbetsorganisation och resursfördelning</cbc:Description>
+                  <cbc:Description languageID="POR">Relevância e qualidade da execução, organização do trabalho e afetação de recursos</cbc:Description>
+                  <cbc:Description languageID="BUL">Уместност и качество на изпълнението, организация на работата и разпределение на ресурсите</cbc:Description>
+                  <cbc:Description languageID="ELL">Συνάφεια και ποιότητα της υλοποίησης, οργάνωση των εργασιών και κατανομή των πόρων</cbc:Description>
+                  <cbc:Description languageID="MLT">Rilevanza u kwalità tal-implimentazzjoni, organizzazzjoni tax-xogħol u allokazzjoni tar-riżorsi</cbc:Description>
+                  <cbc:Description languageID="LIT">Įgyvendinimo aktualumas ir kokybė, darbo organizavimas ir išteklių paskirstymas</cbc:Description>
+                  <cbc:Description languageID="ENG">Relevance and quality of the implementation, organisation of work and allocation of resources</cbc:Description>
+                  <cbc:Description languageID="LAV">Īstenošanas atbilstība un kvalitāte, darba organizācija un resursu piešķiršana</cbc:Description>
+                  <cbc:Description languageID="HRV">Relevantnost i kvaliteta provedbe, organizacije rada i raspodjele resursa</cbc:Description>
+                  <cbc:Description languageID="ITA">Pertinenza e qualità dell'attuazione, organizzazione del lavoro e assegnazione delle risorse</cbc:Description>
+                  <cbc:Description languageID="FRA">Pertinence et qualité de la mise en œuvre, de l'organisation du travail et de l'affectation des ressources</cbc:Description>
+                  <cbc:Description languageID="HUN">A végrehajtás relevanciája és minősége, a munkaszervezés és az erőforrások elosztása</cbc:Description>
+                  <cbc:Description languageID="SPA">Pertinencia y calidad de la aplicación, organización del trabajo y asignación de recursos</cbc:Description>
+                  <cbc:Description languageID="EST">Rakendamise asjakohasus ja kvaliteet, töökorraldus ja vahendite eraldamine</cbc:Description>
+                  <cbc:Description languageID="CES">Relevance a kvalita provádění, organizace práce a přidělování zdrojů</cbc:Description>
+                  <cbc:Description languageID="SLK">Relevantnosť a kvalita realizácie, organizácia práce a prideľovanie zdrojov</cbc:Description>
+                  <cbc:Description languageID="SLV">Ustreznost in kakovost izvajanja, organizacija dela in dodeljevanje virov</cbc:Description>
+                  <cbc:Description languageID="GLE">Ábharthacht agus cáilíocht an chur chun feidhme, eagrú na hoibre agus leithdháileadh acmhainní</cbc:Description>
+                  <cbc:Description languageID="POL">Adekwatność i jakość wdrożenia, organizacja pracy i alokacja zasobów</cbc:Description>
+                  <cbc:Description languageID="DAN">Relevans og kvalitet af implementeringen, organisering af arbejdet og allokering af ressourcer</cbc:Description>
+                  <cbc:Description languageID="RON">Relevanța și calitatea punerii în aplicare, organizarea muncii și alocarea resurselor</cbc:Description>
+                  <cbc:Description languageID="NLD">Relevantie en kwaliteit van de uitvoering, organisatie van het werk en toewijzing van middelen</cbc:Description>
+               </cac:SubordinateAwardingCriterion>
+            </cac:AwardingCriterion>
+         </cac:AwardingTerms>
+         <cac:AdditionalInformationParty>
+            <cac:PartyIdentification>
+               <cbc:ID>ORG-0001</cbc:ID>
+            </cac:PartyIdentification>
+         </cac:AdditionalInformationParty>
+         <cac:DocumentProviderParty>
+            <cac:PartyIdentification>
+               <cbc:ID>ORG-0001</cbc:ID>
+            </cac:PartyIdentification>
+         </cac:DocumentProviderParty>
+         <cac:AppealTerms>
+            <cac:AppealInformationParty>
+               <cac:PartyIdentification>
+                  <cbc:ID>ORG-0003</cbc:ID>
+               </cac:PartyIdentification>
+            </cac:AppealInformationParty>
+            <cac:AppealReceiverParty>
+               <cac:PartyIdentification>
+                  <cbc:ID>ORG-0003</cbc:ID>
+               </cac:PartyIdentification>
+            </cac:AppealReceiverParty>
+         </cac:AppealTerms>
+      </cac:TenderingTerms>
+      <cac:TenderingProcess>
+         <cbc:GovernmentAgreementConstraintIndicator>false</cbc:GovernmentAgreementConstraintIndicator>
+         <cac:AuctionTerms>
+            <cbc:AuctionConstraintIndicator>false</cbc:AuctionConstraintIndicator>
+         </cac:AuctionTerms>
+         <cac:ContractingSystem>
+            <cbc:ContractingSystemTypeCode listName="framework-agreement">none</cbc:ContractingSystemTypeCode>
+         </cac:ContractingSystem>
+         <cac:ContractingSystem>
+            <cbc:ContractingSystemTypeCode listName="dps-usage">none</cbc:ContractingSystemTypeCode>
+         </cac:ContractingSystem>
+      </cac:TenderingProcess>
+      <cac:ProcurementProject>
+         <cbc:ID>DEFIS/2023/OP/0003</cbc:ID>
+         <cbc:Name languageID="DEU">Studie über mögliche Erdbeobachtungsdienste der EU für die staatliche Nutzung</cbc:Name>
+         <cbc:Name languageID="FIN">Selvitys mahdollisista EU:n maanhavainnointipalveluista viranomaiskäyttöön</cbc:Name>
+         <cbc:Name languageID="SWE">Undersökning om potentiella jordobservationstjänster inom EU för statlig användning</cbc:Name>
+         <cbc:Name languageID="POR">Estudo sobre potenciais serviços de observação terrestre da UE para utilização governamental</cbc:Name>
+         <cbc:Name languageID="BUL">Проучване относно потенциалните услуги на ЕС за наблюдение на Земята за правителствени цели</cbc:Name>
+         <cbc:Name languageID="ELL">Μελέτη σχετικά με τις πιθανές υπηρεσίες γεωσκόπησης της ΕΕ για κυβερνητική χρήση</cbc:Name>
+         <cbc:Name languageID="MLT">Studju dwar is-Servizzi Potenzjali tal-UE għall-Osservazzjoni tad-Dinja għall-Użu Governattiv</cbc:Name>
+         <cbc:Name languageID="LIT">Potencialių ES Žemės stebėjimo paslaugų, skirtų vyriausybės naudojimui, tyrimas</cbc:Name>
+         <cbc:Name languageID="ENG">Study on Potential EU Earth-Observation Services for Governmental Use</cbc:Name>
+         <cbc:Name languageID="LAV">Pētījums par iespējamiem ES Zemes novērošanas pakalpojumiem valdības vajadzībām</cbc:Name>
+         <cbc:Name languageID="HRV">Studija o mogućim uslugama promatranja Zemlje EU-a za državnu uporabu</cbc:Name>
+         <cbc:Name languageID="ITA">Studio sui potenziali servizi di osservazione della Terra dell'UE per uso governativo</cbc:Name>
+         <cbc:Name languageID="FRA">Étude sur les services potentiels d'observation de la Terre de l'UE pour une utilisation gouvernementale</cbc:Name>
+         <cbc:Name languageID="HUN">Kormányzati felhasználásra szánt lehetséges uniós Föld-megfigyelési szolgáltatásokról szóló tanulmány</cbc:Name>
+         <cbc:Name languageID="SPA">Estudio sobre los posibles servicios de la UE de observación de la Tierra para uso gubernamental</cbc:Name>
+         <cbc:Name languageID="EST">Uuring ELi Maa seire võimalike teenuste kohta valitsuse tarbeks</cbc:Name>
+         <cbc:Name languageID="CES">Studie o potenciálních službách pozorování Země v EU pro vládní využití</cbc:Name>
+         <cbc:Name languageID="SLK">Štúdia o potenciálnych EÚ službách pozorovania Zeme na vládne použitie</cbc:Name>
+         <cbc:Name languageID="SLV">Študija o potencialnih storitvah EU za opazovanje Zemlje, namenjenih vladam</cbc:Name>
+         <cbc:Name languageID="GLE">Staidéar maidir le Seirbhísí Féideartha an Aontais um Fhaire na Cruinne le haghaidh Úsáid Rialtasach</cbc:Name>
+         <cbc:Name languageID="POL">Badanie potencjalnych usług UE obserwacji Ziemi do użytku rządowego</cbc:Name>
+         <cbc:Name languageID="DAN">Undersøgelse vedrørende potentielle EU-jordobservationstjenester til statslig brug</cbc:Name>
+         <cbc:Name languageID="RON">Studiu privind potențialele servicii de observare a Pământului ale UE pentru utilizare guvernamentală</cbc:Name>
+         <cbc:Name languageID="NLD">Onderzoek naar potentiële aardobservatiediensten van de EU voor overheidsgebruik</cbc:Name>
+         <cbc:Description languageID="DEU">Studie über potenzielle EU-Erdbeobachtungsdienste für die staatliche Nutzung (im Kontext der bevorstehenden Weltraumstrategie für Sicherheit und Verteidigung).</cbc:Description>
+         <cbc:Description languageID="FIN">Selvitys mahdollisista EU:n maanhavainnointipalveluista viranomaiskäyttöön (tulevan turvallisuutta ja puolustusta tukevan avaruusstrategian yhteydessä).</cbc:Description>
+         <cbc:Description languageID="SWE">Studie avseende potentiella jordobservationstjänster i EU för statlig användning (i samband med den kommande rymdstrategin för säkerhet och försvar).</cbc:Description>
+         <cbc:Description languageID="POR">Estudo sobre potenciais serviços de observação da Terra da UE para utilização governamental (no contexto da futura estratégia espacial para segurança e defesa).</cbc:Description>
+         <cbc:Description languageID="BUL">Проучване относно потенциалните услуги на ЕС за наблюдение на Земята за държавни цели (в контекста на предстоящата космическа стратегия за сигурност и отбрана).</cbc:Description>
+         <cbc:Description languageID="ELL">Μελέτη σχετικά με πιθανές υπηρεσίες γεωσκόπησης της ΕΕ για κυβερνητική χρήση (στο πλαίσιο της επικείμενης διαστημικής στρατηγικής για την ασφάλεια και την άμυνα).</cbc:Description>
+         <cbc:Description languageID="MLT">Studju dwar is-servizzi potenzjali tal-UE għall-Osservazzjoni tad-Dinja għall-użu governattiv (fil-kuntest tal-istrateġija spazjali li ġejja għas-sigurtà u d-difiża).</cbc:Description>
+         <cbc:Description languageID="LIT">Tyrimas dėl galimų ES Žemės stebėjimo paslaugų vyriausybės reikmėms (būsimo kosmoso strategijos saugumo ir gynybos srityje kontekste).</cbc:Description>
+         <cbc:Description languageID="ENG">Study on potential EU Earth-Observation services for governmental use (in the context of the upcoming space strategy for security and defence).</cbc:Description>
+         <cbc:Description languageID="LAV">Pētījums par iespējamiem ES Zemes novērošanas pakalpojumiem valdības vajadzībām (saistībā ar gaidāmo ES kosmosa stratēģiju drošībai un aizsardzībai).</cbc:Description>
+         <cbc:Description languageID="HRV">Studija o mogućim uslugama promatranja Zemlje EU-a za vladinu uporabu (u kontekstu buduće strategije za prostor za sigurnost i obranu).</cbc:Description>
+         <cbc:Description languageID="ITA">Studio sui potenziali servizi di osservazione della Terra dell'UE per uso governativo (nel contesto dell'imminente strategia spaziale per la sicurezza e la difesa).</cbc:Description>
+         <cbc:Description languageID="FRA">Étude sur les services potentiels d'observation de la Terre de l'UE à usage gouvernemental (dans le contexte de la stratégie spatiale à venir pour la sécurité et la défense).</cbc:Description>
+         <cbc:Description languageID="HUN">Kormányzati felhasználásra szánt lehetséges uniós Föld-megfigyelési szolgáltatásokról szóló tanulmány (a biztonságra és védelemre vonatkozó jövőbeli űrstratégia összefüggésében).</cbc:Description>
+         <cbc:Description languageID="SPA">Estudio sobre los posibles servicios de la UE de observación de la Tierra para uso gubernamental (en el contexto de la próxima estrategia espacial para la seguridad y la defensa).</cbc:Description>
+         <cbc:Description languageID="EST">Uuring ELi Maa seire võimalike teenuste kohta valitsuse tarbeks (tulevase julgeoleku- ja kaitsevaldkonna kosmosestrateegia kontekstis).</cbc:Description>
+         <cbc:Description languageID="CES">Studie o potenciálních službách pozorování Země EU pro vládní využití (v kontextu nadcházející kosmické strategie EU pro bezpečnost a obranu).</cbc:Description>
+         <cbc:Description languageID="SLK">Štúdia o potenciálnych EÚ službách pozorovania Zeme na vládne použitie (v kontexte nadchádzajúcej vesmírnej stratégie pre bezpečnosť a obranu).</cbc:Description>
+         <cbc:Description languageID="SLV">Študija o potencialnih storitvah EU za opazovanje Zemlje, namenjenih vladam (v okviru prihodnje vesoljske strategije za varnost in obrambo).</cbc:Description>
+         <cbc:Description languageID="GLE">Staidéar maidir Staidéar maidir le seirbhísí féideartha an Aontais um Fhaire na Cruinne le haghaidh úsáid rialtasach (i gcomhthéacs na straitéise atá le teacht um shlándáil agus cosaint).</cbc:Description>
+         <cbc:Description languageID="POL">Badanie dotyczące potencjalnych usług UE obserwacji Ziemi na do użytku rządowego (w kontekście zbliżającej się strategii kosmicznej na rzecz bezpieczeństwa i obrony).</cbc:Description>
+         <cbc:Description languageID="DAN">Undersøgelse vedrørende potentielle EU-jordobservationstjenester til statslig brug (inden for rammerne af den kommende rumstrategi for sikkerhed og forsvar).</cbc:Description>
+         <cbc:Description languageID="RON">Studiu privind potențialele servicii de observare a Pământului ale UE pentru uz guvernamental (în contextul viitoarei strategii spațiale pentru securitate și apărare).</cbc:Description>
+         <cbc:Description languageID="NLD">Onderzoek naar potentiële aardobservatiediensten van de EU voor gebruik door de overheid (in het kader van de komende ruimtevaartstrategie voor veiligheid en defensie).</cbc:Description>
+         <cbc:ProcurementTypeCode listName="contract-nature">services</cbc:ProcurementTypeCode>
+         <cac:RequestedTenderTotal>
+            <cbc:EstimatedOverallContractAmount currencyID="EUR">5000000</cbc:EstimatedOverallContractAmount>
+         </cac:RequestedTenderTotal>
+         <cac:MainCommodityClassification>
+            <cbc:ItemClassificationCode listName="cpv">73200000</cbc:ItemClassificationCode>
+         </cac:MainCommodityClassification>
+         <cac:AdditionalCommodityClassification>
+            <cbc:ItemClassificationCode listName="cpv">73200000</cbc:ItemClassificationCode>
+         </cac:AdditionalCommodityClassification>
+         <cac:RealizedLocation>
+            <cbc:Description languageID="DEU">Die Ausführung des Auftrags erfolgt in den Räumlichkeiten des Auftragnehmers oder an einem anderen in der Leistungsbeschreibung festgelegten Ort.</cbc:Description>
+            <cbc:Description languageID="FIN">Sopimuksen toteuttaminen tapahtuu urakoitsijan tiloissa tai muussa eritelmässä mainitussa paikassa.</cbc:Description>
+            <cbc:Description languageID="SWE">Kontraktet verkställs i uppdragstagarens lokaler eller på någon annan plats som anges i specifikationen.</cbc:Description>
+            <cbc:Description languageID="POR">A execução do contrato tem lugar nas instalações do contratante ou em qualquer outro local previsto no caderno de encargos.</cbc:Description>
+            <cbc:Description languageID="BUL">Изпълнението на договора се извършва в помещенията на Изпълнителя или на друго място, посочено в спецификацията.</cbc:Description>
+            <cbc:Description languageID="ELL">Η εκτέλεση της σύμβασης πραγματοποιείται στις εγκαταστάσεις του αναδόχου ή σε οποιονδήποτε άλλο τόπο ορίζεται στις προδιαγραφές.</cbc:Description>
+            <cbc:Description languageID="MLT">L-eżekuzzjoni tal-kuntratt isseħħ fil-bini tal-Kuntrattur jew kwalunkwe post ieħor stipulat fl-ispeċifikazzjoni.</cbc:Description>
+            <cbc:Description languageID="LIT">Sutartis vykdoma rangovo patalpose arba bet kurioje kitoje specifikacijoje nurodytoje vietoje.</cbc:Description>
+            <cbc:Description languageID="ENG">Contract execution takes place  in Contractor’s premises or any other place laid down in the specification.</cbc:Description>
+            <cbc:Description languageID="LAV">Līguma izpilde notiek Būvuzņēmēja telpās vai jebkurā citā specifikācijā noteiktajā vietā.</cbc:Description>
+            <cbc:Description languageID="HRV">zvršenje ugovora odvija se u prostorijama Izvršitelja ili na bilo kojem drugom mjestu navedenom u specifikaciji.</cbc:Description>
+            <cbc:Description languageID="ITA">L'esecuzione del contratto avviene nei locali dell'Appaltatore o in qualsiasi altro luogo previsto dalle specifiche.</cbc:Description>
+            <cbc:Description languageID="FRA">L'exécution du contrat a lieu dans les locaux du contractant ou en tout autre lieu prévu par le cahier des charges</cbc:Description>
+            <cbc:Description languageID="HUN">A szerződés teljesítése a Vállalkozó telephelyén vagy a műszaki leírásban meghatározott bármely más helyen történik.</cbc:Description>
+            <cbc:Description languageID="SPA">La ejecución del contrato tiene lugar en los locales del Contratista o en cualquier otro lugar establecido en el pliego de condiciones.</cbc:Description>
+            <cbc:Description languageID="EST">Lepingu täitmine toimub töövõtja ruumides või muus spetsifikaadis sätestatud kohas.</cbc:Description>
+            <cbc:Description languageID="CES">Realizace zakázky probíhá v prostorách zhotovitele nebo na jiném místě stanoveném ve specifikaci.</cbc:Description>
+            <cbc:Description languageID="SLK">Plnenie zmluvy sa uskutočňuje v priestoroch zhotoviteľa alebo na inom mieste stanovenom v špecifikácii.</cbc:Description>
+            <cbc:Description languageID="SLV">Izvedba pogodbe poteka v prostorih izvajalca ali na katerem koli drugem mestu, določenem v specifikaciji.</cbc:Description>
+            <cbc:Description languageID="GLE">Tarlaíonn forghníomhú conartha in áitreabh an Chonraitheora nó in aon áit eile a leagtar síos sa tsonraíocht.</cbc:Description>
+            <cbc:Description languageID="POL">Realizacja kontraktu odbywa się w siedzibie Wykonawcy lub w innym miejscu określonym w specyfikacji.</cbc:Description>
+            <cbc:Description languageID="DAN">Kontraktens udførelse finder sted i entreprenørens lokaler eller ethvert andet sted, der er fastsat i specifikationen.</cbc:Description>
+            <cbc:Description languageID="RON">Executarea contractului are loc la sediul Antreprenorului sau în orice alt loc prevăzut în caietul de sarcini.</cbc:Description>
+            <cbc:Description languageID="NLD">De uitvoering van het contract vindt plaats in de lokalen van de contractant of op een andere plaats die in het bestek is vastgelegd.</cbc:Description>
+            <cac:Address>
+               <cbc:CountrySubentityCode listName="nuts">BE100</cbc:CountrySubentityCode>
+               <cac:Country>
+                  <cbc:IdentificationCode listName="country">BEL</cbc:IdentificationCode>
+               </cac:Country>
+            </cac:Address>
+         </cac:RealizedLocation>
+         <cac:PlannedPeriod>
+            <cbc:DurationMeasure unitCode="MONTH">12</cbc:DurationMeasure>
+         </cac:PlannedPeriod>
+      </cac:ProcurementProject>
+   </cac:ProcurementProjectLot>
+   <cac:TenderResult>
+      <cbc:AwardDate>2000-01-01Z</cbc:AwardDate>
+   </cac:TenderResult>
+</ContractAwardNotice>
