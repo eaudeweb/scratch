@@ -15,5 +15,5 @@ elasticsearch-dsl==7.4.0
 psycopg2==2.9.5
 redis==3.5.3
 requests==2.31.0
-sentry_sdk==1.14.0
+sentry_sdk==2.8.0
 tika==1.24
