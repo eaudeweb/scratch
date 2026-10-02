@@ -133,3 +133,7 @@ config/config.yml
 
 # Vs code
 .vscode
+
+# CLAUDE
+CLAUDE.local.md
+
