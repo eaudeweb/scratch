@@ -12,8 +12,6 @@ from app.parsers.ungm import UNGMWorker
 from app.management.commands.base.params import BaseParamsUI
 from app.utils import emails_to_notify
 
-ENDPOINT_URI = "https://www.ungm.org"
-
 User = get_user_model()
 
 

@@ -387,12 +387,15 @@ class SearchView(LoginRequiredMixin, TemplateView):
             } for award in result_awards.to_queryset()
         ]
 
-        regex = re.compile(rf'(\b({pk})\b(\s*({pk})\b)*)', re.I)
+        terms = '|'.join(
+            re.escape(term) for term in self.kwargs['pk'].split('+') if term)
+        if terms:
+            regex = re.compile(rf'(\b({terms})\b(\s*({terms})\b)*)', re.I)
 
-        tender_fields = ['title', 'description']
+            tender_fields = ['title', 'description']
 
-        SearchView.update_fields(context['tenders'], tender_fields, regex)
-        SearchView.update_award_fields(context['awards'], regex)
+            SearchView.update_fields(context['tenders'], tender_fields, regex)
+            SearchView.update_award_fields(context['awards'], regex)
 
         return context
 

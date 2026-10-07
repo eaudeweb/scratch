@@ -7,14 +7,17 @@ from datetime import datetime
 from random import randint
 from time import sleep
 
+from urllib.parse import urlparse
 from urllib3.exceptions import NewConnectionError
+
+from django.conf import settings
 
 from app.models import UNSPSCCode
 
-LIVE_ENDPOINT_URI = 'https://www.ungm.org'
-TENDERS_ENDPOINT_URI = 'https://www.ungm.org/Public/Notice'
-WINNERS_ENDPOINT_URI = 'https://www.ungm.org/Public/ContractAward'
-SEARCH_UNSPSCS_URI = 'https://www.ungm.org/UNSPSC/Search'
+LIVE_ENDPOINT_URI = settings.UNGM_ENDPOINT_URI
+TENDERS_ENDPOINT_URI = LIVE_ENDPOINT_URI + '/Public/Notice'
+WINNERS_ENDPOINT_URI = LIVE_ENDPOINT_URI + '/Public/ContractAward'
+SEARCH_UNSPSCS_URI = LIVE_ENDPOINT_URI + '/UNSPSC/Search'
 
 
 PAYLOAD = {
@@ -65,7 +68,7 @@ POST_HEADERS = {
     'Accept-Encoding': 'gzip, deflate',
     'Accept-Language': 'en-US,en;q=0.5',
     'Content-Type': 'application/json; charset=UTF-8',
-    'Host': 'www.ungm.org',
+    'Host': urlparse(LIVE_ENDPOINT_URI).netloc,
     'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:31.0)'
     ' Gecko/20100101 Firefox/31.0',
     'X-Requested-With': 'XMLHttpRequest',

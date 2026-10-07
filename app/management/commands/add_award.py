@@ -7,12 +7,11 @@ import datetime
 from time import sleep
 from random import randint
 from app.models import Tender, Award, Vendor
-from app.server_requests import PAYLOAD
+from app.server_requests import PAYLOAD, WINNERS_ENDPOINT_URI
 import logging
 from app.management.commands.base.params import BaseParamsUI
 
 logger = logging.getLogger(__name__)
-WINNERS_ENDPOINT_URI = 'https://www.ungm.org/Public/ContractAward'
 
 CSS_TITLE = 'Title'
 CSS_REFERENCE = 'Reference'
