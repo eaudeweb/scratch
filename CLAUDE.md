@@ -36,7 +36,7 @@ python manage.py test app.tests.test_ted_parser.TestClassName.test_method --sett
 
 - Test fixtures (sample TED XML, UNGM/IUCN HTML, PDFs/DOCX) live in `app/tests/parser_files/`; model factories are in `app/factories.py` (factory_boy).
 - Tests touching `Keyword` should extend `app.tests.base.BaseTestCase`, which disconnects the Keyword post_save/post_delete signals (otherwise they enqueue a django-q task that re-saves every tender).
-- CI (`.travis.yml`) runs `./manage.py check` then `coverage run --source='.' ./manage.py test app/tests --settings=scratch.test_settings`.
+- CI (`.github/workflows/tests.yml`, on pull requests to and pushes to `master`) runs `./manage.py check` then `./manage.py test app/tests --settings=scratch.test_settings` against Postgres, Elasticsearch and Redis service containers. `.github/workflows/docker.yml` builds and pushes the image to GHCR on version tags; see `Release.md`.
 
 There is no configured linter/formatter.
 

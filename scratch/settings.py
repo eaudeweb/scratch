@@ -90,7 +90,7 @@ WSGI_APPLICATION = "scratch.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "HOST": "db",
+        "HOST": env("POSTGRES_HOST", "db"),
         "PORT": 5432,
         "NAME": env("POSTGRES_DB", "scratch"),
         "USER": env("POSTGRES_USER", "scratch"),

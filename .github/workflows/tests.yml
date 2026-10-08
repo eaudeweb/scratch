@@ -1,0 +1,84 @@
+name: Tests
+
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master]
+
+permissions:
+  contents: read
+
+# A new push to the same branch or pull request cancels the previous run
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    # Same major versions as docker-compose.yml
+    services:
+      postgres:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_DB: scratch
+          POSTGRES_USER: scratch
+          POSTGRES_PASSWORD: scratch
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U scratch"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+      elasticsearch:
+        image: docker.elastic.co/elasticsearch/elasticsearch:7.17.8
+        env:
+          discovery.type: single-node
+          xpack.security.enabled: "false"
+          ES_JAVA_OPTS: -Xms512m -Xmx512m
+        ports:
+          - 9200:9200
+        options: >-
+          --health-cmd "curl -fs http://localhost:9200/_cluster/health"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 20
+      redis:
+        image: redis:alpine
+        ports:
+          - 6379:6379
+
+    env:
+      POSTGRES_HOST: localhost
+      POSTGRES_DB: scratch
+      POSTGRES_USER: scratch
+      POSTGRES_PASSWORD: scratch
+      ELASTICSEARCH_HOST: localhost:9200
+      REDIS_HOST: localhost
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: requirements*.txt
+
+      # Headers needed to build python-ldap and psycopg2
+      - name: Install system packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libldap-dev libsasl2-dev libpq-dev
+
+      - name: Install dependencies
+        run: pip install -r requirements-dev.txt
+
+      - name: Check
+        run: python manage.py check
+
+      - name: Run tests
+        run: python manage.py test app/tests --settings=scratch.test_settings
