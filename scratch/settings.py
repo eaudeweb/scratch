@@ -90,7 +90,7 @@ WSGI_APPLICATION = "scratch.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "HOST": "db",
+        "HOST": env("POSTGRES_HOST", "db"),
         "PORT": 5432,
         "NAME": env("POSTGRES_DB", "scratch"),
         "USER": env("POSTGRES_USER", "scratch"),
@@ -144,7 +144,7 @@ UNGM_ENDPOINT_URI = env("UNGM_ENDPOINT_URI", "https://www.ungm.org")
 
 # TED
 TED_URL = env("TED_URL", "ted.europa.eu")
-TED_NOTICE_URL = env("TED_URL", "en/notice/-/detail/")
+TED_NOTICE_URL = env("TED_NOTICE_URL", "en/notice/-/detail/")
 TED_CALENDAR_URL = env("TED_CALENDAR_URL", "en/release-calendar/-/download/file/CSV/")
 TED_DAILY = env("TED_DAILY", "packages/daily/")
 TED_FTP_USER = env("TED_FTP_USER", "guest")

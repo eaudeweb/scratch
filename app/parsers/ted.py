@@ -43,9 +43,8 @@ def quit_or_close(ftp):
 
 
 class TEDWorker:
-    archives = []
-
     def __init__(self, last_ted_update=None):
+        self.archives = []
         self.path = get_archives_path()
         if not last_ted_update:
             last_ted_update = date.today()
@@ -132,10 +131,11 @@ class TEDWorker:
             os.makedirs(self.path)
         file_path = os.path.join(self.path, archive.full_oj_s)
         url = urljoin(self.get_archive_url, archive.full_oj_s)
+        time.sleep(randint(2, 5))
+        response = requests.get(url)
+        print(response.status_code, file_path)
+        response.raise_for_status()
         with open(file_path, "wb") as f:
-            time.sleep(randint(2, 5))
-            response = requests.get(url)
-            print(response.status_code, file_path)
             f.write(response.content)
         self.archives.append(file_path)
 

@@ -1,4 +1,4 @@
-# Scratch ![alt text](https://travis-ci.com/eaudeweb/scratch.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/github/eaudeweb/scratch/badge.svg?branch=master)](https://coveralls.io/github/eaudeweb/scratch?branch=master) [![Docker](https://img.shields.io/docker/cloud/build/eaudeweb/scratch?label=Docker&style=flat)](https://hub.docker.com/r/eaudeweb/scratch/builds)
+# Scratch [![Tests](https://github.com/eaudeweb/scratch/actions/workflows/tests.yml/badge.svg)](https://github.com/eaudeweb/scratch/actions/workflows/tests.yml) [![Docker image](https://github.com/eaudeweb/scratch/actions/workflows/docker.yml/badge.svg)](https://github.com/eaudeweb/scratch/actions/workflows/docker.yml)
 
 ### Python Django Scratch
 
@@ -46,6 +46,7 @@
     python manage.py runserver 0.0.0.0:8000
     ```
 ### [Cachet Setup Info](Cachet.md)
+### [Making a release](Release.md)
 ## Running with NGINX
 
 If you want to use NGINX to serve the project you need to do the following:

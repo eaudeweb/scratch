@@ -130,7 +130,7 @@ class Tender(BaseTimedModel):
         if not keywords:
             return title
 
-        regex = r"(" + r"|".join(keywords) + r")"
+        regex = r"(" + r"|".join(map(re.escape, keywords)) + r")"
         return re.sub(regex, r"<mark>\1</mark>", title, flags=re.IGNORECASE)
 
     @cached_property
@@ -140,7 +140,7 @@ class Tender(BaseTimedModel):
         if not keywords:
             return description
 
-        regex = r"(" + r"|".join(keywords) + r")"
+        regex = r"(" + r"|".join(map(re.escape, keywords)) + r")"
         return re.sub(regex, r"<mark>\1</mark>", description, flags=re.IGNORECASE)
 
     def find_keywords(self, fields):
@@ -161,8 +161,7 @@ class Tender(BaseTimedModel):
 
     def save(self, *args, **kwargs):
         keywords = list(self.find_keywords(fields))
-        if keywords:
-            self.has_keywords = True
+        self.has_keywords = bool(keywords)
         super().save(*args, **kwargs)
         self.keywords.set(keywords)
 

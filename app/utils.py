@@ -21,6 +21,10 @@ def emails_to_notify():
 def log_tenders_update(tender_source: TenderSource):
     def decorator(fn):
         def wrapper(*args, **kwargs):
+            if not settings.APP_URL:
+                # Cachet is not configured
+                return fn(*args, **kwargs)
+
             headers = {
                 "accept": "application/json",
                 "X-Cachet-Application": "Demo",

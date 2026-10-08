@@ -2,7 +2,7 @@ version: '2'
 
 services:
   web:
-    image: eaudeweb/scratch:latest
+    image: ghcr.io/eaudeweb/scratch:${SCRATCH_VERSION:-latest}
     container_name: scratch.app
     environment:
       - DJANGO_MIGRATE=yes
@@ -25,7 +25,7 @@ services:
       - 8000:8000
 
   async:
-    image: eaudeweb/scratch:latest
+    image: ghcr.io/eaudeweb/scratch:${SCRATCH_VERSION:-latest}
     container_name: scratch.async
     env_file:
       - docker/app.env
@@ -45,7 +45,7 @@ services:
     command: ['qcluster']
 
   cron:
-    image: eaudeweb/scratch:latest
+    image: ghcr.io/eaudeweb/scratch:${SCRATCH_VERSION:-latest}
     container_name: scratch.cron
     environment:
       - TZ=Europe/Bucharest

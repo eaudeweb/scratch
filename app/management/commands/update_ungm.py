@@ -7,8 +7,6 @@ from app.management.commands.base.params import BaseParamsUI
 from app.notifications import send_error_email
 from app.utils import log_tenders_update, TenderSource
 
-ENDPOINT_URI = 'https://www.ungm.org'
-
 
 class Command(BaseCommand, BaseParamsUI):
     help = 'Gets all UNGM tenders from the past n days'
