@@ -205,8 +205,16 @@ LDAP_AUTH_GROUP_DN = env("LDAP_AUTH_GROUP_DN")
 AUTH_LDAP_BIND_DN = env("AUTH_LDAP_BIND_DN")
 AUTH_LDAP_BIND_PASSWORD = env("AUTH_LDAP_BIND_PASSWORD")
 
-ldap.set_option(ldap.OPT_X_TLS_REQUIRE_CERT, ldap.OPT_X_TLS_NEVER)
-AUTH_LDAP_SERVER_URI = "ldap://" + LDAP_HOST
+# "ldaps" (default) encrypts the connection. "ldap" sends the bind password and
+# every user's password in plain text, so only use it on a trusted network.
+LDAP_SCHEME = env("LDAP_SCHEME", "ldaps")
+
+AUTH_LDAP_SERVER_URI = LDAP_SCHEME + "://" + LDAP_HOST
+# Verify the LDAP server certificate against the system CA bundle (libldap's
+# default, stated explicitly so an ldap.conf in the image can't turn it off).
+AUTH_LDAP_GLOBAL_OPTIONS = {
+    ldap.OPT_X_TLS_REQUIRE_CERT: ldap.OPT_X_TLS_DEMAND,
+}
 AUTH_LDAP_ALWAYS_UPDATE_USER = True
 
 AUTH_LDAP_USER_DN_TEMPLATE = "uid=%(user)s," + LDAP_AUTH_USER_DN

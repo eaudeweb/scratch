@@ -1,0 +1,35 @@
+# Keep secrets and local files out of the image: the Dockerfile copies the
+# whole build context (COPY . $APP_HOME) and the images are public.
+
+# Environment and local config with credentials
+**/.env
+**/*.env
+config/config.yml
+docker-compose.override.yml
+docker-compose.prod.yml
+requirements-local.txt
+
+# Version control, CI and editor/agent files
+.git
+.github
+.gitignore
+.idea
+.vscode
+.claude
+CLAUDE.local.md
+**/.DS_Store
+
+# Python environments and caches
+.venv
+venv
+env
+**/__pycache__
+**/*.py[cod]
+.pytest_cache
+.coverage
+
+# Generated or uploaded files
+scratch/static
+scratch/files
+app/media
+**/*.log
