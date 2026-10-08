@@ -1,2 +1,2 @@
 -r requirements.txt
-uWSGI==2.0.22
+uWSGI==2.0.31

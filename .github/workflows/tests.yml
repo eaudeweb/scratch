@@ -82,3 +82,20 @@ jobs:
 
       - name: Run tests
         run: python manage.py test app/tests --settings=scratch.test_settings
+
+  # Builds the production image without pushing it, so Dockerfile and
+  # requirements-dep.txt problems show up here instead of at release time
+  docker-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: docker/setup-buildx-action@v4
+
+      - uses: docker/build-push-action@v7
+        with:
+          context: .
+          platforms: linux/amd64
+          push: false
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
