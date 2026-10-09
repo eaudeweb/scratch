@@ -100,7 +100,7 @@ class UngmParserTestCase(BaseTestCase):
             html_string = f.read()
 
         award = self.award.parse_award(html_string)
-        expected_date = datetime.strptime('18-Sep-2019', '%d-%b-%Y')
+        expected_date = datetime.strptime('18-Sep-2019', '%d-%b-%Y').date()
         self.assertEqual(award['vendors'][0], 'E-Secure Sàrl')
         self.assertEqual(award['value'], 25000.00)
         self.assertEqual(award['currency'], 'USD')
@@ -162,17 +162,55 @@ class UngmParserTestCase(BaseTestCase):
 
         award = self.award.parse_award(html_string)
         self.assertEqual(award['vendors'], ['Nyanzou Canvas Works'])
-        self.assertEqual(
-            award['award_date'], datetime.strptime('09-Oct-2026', '%d-%b-%Y'))
+        self.assertEqual(award['award_date'], date(2026, 10, 9))
         self.assertIsNone(award['value'])
         self.assertEqual(award['currency'], '')
 
-    def test_ungm_award_search_contract_id(self):
+    def test_ungm_award_search_contract_ids(self):
         with open('app/tests/parser_files/ungm_award_search_2026.html', 'r') as f:
             html_string = f.read()
 
-        self.assertEqual(self.award.parse_contract_id(html_string), '160222')
-        self.assertIsNone(self.award.parse_contract_id('<div></div>'))
+        self.assertEqual(
+            self.award.parse_contract_ids(html_string, 'rfx_10996_ROAF'),
+            ['160222'])
+        self.assertEqual(
+            self.award.parse_contract_ids(html_string, 'rfx_10996'), [])
+        self.assertEqual(
+            self.award.parse_contract_ids('<div></div>', 'rfx_10996_ROAF'), [])
+
+    def test_ungm_award_search_lots(self):
+        # Two lots of RFQ/2026/640, and RFQ/2026/64033, which UNGM also
+        # returns because its reference filter matches partially
+        with open('app/tests/parser_files/ungm_award_search_lots.html', 'r') as f:
+            html_string = f.read()
+
+        self.assertEqual(
+            self.award.parse_contract_ids(html_string, 'RFQ/2026/640'),
+            ['501', '503'])
+
+    def test_ungm_merge_awards(self):
+        award = self.award.merge_awards([
+            {'award_date': date(2026, 10, 7), 'vendors': ['Supplier One'],
+             'value': 1000.0, 'currency': 'USD'},
+            {'award_date': date(2026, 10, 8), 'vendors': ['Supplier Two', ''],
+             'value': None, 'currency': ''},
+            {'award_date': date(2026, 10, 6), 'vendors': ['Supplier One'],
+             'value': 500.0, 'currency': 'USD'},
+        ])
+
+        self.assertEqual(award['award_date'], date(2026, 10, 8))
+        self.assertEqual(award['vendors'], ['Supplier One', 'Supplier Two'])
+        self.assertEqual(award['value'], 1500.0)
+        self.assertEqual(award['currency'], 'USD')
+
+    def test_ungm_merge_awards_without_values(self):
+        award = self.award.merge_awards([
+            {'award_date': date(2026, 10, 9), 'vendors': ['Supplier'],
+             'value': None, 'currency': ''},
+        ])
+
+        self.assertIsNone(award['value'])
+        self.assertEqual(award['currency'], '')
 
     def test_ungm_antiforgery_token(self):
         html = (
