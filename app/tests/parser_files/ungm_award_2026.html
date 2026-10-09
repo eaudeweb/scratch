@@ -1,0 +1,161 @@
+<div class="awardDetail">
+
+    <script>
+        $(document).ready(function () {
+            UNGM.ExpandableContacts.init();
+            UNGM.UNSPSC.init();
+            UNGM.Tab.init();
+        });
+    </script>
+
+    <div class="accessibilityTabs" >
+        <div role="tablist" class="accessibilityTablist" aria-label="Contract award detail">
+            <button role="tab"
+                    class="accessibilityTab"
+                    aria-selected="true"
+                    aria-controls="General-tab"
+                    id="General"
+                    tabindex="0">
+            General</button>
+            <button role="tab"
+                    class="accessibilityTab"
+                    aria-selected="false"
+                    aria-controls="Vendors-tab"
+                    id="Vendors"
+                    tabindex="-1">
+            Supplier</button>
+            <button role="tab"
+                    class="accessibilityTab"
+                    aria-selected="false"
+                    aria-controls="Contacts-tab"
+                    id="Contacts"
+                    tabindex="-1">
+            Contacts</button>
+            <button role="tab"
+                    class="accessibilityTab"
+                    aria-selected="false"
+                    aria-controls="UNSPSC-tab"
+                    id="UNSPSC"
+                    tabindex="-1">
+            UNSPSC codes</button>
+        </div>
+
+        <div role="tabpanel"
+             class="accessibilityTabpanel"
+             id="General-tab"
+             aria-labelledby="General">
+            <p>
+                <fieldset>
+    <legend>General information</legend>
+    <div class="reportRow">
+        <label for="Title">Title</label>
+        <span id="awardTitle" class="value">SUPPLY AND INSTALLATION OF DRIP IRRIGATION SYSTEM FOR 5 HECTARES AT CHAMINUKA VOCATIONAL TRAINING CENTRE</span>
+    </div>
+    <div class="reportRow">
+        <label for="AgencyId">Organization</label>
+        <span class="value">International Labour Organization</span>
+    </div>
+    <div class="reportRow">
+        <label for="Reference">Reference</label>
+        <span class="value">rfx_10996_ROAF</span>
+    </div>
+    <div class="reportRow">
+        <label for="AwardDate">Award date</label>
+        <span class="value">
+
+09-Oct-2026</span>
+    </div>
+    <div class="reportRow">
+        <label for="ContractValue">Contract value (USD)</label>
+
+        <span class="value"></span>
+    </div>
+    <div class="reportRow">
+        <label for="Description">Description</label>
+    </div>
+    <div class="raw clear">
+        Annex 0 - Invitation to Bidders
+    </div>
+</fieldset>
+
+
+                <fieldset>
+    <legend>Countries or territories</legend>
+        <div class="formRow clear">
+            Zimbabwe
+        </div>
+</fieldset>
+
+
+            </p>
+        </div>
+        <div role="tabpanel"
+             class="accessibilityTabpanel"
+             id="Vendors-tab"
+             aria-labelledby="Vendors"
+             hidden="">
+            <p>
+
+
+<div id="contractAwardVendorsContainer">
+
+
+
+        <div class="editableListItem">
+            <label>
+                Nyanzou Canvas Works
+            </label>
+        </div>
+
+</div>
+
+            </p>
+        </div>
+        <div role="tabpanel"
+             class="accessibilityTabpanel"
+             id="Contacts-tab"
+             aria-labelledby="Contacts"
+             hidden="">
+            <p>
+                <input type="button" class="btnCollapseAll" value="Collapse all" style="float:right;" />
+<input type="button" class="btnExpandAll" value="Expand all" style="float:right;" />
+<div class="clear"></div>
+
+    <div class="editableListItem">
+        <span class="options">
+            <input type="button" value="Show details" />
+        </span>
+
+
+        <span>
+            <strong>
+
+            </strong>
+        </span>
+        <div class="clear"></div>
+
+        <div class="contactDetails" style="display: none;">
+            <div class="reportRow">
+                <label for="FirstName">First name</label>
+                <span class="value">PROCUREMENT</span>
+            </div>
+            <div class="reportRow">
+                <label for="Email">Contact email</label>
+                <span class="value">pcrt@ilo.org</span>
+            </div>
+        </div>
+    </div>
+
+            </p>
+        </div>
+        <div role="tabpanel"
+             class="accessibilityTabpanel"
+             id="UNSPSC-tab"
+             aria-labelledby="UNSPSC"
+             hidden="">
+            <p>
+            </p>
+
+        </div>
+    </div>
+</div>
