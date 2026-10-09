@@ -14,7 +14,9 @@ from django.utils.timezone import make_aware
 
 from app.exceptions import UNSPCCodesNotFound
 from app.models import UNSPSCCode, WorkerLog, Tender, TenderDocument
-from app.server_requests import get_request_class
+from app.server_requests import (
+    get_request_class, GET_HEADERS, REQUEST_TIMEOUT
+)
 from scratch import settings
 
 
@@ -65,14 +67,15 @@ class UNGMWorker:
 
         tenders_list = []
         for tender in tenders:
+            # Columns: options, title, deadline, published, organization,
+            # type, reference, country
+            cells = tender.find_all('div', class_='tableCell', recursive=False)
+            href = cells[1].a['href'].strip() if cells[1].a else ''
             tender_dict = {
                 'published': UNGMWorker.parse_date(
-                    tender.contents[7].span.string.strip(), '%d-%b-%Y'),
-                'reference': tender.contents[13].span.string.strip(),
-                'url': (
-                    endpoint + tender.contents[3].a['href'].strip()
-                    if tender.contents[3].a['href'].strip() else ''
-                ),
+                    cells[3].span.get_text().strip(), '%d-%b-%Y'),
+                'reference': cells[6].span.get_text().strip(),
+                'url': endpoint + href if href else '',
             }
             if tender_dict['url'] == 'http://google.com':
                 # This is a bug that should be investigated
@@ -96,6 +99,9 @@ class UNGMWorker:
             the tender is invalid.
         """
         soup = BeautifulSoup(html, 'html.parser')
+        # Restrict to the notice itself, the page menu also uses classes
+        # like "status-tag"
+        soup = soup.find(id='noticeDetail') or soup
         documents = UNGMWorker.find_by_class(soup, "lnkShowDocument", "a")
         description = UNGMWorker.find_by_class(
             soup, "ungm-list-item ungm-background", "div")
@@ -175,7 +181,11 @@ class UNGMWorker:
                 url = tender.url
             except AttributeError:
                 url = tender['url']
+            sleep(randint(2, 5))
             html = self.requester.get_request(url)
+            if not html:
+                logging.warning('Skipping UNGM tender %s, request failed.', url)
+                continue
             parsed_tender = self.parse_ungm_notice(html, url, codes)
             if parsed_tender:
                 yield parsed_tender
@@ -247,11 +257,14 @@ class UNGMWorker:
     @staticmethod
     def download_document(tender_doc):
         with TemporaryFile() as content:
-            headers = {
-                'User-Agent': 'Mozilla/5.0'
-            }
             sleep(randint(2, 4))
-            response = requests.get(tender_doc.download_url, headers=headers, stream=True)
+            try:
+                response = requests.get(
+                    tender_doc.download_url, headers=GET_HEADERS,
+                    stream=True, timeout=REQUEST_TIMEOUT)
+            except requests.exceptions.RequestException as e:
+                logging.warning(e)
+                return
             if response.status_code == 200:
                 for chunk in response.iter_content(chunk_size=4096):
                     content.write(chunk)

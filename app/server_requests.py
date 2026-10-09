@@ -7,9 +7,9 @@ from datetime import datetime
 from random import randint
 from time import sleep
 
-from urllib.parse import urlparse
 from urllib3.exceptions import NewConnectionError
 
+from bs4 import BeautifulSoup
 from django.conf import settings
 
 from app.models import UNSPSCCode
@@ -39,6 +39,11 @@ PAYLOAD = {
         'NoticeTypes': [],
         'Reference': '',
         'DeadlineTo': '',
+        'IsSustainable': False,
+        'IsActive': True,
+        'NoticeDisplayType': None,
+        'NoticeSearchTotalLabelId': 'noticeSearchTotal',
+        'TypeOfCompetitions': [],
     },
     'awards': {
         'PageIndex': 0,
@@ -63,21 +68,35 @@ PAYLOAD = {
 }
 
 
-POST_HEADERS = {
-    'Accept': '*/*',
-    'Accept-Encoding': 'gzip, deflate',
-    'Accept-Language': 'en-US,en;q=0.5',
-    'Content-Type': 'application/json; charset=UTF-8',
-    'Host': urlparse(LIVE_ENDPOINT_URI).netloc,
-    'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:31.0)'
-    ' Gecko/20100101 Firefox/31.0',
-    'X-Requested-With': 'XMLHttpRequest',
-}
+# Keep these consistent with a single current browser: UNGM sits behind a
+# bot filter and mismatched or outdated User-Agents get flagged.
+USER_AGENT = (
+    'Mozilla/5.0 (X11; Linux x86_64; rv:140.0) Gecko/20100101 Firefox/140.0'
+)
 
 GET_HEADERS = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
-    'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36'
+    'User-Agent': USER_AGENT,
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    'Accept-Language': 'en-US,en;q=0.9',
 }
+
+POST_HEADERS = {
+    'User-Agent': USER_AGENT,
+    'Accept': '*/*',
+    'Accept-Language': 'en-US,en;q=0.9',
+    'Content-Type': 'application/json',
+    'X-Requested-With': 'XMLHttpRequest',
+    'Origin': LIVE_ENDPOINT_URI,
+}
+
+# (connect, read) timeout in seconds for every request made to UNGM
+REQUEST_TIMEOUT = (10, 60)
+
+# Name of the ASP.NET antiforgery field rendered in the page; its value must
+# be sent back in the RequestVerificationToken header, together with the
+# matching cookie the server set on the same session.
+ANTIFORGERY_FIELD = '__RequestVerificationToken'
+ANTIFORGERY_HEADER = 'RequestVerificationToken'
 
 
 UNSPSC_CODES = UNSPSCCode.objects.values_list("id", flat=True)
@@ -96,12 +115,16 @@ class Requester(object):
 
     def get_request(self, url):
         try:
-            response = requests.get(url, headers=GET_HEADERS)
-        except requests.exceptions.ConnectionError:
+            response = requests.get(
+                url, headers=GET_HEADERS, timeout=REQUEST_TIMEOUT)
+        except requests.exceptions.RequestException as e:
+            logging.warning(e)
             return None
 
         if response.status_code == 200:
             return response.content
+        logging.warning(
+            'GET %s failed with status code: %s', url, response.status_code)
         return None
 
     def request_document(self, url):
@@ -141,47 +164,67 @@ class UNGMrequester(Requester):
                 url, url + '/Search', self.get_data(url, last_date, index))
             if html:
                 return html
-            sleep(randint(10, 15))
+            sleep(randint(30, 60))
         raise RequestsFailedError
 
-    def post_request(
-            self, get_url, post_url, data, headers=POST_HEADERS, content_type=None):
+    @staticmethod
+    def get_antiforgery_token(html):
+        soup = BeautifulSoup(html, 'html.parser')
+        field = soup.find('input', {'name': ANTIFORGERY_FIELD})
+        if field and field.get('value'):
+            return field['value']
+        meta = soup.find('meta', {'name': ANTIFORGERY_HEADER})
+        if meta and meta.get('content'):
+            return meta['content']
+        return None
+
+    def post_request(self, get_url, post_url, data, headers=None):
         """
-        AJAX-like POST request. Does a GET initially to receive cookies that
-        are used to the subsequent POST request.
+        AJAX-like POST request. Loads `get_url` first, in the same session,
+        to receive the cookies and the antiforgery token the POST requires.
 
         Returns HTML, NOT Response object.
         """
+        session = requests.Session()
+        session.cookies.set('UNGM.UserPreferredLanguage', 'en')
         try:
-            resp = requests.get(get_url, headers=GET_HEADERS)
-        except requests.exceptions.ConnectionError as e:
+            resp = session.get(
+                get_url, headers=GET_HEADERS, timeout=REQUEST_TIMEOUT)
+        except requests.exceptions.RequestException as e:
             logging.warning(e)
             return None
 
-        cookies = dict(resp.cookies)
-        cookies.update({'UNGM.UserPreferredLanguage': 'en'})
-        headers.update({
-            'Cookie': '; '.join(
-                ['{0}={1}'.format(k, v) for k, v in cookies.items()]),
+        if resp.status_code != 200:
+            logging.warning(
+                'GET %s failed with status code: %s', get_url,
+                resp.status_code)
+            return None
+
+        token = self.get_antiforgery_token(resp.content)
+        if not token:
+            logging.warning('No antiforgery token found on %s', get_url)
+            return None
+
+        post_headers = dict(POST_HEADERS, **(headers or {}))
+        post_headers.update({
+            ANTIFORGERY_HEADER: token,
             'Referer': get_url,
-            'Content-Length': str(len(data)),
         })
-        if content_type:
-            headers.update({'Content-Type': content_type})
 
         try:
             sleep(randint(2, 5))
-            resp = requests.post(post_url, data=data, cookies=cookies,
-                                 headers=headers)
-        except requests.exceptions.ConnectionError as e:
+            resp = session.post(
+                post_url, data=data, headers=post_headers,
+                timeout=REQUEST_TIMEOUT)
+        except requests.exceptions.RequestException as e:
             logging.warning(e)
             return None
-
 
         if resp.status_code == 200:
             return resp.content
 
-        logging.warning("Request failed with status code: " + str(resp.status_code))
+        logging.warning(
+            'POST %s failed with status code: %s', post_url, resp.status_code)
         return None
 
 #
