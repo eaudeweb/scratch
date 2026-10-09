@@ -17,6 +17,7 @@ from app.models import UNSPSCCode
 LIVE_ENDPOINT_URI = settings.UNGM_ENDPOINT_URI
 TENDERS_ENDPOINT_URI = LIVE_ENDPOINT_URI + '/Public/Notice'
 WINNERS_ENDPOINT_URI = LIVE_ENDPOINT_URI + '/Public/ContractAward'
+WINNERS_SEARCH_URI = WINNERS_ENDPOINT_URI + '/PublicSearch'
 SEARCH_UNSPSCS_URI = LIVE_ENDPOINT_URI + '/UNSPSC/Search'
 
 
@@ -24,7 +25,6 @@ PAYLOAD = {
     'tenders': {
         'PageIndex': 0,
         'PageSize': 15,
-        'NoticeTASStatus': [],
         'Description': '',
         'Title': '',
         'DeadlineFrom': '',
@@ -47,7 +47,7 @@ PAYLOAD = {
     },
     'awards': {
         'PageIndex': 0,
-        'PageSize': 100,
+        'PageSize': 15,
         'Title': '',
         'Description': '',
         'Reference': '',
@@ -55,8 +55,8 @@ PAYLOAD = {
         'AwardFrom': '',
         'AwardTo': '',
         'Countries': [],
+        'SupplierCountries': [],
         'Agencies': [],
-        'UNSPSCs': [],
         'SortField': 'AwardDate',
         'SortAscending': False,
     },
@@ -149,13 +149,14 @@ class UNGMrequester(Requester):
 
     def get_data(self, url, last_date, index):
         category = 'tenders' if 'Notice' in url else 'awards'
-        payload = PAYLOAD[category]
+        payload = dict(PAYLOAD[category])
         if category == 'tenders':
             today = datetime.now().strftime('%d-%b-%Y')
             payload['DeadlineFrom'] = payload['PublishedTo'] = today
             payload['PublishedFrom'] = last_date
             payload['PageIndex'] = index
-        payload['UNSPSCs'] = list(UNSPSC_CODES)
+            # UNGM expects the internal code ids as numbers
+            payload['UNSPSCs'] = [int(code) for code in UNSPSC_CODES]
         return json.dumps(payload)
 
     def request(self, url, last_date, index):

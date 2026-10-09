@@ -7,7 +7,9 @@ import datetime
 from time import sleep
 from random import randint
 from app.models import Tender, Award, Vendor
-from app.server_requests import PAYLOAD, WINNERS_ENDPOINT_URI
+from app.server_requests import (
+    PAYLOAD, WINNERS_ENDPOINT_URI, WINNERS_SEARCH_URI
+)
 import logging
 from app.management.commands.base.params import BaseParamsUI
 
@@ -37,9 +39,8 @@ class Command(BaseCommand, BaseParamsUI):
             ).first()
 
             if not award:
-                try:
-                    contract_id = self.get_contract_id(tender.reference)
-                except TypeError:
+                contract_id = self.get_contract_id(tender.reference)
+                if not contract_id:
                     logger.warning(f'No award was found for the corresponding tender reference ({ tender.reference })')
                     continue
 
@@ -68,22 +69,26 @@ class Command(BaseCommand, BaseParamsUI):
 
         requester = get_request_class(public=True)
 
-        payload = PAYLOAD['awards']
-        payload['Reference'] = reference
+        payload = dict(PAYLOAD['awards'], Reference=reference)
         for i in range(0, 3):
             resp = requester.post_request(
                 WINNERS_ENDPOINT_URI,
-                WINNERS_ENDPOINT_URI + '/Search',
+                WINNERS_SEARCH_URI,
                 json.dumps(payload),
             )
             if resp:
-                soup = BeautifulSoup(resp, 'html.parser')
-                contract_id = soup.find('div', {'class': 'tableRow dataRow'})['data-contractawardid']
-                return contract_id
-            sleep(randint(10, 15))
+                return Command.parse_contract_id(resp)
+            sleep(randint(30, 60))
 
         logger.error('POST request failed.')
         return None
+
+    @staticmethod
+    def parse_contract_id(html):
+        """ Return the id of the first contract award in a search result """
+        row = BeautifulSoup(html, 'html.parser').select_one(
+            'div.tableRow.dataRow[data-contractawardid]')
+        return row['data-contractawardid'] if row else None
 
     def parse_award(self, html):
         """ Parse a contract award HTML and return a dictionary with information
@@ -105,7 +110,7 @@ class Command(BaseCommand, BaseParamsUI):
         award_fields = {
             'award_date': self.string_to_date(award_date) or datetime.date.today(),
             'vendors': vendor_list,
-            'value': float(value or 0) if value else '',
+            'value': float(value.strip().replace(',', '')) if value and value.strip() else None,
             'currency': '',
         }
 
@@ -122,8 +127,7 @@ class Command(BaseCommand, BaseParamsUI):
         for vendor in vendors:
             vendor_object, _ = Vendor.objects.get_or_create(name=vendor)
             vendor_objects.append(vendor_object)
-        award = Award.objects.update_or_create(tender=tender_entry, **award_fields)
-        award.save()
+        award, _ = Award.objects.update_or_create(tender=tender_entry, **award_fields)
         award.vendors.add(*vendor_objects)
 
         return award

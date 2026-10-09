@@ -145,7 +145,7 @@ class UngmParserTestCase(BaseTestCase):
         award = self.award.parse_award(html_string)
 
         self.assertEqual(award['vendors'][0], '')
-        self.assertEqual(award['value'], '')
+        self.assertIsNone(award['value'])
         self.assertEqual(award['currency'], '')
         self.assertEqual(award['award_date'], datetime.now().date())
 
@@ -155,6 +155,24 @@ class UngmParserTestCase(BaseTestCase):
 
         award = self.award.parse_award(html_string)
         self.assertEqual(award['award_date'], datetime.now().date())
+
+    def test_ungm_parse_award_2026(self):
+        with open('app/tests/parser_files/ungm_award_2026.html', 'r') as f:
+            html_string = f.read()
+
+        award = self.award.parse_award(html_string)
+        self.assertEqual(award['vendors'], ['Nyanzou Canvas Works'])
+        self.assertEqual(
+            award['award_date'], datetime.strptime('09-Oct-2026', '%d-%b-%Y'))
+        self.assertIsNone(award['value'])
+        self.assertEqual(award['currency'], '')
+
+    def test_ungm_award_search_contract_id(self):
+        with open('app/tests/parser_files/ungm_award_search_2026.html', 'r') as f:
+            html_string = f.read()
+
+        self.assertEqual(self.award.parse_contract_id(html_string), '160222')
+        self.assertIsNone(self.award.parse_contract_id('<div></div>'))
 
     def test_ungm_antiforgery_token(self):
         html = (
